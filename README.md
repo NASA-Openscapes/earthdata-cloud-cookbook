@@ -1,12 +1,14 @@
 # How to contribute to our book
 
-We'll make our e-book using Quarto ([<https://quarto.org>](https://quarto.org/docs/getting-started/installation.html)). Your Quarto workflow can be from the Command Line (bash), Python, or R. Its book chapters can be many file types, including `.md` , `.ipynb`, and `.Rmd`. Chapters without code to execute can be written in `.md`.
+We'll make our e-book using Quarto ([https://quarto.org](https://quarto.org/docs/getting-started/installation.html)). Your Quarto workflow can be from the Command Line (bash), Python, or R. Its book chapters can be many file types, including `.md` , `.ipynb`, and `.Rmd`. Chapters without code to execute can be written in `.md`.
+
+(Note: with Quarto, e-books and websites are very similarly structured, with e-books being set up for numbered chapters and references and websites set up for higher number of pages and organization. We can talk about our book as a book even as we explore whether book/website better suits our needs. This is defined in `_quarto.yml`.)
 
 ## Setup
 
 ### Clone our repository locally
 
-Clone nasa-openscapes/quartobook-test using your method of preference. Here is how to do this in bash:
+Clone `nasa-openscapes/quartobook-test` using your method of preference. Here is how to do this in bash:
 
 ```{bash}
 git clone https://github.com/NASA-Openscapes/quartobook-test
@@ -15,7 +17,7 @@ cd quartobook-test
 
 ### Install Quarto
 
-Install the `quarto` library.
+Install the `quarto` library so you can interact with it via the command line or R. I've set mine up with both.
 
 #### Command Line/Python:
 
@@ -35,18 +37,18 @@ install.packages("quarto")
 
 ### Load environment
 
-Our repo has an environment with the R and Python libraries that's just for this project (we created it using the [`renv`](https://rstudio.github.io/renv/) R package). Loading this environment will give you what you need to contribute to the book, as well as build and publish it. But it will stay contained just here in this project so it won't interact with your other projects.
+Our repo is set up with an environment of the R and Python libraries that's just for this project (we created it using the [`renv`](https://rstudio.github.io/renv/) R package, notes below). Loading this environment will give you what you need to contribute to the book, as well as build and publish it. But it will stay contained just here in this project so it won't interact with your other projects.
 
-From [A Guide to Python's Virtual Environments](https://towardsdatascience.com/virtual-environments-104c62d48c54) (Sarmiento 2019):
+More details about environments, from [A Guide to Python's Virtual Environments](https://towardsdatascience.com/virtual-environments-104c62d48c54) (Sarmiento 2019):
 
 > A virtual environment is a Python tool for **dependency management** and **project** **isolation**. They allow Python **site packages** (third party libraries) to be installed locally in an isolateddirectory for a particular project, as opposed to being installed globally (i.e. as part of a system-wide Python).
 
-#### Command Line/Python 
+#### Command Line/Python
 
 TODO venv:
 
 ```{bash}
-
+python3 -m venv renv/
 ```
 
 #### R
@@ -145,7 +147,6 @@ The basic workflow: is to use `renv::snapshot()` of all the libraries we want, a
 renv::snapshot()
 renv::restore()
 ```
-
 
 ```{bash}
 pip install jupyterlab
