@@ -1,0 +1,18 @@
+---
+title: "RMarkdown example notebook"
+editor_options: 
+  chunk_output_type: inline
+---
+
+## Header
+
+As I write some description here
+
+```{r}
+library(ggplot2)
+ggplot(airquality, aes(Temp, Ozone)) + 
+        geom_point() + 
+        geom_smooth(method = "loess", se = FALSE)
+```
+
+I can run my code in-line as I go

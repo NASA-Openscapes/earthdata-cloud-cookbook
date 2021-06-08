@@ -3,7 +3,7 @@
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>Cloud for Earth Science – getting_started</title>
+  <title>Cloud for Earth Science – RMarkdown example notebook</title>
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -11,6 +11,69 @@
     div.column{display: inline-block; vertical-align: top; width: 50%;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007ba5; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #007ba5; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #007ba5; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
 
   <!--[if lt IE 9]>
@@ -22,8 +85,8 @@
   <script src="../site_libs/quarto-search/autocomplete.min.js"></script>
   <script src="../site_libs/quarto-search/fuse.min.js"></script>
   <script src="../site_libs/quarto-search/quarto-search.js"></script>
-  <link href="../getting_started/lpdaac-netrc.html" rel="next">
-  <link href="../index.html" rel="prev">
+  <link href="../community-handbook/community-handbook.html" rel="next">
+  <link href="../further_resources/python_example.html" rel="prev">
   <script src="../site_libs/quarto-html/quarto.js"></script>
   <script src="../site_libs/quarto-html/popper.min.js"></script>
   <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -67,7 +130,7 @@
 <header id="quarto-header" class="headroom fixed-top">
 <nav class="quarto-secondary-nav py-2 d-lg-none d-md-block " data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <div class="container-fluid d-flex justify-content-between">
-    <h1 class="quarto-secondary-nav-title mb-0 fs-3 d-inline"></h1>
+    <h1 class="quarto-secondary-nav-title mb-0 fs-3 d-inline">RMarkdown example notebook</h1>
     <button type="button" class="quarto-btn-toggle btn d-lg-none py-0 px-1 d-inline-block border-0 ">
       <i class="bi bi-chevron-right"></i>
     </button>
@@ -117,7 +180,7 @@
       <div class="collapse  show" id="gettingstarted-collapse">
         <ul class="list-unstyled sidebar-item-contents">
           <li class="sidebar-item">
-  <a href="../getting_started/getting_started.html" class="active">Background</a>
+  <a href="../getting_started/getting_started.html" class="">Background</a>
 </li>
           <ul class="list-unstyled sidebar-section depth2">
     <li class="">
@@ -240,7 +303,7 @@
   <a href="../further_resources/python_example.html" class="">Python example notebook</a>
 </li>
           <li class="sidebar-item">
-  <a href="../further_resources/r_example.html" class="">RMarkdown example notebook</a>
+  <a href="../further_resources/r_example.html" class="active">RMarkdown example notebook</a>
 </li>
         </ul>
       </div>
@@ -272,65 +335,49 @@
   <div id="quarto-toc-sidebar" class="col col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-toc order-last"><nav id="TOC" role="doc-toc">
 <h2 id="toc-title">On this page</h2>
 <ul>
-<li><a href="#background" class="nav-link active" data-scroll-target="#background">Background</a>
-<ul class="collapse">
-<li><a href="#set-up-prerequisites" class="nav-link" data-scroll-target="#set-up-prerequisites">Set-up Prerequisites</a></li>
-<li><a href="#cloud-optimized-data-formats" class="nav-link" data-scroll-target="#cloud-optimized-data-formats">Cloud Optimized Data Formats</a></li>
-<li><a href="#sw3-buckets-etc" class="nav-link" data-scroll-target="#sw3-buckets-etc">SW3 Buckets, etc</a></li>
-<li><a href="#authenticate." class="nav-link" data-scroll-target="#authenticate.">Authenticate.</a></li>
-</ul></li>
+<li><a href="#header" class="nav-link active" data-scroll-target="#header">Header</a></li>
 </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nasa-openscapes/quartobook-test/edit/main/getting_started/getting_started.md">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/quartobook-test/issues/new">Report an issue</a></p></div></div></nav></div>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nasa-openscapes/quartobook-test/edit/main/further_resources/r_example.Rmd">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/quartobook-test/issues/new">Report an issue</a></p></div></div></nav></div>
   <div class="col mx-auto col-sm-12 col-md-9 col-lg-7 px-lg-4">
 <main>
+<header id="title-block-header">
+<h1 class="title d-none d-lg-block display-7">RMarkdown example notebook</h1>
+</header>
 
-<section id="background" class="level1">
-<h1>Background</h1>
-<p>Want to use NASA Data? you’ll need earthdata login credentials.</p>
-<p>There are several things you need to set up to get started.</p>
-<section id="set-up-prerequisites" class="level2">
-<h2 class="anchored" data-anchor-id="set-up-prerequisites">Set-up Prerequisites</h2>
-<p>To be able to best work with NASA data in the ways described in this book, you’ll need some familiarity with python and the command line. We recommend the following:</p>
-<ul>
-<li><a href="https://earth-env-data-science.github.io/intro.html"><strong>An Introduction to Earth and Environmental Data Science</strong></a> by Ryan Abernathy and Kerry Key.</li>
-<li>…</li>
-</ul>
-</section>
-<section id="cloud-optimized-data-formats" class="level2">
-<h2 class="anchored" data-anchor-id="cloud-optimized-data-formats">Cloud Optimized Data Formats</h2>
-<p>Some great info here about Cloud Optimized Data Formats.</p>
-</section>
-<section id="sw3-buckets-etc" class="level2">
-<h2 class="anchored" data-anchor-id="sw3-buckets-etc">SW3 Buckets, etc</h2>
-</section>
-<section id="authenticate." class="level2">
-<h2 class="anchored" data-anchor-id="authenticate.">Authenticate.</h2>
-<!--- TODO: develop as prose to set up for the .ipynb examples --->
-<p>To access NASA data you have to authenticate.</p>
-<p>Solutions that work - these are detailed in separate chapters as Jupyter notebooks (<code>.ipynb</code>).</p>
-<ol type="1">
-<li>To access NASA data one must setup an Earthdata Login profile. This involves (prose here)</li>
-</ol>
-<p>See/link to [Christine’s post &amp; conversation on the Jupyter discourse forum](https://discourse.jupyter.org/t/how-do-i-properly-protect-my-data-access-passwords-not-jupyter-tokens-passwords-on-3rd-party-jupyter-hub-services/9277]</p>
-<ul>
-<li>Create a netrc file<br>
-</li>
-<li>Submit EDL credentials within a script</li>
-</ul>
-<p>Some talk about the redirects…</p>
+<section id="header" class="level2">
+<h2 class="anchored" data-anchor-id="header">Header</h2>
+<p>As I write some description here</p>
+<div class="cell" data-fig.alt="{}">
+<div class="sourceCode" id="cb1"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(airquality, <span class="fu">aes</span>(Temp, Ozone)) <span class="sc">+</span> </span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"loess"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-stderr">
+<pre><code>`geom_smooth()` using formula 'y ~ x'</code></pre>
+</div>
+<div class="cell-output-stderr">
+<pre><code>Warning: Removed 37 rows containing non-finite values (stat_smooth).</code></pre>
+</div>
+<div class="cell-output-stderr">
+<pre><code>Warning: Removed 37 rows containing missing values (geom_point).</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="r_example_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>I can run my code in-line as I go</p>
 <!-- -->
-</section>
 </section>
 </main>
 <div class="page-navigation page-navigation-docked">
   <div class="nav-page nav-page-previous">
-      <a href="../index.html">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Welcome</span>
+      <a href="../further_resources/python_example.html">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Python example notebook</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../getting_started/lpdaac-netrc.html">
-        <span class="nav-page-text">LP DAAC Authentication Example</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../community-handbook/community-handbook.html">
+        <span class="nav-page-text">Community Handbook</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </div>
