@@ -24,9 +24,14 @@ Install the `quarto` library so you can interact with it via the command line or
 In the command line, type:
 
 ```{bash}
+## required
 pip install quarto
-pip install jupyterlab # probably going to want this
+
+## probably going to want this
+pip install jupyterlab
 pip install matplotlib # probably going to want this
+pip install scikit-image
+pip install requests
 ```
 
 #### R
