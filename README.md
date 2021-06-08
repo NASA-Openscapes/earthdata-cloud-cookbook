@@ -100,9 +100,9 @@ git add --all
 git commit -m "my commit message here"
 git pull # just to be safe
 git push 
-
-
 ```
+
+Now it's on github, in a separate branch from main. You can go to <https://github.com/nasa-openscapes/quartobook-test> and do a pull request, and tag someone to review (depending on what you've done and what we've talked about).
 
 ## Workflow - Quarto
 
