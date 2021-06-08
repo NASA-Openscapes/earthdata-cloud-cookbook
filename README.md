@@ -45,7 +45,7 @@ More details about environments, from [A Guide to Python's Virtual Environments]
 
 #### Command Line/Python
 
-TODO venv:
+TODO write more about `venv` and test that this works:
 
 ```{bash}
 python3 -m venv renv/
@@ -74,7 +74,7 @@ Pull most recent updates:
 git pull 
 ```
 
-Create a new branch, then switch to that branch to work in
+Create a new branch, then switch to that branch to work in. Then, connect it to github.com by pushing it "upstream" to the "origin repository".
 
 ```{bash}
 git branch branch-name
@@ -100,11 +100,13 @@ git add --all
 git commit -m "my commit message here"
 git pull # just to be safe
 git push 
-
-
 ```
 
+Now it's on github, in a separate branch from main. You can go to <https://github.com/nasa-openscapes/quartobook-test> and do a pull request, and tag someone to review (depending on what you've done and what we've talked about).
+
 ## Workflow - Quarto
+
+Now make edits \<to explain more\>
 
 To build the book, run the following from Terminal
 
