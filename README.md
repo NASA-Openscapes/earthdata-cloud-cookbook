@@ -45,7 +45,7 @@ More details about environments, from [A Guide to Python's Virtual Environments]
 
 #### Command Line/Python
 
-TODO venv:
+TODO write more about `venv` and test that this works:
 
 ```{bash}
 python3 -m venv renv/
@@ -74,7 +74,7 @@ Pull most recent updates:
 git pull 
 ```
 
-Create a new branch, then switch to that branch to work in
+Create a new branch, then switch to that branch to work in. Then, connect it to github.com by pushing it "upstream" to the "origin repository".
 
 ```{bash}
 git branch branch-name
@@ -105,6 +105,8 @@ git push
 ```
 
 ## Workflow - Quarto
+
+Now make edits \<to explain more\>
 
 To build the book, run the following from Terminal
 

@@ -1,5 +1,8 @@
 # Background
 
+Want to use NASA Data? you'll need earthdata login credentials. 
+
+
 There are several things you need to set up to get started.
 
 ## Set-up Prerequisites
@@ -11,9 +14,14 @@ To be able to best work with NASA data in the ways described in this book, you'l
 
 ## Cloud Optimized Data Formats
 
-Some great info here about Cloud Optimized Data Formats. 
+Some great info here about Cloud Optimized Data Formats.
+
+## SW3 Buckets, etc
+
 
 ## Authenticate.
+
+
 
 <!--- TODO: develop as prose to set up for the .ipynb examples --->
 
