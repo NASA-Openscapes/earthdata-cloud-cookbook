@@ -1,26 +1,64 @@
-# How to Quarto
+# How to contribute to our book
+
+We'll make our e-book using Quarto ([<https://quarto.org>](https://quarto.org/docs/getting-started/installation.html)). Your Quarto workflow can be from the Command Line (bash), Python, or R. Its book chapters can be many file types, including `.md` , `.ipynb`, and `.Rmd`. Chapters without code to execute can be written in `.md`.
 
 ## Setup
 
-Clone nasa-openscapes/quartobook-test
+### Clone our repository locally
+
+Clone nasa-openscapes/quartobook-test using your method of preference. Here is how to do this in bash:
 
 ```{bash}
 git clone https://github.com/NASA-Openscapes/quartobook-test
 cd quartobook-test
 ```
 
-Install `quarto` library
+### Install Quarto
+
+Install the `quarto` library.
+
+#### Command Line/Python:
+
+In the command line, type:
 
 ```{bash}
 pip install quarto
 ```
 
-Load environment
+#### R
 
-TODO venv: <https://towardsdatascience.com/virtual-environments-104c62d48c54>
+In the R Console, type:
 
+```{r, eval=FALSE}
+install.packages("quarto")
+```
+
+### Load environment
+
+Our repo has an environment with the R and Python libraries that's just for this project (we created it using the [`renv`](https://rstudio.github.io/renv/) R package). Loading this environment will give you what you need to contribute to the book, as well as build and publish it. But it will stay contained just here in this project so it won't interact with your other projects.
+
+From [A Guide to Python's Virtual Environments](https://towardsdatascience.com/virtual-environments-104c62d48c54) (Sarmiento 2019):
+
+> A virtual environment is a Python tool for **dependency management** and **project** **isolation**. They allow Python **site packages** (third party libraries) to be installed locally in an isolateddirectory for a particular project, as opposed to being installed globally (i.e. as part of a system-wide Python).
+
+#### Command Line/Python 
+
+TODO venv:
 
 ```{bash}
+
+```
+
+#### R
+
+In R, we'll first need the `remotes` package to install the `renv` package from GitHub. Then we can restore the environment using `renv::restore()`.
+
+```{r}
+if (!requireNamespace("remotes"))
+  install.packages("remotes")
+
+remotes::install_github("rstudio/renv")
+renv::restore()
 
 ```
 
