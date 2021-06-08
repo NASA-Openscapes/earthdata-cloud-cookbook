@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang=""><head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>lpdaac-netrc</title>
+  <style>
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 20px;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      word-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+  <script src="../site_libs/quarto-nav/headroom.min.js"></script>
+  <meta name="quarto:offset" content="..">
+  <script src="../site_libs/quarto-search/autocomplete.min.js"></script>
+  <script src="../site_libs/quarto-search/fuse.min.js"></script>
+  <script src="../site_libs/quarto-search/quarto-search.js"></script>
+  <link href="../getting_started/podaac-ecco-netrc.html" rel="next">
+  <link href="../getting_started/getting_started.html" rel="prev">
+  <script src="../site_libs/quarto-html/quarto.js"></script>
+  <script src="../site_libs/quarto-html/popper.min.js"></script>
+  <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+  <script src="../site_libs/quarto-html/clipboard.min.js"></script>
+  <script src="../site_libs/quarto-html/anchor.min.js"></script>
+  <script src="../site_libs/quarto-html/quarto-html.js"></script>
+  <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+  <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+  <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+  <link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet">
+  <style type="text/css">
+    details {
+      margin-bottom: 1em;
+    } 
+    details[show] {
+      margin-bottom: 0;
+    }
+
+    .quarto-unresolved-ref {
+      font-weight: 600;
+    }
+
+    .quarto-cover-image {
+      max-width: 35%;
+      float: right;
+      margin-left: 30px;
+    }
+
+    .cell-output-display {
+      overflow-x: scroll;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+<div id="quarto-search-results"></div>
+<header id="quarto-header" class="headroom fixed-top">
+<nav class="quarto-secondary-nav py-2 d-lg-none d-md-block " data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <div class="container-fluid d-flex justify-content-between">
+    <h1 class="quarto-secondary-nav-title mb-0 fs-3 d-inline"></h1>
+    <button type="button" class="quarto-btn-toggle btn d-lg-none py-0 px-1 d-inline-block border-0 ">
+      <i class="bi bi-chevron-right"></i>
+    </button>
+  </div>
+</nav>
+</header>
+ <!-- /navbar/sidebar -->
+<div class="container-fluid quarto-container d-flex flex-column">
+<div class="row flex-fill" id="quarto-content">
+  <div id="quarto-sidebar" class="col col-12 col-lg-3 d-lg-flex px-0 pt-0 sidebar collapse sidebar-navigation">
+    <nav class="me-lg-auto py-2 docked  overflow-scroll">
+  <div class="px-3 pt-lg-2 text-left">
+    <div class="sidebar-title mt-1 mb-0 py-0">
+      <a href="../">
+      Cloud for Earth Science
+      </a>
+        <div class="sidebar-tools-main mt-1">
+    <a href="https://github.com/nasa-openscapes/quartobook-test" title="" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
+</div>
+    </div>
+  </div>
+    <div class="d-flex px-3 mt-2 flex-shrink-0 align-items-center">
+      <div class="sidebar-search">
+      <form class="d-flex mb-0">
+  <input id="quarto-search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+      </div>
+        <div class="sidebar-tools-collapse mt-1">
+    <a href="https://github.com/nasa-openscapes/quartobook-test" title="" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
+</div>
+    </div>
+  <div class="sidebar-menu-container"> 
+  <ul class="list-unstyled mt-3 px-3">
+      <ul class="list-unstyled sidebar-section depth1">
+    <li class="">
+        <div class="me-auto ">
+            <a class="sidebar-section-item d-inline-flex text-start w-100 " data-bs-toggle="collapse" data-bs-target="#gettingstarted-collapse" aria-expanded="true">
+              <div class="me-auto  sidebar-section-item">
+                Getting Started
+              </div>
+            <div><i class="bi bi-chevron-right ms-2 "></i></div>
+            </a>
+        </div>
+      <div class="collapse  show" id="gettingstarted-collapse">
+        <ul class="list-unstyled sidebar-item-contents">
+          <li class="sidebar-item">
+  <a href="../index.html" class="">Welcome</a>
+</li>
+          <li class="sidebar-item">
+  <a href="../getting_started/getting_started.html" class="">GETTING STARTED</a>
+</li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+      <ul class="list-unstyled sidebar-section depth1">
+    <li class="">
+        <div class="me-auto ">
+            <a class="sidebar-section-item d-inline-flex text-start w-100 " data-bs-toggle="collapse" data-bs-target="#authenticationnotebooks-collapse" aria-expanded="true">
+              <div class="me-auto  sidebar-section-item">
+                Authentication Notebooks
+              </div>
+            <div><i class="bi bi-chevron-right ms-2 "></i></div>
+            </a>
+        </div>
+      <div class="collapse  show" id="authenticationnotebooks-collapse">
+        <ul class="list-unstyled sidebar-item-contents">
+          <li class="sidebar-item">
+  <a href="../getting_started/lpdaac-netrc.html" class="active">LP DAAC Authentication Example</a>
+</li>
+          <li class="sidebar-item">
+  <a href="../getting_started/podaac-ecco-netrc.html" class="">PO DAAC Authentication Example</a>
+</li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+      <ul class="list-unstyled sidebar-section depth1">
+    <li class="">
+        <div class="me-auto ">
+            <a class="sidebar-section-item d-inline-flex text-start w-100 " data-bs-toggle="collapse" data-bs-target="#nasaclouddatadiscovery-collapse" aria-expanded="true">
+              <div class="me-auto  sidebar-section-item">
+                NASA Cloud Data Discovery
+              </div>
+            <div><i class="bi bi-chevron-right ms-2 "></i></div>
+            </a>
+        </div>
+      <div class="collapse  show" id="nasaclouddatadiscovery-collapse">
+        <ul class="list-unstyled sidebar-item-contents">
+          <li class="sidebar-item">
+  <a href="../discovery/discovery.html" class="">NASA CLOUD DATA DISCOVERY</a>
+</li>
+          <ul class="list-unstyled sidebar-section depth2">
+    <li class="">
+        <div class="me-auto ">
+            <a class="sidebar-section-item d-inline-flex text-start w-100 collapsed" data-bs-toggle="collapse" data-bs-target="#discovernotebooks-collapse" aria-expanded="false">
+              <div class="me-auto  sidebar-item">
+                Discover Notebooks
+              </div>
+            <div><i class="bi bi-chevron-right ms-2 "></i></div>
+            </a>
+        </div>
+      <div class="collapse  " id="discovernotebooks-collapse">
+        <ul class="list-unstyled sidebar-item-contents">
+          <li class="sidebar-item">
+  <a href="../discovery/Navigate_CMR_STAC.html" class="">CMR and CMR-STAC API</a>
+</li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+        </ul>
+      </div>
+    </li>
+  </ul>
+      <ul class="list-unstyled sidebar-section depth1">
+    <li class="">
+        <div class="me-auto ">
+            <a class="sidebar-section-item d-inline-flex text-start w-100 " data-bs-toggle="collapse" data-bs-target="#access-collapse" aria-expanded="true">
+              <div class="me-auto  sidebar-section-item">
+                Access
+              </div>
+            <div><i class="bi bi-chevron-right ms-2 "></i></div>
+            </a>
+        </div>
+      <div class="collapse  show" id="access-collapse">
+        <ul class="list-unstyled sidebar-item-contents">
+          <li class="sidebar-item">
+  <a href="../access/access.html" class="">ACCESS</a>
+</li>
+          <ul class="list-unstyled sidebar-section depth2">
+    <li class="">
+        <div class="me-auto ">
+            <a class="sidebar-section-item d-inline-flex text-start w-100 collapsed" data-bs-toggle="collapse" data-bs-target="#accessnotebooks-collapse" aria-expanded="false">
+              <div class="me-auto  sidebar-item">
+                Access Notebooks
+              </div>
+            <div><i class="bi bi-chevron-right ms-2 "></i></div>
+            </a>
+        </div>
+      <div class="collapse  " id="accessnotebooks-collapse">
+        <ul class="list-unstyled sidebar-item-contents">
+          <li class="sidebar-item">
+  <a href="../discovery/Navigate_CMR_STAC.html" class="">CMR and CMR-STAC API</a>
+</li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+        </ul>
+      </div>
+    </li>
+  </ul>
+      <ul class="list-unstyled sidebar-section depth1">
+    <li class="">
+        <div class="me-auto ">
+            <a class="sidebar-section-item d-inline-flex text-start w-100 " data-bs-toggle="collapse" data-bs-target="#furtherresources-collapse" aria-expanded="true">
+              <div class="me-auto  sidebar-section-item">
+                Further Resources
+              </div>
+            <div><i class="bi bi-chevron-right ms-2 "></i></div>
+            </a>
+        </div>
+      <div class="collapse  show" id="furtherresources-collapse">
+        <ul class="list-unstyled sidebar-item-contents">
+          <li class="sidebar-item">
+  <a href="../glossary.html" class="">Glossary</a>
+</li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+  </ul>
+  </div>
+</nav>
+  </div>
+  <div class="col mx-auto col-sm-12 col-md-11 col-lg-9 px-lg-4">
+<main>
+<table class="table">
+<colgroup>
+<col style="width: 5%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;"># LP DAAC Authentication Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">title-prefix: Cloud for Earth Science document-css: false link-citations: true project: type: site output-dir: ../docs lib-dir: ../site_libs site: title: Cloud for Earth Science author: NASA Openscapes Community logo: openscapes_hex.png repo-url: ‘https://github.com/nasa-openscapes/quartobook-test’ repo-actions: - edit - issue sharing: - twitter page-navigation: true sidebar: style: docked background: light search: true collapse-level: 2 tools: - icon: github href: ‘https://github.com/nasa-openscapes/quartobook-test’ contents: - section: Getting Started contents: - text: Welcome href: ../index.md - ../getting_started/getting_started.md - section: Authentication Notebooks contents: - ../getting_started/lpdaac-netrc.ipynb - ../getting_started/podaac-ecco-netrc.ipynb - section: NASA Cloud Data Discovery contents: - ../discovery/discovery.md - section: Discover Notebooks contents: - ../discovery/Navigate_CMR_STAC.ipynb - section: ../Access contents: - ../access/access.md - section: Access Notebooks contents: - ../discovery/Navigate_CMR_STAC.ipynb - section: Further Resources contents: - ../glossary.md bibliography: - ../references.bib format: html: theme: cosmo theme: cosmo toc-title: On this page</td>
+</tr>
+</tbody>
+</table>
+</main>
+<div class="page-navigation page-navigation-docked">
+  <div class="nav-page nav-page-previous">
+      <a href="../getting_started/getting_started.html">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">GETTING STARTED</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../getting_started/podaac-ecco-netrc.html">
+        <span class="nav-page-text">PO DAAC Authentication Example</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</div>
+</div> <!-- /main column -->
+</div> <!-- /row -->
+</div> <!-- /container fluid -->
+
+
+</body></html>
