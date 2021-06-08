@@ -25,6 +25,8 @@ In the command line, type:
 
 ```{bash}
 pip install quarto
+pip install jupyterlab # probably going to want this
+pip install matplotlib # probably going to want this
 ```
 
 #### R
@@ -33,6 +35,7 @@ In the R Console, type:
 
 ```{r, eval=FALSE}
 install.packages("quarto")
+install.packages("reticulate")
 ```
 
 ### Load environment
