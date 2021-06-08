@@ -17,7 +17,8 @@ pip install quarto
 
 Load environment
 
-TODO venv
+TODO venv: <https://towardsdatascience.com/virtual-environments-104c62d48c54>
+
 
 ```{bash}
 
