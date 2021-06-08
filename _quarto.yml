@@ -24,10 +24,10 @@ site:
           - text: "Welcome"
             href: index.md  
           - getting_started/getting_started.md
-      - section: "Authentication Notebooks"
-        contents:
-          - getting_started/lpdaac-netrc.ipynb
-          - getting_started/podaac-ecco-netrc.ipynb
+          - section: "Authentication Notebooks"
+            contents:
+              - getting_started/lpdaac-netrc.ipynb
+              - getting_started/podaac-ecco-netrc.ipynb
       - section: "NASA Cloud Data Discovery"
         contents:
           - discovery/discovery.md
@@ -49,4 +49,5 @@ bibliography: references.bib
 format:
   html:
     theme: cosmo
-
+    css: styles.css
+    toc: true

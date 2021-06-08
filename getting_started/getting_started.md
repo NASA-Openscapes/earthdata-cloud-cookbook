@@ -1,6 +1,4 @@
-# GETTING STARTED
-
-## Background
+# Background
 
 There are several things you need to set up to get started.
 

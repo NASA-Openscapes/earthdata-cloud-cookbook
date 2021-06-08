@@ -123,6 +123,7 @@
       display: none;
     }
   </style>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 <div id="quarto-search-results"></div>
@@ -179,23 +180,19 @@
   <a href="../index.html" class="">Welcome</a>
 </li>
           <li class="sidebar-item">
-  <a href="../getting_started/getting_started.html" class="">GETTING STARTED</a>
+  <a href="../getting_started/getting_started.html" class="">Background</a>
 </li>
-        </ul>
-      </div>
-    </li>
-  </ul>
-      <ul class="list-unstyled sidebar-section depth1">
+          <ul class="list-unstyled sidebar-section depth2">
     <li class="">
         <div class="me-auto ">
-            <a class="sidebar-section-item d-inline-flex text-start w-100 " data-bs-toggle="collapse" data-bs-target="#authenticationnotebooks-collapse" aria-expanded="true">
-              <div class="me-auto  sidebar-section-item">
+            <a class="sidebar-section-item d-inline-flex text-start w-100 collapsed" data-bs-toggle="collapse" data-bs-target="#authenticationnotebooks-collapse" aria-expanded="false">
+              <div class="me-auto  sidebar-item">
                 Authentication Notebooks
               </div>
             <div><i class="bi bi-chevron-right ms-2 "></i></div>
             </a>
         </div>
-      <div class="collapse  show" id="authenticationnotebooks-collapse">
+      <div class="collapse  " id="authenticationnotebooks-collapse">
         <ul class="list-unstyled sidebar-item-contents">
           <li class="sidebar-item">
   <a href="../getting_started/lpdaac-netrc.html" class="">LP DAAC Authentication Example</a>
@@ -203,6 +200,10 @@
           <li class="sidebar-item">
   <a href="../getting_started/podaac-ecco-netrc.html" class="">PO DAAC Authentication Example</a>
 </li>
+        </ul>
+      </div>
+    </li>
+  </ul>
         </ul>
       </div>
     </li>
@@ -220,7 +221,7 @@
       <div class="collapse  show" id="nasaclouddatadiscovery-collapse">
         <ul class="list-unstyled sidebar-item-contents">
           <li class="sidebar-item">
-  <a href="../discovery/discovery.html" class="">NASA CLOUD DATA DISCOVERY</a>
+  <a href="../discovery/discovery.html" class="">Discovery Process</a>
 </li>
           <ul class="list-unstyled sidebar-section depth2">
     <li class="">
@@ -258,7 +259,7 @@
       <div class="collapse  show" id="access-collapse">
         <ul class="list-unstyled sidebar-item-contents">
           <li class="sidebar-item">
-  <a href="../access/access.html" class="">ACCESS</a>
+  <a href="../access/access.html" class="">Background</a>
 </li>
           <ul class="list-unstyled sidebar-section depth2">
     <li class="">
@@ -306,8 +307,26 @@
   </div>
 </nav>
   </div>
-  <div class="col mx-auto col-sm-12 col-md-11 col-lg-9 px-lg-4">
+  <div id="quarto-toc-sidebar" class="col col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-toc order-last"><nav id="TOC" role="doc-toc">
+<h2 id="toc-title">On this page</h2>
+<ul>
+<li><a href="#cmr-and-cmr-stac-api" class="nav-link active" data-scroll-target="#cmr-and-cmr-stac-api">CMR and CMR-STAC API</a></li>
+<li><a href="#navigating-the-cmr-stac-api" class="nav-link" data-scroll-target="#navigating-the-cmr-stac-api">2. Navigating the CMR-STAC API </a><a id="navigatestac" class="nav-link" data-scroll-target="undefined"></a>
+<ul class="collapse">
+<li><a href="#introduction-to-the-cmr-stac-api" class="nav-link" data-scroll-target="#introduction-to-the-cmr-stac-api">2.1 Introduction to the CMR-STAC API </a><a id="2.1" class="nav-link" data-scroll-target="undefined"></a>
+<ul class="collapse">
+<li><a href="#what-is-stac" class="nav-link" data-scroll-target="#what-is-stac">What is STAC?</a></li>
+<li><a href="#stac-api-endpoint-that-enables-the-querying-of-stac-items." class="nav-link" data-scroll-target="#stac-api-endpoint-that-enables-the-querying-of-stac-items.">1. STAC API: Endpoint that enables the querying of STAC items.</a></li>
+<li><a href="#stac-catalog-contains-a-json-file-of-links-that-organize-all-of-the-collections-available." class="nav-link" data-scroll-target="#stac-catalog-contains-a-json-file-of-links-that-organize-all-of-the-collections-available.">2. STAC Catalog: Contains a JSON file of links that organize all of the collections available.</a></li>
+<li><a href="#stac-collection-extension-of-stac-catalog-containing-additional-information-that-describe-the-stac-items-in-that-collection." class="nav-link" data-scroll-target="#stac-collection-extension-of-stac-catalog-containing-additional-information-that-describe-the-stac-items-in-that-collection.">3. STAC Collection: Extension of STAC Catalog containing additional information that describe the STAC Items in that Collection.</a></li>
+<li><a href="#stac-item-represents-data-and-metadata-assets-that-are-spatiotemporally-coincident" class="nav-link" data-scroll-target="#stac-item-represents-data-and-metadata-assets-that-are-spatiotemporally-coincident">4. STAC Item: Represents data and metadata assets that are spatiotemporally coincident</a></li>
+</ul></li>
+</ul></li>
+</ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nasa-openscapes/quartobook-test/edit/main/discovery/Navigate_CMR_STAC.ipynb">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/quartobook-test/issues/new">Report an issue</a></p></div></div></nav></div>
+  <div class="col mx-auto col-sm-12 col-md-9 col-lg-7 px-lg-4">
 <main>
+
 <section id="cmr-and-cmr-stac-api" class="level1">
 <h1>CMR and CMR-STAC API</h1>
 <p>TODO: credit where this came from</p>
@@ -633,12 +652,12 @@ metadata</code></pre>
 <div class="page-navigation page-navigation-docked">
   <div class="nav-page nav-page-previous">
       <a href="../discovery/discovery.html">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">NASA CLOUD DATA DISCOVERY</span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Discovery Process</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="../access/access.html">
-        <span class="nav-page-text">ACCESS</span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text">Background</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </div>

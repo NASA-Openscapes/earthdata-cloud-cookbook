@@ -45,10 +45,6 @@ pip install quarto
 
 Python users can restore this session from the command line:
 
-```{bash}
-pip restore
-```
-
 A pure Python user would just use "venv" (which is a standard part of Python3). This is a good article on using it:
 
 https://towardsdatascience.com/virtual-environments-104c62d48c54

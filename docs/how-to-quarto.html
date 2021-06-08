@@ -58,6 +58,7 @@
       display: none;
     }
   </style>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 <div id="quarto-search-results"></div>
@@ -114,23 +115,19 @@
   <a href="./index.html" class="">Welcome</a>
 </li>
           <li class="sidebar-item">
-  <a href="./getting_started/getting_started.html" class="">GETTING STARTED</a>
+  <a href="./getting_started/getting_started.html" class="">Background</a>
 </li>
-        </ul>
-      </div>
-    </li>
-  </ul>
-      <ul class="list-unstyled sidebar-section depth1">
+          <ul class="list-unstyled sidebar-section depth2">
     <li class="">
         <div class="me-auto ">
-            <a class="sidebar-section-item d-inline-flex text-start w-100 " data-bs-toggle="collapse" data-bs-target="#authenticationnotebooks-collapse" aria-expanded="true">
-              <div class="me-auto  sidebar-section-item">
+            <a class="sidebar-section-item d-inline-flex text-start w-100 collapsed" data-bs-toggle="collapse" data-bs-target="#authenticationnotebooks-collapse" aria-expanded="false">
+              <div class="me-auto  sidebar-item">
                 Authentication Notebooks
               </div>
             <div><i class="bi bi-chevron-right ms-2 "></i></div>
             </a>
         </div>
-      <div class="collapse  show" id="authenticationnotebooks-collapse">
+      <div class="collapse  " id="authenticationnotebooks-collapse">
         <ul class="list-unstyled sidebar-item-contents">
           <li class="sidebar-item">
   <a href="./getting_started/lpdaac-netrc.html" class="">LP DAAC Authentication Example</a>
@@ -138,6 +135,10 @@
           <li class="sidebar-item">
   <a href="./getting_started/podaac-ecco-netrc.html" class="">PO DAAC Authentication Example</a>
 </li>
+        </ul>
+      </div>
+    </li>
+  </ul>
         </ul>
       </div>
     </li>
@@ -155,7 +156,7 @@
       <div class="collapse  show" id="nasaclouddatadiscovery-collapse">
         <ul class="list-unstyled sidebar-item-contents">
           <li class="sidebar-item">
-  <a href="./discovery/discovery.html" class="">NASA CLOUD DATA DISCOVERY</a>
+  <a href="./discovery/discovery.html" class="">Discovery Process</a>
 </li>
           <ul class="list-unstyled sidebar-section depth2">
     <li class="">
@@ -193,7 +194,7 @@
       <div class="collapse  show" id="access-collapse">
         <ul class="list-unstyled sidebar-item-contents">
           <li class="sidebar-item">
-  <a href="./access/access.html" class="">ACCESS</a>
+  <a href="./access/access.html" class="">Background</a>
 </li>
           <ul class="list-unstyled sidebar-section depth2">
     <li class="">
@@ -241,8 +242,24 @@
   </div>
 </nav>
   </div>
-  <div class="col mx-auto col-sm-12 col-md-11 col-lg-9 px-lg-4">
+  <div id="quarto-toc-sidebar" class="col col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-toc order-last"><nav id="TOC" role="doc-toc">
+<h2 id="toc-title">On this page</h2>
+<ul>
+<li><a href="#how-to-quarto" class="nav-link active" data-scroll-target="#how-to-quarto">How to Quarto</a>
+<ul class="collapse">
+<li><a href="#julie-set-up-the-environment-on-june-7" class="nav-link" data-scroll-target="#julie-set-up-the-environment-on-june-7">Julie set up the environment on June 7</a></li>
+</ul></li>
+<li><a href="#i-dont-currently-have-a-lot-of-packages-in-my-code-which-is-where-renv-looks.-here-are-some-packages" class="nav-link" data-scroll-target="#i-dont-currently-have-a-lot-of-packages-in-my-code-which-is-where-renv-looks.-here-are-some-packages">I don’t currently have a lot of packages in my code, which is where <code>renv</code> looks. Here are some packages:</a></li>
+<li><a href="#section" class="nav-link" data-scroll-target="#section"></a></li>
+<li><a href="#r-libraryreadr-libraryrmarkdown" class="nav-link" data-scroll-target="#r-libraryreadr-libraryrmarkdown"><code>{r} # library(readr) # library(rmarkdown) #</code></a>
+<ul class="collapse">
+<li><a href="#install-jupyterlab" class="nav-link" data-scroll-target="#install-jupyterlab">Install Jupyterlab</a></li>
+</ul></li>
+</ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nasa-openscapes/quartobook-test/edit/main/how-to-quarto.md">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/quartobook-test/issues/new">Report an issue</a></p></div></div></nav></div>
+  <div class="col mx-auto col-sm-12 col-md-9 col-lg-7 px-lg-4">
 <main>
+
 <section id="how-to-quarto" class="level1">
 <h1>How to Quarto</h1>
 <section id="julie-set-up-the-environment-on-june-7" class="level2">
@@ -270,7 +287,6 @@
 <p>Then to get what quarto needs:</p>
 <pre class="{bash}"><code>pip install quarto</code></pre>
 <p>Python users can restore this session from the command line:</p>
-<pre class="{bash}"><code>pip restore</code></pre>
 <p>A pure Python user would just use “venv” (which is a standard part of Python3). This is a good article on using it:</p>
 <p>https://towardsdatascience.com/virtual-environments-104c62d48c54</p>
 <p>For R/Python users or RStudio users, renv with renv::use_python will end up using venv under the hood. But if they really don’t have any interaction with R then plain venv is fine.</p>

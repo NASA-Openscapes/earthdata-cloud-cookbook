@@ -1,4 +1,4 @@
-# NASA CLOUD DATA DISCOVERY
+# Discovery Process
 
 Some background here about discovery. 
 
