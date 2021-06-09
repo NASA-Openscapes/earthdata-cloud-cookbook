@@ -1,5 +1,5 @@
 ---
-title: Discovery Process
+title: NASA Cloud Data Discovery
 ---
 
 Some background here about discovery. 

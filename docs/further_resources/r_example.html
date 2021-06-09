@@ -138,16 +138,16 @@
 </nav>
 </header>
  <!-- /navbar/sidebar -->
-<div class="container-fluid quarto-container d-flex flex-column">
+<div class="container-fluid quarto-container d-flex flex-column page-layout-article">
 <div class="row flex-fill" id="quarto-content">
   <div id="quarto-sidebar" class="col col-12 col-lg-3 d-lg-flex px-0 pt-0 sidebar collapse sidebar-navigation">
     <nav class="me-lg-auto py-2 docked  overflow-scroll">
-  <div class="px-3 pt-lg-2 text-left">
+  <div class="px-3 pt-lg-2 mt-1 text-left">
     <div class="sidebar-title mt-1 mb-0 py-0">
       <a href="../">
       Cloud for Earth Science
       </a>
-        <div class="sidebar-tools-main mt-1">
+        <div class="sidebar-tools-main">
     <a href="https://github.com/nasa-openscapes/quartobook-test" title="" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
 </div>
     </div>
@@ -158,7 +158,7 @@
   <input id="quarto-search" class="form-control" type="search" placeholder="Search" aria-label="Search">
 </form>
       </div>
-        <div class="sidebar-tools-collapse mt-1">
+        <div class="sidebar-tools-collapse">
     <a href="https://github.com/nasa-openscapes/quartobook-test" title="" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
 </div>
     </div>
@@ -170,35 +170,49 @@
       <ul class="list-unstyled sidebar-section depth1">
     <li class="">
         <div class="me-auto ">
-            <a class="sidebar-section-item d-inline-flex text-start w-100 " data-bs-toggle="collapse" data-bs-target="#gettingstarted-collapse" aria-expanded="true">
-              <div class="me-auto  sidebar-section-item">
-                Getting Started
-              </div>
-            <div><i class="bi bi-chevron-right ms-2 "></i></div>
+          <div class="d-inline-flex w-100 sidebar-section-item">
+            <div class="sidebar-section-link me-auto ">
+            <a href="../get-started/index.html" class="">Getting Started</a>
+            </div>
+            <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#gettingstarted-collapse" aria-expanded="true">
+              <div><i class="bi bi-chevron-right ms-2 "></i></div>
             </a>
+            </div>
         </div>
       <div class="collapse  show" id="gettingstarted-collapse">
         <ul class="list-unstyled sidebar-item-contents">
           <li class="sidebar-item">
-  <a href="../getting_started/getting_started.html" class="">Background</a>
+  <a href="../get-started/how-to-use.html" class="">How to use this book</a>
+</li>
+          <li class="sidebar-item">
+  <a href="../get-started/api-primer.html" class="">API Primer</a>
+</li>
+          <li class="sidebar-item">
+  <a href="../get-started/earthdata-login.html" class="">EarthData Login</a>
 </li>
           <ul class="list-unstyled sidebar-section depth2">
     <li class="">
         <div class="me-auto ">
-            <a class="sidebar-section-item d-inline-flex text-start w-100 collapsed" data-bs-toggle="collapse" data-bs-target="#authenticationnotebooks-collapse" aria-expanded="false">
+            <a class="sidebar-section-item d-inline-flex text-start w-100 collapsed" data-bs-toggle="collapse" data-bs-target="#authentication(todoaspage)-collapse" aria-expanded="false">
               <div class="me-auto  sidebar-item">
-                Authentication Notebooks
+                Authentication (TODO as page)
               </div>
             <div><i class="bi bi-chevron-right ms-2 "></i></div>
             </a>
         </div>
-      <div class="collapse  " id="authenticationnotebooks-collapse">
+      <div class="collapse  " id="authentication(todoaspage)-collapse">
         <ul class="list-unstyled sidebar-item-contents">
           <li class="sidebar-item">
-  <a href="../getting_started/lpdaac-netrc.html" class="">LP DAAC Authentication Example</a>
+  <a href="../get-started/how-to-use.html" class="">How to use this book</a>
 </li>
           <li class="sidebar-item">
-  <a href="../getting_started/podaac-ecco-netrc.html" class="">PO DAAC Authentication Example</a>
+  <a href="../discovery/Navigate_CMR_STAC.html" class="">CMR and CMR-STAC API</a>
+</li>
+          <li class="sidebar-item">
+  <a href="../get-started/lpdaac-netrc.html" class="">LP DAAC Authentication Example</a>
+</li>
+          <li class="sidebar-item">
+  <a href="../get-started/podaac-ecco-netrc.html" class="">PO DAAC Authentication Example</a>
 </li>
         </ul>
       </div>
@@ -211,37 +225,26 @@
       <ul class="list-unstyled sidebar-section depth1">
     <li class="">
         <div class="me-auto ">
-            <a class="sidebar-section-item d-inline-flex text-start w-100 " data-bs-toggle="collapse" data-bs-target="#nasaclouddatadiscovery-collapse" aria-expanded="true">
-              <div class="me-auto  sidebar-section-item">
-                NASA Cloud Data Discovery
-              </div>
-            <div><i class="bi bi-chevron-right ms-2 "></i></div>
+          <div class="d-inline-flex w-100 sidebar-section-item">
+            <div class="sidebar-section-link me-auto ">
+            <a href="../discovery/index.html" class="">NASA Cloud Data Discovery</a>
+            </div>
+            <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#nasaclouddatadiscovery-collapse" aria-expanded="true">
+              <div><i class="bi bi-chevron-right ms-2 "></i></div>
             </a>
+            </div>
         </div>
       <div class="collapse  show" id="nasaclouddatadiscovery-collapse">
         <ul class="list-unstyled sidebar-item-contents">
           <li class="sidebar-item">
-  <a href="../discovery/discovery.html" class="">Discovery Process</a>
-</li>
-          <ul class="list-unstyled sidebar-section depth2">
-    <li class="">
-        <div class="me-auto ">
-            <a class="sidebar-section-item d-inline-flex text-start w-100 collapsed" data-bs-toggle="collapse" data-bs-target="#discovernotebooks-collapse" aria-expanded="false">
-              <div class="me-auto  sidebar-item">
-                Discover Notebooks
-              </div>
-            <div><i class="bi bi-chevron-right ms-2 "></i></div>
-            </a>
-        </div>
-      <div class="collapse  " id="discovernotebooks-collapse">
-        <ul class="list-unstyled sidebar-item-contents">
-          <li class="sidebar-item">
   <a href="../discovery/Navigate_CMR_STAC.html" class="">CMR and CMR-STAC API</a>
 </li>
-        </ul>
-      </div>
-    </li>
-  </ul>
+          <li class="sidebar-item">
+  <a href="../discovery/earthdata-search-ui.html" class="">Earthdata Search UI</a>
+</li>
+          <li class="sidebar-item">
+  <a href="../discovery/cmr-virtual-directories.html" class="">CMR Virtual Directories</a>
+</li>
         </ul>
       </div>
     </li>
@@ -249,17 +252,19 @@
       <ul class="list-unstyled sidebar-section depth1">
     <li class="">
         <div class="me-auto ">
-            <a class="sidebar-section-item d-inline-flex text-start w-100 " data-bs-toggle="collapse" data-bs-target="#access-collapse" aria-expanded="true">
-              <div class="me-auto  sidebar-section-item">
-                Access
-              </div>
-            <div><i class="bi bi-chevron-right ms-2 "></i></div>
+          <div class="d-inline-flex w-100 sidebar-section-item">
+            <div class="sidebar-section-link me-auto ">
+            <a href="../access/index.html" class="">NASA Cloud Data Access</a>
+            </div>
+            <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#nasaclouddataaccess-collapse" aria-expanded="true">
+              <div><i class="bi bi-chevron-right ms-2 "></i></div>
             </a>
+            </div>
         </div>
-      <div class="collapse  show" id="access-collapse">
+      <div class="collapse  show" id="nasaclouddataaccess-collapse">
         <ul class="list-unstyled sidebar-item-contents">
           <li class="sidebar-item">
-  <a href="../access/access.html" class="">Background</a>
+  <a href="../access/data-access-example.html" class="">Notebook demonstrating data access</a>
 </li>
           <ul class="list-unstyled sidebar-section depth2">
     <li class="">
@@ -347,7 +352,7 @@
 <section id="header" class="level2">
 <h2 class="anchored" data-anchor-id="header">Header</h2>
 <p>As I write some description here</p>
-<div class="cell" data-fig.alt="{}">
+<div class="cell">
 <div class="sourceCode" id="cb1"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(airquality, <span class="fu">aes</span>(Temp, Ozone)) <span class="sc">+</span> </span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_point</span>() <span class="sc">+</span> </span>

@@ -211,6 +211,14 @@ J.J., Aaron, Julie
 
 -   Is there a way to make the Sections "clickable"? Like: [https://the-turing-way.netlify.app](https://the-turing-way.netlify.app/community-handbook/coc.html)
 
+Notes:
+
+-   <https://www.quansight.com/post/announcing-qhub>
+
+-   <https://2i2c.org/>
+
+-   
+
 ### J.J.'s fix for Aaron
 
 #### What Julie did: 

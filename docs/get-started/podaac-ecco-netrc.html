@@ -85,8 +85,8 @@
   <script src="../site_libs/quarto-search/autocomplete.min.js"></script>
   <script src="../site_libs/quarto-search/fuse.min.js"></script>
   <script src="../site_libs/quarto-search/quarto-search.js"></script>
-  <link href="../discovery/discovery.html" rel="next">
-  <link href="../getting_started/lpdaac-netrc.html" rel="prev">
+  <link href="../discovery/index.html" rel="next">
+  <link href="../get-started/lpdaac-netrc.html" rel="prev">
   <script src="../site_libs/quarto-html/quarto.js"></script>
   <script src="../site_libs/quarto-html/popper.min.js"></script>
   <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -172,7 +172,7 @@
         <div class="me-auto ">
           <div class="d-inline-flex w-100 sidebar-section-item">
             <div class="sidebar-section-link me-auto ">
-            <a href="../getting_started/index.html" class="">Getting Started</a>
+            <a href="../get-started/index.html" class="">Getting Started</a>
             </div>
             <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#gettingstarted-collapse" aria-expanded="true">
               <div><i class="bi bi-chevron-right ms-2 "></i></div>
@@ -181,23 +181,38 @@
         </div>
       <div class="collapse  show" id="gettingstarted-collapse">
         <ul class="list-unstyled sidebar-item-contents">
+          <li class="sidebar-item">
+  <a href="../get-started/how-to-use.html" class="">How to use this book</a>
+</li>
+          <li class="sidebar-item">
+  <a href="../get-started/api-primer.html" class="">API Primer</a>
+</li>
+          <li class="sidebar-item">
+  <a href="../get-started/earthdata-login.html" class="">EarthData Login</a>
+</li>
           <ul class="list-unstyled sidebar-section depth2">
     <li class="">
         <div class="me-auto ">
-            <a class="sidebar-section-item d-inline-flex text-start w-100 " data-bs-toggle="collapse" data-bs-target="#authenticationnotebooks-collapse" aria-expanded="true">
+            <a class="sidebar-section-item d-inline-flex text-start w-100 " data-bs-toggle="collapse" data-bs-target="#authentication(todoaspage)-collapse" aria-expanded="true">
               <div class="me-auto  sidebar-item">
-                Authentication Notebooks
+                Authentication (TODO as page)
               </div>
             <div><i class="bi bi-chevron-right ms-2 "></i></div>
             </a>
         </div>
-      <div class="collapse  show" id="authenticationnotebooks-collapse">
+      <div class="collapse  show" id="authentication(todoaspage)-collapse">
         <ul class="list-unstyled sidebar-item-contents">
           <li class="sidebar-item">
-  <a href="../getting_started/lpdaac-netrc.html" class="">LP DAAC Authentication Example</a>
+  <a href="../get-started/how-to-use.html" class="">How to use this book</a>
 </li>
           <li class="sidebar-item">
-  <a href="../getting_started/podaac-ecco-netrc.html" class="active">PO DAAC Authentication Example</a>
+  <a href="../discovery/Navigate_CMR_STAC.html" class="">CMR and CMR-STAC API</a>
+</li>
+          <li class="sidebar-item">
+  <a href="../get-started/lpdaac-netrc.html" class="">LP DAAC Authentication Example</a>
+</li>
+          <li class="sidebar-item">
+  <a href="../get-started/podaac-ecco-netrc.html" class="active">PO DAAC Authentication Example</a>
 </li>
         </ul>
       </div>
@@ -210,37 +225,26 @@
       <ul class="list-unstyled sidebar-section depth1">
     <li class="">
         <div class="me-auto ">
-            <a class="sidebar-section-item d-inline-flex text-start w-100 " data-bs-toggle="collapse" data-bs-target="#nasaclouddatadiscovery-collapse" aria-expanded="true">
-              <div class="me-auto  sidebar-section-item">
-                NASA Cloud Data Discovery
-              </div>
-            <div><i class="bi bi-chevron-right ms-2 "></i></div>
+          <div class="d-inline-flex w-100 sidebar-section-item">
+            <div class="sidebar-section-link me-auto ">
+            <a href="../discovery/index.html" class="">NASA Cloud Data Discovery</a>
+            </div>
+            <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#nasaclouddatadiscovery-collapse" aria-expanded="true">
+              <div><i class="bi bi-chevron-right ms-2 "></i></div>
             </a>
+            </div>
         </div>
       <div class="collapse  show" id="nasaclouddatadiscovery-collapse">
         <ul class="list-unstyled sidebar-item-contents">
           <li class="sidebar-item">
-  <a href="../discovery/discovery.html" class="">Discovery Process</a>
-</li>
-          <ul class="list-unstyled sidebar-section depth2">
-    <li class="">
-        <div class="me-auto ">
-            <a class="sidebar-section-item d-inline-flex text-start w-100 collapsed" data-bs-toggle="collapse" data-bs-target="#discovernotebooks-collapse" aria-expanded="false">
-              <div class="me-auto  sidebar-item">
-                Discover Notebooks
-              </div>
-            <div><i class="bi bi-chevron-right ms-2 "></i></div>
-            </a>
-        </div>
-      <div class="collapse  " id="discovernotebooks-collapse">
-        <ul class="list-unstyled sidebar-item-contents">
-          <li class="sidebar-item">
   <a href="../discovery/Navigate_CMR_STAC.html" class="">CMR and CMR-STAC API</a>
 </li>
-        </ul>
-      </div>
-    </li>
-  </ul>
+          <li class="sidebar-item">
+  <a href="../discovery/earthdata-search-ui.html" class="">Earthdata Search UI</a>
+</li>
+          <li class="sidebar-item">
+  <a href="../discovery/cmr-virtual-directories.html" class="">CMR Virtual Directories</a>
+</li>
         </ul>
       </div>
     </li>
@@ -248,17 +252,19 @@
       <ul class="list-unstyled sidebar-section depth1">
     <li class="">
         <div class="me-auto ">
-            <a class="sidebar-section-item d-inline-flex text-start w-100 " data-bs-toggle="collapse" data-bs-target="#access-collapse" aria-expanded="true">
-              <div class="me-auto  sidebar-section-item">
-                Access
-              </div>
-            <div><i class="bi bi-chevron-right ms-2 "></i></div>
+          <div class="d-inline-flex w-100 sidebar-section-item">
+            <div class="sidebar-section-link me-auto ">
+            <a href="../access/index.html" class="">NASA Cloud Data Access</a>
+            </div>
+            <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#nasaclouddataaccess-collapse" aria-expanded="true">
+              <div><i class="bi bi-chevron-right ms-2 "></i></div>
             </a>
+            </div>
         </div>
-      <div class="collapse  show" id="access-collapse">
+      <div class="collapse  show" id="nasaclouddataaccess-collapse">
         <ul class="list-unstyled sidebar-item-contents">
           <li class="sidebar-item">
-  <a href="../access/access.html" class="">Background</a>
+  <a href="../access/data-access-example.html" class="">Notebook demonstrating data access</a>
 </li>
           <ul class="list-unstyled sidebar-section depth2">
     <li class="">
@@ -339,7 +345,7 @@
 <li><a href="#configure-your-.netrc-file" class="nav-link" data-scroll-target="#configure-your-.netrc-file">Configure your <em>.netrc</em> file</a></li>
 </ul></li>
 </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nasa-openscapes/quartobook-test/edit/main/getting_started/podaac-ecco-netrc.ipynb">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/quartobook-test/issues/new">Report an issue</a></p></div></div></nav></div>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nasa-openscapes/quartobook-test/edit/main/get-started/podaac-ecco-netrc.ipynb">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/quartobook-test/issues/new">Report an issue</a></p></div></div></nav></div>
   <div class="col mx-auto col-sm-12 col-md-9 col-lg-7 px-lg-4">
 <main>
 
@@ -358,6 +364,10 @@
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>cat <span class="op">~/</span>.netrc <span class="op">|</span> grep <span class="st">'.earthdata.nasa.gov'</span> <span class="op">|</span> cut <span class="op">-</span>f<span class="op">-</span><span class="dv">5</span> <span class="op">-</span>d<span class="st">" "</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-stdout">
 <pre><code>machine urs.earthdata.nasa.gov login jmcnelis password
+machine opendap.earthdata.nasa.gov login jmcnelis password
+machine urs.earthdata.nasa.gov login jmcnelis password
+machine opendap.earthdata.nasa.gov login jmcnelis password
+machine urs.earthdata.nasa.gov login jmcnelis password
 machine opendap.earthdata.nasa.gov login jmcnelis password
 machine urs.earthdata.nasa.gov login jmcnelis password
 machine opendap.earthdata.nasa.gov login jmcnelis password
@@ -567,6 +577,10 @@ machine opendap.earthdata.nasa.gov login jmcnelis password
 machine urs.earthdata.nasa.gov login jmcnelis password
 machine opendap.earthdata.nasa.gov login jmcnelis password
 machine urs.earthdata.nasa.gov login jmcnelis password
+machine opendap.earthdata.nasa.gov login jmcnelis password
+machine urs.earthdata.nasa.gov login jmcnelis password
+machine opendap.earthdata.nasa.gov login jmcnelis password
+machine urs.earthdata.nasa.gov login jmcnelis password
 machine opendap.earthdata.nasa.gov login jmcnelis password</code></pre>
 </div>
 </div>
@@ -580,13 +594,13 @@ machine opendap.earthdata.nasa.gov login jmcnelis password</code></pre>
 </main>
 <div class="page-navigation page-navigation-docked">
   <div class="nav-page nav-page-previous">
-      <a href="../getting_started/lpdaac-netrc.html">
+      <a href="../get-started/lpdaac-netrc.html">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">LP DAAC Authentication Example</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../discovery/discovery.html">
-        <span class="nav-page-text">Discovery Process</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../discovery/index.html">
+        <span class="nav-page-text">NASA Cloud Data Discovery</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </div>

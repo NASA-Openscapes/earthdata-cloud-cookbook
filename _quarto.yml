@@ -21,22 +21,25 @@ site:
     contents:
       - text: "Welcome"
         href: index.md  
-      - section: "Getting Started"
+      - section: get-started/index.md
         contents:
-          - getting_started/getting_started.md
-          - section: "Authentication Notebooks"
+          - get-started/how-to-use.md
+          - get-started/api-primer.md
+          - get-started/earthdata-login.md
+          - section: "Authentication (TODO as page)"
             contents:
-              - getting_started/lpdaac-netrc.ipynb
-              - getting_started/podaac-ecco-netrc.ipynb
-      - section: "NASA Cloud Data Discovery"
-        contents:
-          - discovery/discovery.md
-          - section: "Discover Notebooks"
-            contents:
+              - get-started/how-to-use.md
               - discovery/Navigate_CMR_STAC.ipynb
-      - section: "Access"
+              - get-started/lpdaac-netrc.ipynb
+              - get-started/podaac-ecco-netrc.ipynb
+      - section: discovery/index.md
         contents:
-          - access/access.md
+          - discovery/Navigate_CMR_STAC.ipynb
+          - discovery/earthdata-search-ui.md
+          - discovery/cmr-virtual-directories.md
+      - section: access/index.md
+        contents:
+          - access/data-access-example.qmd
           - section: "Access Notebooks"
             contents:
               - discovery/Navigate_CMR_STAC.ipynb

@@ -1,0 +1,241 @@
+```{python}
+#| id: double-aggregate
+import requests
+import subprocess
+import os
+import boto3
+from satsearch import Search
+from datetime import datetime
+import pandas as pd
+import xarray
+import rasterio
+import rioxarray
+from rasterio.plot import show
+from rasterio.session import AWSSession
+import pickle
+import matplotlib.pyplot as plt
+%matplotlib inline
+import hvplot.xarray
+import holoviews as hv
+```
+
+## Get and Set s3 Credentials
+
+```{python}
+#| id: super-simon
+def get_temp_creds():
+    temp_creds_url = 'https://lpdaac.earthdata.nasa.gov/s3credentials'
+    return requests.get(temp_creds_url).json()
+```
+
+```{python}
+#| id: threatened-classification
+temp_creds_req = get_temp_creds()
+#temp_creds_req
+```
+
+```{python}
+#| id: married-intelligence
+session = boto3.Session(aws_access_key_id=temp_creds_req['accessKeyId'], 
+                        aws_secret_access_key=temp_creds_req['secretAccessKey'],
+                        aws_session_token=temp_creds_req['sessionToken'],
+                        region_name='us-west-2')
+```
+
+```{python}
+#| id: internal-premium
+rio_env = rasterio.Env(AWSSession(session), 
+                       GDAL_DISABLE_READDIR_ON_OPEN='TRUE', 
+                       CPL_VSIL_CURL_ALLOWED_EXTENSIONS='tif', 
+                       VSI_CACHE=True, 
+                       region_name='us-west-2',
+                       GDAL_HTTP_COOKIEFILE=os.path.expanduser('~/cookies.txt'),
+                       GDAL_HTTP_COOKIEJAR=os.path.expanduser('~/cookies.txt'))
+rio_env.__enter__()
+```
+
+## Specify s3 and HTTPS URLS for Single File Access
+
+```{python}
+#| id: arabic-flavor
+nasa_hls_s3_url = 's3://lp-prod-protected/HLSS30.015/HLS.S30.T13TGF.2020191T172901.v1.5.B04.tif'
+
+nasa_hls_http_url = 'https://lpdaac.earthdata.nasa.gov/lp-prod-protected/HLSS30.015/HLS.S30.T13TGF.2020191T172901.v1.5.B04.tif'
+```
+
+## Read Single HLS Tile
+
+### s3 Data Access - Read Single File
+
+```{python}
+#| id: civic-plenty
+%%time
+with rioxarray.open_rasterio(nasa_hls_s3_url, chunks=True) as src:
+    ds = src.squeeze('band', drop=True)
+    print(ds)
+    fig, ax = plt.subplots(figsize=(8,8))
+    show(ds, cmap='viridis', ax=ax)
+```
+
+### HTTPS Data Access - Read Single File
+
+```{python}
+#| id: exotic-speed
+%%time
+with rioxarray.open_rasterio(nasa_hls_http_url, chunks=True) as src:
+    ds = src.squeeze('band', drop=True)
+    print(ds)
+    fig, ax = plt.subplots(figsize=(8,8))
+    show(ds, cmap='viridis', ax=ax)
+```
+
+------------------------------------------------------------------------
+
+### s3 Data Access - Read and Clip Single HLS Tile
+
+```{python}
+#| id: popular-finish
+# Load polygon from disc
+with open('./data/fsUTM', "rb") as poly_file:
+    fsUTM = pickle.load(poly_file)
+```
+
+```{python}
+#| id: waiting-kentucky
+%%time
+with rioxarray.open_rasterio(nasa_hls_s3_url, chunks=True) as src:
+    ds_clipped = src.squeeze('band', drop=True).rio.clip([fsUTM])
+    print(ds_clipped)
+    fig, ax = plt.subplots(figsize=(8,8))
+    show(ds_clipped, cmap='viridis', ax=ax)
+```
+
+### HTTPS Data Access - Read and Clip Single HLS Tile
+
+```{python}
+#| id: moved-cabinet
+%%time
+with rioxarray.open_rasterio(nasa_hls_http_url, chunks=True) as src:
+    ds_clipped = src.squeeze('band', drop=True).rio.clip([fsUTM])
+    print(ds_clipped)
+    fig, ax = plt.subplots(figsize=(8,8))
+    show(ds_clipped, cmap='viridis', ax=ax)
+```
+
+------------------------------------------------------------------------
+
+## Read HLS Time Series - `s3` vs `HTTPS` access
+
+### s3 Data Access
+
+**Pull URLS from static file. URL point to directly to assets within an `s3` bucket**
+
+```{python}
+#| id: flush-corporation
+with open('./data/files.txt') as txt:
+    files = [l.strip() for l in txt.readlines()]
+```
+
+```{python}
+#| id: right-grocery
+files
+```
+
+**Use list of `s3` links to create `gdalbuildvrt` string with AWS credentials for `subprocces.call`**
+
+```{python}
+#| id: impressive-course
+build_vrt = f"gdalbuildvrt data/stack.vrt -separate -input_file_list data/files.txt --config AWS_ACCESS_KEY_ID {temp_creds_req['accessKeyId']} --config AWS_SECRET_ACCESS_KEY {temp_creds_req['secretAccessKey']} --config AWS_SESSION_TOKEN {temp_creds_req['sessionToken']} --config GDAL_DISABLE_READDIR_ON_OPEN TRUE"
+#build_vrt
+```
+
+**Execute gdalbuildvrt to construct a vrt on disk from the `s3` links**
+
+```{python}
+#| id: controversial-console
+%%time
+subprocess.call(build_vrt, shell=True)
+```
+
+```{python}
+#| id: sized-parker
+#files_s3 = [f.replace('/vsis3/', 's3://') for f in files]
+#files_s3
+```
+
+**Read vrt in as xarray with dask backing**
+
+```{python}
+#| id: fewer-gather
+%%time
+chunks=dict(band=1, x=1024, y=1024)
+red = rioxarray.open_rasterio('./data/stack.vrt', chunks=chunks)
+#red = rioxarray.open_rasterio('./data/stack.vrt')
+red = red.rename({'band':'time'})
+red['time'] = [datetime.strptime(x.split('.')[-5].split('T')[0], '%Y%j') for x in files]
+red
+```
+
+### Clip the data to the field boundary (i.e., fsUTM) and load data into memory
+
+```{python}
+#| id: proved-division
+%%time
+red_clipped = red.rio.clip([fsUTM]).load()
+red_clipped
+```
+
+### Plot the clipped time series
+
+```{python}
+#| id: blocked-throw
+red_clipped.hvplot.image(x='x', y='y', width=800, height=600, colorbar=True)
+```
+
+### HTTPS Data Access
+
+```{python}
+#| id: informal-awareness
+files_https = [f.replace('/vsis3/', '/vsicurl/https://lpdaac.earthdata.nasa.gov/') for f in files]
+```
+
+```{python}
+#| id: painful-grain
+build_https_vrt = f"gdalbuildvrt data/stack_https.vrt -separate -input_file_list data/files_https.txt --config GDAL_HTTP_COOKIEFILE {os.path.expanduser('~/cookies.txt')} --config GDAL_HTTP_COOKIEJAR {os.path.expanduser('~/cookies.txt')} --config GDAL_DISABLE_READDIR_ON_OPEN TRUE"
+#build_https_vrt
+```
+
+**Execute gdalbuildvrt to construct a vrt on disk from the `HTTPS` links**
+
+```{python}
+#| id: third-month
+%%time
+subprocess.call(build_https_vrt, shell=True)
+```
+
+**Read vrt in as xarray with dask backing**
+
+```{python}
+#| id: progressive-decline
+%%time
+chunks=dict(band=1, x=1024, y=1024)
+red_https = rioxarray.open_rasterio('./data/stack_https.vrt', chunks=chunks)
+#red_https = rioxarray.open_rasterio('./data/stack.vrt')
+red_https = red_https.rename({'band':'time'})
+red_https['time'] = [datetime.strptime(x.split('.')[-5].split('T')[0], '%Y%j') for x in files]
+red_https
+```
+
+### Clip the data to the field boundary (i.e., fsUTM) and load data into memory
+
+```{python}
+#| id: increased-france
+%%time
+red_https_clipped = red_https.rio.clip([fsUTM]).load()
+red_https_clipped
+```
+
+```{python}
+#| id: unnecessary-knitting
+rio_env.__exit__()
+```

@@ -3,7 +3,7 @@
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>Cloud for Earth Science – access-something-specific</title>
+  <title>Cloud for Earth Science – Getting Started</title>
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -11,69 +11,6 @@
     div.column{display: inline-block; vertical-align: top; width: 50%;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
-    pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-    pre > code.sourceCode > span:empty { height: 1.2em; }
-    .sourceCode { overflow: visible; }
-    code.sourceCode > span { color: inherit; text-decoration: inherit; }
-    div.sourceCode { margin: 1em 0; }
-    pre.sourceCode { margin: 0; }
-    @media screen {
-    div.sourceCode { overflow: auto; }
-    }
-    @media print {
-    pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-    }
-    pre.numberSource code
-      { counter-reset: source-line 0; }
-    pre.numberSource code > span
-      { position: relative; left: -4em; counter-increment: source-line; }
-    pre.numberSource code > span > a:first-child::before
-      { content: counter(source-line);
-        position: relative; left: -1em; text-align: right; vertical-align: baseline;
-        border: none; display: inline-block;
-        -webkit-touch-callout: none; -webkit-user-select: none;
-        -khtml-user-select: none; -moz-user-select: none;
-        -ms-user-select: none; user-select: none;
-        padding: 0 4px; width: 4em;
-        color: #aaaaaa;
-      }
-    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-    div.sourceCode
-      {   }
-    @media screen {
-    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-    }
-    code span.al { color: #ad0000; } /* Alert */
-    code span.an { color: #5e5e5e; } /* Annotation */
-    code span.at { } /* Attribute */
-    code span.bn { color: #ad0000; } /* BaseN */
-    code span.bu { } /* BuiltIn */
-    code span.cf { color: #007ba5; } /* ControlFlow */
-    code span.ch { color: #20794d; } /* Char */
-    code span.cn { color: #8f5902; } /* Constant */
-    code span.co { color: #5e5e5e; } /* Comment */
-    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
-    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
-    code span.dt { color: #ad0000; } /* DataType */
-    code span.dv { color: #ad0000; } /* DecVal */
-    code span.er { color: #ad0000; } /* Error */
-    code span.ex { } /* Extension */
-    code span.fl { color: #ad0000; } /* Float */
-    code span.fu { color: #4758ab; } /* Function */
-    code span.im { } /* Import */
-    code span.in { color: #5e5e5e; } /* Information */
-    code span.kw { color: #007ba5; } /* Keyword */
-    code span.op { color: #5e5e5e; } /* Operator */
-    code span.ot { color: #007ba5; } /* Other */
-    code span.pp { color: #ad0000; } /* Preprocessor */
-    code span.sc { color: #5e5e5e; } /* SpecialChar */
-    code span.ss { color: #20794d; } /* SpecialString */
-    code span.st { color: #20794d; } /* String */
-    code span.va { color: #111111; } /* Variable */
-    code span.vs { color: #20794d; } /* VerbatimString */
-    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
 
   <!--[if lt IE 9]>
@@ -85,6 +22,8 @@
   <script src="../site_libs/quarto-search/autocomplete.min.js"></script>
   <script src="../site_libs/quarto-search/fuse.min.js"></script>
   <script src="../site_libs/quarto-search/quarto-search.js"></script>
+  <link href="../getting_started/lpdaac-netrc.html" rel="next">
+  <link href="../index.html" rel="prev">
   <script src="../site_libs/quarto-html/quarto.js"></script>
   <script src="../site_libs/quarto-html/popper.min.js"></script>
   <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -128,7 +67,7 @@
 <header id="quarto-header" class="headroom fixed-top">
 <nav class="quarto-secondary-nav py-2 d-lg-none d-md-block " data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <div class="container-fluid d-flex justify-content-between">
-    <h1 class="quarto-secondary-nav-title mb-0 fs-3 d-inline"></h1>
+    <h1 class="quarto-secondary-nav-title mb-0 fs-3 d-inline">Getting Started</h1>
     <button type="button" class="quarto-btn-toggle btn d-lg-none py-0 px-1 d-inline-block border-0 ">
       <i class="bi bi-chevron-right"></i>
     </button>
@@ -170,7 +109,7 @@
         <div class="me-auto ">
           <div class="d-inline-flex w-100 sidebar-section-item">
             <div class="sidebar-section-link me-auto ">
-            <a href="../get-started/index.html" class="">Getting Started</a>
+            <a href="../getting_started/index.html" class="active">Getting Started</a>
             </div>
             <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#gettingstarted-collapse" aria-expanded="true">
               <div><i class="bi bi-chevron-right ms-2 "></i></div>
@@ -179,38 +118,23 @@
         </div>
       <div class="collapse  show" id="gettingstarted-collapse">
         <ul class="list-unstyled sidebar-item-contents">
-          <li class="sidebar-item">
-  <a href="../get-started/how-to-use.html" class="">How to use this book</a>
-</li>
-          <li class="sidebar-item">
-  <a href="../get-started/api-primer.html" class="">API Primer</a>
-</li>
-          <li class="sidebar-item">
-  <a href="../get-started/earthdata-login.html" class="">EarthData Login</a>
-</li>
           <ul class="list-unstyled sidebar-section depth2">
     <li class="">
         <div class="me-auto ">
-            <a class="sidebar-section-item d-inline-flex text-start w-100 collapsed" data-bs-toggle="collapse" data-bs-target="#authentication(todoaspage)-collapse" aria-expanded="false">
+            <a class="sidebar-section-item d-inline-flex text-start w-100 collapsed" data-bs-toggle="collapse" data-bs-target="#authenticationnotebooks-collapse" aria-expanded="false">
               <div class="me-auto  sidebar-item">
-                Authentication (TODO as page)
+                Authentication Notebooks
               </div>
             <div><i class="bi bi-chevron-right ms-2 "></i></div>
             </a>
         </div>
-      <div class="collapse  " id="authentication(todoaspage)-collapse">
+      <div class="collapse  " id="authenticationnotebooks-collapse">
         <ul class="list-unstyled sidebar-item-contents">
           <li class="sidebar-item">
-  <a href="../get-started/how-to-use.html" class="">How to use this book</a>
+  <a href="../getting_started/lpdaac-netrc.html" class="">LP DAAC Authentication Example</a>
 </li>
           <li class="sidebar-item">
-  <a href="../discovery/Navigate_CMR_STAC.html" class="">CMR and CMR-STAC API</a>
-</li>
-          <li class="sidebar-item">
-  <a href="../get-started/lpdaac-netrc.html" class="">LP DAAC Authentication Example</a>
-</li>
-          <li class="sidebar-item">
-  <a href="../get-started/podaac-ecco-netrc.html" class="">PO DAAC Authentication Example</a>
+  <a href="../getting_started/podaac-ecco-netrc.html" class="">PO DAAC Authentication Example</a>
 </li>
         </ul>
       </div>
@@ -223,26 +147,37 @@
       <ul class="list-unstyled sidebar-section depth1">
     <li class="">
         <div class="me-auto ">
-          <div class="d-inline-flex w-100 sidebar-section-item">
-            <div class="sidebar-section-link me-auto ">
-            <a href="../discovery/index.html" class="">NASA Cloud Data Discovery</a>
-            </div>
-            <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#nasaclouddatadiscovery-collapse" aria-expanded="true">
-              <div><i class="bi bi-chevron-right ms-2 "></i></div>
+            <a class="sidebar-section-item d-inline-flex text-start w-100 " data-bs-toggle="collapse" data-bs-target="#nasaclouddatadiscovery-collapse" aria-expanded="true">
+              <div class="me-auto  sidebar-section-item">
+                NASA Cloud Data Discovery
+              </div>
+            <div><i class="bi bi-chevron-right ms-2 "></i></div>
             </a>
-            </div>
         </div>
       <div class="collapse  show" id="nasaclouddatadiscovery-collapse">
         <ul class="list-unstyled sidebar-item-contents">
           <li class="sidebar-item">
+  <a href="../discovery/discovery.html" class="">Discovery Process</a>
+</li>
+          <ul class="list-unstyled sidebar-section depth2">
+    <li class="">
+        <div class="me-auto ">
+            <a class="sidebar-section-item d-inline-flex text-start w-100 collapsed" data-bs-toggle="collapse" data-bs-target="#discovernotebooks-collapse" aria-expanded="false">
+              <div class="me-auto  sidebar-item">
+                Discover Notebooks
+              </div>
+            <div><i class="bi bi-chevron-right ms-2 "></i></div>
+            </a>
+        </div>
+      <div class="collapse  " id="discovernotebooks-collapse">
+        <ul class="list-unstyled sidebar-item-contents">
+          <li class="sidebar-item">
   <a href="../discovery/Navigate_CMR_STAC.html" class="">CMR and CMR-STAC API</a>
 </li>
-          <li class="sidebar-item">
-  <a href="../discovery/earthdata-search-ui.html" class="">Earthdata Search UI</a>
-</li>
-          <li class="sidebar-item">
-  <a href="../discovery/cmr-virtual-directories.html" class="">CMR Virtual Directories</a>
-</li>
+        </ul>
+      </div>
+    </li>
+  </ul>
         </ul>
       </div>
     </li>
@@ -250,19 +185,17 @@
       <ul class="list-unstyled sidebar-section depth1">
     <li class="">
         <div class="me-auto ">
-          <div class="d-inline-flex w-100 sidebar-section-item">
-            <div class="sidebar-section-link me-auto ">
-            <a href="../access/index.html" class="">NASA Cloud Data Access</a>
-            </div>
-            <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#nasaclouddataaccess-collapse" aria-expanded="true">
-              <div><i class="bi bi-chevron-right ms-2 "></i></div>
+            <a class="sidebar-section-item d-inline-flex text-start w-100 " data-bs-toggle="collapse" data-bs-target="#access-collapse" aria-expanded="true">
+              <div class="me-auto  sidebar-section-item">
+                Access
+              </div>
+            <div><i class="bi bi-chevron-right ms-2 "></i></div>
             </a>
-            </div>
         </div>
-      <div class="collapse  show" id="nasaclouddataaccess-collapse">
+      <div class="collapse  show" id="access-collapse">
         <ul class="list-unstyled sidebar-item-contents">
           <li class="sidebar-item">
-  <a href="../access/data-access-example.html" class="">Notebook demonstrating data access</a>
+  <a href="../access/access.html" class="">Background</a>
 </li>
           <ul class="list-unstyled sidebar-section depth2">
     <li class="">
@@ -338,30 +271,63 @@
   <div id="quarto-toc-sidebar" class="col col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-toc order-last"><nav id="TOC" role="doc-toc">
 <h2 id="toc-title">On this page</h2>
 <ul>
-<li><a href="#jupyter-notebook-that-demonstrates-how-to-access-data" class="nav-link active" data-scroll-target="#jupyter-notebook-that-demonstrates-how-to-access-data">Jupyter Notebook that demonstrates how to access data</a></li>
+<li><a href="#set-up-prerequisites" class="nav-link active" data-scroll-target="#set-up-prerequisites">Set-up Prerequisites</a></li>
+<li><a href="#cloud-optimized-data-formats" class="nav-link" data-scroll-target="#cloud-optimized-data-formats">Cloud Optimized Data Formats</a></li>
+<li><a href="#sw3-buckets-etc" class="nav-link" data-scroll-target="#sw3-buckets-etc">SW3 Buckets, etc</a></li>
+<li><a href="#authenticate." class="nav-link" data-scroll-target="#authenticate.">Authenticate.</a></li>
 </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nasa-openscapes/quartobook-test/edit/main/access/access-something-specific.ipynb">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/quartobook-test/issues/new">Report an issue</a></p></div></div></nav></div>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nasa-openscapes/quartobook-test/edit/main/getting_started/index.md">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/quartobook-test/issues/new">Report an issue</a></p></div></div></nav></div>
   <div class="col mx-auto col-sm-12 col-md-9 col-lg-7 px-lg-4">
 <main>
+<header id="title-block-header">
+<h1 class="title d-none d-lg-block display-7">Getting Started</h1>
+</header>
 
-<section id="jupyter-notebook-that-demonstrates-how-to-access-data" class="level1">
-<h1>Jupyter Notebook that demonstrates how to access data</h1>
-<p>TODO: credit where this came from</p>
-<div class="cell">
-<div class="sourceCode" id="cb1"><pre class="sourceCode python cell-code"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"hello world"</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"hello universe"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
-<pre><code>hello world
-hello universe</code></pre>
-</div>
-</div>
+<p>Want to use NASA Data? you’ll need earthdata login credentials.</p>
+<p>There are several things you need to set up to get started.</p>
+<section id="set-up-prerequisites" class="level2">
+<h2 class="anchored" data-anchor-id="set-up-prerequisites">Set-up Prerequisites</h2>
+<p>To be able to best work with NASA data in the ways described in this book, you’ll need some familiarity with python and the command line. We recommend the following:</p>
+<ul>
+<li><a href="https://earth-env-data-science.github.io/intro.html"><strong>An Introduction to Earth and Environmental Data Science</strong></a> by Ryan Abernathy and Kerry Key.</li>
+<li>…</li>
+</ul>
+</section>
+<section id="cloud-optimized-data-formats" class="level2">
+<h2 class="anchored" data-anchor-id="cloud-optimized-data-formats">Cloud Optimized Data Formats</h2>
+<p>Some great info here about Cloud Optimized Data Formats.</p>
+</section>
+<section id="sw3-buckets-etc" class="level2">
+<h2 class="anchored" data-anchor-id="sw3-buckets-etc">SW3 Buckets, etc</h2>
+</section>
+<section id="authenticate." class="level2">
+<h2 class="anchored" data-anchor-id="authenticate.">Authenticate.</h2>
+<!--- TODO: develop as prose to set up for the .ipynb examples --->
+<p>To access NASA data you have to authenticate.</p>
+<p>Solutions that work - these are detailed in separate chapters as Jupyter notebooks (<code>.ipynb</code>).</p>
+<ol type="1">
+<li>To access NASA data one must setup an Earthdata Login profile. This involves (prose here)</li>
+</ol>
+<p>See/link to [Christine’s post &amp; conversation on the Jupyter discourse forum](https://discourse.jupyter.org/t/how-do-i-properly-protect-my-data-access-passwords-not-jupyter-tokens-passwords-on-3rd-party-jupyter-hub-services/9277]</p>
+<ul>
+<li>Create a netrc file<br>
+</li>
+<li>Submit EDL credentials within a script</li>
+</ul>
+<p>Some talk about the redirects…</p>
 <!-- -->
 </section>
 </main>
 <div class="page-navigation page-navigation-docked">
   <div class="nav-page nav-page-previous">
+      <a href="../index.html">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Welcome</span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="../getting_started/lpdaac-netrc.html">
+        <span class="nav-page-text">LP DAAC Authentication Example</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </div>
 </div> <!-- /main column -->
