@@ -1,3 +1,5 @@
-# VISUALIZATION
+---
+title: Visualization
+---
 
 Viz stuff here

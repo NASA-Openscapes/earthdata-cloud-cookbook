@@ -1,4 +1,6 @@
-# Welcome
+---
+title: Welcome
+---
 
 Welcome to the NASA Openscapes Cloud for Earth Science Book!  
 
@@ -12,4 +14,3 @@ NASA Distributed Active Archive Centers (DAACs) are in the process of moving the
 Illustration by Catalina Oaida, PO.DAAC
 
 As this data migration occurs, DAACs will have more information about how users can access data. For example, the [Cloud Data page at PO.DAAC](https://podaac.jpl.nasa.gov/cloud-datasets/about) offers access to resources to help guide data users in discovering, accessing, and utilizing cloud data. During this transition, some data will continue to be available from the traditional on premise archive, while some data will also be available from and within the Earthdata Cloud.
-

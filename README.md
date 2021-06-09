@@ -167,3 +167,19 @@ Then to get what quarto needs:
 ```{bash}
 pip install quarto
 ```
+
+## Notes about Quarto 
+
+In migrating from a book to a website you need to change some of the pages to have a YAML title rather than H1 header. For example change:
+
+    # Background 
+
+to
+
+    ---
+
+    title: Background
+
+    ---
+
+Books use the alternate no YAML form because in the case of PDF, ePUB, or MS Word books all of the .md files are pasted together into a single file (which can't have multiple title entries). 

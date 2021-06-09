@@ -1,4 +1,6 @@
-# Glossary
+---
+title: Glossary
+---
 
 All the NASA (and more) acronyms, uncovered
 

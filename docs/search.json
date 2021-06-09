@@ -1,15 +1,15 @@
 [
   {
     "href": "community-handbook/community-handbook.html",
-    "title": "Cloud for Earth Science",
+    "title": "Community Handbook",
     "section": "",
-    "text": "Community Handbook\nFork/borrow from the awesome work at The Turing Way: https://the-turing-way.netlify.app/community-handbook/community-handbook.html"
+    "text": "Fork/borrow from the awesome work at The Turing Way: https://the-turing-way.netlify.app/community-handbook/community-handbook.html"
   },
   {
     "href": "visualization/visualization.html",
-    "title": "Cloud for Earth Science",
+    "title": "Visualization",
     "section": "",
-    "text": "VISUALIZATION\nViz stuff here"
+    "text": "Viz stuff here"
   },
   {
     "href": "access/access-something-specific.html",
@@ -19,15 +19,15 @@
   },
   {
     "href": "access/access.html",
-    "title": "Cloud for Earth Science",
+    "title": "Background",
     "section": "",
-    "text": "Background\nSome background here about access."
+    "text": "Some background here about access."
   },
   {
     "href": "processing/processing.html",
-    "title": "Cloud for Earth Science",
+    "title": "Processing",
     "section": "",
-    "text": "PROCESSING\nProcessing details here"
+    "text": "Processing details here"
   },
   {
     "href": "further_resources/python_example.html#header",
@@ -37,9 +37,9 @@
   },
   {
     "href": "further_resources/glossary.html",
-    "title": "Cloud for Earth Science",
+    "title": "Glossary",
     "section": "",
-    "text": "Glossary\nAll the NASA (and more) acronyms, uncovered\nCOG: Cloud-optimized geo-tiff\nCTL: Command Line Tool"
+    "text": "All the NASA (and more) acronyms, uncovered\nCOG: Cloud-optimized geo-tiff\nCTL: Command Line Tool"
   },
   {
     "href": "further_resources/r_example.html#header",
@@ -55,21 +55,15 @@
   },
   {
     "href": "discovery/discovery.html",
-    "title": "Cloud for Earth Science",
+    "title": "Discovery Process",
     "section": "",
-    "text": "Discovery Process\nSome background here about discovery.\nSome great text about CMR and CMR-STAC, among other things"
+    "text": "Some background here about discovery.\nSome great text about CMR and CMR-STAC, among other things"
   },
   {
     "href": "index.html#the-new-cloud-paradigm",
-    "title": "Cloud for Earth Science",
+    "title": "Welcome",
     "section": "The new cloud paradigm",
     "text": "NASA Distributed Active Archive Centers (DAACs) are in the process of moving their data holdings to the cloud (orange in diagram). In the new paradigm, the data storage (green in diagram) and DAAC-provided tools and services built on top of the data are co-located in the Earthdata Cloud (hosted in AWS cloud).\n Illustration by Catalina Oaida, PO.DAAC\nAs this data migration occurs, DAACs will have more information about how users can access data. For example, the Cloud Data page at PO.DAAC offers access to resources to help guide data users in discovering, accessing, and utilizing cloud data. During this transition, some data will continue to be available from the traditional on premise archive, while some data will also be available from and within the Earthdata Cloud."
-  },
-  {
-    "href": "getting_started/ecco-netrc.html",
-    "title": "Cloud for Earth Science",
-    "section": "",
-    "text": "PO DAAC Authentication Example\nNote this is currently copied from https://github.com/podaac/ECCO/blob/main/Data_Access/local_bulk_download_and_open_in_py3.ipynb as a starting point and will be refined\n\n\nConfigure your .netrc file\nGood idea to back up your existing netrc file, if you have one. And while youre at it check for these entries because they might exist in there already:\n\n%cp ~/.netrc ~/bak.netrc\n\n%cat ~/.netrc | grep '.earthdata.nasa.gov' | cut -f-5 -d\" \"\n\nmachine urs.earthdata.nasa.gov login jmcnelis password\nmachine opendap.earthdata.nasa.gov login jmcnelis password\nmachine urs.earthdata.nasa.gov login jmcnelis password\nmachine opendap.earthdata.nasa.gov login jmcnelis password\nmachine urs.earthdata.nasa.gov login jmcnelis password\nmachine opendap.earthdata.nasa.gov login jmcnelis password\nmachine urs.earthdata.nasa.gov login jmcnelis password\nmachine opendap.earthdata.nasa.gov login jmcnelis password\nmachine urs.earthdata.nasa.gov login jmcnelis password\nmachine opendap.earthdata.nasa.gov login jmcnelis password\nmachine urs.earthdata.nasa.gov login jmcnelis password\nmachine opendap.earthdata.nasa.gov login jmcnelis password\nmachine urs.earthdata.nasa.gov login jmcnelis password\nmachine opendap.earthdata.nasa.gov login jmcnelis password\nmachine urs.earthdata.nasa.gov login jmcnelis password\nmachine opendap.earthdata.nasa.gov login jmcnelis password\nmachine urs.earthdata.nasa.gov login jmcnelis password\nmachine opendap.earthdata.nasa.gov login jmcnelis password\nmachine urs.earthdata.nasa.gov login jmcnelis password\nmachine opendap.earthdata.nasa.gov login jmcnelis password\nmachine urs.earthdata.nasa.gov login jmcnelis password\nmachine opendap.earthdata.nasa.gov login jmcnelis password\nmachine urs.earthdata.nasa.gov login jmcnelis password\nmachine opendap.earthdata.nasa.gov login jmcnelis password\nmachine urs.earthdata.nasa.gov login jmcnelis password\nmachine opendap.earthdata.nasa.gov login jmcnelis password\nmachine urs.earthdata.nasa.gov login jmcnelis password\nmachine opendap.earthdata.nasa.gov login jmcnelis password\nmachine urs.earthdata.nasa.gov login jmcnelis password\nmachine opendap.earthdata.nasa.gov login jmcnelis password\nmachine urs.earthdata.nasa.gov login jmcnelis password\nmachine opendap.earthdata.nasa.gov login jmcnelis password\nmachine urs.earthdata.nasa.gov login jmcnelis password\nmachine opendap.earthdata.nasa.gov login jmcnelis password\nmachine urs.earthdata.nasa.gov login jmcnelis password\nmachine opendap.earthdata.nasa.gov login jmcnelis password\nmachine urs.earthdata.nasa.gov login jmcnelis password\nmachine opendap.earthdata.nasa.gov login jmcnelis password\nmachine urs.earthdata.nasa.gov login jmcnelis password\nmachine opendap.earthdata.nasa.gov login jmcnelis password\nmachine urs.earthdata.nasa.gov login jmcnelis password\nmachine opendap.earthdata.nasa.gov login jmcnelis password\nmachine urs.earthdata.nasa.gov login jmcnelis password\nmachine opendap.earthdata.nasa.gov login jmcnelis password\nmachine urs.earthdata.nasa.gov login jmcnelis password\nmachine opendap.earthdata.nasa.gov login jmcnelis password\nmachine urs.earthdata.nasa.gov login jmcnelis password\nmachine opendap.earthdata.nasa.gov login jmcnelis password\nmachine urs.earthdata.nasa.gov login jmcnelis password\nmachine opendap.earthdata.nasa.gov login jmcnelis password\nmachine urs.earthdata.nasa.gov login jmcnelis password\nmachine opendap.earthdata.nasa.gov login jmcnelis password\nmachine urs.earthdata.nasa.gov login jmcnelis password\nmachine opendap.earthdata.nasa.gov login jmcnelis password\nmachine urs.earthdata.nasa.gov login jmcnelis password\nmachine opendap.earthdata.nasa.gov login jmcnelis password\nmachine urs.earthdata.nasa.gov login jmcnelis password\nmachine opendap.earthdata.nasa.gov login jmcnelis password\nmachine urs.earthdata.nasa.gov login jmcnelis password\nmachine opendap.earthdata.nasa.gov login jmcnelis password\nmachine urs.earthdata.nasa.gov login jmcnelis password\nmachine opendap.earthdata.nasa.gov login jmcnelis password\nmachine urs.earthdata.nasa.gov login jmcnelis password\nmachine opendap.earthdata.nasa.gov login jmcnelis password\nmachine urs.earthdata.nasa.gov login jmcnelis password\nmachine opendap.earthdata.nasa.gov login jmcnelis password\nmachine urs.earthdata.nasa.gov login jmcnelis password\nmachine opendap.earthdata.nasa.gov login jmcnelis password\nmachine urs.earthdata.nasa.gov login jmcnelis password\nmachine opendap.earthdata.nasa.gov login jmcnelis password\nmachine urs.earthdata.nasa.gov login jmcnelis password\nmachine opendap.earthdata.nasa.gov login jmcnelis password\nmachine urs.earthdata.nasa.gov login jmcnelis password\nmachine opendap.earthdata.nasa.gov login jmcnelis password\nmachine urs.earthdata.nasa.gov login jmcnelis password\nmachine opendap.earthdata.nasa.gov login jmcnelis password\nmachine urs.earthdata.nasa.gov login jmcnelis password\nmachine opendap.earthdata.nasa.gov login jmcnelis password\nmachine urs.earthdata.nasa.gov login jmcnelis password\nmachine opendap.earthdata.nasa.gov login jmcnelis password\nmachine urs.earthdata.nasa.gov login jmcnelis password\nmachine opendap.earthdata.nasa.gov login jmcnelis password\nmachine urs.earthdata.nasa.gov login jmcnelis password\nmachine opendap.earthdata.nasa.gov login jmcnelis password\nmachine urs.earthdata.nasa.gov login jmcnelis password\nmachine opendap.earthdata.nasa.gov login jmcnelis password\nmachine urs.earthdata.nasa.gov login jmcnelis password\nmachine opendap.earthdata.nasa.gov login jmcnelis password\n\n\n\nAdd entries to your netrc for these two earthdata.nasa.gov sub domains, at a minimum:\nmachine urs.earthdata.nasa.gov login jmcnelis password ***\nmachine opendap.earthdata.nasa.gov login jmcnelis password ***\nand replace jmcnelis and *** with your Earthdata Login username and password, respectively…\n\nReplace jmcnelis and *** with your Earthdata username and password, and then run the cell to append these two lines to your netrc file, if one exists. Otherwise write them to a new one. (all set up by -a)\n\n%%file -a ~/.netrc\nmachine urs.earthdata.nasa.gov login jmcnelis password ***\nmachine opendap.earthdata.nasa.gov login jmcnelis password ***\n\nAppending to /Users/lowndes/.netrc\n\n\nDump the netrc again sans passwords to confirm that it worked:\n\n!cat ~/.netrc | grep '.earthdata.nasa.gov' | cut -f-5 -d\" \"\n\nmachine urs.earthdata.nasa.gov login jmcnelis password\nmachine opendap.earthdata.nasa.gov login jmcnelis password\nmachine urs.earthdata.nasa.gov login jmcnelis password\nmachine opendap.earthdata.nasa.gov login jmcnelis password\nmachine urs.earthdata.nasa.gov login jmcnelis password\nmachine opendap.earthdata.nasa.gov login jmcnelis password\nmachine urs.earthdata.nasa.gov login jmcnelis password\nmachine opendap.earthdata.nasa.gov login jmcnelis password\nmachine urs.earthdata.nasa.gov login jmcnelis password\nmachine opendap.earthdata.nasa.gov login jmcnelis password\nmachine urs.earthdata.nasa.gov login jmcnelis password\nmachine opendap.earthdata.nasa.gov login jmcnelis password\nmachine urs.earthdata.nasa.gov login jmcnelis password\nmachine opendap.earthdata.nasa.gov login jmcnelis password\nmachine urs.earthdata.nasa.gov login jmcnelis password\nmachine opendap.earthdata.nasa.gov login jmcnelis password\nmachine urs.earthdata.nasa.gov login jmcnelis password\nmachine opendap.earthdata.nasa.gov login jmcnelis password\nmachine urs.earthdata.nasa.gov login jmcnelis password\nmachine opendap.earthdata.nasa.gov login jmcnelis password\nmachine urs.earthdata.nasa.gov login jmcnelis password\nmachine opendap.earthdata.nasa.gov login jmcnelis password\nmachine urs.earthdata.nasa.gov login jmcnelis password\nmachine opendap.earthdata.nasa.gov login jmcnelis password\nmachine urs.earthdata.nasa.gov login jmcnelis password\nmachine opendap.earthdata.nasa.gov login jmcnelis password\nmachine urs.earthdata.nasa.gov login jmcnelis password\nmachine opendap.earthdata.nasa.gov login jmcnelis password\nmachine urs.earthdata.nasa.gov login jmcnelis password\nmachine opendap.earthdata.nasa.gov login jmcnelis password\nmachine urs.earthdata.nasa.gov login jmcnelis password\nmachine opendap.earthdata.nasa.gov login jmcnelis password\nmachine urs.earthdata.nasa.gov login jmcnelis password\nmachine opendap.earthdata.nasa.gov login jmcnelis password\nmachine urs.earthdata.nasa.gov login jmcnelis password\nmachine opendap.earthdata.nasa.gov login jmcnelis password\nmachine urs.earthdata.nasa.gov login jmcnelis password\nmachine opendap.earthdata.nasa.gov login jmcnelis password\nmachine urs.earthdata.nasa.gov login jmcnelis password\nmachine opendap.earthdata.nasa.gov login jmcnelis password\nmachine urs.earthdata.nasa.gov login jmcnelis password\nmachine opendap.earthdata.nasa.gov login jmcnelis password\nmachine urs.earthdata.nasa.gov login jmcnelis password\nmachine opendap.earthdata.nasa.gov login jmcnelis password\nmachine urs.earthdata.nasa.gov login jmcnelis password\nmachine opendap.earthdata.nasa.gov login jmcnelis password\nmachine urs.earthdata.nasa.gov login jmcnelis password\nmachine opendap.earthdata.nasa.gov login jmcnelis password\nmachine urs.earthdata.nasa.gov login jmcnelis password\nmachine opendap.earthdata.nasa.gov login jmcnelis password\nmachine urs.earthdata.nasa.gov login jmcnelis password\nmachine opendap.earthdata.nasa.gov login jmcnelis password\nmachine urs.earthdata.nasa.gov login jmcnelis password\nmachine opendap.earthdata.nasa.gov login jmcnelis password\nmachine urs.earthdata.nasa.gov login jmcnelis password\nmachine opendap.earthdata.nasa.gov login jmcnelis password\nmachine urs.earthdata.nasa.gov login jmcnelis password\nmachine opendap.earthdata.nasa.gov login jmcnelis password\nmachine urs.earthdata.nasa.gov login jmcnelis password\nmachine opendap.earthdata.nasa.gov login jmcnelis password\nmachine urs.earthdata.nasa.gov login jmcnelis password\nmachine opendap.earthdata.nasa.gov login jmcnelis password\nmachine urs.earthdata.nasa.gov login jmcnelis password\nmachine opendap.earthdata.nasa.gov login jmcnelis password\nmachine urs.earthdata.nasa.gov login jmcnelis password\nmachine opendap.earthdata.nasa.gov login jmcnelis password\nmachine urs.earthdata.nasa.gov login jmcnelis password\nmachine opendap.earthdata.nasa.gov login jmcnelis password\nmachine urs.earthdata.nasa.gov login jmcnelis password\nmachine opendap.earthdata.nasa.gov login jmcnelis password\nmachine urs.earthdata.nasa.gov login jmcnelis password\nmachine opendap.earthdata.nasa.gov login jmcnelis password\nmachine urs.earthdata.nasa.gov login jmcnelis password\nmachine opendap.earthdata.nasa.gov login jmcnelis password\nmachine urs.earthdata.nasa.gov login jmcnelis password\nmachine opendap.earthdata.nasa.gov login jmcnelis password\nmachine urs.earthdata.nasa.gov login jmcnelis password\nmachine opendap.earthdata.nasa.gov login jmcnelis password\nmachine urs.earthdata.nasa.gov login jmcnelis password\nmachine opendap.earthdata.nasa.gov login jmcnelis password\nmachine urs.earthdata.nasa.gov login jmcnelis password\nmachine opendap.earthdata.nasa.gov login jmcnelis password\nmachine urs.earthdata.nasa.gov login jmcnelis password\nmachine opendap.earthdata.nasa.gov login jmcnelis password\nmachine urs.earthdata.nasa.gov login jmcnelis password\nmachine opendap.earthdata.nasa.gov login jmcnelis password\nmachine urs.earthdata.nasa.gov login jmcnelis password\nmachine opendap.earthdata.nasa.gov login jmcnelis password\nmachine urs.earthdata.nasa.gov login jmcnelis password\nmachine opendap.earthdata.nasa.gov login jmcnelis password\n\n\nFinally, you need to make sure to limit access to the netrc file because it stores your plain text password. Simple on MacOS and Linux:\n\n!chmod 0600 ~/.netrc"
   },
   {
     "href": "getting_started/podaac-ecco-netrc.html",
@@ -79,32 +73,32 @@
   },
   {
     "href": "getting_started/getting_started.html#set-up-prerequisites",
-    "title": "Cloud for Earth Science",
+    "title": "Background",
     "section": "Set-up Prerequisites",
     "text": "To be able to best work with NASA data in the ways described in this book, you’ll need some familiarity with python and the command line. We recommend the following:\n\nAn Introduction to Earth and Environmental Data Science by Ryan Abernathy and Kerry Key.\n…"
   },
   {
     "href": "getting_started/getting_started.html#cloud-optimized-data-formats",
-    "title": "Cloud for Earth Science",
+    "title": "Background",
     "section": "Cloud Optimized Data Formats",
     "text": "Some great info here about Cloud Optimized Data Formats."
   },
   {
     "href": "getting_started/getting_started.html#sw3-buckets-etc",
-    "title": "Cloud for Earth Science",
+    "title": "Background",
     "section": "SW3 Buckets, etc",
     "text": ""
   },
   {
     "href": "getting_started/getting_started.html#authenticate.",
-    "title": "Cloud for Earth Science",
+    "title": "Background",
     "section": "Authenticate.",
     "text": "To access NASA data you have to authenticate.\nSolutions that work - these are detailed in separate chapters as Jupyter notebooks (.ipynb).\n\nTo access NASA data one must setup an Earthdata Login profile. This involves (prose here)\n\nSee/link to [Christine’s post & conversation on the Jupyter discourse forum](https://discourse.jupyter.org/t/how-do-i-properly-protect-my-data-access-passwords-not-jupyter-tokens-passwords-on-3rd-party-jupyter-hub-services/9277]\n\nCreate a netrc file\n\nSubmit EDL credentials within a script\n\nSome talk about the redirects…"
   },
   {
-    "href": "getting_started/lpdaac-netrc.html",
-    "title": "Cloud for Earth Science",
-    "section": "",
-    "text": "# LP DAAC Authentication Example\n\n\n\n\ntitle-prefix: Cloud for Earth Science document-css: false link-citations: true project: type: site output-dir: ../docs lib-dir: ../site_libs site: title: Cloud for Earth Science author: NASA Openscapes Community logo: openscapes_hex.png repo-url: ‘https://github.com/nasa-openscapes/quartobook-test’ repo-actions: - edit - issue sharing: - twitter page-navigation: true sidebar: style: docked background: light search: true collapse-level: 2 tools: - icon: github href: ‘https://github.com/nasa-openscapes/quartobook-test’ contents: - text: Welcome href: ../index.md - section: Getting Started contents: - ../getting_started/getting_started.md - section: Authentication Notebooks contents: - ../getting_started/lpdaac-netrc.ipynb - ../getting_started/podaac-ecco-netrc.ipynb - section: NASA Cloud Data Discovery contents: - ../discovery/discovery.md - section: Discover Notebooks contents: - ../discovery/Navigate_CMR_STAC.ipynb - section: ../Access contents: - ../access/access.md - section: Access Notebooks contents: - ../discovery/Navigate_CMR_STAC.ipynb - section: Further Resources contents: - ../further_resources/glossary.md - ../further_resources/python_example.qmd - ../further_resources/r_example.Rmd - section: Community Handbook contents: - ../community-handbook/community-handbook.md bibliography: - ../references.bib format: html: theme: cosmo css: - styles.css toc: true theme: cosmo toc-title: On this page"
+    "href": "getting_started/lpdaac-netrc.html#this-is-otherwise-just-testing",
+    "title": "LP DAAC Authentication Example",
+    "section": "This is otherwise just testing ",
+    "text": "Import the required packages and set the input/working directory to run this Jupyter Notebook locally.\n\nimport requests as r\nfrom skimage import io\nimport matplotlib.pyplot as plt\n\n\nprint(1+1)\nprint(\"woo NASA data!\")\n\n2\nwoo NASA data!"
   }
 ]

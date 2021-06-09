@@ -1,4 +1,6 @@
-# Discovery Process
+---
+title: Discovery Process
+---
 
 Some background here about discovery. 
 
