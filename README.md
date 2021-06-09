@@ -29,7 +29,7 @@ pip install quarto
 
 ## probably going to want this
 pip install jupyterlab
-pip install matplotlib # probably going to want this
+pip install matplotlib 
 pip install scikit-image
 pip install requests
 ```
@@ -39,6 +39,7 @@ pip install requests
 In the R Console, type:
 
 ```{r, eval=FALSE}
+## required
 install.packages("quarto")
 install.packages("reticulate")
 ```
@@ -168,7 +169,7 @@ Then to get what quarto needs:
 pip install quarto
 ```
 
-## Notes about Quarto 
+## Notes about Quarto
 
 In migrating from a book to a website you need to change some of the pages to have a YAML title rather than H1 header. For example change:
 
@@ -183,3 +184,50 @@ to
     ---
 
 Books use the alternate no YAML form because in the case of PDF, ePUB, or MS Word books all of the .md files are pasted together into a single file (which can't have multiple title entries). 
+
+## Ideas for Notebook Workflow Friday 
+
+-   Show published book: <https://nasa-openscapes.github.io/quartobook-test/>
+
+-   Show files on <https://github.com/NASA-Openscapes/quartobook-test>, talk through structure in `_quarto.yml`
+
+-   Show quarto workflow locally (serve/render from R and CLI)
+
+-   Show GitHub workflow (create branch to edit, push)
+
+-   Show Turing Way Contributing: Templates and Workflow (<https://the-turing-way.netlify.app>)
+
+-   Discuss. Set-up and practice next week(?)
+
+## Meeting Notes June 9
+
+J.J., Aaron, Julie
+
+(Julie running RStudio IDE daily June 9)
+
+-   Where do notebooks get executed? (J.J. Q the other day)
+
+-   Collaborative workflow — create/edit in .qmd. Then render notebooks as .ipynb to execute on cloud (2i2c)?
+
+-   Is there a way to make the Sections "clickable"? Like: [https://the-turing-way.netlify.app](https://the-turing-way.netlify.app/community-handbook/coc.html)
+
+### J.J.'s fix for Aaron
+
+#### What Julie did: 
+
+    git clone https://github.com/quarto-dev/quarto-cli
+    cd quarto-cli
+    ./configure-macos.sh
+    quarto convert help # to check 
+
+#### For Aaron:
+
+    cd quarto-cli
+    git pull
+    configure_windows.cmd
+
+After the install works, make sure it's on his PATH.
+
+If not, then how to change: <https://stackoverflow.com/questions/61799309/where-can-i-see-deno-downloaded-packages>
+
+Quarto is under the quarto-cli directory: there's a `package/disc/bin` -- could get this on his $PATH
