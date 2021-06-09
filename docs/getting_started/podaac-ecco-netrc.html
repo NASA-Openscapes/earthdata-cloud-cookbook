@@ -347,7 +347,9 @@
 <section id="po-daac-authentication-example" class="level1">
 <h1>PO DAAC Authentication Example</h1>
 <p><strong>Note this is currently copied from <a href="https://github.com/podaac/ECCO/blob/main/Data_Access/local_bulk_download_and_open_in_py3.ipynb" class="uri">https://github.com/podaac/ECCO/blob/main/Data_Access/local_bulk_download_and_open_in_py3.ipynb</a> as a starting point and will be refined</strong></p>
-<p><img src="https://podaac.jpl.nasa.gov/sites/default/files/mission_themes/featured_image/%20Estimating-the-Circulation-and-Climate-of-the-Ocean-ECCO-opt2.jpg"></p>
+<center>
+<img src="https://podaac.jpl.nasa.gov/sites/default/files/mission_themes/featured_image/%20Estimating-the-Circulation-and-Climate-of-the-Ocean-ECCO-opt2.jpg" width="600px">
+</center>
 <section id="configure-your-.netrc-file" class="level3">
 <h3 class="anchored" data-anchor-id="configure-your-.netrc-file">Configure your <em>.netrc</em> file</h3>
 <p>Good idea to back up your existing netrc file, if you have one. And while youre at it check for these entries because they might exist in there already:</p>
@@ -357,6 +359,10 @@
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>cat <span class="op">~/</span>.netrc <span class="op">|</span> grep <span class="st">'.earthdata.nasa.gov'</span> <span class="op">|</span> cut <span class="op">-</span>f<span class="op">-</span><span class="dv">5</span> <span class="op">-</span>d<span class="st">" "</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-stdout">
 <pre><code>machine urs.earthdata.nasa.gov login jmcnelis password
+machine opendap.earthdata.nasa.gov login jmcnelis password
+machine urs.earthdata.nasa.gov login jmcnelis password
+machine opendap.earthdata.nasa.gov login jmcnelis password
+machine urs.earthdata.nasa.gov login jmcnelis password
 machine opendap.earthdata.nasa.gov login jmcnelis password
 machine urs.earthdata.nasa.gov login jmcnelis password
 machine opendap.earthdata.nasa.gov login jmcnelis password
@@ -468,6 +474,10 @@ machine opendap.earthdata.nasa.gov login jmcnelis password ***</code></pre>
 <div class="sourceCode" id="cb6"><pre class="sourceCode python cell-code"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>cat <span class="op">~/</span>.netrc <span class="op">|</span> grep <span class="st">'.earthdata.nasa.gov'</span> <span class="op">|</span> cut <span class="op">-</span>f<span class="op">-</span><span class="dv">5</span> <span class="op">-</span>d<span class="st">" "</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-stdout">
 <pre><code>machine urs.earthdata.nasa.gov login jmcnelis password
+machine opendap.earthdata.nasa.gov login jmcnelis password
+machine urs.earthdata.nasa.gov login jmcnelis password
+machine opendap.earthdata.nasa.gov login jmcnelis password
+machine urs.earthdata.nasa.gov login jmcnelis password
 machine opendap.earthdata.nasa.gov login jmcnelis password
 machine urs.earthdata.nasa.gov login jmcnelis password
 machine opendap.earthdata.nasa.gov login jmcnelis password
