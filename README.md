@@ -185,7 +185,7 @@ to
 
 Books use the alternate no YAML form because in the case of PDF, ePUB, or MS Word books all of the .md files are pasted together into a single file (which can't have multiple title entries). 
 
-## Ideas for Notebook Workflow Friday 
+## Ideas for Notebook Workflow Friday
 
 -   Show published book: <https://nasa-openscapes.github.io/quartobook-test/>
 
@@ -221,7 +221,7 @@ Notes:
 
 ### J.J.'s fix for Aaron
 
-#### What Julie did: 
+#### What Julie did:
 
     git clone https://github.com/quarto-dev/quarto-cli
     cd quarto-cli

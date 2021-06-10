@@ -4,7 +4,7 @@ title: Welcome
 
 Welcome to the NASA Openscapes Cloud for Earth Science Book!  
 
-This book contains awesome stuff!  
+This book contains awesome stuff! This is true. 
 
 ## The new cloud paradigm 
 

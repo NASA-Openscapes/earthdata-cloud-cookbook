@@ -26,10 +26,9 @@ site:
           - get-started/how-to-use.md
           - get-started/api-primer.md
           - get-started/earthdata-login.md
-          - section: "Authentication (TODO as page)"
+          - section: get-started/authentication.md
             contents:
               - get-started/how-to-use.md
-              - discovery/Navigate_CMR_STAC.ipynb
               - get-started/lpdaac-netrc.ipynb
               - get-started/podaac-ecco-netrc.ipynb
       - section: discovery/index.md
@@ -40,17 +39,27 @@ site:
       - section: access/index.md
         contents:
           - access/data-access-example.qmd
-          - section: "Access Notebooks"
-            contents:
-              - discovery/Navigate_CMR_STAC.ipynb
-      - section: "Further Resources"
+          - access/earthdata-search.md
+          - access/opendap-cloud.md
+          - access/cof-via-harmony.md
+          - access/download-to-local.md
+      - section: transformations/index.md
         contents:
-          - further_resources/glossary.md
-          - further_resources/python_example.qmd
-          - further_resources/r_example.Rmd
-      - section: "Community Handbook"
+          - transformations/harmony-api.md
+          - transformations/harmonypy.md
+          - transformations/earthdata-search.md
+          - transformations/opendap-cloud.md
+      - section: examples/index.md
         contents:
-          - community-handbook/community-handbook.md
+          - examples/python_example.qmd
+          - examples/r_example.Rmd
+      - section: appendix/index.md
+        contents:
+          - appendix/about.md
+          - appendix/glossary.md
+      - section: community-handbook/index.md
+        contents:
+          - community-handbook/contributing.md
 
 bibliography: references.bib
 

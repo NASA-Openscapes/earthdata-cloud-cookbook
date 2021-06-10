@@ -4,11 +4,14 @@ editor_options:
   chunk_output_type: inline
 ---
 
-## Header
+## This is an .Rmd file
 
-As I write some description here
+As I write some description here. Today is Thursday.
 
 ```{r}
+#| message: false
+#| warning: false
+
 library(ggplot2)
 ggplot(airquality, aes(Temp, Ozone)) + 
         geom_point() + 
