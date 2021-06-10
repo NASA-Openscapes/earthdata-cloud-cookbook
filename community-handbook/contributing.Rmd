@@ -1,0 +1,144 @@
+---
+title: Contributing
+execute:
+  eval: false
+---
+
+## How to contribute to our book
+
+We'll make our e-book using Quarto ([https://quarto.org](https://quarto.org/docs/getting-started/installation.html)). Your Quarto workflow can be from the Command Line (bash), Python, or R. Its book chapters can be many file types, including `.md` , `.ipynb`, and `.Rmd`. Chapters without code to execute can be written in `.md`.
+
+(Note: with Quarto, e-books and websites are very similarly structured, with e-books being set up for numbered chapters and references and websites set up for higher number of pages and organization. We can talk about our book as a book even as we explore whether book/website better suits our needs. This is defined in `_quarto.yml`.)
+
+## Setup
+
+### Clone our repository locally
+
+Clone `nasa-openscapes/quartobook-test` using your method of preference. Here is how to do this in bash:
+
+```{bash}
+git clone https://github.com/NASA-Openscapes/quartobook-test 
+cd quartobook-test
+```
+
+### Install Quarto
+
+Install the `quarto` library so you can interact with it via the command line or R. I've set mine up with both.
+
+#### Command Line/Python:
+
+In the command line, type:
+
+```{bash}
+pip install quarto 
+```
+
+#### R
+
+In the R Console, type:
+
+```{r}
+install.packages("quarto") 
+install.packages("reticulate")
+```
+
+### Load environment
+
+Our repo is set up with an environment of the R and Python libraries that's just for this project (we created it using the [`renv`](https://rstudio.github.io/renv/) R package, notes below). Loading this environment will give you what you need to contribute to the book, as well as build and publish it. But it will stay contained just here in this project so it won't interact with your other projects.
+
+More details about environments, from [A Guide to Python's Virtual Environments](https://towardsdatascience.com/virtual-environments-104c62d48c54) (Sarmiento 2019):
+
+> A virtual environment is a Python tool for **dependency management** and **project** **isolation**. They allow Python **site packages** (third party libraries) to be installed locally in an isolateddirectory for a particular project, as opposed to being installed globally (i.e. as part of a system-wide Python).
+
+#### Command Line/Python
+
+TODO write more about `venv` and test that this works:
+
+```{bash}
+python3 -m venv renv/
+```
+
+#### R
+
+In R, we'll first need the `remotes` package to install the `renv` package from GitHub. Then we can restore the environment using `renv::restore()`.
+
+```{r}
+if (!requireNamespace("remotes")) install.packages("remotes") 
+remotes::install_github("rstudio/renv") 
+renv::restore()
+```
+
+## Workflow - Quarto
+
+Overview. Serve it once, make edits and render your .Rmd/.qmd pages (.md are automatic) and then when you're ready to publish, you render.
+
+Here we are talking about the age old debate of whether computational markdown should be rendered on save when running a dev server. We currently don't do this to give the user a choice between an expensive render and a cheap save (i.e. if we conflate them we've taken away what might be an important option for users with long running documents). This is currently documented here (<https://quarto.org/docs/websites/website-basics.html#workflow>) but perhaps could be made more clear.Now make edits \<to explain more\>
+
+For Rmd and qmd files you need to render them (md updates show on save b/c there is no render step). The reason we don't render Rmd and qmd on save is that render could (potentially) be very long running and we don't want to impose that cost on you whenever you save.
+
+### Command Line/Python
+
+To build the book, run the following from Terminal
+
+```{bash}
+quarto serve
+```
+
+Paste the url from the console into your browser to see your updates.
+
+Continue working, the book will refresh live!
+
+Publish
+
+Run this before pushing to GitHub to publish:
+
+```{bash}
+quarto render
+```
+
+### R
+
+```{r}
+quarto::quarto_render()
+```
+
+## Workflow - GitHub
+
+Return to the project: navigate to it in the command line/Terminal, or open it in RStudio/Visual Studio, etc.
+
+Pull most recent updates:
+
+```{bash}
+git pull
+```
+
+Create a new branch, then switch to that branch to work in. Then, connect it to github.com by pushing it "upstream" to the "origin repository".
+
+```{bash}
+git branch branch-name 
+git checkout branch-name 
+git push --set-upstream origin branch-name 
+
+# Julie's example 
+git branch jsl-dev 
+git checkout jsl-dev 
+git push --set-upstream origin jsl-dev
+```
+
+Check which branch you're on anytime by not specifying a branch name:
+
+```{bash}
+git branch
+```
+
+Make edits and build (see this workflow below)... Then when you're ready, push back to GitHub
+
+```{bash}
+git add --all 
+git commit -m "my commit message here" 
+git pull # just to be safe git push
+```
+
+Now it's on github, in a separate branch from main. You can go to <https://github.com/nasa-openscapes/quartobook-test> and do a pull request, and tag someone to review (depending on what you've done and what we've talked about).
+
+## 

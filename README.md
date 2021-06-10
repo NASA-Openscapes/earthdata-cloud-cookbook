@@ -1,3 +1,5 @@
+TODO: Julie tidy up these notes
+
 # How to contribute to our book
 
 We'll make our e-book using Quarto ([https://quarto.org](https://quarto.org/docs/getting-started/installation.html)). Your Quarto workflow can be from the Command Line (bash), Python, or R. Its book chapters can be many file types, including `.md` , `.ipynb`, and `.Rmd`. Chapters without code to execute can be written in `.md`.

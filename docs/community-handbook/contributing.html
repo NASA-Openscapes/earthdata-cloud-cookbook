@@ -3,7 +3,7 @@
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>Cloud for Earth Science – Contributing.</title>
+  <title>Cloud for Earth Science – Contributing</title>
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -11,6 +11,69 @@
     div.column{display: inline-block; vertical-align: top; width: 50%;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007ba5; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #007ba5; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #007ba5; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
 
   <!--[if lt IE 9]>
@@ -66,7 +129,7 @@
 <header id="quarto-header" class="headroom fixed-top">
 <nav class="quarto-secondary-nav py-2 d-lg-none d-md-block " data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <div class="container-fluid d-flex justify-content-between">
-    <h1 class="quarto-secondary-nav-title mb-0 fs-3 d-inline">Contributing.</h1>
+    <h1 class="quarto-secondary-nav-title mb-0 fs-3 d-inline">Contributing</h1>
     <button type="button" class="quarto-btn-toggle btn d-lg-none py-0 px-1 d-inline-block border-0 ">
       <i class="bi bi-chevron-right"></i>
     </button>
@@ -301,7 +364,7 @@
       <div class="collapse  show" id="communityhandbook-collapse">
         <ul class="list-unstyled sidebar-item-contents">
           <li class="sidebar-item">
-  <a href="../community-handbook/contributing.html" class="active">Contributing.</a>
+  <a href="../community-handbook/contributing.html" class="active">Contributing</a>
 </li>
         </ul>
       </div>
@@ -311,15 +374,149 @@
   </div>
 </nav>
   </div>
-  <div id="quarto-toc-sidebar" class="col col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-toc order-last"></div>
+  <div id="quarto-toc-sidebar" class="col col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-toc order-last"><nav id="TOC" role="doc-toc">
+<h2 id="toc-title">On this page</h2>
+<ul>
+<li><a href="#how-to-contribute-to-our-book" class="nav-link active" data-scroll-target="#how-to-contribute-to-our-book">How to contribute to our book</a></li>
+<li><a href="#setup" class="nav-link" data-scroll-target="#setup">Setup</a>
+<ul class="collapse">
+<li><a href="#clone-our-repository-locally" class="nav-link" data-scroll-target="#clone-our-repository-locally">Clone our repository locally</a></li>
+<li><a href="#install-quarto" class="nav-link" data-scroll-target="#install-quarto">Install Quarto</a></li>
+<li><a href="#load-environment" class="nav-link" data-scroll-target="#load-environment">Load environment</a></li>
+</ul></li>
+<li><a href="#workflow---quarto" class="nav-link" data-scroll-target="#workflow---quarto">Workflow - Quarto</a>
+<ul class="collapse">
+<li><a href="#command-linepython-2" class="nav-link" data-scroll-target="#command-linepython-2">Command Line/Python</a></li>
+<li><a href="#r-2" class="nav-link" data-scroll-target="#r-2">R</a></li>
+</ul></li>
+<li><a href="#workflow---github" class="nav-link" data-scroll-target="#workflow---github">Workflow - GitHub</a></li>
+<li><a href="#section" class="nav-link" data-scroll-target="#section"></a></li>
+</ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nasa-openscapes/quartobook-test/edit/main/community-handbook/contributing.Rmd">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/quartobook-test/issues/new">Report an issue</a></p></div></div></nav></div>
   <div class="col mx-auto col-sm-12 col-md-9 col-lg-7 px-lg-4">
 <main>
 <header id="title-block-header">
-<h1 class="title d-none d-lg-block display-7">Contributing.</h1>
+<h1 class="title d-none d-lg-block display-7">Contributing</h1>
 </header>
-<p>Text.</p>
-<p>Fork/borrow from the awesome work at The Turing Way: <a href="https://the-turing-way.netlify.app/community-handbook/community-handbook.html" class="uri">https://the-turing-way.netlify.app/community-handbook/community-handbook.html</a></p>
+
+<section id="how-to-contribute-to-our-book" class="level2">
+<h2 class="anchored" data-anchor-id="how-to-contribute-to-our-book">How to contribute to our book</h2>
+<p>We’ll make our e-book using Quarto (<a href="https://quarto.org/docs/getting-started/installation.html">https://quarto.org</a>). Your Quarto workflow can be from the Command Line (bash), Python, or R. Its book chapters can be many file types, including <code>.md</code> , <code>.ipynb</code>, and <code>.Rmd</code>. Chapters without code to execute can be written in <code>.md</code>.</p>
+<p>(Note: with Quarto, e-books and websites are very similarly structured, with e-books being set up for numbered chapters and references and websites set up for higher number of pages and organization. We can talk about our book as a book even as we explore whether book/website better suits our needs. This is defined in <code>_quarto.yml</code>.)</p>
+</section>
+<section id="setup" class="level2">
+<h2 class="anchored" data-anchor-id="setup">Setup</h2>
+<section id="clone-our-repository-locally" class="level3">
+<h3 class="anchored" data-anchor-id="clone-our-repository-locally">Clone our repository locally</h3>
+<p>Clone <code>nasa-openscapes/quartobook-test</code> using your method of preference. Here is how to do this in bash:</p>
+<div class="cell">
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash cell-code"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/NASA-Openscapes/quartobook-test </span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> quartobook-test</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="install-quarto" class="level3">
+<h3 class="anchored" data-anchor-id="install-quarto">Install Quarto</h3>
+<p>Install the <code>quarto</code> library so you can interact with it via the command line or R. I’ve set mine up with both.</p>
+<section id="command-linepython" class="level4">
+<h4 class="anchored" data-anchor-id="command-linepython">Command Line/Python:</h4>
+<p>In the command line, type:</p>
+<div class="cell">
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash cell-code"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install quarto </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="r" class="level4">
+<h4 class="anchored" data-anchor-id="r">R</h4>
+<p>In the R Console, type:</p>
+<div class="cell">
+<div class="sourceCode" id="cb3"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"quarto"</span>) </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"reticulate"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="load-environment" class="level3">
+<h3 class="anchored" data-anchor-id="load-environment">Load environment</h3>
+<p>Our repo is set up with an environment of the R and Python libraries that’s just for this project (we created it using the <a href="https://rstudio.github.io/renv/"><code>renv</code></a> R package, notes below). Loading this environment will give you what you need to contribute to the book, as well as build and publish it. But it will stay contained just here in this project so it won’t interact with your other projects.</p>
+<p>More details about environments, from <a href="https://towardsdatascience.com/virtual-environments-104c62d48c54">A Guide to Python’s Virtual Environments</a> (Sarmiento 2019):</p>
+<blockquote class="blockquote">
+<p>A virtual environment is a Python tool for <strong>dependency management</strong> and <strong>project</strong> <strong>isolation</strong>. They allow Python <strong>site packages</strong> (third party libraries) to be installed locally in an isolateddirectory for a particular project, as opposed to being installed globally (i.e.&nbsp;as part of a system-wide Python).</p>
+</blockquote>
+<section id="command-linepython-1" class="level4">
+<h4 class="anchored" data-anchor-id="command-linepython-1">Command Line/Python</h4>
+<p>TODO write more about <code>venv</code> and test that this works:</p>
+<div class="cell">
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash cell-code"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> <span class="at">-m</span> venv renv/</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="r-1" class="level4">
+<h4 class="anchored" data-anchor-id="r-1">R</h4>
+<p>In R, we’ll first need the <code>remotes</code> package to install the <code>renv</code> package from GitHub. Then we can restore the environment using <code>renv::restore()</code>.</p>
+<div class="cell">
+<div class="sourceCode" id="cb5"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">"remotes"</span>)) <span class="fu">install.packages</span>(<span class="st">"remotes"</span>) </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"rstudio/renv"</span>) </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>renv<span class="sc">::</span><span class="fu">restore</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="workflow---quarto" class="level2">
+<h2 class="anchored" data-anchor-id="workflow---quarto">Workflow - Quarto</h2>
+<p>Overview. Serve it once, make edits and render your .Rmd/.qmd pages (.md are automatic) and then when you’re ready to publish, you render.</p>
+<p>Now make edits &lt;to explain more&gt;</p>
+<section id="command-linepython-2" class="level3">
+<h3 class="anchored" data-anchor-id="command-linepython-2">Command Line/Python</h3>
+<p>To build the book, run the following from Terminal</p>
+<div class="cell">
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash cell-code"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> serve</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Paste the url from the console into your browser to see your updates.</p>
+<p>Continue working, the book will refresh live!</p>
+<p>Publish</p>
+<p>Run this before pushing to GitHub to publish:</p>
+<div class="cell">
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash cell-code"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="r-2" class="level3">
+<h3 class="anchored" data-anchor-id="r-2">R</h3>
+<div class="cell">
+<div class="sourceCode" id="cb8"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>quarto<span class="sc">::</span><span class="fu">quarto_render</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="workflow---github" class="level2">
+<h2 class="anchored" data-anchor-id="workflow---github">Workflow - GitHub</h2>
+<p>Return to the project: navigate to it in the command line/Terminal, or open it in RStudio/Visual Studio, etc.</p>
+<p>Pull most recent updates:</p>
+<div class="cell">
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash cell-code"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Create a new branch, then switch to that branch to work in. Then, connect it to github.com by pushing it “upstream” to the “origin repository.”</p>
+<div class="cell">
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash cell-code"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch branch-name </span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout branch-name </span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push <span class="at">--set-upstream</span> origin branch-name </span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Julie's example </span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch jsl-dev </span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout jsl-dev </span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push <span class="at">--set-upstream</span> origin jsl-dev</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Check which branch you’re on anytime by not specifying a branch name:</p>
+<div class="cell">
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash cell-code"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Make edits and build (see this workflow below)… Then when you’re ready, push back to GitHub</p>
+<div class="cell">
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash cell-code"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add <span class="at">--all</span> </span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"my commit message here"</span> </span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull <span class="co"># just to be safe git push</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now it’s on github, in a separate branch from main. You can go to <a href="https://github.com/nasa-openscapes/quartobook-test" class="uri">https://github.com/nasa-openscapes/quartobook-test</a> and do a pull request, and tag someone to review (depending on what you’ve done and what we’ve talked about).</p>
+</section>
+<section id="section" class="level2">
+<h2 class="anchored" data-anchor-id="section"></h2>
 <!-- -->
+</section>
 </main>
 <div class="page-navigation page-navigation-docked">
   <div class="nav-page nav-page-previous">
