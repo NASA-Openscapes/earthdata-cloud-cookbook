@@ -115,3 +115,14 @@ After the install works, make sure it's on his PATH.
 If not, then how to change: <https://stackoverflow.com/questions/61799309/where-can-i-see-deno-downloaded-packages>
 
 Quarto is under the quarto-cli directory: there's a `package/disc/bin` -- could get this on his $PATH
+
+## Troubleshooting/diagnostics
+June 10, 2021
+
+`quarto env`
+
+`quarto capabilities` will show the 5 python packages required. 
+
+`pip install quarto` installs those 5 packages in the environment. Recommended: miniconda, conda, python3.
+
+Weird error to look out for/avoid: when quarto detects python from the Windows Store. 
