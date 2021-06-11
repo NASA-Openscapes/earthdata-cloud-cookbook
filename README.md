@@ -10,11 +10,11 @@ We'll make our e-book using Quarto ([https://quarto.org](https://quarto.org/docs
 
 ### Clone our repository locally
 
-Clone `nasa-openscapes/quartobook-test` using your method of preference. Here is how to do this in bash:
+Clone `nasa-openscapes/earthdata-cloud-cookbook` using your method of preference. Here is how to do this in bash:
 
 ```{bash}
-git clone https://github.com/NASA-Openscapes/quartobook-test
-cd quartobook-test
+git clone https://github.com/NASA-Openscapes/earthdata-cloud-cookbook
+cd earthdata-cloud-cookbook
 ```
 
 ### Install Quarto
@@ -113,7 +113,7 @@ git pull # just to be safe
 git push 
 ```
 
-Now it's on github, in a separate branch from main. You can go to <https://github.com/nasa-openscapes/quartobook-test> and do a pull request, and tag someone to review (depending on what you've done and what we've talked about).
+Now it's on github, in a separate branch from main. You can go to <https://github.com/nasa-openscapes/earthdata-cloud-cookbook> and do a pull request, and tag someone to review (depending on what you've done and what we've talked about).
 
 ## Workflow - Quarto
 
@@ -189,9 +189,9 @@ Books use the alternate no YAML form because in the case of PDF, ePUB, or MS Wor
 
 ## Ideas for Notebook Workflow Friday
 
--   Show published book: <https://nasa-openscapes.github.io/quartobook-test/>
+-   Show published book: <https://nasa-openscapes.github.io/earthdata-cloud-cookbook/>
 
--   Show files on <https://github.com/NASA-Openscapes/quartobook-test>, talk through structure in `_quarto.yml`
+-   Show files on <https://github.com/NASA-Openscapes/earthdata-cloud-cookbook>, talk through structure in `_quarto.yml`
 
 -   Show quarto workflow locally (serve/render from R and CLI)
 
