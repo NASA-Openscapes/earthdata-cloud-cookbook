@@ -3,9 +3,10 @@
 This Earthdata Cloud Cookbook is being developed by the [NASA-Openscapes team](https://nasa-openscapes.github.io/). 
 
 ### How to contribute to our book
-Information for our team to [contributes to the Cookbook](https://nasa-openscapes.github.io/earthdata-cloud-cookbook/files/community-handbook/contributing.html)
+Information for our team [to contribute to the Cookbook](https://nasa-openscapes.github.io/earthdata-cloud-cookbook/files/community-handbook/contributing.html).
 
-### Initial repo setup notes
+## Initial repo setup notes
+June 7 2021
 
 #### Create and clone a repo
 
@@ -89,7 +90,8 @@ Books use the alternate no YAML form because in the case of PDF, ePUB, or MS Wor
 
 -   
 
-### June 9 J.J.'s fix for Aaron
+### J.J.'s fix for Aaron
+June 9 2021
 
 #### What Julie did:
 
