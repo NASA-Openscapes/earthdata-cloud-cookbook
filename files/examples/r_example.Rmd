@@ -12,10 +12,8 @@ As I write some description here. Today is Thursday.
 #| message: false
 #| warning: false
 
-library(ggplot2)
-ggplot(airquality, aes(Temp, Ozone)) + 
-        geom_point() + 
-        geom_smooth(method = "loess", se = FALSE)
+summary(cars)
+plot(pressure)
 ```
 
 I can run my code in-line as I go

@@ -6,11 +6,11 @@ execute:
 
 ## How to contribute to our book
 
-We'll make our e-book using Quarto ([https://quarto.org](https://quarto.org/docs/getting-started/installation.html)). Your Quarto workflow can be from the Command Line (bash), Python, or R. Its book chapters can be many file types, including `.md` , `.ipynb`, and `.Rmd`. In all cases narrative and prose can be written in markdown, and chapters without code to execute can be written in `.md`.
+We'll make our e-book using Quarto ([https://quarto.org](https://quarto.org/docs/getting-started/installation.html)). Your Quarto workflow can be from the Command Line (bash), Python, or R. Its book chapters can be many file types, including `.md` , `.ipynb`, `.Rmd`, and `.qmd`. In all cases narrative and prose can be written in markdown, and chapters without code to execute can be written in `.md`. This workflow can streamline collaboration for scientific & technical writing across programming languages. 
 
-What is Quarto? Quarto builds from what RStudio learned from RMarkdown but enables different engines (Jupyter and knitr). It is both a Command Line Tool and R package. Quarto can combine different file types into the same book: `.md`, `.ipynb`, `.Rmd`, `.qmd`. This workflow can streamline collaboration. And `.qmd` is a new filetype like RMarkdown --- meaning it's a text file but coupled with an engine can execute code --- but for Python. Quarto can convert `.ipynb` files to and from `.md` and `.qmd` easily. Once the book is "served" locally, `.md` files auto-update as you edit, and files with executable code can be rendered individually, and the behavior of different code chunks can be controlled and cached.
+What is Quarto? Quarto builds from what RStudio learned from RMarkdown but enables different engines (Jupyter and knitr). It is both a Command Line Tool and R package. `.qmd` is a new filetype like `.Rmd` --- meaning it's a text file but coupled with an engine can execute code and be rendered as html, pdf, word, and beyond --- but for other languages like Python. Quarto can convert `.ipynb` files to and from `.md` and `.qmd` easily so you can develop and publish with collaborators that have different workflows. Once the book is "served" locally, `.md` files auto-update as you edit, and files with executable code can be rendered individually, and the behavior of different code chunks can be controlled and cached.
 
-(Note: with Quarto, e-books and websites are very similarly structured, with e-books being set up for numbered chapters and references and websites set up for higher number of pages and organization. We can talk about our book as a book even as we explore whether book/website better suits our needs. This is defined in `_quarto.yml`.)
+(Note: with Quarto, e-books and websites are very similarly structured, with e-books being set up for numbered chapters and references and websites set up for higher number of pages and organization. We can talk about our book as a book even as we explore whether book/website better suits our needs. This is assigned in `_quarto.yml`.)
 
 ## Setup
 
@@ -77,7 +77,56 @@ install.packages("quarto")
 install.packages("reticulate")
 ```
 
-## Workflow - Quarto
+## GitHub Workflow
+
+First let's talk about the GitHub part of the workflow. The main steps of working with GitHub are to pull, (work), stage, commit, (pull), and push. You can't pull too much, it doesn't cost anything, and it can help you avoid merge conflicts. A fantastic resource on GitHub setup and collaboration: <https://happygitwithr.com/> (R-focused but fantastic philosophy and bash commands for setup, workflows, and collaboration).
+
+We're going to use branches and follow a shared workflow:
+
+### Branch setup and workflow
+
+Create a new branch, then switch to that branch to work in. Then, connect it to github.com by pushing it "upstream" to the "origin repository".
+
+```{bash}
+git branch branch-name 
+git checkout branch-name 
+git push --set-upstream origin branch-name 
+
+# Julie's example 
+git branch jsl-dev 
+git checkout jsl-dev 
+git push --set-upstream origin jsl-dev
+```
+
+Check which branch you're on anytime by not specifying a branch name:
+
+```{bash}
+git branch
+```
+
+Time for your Quarto workflow -- see below. Then when you're ready after you render the whole book, push back to GitHub.
+
+```{bash}
+git add --all 
+git commit -m "my commit message here" 
+git pull # just to be safe git push
+git push
+```
+
+Now it's on github, in a separate branch from main. You can go to <https://github.com/nasa-openscapes/quartobook-test> and do a pull request, and tag someone to review (depending on what you've done and what we've talked about).
+
+TODO: Let's discuss this:
+
+-   When the pull request is merged, delete the branch on github.com
+
+-   Then also delete the branch locally:
+
+```{bash}
+git checkout main # switch to the main branch
+git branch -d branch-hame
+```
+
+## Quarto Workflow
 
 OK now we are setup and ready to work! The thing to do first is to "serve" (build) the book to make sure everything's working. (It's called "serve" because it's really a website that looks like a book).
 
@@ -135,55 +184,4 @@ quarto::quarto_render()
 
 TODO!
 
-## Workflow - GitHub
 
-Now let's talk about the GitHub part of the workflow. The main steps of working with GitHub are to pull, (work), stage, commit, (pull), and push. You can't pull too much, it doesn't cost anything, and it can help you avoid merge conflicts. A fantastic resource on GitHub setup and collaboration: <https://happygitwithr.com/> (R-focused but fantastic philosophy and bash commands for setup, workflows, and collaboration).
-
-We're going to use branches and follow a shared workflow:
-
-### Branch setup and workflow
-
-Create a new branch, then switch to that branch to work in. Then, connect it to github.com by pushing it "upstream" to the "origin repository".
-
-```{bash}
-git branch branch-name 
-git checkout branch-name 
-git push --set-upstream origin branch-name 
-
-# Julie's example 
-git branch jsl-dev 
-git checkout jsl-dev 
-git push --set-upstream origin jsl-dev
-```
-
-Check which branch you're on anytime by not specifying a branch name:
-
-```{bash}
-git branch
-```
-
-Make edits and serve Quarto (see above). Then when you're ready, push back to GitHub.
-
-```{bash}
-git add --all 
-git commit -m "my commit message here" 
-git pull # just to be safe git push
-git push
-```
-
-Now it's on github, in a separate branch from main. You can go to <https://github.com/nasa-openscapes/quartobook-test> and do a pull request, and tag someone to review (depending on what you've done and what we've talked about).
-
-TODO: Let's discuss this:
-
--   When the pull request is merged, delete the branch on github.com
-
--   Then also delete the branch locally:
-
-```{bash}
-git checkout main # switch to the main branch
-git branch -d branch-hame
-```
-
-## Troubleshooting/notes
-
-Julie has some R examples in this book, which means everyone will need R installed too...
