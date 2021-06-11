@@ -381,16 +381,19 @@
 <li><a href="#setup" class="nav-link" data-scroll-target="#setup">Setup</a>
 <ul class="collapse">
 <li><a href="#clone-our-repository-locally" class="nav-link" data-scroll-target="#clone-our-repository-locally">Clone our repository locally</a></li>
-<li><a href="#install-quarto" class="nav-link" data-scroll-target="#install-quarto">Install Quarto</a></li>
 <li><a href="#load-environment" class="nav-link" data-scroll-target="#load-environment">Load environment</a></li>
+<li><a href="#install-quarto" class="nav-link" data-scroll-target="#install-quarto">Install Quarto</a></li>
 </ul></li>
 <li><a href="#workflow---quarto" class="nav-link" data-scroll-target="#workflow---quarto">Workflow - Quarto</a>
 <ul class="collapse">
 <li><a href="#command-linepython-2" class="nav-link" data-scroll-target="#command-linepython-2">Command Line/Python</a></li>
 <li><a href="#r-2" class="nav-link" data-scroll-target="#r-2">R</a></li>
 </ul></li>
-<li><a href="#workflow---github" class="nav-link" data-scroll-target="#workflow---github">Workflow - GitHub</a></li>
-<li><a href="#section" class="nav-link" data-scroll-target="#section"></a></li>
+<li><a href="#updating-the-environment" class="nav-link" data-scroll-target="#updating-the-environment">Updating the environment</a></li>
+<li><a href="#workflow---github" class="nav-link" data-scroll-target="#workflow---github">Workflow - GitHub</a>
+<ul class="collapse">
+<li><a href="#branch-setup-and-workflow" class="nav-link" data-scroll-target="#branch-setup-and-workflow">Branch setup and workflow</a></li>
+</ul></li>
 </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nasa-openscapes/quartobook-test/edit/main/community-handbook/contributing.Rmd">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/quartobook-test/issues/new">Report an issue</a></p></div></div></nav></div>
   <div class="col mx-auto col-sm-12 col-md-9 col-lg-7 px-lg-4">
@@ -401,7 +404,8 @@
 
 <section id="how-to-contribute-to-our-book" class="level2">
 <h2 class="anchored" data-anchor-id="how-to-contribute-to-our-book">How to contribute to our book</h2>
-<p>We’ll make our e-book using Quarto (<a href="https://quarto.org/docs/getting-started/installation.html">https://quarto.org</a>). Your Quarto workflow can be from the Command Line (bash), Python, or R. Its book chapters can be many file types, including <code>.md</code> , <code>.ipynb</code>, and <code>.Rmd</code>. Chapters without code to execute can be written in <code>.md</code>.</p>
+<p>We’ll make our e-book using Quarto (<a href="https://quarto.org/docs/getting-started/installation.html">https://quarto.org</a>). Your Quarto workflow can be from the Command Line (bash), Python, or R. Its book chapters can be many file types, including <code>.md</code> , <code>.ipynb</code>, and <code>.Rmd</code>. In all cases narrative and prose can be written in markdown, and chapters without code to execute can be written in <code>.md</code>.</p>
+<p>What is Quarto? Quarto builds from what RStudio learned from RMarkdown but enables different engines (Jupyter and knitr). It is both a Command Line Tool and R package. Quarto can combine different file types into the same book: <code>.md</code>, <code>.ipynb</code>, <code>.Rmd</code>, <code>.qmd</code>. This workflow can streamline collaboration. And <code>.qmd</code> is a new filetype like RMarkdown — meaning it’s a text file but coupled with an engine can execute code — but for Python. Quarto can convert <code>.ipynb</code> files to and from <code>.md</code> and <code>.qmd</code> easily. Once the book is “served” locally, <code>.md</code> files auto-update as you edit, and files with executable code can be rendered individually, and the behavior of different code chunks can be controlled and cached.</p>
 <p>(Note: with Quarto, e-books and websites are very similarly structured, with e-books being set up for numbered chapters and references and websites set up for higher number of pages and organization. We can talk about our book as a book even as we explore whether book/website better suits our needs. This is defined in <code>_quarto.yml</code>.)</p>
 </section>
 <section id="setup" class="level2">
@@ -410,113 +414,146 @@
 <h3 class="anchored" data-anchor-id="clone-our-repository-locally">Clone our repository locally</h3>
 <p>Clone <code>nasa-openscapes/quartobook-test</code> using your method of preference. Here is how to do this in bash:</p>
 <div class="cell">
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash cell-code"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/NASA-Openscapes/quartobook-test </span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> quartobook-test</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash cell-code"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/NASA-Openscapes/earthdata-cloud-cookbook </span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> earthdata-cloud-cookbook</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="install-quarto" class="level3">
-<h3 class="anchored" data-anchor-id="install-quarto">Install Quarto</h3>
-<p>Install the <code>quarto</code> library so you can interact with it via the command line or R. I’ve set mine up with both.</p>
-<section id="command-linepython" class="level4">
-<h4 class="anchored" data-anchor-id="command-linepython">Command Line/Python:</h4>
-<p>In the command line, type:</p>
-<div class="cell">
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash cell-code"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install quarto </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="r" class="level4">
-<h4 class="anchored" data-anchor-id="r">R</h4>
-<p>In the R Console, type:</p>
-<div class="cell">
-<div class="sourceCode" id="cb3"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"quarto"</span>) </span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"reticulate"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
 </section>
 <section id="load-environment" class="level3">
 <h3 class="anchored" data-anchor-id="load-environment">Load environment</h3>
-<p>Our repo is set up with an environment of the R and Python libraries that’s just for this project (we created it using the <a href="https://rstudio.github.io/renv/"><code>renv</code></a> R package, notes below). Loading this environment will give you what you need to contribute to the book, as well as build and publish it. But it will stay contained just here in this project so it won’t interact with your other projects.</p>
+<p>Our repo is set up with libraries (currently Python but we can also add R) that’s just for this project (creation using the <a href="https://rstudio.github.io/renv/"><code>renv</code></a> R package below). Loading this environment will give you what you need to contribute to the book, as well as build and publish it. But it will stay contained just here in this project so it won’t interact with your other projects.</p>
 <p>More details about environments, from <a href="https://towardsdatascience.com/virtual-environments-104c62d48c54">A Guide to Python’s Virtual Environments</a> (Sarmiento 2019):</p>
 <blockquote class="blockquote">
 <p>A virtual environment is a Python tool for <strong>dependency management</strong> and <strong>project</strong> <strong>isolation</strong>. They allow Python <strong>site packages</strong> (third party libraries) to be installed locally in an isolateddirectory for a particular project, as opposed to being installed globally (i.e.&nbsp;as part of a system-wide Python).</p>
 </blockquote>
-<section id="command-linepython-1" class="level4">
-<h4 class="anchored" data-anchor-id="command-linepython-1">Command Line/Python</h4>
-<p>TODO write more about <code>venv</code> and test that this works:</p>
+<section id="command-linepython" class="level4">
+<h4 class="anchored" data-anchor-id="command-linepython">Command Line/Python</h4>
+<p>Depending on whether your python install is via <code>pip</code> or <code>conda</code> you will run the following code in the command line:</p>
 <div class="cell">
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash cell-code"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> <span class="at">-m</span> venv renv/</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash cell-code"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">## pip approach:</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> <span class="at">-m</span> venv .venv</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> .venv/bin/activate</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">-r</span> requirements.txt</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co">## conda approach:</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env create <span class="at">--name</span> openscapes <span class="at">--file-environment.yml</span>  </span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate openscapes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="r" class="level4">
+<h4 class="anchored" data-anchor-id="r">R</h4>
+<p>In R, we’ll first need the <code>remotes</code> package to install the <code>renv</code> package from GitHub. Then we can restore the environment using <code>renv::restore()</code>.</p>
+<div class="cell">
+<div class="sourceCode" id="cb3"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">"remotes"</span>)) <span class="fu">install.packages</span>(<span class="st">"remotes"</span>) </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"rstudio/renv"</span>) </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>renv<span class="sc">::</span><span class="fu">restore</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="install-quarto" class="level3">
+<h3 class="anchored" data-anchor-id="install-quarto">Install Quarto</h3>
+<p>Install the <code>quarto</code> library so you can interact with it via the command line or R. I’ve set mine up with both.</p>
+<section id="command-linepython-1" class="level4">
+<h4 class="anchored" data-anchor-id="command-linepython-1">Command Line/Python:</h4>
+<p>In the command line, type:</p>
+<div class="cell">
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash cell-code"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install quarto </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="r-1" class="level4">
 <h4 class="anchored" data-anchor-id="r-1">R</h4>
-<p>In R, we’ll first need the <code>remotes</code> package to install the <code>renv</code> package from GitHub. Then we can restore the environment using <code>renv::restore()</code>.</p>
+<p>In R you’ll also need the <a href="https://rstudio.github.io/reticulate/"><code>reticulate</code></a> package. In In the R Console, type:</p>
 <div class="cell">
-<div class="sourceCode" id="cb5"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">"remotes"</span>)) <span class="fu">install.packages</span>(<span class="st">"remotes"</span>) </span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"rstudio/renv"</span>) </span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>renv<span class="sc">::</span><span class="fu">restore</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"quarto"</span>) </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"reticulate"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
 </section>
 <section id="workflow---quarto" class="level2">
 <h2 class="anchored" data-anchor-id="workflow---quarto">Workflow - Quarto</h2>
-<p>Overview. Serve it once, make edits and render your .Rmd/.qmd pages (.md are automatic) and then when you’re ready to publish, you render.</p>
-<p>Here we are talking about the age old debate of whether computational markdown should be rendered on save when running a dev server. We currently don’t do this to give the user a choice between an expensive render and a cheap save (i.e.&nbsp;if we conflate them we’ve taken away what might be an important option for users with long running documents). This is currently documented here (<a href="https://quarto.org/docs/websites/website-basics.html#workflow" class="uri">https://quarto.org/docs/websites/website-basics.html#workflow</a>) but perhaps could be made more clear.Now make edits &lt;to explain more&gt;</p>
-<p>For Rmd and qmd files you need to render them (md updates show on save b/c there is no render step). The reason we don’t render Rmd and qmd on save is that render could (potentially) be very long running and we don’t want to impose that cost on you whenever you save.</p>
+<p>OK now we are setup and ready to work! The thing to do first is to “serve” (build) the book to make sure everything’s working. (It’s called “serve” because it’s really a website that looks like a book).</p>
+<p>The overall workflow will be to serve the book at the beginning, make edits and render your <code>.Rmd</code>/<code>.qmd</code> pages to view your edits as you go (<code>.md</code> are automatic) and then when you’re ready to publish, you render the book with an additional command. Learn more about rendering here: <a href="https://quarto.org/docs/computations/running-code.html#rendering" class="uri">https://quarto.org/docs/computations/running-code.html#rendering</a>. From J.J. at RStudio:</p>
+<blockquote class="blockquote">
+<p>For <code>.Rmd</code> and <code>.qmd</code> files you need to render them (<code>.md</code> updates show on save because there is no render step). The reason Quarto doesn’t render <code>.Rmd</code> and <code>.qmd</code> on save is that render could (potentially) be very long running and that cost shouldn’t be imposed on you whenever you save.</p>
+<p>Here we are talking about the age old debate of whether computational markdown should be rendered on save when running a development server. Quarto currently doesn’t do this to give the user a choice between an expensive render and a cheap save. See: <a href="https://quarto.org/docs/websites/website-basics.html#workflow" class="uri">https://quarto.org/docs/websites/website-basics.html#workflow</a>.</p>
+</blockquote>
+<p>The structure of the book is written in <code>_quarto.yml.</code> More description on this upcoming.</p>
 <section id="command-linepython-2" class="level3">
 <h3 class="anchored" data-anchor-id="command-linepython-2">Command Line/Python</h3>
-<p>To build the book, run the following from Terminal</p>
+<p>To serve the book, run the following:</p>
 <div class="cell">
 <div class="sourceCode" id="cb6"><pre class="sourceCode bash cell-code"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> serve</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Paste the url from the console into your browser to see your updates.</p>
-<p>Continue working, the book will refresh live!</p>
-<p>Publish</p>
-<p>Run this before pushing to GitHub to publish:</p>
+<p>Continue working, the <code>.md</code> files will refresh live! To refresh files with executable code, type:</p>
 <div class="cell">
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash cell-code"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash cell-code"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render jupyter-document.ipynb</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>To render and the whole book before publishing:</p>
+<div class="cell">
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash cell-code"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="r-2" class="level3">
 <h3 class="anchored" data-anchor-id="r-2">R</h3>
+<p>To the serve the book from R:</p>
 <div class="cell">
-<div class="sourceCode" id="cb8"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>quarto<span class="sc">::</span><span class="fu">quarto_render</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>quarto<span class="sc">::</span><span class="fu">quarto_serve</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Continue working, the <code>.md</code> files will refresh live! To refresh files with executable code, type:</p>
+<div class="cell">
+<div class="sourceCode" id="cb10"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>quarto<span class="sc">::</span><span class="fu">quarto_render</span>(<span class="st">"filename.ipynb"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>To render and the whole book before publishing:</p>
+<div class="cell">
+<div class="sourceCode" id="cb11"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>quarto<span class="sc">::</span><span class="fu">quarto_render</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
+</section>
+<section id="updating-the-environment" class="level2">
+<h2 class="anchored" data-anchor-id="updating-the-environment">Updating the environment</h2>
+<p>TODO!</p>
 </section>
 <section id="workflow---github" class="level2">
 <h2 class="anchored" data-anchor-id="workflow---github">Workflow - GitHub</h2>
-<p>Return to the project: navigate to it in the command line/Terminal, or open it in RStudio/Visual Studio, etc.</p>
-<p>Pull most recent updates:</p>
-<div class="cell">
-<div class="sourceCode" id="cb9"><pre class="sourceCode bash cell-code"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<p>Now let’s talk about the GitHub part of the workflow. The main steps of working with GitHub are to pull, (work), stage, commit, (pull), and push. You can’t pull too much, it doesn’t cost anything, and it can help you avoid merge conflicts. A fantastic resource on GitHub setup and collaboration: <a href="https://happygitwithr.com/" class="uri">https://happygitwithr.com/</a> (R-focused but fantastic philosophy and bash commands for setup, workflows, and collaboration).</p>
+<p>We’re going to use branches and follow a shared workflow:</p>
+<section id="branch-setup-and-workflow" class="level3">
+<h3 class="anchored" data-anchor-id="branch-setup-and-workflow">Branch setup and workflow</h3>
 <p>Create a new branch, then switch to that branch to work in. Then, connect it to github.com by pushing it “upstream” to the “origin repository.”</p>
 <div class="cell">
-<div class="sourceCode" id="cb10"><pre class="sourceCode bash cell-code"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch branch-name </span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout branch-name </span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push <span class="at">--set-upstream</span> origin branch-name </span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Julie's example </span></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch jsl-dev </span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout jsl-dev </span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push <span class="at">--set-upstream</span> origin jsl-dev</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash cell-code"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch branch-name </span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout branch-name </span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push <span class="at">--set-upstream</span> origin branch-name </span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Julie's example </span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch jsl-dev </span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout jsl-dev </span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push <span class="at">--set-upstream</span> origin jsl-dev</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Check which branch you’re on anytime by not specifying a branch name:</p>
 <div class="cell">
-<div class="sourceCode" id="cb11"><pre class="sourceCode bash cell-code"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash cell-code"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Make edits and build (see this workflow below)… Then when you’re ready, push back to GitHub</p>
+<p>Make edits and serve Quarto (see above). Then when you’re ready, push back to GitHub.</p>
 <div class="cell">
-<div class="sourceCode" id="cb12"><pre class="sourceCode bash cell-code"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add <span class="at">--all</span> </span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"my commit message here"</span> </span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull <span class="co"># just to be safe git push</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash cell-code"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add <span class="at">--all</span> </span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"my commit message here"</span> </span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull <span class="co"># just to be safe git push</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now it’s on github, in a separate branch from main. You can go to <a href="https://github.com/nasa-openscapes/quartobook-test" class="uri">https://github.com/nasa-openscapes/quartobook-test</a> and do a pull request, and tag someone to review (depending on what you’ve done and what we’ve talked about).</p>
-</section>
-<section id="section" class="level2">
-<h2 class="anchored" data-anchor-id="section"></h2>
+<p>TODO: Let’s discuss this:</p>
+<ul>
+<li><p>When the pull request is merged, delete the branch on github.com</p></li>
+<li><p>Then also delete the branch locally:</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode" id="cb15"><pre class="sourceCode bash cell-code"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout main <span class="co"># switch to the main branch</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch <span class="at">-d</span> branch-hame</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <!-- -->
+</section>
 </section>
 </main>
 <div class="page-navigation page-navigation-docked">

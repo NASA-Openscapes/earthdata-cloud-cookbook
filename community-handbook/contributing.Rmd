@@ -6,7 +6,9 @@ execute:
 
 ## How to contribute to our book
 
-We'll make our e-book using Quarto ([https://quarto.org](https://quarto.org/docs/getting-started/installation.html)). Your Quarto workflow can be from the Command Line (bash), Python, or R. Its book chapters can be many file types, including `.md` , `.ipynb`, and `.Rmd`. Chapters without code to execute can be written in `.md`.
+We'll make our e-book using Quarto ([https://quarto.org](https://quarto.org/docs/getting-started/installation.html)). Your Quarto workflow can be from the Command Line (bash), Python, or R. Its book chapters can be many file types, including `.md` , `.ipynb`, and `.Rmd`. In all cases narrative and prose can be written in markdown, and chapters without code to execute can be written in `.md`.
+
+What is Quarto? Quarto builds from what RStudio learned from RMarkdown but enables different engines (Jupyter and knitr). It is both a Command Line Tool and R package. Quarto can combine different file types into the same book: `.md`, `.ipynb`, `.Rmd`, `.qmd`. This workflow can streamline collaboration. And `.qmd` is a new filetype like RMarkdown --- meaning it's a text file but coupled with an engine can execute code --- but for Python. Quarto can convert `.ipynb` files to and from `.md` and `.qmd` easily. Once the book is "served" locally, `.md` files auto-update as you edit, and files with executable code can be rendered individually, and the behavior of different code chunks can be controlled and cached.
 
 (Note: with Quarto, e-books and websites are very similarly structured, with e-books being set up for numbered chapters and references and websites set up for higher number of pages and organization. We can talk about our book as a book even as we explore whether book/website better suits our needs. This is defined in `_quarto.yml`.)
 
@@ -17,8 +19,41 @@ We'll make our e-book using Quarto ([https://quarto.org](https://quarto.org/docs
 Clone `nasa-openscapes/quartobook-test` using your method of preference. Here is how to do this in bash:
 
 ```{bash}
-git clone https://github.com/NASA-Openscapes/quartobook-test 
-cd quartobook-test
+git clone https://github.com/NASA-Openscapes/earthdata-cloud-cookbook 
+cd earthdata-cloud-cookbook
+```
+
+### Load environment
+
+Our repo is set up with libraries (currently Python but we can also add R) that's just for this project (creation using the [`renv`](https://rstudio.github.io/renv/) R package below). Loading this environment will give you what you need to contribute to the book, as well as build and publish it. But it will stay contained just here in this project so it won't interact with your other projects.
+
+More details about environments, from [A Guide to Python's Virtual Environments](https://towardsdatascience.com/virtual-environments-104c62d48c54) (Sarmiento 2019):
+
+> A virtual environment is a Python tool for **dependency management** and **project** **isolation**. They allow Python **site packages** (third party libraries) to be installed locally in an isolateddirectory for a particular project, as opposed to being installed globally (i.e. as part of a system-wide Python).
+
+#### Command Line/Python
+
+Depending on whether your python install is via `pip` or `conda` you will run the following code in the command line:
+
+```{bash}
+## pip approach:
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+
+## conda approach:
+conda env create --name openscapes --file-environment.yml  
+conda activate openscapes
+```
+
+#### R
+
+In R, we'll first need the `remotes` package to install the `renv` package from GitHub. Then we can restore the environment using `renv::restore()`.
+
+```{r}
+if (!requireNamespace("remotes")) install.packages("remotes") 
+remotes::install_github("rstudio/renv") 
+renv::restore()
 ```
 
 ### Install Quarto
@@ -35,50 +70,28 @@ pip install quarto
 
 #### R
 
-In the R Console, type:
+In R you'll also need the [`reticulate`](https://rstudio.github.io/reticulate/) package. In In the R Console, type:
 
 ```{r}
 install.packages("quarto") 
 install.packages("reticulate")
 ```
 
-### Load environment
-
-Our repo is set up with an environment of the R and Python libraries that's just for this project (we created it using the [`renv`](https://rstudio.github.io/renv/) R package, notes below). Loading this environment will give you what you need to contribute to the book, as well as build and publish it. But it will stay contained just here in this project so it won't interact with your other projects.
-
-More details about environments, from [A Guide to Python's Virtual Environments](https://towardsdatascience.com/virtual-environments-104c62d48c54) (Sarmiento 2019):
-
-> A virtual environment is a Python tool for **dependency management** and **project** **isolation**. They allow Python **site packages** (third party libraries) to be installed locally in an isolateddirectory for a particular project, as opposed to being installed globally (i.e. as part of a system-wide Python).
-
-#### Command Line/Python
-
-TODO write more about `venv` and test that this works:
-
-```{bash}
-python3 -m venv renv/
-```
-
-#### R
-
-In R, we'll first need the `remotes` package to install the `renv` package from GitHub. Then we can restore the environment using `renv::restore()`.
-
-```{r}
-if (!requireNamespace("remotes")) install.packages("remotes") 
-remotes::install_github("rstudio/renv") 
-renv::restore()
-```
-
 ## Workflow - Quarto
 
-Overview. Serve it once, make edits and render your .Rmd/.qmd pages (.md are automatic) and then when you're ready to publish, you render.
+OK now we are setup and ready to work! The thing to do first is to "serve" (build) the book to make sure everything's working. (It's called "serve" because it's really a website that looks like a book).
 
-Here we are talking about the age old debate of whether computational markdown should be rendered on save when running a dev server. We currently don't do this to give the user a choice between an expensive render and a cheap save (i.e. if we conflate them we've taken away what might be an important option for users with long running documents). This is currently documented here (<https://quarto.org/docs/websites/website-basics.html#workflow>) but perhaps could be made more clear.Now make edits \<to explain more\>
+The overall workflow will be to serve the book at the beginning, make edits and render your `.Rmd`/`.qmd` pages to view your edits as you go (`.md` are automatic) and then when you're ready to publish, you render the book with an additional command. Learn more about rendering here: <https://quarto.org/docs/computations/running-code.html#rendering>. From J.J. at RStudio:
 
-For Rmd and qmd files you need to render them (md updates show on save b/c there is no render step). The reason we don't render Rmd and qmd on save is that render could (potentially) be very long running and we don't want to impose that cost on you whenever you save.
+> For `.Rmd` and `.qmd` files you need to render them (`.md` updates show on save because there is no render step). The reason Quarto doesn't render `.Rmd` and `.qmd` on save is that render could (potentially) be very long running and that cost shouldn't be imposed on you whenever you save.
+>
+> Here we are talking about the age old debate of whether computational markdown should be rendered on save when running a development server. Quarto currently doesn't do this to give the user a choice between an expensive render and a cheap save. See: <https://quarto.org/docs/websites/website-basics.html#workflow>.
+
+The structure of the book is written in `_quarto.yml.` More description on this upcoming.
 
 ### Command Line/Python
 
-To build the book, run the following from Terminal
+To serve the book, run the following:
 
 ```{bash}
 quarto serve
@@ -86,11 +99,13 @@ quarto serve
 
 Paste the url from the console into your browser to see your updates.
 
-Continue working, the book will refresh live!
+Continue working, the `.md` files will refresh live! To refresh files with executable code, type:
 
-Publish
+```{bash}
+quarto render jupyter-document.ipynb
+```
 
-Run this before pushing to GitHub to publish:
+To render and the whole book before publishing:
 
 ```{bash}
 quarto render
@@ -98,19 +113,35 @@ quarto render
 
 ### R
 
+To the serve the book from R:
+
+```{r}
+quarto::quarto_serve()
+```
+
+Continue working, the `.md` files will refresh live! To refresh files with executable code, type:
+
+```{r}
+quarto::quarto_render("filename.ipynb")
+```
+
+To render and the whole book before publishing:
+
 ```{r}
 quarto::quarto_render()
 ```
 
+## Updating the environment
+
+TODO!
+
 ## Workflow - GitHub
 
-Return to the project: navigate to it in the command line/Terminal, or open it in RStudio/Visual Studio, etc.
+Now let's talk about the GitHub part of the workflow. The main steps of working with GitHub are to pull, (work), stage, commit, (pull), and push. You can't pull too much, it doesn't cost anything, and it can help you avoid merge conflicts. A fantastic resource on GitHub setup and collaboration: <https://happygitwithr.com/> (R-focused but fantastic philosophy and bash commands for setup, workflows, and collaboration).
 
-Pull most recent updates:
+We're going to use branches and follow a shared workflow:
 
-```{bash}
-git pull
-```
+### Branch setup and workflow
 
 Create a new branch, then switch to that branch to work in. Then, connect it to github.com by pushing it "upstream" to the "origin repository".
 
@@ -131,14 +162,24 @@ Check which branch you're on anytime by not specifying a branch name:
 git branch
 ```
 
-Make edits and build (see this workflow below)... Then when you're ready, push back to GitHub
+Make edits and serve Quarto (see above). Then when you're ready, push back to GitHub.
 
 ```{bash}
 git add --all 
 git commit -m "my commit message here" 
 git pull # just to be safe git push
+git push
 ```
 
 Now it's on github, in a separate branch from main. You can go to <https://github.com/nasa-openscapes/quartobook-test> and do a pull request, and tag someone to review (depending on what you've done and what we've talked about).
 
-## 
+TODO: Let's discuss this:
+
+-   When the pull request is merged, delete the branch on github.com
+
+-   Then also delete the branch locally:
+
+```{bash}
+git checkout main # switch to the main branch
+git branch -d branch-hame
+```
