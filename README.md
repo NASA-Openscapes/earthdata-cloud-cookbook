@@ -102,7 +102,9 @@ cd quarto-cli
 quarto convert help # to check 
 ```
 
-#### For Aaron:
+#### For Aaron
+
+Download the OS specific binaries from: <https://github.com/quarto-dev/quarto-cli/releases/latest>  
 
 ```
 cd quarto-cli
