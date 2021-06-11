@@ -174,6 +174,12 @@
     "text": "Like a notebook experience but in visual editor\n\n1+1\n2+2\n\n4\n\n\nIf I’m working on narrative, can set up caching like Jupyterbook so that it doesn’t execute the code\n\nimport numpy as np\nimport matplotlib.pyplot as plt\n\nr = np.arange(0, 2, 0.01)\ntheta = 2 * np.pi * r\nfig, ax = plt.subplots(subplot_kw={'projection': 'polar'})\nax.plot(theta, r)\nax.set_rticks([0.5, 1, 1.5, 2])\nax.grid(True)\nplt.show()\n\n\n\n\nthis is an aid to your composition as you go, but then you still render"
   },
   {
+    "href": "files/examples/python_notebook.html#this-is-a-.ipynb-file",
+    "title": "Cloud for Earth Science",
+    "section": "This is a .ipynb file",
+    "text": "I will write overview and background here\n\n1+1\n2+2\n\n4\n\n\nIf I’m working on narrative, can set up caching so that it doesn’t execute the code\n\nimport numpy as np\nimport matplotlib.pyplot as plt\n\nr = np.arange(0, 2, 0.01)\ntheta = 2 * np.pi * r\nfig, ax = plt.subplots(subplot_kw={'projection': 'polar'})\nax.plot(theta, r)\nax.set_rticks([0.5, 1, 1.5, 2])\nax.grid(True)\nplt.show()\n\n\n\n\ntext boxes like this one are in markdown"
+  },
+  {
     "href": "files/examples/index.html",
     "title": "Examples",
     "section": "",
