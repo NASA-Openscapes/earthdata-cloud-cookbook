@@ -461,7 +461,8 @@
 <section id="workflow---quarto" class="level2">
 <h2 class="anchored" data-anchor-id="workflow---quarto">Workflow - Quarto</h2>
 <p>Overview. Serve it once, make edits and render your .Rmd/.qmd pages (.md are automatic) and then when you’re ready to publish, you render.</p>
-<p>Now make edits &lt;to explain more&gt;</p>
+<p>Here we are talking about the age old debate of whether computational markdown should be rendered on save when running a dev server. We currently don’t do this to give the user a choice between an expensive render and a cheap save (i.e.&nbsp;if we conflate them we’ve taken away what might be an important option for users with long running documents). This is currently documented here (<a href="https://quarto.org/docs/websites/website-basics.html#workflow" class="uri">https://quarto.org/docs/websites/website-basics.html#workflow</a>) but perhaps could be made more clear.Now make edits &lt;to explain more&gt;</p>
+<p>For Rmd and qmd files you need to render them (md updates show on save b/c there is no render step). The reason we don’t render Rmd and qmd on save is that render could (potentially) be very long running and we don’t want to impose that cost on you whenever you save.</p>
 <section id="command-linepython-2" class="level3">
 <h3 class="anchored" data-anchor-id="command-linepython-2">Command Line/Python</h3>
 <p>To build the book, run the following from Terminal</p>
