@@ -42,7 +42,7 @@ source .venv/bin/activate
 pip install -r requirements.txt
 
 ## conda approach:
-conda env create --name openscapes --file-environment.yml  
+conda env create --name openscapes --file environment.yml  
 conda activate openscapes
 ```
 
@@ -85,17 +85,14 @@ We're going to use branches and follow a shared workflow:
 
 ### Branch setup and workflow
 
-Create a new branch, then switch to that branch to work in. Then, connect it to github.com by pushing it "upstream" to the "origin repository".
+Create a new branch, then switch to that branch to work in. Then, connect it to github.com by pushing it "upstream" to the "origin repository". `git checkout -b branch-name` is a 1-step approach for `git branch branch-name` `git checkout branch-name` (read [more](https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging)). 
 
 ```{bash}
-git branch branch-name 
-git checkout branch-name 
-git push --set-upstream origin branch-name 
+## create and switch to new branch
+git checkout -b branch-name
 
 # Julie's example 
-git branch jsl-dev 
-git checkout jsl-dev 
-git push --set-upstream origin jsl-dev
+git checkout -b jsl-dev 
 ```
 
 Check which branch you're on anytime by not specifying a branch name:
@@ -104,11 +101,13 @@ Check which branch you're on anytime by not specifying a branch name:
 git branch
 ```
 
-Time for your Quarto workflow -- see below. Then when you're ready after you render the whole book, push back to GitHub.
+Time for your Quarto workflow -- see below. Then when you're ready after you render the whole book, push back to GitHub. First you have to connect your branch to github.com (the "upstream origin") (`-u` below is short for `--set-upstream`)
 
 ```{bash}
+git push --set-upstream origin branch-name 
 git add --all 
 git commit -m "my commit message here" 
+git push -u origin <branch>
 git pull # just to be safe git push
 git push
 ```
