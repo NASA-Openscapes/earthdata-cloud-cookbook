@@ -3,7 +3,7 @@
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>Cloud for Earth Science – Contributing</title>
+  <title>EarthData Cloud Cookbook – Contributing</title>
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -144,7 +144,7 @@
   <div class="px-3 pt-lg-2 mt-1 text-left">
     <div class="sidebar-title mt-1 mb-0 py-0">
       <a href="../../">
-      Cloud for Earth Science
+      EarthData Cloud Cookbook
       </a>
         <div class="sidebar-tools-main">
     <a href="https://github.com/nasa-openscapes/quartobook-test" title="" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
@@ -442,7 +442,7 @@
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">-r</span> requirements.txt</span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co">## conda approach:</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env create <span class="at">--name</span> openscapes <span class="at">--file-environment.yml</span>  </span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env create <span class="at">--name</span> openscapes <span class="at">--file</span> environment.yml  </span>
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate openscapes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
@@ -478,31 +478,30 @@
 </section>
 <section id="github-workflow" class="level2">
 <h2 class="anchored" data-anchor-id="github-workflow">GitHub Workflow</h2>
-<p>First let’s talk about the GitHub part of the workflow. The main steps of working with GitHub are to pull, (work), stage, commit, (pull), and push. You can’t pull too much, it doesn’t cost anything, and it can help you avoid merge conflicts. A fantastic resource on GitHub setup and collaboration: <a href="https://happygitwithr.com/" class="uri">https://happygitwithr.com/</a> (R-focused but fantastic philosophy and bash commands for setup, workflows, and collaboration).</p>
-<p>We’re going to use branches and follow a shared workflow:</p>
+<p>First let’s talk about the GitHub part of the workflow. The main steps of working with GitHub are to pull, (work), stage, commit, (pull), and push. A great resource on GitHub setup and collaboration: <a href="https://happygitwithr.com/" class="uri">https://happygitwithr.com/</a> (R-focused but fantastic philosophy and bash commands for setup, workflows, and collaboration).</p>
+<p>We’re going to use branches and follow a shared workflow: create a branch, work in your branch and commit regularly, and push to github often. When you’re ready, create a pull request and we’ll merge it into the main branch.</p>
 <section id="branch-setup-and-workflow" class="level3">
 <h3 class="anchored" data-anchor-id="branch-setup-and-workflow">Branch setup and workflow</h3>
-<p>Create a new branch, then switch to that branch to work in. Then, connect it to github.com by pushing it “upstream” to the “origin repository.”</p>
+<p>Create a new branch, then switch to that branch to work in. Then, connect it to github.com by pushing it “upstream” to the “origin repository.” <code>git checkout -b branch-name</code> is a 1-step approach for <code>git branch branch-name</code> <code>git checkout branch-name</code> (read <a href="https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging">more</a>).</p>
 <div class="cell">
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash cell-code"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch branch-name </span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout branch-name </span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push <span class="at">--set-upstream</span> origin branch-name </span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Julie's example </span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch jsl-dev </span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout jsl-dev </span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push <span class="at">--set-upstream</span> origin jsl-dev</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash cell-code"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">## create and switch to new branch</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout <span class="at">-b</span> branch-name</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Julie's example </span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout <span class="at">-b</span> jsl-dev </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Check which branch you’re on anytime by not specifying a branch name:</p>
 <div class="cell">
 <div class="sourceCode" id="cb7"><pre class="sourceCode bash cell-code"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Time for your Quarto workflow – see below. Then when you’re ready after you render the whole book, push back to GitHub.</p>
+<p>Time for your Quarto workflow – see below. Then when you’re ready after you render the whole book, push back to GitHub. First you have to connect your branch to github.com (the “upstream origin”) (<code>-u</code> below is short for <code>--set-upstream</code>)</p>
 <div class="cell">
-<div class="sourceCode" id="cb8"><pre class="sourceCode bash cell-code"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add <span class="at">--all</span> </span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"my commit message here"</span> </span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull <span class="co"># just to be safe git push</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash cell-code"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">## commit regularly as you work</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add <span class="at">--all</span> </span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"my commit message here"</span> </span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co">## push to github.com</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push <span class="at">-u</span> origin branch-name</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now it’s on github, in a separate branch from main. You can go to <a href="https://github.com/nasa-openscapes/quartobook-test" class="uri">https://github.com/nasa-openscapes/quartobook-test</a> and do a pull request, and tag someone to review (depending on what you’ve done and what we’ve talked about).</p>
 <p>TODO: Let’s discuss this:</p>

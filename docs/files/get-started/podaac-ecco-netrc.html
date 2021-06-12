@@ -3,7 +3,7 @@
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>Cloud for Earth Science – podaac-ecco-netrc</title>
+  <title>EarthData Cloud Cookbook – podaac-ecco-netrc</title>
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -145,7 +145,7 @@
   <div class="px-3 pt-lg-2 mt-1 text-left">
     <div class="sidebar-title mt-1 mb-0 py-0">
       <a href="../../">
-      Cloud for Earth Science
+      EarthData Cloud Cookbook
       </a>
         <div class="sidebar-tools-main">
     <a href="https://github.com/nasa-openscapes/quartobook-test" title="" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
@@ -533,6 +533,8 @@ machine opendap.earthdata.nasa.gov login jmcnelis password
 machine urs.earthdata.nasa.gov login jmcnelis password
 machine opendap.earthdata.nasa.gov login jmcnelis password
 machine urs.earthdata.nasa.gov login jmcnelis password
+machine opendap.earthdata.nasa.gov login jmcnelis password
+machine urs.earthdata.nasa.gov login jmcnelis password
 machine opendap.earthdata.nasa.gov login jmcnelis password</code></pre>
 </div>
 </div>
@@ -556,6 +558,8 @@ machine opendap.earthdata.nasa.gov login jmcnelis password ***</code></pre>
 <div class="sourceCode" id="cb6"><pre class="sourceCode python cell-code"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>cat <span class="op">~/</span>.netrc <span class="op">|</span> grep <span class="st">'.earthdata.nasa.gov'</span> <span class="op">|</span> cut <span class="op">-</span>f<span class="op">-</span><span class="dv">5</span> <span class="op">-</span>d<span class="st">" "</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-stdout">
 <pre><code>machine urs.earthdata.nasa.gov login jmcnelis password
+machine opendap.earthdata.nasa.gov login jmcnelis password
+machine urs.earthdata.nasa.gov login jmcnelis password
 machine opendap.earthdata.nasa.gov login jmcnelis password
 machine urs.earthdata.nasa.gov login jmcnelis password
 machine opendap.earthdata.nasa.gov login jmcnelis password

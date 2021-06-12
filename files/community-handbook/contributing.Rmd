@@ -79,9 +79,9 @@ install.packages("reticulate")
 
 ## GitHub Workflow
 
-First let's talk about the GitHub part of the workflow. The main steps of working with GitHub are to pull, (work), stage, commit, (pull), and push. You can't pull too much, it doesn't cost anything, and it can help you avoid merge conflicts. A fantastic resource on GitHub setup and collaboration: <https://happygitwithr.com/> (R-focused but fantastic philosophy and bash commands for setup, workflows, and collaboration).
+First let's talk about the GitHub part of the workflow. The main steps of working with GitHub are to pull, (work), stage, commit, (pull), and push. A great resource on GitHub setup and collaboration: <https://happygitwithr.com/> (R-focused but fantastic philosophy and bash commands for setup, workflows, and collaboration).
 
-We're going to use branches and follow a shared workflow:
+We're going to use branches and follow a shared workflow: create a branch, work in your branch and commit regularly, and push to github often. When you're ready, create a pull request and we'll merge it into the main branch. 
 
 ### Branch setup and workflow
 
@@ -90,9 +90,6 @@ Create a new branch, then switch to that branch to work in. Then, connect it to 
 ```{bash}
 ## create and switch to new branch
 git checkout -b branch-name
-
-# Julie's example 
-git checkout -b jsl-dev 
 ```
 
 Check which branch you're on anytime by not specifying a branch name:
