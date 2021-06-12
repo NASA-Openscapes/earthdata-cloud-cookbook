@@ -104,12 +104,12 @@ git branch
 Time for your Quarto workflow -- see below. Then when you're ready after you render the whole book, push back to GitHub. First you have to connect your branch to github.com (the "upstream origin") (`-u` below is short for `--set-upstream`)
 
 ```{bash}
-git push --set-upstream origin branch-name 
+## commit regularly as you work
 git add --all 
 git commit -m "my commit message here" 
-git push -u origin <branch>
-git pull # just to be safe git push
-git push
+
+## push to github.com
+git push -u origin branch-name
 ```
 
 Now it's on github, in a separate branch from main. You can go to <https://github.com/nasa-openscapes/quartobook-test> and do a pull request, and tag someone to review (depending on what you've done and what we've talked about).
