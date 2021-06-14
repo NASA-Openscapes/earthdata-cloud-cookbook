@@ -362,17 +362,20 @@
         <div class="me-auto ">
           <div class="d-inline-flex w-100 sidebar-section-item">
             <div class="sidebar-section-link me-auto ">
-            <a href="../../files/community-handbook/index.html" class="">Community Handbook</a>
+            <a href="../../files/contributing/index.html" class="">Contributing</a>
             </div>
-            <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#communityhandbook-collapse" aria-expanded="true">
+            <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#contributing-collapse" aria-expanded="true">
               <div><i class="bi bi-chevron-right ms-2 "></i></div>
             </a>
             </div>
         </div>
-      <div class="collapse  show" id="communityhandbook-collapse">
+      <div class="collapse  show" id="contributing-collapse">
         <ul class="list-unstyled sidebar-item-contents">
           <li class="sidebar-item">
-  <a href="../../files/community-handbook/contributing.html" class="">Contributing</a>
+  <a href="../../files/contributing/setup.html" class="">Initial Setup</a>
+</li>
+          <li class="sidebar-item">
+  <a href="../../files/contributing/workflow.html" class="">Contributing</a>
 </li>
         </ul>
       </div>
@@ -535,6 +538,8 @@ machine opendap.earthdata.nasa.gov login jmcnelis password
 machine urs.earthdata.nasa.gov login jmcnelis password
 machine opendap.earthdata.nasa.gov login jmcnelis password
 machine urs.earthdata.nasa.gov login jmcnelis password
+machine opendap.earthdata.nasa.gov login jmcnelis password
+machine urs.earthdata.nasa.gov login jmcnelis password
 machine opendap.earthdata.nasa.gov login jmcnelis password</code></pre>
 </div>
 </div>
@@ -558,6 +563,8 @@ machine opendap.earthdata.nasa.gov login jmcnelis password ***</code></pre>
 <div class="sourceCode" id="cb6"><pre class="sourceCode python cell-code"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>cat <span class="op">~/</span>.netrc <span class="op">|</span> grep <span class="st">'.earthdata.nasa.gov'</span> <span class="op">|</span> cut <span class="op">-</span>f<span class="op">-</span><span class="dv">5</span> <span class="op">-</span>d<span class="st">" "</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-stdout">
 <pre><code>machine urs.earthdata.nasa.gov login jmcnelis password
+machine opendap.earthdata.nasa.gov login jmcnelis password
+machine urs.earthdata.nasa.gov login jmcnelis password
 machine opendap.earthdata.nasa.gov login jmcnelis password
 machine urs.earthdata.nasa.gov login jmcnelis password
 machine opendap.earthdata.nasa.gov login jmcnelis password

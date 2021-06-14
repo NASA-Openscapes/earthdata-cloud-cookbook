@@ -10,6 +10,7 @@ Different workflows: UI and programmatic.
  
 For programmatic, we expect familiarity with XYZ (Python, commandline?, R?). We recommend the following: 
 
+- [**Introduction to Python for Atmospheric Science & Meteorology**](https://unidata.github.io/python-training/python/intro-to-python/)
 - [**An Introduction to Earth and Environmental Data Science**](https://earth-env-data-science.github.io/intro.html) by Ryan Abernathy and Kerry Key. 
 - ...
 
