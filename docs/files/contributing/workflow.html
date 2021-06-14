@@ -3,7 +3,7 @@
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>EarthData Cloud Cookbook – Contributing</title>
+  <title>EarthData Cloud Cookbook – Workflow</title>
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -52,7 +52,7 @@
     }
 
     .cell-output-display {
-      overflow-x: scroll;
+      overflow-x: auto;
     }
 
     .hidden {
@@ -66,7 +66,7 @@
 <header id="quarto-header" class="headroom fixed-top">
 <nav class="quarto-secondary-nav py-2 d-lg-none d-md-block " data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <div class="container-fluid d-flex justify-content-between">
-    <h1 class="quarto-secondary-nav-title mb-0 fs-3 d-inline">Contributing</h1>
+    <h1 class="quarto-secondary-nav-title mb-0 fs-3 d-inline">Workflow</h1>
     <button type="button" class="quarto-btn-toggle btn d-lg-none py-0 px-1 d-inline-block border-0 ">
       <i class="bi bi-chevron-right"></i>
     </button>
@@ -305,7 +305,7 @@
   <a href="../../files/contributing/setup.html" class="">Initial Setup</a>
 </li>
           <li class="sidebar-item">
-  <a href="../../files/contributing/workflow.html" class="active">Contributing</a>
+  <a href="../../files/contributing/workflow.html" class="active">Workflow</a>
 </li>
         </ul>
       </div>
@@ -318,87 +318,39 @@
   <div id="quarto-toc-sidebar" class="col col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-toc order-last"><nav id="TOC" role="doc-toc">
 <h2 id="toc-title">On this page</h2>
 <ul>
-<li><a href="#how-to-contribute-to-our-book" class="nav-link active" data-scroll-target="#how-to-contribute-to-our-book">How to contribute to our book</a></li>
-<li><a href="#setup" class="nav-link" data-scroll-target="#setup">Setup</a>
-<ul class="collapse">
-<li><a href="#clone-our-repository-locally" class="nav-link" data-scroll-target="#clone-our-repository-locally">Clone our repository locally</a></li>
-<li><a href="#load-environment" class="nav-link" data-scroll-target="#load-environment">Load environment</a></li>
-<li><a href="#install-quarto" class="nav-link" data-scroll-target="#install-quarto">Install Quarto</a></li>
-</ul></li>
+<li><a href="#workflow-for-contributing-to-our-cookbook" class="nav-link active" data-scroll-target="#workflow-for-contributing-to-our-cookbook">Workflow for contributing to our Cookbook</a></li>
 <li><a href="#github-workflow" class="nav-link" data-scroll-target="#github-workflow">GitHub Workflow</a>
 <ul class="collapse">
 <li><a href="#branch-setup-and-workflow" class="nav-link" data-scroll-target="#branch-setup-and-workflow">Branch setup and workflow</a></li>
 </ul></li>
 <li><a href="#quarto-workflow" class="nav-link" data-scroll-target="#quarto-workflow">Quarto Workflow</a>
 <ul class="collapse">
-<li><a href="#command-linepython-2" class="nav-link" data-scroll-target="#command-linepython-2">Command Line/Python</a></li>
-<li><a href="#r-2" class="nav-link" data-scroll-target="#r-2">R</a></li>
+<li><a href="#command-linepython" class="nav-link" data-scroll-target="#command-linepython">Command Line/Python</a></li>
+<li><a href="#r" class="nav-link" data-scroll-target="#r">R</a></li>
 </ul></li>
 <li><a href="#updating-the-environment" class="nav-link" data-scroll-target="#updating-the-environment">Updating the environment</a></li>
+<li><a href="#if-youre-testing-code" class="nav-link" data-scroll-target="#if-youre-testing-code">If you’re testing code</a></li>
 </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nasa-openscapes/quartobook-test/edit/main/files/contributing/workflow.md">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/quartobook-test/issues/new">Report an issue</a></p></div></div></nav></div>
   <div class="col mx-auto col-sm-12 col-md-9 col-lg-7 px-lg-4">
 <main>
 <header id="title-block-header">
-<h1 class="title d-none d-lg-block display-7">Contributing</h1>
+<h1 class="title d-none d-lg-block display-7">Workflow</h1>
 </header>
 
-<section id="how-to-contribute-to-our-book" class="level2">
-<h2 class="anchored" data-anchor-id="how-to-contribute-to-our-book">How to contribute to our book</h2>
-<p>We’ll make our e-book using Quarto (<a href="https://quarto.org/docs/getting-started/installation.html">https://quarto.org</a>). Your Quarto workflow can be from the Command Line (bash), Python, or R. Its book chapters can be many file types, including <code>.md</code> , <code>.ipynb</code>, <code>.Rmd</code>, and <code>.qmd</code>. In all cases narrative and prose can be written in markdown, and chapters without code to execute can be written in <code>.md</code>. This workflow can streamline collaboration for scientific &amp; technical writing across programming languages.</p>
-<p>What is Quarto? Quarto builds from what RStudio learned from RMarkdown but enables different engines (Jupyter and knitr). It is both a Command Line Tool and R package. <code>.qmd</code> is a new filetype like <code>.Rmd</code> — meaning it’s a text file but coupled with an engine can execute code and be rendered as html, pdf, word, and beyond — but for other languages like Python. Quarto can convert <code>.ipynb</code> files to and from <code>.md</code> and <code>.qmd</code> easily so you can develop and publish with collaborators that have different workflows. Once the book is “served” locally, <code>.md</code> files auto-update as you edit, and files with executable code can be rendered individually, and the behavior of different code chunks can be controlled and cached.</p>
-<p>(Note: with Quarto, e-books and websites are very similarly structured, with e-books being set up for numbered chapters and references and websites set up for higher number of pages and organization. We can talk about our book as a book even as we explore whether book/website better suits our needs. This is assigned in <code>_quarto.yml</code>.)</p>
-</section>
-<section id="setup" class="level2">
-<h2 class="anchored" data-anchor-id="setup">Setup</h2>
-<section id="clone-our-repository-locally" class="level3">
-<h3 class="anchored" data-anchor-id="clone-our-repository-locally">Clone our repository locally</h3>
-<p>Clone <code>nasa-openscapes/quartobook-test</code> using your method of preference. Here is how to do this in bash:</p>
-<pre class="{bash}"><code>git clone https://github.com/NASA-Openscapes/earthdata-cloud-cookbook 
-cd earthdata-cloud-cookbook</code></pre>
-</section>
-<section id="load-environment" class="level3">
-<h3 class="anchored" data-anchor-id="load-environment">Load environment</h3>
-<p>Our repo is set up with libraries (currently Python but we can also add R) that’s just for this project (creation using the <a href="https://rstudio.github.io/renv/"><code>renv</code></a> R package below). Loading this environment will give you what you need to contribute to the book, as well as build and publish it. But it will stay contained just here in this project so it won’t interact with your other projects.</p>
-<p>More details about environments, from <a href="https://towardsdatascience.com/virtual-environments-104c62d48c54">A Guide to Python’s Virtual Environments</a> (Sarmiento 2019):</p>
-<blockquote class="blockquote">
-<p>A virtual environment is a Python tool for <strong>dependency management</strong> and <strong>project</strong> <strong>isolation</strong>. They allow Python <strong>site packages</strong> (third party libraries) to be installed locally in an isolateddirectory for a particular project, as opposed to being installed globally (i.e.&nbsp;as part of a system-wide Python).</p>
-</blockquote>
-<section id="command-linepython" class="level4">
-<h4 class="anchored" data-anchor-id="command-linepython">Command Line/Python</h4>
-<p>Depending on whether your python install is via <code>pip</code> or <code>conda</code> you will run the following code in the command line:</p>
-<pre class="{bash}"><code>## pip approach:
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-
-## conda approach:
-conda env create --name openscapes --file environment.yml  
-conda activate openscapes</code></pre>
-</section>
-<section id="r" class="level4">
-<h4 class="anchored" data-anchor-id="r">R</h4>
-<p>In R, we’ll first need the <code>remotes</code> package to install the <code>renv</code> package from GitHub. Then we can restore the environment using <code>renv::restore()</code>.</p>
-<pre class="{r}"><code>if (!requireNamespace("remotes")) install.packages("remotes") 
-remotes::install_github("rstudio/renv") 
-renv::restore()</code></pre>
-</section>
-</section>
-<section id="install-quarto" class="level3">
-<h3 class="anchored" data-anchor-id="install-quarto">Install Quarto</h3>
-<p>Install the <code>quarto</code> library so you can interact with it via the command line or R. I’ve set mine up with both.</p>
-<section id="command-linepython-1" class="level4">
-<h4 class="anchored" data-anchor-id="command-linepython-1">Command Line/Python:</h4>
-<p>In the command line, type:</p>
-<pre class="{bash}"><code>pip install quarto </code></pre>
-</section>
-<section id="r-1" class="level4">
-<h4 class="anchored" data-anchor-id="r-1">R</h4>
-<p>In R you’ll also need the <a href="https://rstudio.github.io/reticulate/"><code>reticulate</code></a> package. In In the R Console, type:</p>
-<pre class="{r}"><code>install.packages("quarto") 
-install.packages("reticulate")</code></pre>
-</section>
-</section>
+<section id="workflow-for-contributing-to-our-cookbook" class="level2">
+<h2 class="anchored" data-anchor-id="workflow-for-contributing-to-our-cookbook">Workflow for contributing to our Cookbook</h2>
+<p>Your Quarto workflow can be from the Command Line (bash), Python, or R. Its book chapters can be many file types, including <code>.md</code> , <code>.ipynb</code>, <code>.Rmd</code>, and <code>.qmd</code>. In all cases narrative and prose can be written in markdown, and chapters without code to execute can be written in <code>.md</code>. This workflow can streamline collaboration for scientific &amp; technical writing across programming languages.</p>
+<div class="callout-note callout">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>In progress!</p>
+</div>
+</div>
+</div>
 </section>
 <section id="github-workflow" class="level2">
 <h2 class="anchored" data-anchor-id="github-workflow">GitHub Workflow</h2>
@@ -437,8 +389,8 @@ git branch -d branch-hame</code></pre>
 <p>Here we are talking about the age old debate of whether computational markdown should be rendered on save when running a development server. Quarto currently doesn’t do this to give the user a choice between an expensive render and a cheap save. See: <a href="https://quarto.org/docs/websites/website-basics.html#workflow" class="uri">https://quarto.org/docs/websites/website-basics.html#workflow</a>.</p>
 </blockquote>
 <p>The structure of the book is written in <code>_quarto.yml.</code> More description on this upcoming.</p>
-<section id="command-linepython-2" class="level3">
-<h3 class="anchored" data-anchor-id="command-linepython-2">Command Line/Python</h3>
+<section id="command-linepython" class="level3">
+<h3 class="anchored" data-anchor-id="command-linepython">Command Line/Python</h3>
 <p>To serve the book, run the following:</p>
 <pre class="{bash}"><code>quarto serve</code></pre>
 <p>Paste the url from the console into your browser to see your updates.</p>
@@ -447,8 +399,8 @@ git branch -d branch-hame</code></pre>
 <p>To render and the whole book before publishing:</p>
 <pre class="{bash}"><code>quarto render</code></pre>
 </section>
-<section id="r-2" class="level3">
-<h3 class="anchored" data-anchor-id="r-2">R</h3>
+<section id="r" class="level3">
+<h3 class="anchored" data-anchor-id="r">R</h3>
 <p>To the serve the book from R:</p>
 <pre class="{r}"><code>quarto::quarto_serve()</code></pre>
 <p>Continue working, the <code>.md</code> files will refresh live! To refresh files with executable code, type:</p>
@@ -461,6 +413,10 @@ git branch -d branch-hame</code></pre>
 <h2 class="anchored" data-anchor-id="updating-the-environment">Updating the environment</h2>
 <p>TODO!</p>
 <p>From R: As we develop and add more package dependencies, re-run <code>renv::snapshot()</code> to update the environment.</p>
+</section>
+<section id="if-youre-testing-code" class="level2">
+<h2 class="anchored" data-anchor-id="if-youre-testing-code">If you’re testing code</h2>
+<p>The workflow there would be that a user decides that they will be the only one who runs the notebook. Adding <code>execute: false</code> basically means that Quarto never runs the code, but the user of course still can interactively in Jupyter.</p>
 <!-- -->
 </section>
 </main>
