@@ -52,15 +52,14 @@ site:
       - section: files/examples/index.md
         contents:
           - files/examples/python-example.ipynb
-          - files/examples/r-example.Rmd
       - section: files/appendix/index.md
         contents:
           - files/appendix/about.md
           - files/appendix/glossary.md
       - section: files/contributing/index.md
         contents:
-          - files/contributing/setup.Rmd
-          - files/contributing/workflow.Rmd
+          - files/contributing/setup.md
+          - files/contributing/workflow.md
 
 bibliography: references.bib
 
