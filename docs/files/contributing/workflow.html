@@ -85,7 +85,7 @@
   <script src="../../site_libs/quarto-search/autocomplete.min.js"></script>
   <script src="../../site_libs/quarto-search/fuse.min.js"></script>
   <script src="../../site_libs/quarto-search/quarto-search.js"></script>
-  <link href="../../files/community-handbook/index.html" rel="prev">
+  <link href="../../files/contributing/setup.html" rel="prev">
   <script src="../../site_libs/quarto-html/quarto.js"></script>
   <script src="../../site_libs/quarto-html/popper.min.js"></script>
   <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -361,17 +361,20 @@
         <div class="me-auto ">
           <div class="d-inline-flex w-100 sidebar-section-item">
             <div class="sidebar-section-link me-auto ">
-            <a href="../../files/community-handbook/index.html" class="">Community Handbook</a>
+            <a href="../../files/contributing/index.html" class="">Contributing</a>
             </div>
-            <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#communityhandbook-collapse" aria-expanded="true">
+            <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#contributing-collapse" aria-expanded="true">
               <div><i class="bi bi-chevron-right ms-2 "></i></div>
             </a>
             </div>
         </div>
-      <div class="collapse  show" id="communityhandbook-collapse">
+      <div class="collapse  show" id="contributing-collapse">
         <ul class="list-unstyled sidebar-item-contents">
           <li class="sidebar-item">
-  <a href="../../files/community-handbook/contributing.html" class="active">Contributing</a>
+  <a href="../../files/contributing/setup.html" class="">Initial Setup</a>
+</li>
+          <li class="sidebar-item">
+  <a href="../../files/contributing/workflow.html" class="active">Contributing</a>
 </li>
         </ul>
       </div>
@@ -402,7 +405,7 @@
 </ul></li>
 <li><a href="#updating-the-environment" class="nav-link" data-scroll-target="#updating-the-environment">Updating the environment</a></li>
 </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nasa-openscapes/quartobook-test/edit/main/files/community-handbook/contributing.Rmd">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/quartobook-test/issues/new">Report an issue</a></p></div></div></nav></div>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nasa-openscapes/quartobook-test/edit/main/files/contributing/workflow.Rmd">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/quartobook-test/issues/new">Report an issue</a></p></div></div></nav></div>
   <div class="col mx-auto col-sm-12 col-md-9 col-lg-7 px-lg-4">
 <main>
 <header id="title-block-header">
@@ -485,10 +488,7 @@
 <p>Create a new branch, then switch to that branch to work in. Then, connect it to github.com by pushing it “upstream” to the “origin repository.” <code>git checkout -b branch-name</code> is a 1-step approach for <code>git branch branch-name</code> <code>git checkout branch-name</code> (read <a href="https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging">more</a>).</p>
 <div class="cell">
 <div class="sourceCode" id="cb6"><pre class="sourceCode bash cell-code"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">## create and switch to new branch</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout <span class="at">-b</span> branch-name</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Julie's example </span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout <span class="at">-b</span> jsl-dev </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout <span class="at">-b</span> branch-name</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Check which branch you’re on anytime by not specifying a branch name:</p>
 <div class="cell">
@@ -500,7 +500,7 @@
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add <span class="at">--all</span> </span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"my commit message here"</span> </span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co">## push to github.com</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co">## connect your branch to github.com and push</span></span>
 <span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push <span class="at">-u</span> origin branch-name</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now it’s on github, in a separate branch from main. You can go to <a href="https://github.com/nasa-openscapes/quartobook-test" class="uri">https://github.com/nasa-openscapes/quartobook-test</a> and do a pull request, and tag someone to review (depending on what you’ve done and what we’ve talked about).</p>
@@ -565,8 +565,8 @@
 </main>
 <div class="page-navigation page-navigation-docked">
   <div class="nav-page nav-page-previous">
-      <a href="../../files/community-handbook/index.html">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Community Handbook</span>
+      <a href="../../files/contributing/setup.html">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Initial Setup</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
