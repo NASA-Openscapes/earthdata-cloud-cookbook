@@ -6,35 +6,35 @@ execute:
 
 ## Overview
 
-This will walk you through the setup required to run Quarto to contribute to our book. You can always refer to [quarto.org](https://quarto.org) for the most up-to-date and more detailed information. 
+This will walk you through the setup required to run Quarto to contribute to our book. You can always refer to [quarto.org](https://quarto.org) for the most up-to-date and more detailed information.
 
-Setup for our Cookbook includes;
+Setup for our Cookbook includes:
 
-- Installing the very latest version of Quarto
-- Installing Python from python.org
-- Restoring the virtual environment and building our Cookbook
+-   Installing the very latest version of Quarto
+-   Installing Python from python.org
+-   Cloning our repo
+-   Restoring the virtual environment
+-   Building our Cookbook
 
-:::{.callout-note}
-The following is written for the command line, and we can update with other scenarios as we go.
-:::
+The following is how to run Quarto from the command line; see <https://quarto.org> to see equivalents in R.
 
-:::{.callout-note}
+::: {.callout-note}
 The current set-up is for our book that has only Python, not R code. We'll add R setup instructions after we have everyone working with our current setup.
 :::
 
-:::{.callout-note}
-Coming up we'll also outline other ways to contribute and review the Cookbook through GitHub on the browser. 
+::: {.callout-note}
+Coming up we'll also outline other ways to contribute and review the Cookbook through GitHub on the browser.
 :::
 
 ## Install Quarto
 
-First, download the very latest version of the Quarto command line interface (CLI) (at least v0.1.261) for your operating system (Linux, MacOS, Windows). After downloading, install following the prompts. 
+First, download the very latest version of the Quarto command line interface (CLI) (at least v0.1.261) for your operating system (Linux, MacOS, Windows). After downloading, install following the prompts.
 
 <https://github.com/quarto-dev/quarto-cli/releases/latest>
 
 Check to make sure Quarto installed properly with the following. It will return information about Quarto's functions.
 
-```{.bash}
+``` {.bash}
 quarto help
 ```
 
@@ -42,12 +42,11 @@ quarto help
 
 Then, install Python from [python.org/downloads](https://www.python.org/downloads/). Windows users: be sure to download from [python.org/downloads/windows](https://www.python.org/downloads/windows/)
 
-
 ## Clone our Cookbook from GitHub
 
 Now clone our book and set it as your current directory.
 
-```{.bash}
+``` {.bash}
 git clone https://github.com/NASA-Openscapes/earthdata-cloud-cookbook 
 cd earthdata-cloud-cookbook
 ```
@@ -58,14 +57,13 @@ If you need to set up GitHub see instructions [TODO]
 
 Now you will create and activate the virtual environment that has all the Python (and soon, R) libraries that are required for our Cookbook. You can also read more about [virtual environments with Quarto](https://quarto.org/docs/getting-started/installation.html#virtual-environments).
 
-
+```{=html}
 <!---
 Sidenote: More details about environments, from [A Guide to Python's Virtual Environments](https://towardsdatascience.com/virtual-environments-104c62d48c54) (Sarmiento 2019):
 
 > A virtual environment is a Python tool for **dependency management** and **project** **isolation**. They allow Python **site packages** (third party libraries) to be installed locally in an isolateddirectory for a particular project, as opposed to being installed globally (i.e. as part of a system-wide Python).
 --->
-
-
+```
 ### Create `.venv`
 
 To create a new Python 3 virtual environment in the directory `.venv`:
@@ -116,12 +114,11 @@ Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser
 ```
 :::
 
-
 ### Install dependencies
 
-Our `requirements.txt` file contains the Python (and soon R) libraries needed in our Cookbook. To install, run: 
+Our `requirements.txt` file contains the Python (and soon R) libraries needed in our Cookbook. To install, run:
 
-```{.bash}
+``` {.bash}
 pip install -r requirements.txt
 ```
 
@@ -129,13 +126,8 @@ pip install -r requirements.txt
 
 You should now be able to serve and render the documents within the `earthdata-cloud-cookbook` directory.
 
-```{.bash}
+``` {.bash}
 quarto serve
 ```
 
-This will open the Cookbook as a new tab in your browser. Now you're all set to contribute to the Cookbook. Read about how in the next chapter. 
-
-
-
-
-
+This will open the Cookbook as a new tab in your browser. Now you're all set to contribute to the Cookbook. Read about how in the next chapter.
