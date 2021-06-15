@@ -401,9 +401,6 @@
         </div>
       <div class="collapse  show" id="examples-collapse">
         <ul class="list-unstyled sidebar-item-contents">
-          <li class="sidebar-item">
-  <a href="../../files/examples/python-example.html" class="">This is a .ipynb file</a>
-</li>
         </ul>
       </div>
     </li>
@@ -474,6 +471,7 @@
 <li><a href="#quarto-workflow" class="nav-link" data-scroll-target="#quarto-workflow">Quarto Workflow</a>
 <ul class="collapse">
 <li><a href="#quarto-serve" class="nav-link" data-scroll-target="#quarto-serve">Quarto serve</a></li>
+<li><a href="#start-a-new-working-session" class="nav-link" data-scroll-target="#start-a-new-working-session">Start a new working session</a></li>
 <li><a href="#develop-cookbook-content" class="nav-link" data-scroll-target="#develop-cookbook-content">Develop Cookbook Content</a></li>
 <li><a href="#quarto-render" class="nav-link" data-scroll-target="#quarto-render">Quarto render</a></li>
 </ul></li>
@@ -531,7 +529,7 @@
 </section>
 <section id="pull-request" class="level3">
 <h3 class="anchored" data-anchor-id="pull-request">Pull Request</h3>
-<p>Now that you’ve synced your work to github.com. It is currently online, in a separate branch from the <code>main</code> branch. Go to <a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook" class="uri">&lt;https://github.com/nasa-openscapes/earthdata-cloud-cookbook&gt;</a>, find your branch, and do a pull request, and tag someone to review (depending on what you’ve done and what we’ve talked about).</p>
+<p>Now you’ve synced your work to github.com. It is currently online, in a separate branch from the <code>main</code> branch. Go to <a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook" class="uri">&lt;https://github.com/nasa-openscapes/earthdata-cloud-cookbook&gt;</a>, find your branch, and do a pull request, and tag someone to review (depending on what you’ve done and what we’ve talked about).</p>
 <p>TODO: Let’s discuss this:</p>
 <ul>
 <li>When the pull request is merged, delete the branch on github.com</li>
@@ -557,6 +555,13 @@
 <p>And after it’s is served, you can paste the url into your browser or click from the console to see the built Cookbook.</p>
 <p>This command line instance is now being used to serve Quarto. You can open another instance to continue working from the command line, including developing content and rendering (see next).</p>
 </section>
+<section id="start-a-new-working-session" class="level3">
+<h3 class="anchored" data-anchor-id="start-a-new-working-session">Start a new working session</h3>
+<p>When you want to start a new working session, open a command shell and run:</p>
+<pre><code>cd earthdata-cloud-cookbook
+.venv\Scripts\activate.bat  ## for Windows shell
+quarto serve</code></pre>
+</section>
 <section id="develop-cookbook-content" class="level3">
 <h3 class="anchored" data-anchor-id="develop-cookbook-content">Develop Cookbook Content</h3>
 <p>You can develop Cookbook chapters as text files (<code>.md</code>/<code>.qmd</code>/<code>.Rmd</code>) in the text editor of your choice. You can also develop chapters as <code>.ipynb</code> from JupyterLab (see more about <a href="https://quarto.org/docs/computations/using-jupyter-lab.html">JupyterLab with Quarto</a>).</p>
@@ -576,11 +581,11 @@
 <h3 class="anchored" data-anchor-id="quarto-render">Quarto render</h3>
 <p>As you develop book chapters and edit files, any <code>.md</code> files will automatically refresh in the browser (so long as quarto serve is running)!</p>
 <p>To refresh files with executable code, you’ll need to render them individually. You can do the following to render <code>.ipynb</code>/<code>.qmd</code>/<code>.Rmd</code> files so that they show up refreshed in the served Cookbook.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render my-document.ipynb      <span class="co">## render a notebook</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render my-work.qmd            <span class="co">## render a Quarto file</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render my-contribution.Rmd    <span class="co">## render a RMarkdown file</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render my-document.ipynb      <span class="co">## render a notebook</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render my-work.qmd            <span class="co">## render a Quarto file</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render my-contribution.Rmd    <span class="co">## render a RMarkdown file</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>You can also render the whole book:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Learn more about <a href="https://quarto.org/docs/computations/running-code.html#rendering">rendering with Quarto</a>. From J.J. Allaire:</p>
 <blockquote class="blockquote">
 <p>The reason Quarto doesn’t render <code>.Rmd</code> and <code>.qmd</code> on save is that render could (potentially) be very long running and that cost shouldn’t be imposed on you whenever you save. Here we are talking about the age old debate of whether computational markdown should be rendered on save when running a development server. Quarto currently doesn’t do this to give the user a choice between an expensive render and a cheap save.</p>
@@ -590,7 +595,7 @@
 <section id="updating-the-environment" class="level2">
 <h2 class="anchored" data-anchor-id="updating-the-environment">Updating the Environment</h2>
 <p>To make your work reproducible as you load any Python or R packages, you’ll need to update the <code>environments.txt</code> file. Do this use the <code>pip freeze</code> command:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> freeze <span class="op">&gt;</span> requirements.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> freeze <span class="op">&gt;</span> requirements.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This will overwrite/update the <code>requirements.txt</code> file, which you will then commit and push along with your other edits back to github.com.</p>
 </section>
 <section id="cookbook-structure" class="level2">
