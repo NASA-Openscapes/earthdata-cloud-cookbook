@@ -208,6 +208,9 @@
           <li class="sidebar-item">
   <a href="../../files/get-started/lpdaac-netrc.html" class="">LP DAAC Authentication Example</a>
 </li>
+          <li class="sidebar-item">
+  <a href="../../files/get-started/podaac-ecco-netrc.html" class="">PO DAAC Authentication Example</a>
+</li>
         </ul>
       </div>
     </li>
@@ -440,9 +443,9 @@
 <section id="jupyter" class="level2">
 <h2 class="anchored" data-anchor-id="jupyter">Jupyter</h2>
 <p>First, install Jupyter (learn more at <a href="https://jupyter.org/install">jupyter.org/install</a>).</p>
-<pre class="{bash}"><code>pip install jupyter</code></pre>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install jupyter</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Check to make sure it installed properly, launch jupyterlab, which will open in your browser:</p>
-<pre class="{bash}"><code>jupyter-lab</code></pre>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">jupyter-lab</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>If you need to first install Python, please do so from <a href="https://www.python.org/downloads">python.org/downloads</a>, not from a conda installation.</p>
 <p><strong>Windows Users:</strong> Please ensure you are using Python from <a href="https://www.python.org/downloads">python.org/downloads</a> and add to PATH as showed below.</p>
 <p><img src="images/install-python-windows.png" class="img-fluid"></p>
@@ -452,13 +455,13 @@
 <p>Download the Quarto command line interface (CLI) for your operating system and install following the prompts:</p>
 <p><a href="https://github.com/quarto-dev/quarto-cli/releases/latest" class="uri">https://github.com/quarto-dev/quarto-cli/releases/latest</a></p>
 <p>Check to make sure Quarto installed properly with the following. It should return information about Quarto’s commands.</p>
-<pre class="{bash}"><code>quarto help</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> help</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="clone-the-cookbook-from-github" class="level2">
 <h2 class="anchored" data-anchor-id="clone-the-cookbook-from-github">Clone the Cookbook from GitHub</h2>
 <p>Now clone our book:</p>
-<pre class="{bash}"><code>git clone https://github.com/NASA-Openscapes/earthdata-cloud-cookbook 
-cd earthdata-cloud-cookbook</code></pre>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/NASA-Openscapes/earthdata-cloud-cookbook </span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> earthdata-cloud-cookbook</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>If you need to set up GitHub see instructions [TODO]</p>
 </section>
 <section id="virtual-environment" class="level2">
@@ -480,7 +483,7 @@ cd earthdata-cloud-cookbook</code></pre>
 </div>
 </div>
 <p><strong>Installation</strong> is done with pip from the requirements.txt file:</p>
-<pre class="{bash}"><code>pip install -r requirements.txt</code></pre>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">-r</span> requirements.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Sidenote: More details about environments, from <a href="https://towardsdatascience.com/virtual-environments-104c62d48c54">A Guide to Python’s Virtual Environments</a> (Sarmiento 2019):</p>
 <blockquote class="blockquote">
 <p>A virtual environment is a Python tool for <strong>dependency management</strong> and <strong>project</strong> <strong>isolation</strong>. They allow Python <strong>site packages</strong> (third party libraries) to be installed locally in an isolateddirectory for a particular project, as opposed to being installed globally (i.e.&nbsp;as part of a system-wide Python).</p>

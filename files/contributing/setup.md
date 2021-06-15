@@ -32,13 +32,13 @@ Coming up we'll also outline other ways to contribute and review the Cookbook th
 
 First, install Jupyter (learn more at [jupyter.org/install](https://jupyter.org/install)). 
 
-```{bash}
+```{.bash}
 pip install jupyter
 ```
 
 Check to make sure it installed properly, launch jupyterlab, which will open in your browser:
 
-```{bash}
+```{.bash}
 jupyter-lab
 ```
 
@@ -56,7 +56,7 @@ Download the Quarto command line interface (CLI) for your operating system and i
 
 Check to make sure Quarto installed properly with the following. It should return information about Quarto's commands.
 
-```{bash}
+```{.bash}
 quarto help
 ```
 
@@ -64,7 +64,7 @@ quarto help
 
 Now clone our book:
 
-```{bash}
+```{.bash}
 git clone https://github.com/NASA-Openscapes/earthdata-cloud-cookbook 
 cd earthdata-cloud-cookbook
 ```
@@ -105,7 +105,7 @@ Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser
 
 **Installation** is done with pip from the requirements.txt file:
 
-```{bash}
+```{.bash}
 pip install -r requirements.txt
 ```
 

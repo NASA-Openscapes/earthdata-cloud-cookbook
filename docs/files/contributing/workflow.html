@@ -11,6 +11,69 @@
     div.column{display: inline-block; vertical-align: top; width: 50%;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007ba5; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #007ba5; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #007ba5; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
 
   <!--[if lt IE 9]>
@@ -143,6 +206,9 @@
 </li>
           <li class="sidebar-item">
   <a href="../../files/get-started/lpdaac-netrc.html" class="">LP DAAC Authentication Example</a>
+</li>
+          <li class="sidebar-item">
+  <a href="../../files/get-started/podaac-ecco-netrc.html" class="">PO DAAC Authentication Example</a>
 </li>
         </ul>
       </div>
@@ -321,15 +387,30 @@
 <li><a href="#workflow-for-contributing-to-our-cookbook" class="nav-link active" data-scroll-target="#workflow-for-contributing-to-our-cookbook">Workflow for contributing to our Cookbook</a></li>
 <li><a href="#github-workflow" class="nav-link" data-scroll-target="#github-workflow">GitHub Workflow</a>
 <ul class="collapse">
-<li><a href="#branch-setup-and-workflow" class="nav-link" data-scroll-target="#branch-setup-and-workflow">Branch setup and workflow</a></li>
+<li><a href="#branch-setup" class="nav-link" data-scroll-target="#branch-setup">Branch setup</a></li>
+<li><a href="#commit-changes" class="nav-link" data-scroll-target="#commit-changes">Commit changes</a></li>
+<li><a href="#push-changes" class="nav-link" data-scroll-target="#push-changes">Push changes</a></li>
+<li><a href="#pull-request" class="nav-link" data-scroll-target="#pull-request">Pull Request</a></li>
 </ul></li>
 <li><a href="#quarto-workflow" class="nav-link" data-scroll-target="#quarto-workflow">Quarto Workflow</a>
 <ul class="collapse">
-<li><a href="#command-linepython" class="nav-link" data-scroll-target="#command-linepython">Command Line/Python</a></li>
-<li><a href="#r" class="nav-link" data-scroll-target="#r">R</a></li>
+<li><a href="#quarto-serve" class="nav-link" data-scroll-target="#quarto-serve">Quarto serve</a></li>
 </ul></li>
-<li><a href="#updating-the-environment" class="nav-link" data-scroll-target="#updating-the-environment">Updating the environment</a></li>
+<li><a href="#updating-the-environment" class="nav-link" data-scroll-target="#updating-the-environment">Updating the environment</a>
+<ul class="collapse">
+<li><a href="#command-line-1" class="nav-link" data-scroll-target="#command-line-1">Command line</a></li>
+<li><a href="#r-1" class="nav-link" data-scroll-target="#r-1">R</a></li>
+</ul></li>
 <li><a href="#if-youre-testing-code" class="nav-link" data-scroll-target="#if-youre-testing-code">If you’re testing code</a></li>
+<li><a href="#quarto-structure" class="nav-link" data-scroll-target="#quarto-structure">Quarto structure</a></li>
+<li><a href="#conventions" class="nav-link" data-scroll-target="#conventions">Conventions</a>
+<ul class="collapse">
+<li><a href="#executing-notebooks" class="nav-link" data-scroll-target="#executing-notebooks">Executing notebooks</a></li>
+</ul></li>
+<li><a href="#troubleshooting" class="nav-link" data-scroll-target="#troubleshooting">Troubleshooting</a>
+<ul class="collapse">
+<li><a href="#error-addrinuse" class="nav-link" data-scroll-target="#error-addrinuse">Error: AddrInUse</a></li>
+</ul></li>
 </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nasa-openscapes/quartobook-test/edit/main/files/contributing/workflow.md">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/quartobook-test/issues/new">Report an issue</a></p></div></div></nav></div>
   <div class="col mx-auto col-sm-12 col-md-9 col-lg-7 px-lg-4">
@@ -354,70 +435,120 @@
 </section>
 <section id="github-workflow" class="level2">
 <h2 class="anchored" data-anchor-id="github-workflow">GitHub Workflow</h2>
-<p>First let’s talk about the GitHub part of the workflow. The main steps of working with GitHub are to pull, (work), stage, commit, (pull), and push. A great resource on GitHub setup and collaboration: <a href="https://happygitwithr.com/" class="uri">https://happygitwithr.com/</a> (R-focused but fantastic philosophy and bash commands for setup, workflows, and collaboration).</p>
-<p>We’re going to use branches and follow a shared workflow: create a branch, work in your branch and commit regularly, and push to github often. When you’re ready, create a pull request and we’ll merge it into the main branch.</p>
-<section id="branch-setup-and-workflow" class="level3">
-<h3 class="anchored" data-anchor-id="branch-setup-and-workflow">Branch setup and workflow</h3>
-<p>Create a new branch, then switch to that branch to work in. Then, connect it to github.com by pushing it “upstream” to the “origin repository.” <code>git checkout -b branch-name</code> is a 1-step approach for <code>git branch branch-name</code> <code>git checkout branch-name</code> (read <a href="https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging">more</a>).</p>
-<pre class="{bash}"><code>## create and switch to new branch
-git checkout -b branch-name</code></pre>
-<p>Check which branch you’re on anytime by not specifying a branch name:</p>
-<pre class="{bash}"><code>git branch</code></pre>
-<p>Time for your Quarto workflow – see below. Then when you’re ready after you render the whole book, push back to GitHub. First you have to connect your branch to github.com (the “upstream origin”) (<code>-u</code> below is short for <code>--set-upstream</code>)</p>
-<pre class="{bash}"><code>## commit regularly as you work
-git add --all 
-git commit -m "my commit message here" 
-
-## connect your branch to github.com and push
-git push -u origin branch-name</code></pre>
-<p>Now it’s on github, in a separate branch from main. You can go to <a href="https://github.com/nasa-openscapes/quartobook-test" class="uri">https://github.com/nasa-openscapes/quartobook-test</a> and do a pull request, and tag someone to review (depending on what you’ve done and what we’ve talked about).</p>
+<p>First let’s talk about the GitHub part of the workflow.</p>
+<p>We will work in branches so as to not overwrite each other’s work, and let GitHub do what it does best.</p>
+<p>The <code>main</code> branch will be the current approved version of the book. The main branch is what displays at <a href="https://nasa-openscapes.github.io/earthdata-cloud-cookbook" class="uri">https://nasa-openscapes.github.io/earthdata-cloud-cookbook</a>.</p>
+<p>A nice clean workflow with branches is to consider them temporary. You pull the most recent from <code>main</code>, you create a branch locally, you make your edits, you commit regularly, then you push back to github.com, create a pull request for it to be merged into <code>main</code>, and once approved, you delete the branch on github.com and also locally. That’s the workflow we’ll walk through here. A great resource on GitHub setup and collaboration is <a href="https://happygitwithr.com/">Happy Git with R</a> (R-focused but fantastic philosophy and bash commands for setup, workflows, and collaboration).</p>
+<p>The following assumes you’re all <a href="../../contributing/setup">setup</a> from the previous chapter.</p>
+<section id="branch-setup" class="level3">
+<h3 class="anchored" data-anchor-id="branch-setup">Branch setup</h3>
+<p>First off, check what branch you’re on. If you need to switch branches, use <code>git checkout</code></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch          <span class="co"># returns all local branches</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout main   <span class="co"># switch branch to main</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>If you are already on the <code>main</code> branch, Git will tell you.</p>
+<p>If you have any residual branches from before, start off by deleting them (assuming they were temporary and have been merged into github.com — good to check first!)</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch <span class="at">-d</span> branch-hame</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Next, create a new branch, then switch to that branch to work in. <code>git checkout -b branch-name</code> is a one-step approach for <code>git branch branch-name</code> <code>git checkout branch-name</code> (read <a href="https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging">more</a>).</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout <span class="at">-b</span> branch-name  <span class="co"># create and switch to new branch</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Time for your Quarto workflow – see below. After you’ve made some edits, you’ll commit your changes.</p>
+</section>
+<section id="commit-changes" class="level3">
+<h3 class="anchored" data-anchor-id="commit-changes">Commit changes</h3>
+<p>You’ll commit your work regularly as you go, writing commit messages:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add <span class="at">--all</span> </span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"my commit message here"</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="push-changes" class="level3">
+<h3 class="anchored" data-anchor-id="push-changes">Push changes</h3>
+<p>When you’re ready to push changes you’ve made in your branch, you’ll first need to connect it to github.com by pushing it “upstream” to the “origin repository” (<code>-u</code> below is short for <code>--set-upstream</code>):</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push <span class="at">-u</span> origin branch-name  <span class="co">## connect your branch to github.com and push</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="pull-request" class="level3">
+<h3 class="anchored" data-anchor-id="pull-request">Pull Request</h3>
+<p>Now it’s on github.com, in a separate branch from main. You can go to <a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook" class="uri">https://github.com/nasa-openscapes/earthdata-cloud-cookbook</a> and do a pull request, and tag someone to review (depending on what you’ve done and what we’ve talked about).</p>
 <p>TODO: Let’s discuss this:</p>
 <ul>
 <li><p>When the pull request is merged, delete the branch on github.com</p></li>
 <li><p>Then also delete the branch locally:</p></li>
 </ul>
-<pre class="{bash}"><code>git checkout main # switch to the main branch
-git branch -d branch-hame</code></pre>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout main <span class="co"># switch to the main branch</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch <span class="at">-d</span> branch-hame</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 <section id="quarto-workflow" class="level2">
 <h2 class="anchored" data-anchor-id="quarto-workflow">Quarto Workflow</h2>
 <p>OK now we are setup and ready to work! The thing to do first is to “serve” (build) the book to make sure everything’s working. (It’s called “serve” because it’s really a website that looks like a book).</p>
-<p>The overall workflow will be to serve the book at the beginning, make edits and render your <code>.Rmd</code>/<code>.qmd</code> pages to view your edits as you go (<code>.md</code> are automatic) and then when you’re ready to publish, you render the book with an additional command. Learn more about rendering here: <a href="https://quarto.org/docs/computations/running-code.html#rendering" class="uri">https://quarto.org/docs/computations/running-code.html#rendering</a>. From J.J. at RStudio:</p>
+<p>The overall workflow will be to serve the book at the beginning, make edits and render your <code>.Rmd</code>/<code>.qmd</code> pages to view your edits as you go (<code>.md</code> are automatic). Make commits regularly, and then when you’re ready to publish, you render the book with an additional command before pushing to github.com. Learn more about rendering here: <a href="https://quarto.org/docs/computations/running-code.html#rendering" class="uri">https://quarto.org/docs/computations/running-code.html#rendering</a>. From J.J. at RStudio:</p>
 <blockquote class="blockquote">
-<p>For <code>.Rmd</code> and <code>.qmd</code> files you need to render them (<code>.md</code> updates show on save because there is no render step). The reason Quarto doesn’t render <code>.Rmd</code> and <code>.qmd</code> on save is that render could (potentially) be very long running and that cost shouldn’t be imposed on you whenever you save.</p>
-<p>Here we are talking about the age old debate of whether computational markdown should be rendered on save when running a development server. Quarto currently doesn’t do this to give the user a choice between an expensive render and a cheap save. See: <a href="https://quarto.org/docs/websites/website-basics.html#workflow" class="uri">https://quarto.org/docs/websites/website-basics.html#workflow</a>.</p>
+<p>For <code>.Rmd</code> and <code>.qmd</code> files you need to render them (<code>.md</code> updates show on save because there is no render step). The reason Quarto doesn’t render <code>.Rmd</code> and <code>.qmd</code> on save is that render could (potentially) be very long running and that cost shouldn’t be imposed on you whenever you save. Here we are talking about the age old debate of whether computational markdown should be rendered on save when running a development server. Quarto currently doesn’t do this to give the user a choice between an expensive render and a cheap save. See: <a href="https://quarto.org/docs/websites/website-basics.html#workflow" class="uri">https://quarto.org/docs/websites/website-basics.html#workflow</a>.</p>
 </blockquote>
-<p>The structure of the book is written in <code>_quarto.yml.</code> More description on this upcoming.</p>
-<section id="command-linepython" class="level3">
-<h3 class="anchored" data-anchor-id="command-linepython">Command Line/Python</h3>
-<p>To serve the book, run the following:</p>
-<pre class="{bash}"><code>quarto serve</code></pre>
-<p>Paste the url from the console into your browser to see your updates.</p>
-<p>Continue working, the <code>.md</code> files will refresh live! To refresh files with executable code, type:</p>
-<pre class="{bash}"><code>quarto render jupyter-document.ipynb</code></pre>
+<section id="quarto-serve" class="level3">
+<h3 class="anchored" data-anchor-id="quarto-serve">Quarto serve</h3>
+<section id="command-line" class="level4">
+<h4 class="anchored" data-anchor-id="command-line">Command line</h4>
+<p>To serve the book, run the following from the command line:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> serve</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Paste the url/click from the console into your browser to see your updates.</p>
+<p>Continue working, the <code>.md</code> files will refresh live! To refresh files with executable code, you’ll need to render them individually.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render my-document.ipynb      <span class="co">## render a notebook</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render my-work.qmd            <span class="co">## render a Quarto file</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render my-contribution.Rmd    <span class="co">## render a RMarkdown file</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>To render and the whole book before publishing:</p>
-<pre class="{bash}"><code>quarto render</code></pre>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="r" class="level3">
-<h3 class="anchored" data-anchor-id="r">R</h3>
+<section id="r" class="level4">
+<h4 class="anchored" data-anchor-id="r">R</h4>
 <p>To the serve the book from R:</p>
-<pre class="{r}"><code>quarto::quarto_serve()</code></pre>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>quarto<span class="sc">::</span><span class="fu">quarto_serve</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Continue working, the <code>.md</code> files will refresh live! To refresh files with executable code, type:</p>
-<pre class="{r}"><code>quarto::quarto_render("filename.ipynb")</code></pre>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>quarto<span class="sc">::</span><span class="fu">quarto_render</span>(<span class="st">"filename.ipynb"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>To render and the whole book before publishing:</p>
-<pre class="{r}"><code>quarto::quarto_render()</code></pre>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>quarto<span class="sc">::</span><span class="fu">quarto_render</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
 </section>
 </section>
 <section id="updating-the-environment" class="level2">
 <h2 class="anchored" data-anchor-id="updating-the-environment">Updating the environment</h2>
+<p>As you work and add Python or R packages, you’ll need to update the environment so that others can continue to collaborate with you too.</p>
+<section id="command-line-1" class="level3">
+<h3 class="anchored" data-anchor-id="command-line-1">Command line</h3>
 <p>TODO!</p>
-<p>From R: As we develop and add more package dependencies, re-run <code>renv::snapshot()</code> to update the environment.</p>
+</section>
+<section id="r-1" class="level3">
+<h3 class="anchored" data-anchor-id="r-1">R</h3>
+<p>As we develop and add more package dependencies, re-run <code>renv::snapshot()</code> to update the environment. TODO make sure nothing to add about requirements.txt vs environment.yml</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>renv<span class="sc">::</span><span class="fu">snapshot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
 </section>
 <section id="if-youre-testing-code" class="level2">
 <h2 class="anchored" data-anchor-id="if-youre-testing-code">If you’re testing code</h2>
 <p>The workflow there would be that a user decides that they will be the only one who runs the notebook. Adding <code>execute: false</code> basically means that Quarto never runs the code, but the user of course still can interactively in Jupyter.</p>
+</section>
+<section id="quarto-structure" class="level2">
+<h2 class="anchored" data-anchor-id="quarto-structure">Quarto structure</h2>
+<p>The structure of the book is written in <code>_quarto.yml.</code> More description on this upcoming.</p>
+<p>TODO: to add a chapter or shuffle things around…</p>
+</section>
+<section id="conventions" class="level2">
+<h2 class="anchored" data-anchor-id="conventions">Conventions</h2>
+<p><em>TODO: update this header with a better name</em></p>
+<section id="executing-notebooks" class="level3">
+<h3 class="anchored" data-anchor-id="executing-notebooks">Executing notebooks</h3>
+<p>By adding YAML as a raw text cell at the top of an <code>.ipynb</code> file, you can control whether it is executed or not.</p>
+<p><img src="images/ipynb-execute-false.png" class="img-fluid"></p>
+<p>This is likely the default way we want to go, to prevent things like this:</p>
+<p><img src="images/ipynb-execute-default.png" class="img-fluid"></p>
+<p>Using <code>.qmd</code> there are also ways to control execution cell-by-cell via <code># |</code> syntax within a code chunk; see <a href="https://quarto.org/docs/computations/execution-options.html" class="uri">https://quarto.org/docs/computations/execution-options.html</a></p>
+</section>
+</section>
+<section id="troubleshooting" class="level2">
+<h2 class="anchored" data-anchor-id="troubleshooting">Troubleshooting</h2>
+<section id="error-addrinuse" class="level3">
+<h3 class="anchored" data-anchor-id="error-addrinuse">Error: AddrInUse</h3>
+<p>This error is because you had more than one instance of <code>quarto serve</code> going in your session. So close other command line instances that are running and try again. (If you use the R package and do <code>quarto_serve()</code> it will automatically make sure you only ever have 1 instance.)</p>
+<p><img src="images/error-AddrInUse.png" class="img-fluid"></p>
 <!-- -->
+</section>
 </section>
 </main>
 <div class="page-navigation page-navigation-docked">
