@@ -27,28 +27,25 @@ The following assumes you're all [setup](/contributing/setup) from the previous 
 
 ### Branch setup 
 
-First off, check what branch you're on. If you need to switch branches, use `git checkout`
+First off, check what branch you're on and pull the most recent edits from the main branch. If you need to switch branches, use `git checkout`.
 
 ```{.bash}
 git branch          # returns all local branches
 git checkout main   # switch branch to main
+git pull            # pull most recent edits from the main branch
 ```
 
 If you are already on the `main` branch, Git will tell you. 
 
-If you have any residual branches from before, start off by deleting them (assuming they were temporary and have been merged into github.com — good to check first!)
+(If you have any residual branches from before, you'll likely want to start off by deleting them (assuming they were temporary and have been merged into github.com). You can delete a branch with `git branch -d branch-name`).
 
-```{.bash}
-git branch -d branch-hame
-```
-
-Next, create a new branch, then switch to that branch to work in. `git checkout -b branch-name` is a one-step approach for `git branch branch-name` `git checkout branch-name` (read [more](https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging)). 
+Next, create a new branch, then switch to that branch to work in. Below is a one-step approach for the two-step process of `git branch branch-name` then `git checkout branch-name` (read [more](https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging)). 
 
 ```{.bash}
 git checkout -b branch-name  # create and switch to new branch
 ```
 
-Time for your Quarto workflow -- see below. After you've made some edits, you'll commit your changes. 
+Time for your Quarto workflow -- see below. After you've made edits and served with Quarto, you'll commit your changes. 
 
 ### Commit changes
 
@@ -64,7 +61,7 @@ git commit -m "my commit message here"
 When you're ready to push changes you've made in your branch, you'll first need to connect it to github.com by pushing it "upstream" to the "origin repository" (`-u` below is short for `--set-upstream`):
 
 ```{.bash}
-git push -u origin branch-name  ## connect your branch to github.com and push
+git push -u origin branch-name  # connect your branch to github.com and push
 ```
 
 ### Pull Request
