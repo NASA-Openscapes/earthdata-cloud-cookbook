@@ -60,7 +60,7 @@ git push -u origin branch-name  # connect your branch to github.com and push
 
 ### Pull Request
 
-Now that you've synced your work to github.com. It is currently online, in a separate branch from the `main` branch. Go to [<https://github.com/nasa-openscapes/earthdata-cloud-cookbook>](https://github.com/nasa-openscapes/earthdata-cloud-cookbook){.uri}, find your branch, and do a pull request, and tag someone to review (depending on what you've done and what we've talked about).
+Now you've synced your work to github.com. It is currently online, in a separate branch from the `main` branch. Go to [\<https://github.com/nasa-openscapes/earthdata-cloud-cookbook\>](https://github.com/nasa-openscapes/earthdata-cloud-cookbook){.uri}, find your branch, and do a pull request, and tag someone to review (depending on what you've done and what we've talked about).
 
 TODO: Let's discuss this:
 
@@ -100,6 +100,14 @@ quarto serve
 And after it's is served, you can paste the url into your browser or click from the console to see the built Cookbook.
 
 This command line instance is now being used to serve Quarto. You can open another instance to continue working from the command line, including developing content and rendering (see next).
+
+### Start a new working session
+
+When you want to start a new working session, open a command shell and run:
+
+    cd earthdata-cloud-cookbook
+    .venv\Scripts\activate.bat  ## for Windows shell
+    quarto serve
 
 ### Develop Cookbook Content
 
