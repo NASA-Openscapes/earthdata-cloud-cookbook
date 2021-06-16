@@ -96,6 +96,7 @@
   <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
   <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
   <link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet">
+  <link href="../../site_libs/quarto-html-variables/quarto-html-variables.min.css" rel="stylesheet">
   <style type="text/css">
     .quarto-layout-panel > figure {
       width: 100%;
@@ -221,14 +222,10 @@
   <div id="quarto-sidebar" class="col col-12 col-lg-3 d-lg-flex px-0 pt-0 sidebar collapse sidebar-navigation">
     <nav class="me-lg-auto py-2 docked  overflow-scroll">
   <div class="px-3 pt-lg-2 mt-1 text-left">
-    <div class="sidebar-title mt-1 mb-0 py-0">
-      <a href="../../">
-      EarthData Cloud Cookbook
-      </a>
-        <div class="sidebar-tools-main">
-    <a href="https://github.com/nasa-openscapes/quartobook-test" title="" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
+    <img src="../../nasa-openscapes.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      <div class="sidebar-tools-main">
+    <a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook" title="" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
 </div>
-    </div>
   </div>
     <div class="d-flex px-3 mt-2 flex-shrink-0 align-items-center">
       <div class="sidebar-search">
@@ -237,7 +234,7 @@
 </form>
       </div>
         <div class="sidebar-tools-collapse">
-    <a href="https://github.com/nasa-openscapes/quartobook-test" title="" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook" title="" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
 </div>
     </div>
   <div class="sidebar-menu-container"> 
@@ -272,17 +269,12 @@
     <li class="">
         <div class="me-auto ">
             <a class="sidebar-section-item d-inline-flex text-start w-100 collapsed" data-bs-toggle="collapse" data-bs-target="#authentication-collapse" aria-expanded="false">
-              <div class="me-auto  sidebar-item">
-                Authentication
-              </div>
+              <div class="me-auto  sidebar-item">Authentication</div>
             <div><i class="bi bi-chevron-right ms-2 "></i></div>
             </a>
         </div>
       <div class="collapse  " id="authentication-collapse">
         <ul class="list-unstyled sidebar-item-contents">
-          <li class="sidebar-item">
-  <a href="../../files/get-started/how-to-use.html" class="">How to use this book</a>
-</li>
           <li class="sidebar-item">
   <a href="../../files/get-started/lpdaac-netrc.html" class="">LP DAAC Authentication Example</a>
 </li>
@@ -389,14 +381,14 @@
         <div class="me-auto ">
           <div class="d-inline-flex w-100 sidebar-section-item">
             <div class="sidebar-section-link me-auto ">
-            <a href="../../files/examples/index.html" class="">Examples</a>
+            <a href="../../files/examples/index.html" class="">End-to-end Examples</a>
             </div>
-            <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#examples-collapse" aria-expanded="true">
+            <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#end-to-endexamples-collapse" aria-expanded="true">
               <div><i class="bi bi-chevron-right ms-2 "></i></div>
             </a>
             </div>
         </div>
-      <div class="collapse  show" id="examples-collapse">
+      <div class="collapse  show" id="end-to-endexamples-collapse">
         <ul class="list-unstyled sidebar-item-contents">
         </ul>
       </div>
@@ -458,6 +450,7 @@
 <h2 id="toc-title">On this page</h2>
 <ul>
 <li><a href="#workflow-for-contributing-to-our-cookbook" class="nav-link active" data-scroll-target="#workflow-for-contributing-to-our-cookbook">Workflow for contributing to our Cookbook</a></li>
+<li><a href="#quickstart" class="nav-link" data-scroll-target="#quickstart">Quickstart</a></li>
 <li><a href="#github-workflow" class="nav-link" data-scroll-target="#github-workflow">GitHub Workflow</a>
 <ul class="collapse">
 <li><a href="#branch-setup" class="nav-link" data-scroll-target="#branch-setup">Branch setup</a></li>
@@ -483,7 +476,7 @@
 <li><a href="#error-addrinuse" class="nav-link" data-scroll-target="#error-addrinuse">Error: AddrInUse</a></li>
 </ul></li>
 </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nasa-openscapes/quartobook-test/edit/main/files/contributing/workflow.md">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/quartobook-test/issues/new">Report an issue</a></p></div></div></nav></div>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/edit/main/files/contributing/workflow.md">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/issues/new">Report an issue</a></p></div></div></nav></div>
   <div class="col mx-auto col-sm-12 col-md-9 col-lg-7 px-lg-4">
 <main>
 <header id="title-block-header">
@@ -493,6 +486,10 @@
 <section id="workflow-for-contributing-to-our-cookbook" class="level2">
 <h2 class="anchored" data-anchor-id="workflow-for-contributing-to-our-cookbook">Workflow for contributing to our Cookbook</h2>
 <p>Your Quarto workflow can be from the Command Line, Python, or R. You are able to work on Cookbook chapters that can be different file types, including <code>.md</code> , <code>.ipynb</code>, <code>.Rmd</code>, and <code>.qmd</code>. In all cases narrative and prose can be written in markdown, and chapters without code to execute can be written in <code>.md</code>. This workflow can streamline collaboration for scientific &amp; technical writing across programming languages.</p>
+</section>
+<section id="quickstart" class="level2">
+<h2 class="anchored" data-anchor-id="quickstart">Quickstart</h2>
+<p>Instructions for returning to the Cookbook after lunch/months; this is described in more detail below.</p>
 </section>
 <section id="github-workflow" class="level2">
 <h2 class="anchored" data-anchor-id="github-workflow">GitHub Workflow</h2>

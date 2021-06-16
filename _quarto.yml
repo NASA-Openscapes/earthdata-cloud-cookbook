@@ -2,6 +2,9 @@ project:
   type: site
   output-dir: docs
   
+execute:
+  freeze: true
+
 site:
   title: "EarthData Cloud Cookbook"  
   site-url: https://nasa-openscapes.github.io/earthdata-cloud-cookbook

@@ -97,6 +97,7 @@
   <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
   <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
   <link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet">
+  <link href="../../site_libs/quarto-html-variables/quarto-html-variables.min.css" rel="stylesheet">
   <style type="text/css">
     details {
       margin-bottom: 1em;
@@ -143,14 +144,10 @@
   <div id="quarto-sidebar" class="col col-12 col-lg-3 d-lg-flex px-0 pt-0 sidebar collapse sidebar-navigation">
     <nav class="me-lg-auto py-2 docked  overflow-scroll">
   <div class="px-3 pt-lg-2 mt-1 text-left">
-    <div class="sidebar-title mt-1 mb-0 py-0">
-      <a href="../../">
-      EarthData Cloud Cookbook
-      </a>
-        <div class="sidebar-tools-main">
-    <a href="https://github.com/nasa-openscapes/quartobook-test" title="" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
+    <img src="../../nasa-openscapes.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      <div class="sidebar-tools-main">
+    <a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook" title="" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
 </div>
-    </div>
   </div>
     <div class="d-flex px-3 mt-2 flex-shrink-0 align-items-center">
       <div class="sidebar-search">
@@ -159,7 +156,7 @@
 </form>
       </div>
         <div class="sidebar-tools-collapse">
-    <a href="https://github.com/nasa-openscapes/quartobook-test" title="" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook" title="" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
 </div>
     </div>
   <div class="sidebar-menu-container"> 
@@ -194,17 +191,12 @@
     <li class="">
         <div class="me-auto ">
             <a class="sidebar-section-item d-inline-flex text-start w-100 collapsed" data-bs-toggle="collapse" data-bs-target="#authentication-collapse" aria-expanded="false">
-              <div class="me-auto  sidebar-item">
-                Authentication
-              </div>
+              <div class="me-auto  sidebar-item">Authentication</div>
             <div><i class="bi bi-chevron-right ms-2 "></i></div>
             </a>
         </div>
       <div class="collapse  " id="authentication-collapse">
         <ul class="list-unstyled sidebar-item-contents">
-          <li class="sidebar-item">
-  <a href="../../files/get-started/how-to-use.html" class="">How to use this book</a>
-</li>
           <li class="sidebar-item">
   <a href="../../files/get-started/lpdaac-netrc.html" class="">LP DAAC Authentication Example</a>
 </li>
@@ -311,14 +303,14 @@
         <div class="me-auto ">
           <div class="d-inline-flex w-100 sidebar-section-item">
             <div class="sidebar-section-link me-auto ">
-            <a href="../../files/examples/index.html" class="">Examples</a>
+            <a href="../../files/examples/index.html" class="">End-to-end Examples</a>
             </div>
-            <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#examples-collapse" aria-expanded="true">
+            <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#end-to-endexamples-collapse" aria-expanded="true">
               <div><i class="bi bi-chevron-right ms-2 "></i></div>
             </a>
             </div>
         </div>
-      <div class="collapse  show" id="examples-collapse">
+      <div class="collapse  show" id="end-to-endexamples-collapse">
         <ul class="list-unstyled sidebar-item-contents">
         </ul>
       </div>
@@ -392,7 +384,7 @@
 </ul></li>
 </ul></li>
 </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nasa-openscapes/quartobook-test/edit/main/files/discovery/Navigate_CMR_STAC.ipynb">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/quartobook-test/issues/new">Report an issue</a></p></div></div></nav></div>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/edit/main/files/discovery/Navigate_CMR_STAC.ipynb">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/issues/new">Report an issue</a></p></div></div></nav></div>
   <div class="col mx-auto col-sm-12 col-md-9 col-lg-7 px-lg-4">
 <main>
 
@@ -625,13 +617,13 @@ and is 6% cloudy.</code></pre>
 <pre><code>Item at index 0 is 6% cloudy.
 Item at index 1 is 4% cloudy.
 Item at index 2 is 0% cloudy.
-Item at index 3 is 100% cloudy.
-Item at index 4 is 30% cloudy.
-Item at index 5 is 67% cloudy.
-Item at index 6 is 99% cloudy.
-Item at index 7 is 24% cloudy.
-Item at index 8 is 15% cloudy.
-Item at index 9 is 3% cloudy.</code></pre>
+Item at index 3 is 64% cloudy.
+Item at index 4 is 0% cloudy.
+Item at index 5 is 39% cloudy.
+Item at index 6 is 74% cloudy.
+Item at index 7 is 100% cloudy.
+Item at index 8 is 30% cloudy.
+Item at index 9 is 67% cloudy.</code></pre>
 </div>
 </div>
 </section>
@@ -649,11 +641,11 @@ Item at index 9 is 3% cloudy.</code></pre>
 <span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"It contains </span><span class="sc">{</span><span class="bu">len</span>(s30_item[<span class="st">'assets'</span>])<span class="sc">}</span><span class="ss"> assets"</span>)</span>
 <span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"and is </span><span class="sc">{</span>s30_item[<span class="st">'properties'</span>][<span class="st">'eo:cloud_cover'</span>]<span class="sc">}</span><span class="ss">% cloudy."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-stdout">
-<pre><code>The ID for this item is: G2010295229-LPCLOUD
+<pre><code>The ID for this item is: G2010287698-LPCLOUD
 It was acquired on: 2016-11-06T08:21:39.880Z
-over: [30.227023, -13.64749, 31.059614, -12.649679] (Lower Left, Upper Right corner coordinates)
+over: [24.875464, -26.295042, 25.108568, -25.427554] (Lower Left, Upper Right corner coordinates)
 It contains 20 assets
-and is 3% cloudy.</code></pre>
+and is 67% cloudy.</code></pre>
 </div>
 </div>
 </section>
@@ -664,24 +656,24 @@ and is 3% cloudy.</code></pre>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> a <span class="kw">in</span> s30_item[<span class="st">'assets'</span>]: <span class="bu">print</span>(a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-stdout">
 <pre><code>The following assets are available for download:
-B04
-B05
-B01
-B08
-B09
-B06
-B8A
-SAA
-B07
 SZA
+B01
+VAA
+SAA
 B10
-VZA
-B03
+B8A
+B05
+B09
 Fmask
 B02
 B12
 B11
-VAA
+B03
+B06
+B04
+B08
+VZA
+B07
 browse
 metadata</code></pre>
 </div>
@@ -692,7 +684,7 @@ metadata</code></pre>
 <div class="cell">
 <div class="sourceCode" id="cb31"><pre class="sourceCode python cell-code"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>s30_item[<span class="st">'assets'</span>][<span class="st">'browse'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p>{‘title’: ‘Download HLS.S30.T36LTL.2016311T080122.v1.5.jpg,’ ‘href’: ‘https://lpdaac.earthdata.nasa.gov/lp-prod-public/HLSS30.015/HLS.S30.T36LTL.2016311T080122.v1.5.jpg,’ ‘type’: ‘image/jpeg’}</p>
+<p>{‘title’: ‘Download HLS.S30.T35JKM.2016311T080122.v1.5.jpg,’ ‘href’: ‘https://lpdaac.earthdata.nasa.gov/lp-prod-public/HLSS30.015/HLS.S30.T35JKM.2016311T080122.v1.5.jpg,’ ‘type’: ‘image/jpeg’}</p>
 </div>
 </div>
 </section>
