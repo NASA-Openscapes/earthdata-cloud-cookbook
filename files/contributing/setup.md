@@ -42,10 +42,20 @@ And click on the file type for your operating system:
 
 After downloading, follow the installation prompts on your computer like you do for other software.
 
-Check to make sure Quarto installed properly with the following. It will return information about Quarto's functions.
+Check to make sure Quarto installed properly with the following checks. It will return information to make sure things are all working:
 
 ``` {.bash}
-quarto help
+# test that we can render a simple markdown document
+quarto check install 
+
+# locate R, verify we have the rmarkdown package, and do a basic render
+quarto check knitr
+
+# locate Python, verify we have Jupyter, and do a basic render
+quarto check jupyter
+
+# check all of the above
+quarto check
 ```
 
 ## Install Python

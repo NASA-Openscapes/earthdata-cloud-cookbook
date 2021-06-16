@@ -144,7 +144,7 @@ Learn more about [rendering with Quarto](https://quarto.org/docs/computations/ru
 
 > The reason Quarto doesn't render `.Rmd` and `.qmd` on save is that render could (potentially) be very long running and that cost shouldn't be imposed on you whenever you save. Here we are talking about the age old debate of whether computational markdown should be rendered on save when running a development server. Quarto currently doesn't do this to give the user a choice between an expensive render and a cheap save.
 
-## Updating the Environment
+## Update the Environment
 
 To make your work reproducible as you load any Python or R packages, you'll need to update the `environments.txt` file. Do this use the `pip freeze` command:
 
