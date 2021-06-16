@@ -7,6 +7,10 @@ execute: false
 
 Your Quarto workflow can be from the Command Line, Python, or R. You are able to work on Cookbook chapters that can be different file types, including `.md` , `.ipynb`, `.Rmd`, and `.qmd`. In all cases narrative and prose can be written in markdown, and chapters without code to execute can be written in `.md`. This workflow can streamline collaboration for scientific & technical writing across programming languages.
 
+## Quickstart
+
+Instructions for returning to the Cookbook after lunch/months; this is described in more detail below.
+
 ## GitHub Workflow
 
 First let's talk about the GitHub part of the workflow.
