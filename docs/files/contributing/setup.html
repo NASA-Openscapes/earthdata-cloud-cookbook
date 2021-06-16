@@ -413,33 +413,56 @@
 <li>Building our Cookbook</li>
 </ul>
 <p>The following is how to run Quarto from the command line; see <a href="https://quarto.org" class="uri">https://quarto.org</a> to see equivalents in R.</p>
-<div class="callout-note callout">
-<div class="callout-body d-flex">
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-body-container">
+<div class="callout-caption-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>The current set-up is for our book that has only Python, not R code. We’ll add R setup instructions after we have everyone working with our current setup.</p>
 </div>
 </div>
-</div>
-<div class="callout-note callout">
-<div class="callout-body d-flex">
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-body-container">
-<p>Coming up we’ll also outline other ways to contribute and review the Cookbook through GitHub on the browser.</p>
+<div class="callout-caption-container flex-fill">
+Note
 </div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Coming up we’ll also outline other ways to contribute and review the Cookbook through GitHub on the browser.</p>
 </div>
 </div>
 </section>
 <section id="install-quarto" class="level2">
 <h2 class="anchored" data-anchor-id="install-quarto">Install Quarto</h2>
-<p>First, download the very latest version of the Quarto command line interface (CLI) (at least v0.1.261) for your operating system (Linux, MacOS, Windows). After downloading, install following the prompts.</p>
+<p>First, download the very latest version of the Quarto command line interface (CLI). To do this, go to:</p>
 <p><a href="https://github.com/quarto-dev/quarto-cli/releases/latest" class="uri">https://github.com/quarto-dev/quarto-cli/releases/latest</a></p>
-<p>Check to make sure Quarto installed properly with the following. It will return information about Quarto’s functions.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> help</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>And click on the file type for your operating system:</p>
+<ul>
+<li><p><code>amd64.deb</code>: Linux,</p></li>
+<li><p><code>macos.pkg</code>: MacOS</p></li>
+<li><p><code>win.msi</code>: Windows</p></li>
+</ul>
+<p>After downloading, follow the installation prompts on your computer like you do for other software.</p>
+<p>Check to make sure Quarto installed properly with the following checks. It will return information to make sure things are all working:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># test that we can render a simple markdown document</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> check install </span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># locate R, verify we have the rmarkdown package, and do a basic render</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> check knitr</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># locate Python, verify we have Jupyter, and do a basic render</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> check jupyter</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># check all of the above</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> check</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="install-python" class="level2">
 <h2 class="anchored" data-anchor-id="install-python">Install Python</h2>
