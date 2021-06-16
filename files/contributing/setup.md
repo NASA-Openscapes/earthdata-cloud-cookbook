@@ -28,9 +28,19 @@ Coming up we'll also outline other ways to contribute and review the Cookbook th
 
 ## Install Quarto
 
-First, download the very latest version of the Quarto command line interface (CLI) (at least v0.1.261) for your operating system (Linux, MacOS, Windows). After downloading, install following the prompts.
+First, download the very latest version of the Quarto command line interface (CLI). To do this, go to:
 
 <https://github.com/quarto-dev/quarto-cli/releases/latest>
+
+And click on the file type for your operating system:
+
+-   `amd64.deb`: Linux,
+
+-   `macos.pkg`: MacOS
+
+-   `win.msi`: Windows
+
+After downloading, follow the installation prompts on your computer like you do for other software.
 
 Check to make sure Quarto installed properly with the following. It will return information about Quarto's functions.
 
