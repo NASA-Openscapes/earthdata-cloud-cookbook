@@ -71,8 +71,9 @@ Once your pull request is merged, you can delete the branch from github.com (it 
 Then also come back to your local setup and delete the branch locally:
 
 ``` {.bash}
-git checkout main # switch to the main branch
-git branch -d branch-hame
+git checkout main         # switch to the main branch
+git pull                  # pull merged updates from github.com
+git branch -d branch-hame # delete old local  branch
 ```
 
 ## Quarto Workflow
