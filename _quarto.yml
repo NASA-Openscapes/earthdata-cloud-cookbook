@@ -5,12 +5,12 @@ project:
 site:
   title: "EarthData Cloud Cookbook"
   author: "NASA Openscapes Community"
-  logo: files/images/openscapes-logo.png
   repo-url: https://github.com/nasa-openscapes/quartobook-test
   repo-actions: [edit, issue]
   sharing: [twitter]
   page-navigation: true
   sidebar:
+    logo: nasa-openscapes.png 
     style: "docked"
     background: light
     search: true
@@ -38,7 +38,7 @@ site:
           - files/discovery/cmr-virtual-directories.md
       - section: files/access/index.md
         contents:
-          - files/access/data-access-example.qmd
+       #   - files/access/data-access-example.qmd
           - files/access/earthdata-search.md
           - files/access/opendap-cloud.md
           - files/access/cof-via-harmony.md

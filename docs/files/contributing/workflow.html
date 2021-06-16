@@ -339,9 +339,6 @@
       <div class="collapse  show" id="nasaclouddataaccess-collapse">
         <ul class="list-unstyled sidebar-item-contents">
           <li class="sidebar-item">
-  <a href="../../files/access/data-access-example.html" class="">Notebook demonstrating data access</a>
-</li>
-          <li class="sidebar-item">
   <a href="../../files/access/earthdata-search.html" class="">Earthdata Search</a>
 </li>
           <li class="sidebar-item">
@@ -475,7 +472,7 @@
 <li><a href="#develop-cookbook-content" class="nav-link" data-scroll-target="#develop-cookbook-content">Develop Cookbook Content</a></li>
 <li><a href="#quarto-render" class="nav-link" data-scroll-target="#quarto-render">Quarto render</a></li>
 </ul></li>
-<li><a href="#updating-the-environment" class="nav-link" data-scroll-target="#updating-the-environment">Updating the Environment</a></li>
+<li><a href="#update-the-environment" class="nav-link" data-scroll-target="#update-the-environment">Update the Environment</a></li>
 <li><a href="#cookbook-structure" class="nav-link" data-scroll-target="#cookbook-structure">Cookbook Structure</a></li>
 <li><a href="#cookbook-practices" class="nav-link" data-scroll-target="#cookbook-practices">Cookbook Practices</a>
 <ul class="collapse">
@@ -593,8 +590,8 @@ quarto serve</code></pre>
 </blockquote>
 </section>
 </section>
-<section id="updating-the-environment" class="level2">
-<h2 class="anchored" data-anchor-id="updating-the-environment">Updating the Environment</h2>
+<section id="update-the-environment" class="level2">
+<h2 class="anchored" data-anchor-id="update-the-environment">Update the Environment</h2>
 <p>To make your work reproducible as you load any Python or R packages, you’ll need to update the <code>environments.txt</code> file. Do this use the <code>pip freeze</code> command:</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> freeze <span class="op">&gt;</span> requirements.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This will overwrite/update the <code>requirements.txt</code> file, which you will then commit and push along with your other edits back to github.com.</p>
