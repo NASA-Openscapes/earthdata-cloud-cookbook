@@ -48,7 +48,7 @@ The `main` branch will be the current approved version of the book. The main bra
 
 A nice clean workflow with branches is to consider them temporary. You pull the most recent from `main`, you create a branch locally, you make your edits, you commit regularly, then you push back to github.com, create a pull request for it to be merged into `main`, and once approved, you delete the branch on github.com and also locally. That's the workflow we'll walk through here. A great resource on GitHub setup and collaboration is [Happy Git with R](https://happygitwithr.com/), which includes fantastic background philosophy as well as bash commands for setup, workflows, and collaboration.
 
-The following assumes you're all [setup](files/contributing/setup) from the previous chapter.
+The following assumes you're all [setup](contributing/setup) from the previous chapter.
 
 ### Branch setup
 
@@ -157,7 +157,7 @@ You can also use the RStudio IDE. It can be used as a simple text editor, but it
 
 The RStudio IDE Visual Editor makes this experience feel like a cross between an interactive notebook and a Google Doc:
 
-![The RStudio IDE Visual Editor with an interactive .qmd file](/files/contributing/images/rstudio-visual-editor-qmd.png)
+![The RStudio IDE Visual Editor with an interactive .qmd file](/contributing/images/rstudio-visual-editor-qmd.png)
 
 Above shows the Visual Editor in the top left pane with an interactive `.qmd` file. Learn more about the [RStudio Visual Editor](https://rstudio.github.io/visual-markdown-editing/#/).
 
