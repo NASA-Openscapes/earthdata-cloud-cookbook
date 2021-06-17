@@ -1,7 +1,7 @@
 {
-  "hash": "625131c0a22ae5f7bb5b70ad6209589f",
+  "hash": "5cebf2aeffced6337ac122afb9a15274",
   "result": {
-    "markdown": "---\ntitle: \"RMarkdown example notebook\"\neditor_options: \n  chunk_output_type: inline\n---\n\n## This is an .Rmd file\n\nAs I write some description here. Today is Thursday.\n\n::: {.cell}\n\n```{.r .cell-code}\nsummary(cars)\n```\n\n::: {.cell-output-stdout}\n```\n     speed           dist       \n Min.   : 4.0   Min.   :  2.00  \n 1st Qu.:12.0   1st Qu.: 26.00  \n Median :15.0   Median : 36.00  \n Mean   :15.4   Mean   : 42.98  \n 3rd Qu.:19.0   3rd Qu.: 56.00  \n Max.   :25.0   Max.   :120.00  \n```\n:::\n\n```{.r .cell-code}\nplot(pressure)\n```\n\n::: {.cell-output-display}\n![](r-example_files/figure-html/unnamed-chunk-2-1.png){width=672}\n:::\n:::\n\nI can run my code in-line as I go",
+    "markdown": "---\ntitle: \"RMarkdown example .Rmd\"\neditor_options: \n  chunk_output_type: inline\n---\n\nThis is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. \n\nTry executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Cmd+Shift+Enter*. \n\n::: {.cell}\n\n```{.r .cell-code}\nplot(cars)\n```\n\n::: {.cell-output-display}\n![](r-example_files/figure-html/unnamed-chunk-2-1.png){width=672}\n:::\n:::\n\nAdd a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Cmd+Option+I*.\n\nWhen you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Cmd+Shift+K* to preview the HTML file). \n\nThe preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.\n",
     "supporting": [
       "r-example_files"
     ],
