@@ -373,14 +373,7 @@
 <ul>
 <li><a href="#overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
 <li><a href="#install-quarto" class="nav-link" data-scroll-target="#install-quarto">Install Quarto</a></li>
-<li><a href="#install-python" class="nav-link" data-scroll-target="#install-python">Install Python</a></li>
-<li><a href="#clone-our-cookbook-from-github" class="nav-link" data-scroll-target="#clone-our-cookbook-from-github">Clone our Cookbook from GitHub</a></li>
-<li><a href="#set-up-virtual-environment" class="nav-link" data-scroll-target="#set-up-virtual-environment">Set up virtual environment</a>
-<ul class="collapse">
-<li><a href="#create-.venv" class="nav-link" data-scroll-target="#create-.venv">Create <code>.venv</code></a></li>
-<li><a href="#activate-.venv" class="nav-link" data-scroll-target="#activate-.venv">Activate <code>.venv</code></a></li>
-<li><a href="#install-dependencies" class="nav-link" data-scroll-target="#install-dependencies">Install dependencies</a></li>
-</ul></li>
+<li><a href="#clone-from-github" class="nav-link" data-scroll-target="#clone-from-github">Clone from GitHub</a></li>
 <li><a href="#build-cookbook" class="nav-link" data-scroll-target="#build-cookbook">Build Cookbook!</a></li>
 </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/edit/main/files/contributing/setup.md">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/issues/new">Report an issue</a></p></div></div></nav></div>
@@ -392,29 +385,14 @@
 
 <section id="overview" class="level2">
 <h2 class="anchored" data-anchor-id="overview">Overview</h2>
-<p>This will walk you through the setup required to run Quarto to contribute to our book. You can always refer to <a href="https://quarto.org">quarto.org</a> for the most up-to-date and more detailed information.</p>
+<p>This is the setup required to contribute to our Cookbook. You can always refer to <a href="https://quarto.org">quarto.org</a> for the most up-to-date and more detailed information.</p>
 <p>Setup for our Cookbook includes:</p>
 <ul>
 <li>Installing the very latest version of Quarto</li>
-<li>Installing Python from python.org</li>
-<li>Cloning our repo</li>
-<li>Restoring the virtual environment</li>
+<li>Cloning our Cookbook repo from GitHub</li>
 <li>Building our Cookbook</li>
 </ul>
-<p>The following is how to run Quarto from the command line; see <a href="https://quarto.org" class="uri">https://quarto.org</a> to see equivalents in R.</p>
-<div class="callout-note callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>The current set-up is for our book that has only Python, not R code. We’ll add R setup instructions after we have everyone working with our current setup.</p>
-</div>
-</div>
+<p>Instructions here is to run Quarto from the command line; see <a href="https://quarto.org" class="uri">quarto.org</a> for equivalents in R.</p>
 <div class="callout-note callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -433,88 +411,50 @@ Note
 <h2 class="anchored" data-anchor-id="install-quarto">Install Quarto</h2>
 <p>First, download the very latest version of the Quarto command line interface (CLI). To do this, go to:</p>
 <p><a href="https://github.com/quarto-dev/quarto-cli/releases/latest" class="uri">https://github.com/quarto-dev/quarto-cli/releases/latest</a></p>
-<p>And click on the file type for your operating system:</p>
+<p>Click on the file type to download for your operating system:</p>
 <ul>
-<li><p><code>amd64.deb</code>: Linux,</p></li>
-<li><p><code>macos.pkg</code>: MacOS</p></li>
-<li><p><code>win.msi</code>: Windows</p></li>
+<li><p>Linux: <code>amd64.deb</code></p></li>
+<li><p>Mac: <code>macos.pkg</code></p></li>
+<li><p>Windows: <code>win.msi</code></p></li>
 </ul>
 <p>After downloading, follow the installation prompts on your computer like you do for other software.</p>
-<p>Check to make sure Quarto installed properly with the following checks. It will return information to make sure things are all working:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># test that we can render a simple markdown document</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> check install </span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># locate R, verify we have the rmarkdown package, and do a basic render</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> check knitr</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># locate Python, verify we have Jupyter, and do a basic render</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> check jupyter</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># check all of the above</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> check</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Check to make sure Quarto installed properly:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> check install </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target="#callout-2" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Additional checks
+</div>
+<button type="button" class="callout-btn-toggle btn d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></button>
+</div>
+<div id="callout-2" class="callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>You can also run:</p>
+<ul>
+<li><code>quarto check knitr</code> to locate R, verify we have the rmarkdown package, and do a basic render</li>
+<li><code>quarto check jupyter</code> to locate Python, verify we have Jupyter, and do a basic render</li>
+<li><code>quarto check</code> to run all of these checks together</li>
+</ul>
+</div>
+</div>
+</div>
+<p>If you need to install a version more recent than the latest release, see the documentation on installing the <a href="https://quarto.org/docs/getting-started/installation.html#development-version">Development Version</a>.</p>
 </section>
-<section id="install-python" class="level2">
-<h2 class="anchored" data-anchor-id="install-python">Install Python</h2>
-<p>Then, install Python from <a href="https://www.python.org/downloads/">python.org/downloads</a>. Windows users: be sure to download from <a href="https://www.python.org/downloads/windows/">python.org/downloads/windows</a></p>
-</section>
-<section id="clone-our-cookbook-from-github" class="level2">
-<h2 class="anchored" data-anchor-id="clone-our-cookbook-from-github">Clone our Cookbook from GitHub</h2>
+<section id="clone-from-github" class="level2">
+<h2 class="anchored" data-anchor-id="clone-from-github">Clone from GitHub</h2>
 <p>Now clone our book and set it as your current directory.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/NASA-Openscapes/earthdata-cloud-cookbook </span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> earthdata-cloud-cookbook</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>If you need to set up GitHub see instructions [TODO]</p>
 </section>
-<section id="set-up-virtual-environment" class="level2">
-<h2 class="anchored" data-anchor-id="set-up-virtual-environment">Set up virtual environment</h2>
-<p>Now you will create and activate the virtual environment that has all the Python (and soon, R) libraries that are required for our Cookbook. You can also read more about <a href="https://quarto.org/docs/getting-started/installation.html#virtual-environments">virtual environments with Quarto</a>.</p>
-<!---
-Sidenote: More details about environments, from [A Guide to Python's Virtual Environments](https://towardsdatascience.com/virtual-environments-104c62d48c54) (Sarmiento 2019):
-
-> A virtual environment is a Python tool for **dependency management** and **project** **isolation**. They allow Python **site packages** (third party libraries) to be installed locally in an isolateddirectory for a particular project, as opposed to being installed globally (i.e. as part of a system-wide Python).
---->
-<section id="create-.venv" class="level3">
-<h3 class="anchored" data-anchor-id="create-.venv">Create <code>.venv</code></h3>
-<p>To create a new Python 3 virtual environment in the directory <code>.venv</code>:</p>
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" aria-current="page">Mac/Linux</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Windows</a></li></ul>
-<div class="tab-content">
-<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labeledby="tabset-1-1-tab">
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> <span class="at">-m</span> venv .venv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labeledby="tabset-1-2-tab">
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">py</span> <span class="at">-3</span> <span class="at">-m</span> venv .venv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Note that using <code>py -3</code> ensures that you are invoking the most recent version of Python 3 for Windows installed on your system. If this command fails, you should run the <a href="https://www.python.org/downloads/windows/">Python for Windows</a> installer and then re-execute it.</p>
-</div>
-</div>
-</section>
-<section id="activate-.venv" class="level3">
-<h3 class="anchored" data-anchor-id="activate-.venv">Activate <code>.venv</code></h3>
-<p>To use the environment you need to activate it. This differs slightly depending on which platform / shell you are using:</p>
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">Mac/Linux</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">Windows (Cmd)</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-3" role="tab" aria-controls="tabset-2-3" aria-selected="false">Windows (PowerShell)</a></li></ul>
-<div class="tab-content">
-<div id="tabset-2-1" class="panel-tabset tab-pane active" role="tabpanel" aria-labeledby="tabset-2-1-tab">
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> .venv/bin/activate</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="tabset-2-2" class="panel-tabset tab-pane" role="tabpanel" aria-labeledby="tabset-2-2-tab">
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">.venv\Scripts\activate.bat</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="tabset-2-3" class="panel-tabset tab-pane" role="tabpanel" aria-labeledby="tabset-2-3-tab">
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">.venv\Scripts\Activate.ps1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Note that you may receive an error about running scripts being disabled when activating within PowerShell. If you get this error then execute the following command:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Set-ExecutionPolicy</span> <span class="at">-ExecutionPolicy</span> Unrestricted <span class="at">-Scope</span> CurrentUser</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
-</section>
-<section id="install-dependencies" class="level3">
-<h3 class="anchored" data-anchor-id="install-dependencies">Install dependencies</h3>
-<p>Our <code>requirements.txt</code> file contains the Python (and soon R) libraries needed in our Cookbook. To install, run:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">-r</span> requirements.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-</section>
 <section id="build-cookbook" class="level2">
 <h2 class="anchored" data-anchor-id="build-cookbook">Build Cookbook!</h2>
 <p>You should now be able to serve and render the documents within the <code>earthdata-cloud-cookbook</code> directory.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> serve</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>This will open the Cookbook as a new tab in your browser. Now you’re all set to contribute to the Cookbook. Read about how in the next chapter.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> serve</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This will open the Cookbook as a new tab in your browser. Now you’re all set to contribute to the Cookbook! Read about how in the next chapter.</p>
 <!-- -->
 </section>
 </main>
