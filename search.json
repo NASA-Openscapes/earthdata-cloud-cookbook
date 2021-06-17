@@ -174,10 +174,10 @@
     "text": "All the NASA (and more) acronyms, uncovered\nCOG: Cloud-optimized geo-tiff\nCTL: Command Line Tool"
   },
   {
-    "href": "examples/r-example.html#this-is-an-.rmd-file",
-    "title": "RMarkdown example notebook",
-    "section": "This is an .Rmd file",
-    "text": "As I write some description here. Today is Thursday.\n\nsummary(cars)\n\n     speed           dist       \n Min.   : 4.0   Min.   :  2.00  \n 1st Qu.:12.0   1st Qu.: 26.00  \n Median :15.0   Median : 36.00  \n Mean   :15.4   Mean   : 42.98  \n 3rd Qu.:19.0   3rd Qu.: 56.00  \n Max.   :25.0   Max.   :120.00  \n\nplot(pressure)\n\n\n\n\nI can run my code in-line as I go"
+    "href": "examples/r-example.html",
+    "title": "RMarkdown example .Rmd",
+    "section": "",
+    "text": "This is an R Markdown Notebook. When you execute code within the notebook, the results appear beneath the code.\nTry executing this chunk by clicking the Run button within the chunk or by placing your cursor inside it and pressing Cmd+Shift+Enter.\n\nplot(cars)\n\n\n\n\nAdd a new chunk by clicking the Insert Chunk button on the toolbar or by pressing Cmd+Option+I.\nWhen you save the notebook, an HTML file containing the code and output will be saved alongside it (click the Preview button or press Cmd+Shift+K to preview the HTML file).\nThe preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike Knit, Preview does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed."
   },
   {
     "href": "examples/index.html",
@@ -186,10 +186,16 @@
     "text": "End-to-end workflow examples, linked to pieces from examples above and vice-versa"
   },
   {
-    "href": "examples/python-example.html",
+    "href": "examples/notebook-example.html#this-is-otherwise-just-testing",
+    "title": "Notebook example",
+    "section": "This is otherwise just testing ",
+    "text": "Import the required packages and set the input/working directory to run this Jupyter Notebook locally.\n\nimport requests as r\nfrom skimage import io\nimport matplotlib.pyplot as plt\n\n\nprint(1+1)\nprint(\"woo NASA data!\")\n\n2\nwoo NASA data!"
+  },
+  {
+    "href": "examples/python-example.html#python",
     "title": "Python example with Quarto",
-    "section": "",
-    "text": "This is a .qmd file. I write prose here, using keyboard shortcuts or clicking above to make text bold and other formatting.\nAs I develop I’ll interactively run the following, but can set up caching so that it doesn’t execute the code\n\nimport numpy as np\nimport matplotlib.pyplot as plt\n\nr = np.arange(0, 2, 0.01)\ntheta = 2 * np.pi * r\nfig, ax = plt.subplots(subplot_kw={'projection': 'polar'})\nax.plot(theta, r)\nax.set_rticks([0.5, 1, 1.5, 2])\nax.grid(True)\nplt.show()\n\n\n\n\ntext boxes like this one are in markdown"
+    "section": "Python",
+    "text": "As I develop I’ll interactively run the following, but can set up caching so that it doesn’t execute the code\n\nimport numpy as np\nimport matplotlib.pyplot as plt\n\nr = np.arange(0, 2, 0.01)\ntheta = 2 * np.pi * r\nfig, ax = plt.subplots(subplot_kw={'projection': 'polar'})\nax.plot(theta, r)\nax.set_rticks([0.5, 1, 1.5, 2])\nax.grid(True)\nplt.show()\n\n\n\n\ntext boxes like this one are in markdown"
   },
   {
     "href": "transformations/index.html",
