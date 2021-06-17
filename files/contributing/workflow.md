@@ -35,7 +35,7 @@ git push -u origin branch-name  # connect your branch to github.com and push
 ## delete branch
 git checkout main         # switch to the main branch
 git pull                  # pull merged updates from github.com
-git branch -d branch-hame # delete old local  branch
+git branch -d branch-name # delete old local  branch
 ```
 
 ## GitHub Workflow
@@ -116,7 +116,7 @@ Once your pull request is merged and you've deleted the branch from github.com, 
 ``` {.bash}
 git checkout main         # switch to the main branch
 git pull                  # pull merged updates from github.com
-git branch -d branch-hame # delete old local  branch
+git branch -d branch-name # delete old local  branch
 ```
 
 ## Quarto Workflow
