@@ -3,7 +3,7 @@
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>Cloud for Earth Science – navigate_cmr_stac</title>
+  <title>EarthData Cloud Cookbook – navigate_cmr_stac</title>
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -97,6 +97,7 @@
   <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
   <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
   <link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet">
+  <link href="../site_libs/quarto-html-variables/quarto-html-variables.min.css" rel="stylesheet">
   <style type="text/css">
     details {
       margin-bottom: 1em;
@@ -116,7 +117,7 @@
     }
 
     .cell-output-display {
-      overflow-x: scroll;
+      overflow-x: auto;
     }
 
     .hidden {
@@ -143,14 +144,10 @@
   <div id="quarto-sidebar" class="col col-12 col-lg-3 d-lg-flex px-0 pt-0 sidebar collapse sidebar-navigation">
     <nav class="me-lg-auto py-2 docked  overflow-scroll">
   <div class="px-3 pt-lg-2 mt-1 text-left">
-    <div class="sidebar-title mt-1 mb-0 py-0">
-      <a href="../">
-      Cloud for Earth Science
-      </a>
-        <div class="sidebar-tools-main">
-    <a href="https://github.com/nasa-openscapes/quartobook-test" title="" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
+    <img src="../nasa-openscapes.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      <div class="sidebar-tools-main">
+    <a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook" title="" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
 </div>
-    </div>
   </div>
     <div class="d-flex px-3 mt-2 flex-shrink-0 align-items-center">
       <div class="sidebar-search">
@@ -159,7 +156,7 @@
 </form>
       </div>
         <div class="sidebar-tools-collapse">
-    <a href="https://github.com/nasa-openscapes/quartobook-test" title="" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook" title="" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
 </div>
     </div>
   <div class="sidebar-menu-container"> 
@@ -194,17 +191,12 @@
     <li class="">
         <div class="me-auto ">
             <a class="sidebar-section-item d-inline-flex text-start w-100 collapsed" data-bs-toggle="collapse" data-bs-target="#authentication-collapse" aria-expanded="false">
-              <div class="me-auto  sidebar-item">
-                Authentication
-              </div>
+              <div class="me-auto  sidebar-item">Authentication</div>
             <div><i class="bi bi-chevron-right ms-2 "></i></div>
             </a>
         </div>
       <div class="collapse  " id="authentication-collapse">
         <ul class="list-unstyled sidebar-item-contents">
-          <li class="sidebar-item">
-  <a href="../get-started/how-to-use.html" class="">How to use this book</a>
-</li>
           <li class="sidebar-item">
   <a href="../get-started/lpdaac-netrc.html" class="">LP DAAC Authentication Example</a>
 </li>
@@ -251,7 +243,7 @@
         <div class="me-auto ">
           <div class="d-inline-flex w-100 sidebar-section-item">
             <div class="sidebar-section-link me-auto ">
-            <a href="../docs/access/index.html" class="">NASA Cloud Data Access</a>
+            <a href="../access/index.html" class="">NASA Cloud Data Access</a>
             </div>
             <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#nasaclouddataaccess-collapse" aria-expanded="true">
               <div><i class="bi bi-chevron-right ms-2 "></i></div>
@@ -261,19 +253,16 @@
       <div class="collapse  show" id="nasaclouddataaccess-collapse">
         <ul class="list-unstyled sidebar-item-contents">
           <li class="sidebar-item">
-  <a href="../docs/access/data-access-example.html" class="">Notebook demonstrating data access</a>
+  <a href="../access/earthdata-search.html" class="">Earthdata Search</a>
 </li>
           <li class="sidebar-item">
-  <a href="../docs/access/earthdata-search.html" class="">Earthdata Search</a>
+  <a href="../access/opendap-cloud.html" class="">OPeNDAP in the Cloud</a>
 </li>
           <li class="sidebar-item">
-  <a href="../docs/access/opendap-cloud.html" class="">OPeNxDAP in the Cloud</a>
+  <a href="../access/cof-via-harmony.html" class="">COF via Earthdata Harmony</a>
 </li>
           <li class="sidebar-item">
-  <a href="../docs/access/cof-via-harmony.html" class="">COF via Earthdata Harmony</a>
-</li>
-          <li class="sidebar-item">
-  <a href="../docs/access/download-to-local.html" class="">Download to local</a>
+  <a href="../access/download-to-local.html" class="">Download to local</a>
 </li>
         </ul>
       </div>
@@ -314,20 +303,17 @@
         <div class="me-auto ">
           <div class="d-inline-flex w-100 sidebar-section-item">
             <div class="sidebar-section-link me-auto ">
-            <a href="../examples/index.html" class="">Examples</a>
+            <a href="../examples/index.html" class="">End-to-end Examples</a>
             </div>
-            <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#examples-collapse" aria-expanded="true">
+            <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#end-to-endexamples-collapse" aria-expanded="true">
               <div><i class="bi bi-chevron-right ms-2 "></i></div>
             </a>
             </div>
         </div>
-      <div class="collapse  show" id="examples-collapse">
+      <div class="collapse  show" id="end-to-endexamples-collapse">
         <ul class="list-unstyled sidebar-item-contents">
           <li class="sidebar-item">
-  <a href="../examples/python_example.html" class="">Python example notebook</a>
-</li>
-          <li class="sidebar-item">
-  <a href="../examples/r_example.html" class="">RMarkdown example notebook</a>
+  <a href="../examples/python-example.html" class="">Python example with Quarto</a>
 </li>
         </ul>
       </div>
@@ -338,7 +324,7 @@
         <div class="me-auto ">
           <div class="d-inline-flex w-100 sidebar-section-item">
             <div class="sidebar-section-link me-auto ">
-            <a href="../docs/appendix/index.html" class="">Appendix</a>
+            <a href="../appendix/index.html" class="">Appendix</a>
             </div>
             <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#appendix-collapse" aria-expanded="true">
               <div><i class="bi bi-chevron-right ms-2 "></i></div>
@@ -348,10 +334,10 @@
       <div class="collapse  show" id="appendix-collapse">
         <ul class="list-unstyled sidebar-item-contents">
           <li class="sidebar-item">
-  <a href="../docs/appendix/about.html" class="">About</a>
+  <a href="../appendix/about.html" class="">About</a>
 </li>
           <li class="sidebar-item">
-  <a href="../docs/appendix/glossary.html" class="">Glossary</a>
+  <a href="../appendix/glossary.html" class="">Glossary</a>
 </li>
         </ul>
       </div>
@@ -362,17 +348,20 @@
         <div class="me-auto ">
           <div class="d-inline-flex w-100 sidebar-section-item">
             <div class="sidebar-section-link me-auto ">
-            <a href="../community-handbook/index.html" class="">Community Handbook</a>
+            <a href="../contributing/index.html" class="">Contributing</a>
             </div>
-            <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#communityhandbook-collapse" aria-expanded="true">
+            <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#contributing-collapse" aria-expanded="true">
               <div><i class="bi bi-chevron-right ms-2 "></i></div>
             </a>
             </div>
         </div>
-      <div class="collapse  show" id="communityhandbook-collapse">
+      <div class="collapse  show" id="contributing-collapse">
         <ul class="list-unstyled sidebar-item-contents">
           <li class="sidebar-item">
-  <a href="../community-handbook/contributing.html" class="">Contributing</a>
+  <a href="../contributing/setup.html" class="">Initial Setup</a>
+</li>
+          <li class="sidebar-item">
+  <a href="../contributing/workflow.html" class="">Workflow</a>
 </li>
         </ul>
       </div>
@@ -398,13 +387,13 @@
 </ul></li>
 </ul></li>
 </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nasa-openscapes/quartobook-test/edit/main/discovery/Navigate_CMR_STAC.ipynb">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/quartobook-test/issues/new">Report an issue</a></p></div></div></nav></div>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/edit/main/discovery/Navigate_CMR_STAC.ipynb">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/issues/new">Report an issue</a></p></div></div></nav></div>
   <div class="col mx-auto col-sm-12 col-md-9 col-lg-7 px-lg-4">
 <main>
 
 <section id="cmr-and-cmr-stac-api" class="level1">
 <h1>CMR and CMR-STAC API</h1>
-<p>TODO: credit where this came from</p>
+<p><em>Contributed by: TODO: credit where this came from</em></p>
 </section>
 <section id="navigating-the-cmr-stac-api" class="level1">
 <h1>2. Navigating the CMR-STAC API <a id="navigatestac"></a></h1>
@@ -444,7 +433,7 @@ links</code></pre>
 <div class="sourceCode" id="cb3"><pre class="sourceCode python cell-code"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"You are now using the </span><span class="sc">{</span>stac_response[<span class="st">'id'</span>]<span class="sc">}</span><span class="ss"> API (STAC Version: </span><span class="sc">{</span>stac_response[<span class="st">'stac_version'</span>]<span class="sc">}</span><span class="ss">). </span><span class="sc">{</span>stac_response[<span class="st">'description'</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"There are </span><span class="sc">{</span><span class="bu">len</span>(stac_response[<span class="st">'links'</span>])<span class="sc">}</span><span class="ss"> STAC catalogs available in CMR."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-stdout">
-<pre><code>You are now using the stac API (STAC Version: 1.0.0-rc.4). This is the landing page for CMR-STAC. Each provider link contains a STAC endpoint.
+<pre><code>You are now using the stac API (STAC Version: 1.0.0). This is the landing page for CMR-STAC. Each provider link contains a STAC endpoint.
 There are 46 STAC catalogs available in CMR.</code></pre>
 </div>
 </div>
@@ -468,7 +457,7 @@ There are 46 STAC catalogs available in CMR.</code></pre>
 title: LPCLOUD
 description: Root catalog for LPCLOUD
 type: Catalog
-stac_version: 1.0.0-rc.4
+stac_version: 1.0.0
 links: [{'rel': 'self', 'href': 'https://cmr.earthdata.nasa.gov/stac/LPCLOUD', 'title': 'Provider catalog', 'type': 'application/json'}, {'rel': 'root', 'href': 'https://cmr.earthdata.nasa.gov/stac/', 'title': 'Root catalog', 'type': 'application/json'}, {'rel': 'collections', 'href': 'https://cmr.earthdata.nasa.gov/stac/LPCLOUD/collections', 'title': 'Provider Collections', 'type': 'application/json'}, {'rel': 'search', 'href': 'https://cmr.earthdata.nasa.gov/stac/LPCLOUD/search', 'title': 'Provider Item Search', 'type': 'application/geo+json', 'method': 'GET'}, {'rel': 'search', 'href': 'https://cmr.earthdata.nasa.gov/stac/LPCLOUD/search', 'title': 'Provider Item Search', 'type': 'application/geo+json', 'method': 'POST'}, {'rel': 'conformance', 'href': 'https://cmr.earthdata.nasa.gov/stac/LPCLOUD/conformance', 'title': 'Conformance Classes', 'type': 'application/geo+json'}, {'rel': 'service-desc', 'href': 'https://api.stacspec.org/v1.0.0-beta.1/openapi.yaml', 'title': 'OpenAPI Doc', 'type': 'application/vnd.oai.openapi+json;version=3.0'}, {'rel': 'service-doc', 'href': 'https://api.stacspec.org/v1.0.0-beta.1/index.html', 'title': 'HTML documentation', 'type': 'text/html'}, {'rel': 'child', 'href': 'https://cmr.earthdata.nasa.gov/stac/LPCLOUD/collections/ASTGTM.v003', 'type': 'application/json'}, {'rel': 'child', 'href': 'https://cmr.earthdata.nasa.gov/stac/LPCLOUD/collections/HLSL30.v1.5', 'type': 'application/json'}, {'rel': 'child', 'href': 'https://cmr.earthdata.nasa.gov/stac/LPCLOUD/collections/HLSS30.v1.5', 'type': 'application/json'}]
 conformsTo: ['https://api.stacspec.org/v1.0.0-beta.1/core', 'https://api.stacspec.org/v1.0.0-beta.1/item-search', 'https://api.stacspec.org/v1.0.0-beta.1/item-search#fields', 'https://api.stacspec.org/v1.0.0-beta.1/item-search#query', 'https://api.stacspec.org/v1.0.0-beta.1/item-search#sort', 'https://api.stacspec.org/v1.0.0-beta.1/item-search#context', 'http://www.opengis.net/spec/ogcapi-features-1/1.0/conf/core', 'http://www.opengis.net/spec/ogcapi-features-1/1.0/conf/oas30', 'http://www.opengis.net/spec/ogcapi-features-1/1.0/conf/geojson']</code></pre>
 </div>
@@ -521,7 +510,7 @@ https://cmr.earthdata.nasa.gov/stac/LPCLOUD/collections/HLSS30.v1.5</code></pre>
 <div class="sourceCode" id="cb11"><pre class="sourceCode python cell-code"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>collections <span class="op">=</span> collections_response[<span class="st">'collections'</span>]</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>collections[<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p>{‘id’: ‘HLSL30.v1.5,’ ‘stac_version’: ‘1.0.0-rc.4,’ ‘license’: ‘not-provided,’ ‘title’: ‘HLS Operational Land Imager Surface Reflectance and TOA Brightness Daily Global 30 m V1.5,’ ‘type’: ‘Collection,’ ‘description’: ‘PROVISIONAL - The Harmonized Landsat and Sentinel-2 (HLS) project provides consistent surface reflectance (SR) and top of atmosphere (TOA) brightness data from the Operational Land Imager (OLI) aboard the joint NASA/USGS Landsat 8 satellite and the Multi-Spectral Instrument (MSI) aboard Europe’s Copernicus Sentinel-2A and Sentinel-2B satellites. The combined measurement enables global observations of the land every 2–3 days at 30-meter (m) spatial resolution. The HLS project uses a set of algorithms to obtain seamless products from OLI and MSI that include atmospheric correction, cloud and cloud-shadow masking, spatial co-registration and common gridding, illumination and view angle normalization, and spectral bandpass adjustment. HLSL30 product provides 30-m Nadir Bidirectional Reflectance Distribution Function (BRDF)-Adjusted Reflectance (NBAR) and is derived from Landsat 8 OLI data products. The HLSS30 (https://doi.org/10.5067/HLS/HLSS30.015) and HLSL30 products are gridded to the same resolution and Military Grid Reference System (MGRS) (https://hls.gsfc.nasa.gov/products-description/tiling-system/) tiling system, and thus are “stackable” for time series analysis.HLSL30 product is provided in Cloud Optimized GeoTIFF (COG) format, and each band is distributed as a separate file. There are 10 bands included in the HLSL30 product along with one quality assessment (QA) band and four angle bands. For a more detailed description of the individual bands provided in the HLSL30 product, please see the User Guide (https://lpdaac.usgs.gov/documents/878/HLS_User_Guide_V15_provisional.pdf).’ ‘links’: [{‘rel’: ‘self,’ ‘href’: ‘https://cmr.earthdata.nasa.gov/stac/LPCLOUD/collections/HLSL30.v1.5,’ ‘title’: ‘Info about this collection,’ ‘type’: ‘application/json’}, {‘rel’: ‘root,’ ‘href’: ‘https://cmr.earthdata.nasa.gov/stac,’ ‘title’: ‘Root catalog,’ ‘type’: ‘application/json’}, {‘rel’: ‘parent,’ ‘href’: ‘https://cmr.earthdata.nasa.gov/stac/LPCLOUD,’ ‘title’: ‘Parent catalog,’ ‘type’: ‘application/json’}, {‘rel’: ‘items,’ ‘href’: ‘https://cmr.earthdata.nasa.gov/stac/LPCLOUD/collections/HLSL30.v1.5/items,’ ‘title’: ‘Granules in this collection,’ ‘type’: ‘application/json’}, {‘rel’: ‘about,’ ‘href’: ‘https://cmr.earthdata.nasa.gov/search/concepts/C1711972753-LPCLOUD.html,’ ‘title’: ‘HTML metadata for collection,’ ‘type’: ‘text/html’}, {‘rel’: ‘via,’ ‘href’: ‘https://cmr.earthdata.nasa.gov/search/concepts/C1711972753-LPCLOUD.json,’ ‘title’: ‘CMR JSON metadata for collection,’ ‘type’: ‘application/json’}], ‘extent’: {‘crs’: ‘http://www.opengis.net/def/crs/OGC/1.3/CRS84,’ ‘spatial’: {‘bbox’: [[-180, -90, 180, 90]]}, ‘trs’: ‘http://www.opengis.net/def/uom/ISO-8601/0/Gregorian,’ ‘temporal’: {‘interval’: [[‘2013-04-11T00:00:00.000Z,’ None]]}}}</p>
+<p>{‘id’: ‘HLSL30.v1.5,’ ‘stac_version’: ‘1.0.0,’ ‘license’: ‘not-provided,’ ‘title’: ‘HLS Operational Land Imager Surface Reflectance and TOA Brightness Daily Global 30 m V1.5,’ ‘type’: ‘Collection,’ ‘description’: ‘PROVISIONAL - The Harmonized Landsat and Sentinel-2 (HLS) project provides consistent surface reflectance (SR) and top of atmosphere (TOA) brightness data from the Operational Land Imager (OLI) aboard the joint NASA/USGS Landsat 8 satellite and the Multi-Spectral Instrument (MSI) aboard Europe’s Copernicus Sentinel-2A and Sentinel-2B satellites. The combined measurement enables global observations of the land every 2–3 days at 30-meter (m) spatial resolution. The HLS project uses a set of algorithms to obtain seamless products from OLI and MSI that include atmospheric correction, cloud and cloud-shadow masking, spatial co-registration and common gridding, illumination and view angle normalization, and spectral bandpass adjustment. HLSL30 product provides 30-m Nadir Bidirectional Reflectance Distribution Function (BRDF)-Adjusted Reflectance (NBAR) and is derived from Landsat 8 OLI data products. The HLSS30 (https://doi.org/10.5067/HLS/HLSS30.015) and HLSL30 products are gridded to the same resolution and Military Grid Reference System (MGRS) (https://hls.gsfc.nasa.gov/products-description/tiling-system/) tiling system, and thus are “stackable” for time series analysis.HLSL30 product is provided in Cloud Optimized GeoTIFF (COG) format, and each band is distributed as a separate file. There are 10 bands included in the HLSL30 product along with one quality assessment (QA) band and four angle bands. For a more detailed description of the individual bands provided in the HLSL30 product, please see the User Guide (https://lpdaac.usgs.gov/documents/878/HLS_User_Guide_V15_provisional.pdf).’ ‘links’: [{‘rel’: ‘self,’ ‘href’: ‘https://cmr.earthdata.nasa.gov/stac/LPCLOUD/collections/HLSL30.v1.5,’ ‘title’: ‘Info about this collection,’ ‘type’: ‘application/json’}, {‘rel’: ‘root,’ ‘href’: ‘https://cmr.earthdata.nasa.gov/stac,’ ‘title’: ‘Root catalog,’ ‘type’: ‘application/json’}, {‘rel’: ‘parent,’ ‘href’: ‘https://cmr.earthdata.nasa.gov/stac/LPCLOUD,’ ‘title’: ‘Parent catalog,’ ‘type’: ‘application/json’}, {‘rel’: ‘items,’ ‘href’: ‘https://cmr.earthdata.nasa.gov/stac/LPCLOUD/collections/HLSL30.v1.5/items,’ ‘title’: ‘Granules in this collection,’ ‘type’: ‘application/json’}, {‘rel’: ‘about,’ ‘href’: ‘https://cmr.earthdata.nasa.gov/search/concepts/C1711972753-LPCLOUD.html,’ ‘title’: ‘HTML metadata for collection,’ ‘type’: ‘text/html’}, {‘rel’: ‘via,’ ‘href’: ‘https://cmr.earthdata.nasa.gov/search/concepts/C1711972753-LPCLOUD.json,’ ‘title’: ‘CMR JSON metadata for collection,’ ‘type’: ‘application/json’}], ‘extent’: {‘crs’: ‘http://www.opengis.net/def/crs/OGC/1.3/CRS84,’ ‘spatial’: {‘bbox’: [[-180, -90, 180, 90]]}, ‘trs’: ‘http://www.opengis.net/def/uom/ISO-8601/0/Gregorian,’ ‘temporal’: {‘interval’: [[‘2013-04-11T00:00:00.000Z,’ None]]}}}</p>
 </div>
 </div>
 </section>
@@ -600,7 +589,7 @@ HLS L30 Start Date is: 2013-04-11T00:00:00.000Z</code></pre>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>s30_item <span class="op">=</span> s30_items_response[<span class="st">'features'</span>][<span class="dv">0</span>]                             <span class="co"># select first item (10 items returned by default)</span></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>s30_item</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p>{‘type’: ‘Feature,’ ‘id’: ‘G1969487860-LPCLOUD,’ ‘stac_version’: ‘1.0.0-rc.4,’ ‘stac_extensions’: [‘https://stac-extensions.github.io/eo/v1.0.0/schema.json’], ‘collection’: ‘HLSS30.v1.5,’ ‘geometry’: {‘type’: ‘Polygon,’ ‘coordinates’: [[[-119.1488671, 33.3327671], [-118.9832795, 33.3355226], [-118.6783731, 34.3301598], [-119.1737801, 34.3223655], [-119.1488671, 33.3327671]]]}, ‘bbox’: [-119.17378, 33.332767, -118.678373, 34.33016], ‘links’: [{‘rel’: ‘self,’ ‘href’: ‘https://cmr.earthdata.nasa.gov/stac/LPCLOUD/collections/HLSS30.v1.5/items/G1969487860-LPCLOUD’}, {‘rel’: ‘parent,’ ‘href’: ‘https://cmr.earthdata.nasa.gov/stac/LPCLOUD/collections/HLSS30.v1.5’}, {‘rel’: ‘collection,’ ‘href’: ‘https://cmr.earthdata.nasa.gov/stac/LPCLOUD/collections/HLSS30.v1.5’}, {‘rel’: ‘root,’ ‘href’: ‘https://cmr.earthdata.nasa.gov/stac/’}, {‘rel’: ‘provider,’ ‘href’: ‘https://cmr.earthdata.nasa.gov/stac/LPCLOUD’}, {‘rel’: ‘via,’ ‘href’: ‘https://cmr.earthdata.nasa.gov/search/concepts/G1969487860-LPCLOUD.json’}, {‘rel’: ‘via,’ ‘href’: ‘https://cmr.earthdata.nasa.gov/search/concepts/G1969487860-LPCLOUD.umm_json’}], ‘properties’: {‘datetime’: ‘2015-08-26T18:54:35.450Z,’ ‘start_datetime’: ‘2015-08-26T18:54:35.450Z,’ ‘end_datetime’: ‘2015-08-26T18:54:35.450Z,’ ‘eo:cloud_cover’: 6}, ‘assets’: {‘VZA’: {‘title’: ‘Download HLS.S30.T11SLT.2015238T185436.v1.5.VZA.tif,’ ‘href’: ‘https://lpdaac.earthdata.nasa.gov/lp-prod-protected/HLSS30.015/HLS.S30.T11SLT.2015238T185436.v1.5.VZA.tif’}, ‘VAA’: {‘title’: ‘Download HLS.S30.T11SLT.2015238T185436.v1.5.VAA.tif,’ ‘href’: ‘https://lpdaac.earthdata.nasa.gov/lp-prod-protected/HLSS30.015/HLS.S30.T11SLT.2015238T185436.v1.5.VAA.tif’}, ‘SAA’: {‘title’: ‘Download HLS.S30.T11SLT.2015238T185436.v1.5.SAA.tif,’ ‘href’: ‘https://lpdaac.earthdata.nasa.gov/lp-prod-protected/HLSS30.015/HLS.S30.T11SLT.2015238T185436.v1.5.SAA.tif’}, ‘B11’: {‘title’: ‘Download HLS.S30.T11SLT.2015238T185436.v1.5.B11.tif,’ ‘href’: ‘https://lpdaac.earthdata.nasa.gov/lp-prod-protected/HLSS30.015/HLS.S30.T11SLT.2015238T185436.v1.5.B11.tif’}, ‘B02’: {‘title’: ‘Download HLS.S30.T11SLT.2015238T185436.v1.5.B02.tif,’ ‘href’: ‘https://lpdaac.earthdata.nasa.gov/lp-prod-protected/HLSS30.015/HLS.S30.T11SLT.2015238T185436.v1.5.B02.tif’}, ‘B09’: {‘title’: ‘Download HLS.S30.T11SLT.2015238T185436.v1.5.B09.tif,’ ‘href’: ‘https://lpdaac.earthdata.nasa.gov/lp-prod-protected/HLSS30.015/HLS.S30.T11SLT.2015238T185436.v1.5.B09.tif’}, ‘B12’: {‘title’: ‘Download HLS.S30.T11SLT.2015238T185436.v1.5.B12.tif,’ ‘href’: ‘https://lpdaac.earthdata.nasa.gov/lp-prod-protected/HLSS30.015/HLS.S30.T11SLT.2015238T185436.v1.5.B12.tif’}, ‘B03’: {‘title’: ‘Download HLS.S30.T11SLT.2015238T185436.v1.5.B03.tif,’ ‘href’: ‘https://lpdaac.earthdata.nasa.gov/lp-prod-protected/HLSS30.015/HLS.S30.T11SLT.2015238T185436.v1.5.B03.tif’}, ‘B01’: {‘title’: ‘Download HLS.S30.T11SLT.2015238T185436.v1.5.B01.tif,’ ‘href’: ‘https://lpdaac.earthdata.nasa.gov/lp-prod-protected/HLSS30.015/HLS.S30.T11SLT.2015238T185436.v1.5.B01.tif’}, ‘B07’: {‘title’: ‘Download HLS.S30.T11SLT.2015238T185436.v1.5.B07.tif,’ ‘href’: ‘https://lpdaac.earthdata.nasa.gov/lp-prod-protected/HLSS30.015/HLS.S30.T11SLT.2015238T185436.v1.5.B07.tif’}, ‘SZA’: {‘title’: ‘Download HLS.S30.T11SLT.2015238T185436.v1.5.SZA.tif,’ ‘href’: ‘https://lpdaac.earthdata.nasa.gov/lp-prod-protected/HLSS30.015/HLS.S30.T11SLT.2015238T185436.v1.5.SZA.tif’}, ‘B05’: {‘title’: ‘Download HLS.S30.T11SLT.2015238T185436.v1.5.B05.tif,’ ‘href’: ‘https://lpdaac.earthdata.nasa.gov/lp-prod-protected/HLSS30.015/HLS.S30.T11SLT.2015238T185436.v1.5.B05.tif’}, ‘B06’: {‘title’: ‘Download HLS.S30.T11SLT.2015238T185436.v1.5.B06.tif,’ ‘href’: ‘https://lpdaac.earthdata.nasa.gov/lp-prod-protected/HLSS30.015/HLS.S30.T11SLT.2015238T185436.v1.5.B06.tif’}, ‘Fmask’: {‘title’: ‘Download HLS.S30.T11SLT.2015238T185436.v1.5.Fmask.tif,’ ‘href’: ‘https://lpdaac.earthdata.nasa.gov/lp-prod-protected/HLSS30.015/HLS.S30.T11SLT.2015238T185436.v1.5.Fmask.tif’}, ‘B10’: {‘title’: ‘Download HLS.S30.T11SLT.2015238T185436.v1.5.B10.tif,’ ‘href’: ‘https://lpdaac.earthdata.nasa.gov/lp-prod-protected/HLSS30.015/HLS.S30.T11SLT.2015238T185436.v1.5.B10.tif’}, ‘B08’: {‘title’: ‘Download HLS.S30.T11SLT.2015238T185436.v1.5.B08.tif,’ ‘href’: ‘https://lpdaac.earthdata.nasa.gov/lp-prod-protected/HLSS30.015/HLS.S30.T11SLT.2015238T185436.v1.5.B08.tif’}, ‘B8A’: {‘title’: ‘Download HLS.S30.T11SLT.2015238T185436.v1.5.B8A.tif,’ ‘href’: ‘https://lpdaac.earthdata.nasa.gov/lp-prod-protected/HLSS30.015/HLS.S30.T11SLT.2015238T185436.v1.5.B8A.tif’}, ‘B04’: {‘title’: ‘Download HLS.S30.T11SLT.2015238T185436.v1.5.B04.tif,’ ‘href’: ‘https://lpdaac.earthdata.nasa.gov/lp-prod-protected/HLSS30.015/HLS.S30.T11SLT.2015238T185436.v1.5.B04.tif’}, ‘browse’: {‘title’: ‘Download HLS.S30.T11SLT.2015238T185436.v1.5.jpg,’ ‘href’: ‘https://lpdaac.earthdata.nasa.gov/lp-prod-public/HLSS30.015/HLS.S30.T11SLT.2015238T185436.v1.5.jpg,’ ‘type’: ‘image/jpeg’}, ‘metadata’: {‘href’: ‘https://cmr.earthdata.nasa.gov/search/concepts/G1969487860-LPCLOUD.xml,’ ‘type’: ‘application/xml’}}}</p>
+<p>{‘type’: ‘Feature,’ ‘id’: ‘G1969487860-LPCLOUD,’ ‘stac_version’: ‘1.0.0,’ ‘stac_extensions’: [‘https://stac-extensions.github.io/eo/v1.0.0/schema.json’], ‘collection’: ‘HLSS30.v1.5,’ ‘geometry’: {‘type’: ‘Polygon,’ ‘coordinates’: [[[-119.1488671, 33.3327671], [-118.9832795, 33.3355226], [-118.6783731, 34.3301598], [-119.1737801, 34.3223655], [-119.1488671, 33.3327671]]]}, ‘bbox’: [-119.17378, 33.332767, -118.678373, 34.33016], ‘links’: [{‘rel’: ‘self,’ ‘href’: ‘https://cmr.earthdata.nasa.gov/stac/LPCLOUD/collections/HLSS30.v1.5/items/G1969487860-LPCLOUD’}, {‘rel’: ‘parent,’ ‘href’: ‘https://cmr.earthdata.nasa.gov/stac/LPCLOUD/collections/HLSS30.v1.5’}, {‘rel’: ‘collection,’ ‘href’: ‘https://cmr.earthdata.nasa.gov/stac/LPCLOUD/collections/HLSS30.v1.5’}, {‘rel’: ‘root,’ ‘href’: ‘https://cmr.earthdata.nasa.gov/stac/’}, {‘rel’: ‘provider,’ ‘href’: ‘https://cmr.earthdata.nasa.gov/stac/LPCLOUD’}, {‘rel’: ‘via,’ ‘href’: ‘https://cmr.earthdata.nasa.gov/search/concepts/G1969487860-LPCLOUD.json’}, {‘rel’: ‘via,’ ‘href’: ‘https://cmr.earthdata.nasa.gov/search/concepts/G1969487860-LPCLOUD.umm_json’}], ‘properties’: {‘datetime’: ‘2015-08-26T18:54:35.450Z,’ ‘start_datetime’: ‘2015-08-26T18:54:35.450Z,’ ‘end_datetime’: ‘2015-08-26T18:54:35.450Z,’ ‘eo:cloud_cover’: 6}, ‘assets’: {‘VZA’: {‘title’: ‘Download HLS.S30.T11SLT.2015238T185436.v1.5.VZA.tif,’ ‘href’: ‘https://lpdaac.earthdata.nasa.gov/lp-prod-protected/HLSS30.015/HLS.S30.T11SLT.2015238T185436.v1.5.VZA.tif’}, ‘VAA’: {‘title’: ‘Download HLS.S30.T11SLT.2015238T185436.v1.5.VAA.tif,’ ‘href’: ‘https://lpdaac.earthdata.nasa.gov/lp-prod-protected/HLSS30.015/HLS.S30.T11SLT.2015238T185436.v1.5.VAA.tif’}, ‘SAA’: {‘title’: ‘Download HLS.S30.T11SLT.2015238T185436.v1.5.SAA.tif,’ ‘href’: ‘https://lpdaac.earthdata.nasa.gov/lp-prod-protected/HLSS30.015/HLS.S30.T11SLT.2015238T185436.v1.5.SAA.tif’}, ‘B11’: {‘title’: ‘Download HLS.S30.T11SLT.2015238T185436.v1.5.B11.tif,’ ‘href’: ‘https://lpdaac.earthdata.nasa.gov/lp-prod-protected/HLSS30.015/HLS.S30.T11SLT.2015238T185436.v1.5.B11.tif’}, ‘B02’: {‘title’: ‘Download HLS.S30.T11SLT.2015238T185436.v1.5.B02.tif,’ ‘href’: ‘https://lpdaac.earthdata.nasa.gov/lp-prod-protected/HLSS30.015/HLS.S30.T11SLT.2015238T185436.v1.5.B02.tif’}, ‘B09’: {‘title’: ‘Download HLS.S30.T11SLT.2015238T185436.v1.5.B09.tif,’ ‘href’: ‘https://lpdaac.earthdata.nasa.gov/lp-prod-protected/HLSS30.015/HLS.S30.T11SLT.2015238T185436.v1.5.B09.tif’}, ‘B12’: {‘title’: ‘Download HLS.S30.T11SLT.2015238T185436.v1.5.B12.tif,’ ‘href’: ‘https://lpdaac.earthdata.nasa.gov/lp-prod-protected/HLSS30.015/HLS.S30.T11SLT.2015238T185436.v1.5.B12.tif’}, ‘B03’: {‘title’: ‘Download HLS.S30.T11SLT.2015238T185436.v1.5.B03.tif,’ ‘href’: ‘https://lpdaac.earthdata.nasa.gov/lp-prod-protected/HLSS30.015/HLS.S30.T11SLT.2015238T185436.v1.5.B03.tif’}, ‘B01’: {‘title’: ‘Download HLS.S30.T11SLT.2015238T185436.v1.5.B01.tif,’ ‘href’: ‘https://lpdaac.earthdata.nasa.gov/lp-prod-protected/HLSS30.015/HLS.S30.T11SLT.2015238T185436.v1.5.B01.tif’}, ‘B07’: {‘title’: ‘Download HLS.S30.T11SLT.2015238T185436.v1.5.B07.tif,’ ‘href’: ‘https://lpdaac.earthdata.nasa.gov/lp-prod-protected/HLSS30.015/HLS.S30.T11SLT.2015238T185436.v1.5.B07.tif’}, ‘SZA’: {‘title’: ‘Download HLS.S30.T11SLT.2015238T185436.v1.5.SZA.tif,’ ‘href’: ‘https://lpdaac.earthdata.nasa.gov/lp-prod-protected/HLSS30.015/HLS.S30.T11SLT.2015238T185436.v1.5.SZA.tif’}, ‘B05’: {‘title’: ‘Download HLS.S30.T11SLT.2015238T185436.v1.5.B05.tif,’ ‘href’: ‘https://lpdaac.earthdata.nasa.gov/lp-prod-protected/HLSS30.015/HLS.S30.T11SLT.2015238T185436.v1.5.B05.tif’}, ‘B06’: {‘title’: ‘Download HLS.S30.T11SLT.2015238T185436.v1.5.B06.tif,’ ‘href’: ‘https://lpdaac.earthdata.nasa.gov/lp-prod-protected/HLSS30.015/HLS.S30.T11SLT.2015238T185436.v1.5.B06.tif’}, ‘Fmask’: {‘title’: ‘Download HLS.S30.T11SLT.2015238T185436.v1.5.Fmask.tif,’ ‘href’: ‘https://lpdaac.earthdata.nasa.gov/lp-prod-protected/HLSS30.015/HLS.S30.T11SLT.2015238T185436.v1.5.Fmask.tif’}, ‘B10’: {‘title’: ‘Download HLS.S30.T11SLT.2015238T185436.v1.5.B10.tif,’ ‘href’: ‘https://lpdaac.earthdata.nasa.gov/lp-prod-protected/HLSS30.015/HLS.S30.T11SLT.2015238T185436.v1.5.B10.tif’}, ‘B08’: {‘title’: ‘Download HLS.S30.T11SLT.2015238T185436.v1.5.B08.tif,’ ‘href’: ‘https://lpdaac.earthdata.nasa.gov/lp-prod-protected/HLSS30.015/HLS.S30.T11SLT.2015238T185436.v1.5.B08.tif’}, ‘B8A’: {‘title’: ‘Download HLS.S30.T11SLT.2015238T185436.v1.5.B8A.tif,’ ‘href’: ‘https://lpdaac.earthdata.nasa.gov/lp-prod-protected/HLSS30.015/HLS.S30.T11SLT.2015238T185436.v1.5.B8A.tif’}, ‘B04’: {‘title’: ‘Download HLS.S30.T11SLT.2015238T185436.v1.5.B04.tif,’ ‘href’: ‘https://lpdaac.earthdata.nasa.gov/lp-prod-protected/HLSS30.015/HLS.S30.T11SLT.2015238T185436.v1.5.B04.tif’}, ‘browse’: {‘title’: ‘Download HLS.S30.T11SLT.2015238T185436.v1.5.jpg,’ ‘href’: ‘https://lpdaac.earthdata.nasa.gov/lp-prod-public/HLSS30.015/HLS.S30.T11SLT.2015238T185436.v1.5.jpg,’ ‘type’: ‘image/jpeg’}, ‘metadata’: {‘href’: ‘https://cmr.earthdata.nasa.gov/search/concepts/G1969487860-LPCLOUD.xml,’ ‘type’: ‘application/xml’}}}</p>
 </div>
 </div>
 </section>
@@ -629,15 +618,15 @@ and is 6% cloudy.</code></pre>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Item at index </span><span class="sc">{i}</span><span class="ss"> is </span><span class="sc">{s</span>[<span class="st">'properties'</span>][<span class="st">'eo:cloud_cover'</span>]<span class="sc">}</span><span class="ss">% cloudy."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-stdout">
 <pre><code>Item at index 0 is 6% cloudy.
-Item at index 1 is 100% cloudy.
-Item at index 2 is 30% cloudy.
-Item at index 3 is 67% cloudy.
-Item at index 4 is 99% cloudy.
-Item at index 5 is 24% cloudy.
-Item at index 6 is 15% cloudy.
-Item at index 7 is 3% cloudy.
-Item at index 8 is 6% cloudy.
-Item at index 9 is 6% cloudy.</code></pre>
+Item at index 1 is 4% cloudy.
+Item at index 2 is 0% cloudy.
+Item at index 3 is 64% cloudy.
+Item at index 4 is 0% cloudy.
+Item at index 5 is 39% cloudy.
+Item at index 6 is 74% cloudy.
+Item at index 7 is 100% cloudy.
+Item at index 8 is 30% cloudy.
+Item at index 9 is 67% cloudy.</code></pre>
 </div>
 </div>
 </section>
@@ -655,11 +644,11 @@ Item at index 9 is 6% cloudy.</code></pre>
 <span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"It contains </span><span class="sc">{</span><span class="bu">len</span>(s30_item[<span class="st">'assets'</span>])<span class="sc">}</span><span class="ss"> assets"</span>)</span>
 <span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"and is </span><span class="sc">{</span>s30_item[<span class="st">'properties'</span>][<span class="st">'eo:cloud_cover'</span>]<span class="sc">}</span><span class="ss">% cloudy."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-stdout">
-<pre><code>The ID for this item is: G2010297093-LPCLOUD
+<pre><code>The ID for this item is: G2010287698-LPCLOUD
 It was acquired on: 2016-11-06T08:21:39.880Z
-over: [26.999803, -24.501758, 28.083499, -23.506303] (Lower Left, Upper Right corner coordinates)
+over: [24.875464, -26.295042, 25.108568, -25.427554] (Lower Left, Upper Right corner coordinates)
 It contains 20 assets
-and is 6% cloudy.</code></pre>
+and is 67% cloudy.</code></pre>
 </div>
 </div>
 </section>
@@ -670,24 +659,24 @@ and is 6% cloudy.</code></pre>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> a <span class="kw">in</span> s30_item[<span class="st">'assets'</span>]: <span class="bu">print</span>(a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-stdout">
 <pre><code>The following assets are available for download:
-B05
-B09
-VZA
-B06
-B08
-B10
-B03
-B11
-B07
-Fmask
-B04
-B12
+SZA
+B01
 VAA
 SAA
-B01
-B02
+B10
 B8A
-SZA
+B05
+B09
+Fmask
+B02
+B12
+B11
+B03
+B06
+B04
+B08
+VZA
+B07
 browse
 metadata</code></pre>
 </div>
@@ -698,7 +687,7 @@ metadata</code></pre>
 <div class="cell">
 <div class="sourceCode" id="cb31"><pre class="sourceCode python cell-code"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>s30_item[<span class="st">'assets'</span>][<span class="st">'browse'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p>{‘title’: ‘Download HLS.S30.T35KNP.2016311T080122.v1.5.jpg,’ ‘href’: ‘https://lpdaac.earthdata.nasa.gov/lp-prod-public/HLSS30.015/HLS.S30.T35KNP.2016311T080122.v1.5.jpg,’ ‘type’: ‘image/jpeg’}</p>
+<p>{‘title’: ‘Download HLS.S30.T35JKM.2016311T080122.v1.5.jpg,’ ‘href’: ‘https://lpdaac.earthdata.nasa.gov/lp-prod-public/HLSS30.015/HLS.S30.T35JKM.2016311T080122.v1.5.jpg,’ ‘type’: ‘image/jpeg’}</p>
 </div>
 </div>
 </section>

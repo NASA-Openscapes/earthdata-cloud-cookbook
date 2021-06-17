@@ -3,7 +3,7 @@
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>Cloud for Earth Science – Examples</title>
+  <title>EarthData Cloud Cookbook – End-to-end Examples</title>
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -22,7 +22,7 @@
   <script src="../site_libs/quarto-search/autocomplete.min.js"></script>
   <script src="../site_libs/quarto-search/fuse.min.js"></script>
   <script src="../site_libs/quarto-search/quarto-search.js"></script>
-  <link href="../examples/python_example.html" rel="next">
+  <link href="../examples/python-example.html" rel="next">
   <link href="../transformations/opendap-cloud.html" rel="prev">
   <script src="../site_libs/quarto-html/quarto.js"></script>
   <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -34,6 +34,7 @@
   <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
   <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
   <link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet">
+  <link href="../site_libs/quarto-html-variables/quarto-html-variables.min.css" rel="stylesheet">
   <style type="text/css">
     details {
       margin-bottom: 1em;
@@ -53,7 +54,7 @@
     }
 
     .cell-output-display {
-      overflow-x: scroll;
+      overflow-x: auto;
     }
 
     .hidden {
@@ -67,7 +68,7 @@
 <header id="quarto-header" class="headroom fixed-top">
 <nav class="quarto-secondary-nav py-2 d-lg-none d-md-block " data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <div class="container-fluid d-flex justify-content-between">
-    <h1 class="quarto-secondary-nav-title mb-0 fs-3 d-inline">Examples</h1>
+    <h1 class="quarto-secondary-nav-title mb-0 fs-3 d-inline">End-to-end Examples</h1>
     <button type="button" class="quarto-btn-toggle btn d-lg-none py-0 px-1 d-inline-block border-0 ">
       <i class="bi bi-chevron-right"></i>
     </button>
@@ -80,14 +81,10 @@
   <div id="quarto-sidebar" class="col col-12 col-lg-3 d-lg-flex px-0 pt-0 sidebar collapse sidebar-navigation">
     <nav class="me-lg-auto py-2 docked  overflow-scroll">
   <div class="px-3 pt-lg-2 mt-1 text-left">
-    <div class="sidebar-title mt-1 mb-0 py-0">
-      <a href="../">
-      Cloud for Earth Science
-      </a>
-        <div class="sidebar-tools-main">
-    <a href="https://github.com/nasa-openscapes/quartobook-test" title="" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
+    <img src="../nasa-openscapes.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      <div class="sidebar-tools-main">
+    <a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook" title="" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
 </div>
-    </div>
   </div>
     <div class="d-flex px-3 mt-2 flex-shrink-0 align-items-center">
       <div class="sidebar-search">
@@ -96,7 +93,7 @@
 </form>
       </div>
         <div class="sidebar-tools-collapse">
-    <a href="https://github.com/nasa-openscapes/quartobook-test" title="" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook" title="" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
 </div>
     </div>
   <div class="sidebar-menu-container"> 
@@ -109,7 +106,7 @@
         <div class="me-auto ">
           <div class="d-inline-flex w-100 sidebar-section-item">
             <div class="sidebar-section-link me-auto ">
-            <a href="../docs/get-started/index.html" class="">Getting Started</a>
+            <a href="../get-started/index.html" class="">Getting Started</a>
             </div>
             <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#gettingstarted-collapse" aria-expanded="true">
               <div><i class="bi bi-chevron-right ms-2 "></i></div>
@@ -119,34 +116,29 @@
       <div class="collapse  show" id="gettingstarted-collapse">
         <ul class="list-unstyled sidebar-item-contents">
           <li class="sidebar-item">
-  <a href="../docs/get-started/how-to-use.html" class="">How to use this book</a>
+  <a href="../get-started/how-to-use.html" class="">How to use this book</a>
 </li>
           <li class="sidebar-item">
-  <a href="../docs/get-started/api-primer.html" class="">API Primer</a>
+  <a href="../get-started/api-primer.html" class="">API Primer</a>
 </li>
           <li class="sidebar-item">
-  <a href="../docs/get-started/earthdata-login.html" class="">EarthData Login</a>
+  <a href="../get-started/earthdata-login.html" class="">EarthData Login</a>
 </li>
           <ul class="list-unstyled sidebar-section depth2">
     <li class="">
         <div class="me-auto ">
             <a class="sidebar-section-item d-inline-flex text-start w-100 collapsed" data-bs-toggle="collapse" data-bs-target="#authentication-collapse" aria-expanded="false">
-              <div class="me-auto  sidebar-item">
-                Authentication
-              </div>
+              <div class="me-auto  sidebar-item">Authentication</div>
             <div><i class="bi bi-chevron-right ms-2 "></i></div>
             </a>
         </div>
       <div class="collapse  " id="authentication-collapse">
         <ul class="list-unstyled sidebar-item-contents">
           <li class="sidebar-item">
-  <a href="../docs/get-started/how-to-use.html" class="">How to use this book</a>
+  <a href="../get-started/lpdaac-netrc.html" class="">LP DAAC Authentication Example</a>
 </li>
           <li class="sidebar-item">
-  <a href="../docs/get-started/lpdaac-netrc.html" class="">LP DAAC Authentication Example</a>
-</li>
-          <li class="sidebar-item">
-  <a href="../docs/get-started/podaac-ecco-netrc.html" class="">PO DAAC Authentication Example</a>
+  <a href="../get-started/podaac-ecco-netrc.html" class="">PO DAAC Authentication Example</a>
 </li>
         </ul>
       </div>
@@ -161,7 +153,7 @@
         <div class="me-auto ">
           <div class="d-inline-flex w-100 sidebar-section-item">
             <div class="sidebar-section-link me-auto ">
-            <a href="../docs/discovery/index.html" class="">NASA Cloud Data Discovery</a>
+            <a href="../discovery/index.html" class="">NASA Cloud Data Discovery</a>
             </div>
             <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#nasaclouddatadiscovery-collapse" aria-expanded="true">
               <div><i class="bi bi-chevron-right ms-2 "></i></div>
@@ -171,13 +163,13 @@
       <div class="collapse  show" id="nasaclouddatadiscovery-collapse">
         <ul class="list-unstyled sidebar-item-contents">
           <li class="sidebar-item">
-  <a href="../docs/discovery/Navigate_CMR_STAC.html" class="">CMR and CMR-STAC API</a>
+  <a href="../discovery/Navigate_CMR_STAC.html" class="">CMR and CMR-STAC API</a>
 </li>
           <li class="sidebar-item">
-  <a href="../docs/discovery/earthdata-search-ui.html" class="">Earthdata Search UI</a>
+  <a href="../discovery/earthdata-search-ui.html" class="">Earthdata Search UI</a>
 </li>
           <li class="sidebar-item">
-  <a href="../docs/discovery/cmr-virtual-directories.html" class="">CMR Virtual Directories</a>
+  <a href="../discovery/cmr-virtual-directories.html" class="">CMR Virtual Directories</a>
 </li>
         </ul>
       </div>
@@ -188,7 +180,7 @@
         <div class="me-auto ">
           <div class="d-inline-flex w-100 sidebar-section-item">
             <div class="sidebar-section-link me-auto ">
-            <a href="../docs/access/index.html" class="">NASA Cloud Data Access</a>
+            <a href="../access/index.html" class="">NASA Cloud Data Access</a>
             </div>
             <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#nasaclouddataaccess-collapse" aria-expanded="true">
               <div><i class="bi bi-chevron-right ms-2 "></i></div>
@@ -198,19 +190,16 @@
       <div class="collapse  show" id="nasaclouddataaccess-collapse">
         <ul class="list-unstyled sidebar-item-contents">
           <li class="sidebar-item">
-  <a href="../docs/access/data-access-example.html" class="">Notebook demonstrating data access</a>
+  <a href="../access/earthdata-search.html" class="">Earthdata Search</a>
 </li>
           <li class="sidebar-item">
-  <a href="../docs/access/earthdata-search.html" class="">Earthdata Search</a>
+  <a href="../access/opendap-cloud.html" class="">OPeNDAP in the Cloud</a>
 </li>
           <li class="sidebar-item">
-  <a href="../docs/access/opendap-cloud.html" class="">OPeNxDAP in the Cloud</a>
+  <a href="../access/cof-via-harmony.html" class="">COF via Earthdata Harmony</a>
 </li>
           <li class="sidebar-item">
-  <a href="../docs/access/cof-via-harmony.html" class="">COF via Earthdata Harmony</a>
-</li>
-          <li class="sidebar-item">
-  <a href="../docs/access/download-to-local.html" class="">Download to local</a>
+  <a href="../access/download-to-local.html" class="">Download to local</a>
 </li>
         </ul>
       </div>
@@ -251,20 +240,17 @@
         <div class="me-auto ">
           <div class="d-inline-flex w-100 sidebar-section-item">
             <div class="sidebar-section-link me-auto ">
-            <a href="../examples/index.html" class="active">Examples</a>
+            <a href="../examples/index.html" class="active">End-to-end Examples</a>
             </div>
-            <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#examples-collapse" aria-expanded="true">
+            <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#end-to-endexamples-collapse" aria-expanded="true">
               <div><i class="bi bi-chevron-right ms-2 "></i></div>
             </a>
             </div>
         </div>
-      <div class="collapse  show" id="examples-collapse">
+      <div class="collapse  show" id="end-to-endexamples-collapse">
         <ul class="list-unstyled sidebar-item-contents">
           <li class="sidebar-item">
-  <a href="../examples/python_example.html" class="">Python example notebook</a>
-</li>
-          <li class="sidebar-item">
-  <a href="../examples/r_example.html" class="">RMarkdown example notebook</a>
+  <a href="../examples/python-example.html" class="">Python example with Quarto</a>
 </li>
         </ul>
       </div>
@@ -275,7 +261,7 @@
         <div class="me-auto ">
           <div class="d-inline-flex w-100 sidebar-section-item">
             <div class="sidebar-section-link me-auto ">
-            <a href="../docs/appendix/index.html" class="">Appendix</a>
+            <a href="../appendix/index.html" class="">Appendix</a>
             </div>
             <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#appendix-collapse" aria-expanded="true">
               <div><i class="bi bi-chevron-right ms-2 "></i></div>
@@ -285,10 +271,10 @@
       <div class="collapse  show" id="appendix-collapse">
         <ul class="list-unstyled sidebar-item-contents">
           <li class="sidebar-item">
-  <a href="../docs/appendix/about.html" class="">About</a>
+  <a href="../appendix/about.html" class="">About</a>
 </li>
           <li class="sidebar-item">
-  <a href="../docs/appendix/glossary.html" class="">Glossary</a>
+  <a href="../appendix/glossary.html" class="">Glossary</a>
 </li>
         </ul>
       </div>
@@ -299,17 +285,20 @@
         <div class="me-auto ">
           <div class="d-inline-flex w-100 sidebar-section-item">
             <div class="sidebar-section-link me-auto ">
-            <a href="../community-handbook/index.html" class="">Community Handbook</a>
+            <a href="../contributing/index.html" class="">Contributing</a>
             </div>
-            <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#communityhandbook-collapse" aria-expanded="true">
+            <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#contributing-collapse" aria-expanded="true">
               <div><i class="bi bi-chevron-right ms-2 "></i></div>
             </a>
             </div>
         </div>
-      <div class="collapse  show" id="communityhandbook-collapse">
+      <div class="collapse  show" id="contributing-collapse">
         <ul class="list-unstyled sidebar-item-contents">
           <li class="sidebar-item">
-  <a href="../community-handbook/contributing.html" class="">Contributing</a>
+  <a href="../contributing/setup.html" class="">Initial Setup</a>
+</li>
+          <li class="sidebar-item">
+  <a href="../contributing/workflow.html" class="">Workflow</a>
 </li>
         </ul>
       </div>
@@ -323,7 +312,7 @@
   <div class="col mx-auto col-sm-12 col-md-9 col-lg-7 px-lg-4">
 <main>
 <header id="title-block-header">
-<h1 class="title d-none d-lg-block display-7">Examples</h1>
+<h1 class="title d-none d-lg-block display-7">End-to-end Examples</h1>
 </header>
 <p>End-to-end workflow examples, linked to pieces from examples above and vice-versa</p>
 <!-- -->
@@ -335,8 +324,8 @@
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../examples/python_example.html">
-        <span class="nav-page-text">Python example notebook</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../examples/python-example.html">
+        <span class="nav-page-text">Python example with Quarto</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </div>

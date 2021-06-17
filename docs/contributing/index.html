@@ -3,7 +3,7 @@
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>EarthData Cloud Cookbook – OPeNDAP in the Cloud</title>
+  <title>EarthData Cloud Cookbook – Contributing</title>
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -22,8 +22,8 @@
   <script src="../site_libs/quarto-search/autocomplete.min.js"></script>
   <script src="../site_libs/quarto-search/fuse.min.js"></script>
   <script src="../site_libs/quarto-search/quarto-search.js"></script>
-  <link href="../examples/index.html" rel="next">
-  <link href="../transformations/earthdata-search.html" rel="prev">
+  <link href="../contributing/setup.html" rel="next">
+  <link href="../appendix/glossary.html" rel="prev">
   <script src="../site_libs/quarto-html/quarto.js"></script>
   <script src="../site_libs/quarto-html/popper.min.js"></script>
   <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -68,7 +68,7 @@
 <header id="quarto-header" class="headroom fixed-top">
 <nav class="quarto-secondary-nav py-2 d-lg-none d-md-block " data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <div class="container-fluid d-flex justify-content-between">
-    <h1 class="quarto-secondary-nav-title mb-0 fs-3 d-inline">OPeNDAP in the Cloud</h1>
+    <h1 class="quarto-secondary-nav-title mb-0 fs-3 d-inline">Contributing</h1>
     <button type="button" class="quarto-btn-toggle btn d-lg-none py-0 px-1 d-inline-block border-0 ">
       <i class="bi bi-chevron-right"></i>
     </button>
@@ -229,7 +229,7 @@
   <a href="../transformations/earthdata-search.html" class="">Earthdata Search UI</a>
 </li>
           <li class="sidebar-item">
-  <a href="../transformations/opendap-cloud.html" class="active">OPeNDAP in the Cloud</a>
+  <a href="../transformations/opendap-cloud.html" class="">OPeNDAP in the Cloud</a>
 </li>
         </ul>
       </div>
@@ -285,7 +285,7 @@
         <div class="me-auto ">
           <div class="d-inline-flex w-100 sidebar-section-item">
             <div class="sidebar-section-link me-auto ">
-            <a href="../contributing/index.html" class="">Contributing</a>
+            <a href="../contributing/index.html" class="active">Contributing</a>
             </div>
             <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#contributing-collapse" aria-expanded="true">
               <div><i class="bi bi-chevron-right ms-2 "></i></div>
@@ -308,24 +308,41 @@
   </div>
 </nav>
   </div>
-  <div id="quarto-toc-sidebar" class="col col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-toc order-last"></div>
+  <div id="quarto-toc-sidebar" class="col col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-toc order-last"><nav id="TOC" role="doc-toc">
+<h2 id="toc-title">On this page</h2>
+<ul>
+<li><a href="#intro" class="nav-link active" data-scroll-target="#intro">Intro</a></li>
+<li><a href="#quarto" class="nav-link" data-scroll-target="#quarto">Quarto</a></li>
+</ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/edit/main/contributing/index.md">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/issues/new">Report an issue</a></p></div></div></nav></div>
   <div class="col mx-auto col-sm-12 col-md-9 col-lg-7 px-lg-4">
 <main>
 <header id="title-block-header">
-<h1 class="title d-none d-lg-block display-7">OPeNDAP in the Cloud</h1>
+<h1 class="title d-none d-lg-block display-7">Contributing</h1>
 </header>
-<p>OPeNDAP in the Cloud (OPeNDAP Hydrax)</p>
+
+<section id="intro" class="level2">
+<h2 class="anchored" data-anchor-id="intro">Intro</h2>
+<p>This Section is about how our Openscapes Cohort collaborates to create this book, with an eye towards how others could collaborate with us in the future.</p>
+<p>TODO: Fork/borrow from the awesome work at The Turing Way: <a href="https://the-turing-way.netlify.app/community-handbook/community-handbook.html" class="uri">https://the-turing-way.netlify.app/community-handbook/community-handbook.html</a></p>
+</section>
+<section id="quarto" class="level2">
+<h2 class="anchored" data-anchor-id="quarto">Quarto</h2>
+<p>We’re making the EarthData Cloud Cookbook with <strong>Quarto</strong>: <a href="https://quarto.org/">quarto.org</a>. Quarto makes collaborating to create technical documentation streamlined because we work in plain text documents that can have executable code (Python, R) and are rendered using Jupyter and Knitr engines.</p>
+<p>What is Quarto? Quarto builds from what RStudio learned from RMarkdown but enables different engines (Jupyter and knitr). It is both a Command Line Tool and R package. <code>.qmd</code> is a new filetype like <code>.Rmd</code> — meaning it’s a text file but coupled with an engine can execute code and be rendered as html, pdf, word, and beyond — but for other languages like Python. Quarto can convert <code>.ipynb</code> files to and from <code>.md</code> and <code>.qmd</code> easily so you can develop and publish with collaborators that have different workflows. Once the book is “served” locally, <code>.md</code> files auto-update as you edit, and files with executable code can be rendered individually, and the behavior of different code chunks can be controlled and cached.</p>
+<p>(Note: with Quarto, e-books and websites are very similarly structured, with e-books being set up for numbered chapters and references and websites set up for higher number of pages and organization. We can talk about our book as a book even as we explore whether book/website better suits our needs. This is assigned in <code>_quarto.yml</code>, as we’ll explore later).</p>
 <!-- -->
+</section>
 </main>
 <div class="page-navigation page-navigation-docked">
   <div class="nav-page nav-page-previous">
-      <a href="../transformations/earthdata-search.html">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Earthdata Search UI</span>
+      <a href="../appendix/glossary.html">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Glossary</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../examples/index.html">
-        <span class="nav-page-text">End-to-end Examples</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../contributing/setup.html">
+        <span class="nav-page-text">Initial Setup</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </div>

@@ -25,45 +25,45 @@ site:
     contents:
       - text: "Welcome"
         href: index.md  
-      - section: files/get-started/index.md
+      - section: get-started/index.md
         contents:
-          - files/get-started/how-to-use.md
-          - files/get-started/api-primer.md
-          - files/get-started/earthdata-login.md
+          - get-started/how-to-use.md
+          - get-started/api-primer.md
+          - get-started/earthdata-login.md
           - section: "Authentication" # get-started/authentication.md -- potential bug
             contents:
-              - files/get-started/lpdaac-netrc.ipynb
-              - files/get-started/podaac-ecco-netrc.ipynb
-      - section: files/discovery/index.md
+              - get-started/lpdaac-netrc.ipynb
+              - get-started/podaac-ecco-netrc.ipynb
+      - section: discovery/index.md
         contents:
-          - files/discovery/Navigate_CMR_STAC.ipynb
-          - files/discovery/earthdata-search-ui.md
-          - files/discovery/cmr-virtual-directories.md
-      - section: files/access/index.md
+          - discovery/Navigate_CMR_STAC.ipynb
+          - discovery/earthdata-search-ui.md
+          - discovery/cmr-virtual-directories.md
+      - section: access/index.md
         contents:
-       #   - files/access/data-access-example.qmd
-          - files/access/earthdata-search.md
-          - files/access/opendap-cloud.md
-          - files/access/cof-via-harmony.md
-          - files/access/download-to-local.md
-      - section: files/transformations/index.md
+       #   - access/data-access-example.qmd
+          - access/earthdata-search.md
+          - access/opendap-cloud.md
+          - access/cof-via-harmony.md
+          - access/download-to-local.md
+      - section: transformations/index.md
         contents:
-          - files/transformations/harmony-api.md
-          - files/transformations/harmonypy.md
-          - files/transformations/earthdata-search.md
-          - files/transformations/opendap-cloud.md
-      - section: files/examples/index.md
+          - transformations/harmony-api.md
+          - transformations/harmonypy.md
+          - transformations/earthdata-search.md
+          - transformations/opendap-cloud.md
+      - section: examples/index.md
         contents:
-          - files/examples/python-example.qmd
-          - files/examples/r-examples.Rmd
-      - section: files/appendix/index.md
+          - examples/python-example.qmd
+          - examples/r-examples.Rmd
+      - section: appendix/index.md
         contents:
-          - files/appendix/about.md
-          - files/appendix/glossary.md
-      - section: files/contributing/index.md
+          - appendix/about.md
+          - appendix/glossary.md
+      - section: contributing/index.md
         contents:
-          - files/contributing/setup.md
-          - files/contributing/workflow.md
+          - contributing/setup.md
+          - contributing/workflow.md
 
 bibliography: references.bib
 
