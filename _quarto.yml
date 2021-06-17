@@ -30,7 +30,7 @@ site:
           - get-started/how-to-use.md
           - get-started/api-primer.md
           - get-started/earthdata-login.md
-          - section: "Authentication" # get-started/authentication.md -- potential bug
+          - section: get-started/authentication.md
             contents:
               - get-started/lpdaac-netrc.ipynb
               - get-started/podaac-ecco-netrc.ipynb
@@ -41,7 +41,6 @@ site:
           - discovery/cmr-virtual-directories.md
       - section: access/index.md
         contents:
-       #   - access/data-access-example.qmd
           - access/earthdata-search.md
           - access/opendap-cloud.md
           - access/cof-via-harmony.md
