@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang=""><head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>EarthData Cloud Cookbook – Contributing</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+  <script src="../site_libs/quarto-nav/headroom.min.js"></script>
+  <meta name="quarto:offset" content="..">
+  <script src="../site_libs/quarto-search/autocomplete.min.js"></script>
+  <script src="../site_libs/quarto-search/fuse.min.js"></script>
+  <script src="../site_libs/quarto-search/quarto-search.js"></script>
+  <link href="../contributing/setup.html" rel="next">
+  <link href="../appendix/glossary.html" rel="prev">
+  <script src="../site_libs/quarto-html/quarto.js"></script>
+  <script src="../site_libs/quarto-html/popper.min.js"></script>
+  <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+  <script src="../site_libs/quarto-html/clipboard.min.js"></script>
+  <script src="../site_libs/quarto-html/anchor.min.js"></script>
+  <script src="../site_libs/quarto-html/quarto-html.js"></script>
+  <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+  <link href="../site_libs/quarto-html/quarto-css-variables.css" rel="stylesheet">
+  <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+  <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+  <link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet">
+  <style type="text/css">
+    details {
+      margin-bottom: 1em;
+    } 
+    details[show] {
+      margin-bottom: 0;
+    }
+
+    .quarto-unresolved-ref {
+      font-weight: 600;
+    }
+
+    .quarto-cover-image {
+      max-width: 35%;
+      float: right;
+      margin-left: 30px;
+    }
+
+    .cell-output-display {
+      overflow-x: auto;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="quarto-search-results"></div>
+<header id="quarto-header" class="headroom fixed-top">
+<nav class="quarto-secondary-nav py-2 d-lg-none d-md-block " data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <div class="container-fluid d-flex justify-content-between">
+    <h1 class="quarto-secondary-nav-title mb-0 fs-3 d-inline">Contributing</h1>
+    <button type="button" class="quarto-btn-toggle btn d-lg-none py-0 px-1 d-inline-block border-0 ">
+      <i class="bi bi-chevron-right"></i>
+    </button>
+  </div>
+</nav>
+</header>
+ <!-- /navbar/sidebar -->
+<div class="container-fluid quarto-container d-flex flex-column page-layout-article">
+<div class="row flex-fill" id="quarto-content">
+  <div id="quarto-sidebar" class="col col-12 col-lg-3 d-lg-flex px-0 pt-0 sidebar collapse sidebar-navigation">
+    <nav class="me-lg-auto py-2 docked  overflow-scroll">
+  <div class="px-3 pt-lg-2 mt-1 text-left">
+    <img src="../nasa-openscapes.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      <div class="sidebar-tools-main">
+    <a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook" title="" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
+</div>
+  </div>
+    <div class="d-flex px-3 mt-2 flex-shrink-0 align-items-center">
+      <div class="sidebar-search">
+      <form class="d-flex mb-0">
+  <input id="quarto-search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+      </div>
+        <div class="sidebar-tools-collapse">
+    <a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook" title="" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
+</div>
+    </div>
+  <div class="sidebar-menu-container"> 
+  <ul class="list-unstyled mt-3 px-3">
+      <li class="sidebar-item">
+  <a href="../index.html" class="">Welcome</a>
+</li>
+      <ul class="list-unstyled sidebar-section depth1">
+    <li class="">
+        <div class="me-auto ">
+          <div class="d-inline-flex w-100 sidebar-section-item">
+            <div class="sidebar-section-link me-auto ">
+            <a href="../get-started/index.html" class="">Getting Started</a>
+            </div>
+            <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#gettingstarted-collapse" aria-expanded="true">
+              <div><i class="bi bi-chevron-right ms-2 "></i></div>
+            </a>
+            </div>
+        </div>
+      <div class="collapse  show" id="gettingstarted-collapse">
+        <ul class="list-unstyled sidebar-item-contents">
+          <li class="sidebar-item">
+  <a href="../get-started/how-to-use.html" class="">How to use this book</a>
+</li>
+          <li class="sidebar-item">
+  <a href="../get-started/api-primer.html" class="">API Primer</a>
+</li>
+          <li class="sidebar-item">
+  <a href="../get-started/earthdata-login.html" class="">EarthData Login</a>
+</li>
+          <ul class="list-unstyled sidebar-section depth2">
+    <li class="">
+        <div class="me-auto ">
+          <div class="d-inline-flex w-100 sidebar-section-item">
+            <div class="sidebar-section-link me-auto ">
+            <a href="../get-started/authentication.html" class="">Authentication</a>
+            </div>
+            <a class="text-start collapsed " data-bs-toggle="collapse" data-bs-target="#authentication-collapse" aria-expanded="false">
+              <div><i class="bi bi-chevron-right ms-2 "></i></div>
+            </a>
+            </div>
+        </div>
+      <div class="collapse  " id="authentication-collapse">
+        <ul class="list-unstyled sidebar-item-contents">
+        </ul>
+      </div>
+    </li>
+  </ul>
+        </ul>
+      </div>
+    </li>
+  </ul>
+      <ul class="list-unstyled sidebar-section depth1">
+    <li class="">
+        <div class="me-auto ">
+          <div class="d-inline-flex w-100 sidebar-section-item">
+            <div class="sidebar-section-link me-auto ">
+            <a href="../discovery/index.html" class="">NASA Cloud Data Discovery</a>
+            </div>
+            <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#nasaclouddatadiscovery-collapse" aria-expanded="true">
+              <div><i class="bi bi-chevron-right ms-2 "></i></div>
+            </a>
+            </div>
+        </div>
+      <div class="collapse  show" id="nasaclouddatadiscovery-collapse">
+        <ul class="list-unstyled sidebar-item-contents">
+          <li class="sidebar-item">
+  <a href="../discovery/Navigate_CMR_STAC.html" class="">CMR and CMR-STAC API</a>
+</li>
+          <li class="sidebar-item">
+  <a href="../discovery/earthdata-search-ui.html" class="">Earthdata Search UI</a>
+</li>
+          <li class="sidebar-item">
+  <a href="../discovery/cmr-virtual-directories.html" class="">CMR Virtual Directories</a>
+</li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+      <ul class="list-unstyled sidebar-section depth1">
+    <li class="">
+        <div class="me-auto ">
+          <div class="d-inline-flex w-100 sidebar-section-item">
+            <div class="sidebar-section-link me-auto ">
+            <a href="../access/index.html" class="">NASA Cloud Data Access</a>
+            </div>
+            <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#nasaclouddataaccess-collapse" aria-expanded="true">
+              <div><i class="bi bi-chevron-right ms-2 "></i></div>
+            </a>
+            </div>
+        </div>
+      <div class="collapse  show" id="nasaclouddataaccess-collapse">
+        <ul class="list-unstyled sidebar-item-contents">
+          <li class="sidebar-item">
+  <a href="../access/earthdata-search.html" class="">Earthdata Search</a>
+</li>
+          <li class="sidebar-item">
+  <a href="../access/opendap-cloud.html" class="">OPeNDAP in the Cloud</a>
+</li>
+          <li class="sidebar-item">
+  <a href="../access/cof-via-harmony.html" class="">COF via Earthdata Harmony</a>
+</li>
+          <li class="sidebar-item">
+  <a href="../access/download-to-local.html" class="">Download to local</a>
+</li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+      <ul class="list-unstyled sidebar-section depth1">
+    <li class="">
+        <div class="me-auto ">
+          <div class="d-inline-flex w-100 sidebar-section-item">
+            <div class="sidebar-section-link me-auto ">
+            <a href="../transformations/index.html" class="">NASA Cloud Data Transformations</a>
+            </div>
+            <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#nasaclouddatatransformations-collapse" aria-expanded="true">
+              <div><i class="bi bi-chevron-right ms-2 "></i></div>
+            </a>
+            </div>
+        </div>
+      <div class="collapse  show" id="nasaclouddatatransformations-collapse">
+        <ul class="list-unstyled sidebar-item-contents">
+          <li class="sidebar-item">
+  <a href="../transformations/harmony-api.html" class="">Harmony API</a>
+</li>
+          <li class="sidebar-item">
+  <a href="../transformations/harmonypy.html" class="">Harmony Py Library</a>
+</li>
+          <li class="sidebar-item">
+  <a href="../transformations/earthdata-search.html" class="">Earthdata Search UI</a>
+</li>
+          <li class="sidebar-item">
+  <a href="../transformations/opendap-cloud.html" class="">OPeNDAP in the Cloud</a>
+</li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+      <ul class="list-unstyled sidebar-section depth1">
+    <li class="">
+        <div class="me-auto ">
+          <div class="d-inline-flex w-100 sidebar-section-item">
+            <div class="sidebar-section-link me-auto ">
+            <a href="../examples/index.html" class="">End-to-end Examples</a>
+            </div>
+            <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#end-to-endexamples-collapse" aria-expanded="true">
+              <div><i class="bi bi-chevron-right ms-2 "></i></div>
+            </a>
+            </div>
+        </div>
+      <div class="collapse  show" id="end-to-endexamples-collapse">
+        <ul class="list-unstyled sidebar-item-contents">
+          <li class="sidebar-item">
+  <a href="../examples/python-example.html" class="">Python example with Quarto</a>
+</li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+      <ul class="list-unstyled sidebar-section depth1">
+    <li class="">
+        <div class="me-auto ">
+          <div class="d-inline-flex w-100 sidebar-section-item">
+            <div class="sidebar-section-link me-auto ">
+            <a href="../appendix/index.html" class="">Appendix</a>
+            </div>
+            <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#appendix-collapse" aria-expanded="true">
+              <div><i class="bi bi-chevron-right ms-2 "></i></div>
+            </a>
+            </div>
+        </div>
+      <div class="collapse  show" id="appendix-collapse">
+        <ul class="list-unstyled sidebar-item-contents">
+          <li class="sidebar-item">
+  <a href="../appendix/about.html" class="">About</a>
+</li>
+          <li class="sidebar-item">
+  <a href="../appendix/glossary.html" class="">Glossary</a>
+</li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+      <ul class="list-unstyled sidebar-section depth1">
+    <li class="">
+        <div class="me-auto ">
+          <div class="d-inline-flex w-100 sidebar-section-item">
+            <div class="sidebar-section-link me-auto ">
+            <a href="../contributing/index.html" class="active">Contributing</a>
+            </div>
+            <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#contributing-collapse" aria-expanded="true">
+              <div><i class="bi bi-chevron-right ms-2 "></i></div>
+            </a>
+            </div>
+        </div>
+      <div class="collapse  show" id="contributing-collapse">
+        <ul class="list-unstyled sidebar-item-contents">
+          <li class="sidebar-item">
+  <a href="../contributing/setup.html" class="">Initial Setup</a>
+</li>
+          <li class="sidebar-item">
+  <a href="../contributing/workflow.html" class="">Workflow</a>
+</li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+  </ul>
+  </div>
+</nav>
+  </div>
+  <div id="quarto-toc-sidebar" class="col col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-toc order-last"><nav id="TOC" role="doc-toc">
+<h2 id="toc-title">On this page</h2>
+<ul>
+<li><a href="#intro" class="nav-link active" data-scroll-target="#intro">Intro</a></li>
+<li><a href="#quarto" class="nav-link" data-scroll-target="#quarto">Quarto</a></li>
+</ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/edit/main/contributing/index.md">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/issues/new">Report an issue</a></p></div></div></nav></div>
+  <div class="col mx-auto col-sm-12 col-md-9 col-lg-7 px-lg-4">
+<main>
+<header id="title-block-header">
+<h1 class="title d-none d-lg-block display-7">Contributing</h1>
+</header>
+
+<section id="intro" class="level2">
+<h2 class="anchored" data-anchor-id="intro">Intro</h2>
+<p>This Section is about how our Openscapes Cohort collaborates to create this book, with an eye towards how others could collaborate with us in the future.</p>
+<p>TODO: Fork/borrow from the awesome work at The Turing Way: <a href="https://the-turing-way.netlify.app/community-handbook/community-handbook.html" class="uri">https://the-turing-way.netlify.app/community-handbook/community-handbook.html</a></p>
+</section>
+<section id="quarto" class="level2">
+<h2 class="anchored" data-anchor-id="quarto">Quarto</h2>
+<p>We’re making the EarthData Cloud Cookbook with <strong>Quarto</strong>: <a href="https://quarto.org/">quarto.org</a>. Quarto makes collaborating to create technical documentation streamlined because we work in plain text documents that can have executable code (Python, R) and are rendered using Jupyter and Knitr engines.</p>
+<p>What is Quarto? Quarto builds from what RStudio learned from RMarkdown but enables different engines (Jupyter and knitr). It is both a Command Line Tool and R package. <code>.qmd</code> is a new filetype like <code>.Rmd</code> — meaning it’s a text file but coupled with an engine can execute code and be rendered as html, pdf, word, and beyond — but for other languages like Python. Quarto can convert <code>.ipynb</code> files to and from <code>.md</code> and <code>.qmd</code> easily so you can develop and publish with collaborators that have different workflows. Once the book is “served” locally, <code>.md</code> files auto-update as you edit, and files with executable code can be rendered individually, and the behavior of different code chunks can be controlled and cached.</p>
+<p>(Note: with Quarto, e-books and websites are very similarly structured, with e-books being set up for numbered chapters and references and websites set up for higher number of pages and organization. We can talk about our book as a book even as we explore whether book/website better suits our needs. This is assigned in <code>_quarto.yml</code>, as we’ll explore later).</p>
+<!-- -->
+</section>
+</main>
+<div class="page-navigation page-navigation-docked">
+  <div class="nav-page nav-page-previous">
+      <a href="../appendix/glossary.html">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Glossary</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../contributing/setup.html">
+        <span class="nav-page-text">Initial Setup</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</div>
+</div> <!-- /main column -->
+</div> <!-- /row -->
+</div> <!-- /container fluid -->
+
+
+</body></html>
