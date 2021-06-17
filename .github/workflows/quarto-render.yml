@@ -1,0 +1,63 @@
+name: Render quarto files
+on: 
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  quarto-render-and-deploy:
+    runs-on: ubuntu-latest
+    env:
+      RENV_PATHS_ROOT: ~/.local/share/renv
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: "Install quarto bin"
+      run: |
+        curl -s https://api.github.com/repos/quarto-dev/quarto-cli/releases/latest | 
+        grep "browser_download_url.*deb" | 
+        cut -d '"' -f 4 |
+        wget -i -
+        sudo dpkg -i quarto-0.1-amd64.deb
+
+    - uses: actions/setup-python@v2
+
+    - name: "Install Python deps"
+      run: | 
+        if [ -f requirements.txt ]
+        then
+          grep -iv "win" requirements.txt > TEMP_requirements.txt
+          pip install -r TEMP_requirements.txt
+        else
+          echo "requirements.txt not found; installing minimal reqs"
+          pip install jupyter
+        fi
+    - name: "Check Python installation"
+      run: |
+        echo "which python: $(which python)"
+        echo "which python3: $(which python3)"
+        echo "which jupyter: $(which jupyter)"
+                
+    - name: "Quarto env"
+      run: |
+        quarto env
+
+    - name: "Quarto capabilities"
+      run: |
+        quarto capabilities
+
+    - name: "Quarto check"
+      run: |
+        quarto check
+
+    - name: "Render directory"
+      run: |
+        quarto render --execute-debug 
+
+    - name: "Deploy to gh-pages"
+      uses: peaceiris/actions-gh-pages@v3
+      if: github.ref == 'refs/heads/main'
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./_site
