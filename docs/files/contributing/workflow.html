@@ -450,22 +450,23 @@
 <h2 id="toc-title">On this page</h2>
 <ul>
 <li><a href="#workflow-for-contributing-to-our-cookbook" class="nav-link active" data-scroll-target="#workflow-for-contributing-to-our-cookbook">Workflow for contributing to our Cookbook</a></li>
-<li><a href="#quickstart" class="nav-link" data-scroll-target="#quickstart">Quickstart</a></li>
+<li><a href="#quickstart-reference" class="nav-link" data-scroll-target="#quickstart-reference">Quickstart reference</a></li>
 <li><a href="#github-workflow" class="nav-link" data-scroll-target="#github-workflow">GitHub Workflow</a>
 <ul class="collapse">
 <li><a href="#branch-setup" class="nav-link" data-scroll-target="#branch-setup">Branch setup</a></li>
+<li><a href="#develop-content" class="nav-link" data-scroll-target="#develop-content">Develop content</a></li>
 <li><a href="#commit-changes" class="nav-link" data-scroll-target="#commit-changes">Commit changes</a></li>
 <li><a href="#push-changes" class="nav-link" data-scroll-target="#push-changes">Push changes</a></li>
 <li><a href="#pull-request" class="nav-link" data-scroll-target="#pull-request">Pull Request</a></li>
+<li><a href="#delete-branch" class="nav-link" data-scroll-target="#delete-branch">Delete Branch</a></li>
 </ul></li>
 <li><a href="#quarto-workflow" class="nav-link" data-scroll-target="#quarto-workflow">Quarto Workflow</a>
 <ul class="collapse">
 <li><a href="#quarto-serve" class="nav-link" data-scroll-target="#quarto-serve">Quarto serve</a></li>
-<li><a href="#start-a-new-working-session" class="nav-link" data-scroll-target="#start-a-new-working-session">Start a new working session</a></li>
 <li><a href="#develop-cookbook-content" class="nav-link" data-scroll-target="#develop-cookbook-content">Develop Cookbook Content</a></li>
 <li><a href="#quarto-render" class="nav-link" data-scroll-target="#quarto-render">Quarto render</a></li>
 </ul></li>
-<li><a href="#update-the-environment" class="nav-link" data-scroll-target="#update-the-environment">Update the Environment</a></li>
+<li><a href="#virtual-environments" class="nav-link" data-scroll-target="#virtual-environments">Virtual Environments</a></li>
 <li><a href="#cookbook-structure" class="nav-link" data-scroll-target="#cookbook-structure">Cookbook Structure</a></li>
 <li><a href="#cookbook-practices" class="nav-link" data-scroll-target="#cookbook-practices">Cookbook Practices</a>
 <ul class="collapse">
@@ -485,11 +486,34 @@
 
 <section id="workflow-for-contributing-to-our-cookbook" class="level2">
 <h2 class="anchored" data-anchor-id="workflow-for-contributing-to-our-cookbook">Workflow for contributing to our Cookbook</h2>
-<p>Your Quarto workflow can be from the Command Line, Python, or R. You are able to work on Cookbook chapters that can be different file types, including <code>.md</code> , <code>.ipynb</code>, <code>.Rmd</code>, and <code>.qmd</code>. In all cases narrative and prose can be written in markdown, and chapters without code to execute can be written in <code>.md</code>. This workflow can streamline collaboration for scientific &amp; technical writing across programming languages.</p>
+<p>Your workflow can be from wherever you are most comfortable. You can develop chapters working in a text editor, integrated development environment (IDE), or notebook interface. And you can serve Quarto from the Command Line or R. Quarto will combine files of different types ( <code>.md</code> , <code>.ipynb</code>, <code>.Rmd</code>, and <code>.qmd</code>) to make the Cookbook. This workflow can streamline collaboration for scientific &amp; technical writing across programming languages.</p>
+<p>By default, rendering the Cookbook will only act on markdown text and will not execute any code. This way, rendering the whole Cookbook will not become overly cumbersome as it grows, and there is not one single virtual environment with all the libraries required. Instead our workflow will be that as you develop a single chapter (or section), you control when you render, and can create a <code>requirements.txt</code> file for that chapter (or section). This will also make it much easier to port lessons that work standalone and are ready for a Cloud instance or a workshop.</p>
 </section>
-<section id="quickstart" class="level2">
-<h2 class="anchored" data-anchor-id="quickstart">Quickstart</h2>
-<p>Instructions for returning to the Cookbook after lunch/months; this is described in more detail below.</p>
+<section id="quickstart-reference" class="level2">
+<h2 class="anchored" data-anchor-id="quickstart-reference">Quickstart reference</h2>
+<p>Commands for returning to the Cookbook after lunch/months; each is described in more detail below.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">## check which branches exist, where you are, and pull recent from main branch</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout main</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">## create and switch to new branch</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout <span class="at">-b</span> branch-name </span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">## develop content</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">## write prose in markdown, code in R and Python</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co">## commit changes</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add <span class="at">--all</span> </span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"my commit message here"</span> </span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co">## push changes</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push <span class="at">-u</span> origin branch-name  <span class="co"># connect your branch to github.com and push</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="co">## delete branch</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout main         <span class="co"># switch to the main branch</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull                  <span class="co"># pull merged updates from github.com</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch <span class="at">-d</span> branch-hame <span class="co"># delete old local  branch</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="github-workflow" class="level2">
 <h2 class="anchored" data-anchor-id="github-workflow">GitHub Workflow</h2>
@@ -501,75 +525,94 @@
 <section id="branch-setup" class="level3">
 <h3 class="anchored" data-anchor-id="branch-setup">Branch setup</h3>
 <p>First off, check what branch you’re on and pull the most recent edits from the main branch. If you need to switch branches, use <code>git checkout</code>.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch          <span class="co"># returns all local branches</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout main   <span class="co"># switch branch to main</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull            <span class="co"># pull most recent edits from the main branch</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>If you are already on the <code>main</code> branch, Git will tell you.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch          <span class="co"># returns all local branches</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout main   <span class="co"># switch branch to main</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull            <span class="co"># pull most recent from the main branch</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>If you are already on the <code>main</code> branch, git will tell you, and that’s fine.</p>
 <p>(If you have any residual branches from before, you’ll likely want to start off by deleting them — assuming they were temporary and have been merged into github.com. You can delete a branch with <code>git branch -d branch-name</code>).</p>
 <p>Next, create a new branch, then switch to that branch to work in. Below is a one-step approach for the two-step process of <code>git branch branch-name</code> then <code>git checkout branch-name</code> (read <a href="https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging">more</a>).</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout <span class="at">-b</span> branch-name  <span class="co"># create and switch to new branch</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Time for your Quarto workflow – see below. After you’ve made edits and served with Quarto, you’ll commit your changes.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout <span class="at">-b</span> branch-name  <span class="co"># create and switch to new branch</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="develop-content" class="level3">
+<h3 class="anchored" data-anchor-id="develop-content">Develop content</h3>
+<p>Time to edit and develop content, and run your Quarto Workflow – see <a href="#develop-cookbook-content">specific instructions below</a>. While you’re developing, you’ll want to frequently commit your changes.</p>
 </section>
 <section id="commit-changes" class="level3">
 <h3 class="anchored" data-anchor-id="commit-changes">Commit changes</h3>
-<p>You’ll commit your work regularly as you go, writing commit messages:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add <span class="at">--all</span> </span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"my commit message here"</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>You’ll commit your work regularly as you go, likely using the following, which commits all files you’ve affected within the Cookbook project:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add <span class="at">--all</span> </span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"my commit message here"</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>From <a href="https://r-pkgs.org/git.html#git-commit">R Packages</a>:</p>
+<blockquote class="blockquote">
+<p>A commit takes a snapshot of your code at a specified point in time. Using a Git commit is like using anchors and other protection when climbing. If you’re crossing a dangerous rock face you want to make sure you’ve used protection to catch you if you fall. Commits play a similar role: if you make a mistake, you can’t fall past the previous commit.</p>
+</blockquote>
+<p>Here are some of Hadley Wickham’s suggested <a href="https://r-pkgs.org/git.html#commit-best-practices">best practices</a></p>
 </section>
 <section id="push-changes" class="level3">
 <h3 class="anchored" data-anchor-id="push-changes">Push changes</h3>
 <p>When you’re ready to push changes you’ve made in your branch, you’ll first need to connect it to github.com by pushing it “upstream” to the “origin repository” (<code>-u</code> below is short for <code>--set-upstream</code>):</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push <span class="at">-u</span> origin branch-name  <span class="co"># connect your branch to github.com and push</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push <span class="at">-u</span> origin branch-name  <span class="co"># connect your branch to github.com and push</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="pull-request" class="level3">
 <h3 class="anchored" data-anchor-id="pull-request">Pull Request</h3>
-<p>Now you’ve synced your work to github.com. It is currently online, in a separate branch from the <code>main</code> branch. Go to <a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook" class="uri">&lt;https://github.com/nasa-openscapes/earthdata-cloud-cookbook&gt;</a>, find your branch, and do a pull request, and tag someone to review (depending on what you’ve done and what we’ve talked about).</p>
-<p>TODO: Let’s discuss this:</p>
+<p>Now you’ve synced your work to github.com. It is currently online, in a separate branch from the <code>main</code> branch. Go to <a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook" class="uri">https://github.com/nasa-openscapes/earthdata-cloud-cookbook</a>, find your branch, and do a pull request.</p>
+<p>TODO: Let’s discuss our review process:</p>
 <ul>
-<li>When the pull request is merged, delete the branch on github.com</li>
+<li>Tag someone to review, (including you if it’s a quick fix?)</li>
+<li>Timeline</li>
+<li>Merging</li>
 </ul>
-<p>Once your pull request is merged, you can delete the branch from github.com (it suggests this as a button).</p>
-<p>Then also come back to your local setup and delete the branch locally:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout main         <span class="co"># switch to the main branch</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull                  <span class="co"># pull merged updates from github.com</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch <span class="at">-d</span> branch-hame <span class="co"># delete old local  branch</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>When the pull request is merged, delete the branch on github.com. GitHub will prompt you with a button at the end of the merge.</p>
+</section>
+<section id="delete-branch" class="level3">
+<h3 class="anchored" data-anchor-id="delete-branch">Delete Branch</h3>
+<p>Once your pull request is merged and you’ve deleted the branch from github.com, then come back to your local setup and delete the branch locally:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout main         <span class="co"># switch to the main branch</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull                  <span class="co"># pull merged updates from github.com</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch <span class="at">-d</span> branch-hame <span class="co"># delete old local  branch</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 <section id="quarto-workflow" class="level2">
 <h2 class="anchored" data-anchor-id="quarto-workflow">Quarto Workflow</h2>
-<p>Now the fun part! The thing to do first is to “serve” the Cookbook so that we can see what it looks like as we develop the chapters (it’s called “serve” because it’s really a website that looks like a book).</p>
-<p>Our overall workflow will be to serve the book at the beginning, develop/edit chapters as simple text files (<code>.md</code>/<code>.qmd</code>/<code>.Rmd</code>), which will make it easier for us to collaborate. We can convert files between formats as we wish; for example converting an existing <code>.ipynb</code> to text files for development or from text files to <code>.ipynb</code> files for workshops. (See <code>quarto convert help</code> for details.)</p>
-<p>As you save your work, <code>.md</code>s will automatically refresh with your updates. Other file types will need to be rendered first; see more below.</p>
-<p>As you work, you’ll follow our GitHub workflow above, committing regularly. And you can optionally use quarto to render the whole Cookbook before pushing to github.com.</p>
-<p>The following is how to run Quarto from the command line; see <a href="https://quarto.org/docs/getting-started/quarto-basics.html">https://quarto.org</a> to see equivalents in R.</p>
+<p>Now the fun part! Our overall workflow will be to serve the book at the beginning, develop/edit chapters as simple text files (<code>.md</code>/<code>.qmd</code>/<code>.Rmd</code>) or executable notebooks (<code>.ipynb</code>) that will all render into the book.</p>
+<p>Quarto lets us easily convert between file types, so depending on how you prefer to work and how you’d like to interact with different audiences, we can go between formats as we wish. For example, we can converting an existing <code>.ipynb</code> to <code>.qmd</code> to collaborate during development, and then convert back to <code>.ipynb</code> files for our workshops. See <code>quarto convert help</code> for details.</p>
+<p>As you work, you’ll follow our GitHub workflow above, committing regularly. And you can optionally use <code>quarto render</code> to rebuild the whole Cookbook before pushing to github.com.</p>
+<p>The following is to run Quarto from the command line; see <a href="https://quarto.org/docs/getting-started/quarto-basics.html">quarto.org</a> to see equivalents in R.</p>
 <section id="quarto-serve" class="level3">
 <h3 class="anchored" data-anchor-id="quarto-serve">Quarto serve</h3>
-<p>Run the following from your branch in your <code>earthdata-cloud-cookbook</code> directory.</p>
-<p>To serve the book from the command line:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> serve</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>And after it’s is served, you can paste the url into your browser or click from the console to see the built Cookbook.</p>
-<p>This command line instance is now being used to serve Quarto. You can open another instance to continue working from the command line, including developing content and rendering (see next).</p>
-</section>
-<section id="start-a-new-working-session" class="level3">
-<h3 class="anchored" data-anchor-id="start-a-new-working-session">Start a new working session</h3>
-<p>When you want to start a new working session, open a command shell and run:</p>
-<pre><code>cd earthdata-cloud-cookbook
-.venv\Scripts\activate.bat  ## for Windows shell
-quarto serve</code></pre>
+<p>The thing to do first is to “serve” the Cookbook so that we can see what it looks like as we develop the chapters (it’s called “serve” because it’s really a website that looks like a book).</p>
+<p>Run the following from your branch in your <code>earthdata-cloud-cookbook</code> directory from the command line:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> serve</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>And after it’s is served, you can click from the console (or paste the url into your browser) to see the development version of the Cookbook.</p>
+<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+This command line instance is now being used to serve Quarto
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>You can open another instance to continue working from the command line, including running other shell commands and rendering (see next). Launching your command line shell of choice will open a new instance.</p>
+</div>
+</div>
 </section>
 <section id="develop-cookbook-content" class="level3">
 <h3 class="anchored" data-anchor-id="develop-cookbook-content">Develop Cookbook Content</h3>
-<p>You can develop Cookbook chapters as text files (<code>.md</code>/<code>.qmd</code>/<code>.Rmd</code>) in the text editor of your choice. You can also develop chapters as <code>.ipynb</code> from JupyterLab (see more about <a href="https://quarto.org/docs/computations/using-jupyter-lab.html">JupyterLab with Quarto</a>).</p>
+<p>You can develop Cookbook chapters as text files (<code>.md</code>/<code>.qmd</code>/<code>.Rmd</code>) in the text editor of your choice. You can also develop chapters as <code>.ipynb</code> from JupyterLab, Anaconda, etc (see more about <a href="https://quarto.org/docs/computations/using-jupyter-lab.html">JupyterLab with Quarto</a>).</p>
 <section id="rstudio-ide-visual-editor" class="level4">
 <h4 class="anchored" data-anchor-id="rstudio-ide-visual-editor">RStudio IDE &amp; Visual Editor</h4>
-<p>You can also use the RStudio IDE. It can be used as a simple text editor, but it can also interactively execute code in <code>.qmd</code> and <code>.Rmd</code> files, which streamlines testing as we develop content. The RStudio IDE Visual Editor makes this experience feel like a cross between an interactive notebook and a Google Doc.</p>
+<p>You can also use the RStudio IDE. It can be used as a simple text editor, but it can also interactively execute code in <code>.qmd</code> and <code>.Rmd</code> files — which are plain text files. This will streamline testing and collaboration as we develop content.</p>
+<p>The RStudio IDE Visual Editor makes this experience feel like a cross between an interactive notebook and a Google Doc:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../../files/contributing/images/rstudio-visual-editor-qmd.png" class="img-fluid figure-img"></p>
 <p></p><figcaption aria-hidden="true" class="figure-caption">The RStudio IDE Visual Editor with an interactive .qmd file</figcaption><p></p>
 </figure>
 </div>
-<p>Another benefit of the RStudio IDE is that it has a docked command line (Terminal, bottom left), file navigation (bottom right) and GitHub interface (top right). This helps keep things organized as you work. The image shows the second Terminal; the first is being used to serve Quarto.</p>
+<p>Above shows the Visual Editor in the top left pane with an interactive <code>.qmd</code> file. Learn more about the <a href="https://rstudio.github.io/visual-markdown-editing/#/">RStudio Visual Editor</a>.</p>
+<p>Another benefit of the RStudio IDE is that it has a docked command line (Terminal, bottom left pane), file navigation (bottom right pane) and GitHub interface (top right pane). The IDE helps keep things organized as you work, and provides a visual way to review your git commits and do common commands (see this RStudio-GitHub walk through from <a href="https://rstudio-conf-2020.github.io/r-for-excel/github.html#sync-from-rstudio-local-to-github-remote">R for Excel Users</a>). Note too that the image shows the second instance of the Terminal command line; the first is being used to serve Quarto.</p>
 </section>
 </section>
 <section id="quarto-render" class="level3">
@@ -579,7 +622,8 @@ quarto serve</code></pre>
 <div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render my-document.ipynb      <span class="co">## render a notebook</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render my-work.qmd            <span class="co">## render a Quarto file</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render my-contribution.Rmd    <span class="co">## render a RMarkdown file</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>You can also render the whole book:</p>
+<p>From the RStudio IDE, you can also press the <strong>Render</strong> button to render <code>.qmd</code> and <code>.Rmd</code> files.</p>
+<p>And you can also render the whole book:</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Learn more about <a href="https://quarto.org/docs/computations/running-code.html#rendering">rendering with Quarto</a>. From J.J. Allaire:</p>
 <blockquote class="blockquote">
@@ -587,21 +631,29 @@ quarto serve</code></pre>
 </blockquote>
 </section>
 </section>
-<section id="update-the-environment" class="level2">
-<h2 class="anchored" data-anchor-id="update-the-environment">Update the Environment</h2>
-<p>To make your work reproducible as you load any Python or R packages, you’ll need to update the <code>environments.txt</code> file. Do this use the <code>pip freeze</code> command:</p>
+<section id="virtual-environments" class="level2">
+<h2 class="anchored" data-anchor-id="virtual-environments">Virtual Environments</h2>
+<p>If you are working on a chapter that loads any Python or R packages, to make your work reproducible you’ll need to create and then update the <code>environments.txt</code> file. Do this use the <code>pip freeze</code> command:</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> freeze <span class="op">&gt;</span> requirements.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>This will overwrite/update the <code>requirements.txt</code> file, which you will then commit and push along with your other edits back to github.com.</p>
+<p>This will overwrite/update the <code>requirements.txt</code> file. Depending on where you are working, you might also want to create a new subfolder to store the <code>requirements.txt</code>. See the next section on Cookbook Structure.</p>
+<p>You you will then commit and push along with your other edits back to github.com.</p>
+<p>TODO: info about conda…</p>
 </section>
 <section id="cookbook-structure" class="level2">
 <h2 class="anchored" data-anchor-id="cookbook-structure">Cookbook Structure</h2>
 <p>Each chapter in our Cookbook is a separate file (<code>.md</code>/ <code>.ipynb</code>/<code>.qmd</code>/<code>.Rmd</code>). These are stored in our <code>files</code> directory, organized by sub-directory.</p>
 <p>The Cookbook structure (i.e.&nbsp;the order of sections and chapters) is determined in the <code>_quarto.yml</code> file in the root directory. We can shuffle chapter order by editing the <code>_quarto.yml</code> file, and and add new chapters by adding to the <code>_quarto.yml</code> and creating a new file in the appropriate sub-directory that is indicated in <code>_quarto.yml</code>.</p>
-<p>We can change chapter order and subsections as we continue to develop the Cookbook, nothing is set in stone.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../files/contributing/images/quarto-yml-serve-compare.png" class="img-fluid figure-img"></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption">Comparing `_quarto.yml` file to served project in the browser</figcaption><p></p>
+</figure>
+</div>
+<p>Please experiment, add new chapters and sections; we can shuffle chapter order and subsections as we continue to develop the Cookbook, nothing is set in stone.</p>
 </section>
 <section id="cookbook-practices" class="level2">
 <h2 class="anchored" data-anchor-id="cookbook-practices">Cookbook Practices</h2>
-<p>These are shared practices that we have for co-developing the Cookbook:</p>
+<p>These are shared practices that we have for co-developing the Cookbook. This will be developed further as we go!</p>
 <section id="executing-notebooks" class="level3">
 <h3 class="anchored" data-anchor-id="executing-notebooks">Executing notebooks</h3>
 <p>As you develop files with executable code ( <code>.qmd</code>, <code>.Rmd</code>, and <code>.ipynb</code>), you can decide if you don’t want the notebook to execute. By adding YAML as a raw text cell at the top of an <code>.ipynb</code> file, you can control whether it is executed or not. Adding <code>execute: false</code> to the YAML at the top of the file basically means that Quarto never runs the code, but the user of course still can interactively in Jupyter.</p>

@@ -5,11 +5,38 @@ execute: false
 
 ## Workflow for contributing to our Cookbook
 
-Your Quarto workflow can be from the Command Line, Python, or R. You are able to work on Cookbook chapters that can be different file types, including `.md` , `.ipynb`, `.Rmd`, and `.qmd`. In all cases narrative and prose can be written in markdown, and chapters without code to execute can be written in `.md`. This workflow can streamline collaboration for scientific & technical writing across programming languages.
+Your workflow can be from wherever you are most comfortable. You can develop chapters working in a text editor, integrated development environment (IDE), or notebook interface. And you can serve Quarto from the Command Line or R. Quarto will combine files of different types ( `.md` , `.ipynb`, `.Rmd`, and `.qmd`) to make the Cookbook. This workflow can streamline collaboration for scientific & technical writing across programming languages.
 
-## Quickstart
+By default, rendering the Cookbook will only act on markdown text and will not execute any code. This way, rendering the whole Cookbook will not become overly cumbersome as it grows, and there is not one single virtual environment with all the libraries required. Instead our workflow will be that as you develop a single chapter (or section), you control when you render, and can create a `requirements.txt` file for that chapter (or section). This will also make it much easier to port lessons that work standalone and are ready for a Cloud instance or a workshop.
 
-Instructions for returning to the Cookbook after lunch/months; this is described in more detail below.
+## Quickstart reference
+
+Commands for returning to the Cookbook after lunch/months; each is described in more detail below.
+
+``` {.bash}
+## check which branches exist, where you are, and pull recent from main branch
+git branch
+git checkout main
+git pull
+
+## create and switch to new branch
+git checkout -b branch-name 
+
+## develop content
+## write prose in markdown, code in R and Python
+
+## commit changes
+git add --all 
+git commit -m "my commit message here" 
+
+## push changes
+git push -u origin branch-name  # connect your branch to github.com and push
+
+## delete branch
+git checkout main         # switch to the main branch
+git pull                  # pull merged updates from github.com
+git branch -d branch-hame # delete old local  branch
+```
 
 ## GitHub Workflow
 
@@ -30,10 +57,10 @@ First off, check what branch you're on and pull the most recent edits from the m
 ``` {.bash}
 git branch          # returns all local branches
 git checkout main   # switch branch to main
-git pull            # pull most recent edits from the main branch
+git pull            # pull most recent from the main branch
 ```
 
-If you are already on the `main` branch, Git will tell you.
+If you are already on the `main` branch, git will tell you, and that's fine.
 
 (If you have any residual branches from before, you'll likely want to start off by deleting them --- assuming they were temporary and have been merged into github.com. You can delete a branch with `git branch -d branch-name`).
 
@@ -43,16 +70,24 @@ Next, create a new branch, then switch to that branch to work in. Below is a one
 git checkout -b branch-name  # create and switch to new branch
 ```
 
-Time for your Quarto workflow -- see below. After you've made edits and served with Quarto, you'll commit your changes.
+### Develop content
+
+Time to edit and develop content, and run your Quarto Workflow -- see [specific instructions below](#develop-cookbook-content). While you're developing, you'll want to frequently commit your changes.
 
 ### Commit changes
 
-You'll commit your work regularly as you go, writing commit messages:
+You'll commit your work regularly as you go, likely using the following, which commits all files you've affected within the Cookbook project:
 
 ``` {.bash}
 git add --all 
 git commit -m "my commit message here" 
 ```
+
+From [R Packages](https://r-pkgs.org/git.html#git-commit):
+
+> A commit takes a snapshot of your code at a specified point in time. Using a Git commit is like using anchors and other protection when climbing. If you're crossing a dangerous rock face you want to make sure you've used protection to catch you if you fall. Commits play a similar role: if you make a mistake, you can't fall past the previous commit.
+
+Here are some of Hadley Wickham's suggested [best practices](https://r-pkgs.org/git.html#commit-best-practices)
 
 ### Push changes
 
@@ -64,15 +99,19 @@ git push -u origin branch-name  # connect your branch to github.com and push
 
 ### Pull Request
 
-Now you've synced your work to github.com. It is currently online, in a separate branch from the `main` branch. Go to [\<https://github.com/nasa-openscapes/earthdata-cloud-cookbook\>](https://github.com/nasa-openscapes/earthdata-cloud-cookbook){.uri}, find your branch, and do a pull request, and tag someone to review (depending on what you've done and what we've talked about).
+Now you've synced your work to github.com. It is currently online, in a separate branch from the `main` branch. Go to <https://github.com/nasa-openscapes/earthdata-cloud-cookbook>, find your branch, and do a pull request.
 
-TODO: Let's discuss this:
+TODO: Let's discuss our review process:
 
--   When the pull request is merged, delete the branch on github.com
+-   Tag someone to review, (including you if it's a quick fix?)
+-   Timeline
+-   Merging
 
-Once your pull request is merged, you can delete the branch from github.com (it suggests this as a button).
+When the pull request is merged, delete the branch on github.com. GitHub will prompt you with a button at the end of the merge.
 
-Then also come back to your local setup and delete the branch locally:
+### Delete Branch
+
+Once your pull request is merged and you've deleted the branch from github.com, then come back to your local setup and delete the branch locally:
 
 ``` {.bash}
 git checkout main         # switch to the main branch
@@ -82,49 +121,47 @@ git branch -d branch-hame # delete old local  branch
 
 ## Quarto Workflow
 
-Now the fun part! The thing to do first is to "serve" the Cookbook so that we can see what it looks like as we develop the chapters (it's called "serve" because it's really a website that looks like a book).
+Now the fun part! Our overall workflow will be to serve the book at the beginning, develop/edit chapters as simple text files (`.md`/`.qmd`/`.Rmd`) or executable notebooks (`.ipynb`) that will all render into the book.
 
-Our overall workflow will be to serve the book at the beginning, develop/edit chapters as simple text files (`.md`/`.qmd`/`.Rmd`), which will make it easier for us to collaborate. We can convert files between formats as we wish; for example converting an existing `.ipynb` to text files for development or from text files to `.ipynb` files for workshops. (See `quarto convert help` for details.)
+Quarto lets us easily convert between file types, so depending on how you prefer to work and how you'd like to interact with different audiences, we can go between formats as we wish. For example, we can converting an existing `.ipynb` to `.qmd` to collaborate during development, and then convert back to `.ipynb` files for our workshops. See `quarto convert help` for details.
 
-As you save your work, `.md`s will automatically refresh with your updates. Other file types will need to be rendered first; see more below.
+As you work, you'll follow our GitHub workflow above, committing regularly. And you can optionally use `quarto render` to rebuild the whole Cookbook before pushing to github.com.
 
-As you work, you'll follow our GitHub workflow above, committing regularly. And you can optionally use quarto to render the whole Cookbook before pushing to github.com.
-
-The following is how to run Quarto from the command line; see [https://quarto.org](https://quarto.org/docs/getting-started/quarto-basics.html) to see equivalents in R.
+The following is to run Quarto from the command line; see [quarto.org](https://quarto.org/docs/getting-started/quarto-basics.html) to see equivalents in R.
 
 ### Quarto serve
 
-Run the following from your branch in your `earthdata-cloud-cookbook` directory.
+The thing to do first is to "serve" the Cookbook so that we can see what it looks like as we develop the chapters (it's called "serve" because it's really a website that looks like a book).
 
-To serve the book from the command line:
+Run the following from your branch in your `earthdata-cloud-cookbook` directory from the command line:
 
 ``` {.bash}
 quarto serve
 ```
 
-And after it's is served, you can paste the url into your browser or click from the console to see the built Cookbook.
+And after it's is served, you can click from the console (or paste the url into your browser) to see the development version of the Cookbook.
 
-This command line instance is now being used to serve Quarto. You can open another instance to continue working from the command line, including developing content and rendering (see next).
+::: {.callout-important}
+## This command line instance is now being used to serve Quarto
 
-### Start a new working session
+You can open another instance to continue working from the command line, including running other shell commands and rendering (see next). Launching your command line shell of choice will open a new instance.
+:::
 
-When you want to start a new working session, open a command shell and run:
+### Develop Cookbook Content {#develop-cookbook-content}
 
-    cd earthdata-cloud-cookbook
-    .venv\Scripts\activate.bat  ## for Windows shell
-    quarto serve
-
-### Develop Cookbook Content
-
-You can develop Cookbook chapters as text files (`.md`/`.qmd`/`.Rmd`) in the text editor of your choice. You can also develop chapters as `.ipynb` from JupyterLab (see more about [JupyterLab with Quarto](https://quarto.org/docs/computations/using-jupyter-lab.html)).
+You can develop Cookbook chapters as text files (`.md`/`.qmd`/`.Rmd`) in the text editor of your choice. You can also develop chapters as `.ipynb` from JupyterLab, Anaconda, etc (see more about [JupyterLab with Quarto](https://quarto.org/docs/computations/using-jupyter-lab.html)).
 
 #### RStudio IDE & Visual Editor
 
-You can also use the RStudio IDE. It can be used as a simple text editor, but it can also interactively execute code in `.qmd` and `.Rmd` files, which streamlines testing as we develop content. The RStudio IDE Visual Editor makes this experience feel like a cross between an interactive notebook and a Google Doc.
+You can also use the RStudio IDE. It can be used as a simple text editor, but it can also interactively execute code in `.qmd` and `.Rmd` files --- which are plain text files. This will streamline testing and collaboration as we develop content.
+
+The RStudio IDE Visual Editor makes this experience feel like a cross between an interactive notebook and a Google Doc:
 
 ![The RStudio IDE Visual Editor with an interactive .qmd file](/files/contributing/images/rstudio-visual-editor-qmd.png)
 
-Another benefit of the RStudio IDE is that it has a docked command line (Terminal, bottom left), file navigation (bottom right) and GitHub interface (top right). This helps keep things organized as you work. The image shows the second Terminal; the first is being used to serve Quarto.
+Above shows the Visual Editor in the top left pane with an interactive `.qmd` file. Learn more about the [RStudio Visual Editor](https://rstudio.github.io/visual-markdown-editing/#/).
+
+Another benefit of the RStudio IDE is that it has a docked command line (Terminal, bottom left pane), file navigation (bottom right pane) and GitHub interface (top right pane). The IDE helps keep things organized as you work, and provides a visual way to review your git commits and do common commands (see this RStudio-GitHub walk through from [R for Excel Users](https://rstudio-conf-2020.github.io/r-for-excel/github.html#sync-from-rstudio-local-to-github-remote)). Note too that the image shows the second instance of the Terminal command line; the first is being used to serve Quarto.
 
 ### Quarto render
 
@@ -138,7 +175,9 @@ quarto render my-work.qmd            ## render a Quarto file
 quarto render my-contribution.Rmd    ## render a RMarkdown file
 ```
 
-You can also render the whole book:
+From the RStudio IDE, you can also press the **Render** button to render `.qmd` and `.Rmd` files.
+
+And you can also render the whole book:
 
 ``` {.bash}
 quarto render
@@ -148,15 +187,19 @@ Learn more about [rendering with Quarto](https://quarto.org/docs/computations/ru
 
 > The reason Quarto doesn't render `.Rmd` and `.qmd` on save is that render could (potentially) be very long running and that cost shouldn't be imposed on you whenever you save. Here we are talking about the age old debate of whether computational markdown should be rendered on save when running a development server. Quarto currently doesn't do this to give the user a choice between an expensive render and a cheap save.
 
-## Update the Environment
+## Virtual Environments
 
-To make your work reproducible as you load any Python or R packages, you'll need to update the `environments.txt` file. Do this use the `pip freeze` command:
+If you are working on a chapter that loads any Python or R packages, to make your work reproducible you'll need to create and then update the `environments.txt` file. Do this use the `pip freeze` command:
 
 ``` {.bash}
 pip freeze > requirements.txt
 ```
 
-This will overwrite/update the `requirements.txt` file, which you will then commit and push along with your other edits back to github.com.
+This will overwrite/update the `requirements.txt` file. Depending on where you are working, you might also want to create a new subfolder to store the `requirements.txt`. See the next section on Cookbook Structure.
+
+You you will then commit and push along with your other edits back to github.com.
+
+TODO: info about conda...
 
 ## Cookbook Structure
 
@@ -164,11 +207,13 @@ Each chapter in our Cookbook is a separate file (`.md`/ `.ipynb`/`.qmd`/`.Rmd`).
 
 The Cookbook structure (i.e. the order of sections and chapters) is determined in the `_quarto.yml` file in the root directory. We can shuffle chapter order by editing the `_quarto.yml` file, and and add new chapters by adding to the `_quarto.yml` and creating a new file in the appropriate sub-directory that is indicated in `_quarto.yml`.
 
-We can change chapter order and subsections as we continue to develop the Cookbook, nothing is set in stone.
+![Comparing \`\_quarto.yml\` file to served project in the browser](/files/contributing/images/quarto-yml-serve-compare.png)
+
+Please experiment, add new chapters and sections; we can shuffle chapter order and subsections as we continue to develop the Cookbook, nothing is set in stone.
 
 ## Cookbook Practices
 
-These are shared practices that we have for co-developing the Cookbook:
+These are shared practices that we have for co-developing the Cookbook. This will be developed further as we go!
 
 ### Executing notebooks
 
