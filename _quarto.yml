@@ -7,12 +7,12 @@ execute:
   freeze: true
 
 site:
-  title: "EarthData Cloud Cookbook"  
   site-url: https://nasa-openscapes.github.io/earthdata-cloud-cookbook
   repo-url: https://github.com/nasa-openscapes/earthdata-cloud-cookbook
   repo-actions: [edit, issue]
   page-navigation: true
   sidebar:
+    title: "EarthData Cloud Cookbook"  
     logo: nasa-openscapes.png 
     style: "docked"
     background: light
@@ -28,12 +28,12 @@ site:
       - section: get-started/index.md
         contents:
           - get-started/how-to-use.md
-          - get-started/api-primer.md
           - get-started/earthdata-login.md
           - section: get-started/authentication.md
             contents:
               - get-started/lpdaac-netrc.ipynb
               - get-started/podaac-ecco-netrc.ipynb
+          - get-started/api-primer.md    
       - section: discovery/index.md
         contents:
           - discovery/Navigate_CMR_STAC.ipynb
@@ -41,14 +41,18 @@ site:
           - discovery/cmr-virtual-directories.md
       - section: access/index.md
         contents:
+          - access/data-access-example.ipynb
           - access/earthdata-search.md
           - access/opendap-cloud.md
+          - section: access/direct-in-region.md
+            contents:
+              - access/podaac-ecco-data_access-cloud_direct_access_s3.ipynb
           - access/cof-via-harmony.md
           - access/download-to-local.md
       - section: transformations/index.md
         contents:
-          - transformations/harmony-api.md
-          - transformations/harmonypy.md
+          - transformations/netcdf-to-zarr.md
+          - transformations/L2-subsetter.md
           - transformations/earthdata-search.md
           - transformations/opendap-cloud.md
       - section: examples/index.md
@@ -60,6 +64,7 @@ site:
         contents:
           - appendix/about.md
           - appendix/glossary.md
+          - transformations/harmonypy.md
       - section: contributing/index.md
         contents:
           - contributing/setup.md

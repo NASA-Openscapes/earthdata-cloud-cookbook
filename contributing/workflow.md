@@ -228,3 +228,18 @@ Using `.qmd` there are also ways to control execution cell-by-cell via `# |` syn
 `ERROR: AddrInUse: Address already in use (os error 48)`
 
 This error is because you had more than one instance of `quarto serve` going in your session. So close other command line instances that are running and try again. (If you use the R package and do `quarto_serve()` it will automatically make sure you only ever have 1 instance.)
+
+### Leave/exit a virtual environment
+
+In your Command Line Shell, if you want to leave your virtual environment, the command is:
+
+```{bash}
+deactivate
+```
+
+The way you tell that you are in a virtual environment: it's named in parentheses at the beginning of your prompt:
+
+```{bash}
+(.venv) (base) JLos-Macbook-Pro:earthdata-cloud-cookbook lowndes$ deactivate
+(base) JLos-Macbook-Pro:earthdata-cloud-cookbook lowndes$ 
+```
