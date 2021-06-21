@@ -23,7 +23,7 @@ site:
       - icon: github
         href: https://github.com/nasa-openscapes/earthdata-cloud-cookbook
     contents:
-      - text: "Welcome"
+      - text: "Welcome Here"
         href: index.md  
       - section: get-started/index.md
         contents:
@@ -51,6 +51,8 @@ site:
           - access/download-to-local.md
       - section: transformations/index.md
         contents:
+          - transformations/harmony-api.md
+          - transformations/HarmonyPy_intro_tutorial.ipynb
           - transformations/netcdf-to-zarr.md
           - transformations/L2-subsetter.md
           - transformations/earthdata-search.md
