@@ -3,7 +3,7 @@
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>EarthData Cloud Cookbook – Workflow</title>
+  <title>Workflow</title>
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -220,11 +220,16 @@
 <div class="row flex-fill" id="quarto-content">
   <div id="quarto-sidebar" class="col col-12 col-lg-3 d-lg-flex px-0 pt-0 sidebar collapse sidebar-navigation">
     <nav class="me-lg-auto py-2 docked  overflow-scroll">
-  <div class="px-3 pt-lg-2 mt-1 text-left">
+  <div class="px-3 pt-lg-2 mt-1 text-left sidebar-header sidebar-header-stacked">
     <img src="../nasa-openscapes.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
-      <div class="sidebar-tools-main">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">
+      EarthData Cloud Cookbook
+      </a>
+        <div class="sidebar-tools-main">
     <a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook" title="" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
 </div>
+    </div>
   </div>
     <div class="d-flex px-3 mt-2 flex-shrink-0 align-items-center">
       <div class="sidebar-search">
@@ -259,15 +264,12 @@
   <a href="../get-started/how-to-use.html" class="">How to use this book</a>
 </li>
           <li class="sidebar-item">
-  <a href="../get-started/api-primer.html" class="">API Primer</a>
-</li>
-          <li class="sidebar-item">
   <a href="../get-started/earthdata-login.html" class="">EarthData Login</a>
 </li>
           <ul class="list-unstyled sidebar-section depth2">
     <li class="">
         <div class="me-auto ">
-          <div class="d-inline-flex w-100 sidebar-section-item">
+          <div class="d-inline-flex w-100 sidebar-item">
             <div class="sidebar-section-link me-auto ">
             <a href="../get-started/authentication.html" class="">Authentication</a>
             </div>
@@ -278,10 +280,19 @@
         </div>
       <div class="collapse  " id="authentication-collapse">
         <ul class="list-unstyled sidebar-item-contents">
+          <li class="sidebar-item">
+  <a href="../get-started/lpdaac-netrc.html" class="">LP DAAC Authentication Example</a>
+</li>
+          <li class="sidebar-item">
+  <a href="../get-started/podaac-ecco-netrc.html" class="">PO DAAC Authentication Example</a>
+</li>
         </ul>
       </div>
     </li>
   </ul>
+          <li class="sidebar-item">
+  <a href="../get-started/api-primer.html" class="">API Primer</a>
+</li>
         </ul>
       </div>
     </li>
@@ -328,11 +339,35 @@
       <div class="collapse  show" id="nasaclouddataaccess-collapse">
         <ul class="list-unstyled sidebar-item-contents">
           <li class="sidebar-item">
+  <a href="../access/data-access-example.html" class="">Data access demo</a>
+</li>
+          <li class="sidebar-item">
   <a href="../access/earthdata-search.html" class="">Earthdata Search</a>
 </li>
           <li class="sidebar-item">
   <a href="../access/opendap-cloud.html" class="">OPeNDAP in the Cloud</a>
 </li>
+          <ul class="list-unstyled sidebar-section depth2">
+    <li class="">
+        <div class="me-auto ">
+          <div class="d-inline-flex w-100 sidebar-item">
+            <div class="sidebar-section-link me-auto ">
+            <a href="../access/direct-in-region.html" class="">Direct in-region</a>
+            </div>
+            <a class="text-start collapsed " data-bs-toggle="collapse" data-bs-target="#directin-region-collapse" aria-expanded="false">
+              <div><i class="bi bi-chevron-right ms-2 "></i></div>
+            </a>
+            </div>
+        </div>
+      <div class="collapse  " id="directin-region-collapse">
+        <ul class="list-unstyled sidebar-item-contents">
+          <li class="sidebar-item">
+  <a href="../access/podaac-ecco-data_access-cloud_direct_access_s3.html" class="">Direct access to ECCO data in S3 (from *us-west-2*)</a>
+</li>
+        </ul>
+      </div>
+    </li>
+  </ul>
           <li class="sidebar-item">
   <a href="../access/cof-via-harmony.html" class="">COF via Earthdata Harmony</a>
 </li>
@@ -358,10 +393,10 @@
       <div class="collapse  show" id="nasaclouddatatransformations-collapse">
         <ul class="list-unstyled sidebar-item-contents">
           <li class="sidebar-item">
-  <a href="../transformations/harmony-api.html" class="">Harmony API</a>
+  <a href="../transformations/netcdf-to-zarr.html" class="">netCDF to Zarr</a>
 </li>
           <li class="sidebar-item">
-  <a href="../transformations/harmonypy.html" class="">Harmony Py Library</a>
+  <a href="../transformations/L2-subsetter.html" class="">L2 Subsetter</a>
 </li>
           <li class="sidebar-item">
   <a href="../transformations/earthdata-search.html" class="">Earthdata Search UI</a>
@@ -419,6 +454,9 @@
 </li>
           <li class="sidebar-item">
   <a href="../appendix/glossary.html" class="">Glossary</a>
+</li>
+          <li class="sidebar-item">
+  <a href="../transformations/harmonypy.html" class="">Harmony Py Library</a>
 </li>
         </ul>
       </div>
@@ -481,6 +519,7 @@
 <li><a href="#troubleshooting" class="nav-link" data-scroll-target="#troubleshooting">Troubleshooting</a>
 <ul class="collapse">
 <li><a href="#error-addrinuse" class="nav-link" data-scroll-target="#error-addrinuse">Error: AddrInUse</a></li>
+<li><a href="#leaveexit-a-virtual-environment" class="nav-link" data-scroll-target="#leaveexit-a-virtual-environment">Leave/exit a virtual environment</a></li>
 </ul></li>
 </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/edit/main/contributing/workflow.md">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/issues/new">Report an issue</a></p></div></div></nav></div>
@@ -498,7 +537,7 @@
 <section id="quickstart-reference" class="level2">
 <h2 class="anchored" data-anchor-id="quickstart-reference">Quickstart reference</h2>
 <p>Commands for returning to the Cookbook after lunch/months; each is described in more detail below.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">## check which branches exist, where you are, and pull recent from main branch</span></span>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">## check which branches exist, where you are, and pull recent from main branch</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout main</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull</span>
@@ -531,13 +570,13 @@
 <section id="branch-setup" class="level3">
 <h3 class="anchored" data-anchor-id="branch-setup">Branch setup</h3>
 <p>First off, check what branch you’re on and pull the most recent edits from the main branch. If you need to switch branches, use <code>git checkout</code>.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch          <span class="co"># returns all local branches</span></span>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch          <span class="co"># returns all local branches</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout main   <span class="co"># switch branch to main</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull            <span class="co"># pull most recent from the main branch</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>If you are already on the <code>main</code> branch, git will tell you, and that’s fine.</p>
 <p>(If you have any residual branches from before, you’ll likely want to start off by deleting them — assuming they were temporary and have been merged into github.com. You can delete a branch with <code>git branch -d branch-name</code>).</p>
 <p>Next, create a new branch, then switch to that branch to work in. Below is a one-step approach for the two-step process of <code>git branch branch-name</code> then <code>git checkout branch-name</code> (read <a href="https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging">more</a>).</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout <span class="at">-b</span> branch-name  <span class="co"># create and switch to new branch</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout <span class="at">-b</span> branch-name  <span class="co"># create and switch to new branch</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="develop-content" class="level3">
 <h3 class="anchored" data-anchor-id="develop-content">Develop content</h3>
@@ -546,7 +585,7 @@
 <section id="commit-changes" class="level3">
 <h3 class="anchored" data-anchor-id="commit-changes">Commit changes</h3>
 <p>You’ll commit your work regularly as you go, likely using the following, which commits all files you’ve affected within the Cookbook project:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add <span class="at">--all</span> </span>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add <span class="at">--all</span> </span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"my commit message here"</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>From <a href="https://r-pkgs.org/git.html#git-commit">R Packages</a>:</p>
 <blockquote class="blockquote">
@@ -557,7 +596,7 @@
 <section id="push-changes" class="level3">
 <h3 class="anchored" data-anchor-id="push-changes">Push changes</h3>
 <p>When you’re ready to push changes you’ve made in your branch, you’ll first need to connect it to github.com by pushing it “upstream” to the “origin repository” (<code>-u</code> below is short for <code>--set-upstream</code>):</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push <span class="at">-u</span> origin branch-name  <span class="co"># connect your branch to github.com and push</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push <span class="at">-u</span> origin branch-name  <span class="co"># connect your branch to github.com and push</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="pull-request" class="level3">
 <h3 class="anchored" data-anchor-id="pull-request">Pull Request</h3>
@@ -573,7 +612,7 @@
 <section id="delete-branch" class="level3">
 <h3 class="anchored" data-anchor-id="delete-branch">Delete Branch</h3>
 <p>Once your pull request is merged and you’ve deleted the branch from github.com, then come back to your local setup and delete the branch locally:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout main         <span class="co"># switch to the main branch</span></span>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout main         <span class="co"># switch to the main branch</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull                  <span class="co"># pull merged updates from github.com</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch <span class="at">-d</span> branch-name <span class="co"># delete old local  branch</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
@@ -588,7 +627,7 @@
 <h3 class="anchored" data-anchor-id="quarto-serve">Quarto serve</h3>
 <p>The thing to do first is to “serve” the Cookbook so that we can see what it looks like as we develop the chapters (it’s called “serve” because it’s really a website that looks like a book).</p>
 <p>Run the following from your branch in your <code>earthdata-cloud-cookbook</code> directory from the command line:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> serve</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> serve</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>And after it’s is served, you can click from the console (or paste the url into your browser) to see the development version of the Cookbook.</p>
 <div class="callout-important callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
@@ -625,12 +664,12 @@ This command line instance is now being used to serve Quarto
 <h3 class="anchored" data-anchor-id="quarto-render">Quarto render</h3>
 <p>As you develop book chapters and edit files, any <code>.md</code> files will automatically refresh in the browser (so long as quarto serve is running)!</p>
 <p>To refresh files with executable code, you’ll need to render them individually. You can do the following to render <code>.ipynb</code>/<code>.qmd</code>/<code>.Rmd</code> files so that they show up refreshed in the served Cookbook.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render my-document.ipynb      <span class="co">## render a notebook</span></span>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render my-document.ipynb      <span class="co">## render a notebook</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render my-work.qmd            <span class="co">## render a Quarto file</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render my-contribution.Rmd    <span class="co">## render a RMarkdown file</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>From the RStudio IDE, you can also press the <strong>Render</strong> button to render <code>.qmd</code> and <code>.Rmd</code> files.</p>
 <p>And you can also render the whole book:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Learn more about <a href="https://quarto.org/docs/computations/running-code.html#rendering">rendering with Quarto</a>. From J.J. Allaire:</p>
 <blockquote class="blockquote">
 <p>The reason Quarto doesn’t render <code>.Rmd</code> and <code>.qmd</code> on save is that render could (potentially) be very long running and that cost shouldn’t be imposed on you whenever you save. Here we are talking about the age old debate of whether computational markdown should be rendered on save when running a development server. Quarto currently doesn’t do this to give the user a choice between an expensive render and a cheap save.</p>
@@ -640,7 +679,7 @@ This command line instance is now being used to serve Quarto
 <section id="virtual-environments" class="level2">
 <h2 class="anchored" data-anchor-id="virtual-environments">Virtual Environments</h2>
 <p>If you are working on a chapter that loads any Python or R packages, to make your work reproducible you’ll need to create and then update the <code>environments.txt</code> file. Do this use the <code>pip freeze</code> command:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> freeze <span class="op">&gt;</span> requirements.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> freeze <span class="op">&gt;</span> requirements.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This will overwrite/update the <code>requirements.txt</code> file. Depending on where you are working, you might also want to create a new subfolder to store the <code>requirements.txt</code>. See the next section on Cookbook Structure.</p>
 <p>You you will then commit and push along with your other edits back to github.com.</p>
 <p>TODO: info about conda…</p>
@@ -672,6 +711,14 @@ This command line instance is now being used to serve Quarto
 <h3 class="anchored" data-anchor-id="error-addrinuse">Error: AddrInUse</h3>
 <p><code>ERROR: AddrInUse: Address already in use (os error 48)</code></p>
 <p>This error is because you had more than one instance of <code>quarto serve</code> going in your session. So close other command line instances that are running and try again. (If you use the R package and do <code>quarto_serve()</code> it will automatically make sure you only ever have 1 instance.)</p>
+</section>
+<section id="leaveexit-a-virtual-environment" class="level3">
+<h3 class="anchored" data-anchor-id="leaveexit-a-virtual-environment">Leave/exit a virtual environment</h3>
+<p>In your Command Line Shell, if you want to leave your virtual environment, the command is:</p>
+<pre class="{bash}"><code>deactivate</code></pre>
+<p>The way you tell that you are in a virtual environment: it’s named in parentheses at the beginning of your prompt:</p>
+<pre class="{bash}"><code>(.venv) (base) JLos-Macbook-Pro:earthdata-cloud-cookbook lowndes$ deactivate
+(base) JLos-Macbook-Pro:earthdata-cloud-cookbook lowndes$ </code></pre>
 <!-- -->
 </section>
 </section>

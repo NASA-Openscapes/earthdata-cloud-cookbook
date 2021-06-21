@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang=""><head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>podaac-ecco-data_access-cloud_direct_access_s3</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007ba5; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #007ba5; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #007ba5; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+  </style>
+
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+  <script src="../site_libs/quarto-nav/headroom.min.js"></script>
+  <meta name="quarto:offset" content="..">
+  <script src="../site_libs/quarto-search/autocomplete.min.js"></script>
+  <script src="../site_libs/quarto-search/fuse.min.js"></script>
+  <script src="../site_libs/quarto-search/quarto-search.js"></script>
+  <link href="../access/cof-via-harmony.html" rel="next">
+  <link href="../access/direct-in-region.html" rel="prev">
+  <script src="../site_libs/quarto-html/quarto.js"></script>
+  <script src="../site_libs/quarto-html/popper.min.js"></script>
+  <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+  <script src="../site_libs/quarto-html/clipboard.min.js"></script>
+  <script src="../site_libs/quarto-html/anchor.min.js"></script>
+  <script src="../site_libs/quarto-html/quarto-html.js"></script>
+  <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+  <link href="../site_libs/quarto-html/quarto-css-variables.css" rel="stylesheet">
+  <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+  <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+  <link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet">
+  <style type="text/css">
+    details {
+      margin-bottom: 1em;
+    } 
+    details[show] {
+      margin-bottom: 0;
+    }
+
+    .quarto-unresolved-ref {
+      font-weight: 600;
+    }
+
+    .quarto-cover-image {
+      max-width: 35%;
+      float: right;
+      margin-left: 30px;
+    }
+
+    .cell-output-display {
+      overflow-x: auto;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="quarto-search-results"></div>
+<header id="quarto-header" class="headroom fixed-top">
+<nav class="quarto-secondary-nav py-2 d-lg-none d-md-block " data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <div class="container-fluid d-flex justify-content-between">
+    <h1 class="quarto-secondary-nav-title mb-0 fs-3 d-inline"></h1>
+    <button type="button" class="quarto-btn-toggle btn d-lg-none py-0 px-1 d-inline-block border-0 ">
+      <i class="bi bi-chevron-right"></i>
+    </button>
+  </div>
+</nav>
+</header>
+ <!-- /navbar/sidebar -->
+<div class="container-fluid quarto-container d-flex flex-column page-layout-article">
+<div class="row flex-fill" id="quarto-content">
+  <div id="quarto-sidebar" class="col col-12 col-lg-3 d-lg-flex px-0 pt-0 sidebar collapse sidebar-navigation">
+    <nav class="me-lg-auto py-2 docked  overflow-scroll">
+  <div class="px-3 pt-lg-2 mt-1 text-left sidebar-header sidebar-header-stacked">
+    <img src="../nasa-openscapes.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">
+      EarthData Cloud Cookbook
+      </a>
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook" title="" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
+</div>
+    </div>
+  </div>
+    <div class="d-flex px-3 mt-2 flex-shrink-0 align-items-center">
+      <div class="sidebar-search">
+      <form class="d-flex mb-0">
+  <input id="quarto-search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+      </div>
+        <div class="sidebar-tools-collapse">
+    <a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook" title="" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
+</div>
+    </div>
+  <div class="sidebar-menu-container"> 
+  <ul class="list-unstyled mt-3 px-3">
+      <li class="sidebar-item">
+  <a href="../index.html" class="">Welcome</a>
+</li>
+      <ul class="list-unstyled sidebar-section depth1">
+    <li class="">
+        <div class="me-auto ">
+          <div class="d-inline-flex w-100 sidebar-section-item">
+            <div class="sidebar-section-link me-auto ">
+            <a href="../get-started/index.html" class="">Getting Started</a>
+            </div>
+            <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#gettingstarted-collapse" aria-expanded="true">
+              <div><i class="bi bi-chevron-right ms-2 "></i></div>
+            </a>
+            </div>
+        </div>
+      <div class="collapse  show" id="gettingstarted-collapse">
+        <ul class="list-unstyled sidebar-item-contents">
+          <li class="sidebar-item">
+  <a href="../get-started/how-to-use.html" class="">How to use this book</a>
+</li>
+          <li class="sidebar-item">
+  <a href="../get-started/earthdata-login.html" class="">EarthData Login</a>
+</li>
+          <ul class="list-unstyled sidebar-section depth2">
+    <li class="">
+        <div class="me-auto ">
+          <div class="d-inline-flex w-100 sidebar-item">
+            <div class="sidebar-section-link me-auto ">
+            <a href="../get-started/authentication.html" class="">Authentication</a>
+            </div>
+            <a class="text-start collapsed " data-bs-toggle="collapse" data-bs-target="#authentication-collapse" aria-expanded="false">
+              <div><i class="bi bi-chevron-right ms-2 "></i></div>
+            </a>
+            </div>
+        </div>
+      <div class="collapse  " id="authentication-collapse">
+        <ul class="list-unstyled sidebar-item-contents">
+          <li class="sidebar-item">
+  <a href="../get-started/lpdaac-netrc.html" class="">LP DAAC Authentication Example</a>
+</li>
+          <li class="sidebar-item">
+  <a href="../get-started/podaac-ecco-netrc.html" class="">PO DAAC Authentication Example</a>
+</li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+          <li class="sidebar-item">
+  <a href="../get-started/api-primer.html" class="">API Primer</a>
+</li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+      <ul class="list-unstyled sidebar-section depth1">
+    <li class="">
+        <div class="me-auto ">
+          <div class="d-inline-flex w-100 sidebar-section-item">
+            <div class="sidebar-section-link me-auto ">
+            <a href="../discovery/index.html" class="">NASA Cloud Data Discovery</a>
+            </div>
+            <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#nasaclouddatadiscovery-collapse" aria-expanded="true">
+              <div><i class="bi bi-chevron-right ms-2 "></i></div>
+            </a>
+            </div>
+        </div>
+      <div class="collapse  show" id="nasaclouddatadiscovery-collapse">
+        <ul class="list-unstyled sidebar-item-contents">
+          <li class="sidebar-item">
+  <a href="../discovery/Navigate_CMR_STAC.html" class="">CMR and CMR-STAC API</a>
+</li>
+          <li class="sidebar-item">
+  <a href="../discovery/earthdata-search-ui.html" class="">Earthdata Search UI</a>
+</li>
+          <li class="sidebar-item">
+  <a href="../discovery/cmr-virtual-directories.html" class="">CMR Virtual Directories</a>
+</li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+      <ul class="list-unstyled sidebar-section depth1">
+    <li class="">
+        <div class="me-auto ">
+          <div class="d-inline-flex w-100 sidebar-section-item">
+            <div class="sidebar-section-link me-auto ">
+            <a href="../access/index.html" class="">NASA Cloud Data Access</a>
+            </div>
+            <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#nasaclouddataaccess-collapse" aria-expanded="true">
+              <div><i class="bi bi-chevron-right ms-2 "></i></div>
+            </a>
+            </div>
+        </div>
+      <div class="collapse  show" id="nasaclouddataaccess-collapse">
+        <ul class="list-unstyled sidebar-item-contents">
+          <li class="sidebar-item">
+  <a href="../access/data-access-example.html" class="">Data access demo</a>
+</li>
+          <li class="sidebar-item">
+  <a href="../access/earthdata-search.html" class="">Earthdata Search</a>
+</li>
+          <li class="sidebar-item">
+  <a href="../access/opendap-cloud.html" class="">OPeNDAP in the Cloud</a>
+</li>
+          <ul class="list-unstyled sidebar-section depth2">
+    <li class="">
+        <div class="me-auto ">
+          <div class="d-inline-flex w-100 sidebar-item">
+            <div class="sidebar-section-link me-auto ">
+            <a href="../access/direct-in-region.html" class="">Direct in-region</a>
+            </div>
+            <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#directin-region-collapse" aria-expanded="true">
+              <div><i class="bi bi-chevron-right ms-2 "></i></div>
+            </a>
+            </div>
+        </div>
+      <div class="collapse  show" id="directin-region-collapse">
+        <ul class="list-unstyled sidebar-item-contents">
+          <li class="sidebar-item">
+  <a href="../access/podaac-ecco-data_access-cloud_direct_access_s3.html" class="active">Direct access to ECCO data in S3 (from *us-west-2*)</a>
+</li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+          <li class="sidebar-item">
+  <a href="../access/cof-via-harmony.html" class="">COF via Earthdata Harmony</a>
+</li>
+          <li class="sidebar-item">
+  <a href="../access/download-to-local.html" class="">Download to local</a>
+</li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+      <ul class="list-unstyled sidebar-section depth1">
+    <li class="">
+        <div class="me-auto ">
+          <div class="d-inline-flex w-100 sidebar-section-item">
+            <div class="sidebar-section-link me-auto ">
+            <a href="../transformations/index.html" class="">NASA Cloud Data Transformations</a>
+            </div>
+            <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#nasaclouddatatransformations-collapse" aria-expanded="true">
+              <div><i class="bi bi-chevron-right ms-2 "></i></div>
+            </a>
+            </div>
+        </div>
+      <div class="collapse  show" id="nasaclouddatatransformations-collapse">
+        <ul class="list-unstyled sidebar-item-contents">
+          <li class="sidebar-item">
+  <a href="../transformations/netcdf-to-zarr.html" class="">netCDF to Zarr</a>
+</li>
+          <li class="sidebar-item">
+  <a href="../transformations/L2-subsetter.html" class="">L2 Subsetter</a>
+</li>
+          <li class="sidebar-item">
+  <a href="../transformations/earthdata-search.html" class="">Earthdata Search UI</a>
+</li>
+          <li class="sidebar-item">
+  <a href="../transformations/opendap-cloud.html" class="">OPeNDAP in the Cloud</a>
+</li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+      <ul class="list-unstyled sidebar-section depth1">
+    <li class="">
+        <div class="me-auto ">
+          <div class="d-inline-flex w-100 sidebar-section-item">
+            <div class="sidebar-section-link me-auto ">
+            <a href="../examples/index.html" class="">End-to-end Examples</a>
+            </div>
+            <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#end-to-endexamples-collapse" aria-expanded="true">
+              <div><i class="bi bi-chevron-right ms-2 "></i></div>
+            </a>
+            </div>
+        </div>
+      <div class="collapse  show" id="end-to-endexamples-collapse">
+        <ul class="list-unstyled sidebar-item-contents">
+          <li class="sidebar-item">
+  <a href="../examples/python-example.html" class="">Python example with Quarto</a>
+</li>
+          <li class="sidebar-item">
+  <a href="../examples/r-example.html" class="">RMarkdown example .Rmd</a>
+</li>
+          <li class="sidebar-item">
+  <a href="../examples/notebook-example.html" class="">Notebook example</a>
+</li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+      <ul class="list-unstyled sidebar-section depth1">
+    <li class="">
+        <div class="me-auto ">
+          <div class="d-inline-flex w-100 sidebar-section-item">
+            <div class="sidebar-section-link me-auto ">
+            <a href="../appendix/index.html" class="">Appendix</a>
+            </div>
+            <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#appendix-collapse" aria-expanded="true">
+              <div><i class="bi bi-chevron-right ms-2 "></i></div>
+            </a>
+            </div>
+        </div>
+      <div class="collapse  show" id="appendix-collapse">
+        <ul class="list-unstyled sidebar-item-contents">
+          <li class="sidebar-item">
+  <a href="../appendix/about.html" class="">About</a>
+</li>
+          <li class="sidebar-item">
+  <a href="../appendix/glossary.html" class="">Glossary</a>
+</li>
+          <li class="sidebar-item">
+  <a href="../transformations/harmonypy.html" class="">Harmony Py Library</a>
+</li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+      <ul class="list-unstyled sidebar-section depth1">
+    <li class="">
+        <div class="me-auto ">
+          <div class="d-inline-flex w-100 sidebar-section-item">
+            <div class="sidebar-section-link me-auto ">
+            <a href="../contributing/index.html" class="">Contributing</a>
+            </div>
+            <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#contributing-collapse" aria-expanded="true">
+              <div><i class="bi bi-chevron-right ms-2 "></i></div>
+            </a>
+            </div>
+        </div>
+      <div class="collapse  show" id="contributing-collapse">
+        <ul class="list-unstyled sidebar-item-contents">
+          <li class="sidebar-item">
+  <a href="../contributing/setup.html" class="">Initial Setup</a>
+</li>
+          <li class="sidebar-item">
+  <a href="../contributing/workflow.html" class="">Workflow</a>
+</li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+  </ul>
+  </div>
+</nav>
+  </div>
+  <div id="quarto-toc-sidebar" class="col col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-toc order-last"><nav id="TOC" role="doc-toc">
+<h2 id="toc-title">On this page</h2>
+<ul>
+<li><a href="#direct-access-to-ecco-data-in-s3-from-us-west-2" class="nav-link active" data-scroll-target="#direct-access-to-ecco-data-in-s3-from-us-west-2">Direct access to ECCO data in S3 (from <em>us-west-2</em>)</a>
+<ul class="collapse">
+<li><a href="#getting-started" class="nav-link" data-scroll-target="#getting-started">Getting Started</a>
+<ul class="collapse">
+<li><a href="#requirements" class="nav-link" data-scroll-target="#requirements">Requirements</a></li>
+<li><a href="#inputs" class="nav-link" data-scroll-target="#inputs">Inputs</a></li>
+<li><a href="#earthdata-login" class="nav-link" data-scroll-target="#earthdata-login">Earthdata Login</a></li>
+<li><a href="#direct-access-from-s3" class="nav-link" data-scroll-target="#direct-access-from-s3">Direct access from S3</a></li>
+</ul></li>
+<li><a href="#datasets" class="nav-link" data-scroll-target="#datasets">Datasets</a>
+<ul class="collapse">
+<li><a href="#sea-surface-height-0.5-degree-gridded-monthly" class="nav-link" data-scroll-target="#sea-surface-height-0.5-degree-gridded-monthly">sea surface height (0.5-degree gridded, monthly)</a></li>
+<li><a href="#plot-the-gridded-sea-surface-height-time-series" class="nav-link" data-scroll-target="#plot-the-gridded-sea-surface-height-time-series">Plot the gridded <em>sea surface height</em> time series</a></li>
+<li><a href="#tflux-0.5-degree-gridded-daily" class="nav-link" data-scroll-target="#tflux-0.5-degree-gridded-daily">tflux (0.5-degree gridded, daily)</a></li>
+</ul></li>
+</ul></li>
+</ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/edit/main/access/podaac-ecco-data_access-cloud_direct_access_s3.ipynb">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/issues/new">Report an issue</a></p></div></div></nav></div>
+  <div class="col mx-auto col-sm-12 col-md-9 col-lg-7 px-lg-4">
+<main>
+
+<section id="direct-access-to-ecco-data-in-s3-from-us-west-2" class="level1">
+<h1>Direct access to ECCO data in S3 (from <em>us-west-2</em>)</h1>
+<p><strong>Contributed by PO.DAAC</strong>.<br>
+View at PO.DAAC’s <a href="https://github.com/podaac/ECCO/blob/main/Data_Access/cloud_direct_access_s3.ipynb">github page</a>.</p>
+<section id="getting-started" class="level2">
+<h2 class="anchored" data-anchor-id="getting-started">Getting Started</h2>
+<p>In this notebook, we will access monthly sea surface height from ECCO V4r4 (<a href="https://doi.org/10.5067/ECG5D-SSH44">10.5067/ECG5D-SSH44</a>). The data are provided as a time series of monthly netCDFs on a 0.5-degree latitude/longitude grid.</p>
+<p>We will access the data from inside the AWS cloud (<em>us-west-2</em> region, specifically) and load a time series made of multiple netCDF datasets into a single xarray dataset. This approach leverages S3 native protocols for efficient access to the data.</p>
+<p><img src="https://podaac.jpl.nasa.gov/Podaac/thumbnails/ECCO_L4_SSH_05DEG_DAILY_V4R4.jpg" width="50%"></p>
+<section id="requirements" class="level3">
+<h3 class="anchored" data-anchor-id="requirements">Requirements</h3>
+<section id="aws" class="level4">
+<h4 class="anchored" data-anchor-id="aws">AWS</h4>
+<p>This notebook should be running in an EC2 instance in AWS region <em>us-west-2</em>, as previously mentioned. We recommend using an EC2 with at least 8GB of memory available.</p>
+<p>The notebook was developed and tested using a <em>t2.large</em> instance (2 cpus; 8GB memory).</p>
+</section>
+<section id="python-3" class="level4">
+<h4 class="anchored" data-anchor-id="python-3">Python 3</h4>
+<p>Most of these imports are from the Python standard library. However, you will need to install these packages into your Python 3 environment if you have not already done so:</p>
+<ul>
+<li>s3fs</li>
+<li>requests</li>
+<li>pandas</li>
+<li>xarray</li>
+<li>matplotlib</li>
+<li>cartopy</li>
+</ul>
+<div class="cell">
+<div class="sourceCode" id="cb1"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> s3fs</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> xarray <span class="im">as</span> xr</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.animation <span class="im">as</span> animation</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> cartopy</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> cartopy.crs <span class="im">as</span> ccrs</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> cartopy.feature <span class="im">as</span> cfeat</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> json <span class="im">import</span> dumps</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> io <span class="im">import</span> StringIO</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> os.path <span class="im">import</span> dirname, join</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> HTML</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>plt.rcParams.update({<span class="st">'font.size'</span>: <span class="dv">14</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Make a folder to write some outputs, if needed:</p>
+<div class="cell">
+<div class="sourceCode" id="cb2"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>mkdir <span class="op">-</span>p outputs<span class="op">/</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="inputs" class="level3">
+<h3 class="anchored" data-anchor-id="inputs">Inputs</h3>
+<p>Configure one input: the <em>ShortName</em> of the desired dataset from ECCO V4r4. In this case it’s the following string that unique identifies the collection of monthly, 0.5-degree sea surface height data.</p>
+<div class="cell">
+<div class="sourceCode" id="cb3"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>ShortName <span class="op">=</span> <span class="st">"ECCO_L4_SSH_05DEG_MONTHLY_V4R4"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="earthdata-login" class="level3">
+<h3 class="anchored" data-anchor-id="earthdata-login">Earthdata Login</h3>
+<p>You should have a <em>.netrc</em> file set up like:</p>
+<pre><code>machine urs.earthdata.nasa.gov login &lt;username&gt; password &lt;password&gt;</code></pre>
+</section>
+<section id="direct-access-from-s3" class="level3">
+<h3 class="anchored" data-anchor-id="direct-access-from-s3">Direct access from S3</h3>
+<p>Set up an s3fs session for authneticated access to ECCO netCDF files in s3:</p>
+<div class="cell">
+<div class="sourceCode" id="cb5"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> begin_s3_direct_access(url: <span class="bu">str</span><span class="op">=</span><span class="st">"https://archive.podaac.earthdata.nasa.gov/s3credentials"</span>):</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    response <span class="op">=</span> requests.get(url).json()</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> s3fs.S3FileSystem(key<span class="op">=</span>response[<span class="st">'accessKeyId'</span>],</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>                             secret<span class="op">=</span>response[<span class="st">'secretAccessKey'</span>],</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>                             token<span class="op">=</span>response[<span class="st">'sessionToken'</span>],</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>                             client_kwargs<span class="op">=</span>{<span class="st">'region_name'</span>:<span class="st">'us-west-2'</span>})</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>fs <span class="op">=</span> begin_s3_direct_access()</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(fs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p>s3fs.core.S3FileSystem</p>
+</div>
+</div>
+</section>
+</section>
+<section id="datasets" class="level2">
+<h2 class="anchored" data-anchor-id="datasets">Datasets</h2>
+<section id="sea-surface-height-0.5-degree-gridded-monthly" class="level3">
+<h3 class="anchored" data-anchor-id="sea-surface-height-0.5-degree-gridded-monthly">sea surface height (0.5-degree gridded, monthly)</h3>
+<p><a href="https://podaac.jpl.nasa.gov/dataset/ECCO_L4_SSH_05DEG_MONTHLY_V4R4">ECCO_L4_SSH_05DEG_MONTHLY_V4R4</a></p>
+<p>Get a list of netCDF files located at the S3 path corresponding to the ECCO V4r4 monthly sea surface height dataset on the 0.5-degree latitude/longitude grid.</p>
+<div class="cell">
+<div class="sourceCode" id="cb6"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>ssh_Files <span class="op">=</span> fs.glob(join(<span class="st">"podaac-ops-cumulus-protected/"</span>, ShortName, <span class="st">"*2015*.nc"</span>))</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(ssh_Files)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p>12</p>
+</div>
+</div>
+<p>Open with the netCDF files using the <em>s3fs</em> package, then load them all at once into a concatenated <em>xarray</em> dataset.</p>
+<div class="cell">
+<div class="sourceCode" id="cb7"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>ssh_Dataset <span class="op">=</span> xr.open_mfdataset(</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    paths<span class="op">=</span>[fs.<span class="bu">open</span>(f) <span class="cf">for</span> f <span class="kw">in</span> ssh_Files],</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    combine<span class="op">=</span><span class="st">'by_coords'</span>,</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    mask_and_scale<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    decode_cf<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    chunks<span class="op">=</span>{<span class="st">'latitude'</span>: <span class="dv">60</span>,   <span class="co"># These were chosen arbitrarily. You must specify </span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>            <span class="st">'longitude'</span>: <span class="dv">120</span>, <span class="co"># chunking that is suitable to the data and target</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>            <span class="st">'time'</span>: <span class="dv">100</span>}      <span class="co"># analysis.</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>ssh <span class="op">=</span> ssh_Dataset.SSH</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(ssh)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-stdout">
+<pre><code>&lt;xarray.DataArray 'SSH' (time: 12, latitude: 360, longitude: 720)&gt;
+dask.array&lt;concatenate, shape=(12, 360, 720), dtype=float32, chunksize=(1, 60, 120), chunktype=numpy.ndarray&gt;
+Coordinates:
+  * time       (time) datetime64[ns] 2015-01-16T12:00:00 ... 2015-12-16T12:00:00
+  * latitude   (latitude) float32 -89.75 -89.25 -88.75 ... 88.75 89.25 89.75
+  * longitude  (longitude) float32 -179.8 -179.2 -178.8 ... 178.8 179.2 179.8
+Attributes:
+    coverage_content_type:  modelResult
+    long_name:              Dynamic sea surface height anomaly
+    standard_name:          sea_surface_height_above_geoid
+    units:                  m
+    comment:                Dynamic sea surface height anomaly above the geoi...
+    valid_min:              [-1.88057721]
+    valid_max:              [1.42077196]</code></pre>
+</div>
+</div>
+</section>
+<section id="plot-the-gridded-sea-surface-height-time-series" class="level3">
+<h3 class="anchored" data-anchor-id="plot-the-gridded-sea-surface-height-time-series">Plot the gridded <em>sea surface height</em> time series</h3>
+<p>But only the timesteps beginning in 2015:</p>
+<div class="cell">
+<div class="sourceCode" id="cb9"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>ssh_after_201x <span class="op">=</span> ssh[ssh[<span class="st">'time.year'</span>]<span class="op">&gt;=</span><span class="dv">2015</span>,:,:]</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(ssh_after_201x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-stdout">
+<pre><code>&lt;xarray.DataArray 'SSH' (time: 12, latitude: 360, longitude: 720)&gt;
+dask.array&lt;concatenate, shape=(12, 360, 720), dtype=float32, chunksize=(1, 60, 120), chunktype=numpy.ndarray&gt;
+Coordinates:
+  * time       (time) datetime64[ns] 2015-01-16T12:00:00 ... 2015-12-16T12:00:00
+  * latitude   (latitude) float32 -89.75 -89.25 -88.75 ... 88.75 89.25 89.75
+  * longitude  (longitude) float32 -179.8 -179.2 -178.8 ... 178.8 179.2 179.8
+Attributes:
+    coverage_content_type:  modelResult
+    long_name:              Dynamic sea surface height anomaly
+    standard_name:          sea_surface_height_above_geoid
+    units:                  m
+    comment:                Dynamic sea surface height anomaly above the geoi...
+    valid_min:              [-1.88057721]
+    valid_max:              [1.42077196]</code></pre>
+</div>
+</div>
+<p>Plot the grid for the first time step using a Robinson projection. Define a helper function for consistency throughout the notebook:</p>
+<div class="cell">
+<div class="sourceCode" id="cb11"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> make_figure(proj):</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    fig <span class="op">=</span> plt.figure(figsize<span class="op">=</span>(<span class="dv">16</span>,<span class="dv">6</span>))</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    ax <span class="op">=</span> fig.add_subplot(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, projection<span class="op">=</span>proj)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    ax.add_feature(cfeat.LAND)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    ax.add_feature(cfeat.OCEAN)</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    ax.add_feature(cfeat.COASTLINE)</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    ax.add_feature(cfeat.BORDERS, linestyle<span class="op">=</span><span class="st">'dotted'</span>)</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> fig, ax</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> make_figure(proj<span class="op">=</span>ccrs.Robinson())</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>ssh_after_201x.isel(time<span class="op">=</span><span class="dv">0</span>).plot(ax<span class="op">=</span>ax, transform<span class="op">=</span>ccrs.PlateCarree(), cmap<span class="op">=</span><span class="st">'Spectral_r'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p>&lt;matplotlib.collections.QuadMesh at 0x7fae2533d730&gt;</p>
+</div>
+<div class="cell-output-display">
+<p><img src="podaac-ecco-data_access-cloud_direct_access_s3_files/figure-html/cell-9-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+<p>Now plot the whole time series (post-2010) in an animation and write it to an mp4 file called <em>ecco_monthly_ssh_grid_2015_to_x.mp4</em>:</p>
+<div class="cell">
+<div class="sourceCode" id="cb12"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_animation(var, cmap: <span class="bu">str</span><span class="op">=</span><span class="st">"Spectral_r"</span>):</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Get time series animation for input xarray dataset"""</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> draw_map(i: <span class="bu">int</span>, add_colorbar: <span class="bu">bool</span>):</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>        data <span class="op">=</span> var[i]</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>        m <span class="op">=</span> data.plot(ax<span class="op">=</span>ax, </span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>                      transform<span class="op">=</span>ccrs.PlateCarree(),</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>                      add_colorbar<span class="op">=</span>add_colorbar,</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>                      vmin<span class="op">=</span>var.valid_min, </span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>                      vmax<span class="op">=</span>var.valid_max,</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>                      cmap<span class="op">=</span>cmap)</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>        plt.title(<span class="bu">str</span>(data.time.values)[:<span class="dv">7</span>])</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> m</span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> init():</span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> draw_map(<span class="dv">0</span>, add_colorbar<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> animate(i):</span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> draw_map(i, add_colorbar<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> init, animate</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now make the animation using the function:</p>
+<div class="cell">
+<div class="sourceCode" id="cb13"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> make_figure(proj<span class="op">=</span>ccrs.Robinson())</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>init, animate <span class="op">=</span> get_animation(ssh_after_201x)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>ani <span class="op">=</span> animation.FuncAnimation(fig<span class="op">=</span>fig, </span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>                              func<span class="op">=</span>animate, </span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>                              frames<span class="op">=</span>ssh_after_201x.time.size, </span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>                              init_func<span class="op">=</span>init, </span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>                              interval<span class="op">=</span><span class="fl">0.2</span>, </span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>                              blit<span class="op">=</span><span class="va">False</span>, </span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>                              repeat<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Now save the animation to an MP4 file:</span></span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>ani.save(<span class="st">'outputs/ecco_monthly_ssh_grid_2015_to_x.mp4'</span>, writer<span class="op">=</span>animation.FFMpegWriter(fps<span class="op">=</span><span class="dv">8</span>))</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>plt.close(fig)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Render the animation in the ipynb:</p>
+<div class="cell">
+<div class="sourceCode" id="cb14"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">#HTML(ani.to_html5_video())</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="tflux-0.5-degree-gridded-daily" class="level3">
+<h3 class="anchored" data-anchor-id="tflux-0.5-degree-gridded-daily">tflux (0.5-degree gridded, daily)</h3>
+<p>Now we will do something similar to access daily, gridded (0.5-degree) ocean and sea-ice surface heat fluxes (<a href="https://doi.org/10.5067/ECG5D-HEA44">10.5067/ECG5D-HEA44</a>). Read more about the dataset and the rest of the ECCO V4r4 product suite on the <a href="https://podaac.jpl.nassa.gov">PO.DAAC Web Portal</a>.</p>
+<p>Use a “glob” pattern when listing the S3 bucket contents such that only netCDFs from January 2015 are represented in the resulting list of paths.</p>
+<div class="cell">
+<div class="sourceCode" id="cb15"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>tflux_Files <span class="op">=</span> fs.glob(join(<span class="st">"podaac-ops-cumulus-protected/"</span>, <span class="st">"ECCO_L4_HEAT_FLUX_05DEG_DAILY_V4R4"</span>, <span class="st">"*2015-01*.nc"</span>))</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(tflux_Files)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p>31</p>
+</div>
+</div>
+<p>Now open them all as one xarray dataset just like before. Open and pass the 365 netCDF files to the <em>xarray.open_mfdataset</em> constructor so that we can operate on them as a single aggregated dataset.</p>
+<div class="cell">
+<div class="sourceCode" id="cb16"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>tflux_Dataset <span class="op">=</span> xr.open_mfdataset(</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    paths<span class="op">=</span>[fs.<span class="bu">open</span>(f) <span class="cf">for</span> f <span class="kw">in</span> tflux_Files],</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    combine<span class="op">=</span><span class="st">'by_coords'</span>,</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    mask_and_scale<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    decode_cf<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>    chunks<span class="op">=</span>{<span class="st">'latitude'</span>: <span class="dv">60</span>,   <span class="co"># These were chosen arbitrarily. You must specify </span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>            <span class="st">'longitude'</span>: <span class="dv">120</span>, <span class="co"># chunking that is suitable to the data and target</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>            <span class="st">'time'</span>: <span class="dv">100</span>}      <span class="co"># analysis.</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>tflux <span class="op">=</span> tflux_Dataset.TFLUX</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(tflux)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-stdout">
+<pre><code>&lt;xarray.DataArray 'TFLUX' (time: 31, latitude: 360, longitude: 720)&gt;
+dask.array&lt;concatenate, shape=(31, 360, 720), dtype=float32, chunksize=(1, 60, 120), chunktype=numpy.ndarray&gt;
+Coordinates:
+  * time       (time) datetime64[ns] 2015-01-01T12:00:00 ... 2015-01-31T12:00:00
+  * latitude   (latitude) float32 -89.75 -89.25 -88.75 ... 88.75 89.25 89.75
+  * longitude  (longitude) float32 -179.8 -179.2 -178.8 ... 178.8 179.2 179.8
+Attributes:
+    coverage_content_type:  modelResult
+    direction:              &gt;0 increases potential temperature (THETA)
+    long_name:              Rate of change of ocean heat content per m2 accou...
+    units:                  W m-2
+    comment:                The rate of change of ocean heat content due to h...
+    valid_min:              [-1713.51220703]
+    valid_max:              [870.31304932]</code></pre>
+</div>
+</div>
+<p>Select a region over the Gulf of Mexico and spatially subset it from the larger dataset by slicing on the <em>latitude</em> and <em>longitude</em> axes.</p>
+<div class="cell">
+<div class="sourceCode" id="cb18"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>tflux_gom <span class="op">=</span> tflux.sel(latitude<span class="op">=</span><span class="bu">slice</span>(<span class="dv">15</span>, <span class="dv">40</span>), </span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>                      longitude<span class="op">=</span><span class="bu">slice</span>(<span class="op">-</span><span class="dv">105</span>, <span class="op">-</span><span class="dv">70</span>))</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(tflux_gom.shape)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-stdout">
+<pre><code>(31, 50, 70)</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb20"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>tflux_gom.isel(time<span class="op">=</span><span class="dv">0</span>).plot()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p>&lt;matplotlib.collections.QuadMesh at 0x7fae1689a550&gt;</p>
+</div>
+<div class="cell-output-display">
+<p><img src="podaac-ecco-data_access-cloud_direct_access_s3_files/figure-html/cell-16-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+<p>Plot the Jan 2015 surface heat flux as a gridded time series animation over the GOM study region.</p>
+<div class="cell">
+<div class="sourceCode" id="cb21"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> make_figure(proj<span class="op">=</span>ccrs.Mercator())</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>ax.coastlines()</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>ax.set_extent([tflux_gom.longitude.<span class="bu">min</span>(), </span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>               tflux_gom.longitude.<span class="bu">max</span>(), </span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>               tflux_gom.latitude.<span class="bu">min</span>(), </span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>               tflux_gom.latitude.<span class="bu">max</span>()])</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>init, animate <span class="op">=</span> get_animation(tflux_gom, cmap<span class="op">=</span><span class="st">"RdBu"</span>)</span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot a time series animation write it to an mp4 file:</span></span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>ani <span class="op">=</span> animation.FuncAnimation(fig<span class="op">=</span>fig, </span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>                              func<span class="op">=</span>animate, </span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>                              frames<span class="op">=</span>tflux_gom.time.size, </span>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a>                              init_func<span class="op">=</span>init, </span>
+<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a>                              interval<span class="op">=</span><span class="fl">0.2</span>, </span>
+<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a>                              blit<span class="op">=</span><span class="va">False</span>, </span>
+<span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a>                              repeat<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb21-19"><a href="#cb21-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-20"><a href="#cb21-20" aria-hidden="true" tabindex="-1"></a>ani.save(<span class="st">'outputs/ecco_daily_tflux_gom_2015.mp4'</span>, writer<span class="op">=</span>animation.FFMpegWriter(fps<span class="op">=</span><span class="dv">8</span>))</span>
+<span id="cb21-21"><a href="#cb21-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-22"><a href="#cb21-22" aria-hidden="true" tabindex="-1"></a>plt.close(fig)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<!-- -->
+</section>
+</section>
+</section>
+</main>
+<div class="page-navigation page-navigation-docked">
+  <div class="nav-page nav-page-previous">
+      <a href="../access/direct-in-region.html">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Direct in-region</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../access/cof-via-harmony.html">
+        <span class="nav-page-text">COF via Earthdata Harmony</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</div>
+</div> <!-- /main column -->
+</div> <!-- /row -->
+</div> <!-- /container fluid -->
+
+
+</body></html>

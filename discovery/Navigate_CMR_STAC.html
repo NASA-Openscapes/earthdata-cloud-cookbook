@@ -3,7 +3,7 @@
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>EarthData Cloud Cookbook – navigate_cmr_stac</title>
+  <title>navigate_cmr_stac</title>
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -143,11 +143,16 @@
 <div class="row flex-fill" id="quarto-content">
   <div id="quarto-sidebar" class="col col-12 col-lg-3 d-lg-flex px-0 pt-0 sidebar collapse sidebar-navigation">
     <nav class="me-lg-auto py-2 docked  overflow-scroll">
-  <div class="px-3 pt-lg-2 mt-1 text-left">
+  <div class="px-3 pt-lg-2 mt-1 text-left sidebar-header sidebar-header-stacked">
     <img src="../nasa-openscapes.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
-      <div class="sidebar-tools-main">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">
+      EarthData Cloud Cookbook
+      </a>
+        <div class="sidebar-tools-main">
     <a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook" title="" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
 </div>
+    </div>
   </div>
     <div class="d-flex px-3 mt-2 flex-shrink-0 align-items-center">
       <div class="sidebar-search">
@@ -182,15 +187,12 @@
   <a href="../get-started/how-to-use.html" class="">How to use this book</a>
 </li>
           <li class="sidebar-item">
-  <a href="../get-started/api-primer.html" class="">API Primer</a>
-</li>
-          <li class="sidebar-item">
   <a href="../get-started/earthdata-login.html" class="">EarthData Login</a>
 </li>
           <ul class="list-unstyled sidebar-section depth2">
     <li class="">
         <div class="me-auto ">
-          <div class="d-inline-flex w-100 sidebar-section-item">
+          <div class="d-inline-flex w-100 sidebar-item">
             <div class="sidebar-section-link me-auto ">
             <a href="../get-started/authentication.html" class="">Authentication</a>
             </div>
@@ -201,10 +203,19 @@
         </div>
       <div class="collapse  " id="authentication-collapse">
         <ul class="list-unstyled sidebar-item-contents">
+          <li class="sidebar-item">
+  <a href="../get-started/lpdaac-netrc.html" class="">LP DAAC Authentication Example</a>
+</li>
+          <li class="sidebar-item">
+  <a href="../get-started/podaac-ecco-netrc.html" class="">PO DAAC Authentication Example</a>
+</li>
         </ul>
       </div>
     </li>
   </ul>
+          <li class="sidebar-item">
+  <a href="../get-started/api-primer.html" class="">API Primer</a>
+</li>
         </ul>
       </div>
     </li>
@@ -251,11 +262,35 @@
       <div class="collapse  show" id="nasaclouddataaccess-collapse">
         <ul class="list-unstyled sidebar-item-contents">
           <li class="sidebar-item">
+  <a href="../access/data-access-example.html" class="">Data access demo</a>
+</li>
+          <li class="sidebar-item">
   <a href="../access/earthdata-search.html" class="">Earthdata Search</a>
 </li>
           <li class="sidebar-item">
   <a href="../access/opendap-cloud.html" class="">OPeNDAP in the Cloud</a>
 </li>
+          <ul class="list-unstyled sidebar-section depth2">
+    <li class="">
+        <div class="me-auto ">
+          <div class="d-inline-flex w-100 sidebar-item">
+            <div class="sidebar-section-link me-auto ">
+            <a href="../access/direct-in-region.html" class="">Direct in-region</a>
+            </div>
+            <a class="text-start collapsed " data-bs-toggle="collapse" data-bs-target="#directin-region-collapse" aria-expanded="false">
+              <div><i class="bi bi-chevron-right ms-2 "></i></div>
+            </a>
+            </div>
+        </div>
+      <div class="collapse  " id="directin-region-collapse">
+        <ul class="list-unstyled sidebar-item-contents">
+          <li class="sidebar-item">
+  <a href="../access/podaac-ecco-data_access-cloud_direct_access_s3.html" class="">Direct access to ECCO data in S3 (from *us-west-2*)</a>
+</li>
+        </ul>
+      </div>
+    </li>
+  </ul>
           <li class="sidebar-item">
   <a href="../access/cof-via-harmony.html" class="">COF via Earthdata Harmony</a>
 </li>
@@ -281,10 +316,10 @@
       <div class="collapse  show" id="nasaclouddatatransformations-collapse">
         <ul class="list-unstyled sidebar-item-contents">
           <li class="sidebar-item">
-  <a href="../transformations/harmony-api.html" class="">Harmony API</a>
+  <a href="../transformations/netcdf-to-zarr.html" class="">netCDF to Zarr</a>
 </li>
           <li class="sidebar-item">
-  <a href="../transformations/harmonypy.html" class="">Harmony Py Library</a>
+  <a href="../transformations/L2-subsetter.html" class="">L2 Subsetter</a>
 </li>
           <li class="sidebar-item">
   <a href="../transformations/earthdata-search.html" class="">Earthdata Search UI</a>
@@ -342,6 +377,9 @@
 </li>
           <li class="sidebar-item">
   <a href="../appendix/glossary.html" class="">Glossary</a>
+</li>
+          <li class="sidebar-item">
+  <a href="../transformations/harmonypy.html" class="">Harmony Py Library</a>
 </li>
         </ul>
       </div>
@@ -421,7 +459,7 @@
 <section id="below-set-the-cmr-stac-api-endpoint-to-a-variable-and-use-the-requests-package-to-send-a-get-request-to-the-endpoint-and-set-the-response-to-a-variable." class="level4">
 <h4 class="anchored" data-anchor-id="below-set-the-cmr-stac-api-endpoint-to-a-variable-and-use-the-requests-package-to-send-a-get-request-to-the-endpoint-and-set-the-response-to-a-variable.">Below, set the CMR-STAC API Endpoint to a variable, and use the <code>requests</code> package to send a GET request to the endpoint, and set the response to a variable.</h4>
 <div class="cell">
-<div class="sourceCode" id="cb1"><pre class="sourceCode python cell-code"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>stac <span class="op">=</span> <span class="st">'https://cmr.earthdata.nasa.gov/stac/'</span> <span class="co"># CMR-STAC API Endpoint</span></span>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>stac <span class="op">=</span> <span class="st">'https://cmr.earthdata.nasa.gov/stac/'</span> <span class="co"># CMR-STAC API Endpoint</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>stac_response <span class="op">=</span> r.get(stac).json()            <span class="co"># Call the STAC API endpoint</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> s <span class="kw">in</span> stac_response: <span class="bu">print</span>(s)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-stdout">
@@ -434,7 +472,7 @@ links</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode" id="cb3"><pre class="sourceCode python cell-code"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"You are now using the </span><span class="sc">{</span>stac_response[<span class="st">'id'</span>]<span class="sc">}</span><span class="ss"> API (STAC Version: </span><span class="sc">{</span>stac_response[<span class="st">'stac_version'</span>]<span class="sc">}</span><span class="ss">). </span><span class="sc">{</span>stac_response[<span class="st">'description'</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"You are now using the </span><span class="sc">{</span>stac_response[<span class="st">'id'</span>]<span class="sc">}</span><span class="ss"> API (STAC Version: </span><span class="sc">{</span>stac_response[<span class="st">'stac_version'</span>]<span class="sc">}</span><span class="ss">). </span><span class="sc">{</span>stac_response[<span class="st">'description'</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"There are </span><span class="sc">{</span><span class="bu">len</span>(stac_response[<span class="st">'links'</span>])<span class="sc">}</span><span class="ss"> STAC catalogs available in CMR."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-stdout">
 <pre><code>You are now using the stac API (STAC Version: 1.0.0). This is the landing page for CMR-STAC. Each provider link contains a STAC endpoint.
@@ -451,7 +489,7 @@ There are 46 STAC catalogs available in CMR.</code></pre>
 <section id="below-search-for-lp-daac-catalogs-and-print-the-information-contained-in-the-catalog-that-we-will-be-using-today-lpcloud." class="level4">
 <h4 class="anchored" data-anchor-id="below-search-for-lp-daac-catalogs-and-print-the-information-contained-in-the-catalog-that-we-will-be-using-today-lpcloud.">Below, search for LP DAAC Catalogs, and print the information contained in the Catalog that we will be using today, <code>LPCLOUD</code>.</h4>
 <div class="cell">
-<div class="sourceCode" id="cb5"><pre class="sourceCode python cell-code"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>stac_lp <span class="op">=</span> [s <span class="cf">for</span> s <span class="kw">in</span> stac_response[<span class="st">'links'</span>] <span class="cf">if</span> <span class="st">'LP'</span> <span class="kw">in</span> s[<span class="st">'title'</span>]]  <span class="co"># Search for only LP-specific catalogs</span></span>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>stac_lp <span class="op">=</span> [s <span class="cf">for</span> s <span class="kw">in</span> stac_response[<span class="st">'links'</span>] <span class="cf">if</span> <span class="st">'LP'</span> <span class="kw">in</span> s[<span class="st">'title'</span>]]  <span class="co"># Search for only LP-specific catalogs</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># LPCLOUD is the STAC catalog we will be using and exploring today</span></span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>lp_cloud <span class="op">=</span> r.get([s <span class="cf">for</span> s <span class="kw">in</span> stac_lp <span class="cf">if</span> s[<span class="st">'title'</span>] <span class="op">==</span> <span class="st">'LPCLOUD'</span>][<span class="dv">0</span>][<span class="st">'href'</span>]).json()</span>
@@ -470,7 +508,7 @@ conformsTo: ['https://api.stacspec.org/v1.0.0-beta.1/core', 'https://api.stacspe
 <section id="below-print-the-links-contained-in-the-lp-cloud-stac-catalog" class="level4">
 <h4 class="anchored" data-anchor-id="below-print-the-links-contained-in-the-lp-cloud-stac-catalog">Below, print the links contained in the LP CLOUD STAC Catalog:</h4>
 <div class="cell">
-<div class="sourceCode" id="cb7"><pre class="sourceCode python cell-code"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>lp_links <span class="op">=</span> lp_cloud[<span class="st">'links'</span>]</span>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>lp_links <span class="op">=</span> lp_cloud[<span class="st">'links'</span>]</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> l <span class="kw">in</span> lp_links: </span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>: </span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{l</span>[<span class="st">'href'</span>]<span class="sc">}</span><span class="ss"> is the </span><span class="sc">{l</span>[<span class="st">'title'</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
@@ -497,7 +535,7 @@ https://cmr.earthdata.nasa.gov/stac/LPCLOUD/collections/HLSS30.v1.5</code></pre>
 <section id="below-get-a-response-from-the-lpcloud-collection-and-print-the-information-included-in-the-response." class="level4">
 <h4 class="anchored" data-anchor-id="below-get-a-response-from-the-lpcloud-collection-and-print-the-information-included-in-the-response.">Below, get a response from the LPCLOUD Collection and print the information included in the response.</h4>
 <div class="cell">
-<div class="sourceCode" id="cb9"><pre class="sourceCode python cell-code"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>lp_collections <span class="op">=</span> [l[<span class="st">'href'</span>] <span class="cf">for</span> l <span class="kw">in</span> lp_links <span class="cf">if</span> l[<span class="st">'rel'</span>] <span class="op">==</span> <span class="st">'collections'</span>][<span class="dv">0</span>]  <span class="co"># Set collections endpoint to variable</span></span>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>lp_collections <span class="op">=</span> [l[<span class="st">'href'</span>] <span class="cf">for</span> l <span class="kw">in</span> lp_links <span class="cf">if</span> l[<span class="st">'rel'</span>] <span class="op">==</span> <span class="st">'collections'</span>][<span class="dv">0</span>]  <span class="co"># Set collections endpoint to variable</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>collections_response <span class="op">=</span> r.get(<span class="ss">f"</span><span class="sc">{</span>lp_collections<span class="sc">}</span><span class="ss">"</span>).json()                        <span class="co"># Call collections endpoint</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"This collection contains </span><span class="sc">{</span>collections_response[<span class="st">'description'</span>]<span class="sc">}</span><span class="ss"> (</span><span class="sc">{</span><span class="bu">len</span>(collections_response[<span class="st">'collections'</span>])<span class="sc">}</span><span class="ss"> available)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-stdout">
@@ -511,7 +549,7 @@ https://cmr.earthdata.nasa.gov/stac/LPCLOUD/collections/HLSS30.v1.5</code></pre>
 <section id="print-out-one-of-the-collections" class="level4">
 <h4 class="anchored" data-anchor-id="print-out-one-of-the-collections">Print out one of the collections:</h4>
 <div class="cell">
-<div class="sourceCode" id="cb11"><pre class="sourceCode python cell-code"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>collections <span class="op">=</span> collections_response[<span class="st">'collections'</span>]</span>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>collections <span class="op">=</span> collections_response[<span class="st">'collections'</span>]</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>collections[<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p>{‘id’: ‘HLSL30.v1.5,’ ‘stac_version’: ‘1.0.0,’ ‘license’: ‘not-provided,’ ‘title’: ‘HLS Operational Land Imager Surface Reflectance and TOA Brightness Daily Global 30 m V1.5,’ ‘type’: ‘Collection,’ ‘description’: ‘PROVISIONAL - The Harmonized Landsat and Sentinel-2 (HLS) project provides consistent surface reflectance (SR) and top of atmosphere (TOA) brightness data from the Operational Land Imager (OLI) aboard the joint NASA/USGS Landsat 8 satellite and the Multi-Spectral Instrument (MSI) aboard Europe’s Copernicus Sentinel-2A and Sentinel-2B satellites. The combined measurement enables global observations of the land every 2–3 days at 30-meter (m) spatial resolution. The HLS project uses a set of algorithms to obtain seamless products from OLI and MSI that include atmospheric correction, cloud and cloud-shadow masking, spatial co-registration and common gridding, illumination and view angle normalization, and spectral bandpass adjustment. HLSL30 product provides 30-m Nadir Bidirectional Reflectance Distribution Function (BRDF)-Adjusted Reflectance (NBAR) and is derived from Landsat 8 OLI data products. The HLSS30 (https://doi.org/10.5067/HLS/HLSS30.015) and HLSL30 products are gridded to the same resolution and Military Grid Reference System (MGRS) (https://hls.gsfc.nasa.gov/products-description/tiling-system/) tiling system, and thus are “stackable” for time series analysis.HLSL30 product is provided in Cloud Optimized GeoTIFF (COG) format, and each band is distributed as a separate file. There are 10 bands included in the HLSL30 product along with one quality assessment (QA) band and four angle bands. For a more detailed description of the individual bands provided in the HLSL30 product, please see the User Guide (https://lpdaac.usgs.gov/documents/878/HLS_User_Guide_V15_provisional.pdf).’ ‘links’: [{‘rel’: ‘self,’ ‘href’: ‘https://cmr.earthdata.nasa.gov/stac/LPCLOUD/collections/HLSL30.v1.5,’ ‘title’: ‘Info about this collection,’ ‘type’: ‘application/json’}, {‘rel’: ‘root,’ ‘href’: ‘https://cmr.earthdata.nasa.gov/stac,’ ‘title’: ‘Root catalog,’ ‘type’: ‘application/json’}, {‘rel’: ‘parent,’ ‘href’: ‘https://cmr.earthdata.nasa.gov/stac/LPCLOUD,’ ‘title’: ‘Parent catalog,’ ‘type’: ‘application/json’}, {‘rel’: ‘items,’ ‘href’: ‘https://cmr.earthdata.nasa.gov/stac/LPCLOUD/collections/HLSL30.v1.5/items,’ ‘title’: ‘Granules in this collection,’ ‘type’: ‘application/json’}, {‘rel’: ‘about,’ ‘href’: ‘https://cmr.earthdata.nasa.gov/search/concepts/C1711972753-LPCLOUD.html,’ ‘title’: ‘HTML metadata for collection,’ ‘type’: ‘text/html’}, {‘rel’: ‘via,’ ‘href’: ‘https://cmr.earthdata.nasa.gov/search/concepts/C1711972753-LPCLOUD.json,’ ‘title’: ‘CMR JSON metadata for collection,’ ‘type’: ‘application/json’}], ‘extent’: {‘crs’: ‘http://www.opengis.net/def/crs/OGC/1.3/CRS84,’ ‘spatial’: {‘bbox’: [[-180, -90, 180, 90]]}, ‘trs’: ‘http://www.opengis.net/def/uom/ISO-8601/0/Gregorian,’ ‘temporal’: {‘interval’: [[‘2013-04-11T00:00:00.000Z,’ None]]}}}</p>
@@ -521,7 +559,7 @@ https://cmr.earthdata.nasa.gov/stac/LPCLOUD/collections/HLSS30.v1.5</code></pre>
 <section id="in-cmr-id-is-used-to-query-by-a-specific-product-so-be-sure-to-save-the-id-for-the-hls-s30-and-l30-v1.5-products-below" class="level4">
 <h4 class="anchored" data-anchor-id="in-cmr-id-is-used-to-query-by-a-specific-product-so-be-sure-to-save-the-id-for-the-hls-s30-and-l30-v1.5-products-below">In CMR, <code>id</code> is used to query by a specific product, so be sure to save the ID for the HLS S30 and L30 V1.5 products below:</h4>
 <div class="cell">
-<div class="sourceCode" id="cb12"><pre class="sourceCode python cell-code"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Search available collections for HLS and print them out</span></span>
+<div class="sourceCode" id="cb12"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Search available collections for HLS and print them out</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>hls_collections <span class="op">=</span> [c <span class="cf">for</span> c <span class="kw">in</span> collections <span class="cf">if</span> <span class="st">'HLS'</span> <span class="kw">in</span> c[<span class="st">'title'</span>]]</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> h <span class="kw">in</span> hls_collections: <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{h</span>[<span class="st">'title'</span>]<span class="sc">}</span><span class="ss"> has an ID (shortname) of: </span><span class="sc">{h</span>[<span class="st">'id'</span>]<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-stdout">
@@ -536,7 +574,7 @@ HLS Sentinel-2 Multi-spectral Instrument Surface Reflectance Daily Global 30 m V
 <section id="explore-the-attributes-contained-in-the-hlss30-collection." class="level4">
 <h4 class="anchored" data-anchor-id="explore-the-attributes-contained-in-the-hlss30-collection.">Explore the attributes contained in the HLSS30 Collection.</h4>
 <div class="cell">
-<div class="sourceCode" id="cb14"><pre class="sourceCode python cell-code"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>s30 <span class="op">=</span> [h <span class="cf">for</span> h <span class="kw">in</span> hls_collections <span class="cf">if</span> h[<span class="st">'id'</span>] <span class="op">==</span> <span class="st">'HLSS30.v1.5'</span>][<span class="dv">0</span>]  <span class="co"># Grab HLSS30 collection</span></span>
+<div class="sourceCode" id="cb14"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>s30 <span class="op">=</span> [h <span class="cf">for</span> h <span class="kw">in</span> hls_collections <span class="cf">if</span> h[<span class="st">'id'</span>] <span class="op">==</span> <span class="st">'HLSS30.v1.5'</span>][<span class="dv">0</span>]  <span class="co"># Grab HLSS30 collection</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> s <span class="kw">in</span> s30[<span class="st">'extent'</span>]: <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{s}</span><span class="ss">: </span><span class="sc">{</span>s30[<span class="st">'extent'</span>][s]<span class="sc">}</span><span class="ss">"</span>)          <span class="co"># Check out the extent of this collection</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-stdout">
 <pre><code>crs: http://www.opengis.net/def/crs/OGC/1.3/CRS84
@@ -549,7 +587,7 @@ temporal: {'interval': [['2014-04-03T00:00:00.000Z', None]]}</code></pre>
 <section id="so-here-we-can-see-that-the-extent-is-global-and-can-also-see-the-temporal-rangewhere-none-means-on-going-or-to-present." class="level4">
 <h4 class="anchored" data-anchor-id="so-here-we-can-see-that-the-extent-is-global-and-can-also-see-the-temporal-rangewhere-none-means-on-going-or-to-present.">So here we can see that the extent is global, and can also see the temporal range–where “None” means on-going or to present.</h4>
 <div class="cell">
-<div class="sourceCode" id="cb16"><pre class="sourceCode python cell-code"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"HLS S30 Start Date is: </span><span class="sc">{</span>s30[<span class="st">'extent'</span>][<span class="st">'temporal'</span>][<span class="st">'interval'</span>][<span class="dv">0</span>][<span class="dv">0</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
+<div class="sourceCode" id="cb16"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"HLS S30 Start Date is: </span><span class="sc">{</span>s30[<span class="st">'extent'</span>][<span class="st">'temporal'</span>][<span class="st">'interval'</span>][<span class="dv">0</span>][<span class="dv">0</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>s30_id <span class="op">=</span> s30[<span class="st">'id'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-stdout">
 <pre><code>HLS S30 Start Date is: 2014-04-03T00:00:00.000Z</code></pre>
@@ -559,7 +597,7 @@ temporal: {'interval': [['2014-04-03T00:00:00.000Z', None]]}</code></pre>
 <section id="next-explore-the-attributes-of-the-hlsl30-collection." class="level4">
 <h4 class="anchored" data-anchor-id="next-explore-the-attributes-of-the-hlsl30-collection.">Next, explore the attributes of the HLSL30 collection.</h4>
 <div class="cell">
-<div class="sourceCode" id="cb18"><pre class="sourceCode python cell-code"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>l30 <span class="op">=</span> [h <span class="cf">for</span> h <span class="kw">in</span> hls_collections <span class="cf">if</span> h[<span class="st">'id'</span>] <span class="op">==</span> <span class="st">'HLSL30.v1.5'</span>][<span class="dv">0</span>]     <span class="co"># Grab HLSL30 collection</span></span>
+<div class="sourceCode" id="cb18"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>l30 <span class="op">=</span> [h <span class="cf">for</span> h <span class="kw">in</span> hls_collections <span class="cf">if</span> h[<span class="st">'id'</span>] <span class="op">==</span> <span class="st">'HLSL30.v1.5'</span>][<span class="dv">0</span>]     <span class="co"># Grab HLSL30 collection</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> l <span class="kw">in</span> l30[<span class="st">'extent'</span>]: <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{l}</span><span class="ss">: </span><span class="sc">{</span>l30[<span class="st">'extent'</span>][l]<span class="sc">}</span><span class="ss">"</span>)             <span class="co"># Check out the extent of this collection</span></span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"HLS L30 Start Date is: </span><span class="sc">{</span>l30[<span class="st">'extent'</span>][<span class="st">'temporal'</span>][<span class="st">'interval'</span>][<span class="dv">0</span>][<span class="dv">0</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>l30_id <span class="op">=</span> l30[<span class="st">'id'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -581,7 +619,7 @@ HLS L30 Start Date is: 2013-04-11T00:00:00.000Z</code></pre>
 <section id="below-query-the-hlss30-collection-for-items-and-return-the-first-item-in-the-collection." class="level4">
 <h4 class="anchored" data-anchor-id="below-query-the-hlss30-collection-for-items-and-return-the-first-item-in-the-collection.">Below, query the HLSS30 collection for items and return the first item in the collection.</h4>
 <div class="cell">
-<div class="sourceCode" id="cb20"><pre class="sourceCode python cell-code"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Below, go through all links in the collection and return the link containing the items endpoint</span></span>
+<div class="sourceCode" id="cb20"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Below, go through all links in the collection and return the link containing the items endpoint</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>s30_items <span class="op">=</span> [s[<span class="st">'href'</span>] <span class="cf">for</span> s <span class="kw">in</span> s30[<span class="st">'links'</span>] <span class="cf">if</span> s[<span class="st">'rel'</span>] <span class="op">==</span> <span class="st">'items'</span>][<span class="dv">0</span>]  <span class="co"># Set items endpoint to variable</span></span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>s30_items</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
@@ -589,7 +627,7 @@ HLS L30 Start Date is: 2013-04-11T00:00:00.000Z</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode" id="cb21"><pre class="sourceCode python cell-code"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>s30_items_response <span class="op">=</span> r.get(<span class="ss">f"</span><span class="sc">{</span>s30_items<span class="sc">}</span><span class="ss">"</span>).json()                        <span class="co"># Call items endpoint</span></span>
+<div class="sourceCode" id="cb21"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>s30_items_response <span class="op">=</span> r.get(<span class="ss">f"</span><span class="sc">{</span>s30_items<span class="sc">}</span><span class="ss">"</span>).json()                        <span class="co"># Call items endpoint</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>s30_item <span class="op">=</span> s30_items_response[<span class="st">'features'</span>][<span class="dv">0</span>]                             <span class="co"># select first item (10 items returned by default)</span></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>s30_item</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
@@ -600,7 +638,7 @@ HLS L30 Start Date is: 2013-04-11T00:00:00.000Z</code></pre>
 <section id="stac-metadata-provides-valuable-information-on-the-item-including-a-unique-id-when-it-was-acquired-the-location-of-the-observation-and-a-cloud-cover-assessment." class="level4">
 <h4 class="anchored" data-anchor-id="stac-metadata-provides-valuable-information-on-the-item-including-a-unique-id-when-it-was-acquired-the-location-of-the-observation-and-a-cloud-cover-assessment.">STAC metadata provides valuable information on the item, including a unique ID, when it was acquired, the location of the observation, and a cloud cover assessment.</h4>
 <div class="cell">
-<div class="sourceCode" id="cb22"><pre class="sourceCode python cell-code"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print metadata attributes from this observation</span></span>
+<div class="sourceCode" id="cb22"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print metadata attributes from this observation</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"The ID for this item is: </span><span class="sc">{</span>s30_item[<span class="st">'id'</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"It was acquired on: </span><span class="sc">{</span>s30_item[<span class="st">'properties'</span>][<span class="st">'datetime'</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"over: </span><span class="sc">{</span>s30_item[<span class="st">'bbox'</span>]<span class="sc">}</span><span class="ss"> (Lower Left, Upper Right corner coordinates)"</span>)</span>
@@ -618,7 +656,7 @@ and is 6% cloudy.</code></pre>
 <section id="below-print-out-the-ten-items-and-the-percent-cloud-coverwe-will-use-this-to-decide-which-item-to-visualize-in-the-next-section." class="level4">
 <h4 class="anchored" data-anchor-id="below-print-out-the-ten-items-and-the-percent-cloud-coverwe-will-use-this-to-decide-which-item-to-visualize-in-the-next-section.">Below, print out the ten items and the percent cloud cover–we will use this to decide which item to visualize in the next section.</h4>
 <div class="cell">
-<div class="sourceCode" id="cb24"><pre class="sourceCode python cell-code"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, s <span class="kw">in</span> <span class="bu">enumerate</span>(s30_items_response[<span class="st">'features'</span>]):</span>
+<div class="sourceCode" id="cb24"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, s <span class="kw">in</span> <span class="bu">enumerate</span>(s30_items_response[<span class="st">'features'</span>]):</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Item at index </span><span class="sc">{i}</span><span class="ss"> is </span><span class="sc">{s</span>[<span class="st">'properties'</span>][<span class="st">'eo:cloud_cover'</span>]<span class="sc">}</span><span class="ss">% cloudy."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-stdout">
 <pre><code>Item at index 0 is 6% cloudy.
@@ -637,10 +675,10 @@ Item at index 9 is 67% cloudy.</code></pre>
 <section id="using-the-information-printed-above-set-the-item_index-below-to-whichever-observation-is-the-least-cloudy-above." class="level4">
 <h4 class="anchored" data-anchor-id="using-the-information-printed-above-set-the-item_index-below-to-whichever-observation-is-the-least-cloudy-above.">Using the information printed above, set the <code>item_index</code> below to whichever observation is the least cloudy above.</h4>
 <div class="cell">
-<div class="sourceCode" id="cb26"><pre class="sourceCode python cell-code"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>item_index <span class="op">=</span> <span class="dv">9</span>  <span class="co"># Indexing starts at 0 in Python, so here select the eighth item in the list at index 7</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>item_index <span class="op">=</span> <span class="dv">9</span>  <span class="co"># Indexing starts at 0 in Python, so here select the eighth item in the list at index 7</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode" id="cb27"><pre class="sourceCode python cell-code"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>s30_item <span class="op">=</span> s30_items_response[<span class="st">'features'</span>][item_index]  <span class="co"># Grab the next item in the list</span></span>
+<div class="sourceCode" id="cb27"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>s30_item <span class="op">=</span> s30_items_response[<span class="st">'features'</span>][item_index]  <span class="co"># Grab the next item in the list</span></span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"The ID for this item is: </span><span class="sc">{</span>s30_item[<span class="st">'id'</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"It was acquired on: </span><span class="sc">{</span>s30_item[<span class="st">'properties'</span>][<span class="st">'datetime'</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
@@ -659,7 +697,7 @@ and is 67% cloudy.</code></pre>
 <section id="below-print-out-the-names-of-all-of-the-assets-included-in-this-item." class="level4">
 <h4 class="anchored" data-anchor-id="below-print-out-the-names-of-all-of-the-assets-included-in-this-item.">Below, print out the names of all of the assets included in this item.</h4>
 <div class="cell">
-<div class="sourceCode" id="cb29"><pre class="sourceCode python cell-code"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"The following assets are available for download:"</span>)</span>
+<div class="sourceCode" id="cb29"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"The following assets are available for download:"</span>)</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> a <span class="kw">in</span> s30_item[<span class="st">'assets'</span>]: <span class="bu">print</span>(a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-stdout">
 <pre><code>The following assets are available for download:
@@ -689,7 +727,7 @@ metadata</code></pre>
 <section id="notice-that-each-hls-item-includes-a-browse-image.-read-the-browse-file-into-memory-and-visualize-the-hls-acquisition." class="level4">
 <h4 class="anchored" data-anchor-id="notice-that-each-hls-item-includes-a-browse-image.-read-the-browse-file-into-memory-and-visualize-the-hls-acquisition.">Notice that each HLS item includes a browse image. Read the browse file into memory and visualize the HLS acquisition.</h4>
 <div class="cell">
-<div class="sourceCode" id="cb31"><pre class="sourceCode python cell-code"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>s30_item[<span class="st">'assets'</span>][<span class="st">'browse'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>s30_item[<span class="st">'assets'</span>][<span class="st">'browse'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p>{‘title’: ‘Download HLS.S30.T35JKM.2016311T080122.v1.5.jpg,’ ‘href’: ‘https://lpdaac.earthdata.nasa.gov/lp-prod-public/HLSS30.015/HLS.S30.T35JKM.2016311T080122.v1.5.jpg,’ ‘type’: ‘image/jpeg’}</p>
 </div>
@@ -698,7 +736,7 @@ metadata</code></pre>
 <section id="use-the-skimage-package-to-load-the-browse-image-into-memory-and-matplotlib-to-quickly-visualize-it." class="level4">
 <h4 class="anchored" data-anchor-id="use-the-skimage-package-to-load-the-browse-image-into-memory-and-matplotlib-to-quickly-visualize-it.">Use the <code>skimage</code> package to load the browse image into memory and <code>matplotlib</code> to quickly visualize it.</h4>
 <div class="cell">
-<div class="sourceCode" id="cb32"><pre class="sourceCode python cell-code"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>image <span class="op">=</span> io.imread(s30_item[<span class="st">'assets'</span>][<span class="st">'browse'</span>][<span class="st">'href'</span>])  <span class="co"># Load jpg browse image into memory</span></span>
+<div class="sourceCode" id="cb32"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>image <span class="op">=</span> io.imread(s30_item[<span class="st">'assets'</span>][<span class="st">'browse'</span>][<span class="st">'href'</span>])  <span class="co"># Load jpg browse image into memory</span></span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Basic plot of the image</span></span>
 <span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">10</span>))              </span>

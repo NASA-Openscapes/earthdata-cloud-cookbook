@@ -3,7 +3,7 @@
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>EarthData Cloud Cookbook – Python example with Quarto</title>
+  <title>Python example with Quarto</title>
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -143,11 +143,16 @@
 <div class="row flex-fill" id="quarto-content">
   <div id="quarto-sidebar" class="col col-12 col-lg-3 d-lg-flex px-0 pt-0 sidebar collapse sidebar-navigation">
     <nav class="me-lg-auto py-2 docked  overflow-scroll">
-  <div class="px-3 pt-lg-2 mt-1 text-left">
+  <div class="px-3 pt-lg-2 mt-1 text-left sidebar-header sidebar-header-stacked">
     <img src="../nasa-openscapes.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
-      <div class="sidebar-tools-main">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">
+      EarthData Cloud Cookbook
+      </a>
+        <div class="sidebar-tools-main">
     <a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook" title="" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
 </div>
+    </div>
   </div>
     <div class="d-flex px-3 mt-2 flex-shrink-0 align-items-center">
       <div class="sidebar-search">
@@ -182,15 +187,12 @@
   <a href="../get-started/how-to-use.html" class="">How to use this book</a>
 </li>
           <li class="sidebar-item">
-  <a href="../get-started/api-primer.html" class="">API Primer</a>
-</li>
-          <li class="sidebar-item">
   <a href="../get-started/earthdata-login.html" class="">EarthData Login</a>
 </li>
           <ul class="list-unstyled sidebar-section depth2">
     <li class="">
         <div class="me-auto ">
-          <div class="d-inline-flex w-100 sidebar-section-item">
+          <div class="d-inline-flex w-100 sidebar-item">
             <div class="sidebar-section-link me-auto ">
             <a href="../get-started/authentication.html" class="">Authentication</a>
             </div>
@@ -201,10 +203,19 @@
         </div>
       <div class="collapse  " id="authentication-collapse">
         <ul class="list-unstyled sidebar-item-contents">
+          <li class="sidebar-item">
+  <a href="../get-started/lpdaac-netrc.html" class="">LP DAAC Authentication Example</a>
+</li>
+          <li class="sidebar-item">
+  <a href="../get-started/podaac-ecco-netrc.html" class="">PO DAAC Authentication Example</a>
+</li>
         </ul>
       </div>
     </li>
   </ul>
+          <li class="sidebar-item">
+  <a href="../get-started/api-primer.html" class="">API Primer</a>
+</li>
         </ul>
       </div>
     </li>
@@ -251,11 +262,35 @@
       <div class="collapse  show" id="nasaclouddataaccess-collapse">
         <ul class="list-unstyled sidebar-item-contents">
           <li class="sidebar-item">
+  <a href="../access/data-access-example.html" class="">Data access demo</a>
+</li>
+          <li class="sidebar-item">
   <a href="../access/earthdata-search.html" class="">Earthdata Search</a>
 </li>
           <li class="sidebar-item">
   <a href="../access/opendap-cloud.html" class="">OPeNDAP in the Cloud</a>
 </li>
+          <ul class="list-unstyled sidebar-section depth2">
+    <li class="">
+        <div class="me-auto ">
+          <div class="d-inline-flex w-100 sidebar-item">
+            <div class="sidebar-section-link me-auto ">
+            <a href="../access/direct-in-region.html" class="">Direct in-region</a>
+            </div>
+            <a class="text-start collapsed " data-bs-toggle="collapse" data-bs-target="#directin-region-collapse" aria-expanded="false">
+              <div><i class="bi bi-chevron-right ms-2 "></i></div>
+            </a>
+            </div>
+        </div>
+      <div class="collapse  " id="directin-region-collapse">
+        <ul class="list-unstyled sidebar-item-contents">
+          <li class="sidebar-item">
+  <a href="../access/podaac-ecco-data_access-cloud_direct_access_s3.html" class="">Direct access to ECCO data in S3 (from *us-west-2*)</a>
+</li>
+        </ul>
+      </div>
+    </li>
+  </ul>
           <li class="sidebar-item">
   <a href="../access/cof-via-harmony.html" class="">COF via Earthdata Harmony</a>
 </li>
@@ -281,10 +316,10 @@
       <div class="collapse  show" id="nasaclouddatatransformations-collapse">
         <ul class="list-unstyled sidebar-item-contents">
           <li class="sidebar-item">
-  <a href="../transformations/harmony-api.html" class="">Harmony API</a>
+  <a href="../transformations/netcdf-to-zarr.html" class="">netCDF to Zarr</a>
 </li>
           <li class="sidebar-item">
-  <a href="../transformations/harmonypy.html" class="">Harmony Py Library</a>
+  <a href="../transformations/L2-subsetter.html" class="">L2 Subsetter</a>
 </li>
           <li class="sidebar-item">
   <a href="../transformations/earthdata-search.html" class="">Earthdata Search UI</a>
@@ -343,6 +378,9 @@
           <li class="sidebar-item">
   <a href="../appendix/glossary.html" class="">Glossary</a>
 </li>
+          <li class="sidebar-item">
+  <a href="../transformations/harmonypy.html" class="">Harmony Py Library</a>
+</li>
         </ul>
       </div>
     </li>
@@ -375,24 +413,16 @@
   </div>
 </nav>
   </div>
-  <div id="quarto-toc-sidebar" class="col col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-toc order-last"><nav id="TOC" role="doc-toc">
-<h2 id="toc-title">On this page</h2>
-<ul>
-<li><a href="#python" class="nav-link active" data-scroll-target="#python">Python</a></li>
-</ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/edit/main/examples/python-example.qmd">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/issues/new">Report an issue</a></p></div></div></nav></div>
+  <div id="quarto-toc-sidebar" class="col col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-toc order-last"></div>
   <div class="col mx-auto col-sm-12 col-md-9 col-lg-7 px-lg-4">
 <main>
 <header id="title-block-header">
 <h1 class="title d-none d-lg-block display-7">Python example with Quarto</h1>
 </header>
-
 <p>This is a .qmd file. I write prose here, using keyboard shortcuts or clicking above <strong>to make text bold</strong> and other formatting.</p>
-<section id="python" class="level2">
-<h2 class="anchored" data-anchor-id="python">Python</h2>
 <p>As I develop I’ll interactively run the following, but can set up caching so that it doesn’t execute the code</p>
 <div class="cell">
-<div class="sourceCode" id="cb1"><pre class="sourceCode python cell-code"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> np.arange(<span class="dv">0</span>, <span class="dv">2</span>, <span class="fl">0.01</span>)</span>
@@ -408,7 +438,6 @@
 </div>
 <p>text boxes like this one are in <strong>markdown</strong></p>
 <!-- -->
-</section>
 </main>
 <div class="page-navigation page-navigation-docked">
   <div class="nav-page nav-page-previous">

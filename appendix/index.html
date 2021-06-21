@@ -3,7 +3,7 @@
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>EarthData Cloud Cookbook – Appendix</title>
+  <title>Appendix</title>
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -80,11 +80,16 @@
 <div class="row flex-fill" id="quarto-content">
   <div id="quarto-sidebar" class="col col-12 col-lg-3 d-lg-flex px-0 pt-0 sidebar collapse sidebar-navigation">
     <nav class="me-lg-auto py-2 docked  overflow-scroll">
-  <div class="px-3 pt-lg-2 mt-1 text-left">
+  <div class="px-3 pt-lg-2 mt-1 text-left sidebar-header sidebar-header-stacked">
     <img src="../nasa-openscapes.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
-      <div class="sidebar-tools-main">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">
+      EarthData Cloud Cookbook
+      </a>
+        <div class="sidebar-tools-main">
     <a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook" title="" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
 </div>
+    </div>
   </div>
     <div class="d-flex px-3 mt-2 flex-shrink-0 align-items-center">
       <div class="sidebar-search">
@@ -119,15 +124,12 @@
   <a href="../get-started/how-to-use.html" class="">How to use this book</a>
 </li>
           <li class="sidebar-item">
-  <a href="../get-started/api-primer.html" class="">API Primer</a>
-</li>
-          <li class="sidebar-item">
   <a href="../get-started/earthdata-login.html" class="">EarthData Login</a>
 </li>
           <ul class="list-unstyled sidebar-section depth2">
     <li class="">
         <div class="me-auto ">
-          <div class="d-inline-flex w-100 sidebar-section-item">
+          <div class="d-inline-flex w-100 sidebar-item">
             <div class="sidebar-section-link me-auto ">
             <a href="../get-started/authentication.html" class="">Authentication</a>
             </div>
@@ -138,10 +140,19 @@
         </div>
       <div class="collapse  " id="authentication-collapse">
         <ul class="list-unstyled sidebar-item-contents">
+          <li class="sidebar-item">
+  <a href="../get-started/lpdaac-netrc.html" class="">LP DAAC Authentication Example</a>
+</li>
+          <li class="sidebar-item">
+  <a href="../get-started/podaac-ecco-netrc.html" class="">PO DAAC Authentication Example</a>
+</li>
         </ul>
       </div>
     </li>
   </ul>
+          <li class="sidebar-item">
+  <a href="../get-started/api-primer.html" class="">API Primer</a>
+</li>
         </ul>
       </div>
     </li>
@@ -188,11 +199,35 @@
       <div class="collapse  show" id="nasaclouddataaccess-collapse">
         <ul class="list-unstyled sidebar-item-contents">
           <li class="sidebar-item">
+  <a href="../access/data-access-example.html" class="">Data access demo</a>
+</li>
+          <li class="sidebar-item">
   <a href="../access/earthdata-search.html" class="">Earthdata Search</a>
 </li>
           <li class="sidebar-item">
   <a href="../access/opendap-cloud.html" class="">OPeNDAP in the Cloud</a>
 </li>
+          <ul class="list-unstyled sidebar-section depth2">
+    <li class="">
+        <div class="me-auto ">
+          <div class="d-inline-flex w-100 sidebar-item">
+            <div class="sidebar-section-link me-auto ">
+            <a href="../access/direct-in-region.html" class="">Direct in-region</a>
+            </div>
+            <a class="text-start collapsed " data-bs-toggle="collapse" data-bs-target="#directin-region-collapse" aria-expanded="false">
+              <div><i class="bi bi-chevron-right ms-2 "></i></div>
+            </a>
+            </div>
+        </div>
+      <div class="collapse  " id="directin-region-collapse">
+        <ul class="list-unstyled sidebar-item-contents">
+          <li class="sidebar-item">
+  <a href="../access/podaac-ecco-data_access-cloud_direct_access_s3.html" class="">Direct access to ECCO data in S3 (from *us-west-2*)</a>
+</li>
+        </ul>
+      </div>
+    </li>
+  </ul>
           <li class="sidebar-item">
   <a href="../access/cof-via-harmony.html" class="">COF via Earthdata Harmony</a>
 </li>
@@ -218,10 +253,10 @@
       <div class="collapse  show" id="nasaclouddatatransformations-collapse">
         <ul class="list-unstyled sidebar-item-contents">
           <li class="sidebar-item">
-  <a href="../transformations/harmony-api.html" class="">Harmony API</a>
+  <a href="../transformations/netcdf-to-zarr.html" class="">netCDF to Zarr</a>
 </li>
           <li class="sidebar-item">
-  <a href="../transformations/harmonypy.html" class="">Harmony Py Library</a>
+  <a href="../transformations/L2-subsetter.html" class="">L2 Subsetter</a>
 </li>
           <li class="sidebar-item">
   <a href="../transformations/earthdata-search.html" class="">Earthdata Search UI</a>
@@ -279,6 +314,9 @@
 </li>
           <li class="sidebar-item">
   <a href="../appendix/glossary.html" class="">Glossary</a>
+</li>
+          <li class="sidebar-item">
+  <a href="../transformations/harmonypy.html" class="">Harmony Py Library</a>
 </li>
         </ul>
       </div>
