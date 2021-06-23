@@ -1,0 +1,29 @@
+name: nsidc-cloud
+channels:
+- conda-forge
+- nsidc
+dependencies:
+- python=3.8
+- ipyleaflet~=0.13.5
+- xarray~=0.17.0
+- rioxarray~=0.3.1
+- netcdf4~=1.5.6
+- h5py~=3.1.0
+- geopandas~=0.9.0
+- geojson~=2.5.0
+- matplotlib-base~=3.3.4
+- bqplot~=0.12.23
+- cartopy~=0.18.0
+- joblib~=1.0.1
+- requests~=2.25.1
+- tqdm~=4.59.0
+- dask~=2021.3.0
+- dask-labextension~=5.0.1
+- jupyterlab=3
+- ipympl~=0.6.3
+- sidecar~=0.5.0
+- pip
+- pip:
+  - pqdm
+  - git+https://github.com/nasa/eo-metadata-tools/#egg=eo-metadata-tools-cmr&subdirectory=CMR/python
+  # - git+https://github.com/nsidc/python-cmr.git
