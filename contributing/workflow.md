@@ -32,6 +32,9 @@ git commit -m "my commit message here"
 ## push changes
 git push -u origin branch-name  # connect your branch to github.com and push
 
+## create a pull request
+## from GitHub.com, create a pull request and once it is merged, delete your branch
+
 ## delete branch
 git checkout main         # switch to the main branch
 git pull                  # pull merged updates from github.com

@@ -16,4 +16,4 @@ As this data migration occurs, DAACs will have more information about how users 
 
 ## About
 
-This Earthdata Cloud Cookbook is being developed by the NASA-Openscapes team. Learn more at [<https://nasa-openscapes.github.io>](https://nasa-openscapes.github.io){.uri} and on the [About page](/appendix/about.html).
+This Earthdata Cloud Cookbook is being developed by the NASA-Openscapes team. Learn more at [\<https://nasa-openscapes.github.io\>](https://nasa-openscapes.github.io){.uri} and on the [About page](/appendix/about.html).
