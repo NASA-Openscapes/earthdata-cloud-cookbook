@@ -6,13 +6,19 @@ There are several things you need to set up to get started. This includes XYZ th
 
 Different workflows: UI and programmatic.
 
-## Prerequisites
+## Prerequisites and related resources 
 
 For programmatic access to NASA data on the cloud, we recommend familiarity with the following:
 
+Basic Programming in R or Python through Carpentries:
+
 -   [**Introduction to Open Data Science with R**](https://carpentries-incubator.github.io/open-science-with-r/)
 -   [**Introduction to Geospatial Raster and Vector Data with Python**](https://carpentries-incubator.github.io/geospatial-python/)
+
+Using both the Scientific Python Ecosystem and Cloud Computing together:
+
 -   [**Project Pythia Foundations Book**](https://foundations.projectpythia.org/landing-page.html)
+-   [**Jupyter meets Earth**](https://jupytearth.org/)
 
 ## Cloud Optimized Data Formats
 
