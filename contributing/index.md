@@ -6,8 +6,10 @@ title: Contributing
 
 This Section is about how our Openscapes Cohort collaborates to create this book, with an eye towards how others could collaborate with us in the future. 
 
-TODO: Fork/borrow from the awesome work at The Turing Way: <https://the-turing-way.netlify.app/community-handbook/community-handbook.html>
+Our style of working is greatly influenced by: 
 
+- [The Turing Way Community Handbook](https://the-turing-way.netlify.app/community-handbook/community-handbook.html)
+- [The Carpentries Curriculum Development Handbook](https://carpentries.github.io/curriculum-development)
 
 ## Quarto
 
