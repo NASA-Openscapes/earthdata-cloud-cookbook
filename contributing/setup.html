@@ -81,7 +81,7 @@
   <![endif]-->
   <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
   <script src="../site_libs/quarto-nav/headroom.min.js"></script>
-  <meta name="quarto:offset" content="..">
+  <meta name="quarto:offset" content="../">
   <script src="../site_libs/quarto-search/autocomplete.min.js"></script>
   <script src="../site_libs/quarto-search/fuse.min.js"></script>
   <script src="../site_libs/quarto-search/quarto-search.js"></script>
@@ -423,8 +423,11 @@
 <h2 id="toc-title">On this page</h2>
 <ul>
 <li><a href="#overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
-<li><a href="#install-quarto" class="nav-link" data-scroll-target="#install-quarto">Install Quarto</a></li>
-<li><a href="#clone-from-github" class="nav-link" data-scroll-target="#clone-from-github">Clone from GitHub</a></li>
+<li><a href="#install-quarto" class="nav-link" data-scroll-target="#install-quarto">Install Quarto</a>
+<ul class="collapse">
+<li><a href="#check-install" class="nav-link" data-scroll-target="#check-install">Check install</a></li>
+</ul></li>
+<li><a href="#clone-cookbook-from-github" class="nav-link" data-scroll-target="#clone-cookbook-from-github">Clone Cookbook from GitHub</a></li>
 <li><a href="#build-cookbook" class="nav-link" data-scroll-target="#build-cookbook">Build Cookbook!</a></li>
 </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/edit/main/contributing/setup.md">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/issues/new">Report an issue</a></p></div></div></nav></div>
@@ -436,43 +439,25 @@
 
 <section id="overview" class="level2">
 <h2 class="anchored" data-anchor-id="overview">Overview</h2>
-<p>This is the setup required to contribute to our Cookbook. You can always refer to <a href="https://quarto.org">quarto.org</a> for the most up-to-date and more detailed information.</p>
-<p>Setup for our Cookbook includes:</p>
-<ul>
-<li>Installing the very latest version of Quarto</li>
-<li>Cloning our Cookbook repo from GitHub</li>
-<li>Building our Cookbook</li>
-</ul>
-<p>Instructions here is to run Quarto from the command line; see <a href="https://quarto.org" class="uri">quarto.org</a> for equivalents in R.</p>
-<div class="callout-note callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Coming up we’ll also outline other ways to contribute and review the Cookbook through GitHub on the browser.</p>
-</div>
-</div>
+<p>This is the setup required to contribute to our Cookbook. Instructions are for the command line; see <a href="https://quarto.org">quarto.org</a> for equivalents in R and for the most up-to-date and more detailed information.</p>
 </section>
 <section id="install-quarto" class="level2">
 <h2 class="anchored" data-anchor-id="install-quarto">Install Quarto</h2>
-<p>First, download the very latest version of the Quarto command line interface (CLI). To do this, go to:</p>
+<p>First, in your internet browser, go to the very latest version of the Quarto command line interface (CLI):</p>
 <p><a href="https://github.com/quarto-dev/quarto-cli/releases/latest" class="uri">https://github.com/quarto-dev/quarto-cli/releases/latest</a></p>
-<p>Click on the file type to download for your operating system:</p>
+<p>Download Quarto by clicking on the file appropriate for your operating system:</p>
 <ul>
-<li><p>Linux: <code>amd64.deb</code></p></li>
-<li><p>Mac: <code>macos.pkg</code></p></li>
-<li><p>Windows: <code>win.msi</code></p></li>
+<li><p><strong>Linux</strong>: amd64.deb</p></li>
+<li><p><strong>Mac</strong>: macos.pkg</p></li>
+<li><p><strong>Windows</strong>: win.msi</p></li>
 </ul>
-<p>After downloading, follow the installation prompts on your computer like you do for other software.</p>
-<p>Check to make sure Quarto installed properly:</p>
+<p>Once download is complete, follow the installation prompts on your computer like you do for other software.</p>
+<section id="check-install" class="level3">
+<h3 class="anchored" data-anchor-id="check-install">Check install</h3>
+<p>Finally, check to make sure Quarto installed properly. Open a command line terminal and type:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> check install </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="callout-note callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target="#callout-2" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target="#callout-1" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -481,7 +466,7 @@ Additional checks
 </div>
 <button type="button" class="callout-btn-toggle btn d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></button>
 </div>
-<div id="callout-2" class="callout-collapse collapse">
+<div id="callout-1" class="callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>You can also run:</p>
 <ul>
@@ -492,18 +477,19 @@ Additional checks
 </div>
 </div>
 </div>
-<p>If you need to install a version more recent than the latest release, see the documentation on installing the <a href="https://quarto.org/docs/getting-started/installation.html#development-version">Development Version</a>.</p>
+<p>From quarto.org: If you need to install a version more recent than the latest release, see the documentation on installing the <a href="https://quarto.org/docs/getting-started/installation.html#development-version">Development Version</a>.</p>
 </section>
-<section id="clone-from-github" class="level2">
-<h2 class="anchored" data-anchor-id="clone-from-github">Clone from GitHub</h2>
-<p>Now clone our book and set it as your current directory.</p>
+</section>
+<section id="clone-cookbook-from-github" class="level2">
+<h2 class="anchored" data-anchor-id="clone-cookbook-from-github">Clone Cookbook from GitHub</h2>
+<p>Now clone our Cookbook and make it your current directory.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/NASA-Openscapes/earthdata-cloud-cookbook </span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> earthdata-cloud-cookbook</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>If you need to set up GitHub see instructions [TODO]</p>
+<!---TODO: Offer GitHub setup instructions: writeup GitHub Clinic --->
 </section>
 <section id="build-cookbook" class="level2">
 <h2 class="anchored" data-anchor-id="build-cookbook">Build Cookbook!</h2>
-<p>You should now be able to serve and render the documents within the <code>earthdata-cloud-cookbook</code> directory.</p>
+<p>You should now be able to serve our Cookbook from the <code>earthdata-cloud-cookbook</code> directory.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> serve</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This will open the Cookbook as a new tab in your browser. Now you’re all set to contribute to the Cookbook! Read about how in the next chapter.</p>
 <!-- -->

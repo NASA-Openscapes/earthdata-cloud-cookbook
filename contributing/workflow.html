@@ -81,7 +81,7 @@
   <![endif]-->
   <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
   <script src="../site_libs/quarto-nav/headroom.min.js"></script>
-  <meta name="quarto:offset" content="..">
+  <meta name="quarto:offset" content="../">
   <script src="../site_libs/quarto-search/autocomplete.min.js"></script>
   <script src="../site_libs/quarto-search/fuse.min.js"></script>
   <script src="../site_libs/quarto-search/quarto-search.js"></script>
@@ -522,6 +522,7 @@
 <ul class="collapse">
 <li><a href="#executing-notebooks" class="nav-link" data-scroll-target="#executing-notebooks">Executing notebooks</a></li>
 </ul></li>
+<li><a href="#code-review" class="nav-link" data-scroll-target="#code-review">Code Review</a></li>
 <li><a href="#troubleshooting" class="nav-link" data-scroll-target="#troubleshooting">Troubleshooting</a>
 <ul class="collapse">
 <li><a href="#error-addrinuse" class="nav-link" data-scroll-target="#error-addrinuse">Error: AddrInUse</a></li>
@@ -538,11 +539,22 @@
 <section id="workflow-for-contributing-to-our-cookbook" class="level2">
 <h2 class="anchored" data-anchor-id="workflow-for-contributing-to-our-cookbook">Workflow for contributing to our Cookbook</h2>
 <p>Your workflow can be from wherever you are most comfortable. You can develop chapters working in a text editor, integrated development environment (IDE), or notebook interface. And you can serve Quarto from the Command Line or R. Quarto will combine files of different types ( <code>.md</code> , <code>.ipynb</code>, <code>.Rmd</code>, and <code>.qmd</code>) to make the Cookbook. This workflow can streamline collaboration for scientific &amp; technical writing across programming languages.</p>
-<p>By default, rendering the Cookbook will only act on markdown text and will not execute any code. This way, rendering the whole Cookbook will not become overly cumbersome as it grows, and there is not one single virtual environment with all the libraries required. Instead our workflow will be that as you develop a single chapter (or section), you control when you render, and can create a <code>requirements.txt</code> file for that chapter (or section). This will also make it much easier to port lessons that work standalone and are ready for a Cloud instance or a workshop.</p>
+<p>By default, rendering the Cookbook will only act on markdown text and will not execute any code. This way, rendering the whole Cookbook will not become overly cumbersome as it grows, and there is not one single virtual environment with all the libraries required. Instead our workflow is that as you develop a single chapter (or section), you control when you render, and can create a <code>requirements.txt</code> file for that chapter (or section). This will also make it much easier to port lessons that work standalone and are ready for a Cloud instance or a workshop.</p>
 </section>
 <section id="quickstart-reference" class="level2">
 <h2 class="anchored" data-anchor-id="quickstart-reference">Quickstart reference</h2>
-<p>Commands for returning to the Cookbook after lunch/months; each is described in more detail below.</p>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target="#callout-1" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Summary of the commands detailed below
+</div>
+<button type="button" class="callout-btn-toggle btn d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></button>
+</div>
+<div id="callout-1" class="callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">## check which branches exist, where you are, and pull recent from main branch</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout main</span>
@@ -568,13 +580,16 @@
 <span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout main         <span class="co"># switch to the main branch</span></span>
 <span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull                  <span class="co"># pull merged updates from github.com</span></span>
 <span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch <span class="at">-d</span> branch-name <span class="co"># delete old local  branch</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="github-workflow" class="level2">
 <h2 class="anchored" data-anchor-id="github-workflow">GitHub Workflow</h2>
 <p>First let’s talk about the GitHub part of the workflow.</p>
 <p>We will work in branches so as to not overwrite each other’s work, and let GitHub do what it does best.</p>
 <p>The <code>main</code> branch will be the current approved version of the book. The main branch is what displays at <a href="https://nasa-openscapes.github.io/earthdata-cloud-cookbook" class="uri">https://nasa-openscapes.github.io/earthdata-cloud-cookbook</a>.</p>
-<p>A nice clean workflow with branches is to consider them temporary. You pull the most recent from <code>main</code>, you create a branch locally, you make your edits, you commit regularly, then you push back to github.com, create a pull request for it to be merged into <code>main</code>, and once approved, you delete the branch on github.com and also locally. That’s the workflow we’ll walk through here. A great resource on GitHub setup and collaboration is <a href="https://happygitwithr.com/">Happy Git with R</a>, which includes fantastic background philosophy as well as bash commands for setup, workflows, and collaboration.</p>
+<p>A nice clean workflow with branches is to consider them temporary. You pull the most recent from <code>main</code>, you create a branch locally, you make your edits, you commit regularly, you push regularly to github.com, and then you create a pull request for it to be merged into <code>main</code>, and when it’s approved the branch is deleted on github.com and you also delete it locally. That’s the workflow we’ll walk through here. A great resource on GitHub setup and collaboration is <a href="https://happygitwithr.com/">Happy Git with R</a>, which includes fantastic background philosophy as well as bash commands for setup, workflows, and collaboration.</p>
 <p>The following assumes you’re all <a href="contributing/setup">setup</a> from the previous chapter.</p>
 <section id="branch-setup" class="level3">
 <h3 class="anchored" data-anchor-id="branch-setup">Branch setup</h3>
@@ -589,7 +604,7 @@
 </section>
 <section id="develop-content" class="level3">
 <h3 class="anchored" data-anchor-id="develop-content">Develop content</h3>
-<p>Time to edit and develop content, and run your Quarto Workflow – see <a href="#develop-cookbook-content">specific instructions below</a>. While you’re developing, you’ll want to frequently commit your changes.</p>
+<p>Time to edit and develop content, and run your Quarto Workflow – see <a href="#develop-cookbook-content">specific instructions below</a>. While you’re developing, you’ll want to frequently commit and push your changes.</p>
 </section>
 <section id="commit-changes" class="level3">
 <h3 class="anchored" data-anchor-id="commit-changes">Commit changes</h3>
@@ -606,6 +621,8 @@
 <h3 class="anchored" data-anchor-id="push-changes">Push changes</h3>
 <p>When you’re ready to push changes you’ve made in your branch, you’ll first need to connect it to github.com by pushing it “upstream” to the “origin repository” (<code>-u</code> below is short for <code>--set-upstream</code>):</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push <span class="at">-u</span> origin branch-name  <span class="co"># connect your branch to github.com and push</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The above is a one-time command to connect your local branch back to github.com. After you’ve pushed successfully the first time, then as you continue to commit, you’ll be able to push as normal:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="pull-request" class="level3">
 <h3 class="anchored" data-anchor-id="pull-request">Pull Request</h3>
@@ -621,9 +638,9 @@
 <section id="delete-branch" class="level3">
 <h3 class="anchored" data-anchor-id="delete-branch">Delete Branch</h3>
 <p>Once your pull request is merged and you’ve deleted the branch from github.com, then come back to your local setup and delete the branch locally:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout main         <span class="co"># switch to the main branch</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull                  <span class="co"># pull merged updates from github.com</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch <span class="at">-d</span> branch-name <span class="co"># delete old local  branch</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout main         <span class="co"># switch to the main branch</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull                  <span class="co"># pull merged updates from github.com</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch <span class="at">-d</span> branch-name <span class="co"># delete old local  branch</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 <section id="quarto-workflow" class="level2">
@@ -636,7 +653,7 @@
 <h3 class="anchored" data-anchor-id="quarto-serve">Quarto serve</h3>
 <p>The thing to do first is to “serve” the Cookbook so that we can see what it looks like as we develop the chapters (it’s called “serve” because it’s really a website that looks like a book).</p>
 <p>Run the following from your branch in your <code>earthdata-cloud-cookbook</code> directory from the command line:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> serve</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> serve</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>And after it’s is served, you can click from the console (or paste the url into your browser) to see the development version of the Cookbook.</p>
 <div class="callout-important callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
@@ -673,12 +690,12 @@ This command line instance is now being used to serve Quarto
 <h3 class="anchored" data-anchor-id="quarto-render">Quarto render</h3>
 <p>As you develop book chapters and edit files, any <code>.md</code> files will automatically refresh in the browser (so long as quarto serve is running)!</p>
 <p>To refresh files with executable code, you’ll need to render them individually. You can do the following to render <code>.ipynb</code>/<code>.qmd</code>/<code>.Rmd</code> files so that they show up refreshed in the served Cookbook.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render my-document.ipynb      <span class="co">## render a notebook</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render my-work.qmd            <span class="co">## render a Quarto file</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render my-contribution.Rmd    <span class="co">## render a RMarkdown file</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render my-document.ipynb      <span class="co">## render a notebook</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render my-work.qmd            <span class="co">## render a Quarto file</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render my-contribution.Rmd    <span class="co">## render a RMarkdown file</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>From the RStudio IDE, you can also press the <strong>Render</strong> button to render <code>.qmd</code> and <code>.Rmd</code> files.</p>
 <p>And you can also render the whole book:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Learn more about <a href="https://quarto.org/docs/computations/running-code.html#rendering">rendering with Quarto</a>. From J.J. Allaire:</p>
 <blockquote class="blockquote">
 <p>The reason Quarto doesn’t render <code>.Rmd</code> and <code>.qmd</code> on save is that render could (potentially) be very long running and that cost shouldn’t be imposed on you whenever you save. Here we are talking about the age old debate of whether computational markdown should be rendered on save when running a development server. Quarto currently doesn’t do this to give the user a choice between an expensive render and a cheap save.</p>
@@ -688,7 +705,7 @@ This command line instance is now being used to serve Quarto
 <section id="virtual-environments" class="level2">
 <h2 class="anchored" data-anchor-id="virtual-environments">Virtual Environments</h2>
 <p>If you are working on a chapter that loads any Python or R packages, to make your work reproducible you’ll need to create and then update the <code>environments.txt</code> file. Do this use the <code>pip freeze</code> command:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> freeze <span class="op">&gt;</span> requirements.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> freeze <span class="op">&gt;</span> requirements.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This will overwrite/update the <code>requirements.txt</code> file. Depending on where you are working, you might also want to create a new subfolder to store the <code>requirements.txt</code>. See the next section on Cookbook Structure.</p>
 <p>You you will then commit and push along with your other edits back to github.com.</p>
 <p>TODO: info about conda…</p>
@@ -713,6 +730,10 @@ This command line instance is now being used to serve Quarto
 <p>As you develop files with executable code ( <code>.qmd</code>, <code>.Rmd</code>, and <code>.ipynb</code>), you can decide if you don’t want the notebook to execute. By adding YAML as a raw text cell at the top of an <code>.ipynb</code> file, you can control whether it is executed or not. Adding <code>execute: false</code> to the YAML at the top of the file basically means that Quarto never runs the code, but the user of course still can interactively in Jupyter.</p>
 <p>Using <code>.qmd</code> there are also ways to control execution cell-by-cell via <code># |</code> syntax within a code chunk; see <a href="https://quarto.org/docs/computations/execution-options.html" class="uri">https://quarto.org/docs/computations/execution-options.html</a></p>
 </section>
+</section>
+<section id="code-review" class="level2">
+<h2 class="anchored" data-anchor-id="code-review">Code Review</h2>
+<p>Upcoming.</p>
 </section>
 <section id="troubleshooting" class="level2">
 <h2 class="anchored" data-anchor-id="troubleshooting">Troubleshooting</h2>
