@@ -193,7 +193,7 @@
       margin-left: 30px;
     }
 
-    .cell-output-display {
+    .cell-output-display:not(.no-overflow-x) {
       overflow-x: auto;
     }
 
@@ -501,6 +501,7 @@
 <ul>
 <li><a href="#workflow-for-contributing-to-our-cookbook" class="nav-link active" data-scroll-target="#workflow-for-contributing-to-our-cookbook">Workflow for contributing to our Cookbook</a></li>
 <li><a href="#quickstart-reference" class="nav-link" data-scroll-target="#quickstart-reference">Quickstart reference</a></li>
+<li><a href="#summary-of-the-commands-detailed-below" class="nav-link" data-scroll-target="#summary-of-the-commands-detailed-below">Summary of the commands detailed below</a></li>
 <li><a href="#github-workflow" class="nav-link" data-scroll-target="#github-workflow">GitHub Workflow</a>
 <ul class="collapse">
 <li><a href="#branch-setup" class="nav-link" data-scroll-target="#branch-setup">Branch setup</a></li>
@@ -513,9 +514,10 @@
 <li><a href="#quarto-workflow" class="nav-link" data-scroll-target="#quarto-workflow">Quarto Workflow</a>
 <ul class="collapse">
 <li><a href="#quarto-serve" class="nav-link" data-scroll-target="#quarto-serve">Quarto serve</a></li>
+</ul></li>
+<li><a href="#this-command-line-instance-is-now-being-used-to-serve-quarto" class="nav-link" data-scroll-target="#this-command-line-instance-is-now-being-used-to-serve-quarto">This command line instance is now being used to serve Quarto</a></li>
 <li><a href="#develop-cookbook-content" class="nav-link" data-scroll-target="#develop-cookbook-content">Develop Cookbook Content</a></li>
 <li><a href="#quarto-render" class="nav-link" data-scroll-target="#quarto-render">Quarto render</a></li>
-</ul></li>
 <li><a href="#virtual-environments" class="nav-link" data-scroll-target="#virtual-environments">Virtual Environments</a></li>
 <li><a href="#cookbook-structure" class="nav-link" data-scroll-target="#cookbook-structure">Cookbook Structure</a></li>
 <li><a href="#cookbook-practices" class="nav-link" data-scroll-target="#cookbook-practices">Cookbook Practices</a>
@@ -543,18 +545,9 @@
 </section>
 <section id="quickstart-reference" class="level2">
 <h2 class="anchored" data-anchor-id="quickstart-reference">Quickstart reference</h2>
-<div class="callout-tip callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target="#callout-1" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Summary of the commands detailed below
-</div>
-<button type="button" class="callout-btn-toggle btn d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></button>
-</div>
-<div id="callout-1" class="callout-collapse collapse">
-<div class="callout-body-container callout-body">
+</section>
+<section id="summary-of-the-commands-detailed-below" class="level2 callout-tip" data-collapse="true">
+<h2 class="anchored" data-anchor-id="summary-of-the-commands-detailed-below">Summary of the commands detailed below</h2>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">## check which branches exist, where you are, and pull recent from main branch</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout main</span>
@@ -580,9 +573,6 @@ Summary of the commands detailed below
 <span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout main         <span class="co"># switch to the main branch</span></span>
 <span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull                  <span class="co"># pull merged updates from github.com</span></span>
 <span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch <span class="at">-d</span> branch-name <span class="co"># delete old local  branch</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
-</div>
 </section>
 <section id="github-workflow" class="level2">
 <h2 class="anchored" data-anchor-id="github-workflow">GitHub Workflow</h2>
@@ -655,19 +645,11 @@ Summary of the commands detailed below
 <p>Run the following from your branch in your <code>earthdata-cloud-cookbook</code> directory from the command line:</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> serve</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>And after it’s is served, you can click from the console (or paste the url into your browser) to see the development version of the Cookbook.</p>
-<div class="callout-important callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-This command line instance is now being used to serve Quarto
-</div>
-</div>
-<div class="callout-body-container callout-body">
+</section>
+</section>
+<section id="this-command-line-instance-is-now-being-used-to-serve-quarto" class="level2 callout-important">
+<h2 class="anchored" data-anchor-id="this-command-line-instance-is-now-being-used-to-serve-quarto">This command line instance is now being used to serve Quarto</h2>
 <p>You can open another instance to continue working from the command line, including running other shell commands and rendering (see next). Launching your command line shell of choice will open a new instance.</p>
-</div>
-</div>
 </section>
 <section id="develop-cookbook-content" class="level3">
 <h3 class="anchored" data-anchor-id="develop-cookbook-content">Develop Cookbook Content</h3>
@@ -700,7 +682,6 @@ This command line instance is now being used to serve Quarto
 <blockquote class="blockquote">
 <p>The reason Quarto doesn’t render <code>.Rmd</code> and <code>.qmd</code> on save is that render could (potentially) be very long running and that cost shouldn’t be imposed on you whenever you save. Here we are talking about the age old debate of whether computational markdown should be rendered on save when running a development server. Quarto currently doesn’t do this to give the user a choice between an expensive render and a cheap save.</p>
 </blockquote>
-</section>
 </section>
 <section id="virtual-environments" class="level2">
 <h2 class="anchored" data-anchor-id="virtual-environments">Virtual Environments</h2>
