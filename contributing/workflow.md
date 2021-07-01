@@ -28,6 +28,7 @@ git checkout -b branch-name
 
 ## commit changes
 git add --all 
+git status
 git commit -m "my commit message here" 
 
 ## push changes
