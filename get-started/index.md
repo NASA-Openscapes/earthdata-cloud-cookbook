@@ -2,11 +2,11 @@
 title: Getting Started
 ---
 
-There are several things you need to set up to get started. This includes XYZ that are included in this section.
+There are several things you need to set up to get started with this cookbook. This includes XYZ that are included in this section.
 
 Different workflows: UI and programmatic.
 
-## Prerequisites and related resources 
+## Prerequisites and related resources
 
 For programmatic access to NASA data on the cloud, we recommend familiarity with the following:
 
