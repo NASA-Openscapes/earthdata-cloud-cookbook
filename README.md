@@ -3,7 +3,7 @@
 This Earthdata Cloud Cookbook is being developed by the [NASA-Openscapes team](https://nasa-openscapes.github.io/).
 
 ### How to contribute to our book
-Information for our team [to contribute to this Cookbook](https://nasa-openscapes.github.io/earthdata-cloud-cookbook/contributing/).
+Information for our team [to contribute to the Cookbook](https://nasa-openscapes.github.io/earthdata-cloud-cookbook/contributing/).
 
 ## Initial repo setup notes
 June 7 2021
