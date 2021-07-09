@@ -1,7 +1,7 @@
 project:
   type: site
   output-dir: _site
-  
+
 execute:
   ipynb: false
   freeze: true
@@ -12,8 +12,8 @@ site:
   repo-actions: [edit, issue]
   page-navigation: true
   sidebar:
-    title: "EarthData Cloud Cookbook"  
-    logo: nasa-openscapes.png 
+    title: "EarthData Cloud Cookbook"
+    logo: nasa-openscapes.png
     style: "docked"
     background: light
     search: true
@@ -24,7 +24,7 @@ site:
         href: https://github.com/nasa-openscapes/earthdata-cloud-cookbook
     contents:
       - text: "Welcome"
-        href: index.md  
+        href: index.md
       - section: get-started/index.md
         contents:
           - get-started/how-to-use.md
@@ -33,7 +33,7 @@ site:
             contents:
               - get-started/lpdaac-netrc.ipynb
               - get-started/podaac-ecco-netrc.ipynb
-          - get-started/api-primer.md    
+          - get-started/api-primer.md
       - section: discovery/index.md
         contents:
           - discovery/Navigate_CMR_STAC.ipynb
@@ -76,8 +76,10 @@ bibliography: references.bib
 
 format:
   html:
-    theme: cosmo
+    theme:
+      light: cosmo
+      dark: [cosmo, theme-dark.scss]
     code-background: true
     code-copy: true
     css: styles.css
-    toc: true
+    toc: true 
