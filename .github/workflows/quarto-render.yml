@@ -40,10 +40,6 @@ jobs:
         echo "which python3: $(which python3)"
         echo "which jupyter: $(which jupyter)"
                 
-    - name: "Quarto env"
-      run: |
-        quarto env
-
     - name: "Quarto capabilities"
       run: |
         quarto capabilities
