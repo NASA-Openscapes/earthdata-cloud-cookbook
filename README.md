@@ -1,16 +1,16 @@
-# Hello!
+# Hello! 
 
-This Earthdata Cloud Cookbook is being developed by the [NASA-Openscapes team](https://nasa-openscapes.github.io/). 
+This Earthdata Cloud Cookbook is being developed by the [NASA-Openscapes team](https://nasa-openscapes.github.io/).
 
 ### How to contribute to our book
-Information for our team [to contribute to the Cookbook](https://nasa-openscapes.github.io/earthdata-cloud-cookbook/files/community-handbook/contributing.html).
+Information for our team [to contribute to the Cookbook](https://nasa-openscapes.github.io/earthdata-cloud-cookbook/contributing/).
 
 ## Initial repo setup notes
 June 7 2021
 
 #### Create and clone a repo
 
-Create repo at github.com. 
+Create repo at github.com.
 
 Clone `nasa-openscapes/earthdata-cloud-cookbook` using your method of preference. Here is how to do this in bash:
 
@@ -20,7 +20,7 @@ cd earthdata-cloud-cookbook
 ```
 #### Install quarto and create environment
 
-Install the `quarto` library so you can interact with it via the command line or R. I've set mine up with both. 
+Install the `quarto` library so you can interact with it via the command line or R. I've set mine up with both.
 
 In bash, type:
 
@@ -30,7 +30,7 @@ pip install quarto
 
 ## probably going to want this
 pip install jupyterlab
-pip install matplotlib 
+pip install matplotlib
 pip install scikit-image
 pip install requests
 ```
@@ -45,7 +45,7 @@ install.packages("reticulate")
 
 To have our quarto project nicely portable, we used `renv` to manage python and R libraries/versions.
 
-About python environments: `environment.yml` and `requirements.txt` are doing the same thing but are built based on the python installation. `pip` will create `environment.yml`, and `conda` will create `requirements.txt`. 
+About python environments: `environment.yml` and `requirements.txt` are doing the same thing but are built based on the python installation. `pip` will create `environment.yml`, and `conda` will create `requirements.txt`.
 
 First set it up in R:
 
@@ -74,7 +74,7 @@ See much more detailed information in <https://quarto.org>. This is just a few n
 In migrating from a book to a website you need to change some of the pages to have a YAML title rather than H1 header. For example change:
 
 ```
-# Background 
+# Background
 ```
 
 to
@@ -99,7 +99,7 @@ June 9 2021
 git clone https://github.com/quarto-dev/quarto-cli
 cd quarto-cli
 ./configure-macos.sh
-quarto convert help # to check 
+quarto convert help # to check
 ```
 
 #### For Aaron
@@ -123,8 +123,8 @@ June 10, 2021
 
 `quarto env`
 
-`quarto capabilities` will show the 5 python packages required. 
+`quarto capabilities` will show the 5 python packages required.
 
 `pip install quarto` installs those 5 packages in the environment. Recommended: miniconda, conda, python3.
 
-Weird error to look out for/avoid: when quarto detects python from the Windows Store. 
+Weird error to look out for/avoid: when quarto detects python from the Windows Store.

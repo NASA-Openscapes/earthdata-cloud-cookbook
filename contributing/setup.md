@@ -6,37 +6,27 @@ execute:
 
 ## Overview
 
-This is the setup required to contribute to our Cookbook. You can always refer to [quarto.org](https://quarto.org) for the most up-to-date and more detailed information.
-
-Setup for our Cookbook includes:
-
--   Installing the very latest version of Quarto
--   Cloning our Cookbook repo from GitHub
--   Building our Cookbook
-
-Instructions here is to run Quarto from the command line; see [quarto.org](https://quarto.org){.uri} for equivalents in R.
-
-::: {.callout-note}
-Coming up we'll also outline other ways to contribute and review the Cookbook through GitHub on the browser.
-:::
+This is the setup required to contribute to our Cookbook. Instructions are for the command line; see [quarto.org](https://quarto.org) for equivalents in R and for the most up-to-date and more detailed information.
 
 ## Install Quarto
 
-First, download the very latest version of the Quarto command line interface (CLI). To do this, go to:
+First, in your internet browser, go to the very latest version of the Quarto command line interface (CLI):
 
 <https://github.com/quarto-dev/quarto-cli/releases/latest>
 
-Click on the file type to download for your operating system:
+Download Quarto by clicking on the file appropriate for your operating system:
 
--   Linux: `amd64.deb`
+-   **Linux**: amd64.deb
 
--   Mac: `macos.pkg`
+-   **Mac**: macos.pkg
 
--   Windows: `win.msi`
+-   **Windows**: win.msi
 
-After downloading, follow the installation prompts on your computer like you do for other software.
+Once download is complete, follow the installation prompts on your computer like you do for other software.
 
-Check to make sure Quarto installed properly:
+### Check install
+
+Finally, check to make sure Quarto installed properly. Open a command line terminal and type:
 
 ``` {.bash}
 quarto check install 
@@ -52,22 +42,22 @@ You can also run:
 -   `quarto check` to run all of these checks together
 :::
 
-If you need to install a version more recent than the latest release, see the documentation on installing the [Development Version](https://quarto.org/docs/getting-started/installation.html#development-version).
+From quarto.org: If you need to install a version more recent than the latest release, see the documentation on installing the [Development Version](https://quarto.org/docs/getting-started/installation.html#development-version).
 
-## Clone  from GitHub
+## Clone Cookbook from GitHub
 
-Now clone our book and set it as your current directory.
+Now clone our Cookbook and make it your current directory.
 
 ``` {.bash}
 git clone https://github.com/NASA-Openscapes/earthdata-cloud-cookbook 
 cd earthdata-cloud-cookbook
 ```
 
-If you need to set up GitHub see instructions [TODO]
+<!---TODO: Offer GitHub setup instructions: writeup GitHub Clinic ---> 
 
 ## Build Cookbook!
 
-You should now be able to serve and render the documents within the `earthdata-cloud-cookbook` directory.
+You should now be able to serve our Cookbook from the `earthdata-cloud-cookbook` directory.
 
 ``` {.bash}
 quarto serve
