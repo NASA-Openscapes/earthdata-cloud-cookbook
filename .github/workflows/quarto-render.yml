@@ -9,7 +9,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: "Download and install Quarto"
+    - name: "Install Quarto and render project"
       uses: pommevilla/quarto-render@v0.2.0-alpha
 
     - name: "Deploy to gh-pages"
