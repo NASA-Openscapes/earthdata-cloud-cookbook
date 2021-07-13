@@ -109,6 +109,19 @@ The above is a one-time command to connect your local branch back to github.com.
 git push
 ```
 
+### Update Local Branch with remote Main 
+
+If while you're working you would like to update your local branch with the most recent updates on the `main` branch on GitHub.com, you can do so like this:
+
+[Git Update Local Branch with remote Master](https://stackoverflow.com/questions/34656523/git-update-local-branch-with-remote-master)
+
+    git checkout main
+    git pull
+    git checkout your-branch
+    git merge main
+
+There are other ways to do this too (please let us know!)
+
 ### Pull Request
 
 Now you've synced your work to github.com. It is currently online, in a separate branch from the `main` branch. Go to <https://github.com/nasa-openscapes/earthdata-cloud-cookbook>, find your branch, and do a pull request.
