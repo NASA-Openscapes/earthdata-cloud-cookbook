@@ -126,6 +126,12 @@
     "text": "About this project and who we are"
   },
   {
+    "href": "get-started/api-primer.html",
+    "title": "API Primer",
+    "section": "",
+    "text": "“Primer” about Interacting with NASA Earthdata APIs\nWe’re going to discuss all of the different use cases across the NASA EOSDIS search and access APIs…."
+  },
+  {
     "href": "get-started/lpdaac-netrc.html#this-is-otherwise-just-testing",
     "title": "LP DAAC Authentication Example",
     "section": "This is otherwise just testing ",
@@ -142,12 +148,6 @@
     "title": "EarthData Login",
     "section": "Common questions",
     "text": "How do I know if I already have a netrc file?\nYour netrc file will likely be in your root directory. It is a hidden file that you will not be able to see from your Finder (Mac) or Windows Explorer (Windows), so you’ll have to do this from the Command Line. Navigate to your root directory and list all:\n\nOn a Mac:\ncd ~\nls -la\nIf you see a .netrc file, view what’s inside (perhaps with nano), and if you’d like to delete the current version to start afresh, type rm .netrc."
-  },
-  {
-    "href": "get-started/api-primer.html",
-    "title": "API Primer",
-    "section": "",
-    "text": "“Primer” about Interacting with NASA Earthdata APIs"
   },
   {
     "href": "get-started/how-to-use.html",
