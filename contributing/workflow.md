@@ -7,11 +7,12 @@ execute: false
 
 Your workflow can be from wherever you are most comfortable. You can develop chapters working in a text editor, integrated development environment (IDE), or notebook interface. And you can serve Quarto from the Command Line or R. Quarto will combine files of different types ( `.md` , `.ipynb`, `.Rmd`, and `.qmd`) to make the Cookbook. This workflow can streamline collaboration for scientific & technical writing across programming languages.
 
-By default, rendering the Cookbook will only act on markdown text and will not execute any code. This way, rendering the whole Cookbook will not become overly cumbersome as it grows, and there is not one single virtual environment with all the libraries required. Instead our workflow will be that as you develop a single chapter (or section), you control when you render, and can create a `requirements.txt` file for that chapter (or section). This will also make it much easier to port lessons that work standalone and are ready for a Cloud instance or a workshop.
+By default, rendering the Cookbook will only act on markdown text and will not execute any code. This way, rendering the whole Cookbook will not become overly cumbersome as it grows, and there is not one single virtual environment with all the libraries required. Instead our workflow is that as you develop a single chapter (or section), you control when you render, and can create a `requirements.txt` file for that chapter (or section). This will also make it much easier to port lessons that work standalone and are ready for a Cloud instance or a workshop.
 
 ## Quickstart reference
 
-Commands for returning to the Cookbook after lunch/months; each is described in more detail below.
+::: {.callout-tip collapse="true"}
+## Summary of the commands detailed below
 
 ``` {.bash}
 ## check which branches exist, where you are, and pull recent from main branch
@@ -27,16 +28,21 @@ git checkout -b branch-name
 
 ## commit changes
 git add --all 
+git status
 git commit -m "my commit message here" 
 
 ## push changes
 git push -u origin branch-name  # connect your branch to github.com and push
+
+## create a pull request
+## from GitHub.com, create a pull request and once it is merged, delete your branch
 
 ## delete branch
 git checkout main         # switch to the main branch
 git pull                  # pull merged updates from github.com
 git branch -d branch-name # delete old local  branch
 ```
+:::
 
 ## GitHub Workflow
 
@@ -46,7 +52,7 @@ We will work in branches so as to not overwrite each other's work, and let GitHu
 
 The `main` branch will be the current approved version of the book. The main branch is what displays at <https://nasa-openscapes.github.io/earthdata-cloud-cookbook>.
 
-A nice clean workflow with branches is to consider them temporary. You pull the most recent from `main`, you create a branch locally, you make your edits, you commit regularly, then you push back to github.com, create a pull request for it to be merged into `main`, and once approved, you delete the branch on github.com and also locally. That's the workflow we'll walk through here. A great resource on GitHub setup and collaboration is [Happy Git with R](https://happygitwithr.com/), which includes fantastic background philosophy as well as bash commands for setup, workflows, and collaboration.
+A nice clean workflow with branches is to consider them temporary. You pull the most recent from `main`, you create a branch locally, you make your edits, you commit regularly, you push regularly to github.com, and then you create a pull request for it to be merged into `main`, and when it's approved the branch is deleted on github.com and you also delete it locally. That's the workflow we'll walk through here. A great resource on GitHub setup and collaboration is [Happy Git with R](https://happygitwithr.com/), which includes fantastic background philosophy as well as bash commands for setup, workflows, and collaboration.
 
 The following assumes you're all [setup](contributing/setup) from the previous chapter.
 
@@ -72,7 +78,7 @@ git checkout -b branch-name  # create and switch to new branch
 
 ### Develop content
 
-Time to edit and develop content, and run your Quarto Workflow -- see [specific instructions below](#develop-cookbook-content). While you're developing, you'll want to frequently commit your changes.
+Time to edit and develop content, and run your Quarto Workflow -- see [specific instructions below](#develop-cookbook-content). While you're developing, you'll want to frequently commit and push your changes.
 
 ### Commit changes
 
@@ -96,6 +102,25 @@ When you're ready to push changes you've made in your branch, you'll first need 
 ``` {.bash}
 git push -u origin branch-name  # connect your branch to github.com and push
 ```
+
+The above is a one-time command to connect your local branch back to github.com. After you've pushed successfully the first time, then as you continue to commit, you'll be able to push as normal:
+
+``` {.bash}
+git push
+```
+
+### Update Local Branch with remote Main 
+
+If while you're working you would like to update your local branch with the most recent updates on the `main` branch on GitHub.com, you can do so like this:
+
+[Git Update Local Branch with remote Master](https://stackoverflow.com/questions/34656523/git-update-local-branch-with-remote-master)
+
+    git checkout main
+    git pull
+    git checkout your-branch
+    git merge main
+
+There are other ways to do this too (please let us know!)
 
 ### Pull Request
 
@@ -220,6 +245,10 @@ These are shared practices that we have for co-developing the Cookbook. This wil
 As you develop files with executable code ( `.qmd`, `.Rmd`, and `.ipynb`), you can decide if you don't want the notebook to execute. By adding YAML as a raw text cell at the top of an `.ipynb` file, you can control whether it is executed or not. Adding `execute: false` to the YAML at the top of the file basically means that Quarto never runs the code, but the user of course still can interactively in Jupyter.
 
 Using `.qmd` there are also ways to control execution cell-by-cell via `# |` syntax within a code chunk; see <https://quarto.org/docs/computations/execution-options.html>
+
+## Code Review
+
+Upcoming.
 
 ## Troubleshooting
 
