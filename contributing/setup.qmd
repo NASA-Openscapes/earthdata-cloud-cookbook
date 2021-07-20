@@ -51,7 +51,7 @@ From quarto.org: If you need to install a version more recent than the latest re
 If installing quarto locally is not an option, you can install it inside a container using the
 following `Dockerfile`:
 
-```{r}
+```{r, eval=FALSE}
 #| fold: true
 #| summary: "Show the Dockerfile"
 
