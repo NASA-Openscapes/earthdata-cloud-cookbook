@@ -1,0 +1,13 @@
+name: papermill
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.7
+  - jupyter
+  - xarray
+  - netcdf4
+  - matplotlib
+  - papermill
+prefix: /Users/gangl/miniconda3/envs/papermill
+
