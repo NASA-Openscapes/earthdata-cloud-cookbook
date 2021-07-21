@@ -1,0 +1,13 @@
+# Package Information for pkg-config
+
+prefix=/Users/lowndes/github/nasa-openscapes/earthdata-cloud-cookbook/transformations/env
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: SQLite
+Description: SQL database engine
+Version: 3.36.0
+Libs: -L${libdir} -lsqlite3
+Libs.private: -lz 
+Cflags: -I${includedir}

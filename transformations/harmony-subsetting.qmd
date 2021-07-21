@@ -1,0 +1,85 @@
+---
+title: Harmony Subsetting
+---
+
+This notebook demonstrates basic harmony subsetting from PO.DAAC: [**Harmony EOSS L2SS API Tutorial**](https://github.com/podaac/tutorials/blob/master/notebooks/harmony%20subsetting/Harmony%20L2%20Subsetter.ipynb)
+
+```{r setup, echo=FALSE}
+## Purpose: convert a remote .ipynb tutorial to .qmd to render as a "child" document.
+
+## load any libraries needed ----
+suppressPackageStartupMessages({
+  library(quarto)     # install.packages("quarto")     # cookbook build
+  library(tidyverse)  # install.packages("tidyverse")  # wrangling
+  library(here)       # install.packages("here")       # filepaths
+  library(RCurl)      # install.packages("RCurl")      # checking urls 
+  library(reticulate) # install.packages("reticulate") # run python from R
+  library(renv)       # install.packages("renv")       # python virtual environments
+})
+
+## set remote url and files to copy ----
+url_raw_gh <- "https://raw.githubusercontent.com/podaac/tutorials/master/notebooks/harmony%20subsetting"
+
+to_copy <- c('Harmony%20L2%20Subsetter.ipynb',
+             'environment.yml')
+
+## loop through and copy files: .ipynb gets a ".local_" prefix so that it's not rendered by quarto ----
+for (f in to_copy) { # f <-  "Harmony%20L2%20Subsetter.ipynb"
+
+  fp <- file.path(url_raw_gh, f)
+
+  ## if the url exists, save a copy.
+  if (RCurl::url.exists(fp)) {
+    f_web   <- readr::read_lines(fp)
+    if ( tools::file_ext(fp) == 'ipynb' ) {
+      f_local <- paste0('.local_', basename(fp))
+      f_local <- str_replace_all(f_local, "%20", "_")
+    } else {
+      f_local <- basename(fp)
+    }
+    ## save local copy with "local_" prefix
+    readr::write_lines(f_web, file = here("transformations", f_local), append = FALSE)
+    message(sprintf('saving %s', f_local))
+    
+    ## upcoming: convert to .qmd in R; currently in separate chunk below.
+    
+  } else {
+    message(sprintf('%s does not exist', fp))
+  }
+}
+
+## install python environment: 
+reticulate::install_miniconda(here("transformations", "environment.yml")) 
+#renv::restore(here("transformations"))
+
+```
+
+```{bash}
+## following https://quarto.org/docs/getting-started/quarto-projects.html
+
+## create a new Python 3 virtual environment in the directory env:
+#conda create --prefix env python 
+
+# To use the environment you need to activate it.  
+conda activate ./env 
+
+## restore
+conda create --prefix env -u -f environment.yml
+
+```
+
+```{bash quarto-convert}
+# now convert from a .ipynb to a .qmd
+quarto convert .local_Harmony_L2_Subsetter.ipynb --output Harmony_L2_Subsetter.qmd
+```
+
+The following chunk knits the new .qmd
+
+```{r, child="Harmony_L2_Subsetter.qmd"}
+```
+
+```{r, echo=FALSE, message=FALSE}
+# delete temporary .ipynb file
+# file.remove(here("transformations", filename_local))
+```
+
