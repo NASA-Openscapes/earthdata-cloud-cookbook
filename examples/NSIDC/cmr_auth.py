@@ -1,6 +1,5 @@
 from copy import deepcopy
 from typing import Dict, Any
-from os.path import expanduser
 
 from requests import session, exceptions
 from requests.auth import HTTPBasicAuth
