@@ -1,11 +1,15 @@
 ---
 title: Harmony Subsetting
+execute: false
 ---
 
-This notebook demonstrates basic harmony subsetting from PO.DAAC: [**Harmony EOSS L2SS API Tutorial**](https://github.com/podaac/tutorials/blob/master/notebooks/harmony%20subsetting/Harmony%20L2%20Subsetter.ipynb)
+This notebook demonstrates basic harmony subsetting from PO.DAAC: [**Harmony EOSS L2SS API Tutorial**](https://github.com/podaac/tutorials/blob/master/notebooks/harmony%20subsetting/Harmony%20L2%20Subsetter.ipynb). [MORE TEXT HERE].
 
-```{r setup, echo=FALSE}
-## Purpose: convert a remote .ipynb tutorial to .qmd to render as a "child" document.
+*Note: Here we runs a script that fetches the remote documents we want to include from PO.DAAC's GitHub repository. From J.J.: Quarto is designed so that remote resources aren't downloaded directly but instead a result of an intentional import operation. In the future we could have a single R, Python, or Bash script that just takes a list of URLs and where they go in your tree and performs the download there. You could also do this on CI just to make sure that the production site always gets the latest resources.* 
+
+```{r setup}
+#| echo: false
+## Purpose: convert a remote .ipynb tutorial to .qmd to render as a "child" document within this one.
 
 ## load any libraries needed ----
 suppressPackageStartupMessages({
@@ -23,25 +27,26 @@ url_raw_gh <- "https://raw.githubusercontent.com/podaac/tutorials/master/noteboo
 to_copy <- c('Harmony%20L2%20Subsetter.ipynb',
              'environment.yml')
 
-## loop through and copy files: .ipynb gets a ".local_" prefix so that it's not rendered by quarto ----
+## loop through and copy files: .ipynb gets a ".local_" prefix so that it's not served by quarto ----
 for (f in to_copy) { # f <-  "Harmony%20L2%20Subsetter.ipynb"
 
+  ## create the remote file's URL
   fp <- file.path(url_raw_gh, f)
 
-  ## if the url exists, save a copy.
+  ## if the url exists, save a copy, prefixing the .ipynb
   if (RCurl::url.exists(fp)) {
     f_web   <- readr::read_lines(fp)
     if ( tools::file_ext(fp) == 'ipynb' ) {
       f_local <- paste0('.local_', basename(fp))
       f_local <- str_replace_all(f_local, "%20", "_")
+      # TODO: convert to .qmd in R; currently in separate bash chunk below.
     } else {
       f_local <- basename(fp)
     }
-    ## save local copy with "local_" prefix
+    
+    ## save local copy with f_local prefix
     readr::write_lines(f_web, file = here("transformations", f_local), append = FALSE)
     message(sprintf('saving %s', f_local))
-    
-    ## upcoming: convert to .qmd in R; currently in separate chunk below.
     
   } else {
     message(sprintf('%s does not exist', fp))
@@ -49,12 +54,14 @@ for (f in to_copy) { # f <-  "Harmony%20L2%20Subsetter.ipynb"
 }
 
 ## install python environment: 
-reticulate::install_miniconda(here("transformations", "environment.yml")) 
+#reticulate::install_miniconda(here("transformations", "environment.yml")) 
 #renv::restore(here("transformations"))
 
 ```
 
-```{bash}
+```{bash conda-env}
+#| echo: false
+
 ## following https://quarto.org/docs/getting-started/quarto-projects.html
 
 ## create a new Python 3 virtual environment in the directory env:
@@ -69,17 +76,23 @@ conda create --prefix env -u -f environment.yml
 ```
 
 ```{bash quarto-convert}
+#| echo: false
+
 # now convert from a .ipynb to a .qmd
-quarto convert .local_Harmony_L2_Subsetter.ipynb --output Harmony_L2_Subsetter.qmd
+quarto convert .local_Harmony_L2_Subsetter.ipynb --output .Harmony_L2_Subsetter.qmd
 ```
 
-The following chunk knits the new .qmd
 
-```{r, child="Harmony_L2_Subsetter.qmd"}
+```{r knit-child}
+#| echo: false
+knitr::knit_child=".Harmony_L2_Subsetter.qmd"
 ```
 
-```{r, echo=FALSE, message=FALSE}
-# delete temporary .ipynb file
+```{r delete-local-ipynb}
+#| echo: false
+#| message: true
+
+# delete temporary .ipynb file <- what do we think, is this a good practice?
 # file.remove(here("transformations", filename_local))
 ```
 
