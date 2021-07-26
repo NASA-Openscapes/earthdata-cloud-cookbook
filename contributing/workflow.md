@@ -109,18 +109,30 @@ The above is a one-time command to connect your local branch back to github.com.
 git push
 ```
 
+
+
 ### Update Local Branch with remote Main 
 
-If while you're working you would like to update your local branch with the most recent updates on the `main` branch on GitHub.com, you can do so like this:
+If while you're working you would like to update your local `your-branch` with the most recent updates on the `main` branch on GitHub.com, there are several ways to do this. 
+
+#### checkouts and merge main
 
 [Git Update Local Branch with remote Master](https://stackoverflow.com/questions/34656523/git-update-local-branch-with-remote-master)
 
-    git checkout main
-    git pull
-    git checkout your-branch
-    git merge main
+```{bash}
+git checkout main
+git pull
+git checkout your-branch
+git merge main
+```
 
-There are other ways to do this too (please let us know!)
+#### fetch and merge origin/main
+
+```{bash}
+git checkout your-branch 
+git fetch
+git merge origin/main
+```
 
 ### Pull Request
 
