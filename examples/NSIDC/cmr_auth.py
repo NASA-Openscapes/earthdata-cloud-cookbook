@@ -49,7 +49,7 @@ class CMRAuth(object):
         """
         return deepcopy(self.session)
 
-    def get_s3_credentials(self, auth_url: str='https://data.nsidc.earthdatacloud.nasa.gov/s3credentials') -> Any:
+    def get_s3_credentials(self, auth_url: str='https://data.nsidc.earthdatacloud.nasa.gov/s3credentials') -> Dict[str, Any]:
         """
         Returns AWS credentials to use with an S3 client i.e. boto3 or s3fs
         Each NASA DAAC can have a different endpoint to get credentials
@@ -64,4 +64,3 @@ class CMRAuth(object):
             print(f'Authentication with Earthdata Login failed with:\n{auth_resp.text}')
             return None
         return auth_resp.json()
-

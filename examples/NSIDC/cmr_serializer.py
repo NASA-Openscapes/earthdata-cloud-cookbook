@@ -2,7 +2,7 @@ from IPython.display import display
 from IPython.core.display import HTML
 
 
-class CMRQueryGranule(object):
+class QueryGranule(object):
 
     def _filter_related_links(self, filter: str):
         """
@@ -61,16 +61,35 @@ class CMRQueryGranule(object):
         return links
 
 
-class CMRQueryGranules(object):
+class QueryResult(object):
 
     def __init__(self, granules):
-        self.granules = [CMRQueryGranule(g) for g in granules]
+        self.granules = [QueryGranule(g) for g in granules]
 
     def items(self):
         return self.granules
 
     def apply(self, some_operation):
+        """
+        If the data type is supported by xarray or rioxarray we can do some cool things
+        this would be possible if the format is NetCDF/HDF5 or a raster.
+        """
+        return None
+
+    def reproject(self, target_src: str):
+        """
+        use pyproj or the internal xarray/rioxarray methods to reproject
+        """
+        return None
+
+    def crop(self, geometry: Any):
+        """
+        Spatial crop of each of the granules using a geojson geometry
+        """
         return None
 
     def filter(self, some_filter):
+        """
+        Filter granules based on variable criteria  i.e. q_flag>10
+        """
         return None
