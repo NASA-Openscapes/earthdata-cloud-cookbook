@@ -4,8 +4,6 @@ title: Example Child Document
 
 This chapter demonstrates how you can include a .qmd document inside another one. You can see that the following looks like a native part of this document, although it is actually a "child" document that is rendered inside this parent document. (The following is a test .qmd file. I copied it as a .ipynb and converted it to a .qmd file from <https://raw.githubusercontent.com/jupyter/notebook/master/docs/source/examples/Notebook/What%20is%20the%20Jupyter%20Notebook.ipynb>.) We can do the same with .ipynb files from NASA DAACs once we sort out the python environments. 
 
-```{r, child="_python-example.qmd"}
-```
 
 
 ## Our goal: PODAAC's notebook
@@ -13,31 +11,29 @@ This chapter demonstrates how you can include a .qmd document inside another one
 This notebook demonstrates basic harmony subsetting from PO.DAAC: [**Harmony EOSS L2SS API Tutorial**](https://github.com/podaac/tutorials/blob/master/notebooks/harmony%20subsetting/Harmony%20L2%20Subsetter.ipynb).
 
 
-Maybe this will be helpful for our python environments...
 
-```{r setup, eval=FALSE}
-#| echo: false
-
-## install python environment: 
-renv::restore(here("transformations"))
-
-```
-
-```{bash conda-env, eval=FALSE}
+```{.bash conda-env, eval=FALSE}
 #| echo: false
 
 ## following https://quarto.org/docs/getting-started/quarto-projects.html
 
+## cd transformations
+
 ## create a new Python 3 virtual environment in the directory env:
-#conda create --prefix env python 
+conda env create -f environment.yml
 
 # To use the environment you need to activate it.  
-conda activate ./env 
+conda activate podaac-harmony 
 
-## restore
-conda create --prefix env -u -f environment.yml
+# From Luis, potential solution to Intel MKL FATAL ERROR: Cannot load libmkl_intel_thread.1.dylib:  https://stackoverflow.com/questions/55778337/what-is-intel-mkl-fatal-error-cannot-load-libmkl-core-dylib-while-running-pysp
+
+conda install nomkl
 
 ```
 
+
+
+```{r, child="_Harmony_L2_Subsetter.qmd"}
+```
 
 

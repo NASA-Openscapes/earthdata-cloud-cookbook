@@ -1,31 +1,40 @@
+---
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
 # Harmony EOSS L2SS API Tutorial
 
 ## Before you start
-Before you beginning this tutorial, make sure you have an account in the Earthdata Login UAT or Production environment, which 
-will be used for this notebook by visiting [https://uat.urs.earthdata.nasa.gov](https://uat.urs.earthdata.nasa.gov).
-These accounts, as all Earthdata Login accounts, are free to create and only take a moment to set up.
+
+Before you beginning this tutorial, make sure you have an account in the
+Earthdata Login UAT or Production environment, which will be used for
+this notebook by visiting <https://uat.urs.earthdata.nasa.gov>. These
+accounts, as all Earthdata Login accounts, are free to create and only
+take a moment to set up.
 
 ## Set Up Authentication
 
-We need some boilerplate up front to log in to Earthdata Login.  The function below will allow Python
-scripts to log into any Earthdata Login application programmatically.  To avoid being prompted for
-credentials every time you run and also allow clients such as curl to log in, you can add the following
-to a `.netrc` (`_netrc` on Windows) file in your home directory:
+We need some boilerplate up front to log in to Earthdata Login. The
+function below will allow Python scripts to log into any Earthdata Login
+application programmatically. To avoid being prompted for credentials
+every time you run and also allow clients such as curl to log in, you
+can add the following to a `.netrc` (`_netrc` on Windows) file in your
+home directory:
 
-```
-machine uat.urs.earthdata.nasa.gov
-    login <your username>
-    password <your password>
-    
-machine urs.earthdata.nasa.gov
-    login <your username>
-    password <your password>
-```
+    machine uat.urs.earthdata.nasa.gov
+        login <your username>
+        password <your password>
+        
+    machine urs.earthdata.nasa.gov
+        login <your username>
+        password <your password>
 
-Make sure that this file is only readable by the current user or you will receive an error stating
-"netrc access too permissive."
+Make sure that this file is only readable by the current user or you
+will receive an error stating "netrc access too permissive."
 
-`$ chmod 0600 ~/.netrc` 
+`$ chmod 0600 ~/.netrc`
 
 ```{python}
 from urllib import request
@@ -90,7 +99,11 @@ def get_token( url: str,client_id: str, user_ip: str,endpoint: str) -> str:
 
 ### Find a granule for subsetting
 
-Below we call out a specific granule (G1226018995-POCUMULUS) on which we will use the podaac L2 subsetter. Finding this information would complicate the tutorial- but po.daac has a tutorial available for using the CMR API to find collections and granules of interest. Please see the following tutorial for that information:
+Below we call out a specific granule (G1226018995-POCUMULUS) on which we
+will use the podaac L2 subsetter. Finding this information would
+complicate the tutorial- but po.daac has a tutorial available for using
+the CMR API to find collections and granules of interest. Please see the
+following tutorial for that information:
 
 PODAAC_CMR.ipynb
 
@@ -122,7 +135,8 @@ print ("\t" + harmony_root)
 print ("\t" + edl_root)
 ```
 
-Now call the above function to set up Earthdata Login for subsequent requests
+Now call the above function to set up Earthdata Login for subsequent
+requests
 
 ```{python}
 setup_earthdata_login_auth(edl_root)
@@ -130,17 +144,20 @@ token_url="https://"+cmr_root+"/legacy-services/rest/tokens"
 token=get_token(token_url,'jupyter', '127.0.0.1',edl_root)
 ```
 
-##  Subset of a PO.DAAC Granule
+## Subset of a PO.DAAC Granule
 
-We can now build onto the root URL in order to actually perform a transformation.  The first transformation is a subset of a selected granule.  _At this time, this requires discovering the granule id from CMR_.  That information can then be appended to the root URL and used to call Harmony with the help of the `request` library.
+We can now build onto the root URL in order to actually perform a
+transformation. The first transformation is a subset of a selected
+granule. *At this time, this requires discovering the granule id from
+CMR*. That information can then be appended to the root URL and used to
+call Harmony with the help of the `request` library.
 
 Above we show how to find a granule id for processing.
 
-**Notes:**
-  The L2 subsetter current streams the data back to the user, and does not stage data in S3 for redirects. This is functionality we will be adding over time.
-  It doesn't work with URS backed files, which is coming in the next few weeks
-  it only works on the show dataset, but 
-    
+**Notes:** The L2 subsetter current streams the data back to the user,
+and does not stage data in S3 for redirects. This is functionality we
+will be adding over time. It doesn't work with URS backed files, which
+is coming in the next few weeks it only works on the show dataset, but
 
 ```{python}
 cmr_url = "https://"+cmr_root+"/search/granules.umm_json?collection_concept_id="+collection+"&sort_key=-start_date&bounding_box=-90,-45.75,90,-45&token="+token
@@ -201,10 +218,9 @@ for count, xvar in enumerate(ds.data_vars):
 
 ## Verify the subsetting worked
 
-Bounds used were: 
+Bounds used were:
 
-  'lat': '(-45.75:45)',
-  'lon': '(-90:90)'
+'lat': '(-45.75:45)', 'lon': '(-90:90)'
 
 ```{python}
 var_ds = ds[variable]
@@ -243,5 +259,3 @@ else:
     assert False
     
 ```
-
-
