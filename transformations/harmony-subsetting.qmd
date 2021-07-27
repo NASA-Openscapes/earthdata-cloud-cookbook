@@ -1,65 +1,29 @@
 ---
-title: Harmony Subsetting
-execute: false
+title: Example Child Document
 ---
 
-This notebook demonstrates basic harmony subsetting from PO.DAAC: [**Harmony EOSS L2SS API Tutorial**](https://github.com/podaac/tutorials/blob/master/notebooks/harmony%20subsetting/Harmony%20L2%20Subsetter.ipynb). [MORE TEXT HERE].
+This chapter demonstrates how you can include a .qmd document inside another one. You can see that the following looks like a native part of this document, although it is actually a "child" document that is rendered inside this parent document. (The following is a test .qmd file. I copied it as a .ipynb and converted it to a .qmd file from <https://raw.githubusercontent.com/jupyter/notebook/master/docs/source/examples/Notebook/What%20is%20the%20Jupyter%20Notebook.ipynb>.) We can do the same with .ipynb files from NASA DAACs once we sort out the python environments. 
 
-*Note: Here we runs a script that fetches the remote documents we want to include from PO.DAAC's GitHub repository. From J.J.: Quarto is designed so that remote resources aren't downloaded directly but instead a result of an intentional import operation. In the future we could have a single R, Python, or Bash script that just takes a list of URLs and where they go in your tree and performs the download there. You could also do this on CI just to make sure that the production site always gets the latest resources.* 
+```{r, child="_python-example.qmd"}
+```
 
-```{r setup}
+
+## Our goal: PODAAC's notebook
+
+This notebook demonstrates basic harmony subsetting from PO.DAAC: [**Harmony EOSS L2SS API Tutorial**](https://github.com/podaac/tutorials/blob/master/notebooks/harmony%20subsetting/Harmony%20L2%20Subsetter.ipynb).
+
+
+Maybe this will be helpful for our python environments...
+
+```{r setup, eval=FALSE}
 #| echo: false
-## Purpose: convert a remote .ipynb tutorial to .qmd to render as a "child" document within this one.
-
-## load any libraries needed ----
-suppressPackageStartupMessages({
-  library(quarto)     # install.packages("quarto")     # cookbook build
-  library(tidyverse)  # install.packages("tidyverse")  # wrangling
-  library(here)       # install.packages("here")       # filepaths
-  library(RCurl)      # install.packages("RCurl")      # checking urls 
-  library(reticulate) # install.packages("reticulate") # run python from R
-  library(renv)       # install.packages("renv")       # python virtual environments
-})
-
-## set remote url and files to copy ----
-url_raw_gh <- "https://raw.githubusercontent.com/podaac/tutorials/master/notebooks/harmony%20subsetting"
-
-to_copy <- c('Harmony%20L2%20Subsetter.ipynb',
-             'environment.yml')
-
-## loop through and copy files: .ipynb gets a ".local_" prefix so that it's not served by quarto ----
-for (f in to_copy) { # f <-  "Harmony%20L2%20Subsetter.ipynb"
-
-  ## create the remote file's URL
-  fp <- file.path(url_raw_gh, f)
-
-  ## if the url exists, save a copy, prefixing the .ipynb
-  if (RCurl::url.exists(fp)) {
-    f_web   <- readr::read_lines(fp)
-    if ( tools::file_ext(fp) == 'ipynb' ) {
-      f_local <- paste0('.local_', basename(fp))
-      f_local <- str_replace_all(f_local, "%20", "_")
-      # TODO: convert to .qmd in R; currently in separate bash chunk below.
-    } else {
-      f_local <- basename(fp)
-    }
-    
-    ## save local copy with f_local prefix
-    readr::write_lines(f_web, file = here("transformations", f_local), append = FALSE)
-    message(sprintf('saving %s', f_local))
-    
-  } else {
-    message(sprintf('%s does not exist', fp))
-  }
-}
 
 ## install python environment: 
-#reticulate::install_miniconda(here("transformations", "environment.yml")) 
-#renv::restore(here("transformations"))
+renv::restore(here("transformations"))
 
 ```
 
-```{bash conda-env}
+```{bash conda-env, eval=FALSE}
 #| echo: false
 
 ## following https://quarto.org/docs/getting-started/quarto-projects.html
@@ -75,24 +39,5 @@ conda create --prefix env -u -f environment.yml
 
 ```
 
-```{bash quarto-convert}
-#| echo: false
 
-# now convert from a .ipynb to a .qmd
-quarto convert .local_Harmony_L2_Subsetter.ipynb --output .Harmony_L2_Subsetter.qmd
-```
-
-
-```{r knit-child}
-#| echo: false
-knitr::knit_child=".Harmony_L2_Subsetter.qmd"
-```
-
-```{r delete-local-ipynb}
-#| echo: false
-#| message: true
-
-# delete temporary .ipynb file <- what do we think, is this a good practice?
-# file.remove(here("transformations", filename_local))
-```
 
