@@ -56,7 +56,8 @@ site:
           - transformations/netcdf-to-zarr.md
           - section: transformations/L2-subsetter.md
             contents: 
-              - transformations/harmony-subsetting.qmd
+              - transformations/harmony-subsetting/index.qmd
+              - transformations/harmony-subsetting/child-example.qmd
           - transformations/earthdata-search.md
           - transformations/opendap-cloud.md
       - section: examples/index.md
