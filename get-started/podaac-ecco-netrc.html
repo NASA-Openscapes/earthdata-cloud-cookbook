@@ -94,12 +94,12 @@
   <script src="../site_libs/quarto-html/anchor.min.js"></script>
   <script src="../site_libs/quarto-html/quarto-html.js"></script>
   <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-  <link class="quarto-color-scheme light" href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet">
-  <link class="quarto-color-scheme dark" disabled="true" href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet">
+  <link class="quarto-color-scheme" href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet">
+  <link class="quarto-color-scheme quarto-color-alternate" rel="prefetch" href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css">
   <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
   <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-  <link class="quarto-color-scheme light" href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet">
-  <link class="quarto-color-scheme dark" disabled="true" href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="stylesheet">
+  <link class="quarto-color-scheme" href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet">
+  <link class="quarto-color-scheme quarto-color-alternate" rel="prefetch" href="../site_libs/bootstrap/bootstrap-dark.min.css">
   <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
@@ -734,7 +734,7 @@ machine opendap.earthdata.nasa.gov login jmcnelis password</code></pre>
 </div>
 <p>Finally, you need to make sure to limit access to the netrc file because it stores your plain text password. Simple on MacOS and Linux:</p>
 <div class="cell">
-<div class="sourceCode" id="cb8"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>chmod <span class="dv">0600</span> <span class="op">~/</span>.netrc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>chmod <span class="dv">0</span><span class="er">600</span> <span class="op">~/</span>.netrc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <!-- -->
 </section>

@@ -92,12 +92,12 @@
   <script src="../site_libs/quarto-html/anchor.min.js"></script>
   <script src="../site_libs/quarto-html/quarto-html.js"></script>
   <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-  <link class="quarto-color-scheme light" href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet">
-  <link class="quarto-color-scheme dark" disabled="true" href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet">
+  <link class="quarto-color-scheme" href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet">
+  <link class="quarto-color-scheme quarto-color-alternate" rel="prefetch" href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css">
   <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
   <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-  <link class="quarto-color-scheme light" href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet">
-  <link class="quarto-color-scheme dark" disabled="true" href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="stylesheet">
+  <link class="quarto-color-scheme" href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet">
+  <link class="quarto-color-scheme quarto-color-alternate" rel="prefetch" href="../site_libs/bootstrap/bootstrap-dark.min.css">
   <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
@@ -535,6 +535,20 @@ Summary of the commands detailed below
 <p>A commit takes a snapshot of your code at a specified point in time. Using a Git commit is like using anchors and other protection when climbing. If you’re crossing a dangerous rock face you want to make sure you’ve used protection to catch you if you fall. Commits play a similar role: if you make a mistake, you can’t fall past the previous commit.</p>
 </blockquote>
 <p>Here are some of Hadley Wickham’s suggested <a href="https://r-pkgs.org/git.html#commit-best-practices">best practices</a></p>
+<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+You must re-render documents where code was added or changed before continuing
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If you added or made changes to any code (including changing the dataset upon which existing code relies), re-render those files individudally. See the <a href="#quarto-render">Quarto render</a> section for more details. Afterwards, <code>git add</code> and <code>git commit</code> any changes to the updated <code>_freeze</code> directory before continuining on to the next step.</p>
+<p>Local re-rendering is necessary in cases where code is changed because the <a href="https://github.com/NASA-Openscapes/earthdata-cloud-cookbook/blob/main/.github/workflows/quarto-render.yml">workflow used to make this site</a> assumes that all code has been pre-executed. Read more about this at <a href="https://quarto.org/docs/books/book-authoring.html?q=freeze#freezing">freeze section</a> at the Quarto docs.</p>
+</div>
+</div>
 </section>
 <section id="push-changes" class="level3">
 <h3 class="anchored" data-anchor-id="push-changes">Push changes</h3>
