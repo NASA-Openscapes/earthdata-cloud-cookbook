@@ -2,11 +2,13 @@
 import argparse
 import json
 import os
+from datetime import date
 
 import requests
 import nbformat as nbf
+from pqdm.processes import pqdm
 
-IMPORTED_PATH = 'imported'
+IMPORTED_PATH = '.imported'
 
 def open_json(file_path):
     with open(file_path) as f:
@@ -18,7 +20,7 @@ def import_remote(url, target):
         print('recreating local')
         os.mkdir(IMPORTED_PATH)
     remote_file = requests.get(url)
-    with open(f'{IMPORTED_PATH}/remote_{target}', 'wb') as f:
+    with open(f'{IMPORTED_PATH}/{target}', 'wb') as f:
         f.write(remote_file.content)
     return None
 
@@ -31,26 +33,41 @@ def inject_content(content, notebook):
     nbf.write(nb, f'{IMPORTED_PATH}/{notebook}')
 
 
+def create_preamble_cell(document):
+    target = document['target']
+    url = document['url']
+    import_date = date.today().strftime('%Y-%m-%d')
+    cell_content = f"""\
+    # {document['title']}
+    imported on: **{import_date}**
+
+    {document['description']}
+
+    > The original source for this document is {document['source']}
+
+    """
+    return cell_content
+
+
+def process_document(document):
+    local_target = document['target']
+    url = document['url']
+    import_remote(url, local_target)
+    if document['process'] is True:
+        preamble_cell =  create_preamble_cell(document)
+        inject_content(preamble_cell, local_target)
+    print(f'Processed: {local_target}')
+
+
+
 def main(json_input):
     """
     This module will fetch a URL, save it locally and inject some preamble
     The currently supported formats are: .ipynb
     """
-    print(json_input)
-    for resource in json_input:
-        target = resource['target']
-        url = resource['url']
-        content = f"""\
-        # {resource['title']}
-        {resource['description']}
-
-        > The original source for this document is {resource['source']}
-
-        """
-        import_remote(url, target)
-        if resource['process'] is True:
-            inject_content(content, target)
-        print(f'Processed: {target}')
+    for document in json_input:
+        process_document(document)
+    # result = pqdm(json_input, process_document, n_jobs=2)
     return None
 
 
@@ -63,6 +80,5 @@ if __name__ == '__main__':
                         help = "File to parse",
                         type = str)
     args=parser.parse_args()
-    json_inputs = open_json(args.file)
-    result = main(josn_input)
-    print(result)
+    documents_to_import = open_json(args.file)
+    result = main(documents_to_import)
