@@ -54,10 +54,10 @@ site:
           - transformations/harmony-api.md
           - transformations/HarmonyPy_intro_tutorial.ipynb
           - transformations/netcdf-to-zarr.md
-          - section: transformations/L2-subsetter.md
-            contents: 
-              - transformations/harmony-subsetting/index.qmd
-              - transformations/harmony-subsetting/child-example.qmd
+  #        - section: transformations/L2-subsetter.md
+  #          contents: 
+  #            - transformations/harmony-subsetting/index.qmd
+  #            - transformations/harmony-subsetting/child-example.qmd
           - transformations/earthdata-search.md
           - transformations/opendap-cloud.md
       - section: examples/index.md
@@ -65,6 +65,7 @@ site:
           - examples/python-example.qmd
           - examples/r-example.Rmd
           - examples/notebook-example.ipynb
+          - examples/zarr-eosdis-store/index.qmd
       - section: appendix/index.md
         contents:
           - appendix/about.md

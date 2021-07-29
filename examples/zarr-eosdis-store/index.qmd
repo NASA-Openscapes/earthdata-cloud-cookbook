@@ -1,0 +1,30 @@
+---
+title: Zarr EOSDIS Store
+---
+
+This notebook demonstrates an example with **zarr-eosdis-store**, a library that allows NASA EOSDIS Collections to be accessed efficiently by the Zarr Python library, provided they have a sidecar DMR++ metadata file generated. The following is a local copy of: <https://github.com/nasa/zarr-eosdis-store/blob/main/presentation/example.ipynb>
+
+
+```{r, child="_example.qmd"}
+```
+
+
+## Questions July 28 with J.J.
+
+- is this a good example setup: zarr-eosdis-store subfolder 
+  - `_fetch_remote_notebook.R`
+  - activate the environment in terminal, or in qmd?
+  
+title: "foo"
+description: asdfasdfasdfasd
+  asdfasdfadsf
+url: example.ipynb
+
+title: "boo"
+de
+
+IMPORTS
+
+read.dcf
+
+https://nbformat.readthedocs.io/en/latest/api.html
