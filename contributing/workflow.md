@@ -14,7 +14,7 @@ By default, rendering the Cookbook will only act on markdown text and will not e
 ::: {.callout-tip collapse="true"}
 ## Summary of the commands detailed below
 
-``` {.bash}
+``` bash
 ## check which branches exist, where you are, and pull recent from main branch
 git branch
 git checkout main
@@ -60,7 +60,7 @@ The following assumes you're all [setup](contributing/setup) from the previous c
 
 First off, check what branch you're on and pull the most recent edits from the main branch. If you need to switch branches, use `git checkout`.
 
-``` {.bash}
+``` bash
 git branch          # returns all local branches
 git checkout main   # switch branch to main
 git pull            # pull most recent from the main branch
@@ -72,7 +72,7 @@ If you are already on the `main` branch, git will tell you, and that's fine.
 
 Next, create a new branch, then switch to that branch to work in. Below is a one-step approach for the two-step process of `git branch branch-name` then `git checkout branch-name` (read [more](https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging)).
 
-``` {.bash}
+``` bash
 git checkout -b branch-name  # create and switch to new branch
 ```
 
@@ -84,7 +84,7 @@ Time to edit and develop content, and run your Quarto Workflow -- see [specific 
 
 You'll commit your work regularly as you go, likely using the following, which commits all files you've affected within the Cookbook project:
 
-``` {.bash}
+``` bash
 git add --all 
 git commit -m "my commit message here" 
 ```
@@ -95,32 +95,31 @@ From [R Packages](https://r-pkgs.org/git.html#git-commit):
 
 Here are some of Hadley Wickham's suggested [best practices](https://r-pkgs.org/git.html#commit-best-practices)
 
-:::{.callout-important}
+::: callout-important
 ## You must re-render documents where code was added or changed before continuing
+
 If you added or made changes to any code (including changing the dataset upon which existing code relies), re-render those files individudally. See the [Quarto render](#quarto-render) section for more details. Afterwards, `git add` and `git commit` any changes to the updated `_freeze` directory before continuining on to the next step.
 
-Local re-rendering is necessary in cases where code is changed because the [workflow used to make this site](https://github.com/NASA-Openscapes/earthdata-cloud-cookbook/blob/main/.github/workflows/quarto-render.yml) assumes that all code has been pre-executed. Read more about this at [freeze section](https://quarto.org/docs/books/book-authoring.html?q=freeze#freezing) at the Quarto docs. 
+Local re-rendering is necessary in cases where code is changed because the [workflow used to make this site](https://github.com/NASA-Openscapes/earthdata-cloud-cookbook/blob/main/.github/workflows/quarto-render.yml) assumes that all code has been pre-executed. Read more about this at [freeze section](https://quarto.org/docs/books/book-authoring.html?q=freeze#freezing) at the Quarto docs.
 :::
 
 ### Push changes
 
 When you're ready to push changes you've made in your branch, you'll first need to connect it to github.com by pushing it "upstream" to the "origin repository" (`-u` below is short for `--set-upstream`):
 
-``` {.bash}
+``` bash
 git push -u origin branch-name  # connect your branch to github.com and push
 ```
 
 The above is a one-time command to connect your local branch back to github.com. After you've pushed successfully the first time, then as you continue to commit, you'll be able to push as normal:
 
-``` {.bash}
+``` bash
 git push
 ```
 
+### Update Local Branch with remote Main
 
-
-### Update Local Branch with remote Main 
-
-If while you're working you would like to update your local `your-branch` with the most recent updates on the `main` branch on GitHub.com, there are several ways to do this. 
+If while you're working you would like to update your local `your-branch` with the most recent updates on the `main` branch on GitHub.com, there are several ways to do this.
 
 #### checkouts and merge main
 
@@ -157,7 +156,7 @@ When the pull request is merged, delete the branch on github.com. GitHub will pr
 
 Once your pull request is merged and you've deleted the branch from github.com, then come back to your local setup and delete the branch locally:
 
-``` {.bash}
+``` bash
 git checkout main         # switch to the main branch
 git pull                  # pull merged updates from github.com
 git branch -d branch-name # delete old local  branch
@@ -179,13 +178,13 @@ The thing to do first is to "serve" the Cookbook so that we can see what it look
 
 Run the following from your branch in your `earthdata-cloud-cookbook` directory from the command line:
 
-``` {.bash}
+``` bash
 quarto serve
 ```
 
 And after it's is served, you can click from the console (or paste the url into your browser) to see the development version of the Cookbook.
 
-::: {.callout-important}
+::: callout-important
 ## This command line instance is now being used to serve Quarto
 
 You can open another instance to continue working from the command line, including running other shell commands and rendering (see next). Launching your command line shell of choice will open a new instance.
@@ -207,13 +206,13 @@ Above shows the Visual Editor in the top left pane with an interactive `.qmd` fi
 
 Another benefit of the RStudio IDE is that it has a docked command line (Terminal, bottom left pane), file navigation (bottom right pane) and GitHub interface (top right pane). The IDE helps keep things organized as you work, and provides a visual way to review your git commits and do common commands (see this RStudio-GitHub walk through from [R for Excel Users](https://rstudio-conf-2020.github.io/r-for-excel/github.html#sync-from-rstudio-local-to-github-remote)). Note too that the image shows the second instance of the Terminal command line; the first is being used to serve Quarto.
 
-### Quarto render
+### Quarto render {#quarto-render}
 
 As you develop book chapters and edit files, any `.md` files will automatically refresh in the browser (so long as quarto serve is running)!
 
 To refresh files with executable code, you'll need to render them individually. You can do the following to render `.ipynb`/`.qmd`/`.Rmd` files so that they show up refreshed in the served Cookbook.
 
-``` {.bash}
+``` bash
 quarto render my-document.ipynb      ## render a notebook
 quarto render my-work.qmd            ## render a Quarto file
 quarto render my-contribution.Rmd    ## render a RMarkdown file
@@ -223,7 +222,7 @@ From the RStudio IDE, you can also press the **Render** button to render `.qmd` 
 
 And you can also render the whole book:
 
-``` {.bash}
+``` bash
 quarto render
 ```
 
@@ -235,7 +234,7 @@ Learn more about [rendering with Quarto](https://quarto.org/docs/computations/ru
 
 If you are working on a chapter that loads any Python or R packages, to make your work reproducible you'll need to create and then update the `environments.txt` file. Do this use the `pip freeze` command:
 
-``` {.bash}
+``` bash
 pip freeze > requirements.txt
 ```
 
@@ -264,6 +263,22 @@ These are shared practices that we have for co-developing the Cookbook. This wil
 As you develop files with executable code ( `.qmd`, `.Rmd`, and `.ipynb`), you can decide if you don't want the notebook to execute. By adding YAML as a raw text cell at the top of an `.ipynb` file, you can control whether it is executed or not. Adding `execute: false` to the YAML at the top of the file basically means that Quarto never runs the code, but the user of course still can interactively in Jupyter.
 
 Using `.qmd` there are also ways to control execution cell-by-cell via `# |` syntax within a code chunk; see <https://quarto.org/docs/computations/execution-options.html>
+
+### Including remote notebooks
+
+First Update .json file
+
+Can write markdown in the preamble.
+
+Then run python script:co
+
+```{bash}
+ conda env update -f environment.yml
+ conda activate quarto-import
+ python quarto_import.py -f test.json # names will be updated
+```
+
+Then update `_quarto.yml`
 
 ## Code Review
 

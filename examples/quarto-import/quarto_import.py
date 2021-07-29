@@ -8,7 +8,7 @@ import requests
 import nbformat as nbf
 from pqdm.processes import pqdm
 
-IMPORTED_PATH = '.imported'
+IMPORTED_PATH = 'imported'
 
 def open_json(file_path):
     with open(file_path) as f:
@@ -41,7 +41,7 @@ def create_preamble_cell(document):
     # {document['title']}
     imported on: **{import_date}**
 
-    {document['description']}
+    {document['preamble']}
 
     > The original source for this document is {document['source']}
 

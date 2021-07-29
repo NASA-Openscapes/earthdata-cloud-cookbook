@@ -1,7 +1,7 @@
 [
     {
         "title": "Test document",
-        "description": "A markdown document to test the workflow",
+        "preamble": "A markdown document to test the workflow",
         "source": "https://github.com/USCDataScience/pdi-topics",
         "url": "https://raw.githubusercontent.com/USCDataScience/pdi-topics/master/README.md",
         "target": "pdi-readme.md",
@@ -9,10 +9,19 @@
     },
     {
         "title": "ITS-LIVE Explorer notebook from NASA ITS_LIVE",
-        "description": "This notebook demonstrates how to use the ITS_LIVE dataset",
+        "preamble": "This notebook demonstrates how to use the ITS_LIVE dataset",
         "source": "https://github.com/nasa-jpl/itslive-explorer",
         "url": "https://raw.githubusercontent.com/nasa-jpl/itslive-explorer/main/notebooks/itslive-notebook-rendered.ipynb",
         "target": "itslive-explorer.ipynb",
         "process": true
+    },
+    {
+        "title": "Zarr Example",
+        "preamble": "This notebook is from NASA's Zarr EOSDIS store notebook",
+        "source": "https://github.com/nasa/zarr-eosdis-store",
+        "url": "https://raw.githubusercontent.com/nasa/zarr-eosdis-store/main/presentation/example.ipynb",
+        "target": "zarr-eosdis-store.ipynb",
+        "process": true
     }
+    
 ]

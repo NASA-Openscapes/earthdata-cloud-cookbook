@@ -6,12 +6,12 @@ import pytest
 
 from quarto_import import open_json, import_remote, inject_content
 
-LOCAL_IMPORT_PATH = '.imported'
+LOCAL_IMPORT_PATH = 'imported'
 
 def test_quarto_import_can_read_json():
     file_path = 'test.json'
     json_input = open_json(file_path)
-    assert len(json_input) == 2
+    assert len(json_input) == 3
     assert json_input[0]['title'] == 'Test document'
     assert json_input[1]['url'] == 'https://raw.githubusercontent.com/nasa-jpl/itslive-explorer/main/notebooks/itslive-notebook-rendered.ipynb'
 
