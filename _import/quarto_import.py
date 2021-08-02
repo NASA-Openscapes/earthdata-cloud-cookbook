@@ -8,7 +8,7 @@ import requests
 import nbformat as nbf
 from pqdm.processes import pqdm
 
-IMPORTED_PATH = 'imported'
+IMPORTED_PATH = '../external'
 
 def open_json(file_path):
     with open(file_path) as f:
@@ -28,7 +28,7 @@ def inject_content(content, notebook):
     nb = nbf.read(f'{IMPORTED_PATH}/{notebook}', as_version=4)
     preamble_cell = nbf.v4.new_markdown_cell(content)
     # for some reason v4 says id is not part of the schema.
-    preamble_cell.pop('id', None)
+    # preamble_cell.pop('id', None)
     nb['cells'].insert(0, preamble_cell)
     nbf.write(nb, f'{IMPORTED_PATH}/{notebook}')
 

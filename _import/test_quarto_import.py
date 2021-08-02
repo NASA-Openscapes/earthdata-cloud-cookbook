@@ -6,32 +6,28 @@ import pytest
 
 from quarto_import import open_json, import_remote, inject_content
 
-LOCAL_IMPORT_PATH = 'imported'
+LOCAL_IMPORT_PATH = '../external'
 
 def test_quarto_import_can_read_json():
-    file_path = 'test.json'
+    file_path = 'assets.json'
     json_input = open_json(file_path)
-    assert len(json_input) == 3
-    assert json_input[0]['title'] == 'Test document'
-    assert json_input[1]['url'] == 'https://raw.githubusercontent.com/nasa-jpl/itslive-explorer/main/notebooks/itslive-notebook-rendered.ipynb'
+    assert len(json_input) > 0
 
 def test_quarto_import_can_import_remote():
-    if os.path.exists(LOCAL_IMPORT_PATH):
-        shutil.rmtree(LOCAL_IMPORT_PATH)
     remote_url = 'https://raw.githubusercontent.com/nasa-jpl/itslive-explorer/main/notebooks/itslive-notebook-rendered.ipynb'
-    import_remote(remote_url, 'test.ipynb')
-    assert os.path.exists(f'{LOCAL_IMPORT_PATH}/test.ipynb') is True
+    import_remote(remote_url, '_test.ipynb')
+    assert os.path.exists(f'{LOCAL_IMPORT_PATH}/_test.ipynb') is True
 
 
 def test_quarto_import_can_inject_content():
     remote_url = 'https://raw.githubusercontent.com/nasa-jpl/itslive-explorer/main/notebooks/itslive-notebook-rendered.ipynb'
 
-    notebook = 'test.ipynb'
+    notebook = '_test.ipynb'
     content = f"""\
     # This is a test, should be at the top
     """
     inject_content(content, notebook)
-    nb = nbf.read(f'{LOCAL_IMPORT_PATH}/test.ipynb', as_version=4)
+    nb = nbf.read(f'{LOCAL_IMPORT_PATH}/_test.ipynb', as_version=4)
     assert nb['cells'][0]['cell_type'] == 'markdown'
     assert content in nb['cells'][0]['source']
     # Needs to be refactored into a local clean
