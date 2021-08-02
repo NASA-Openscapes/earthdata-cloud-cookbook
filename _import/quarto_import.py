@@ -37,14 +37,7 @@ def create_preamble_cell(document):
     target = document['target']
     url = document['url']
     import_date = date.today().strftime('%Y-%m-%d')
-    cell_content = f"""\
-    # {document['title']}
-    imported on: **{import_date}**
-
-    {document['preamble']}
-
-    > The original source for this document is {document['source']}
-
+    cell_content = f"""# {document['title']}\nimported on: **{import_date}** \n\n{document['preamble']}\n> The original source for this document is {document['source']}
     """
     return cell_content
 
