@@ -250,7 +250,7 @@ Each chapter in our Cookbook is a separate file (`.md`/ `.ipynb`/`.qmd`/`.Rmd`).
 
 The Cookbook structure (i.e. the order of sections and chapters) is determined in the `_quarto.yml` file in the root directory. We can shuffle chapter order by editing the `_quarto.yml` file, and and add new chapters by adding to the `_quarto.yml` and creating a new file in the appropriate sub-directory that is indicated in `_quarto.yml`.
 
-![Comparing \`\_quarto.yml\` file to served project in the browser](/files/contributing/images/quarto-yml-serve-compare.png)
+![Comparing \`\_quarto.yml\` file to served project in the browser](/contributing/images/quarto-yml-serve-compare.png)
 
 Please experiment, add new chapters and sections; we can shuffle chapter order and subsections as we continue to develop the Cookbook, nothing is set in stone.
 
