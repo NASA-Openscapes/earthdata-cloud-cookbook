@@ -264,6 +264,39 @@ As you develop files with executable code ( `.qmd`, `.Rmd`, and `.ipynb`), you c
 
 Using `.qmd` there are also ways to control execution cell-by-cell via `# |` syntax within a code chunk; see <https://quarto.org/docs/computations/execution-options.html>
 
+### Including remote notebooks
+
+We can include remote notebooks in the Cookbook by explicitly importing them with the following steps. This will create a local copy of them that have additional preamble inserted that includes the original urls and attribution for the notebook.
+
+1.  Navigate to the `_import` directory.
+
+2.  Open `assets.json` in a text editor. Copy an existing example and use the same structure to indicate the remote notebook you'd like to include. You can write Markdown in the preamble.
+
+    1.  title: this will be the new title of the notebook
+
+    2.  preamble: this text will be inserted into the notebook below the new title. It should include any description and attribution of the notebook. The preamble is followed by two URL fields (next):
+
+    3.  source: the url landing page. This should be more general than the specific notebook (i.e. this could be the root GitHub repository).
+
+    4.  url: the url of the notebook. (i.e. a url that ends with .`ipynb`)
+
+    5.  target: the local filename to give the notebook. The notebook will be saved in the `external` folder in the root directory.
+
+    6.  process: true or false: whether or not to include the entire entry when running the `quarto_import.py` script
+
+After these updates to `_import/assets.json`, to the following in the terminal:
+
+```{bash}
+cd _import
+conda env update -f environment.yml
+conda activate quarto-import
+python quarto_import.py -f assets.json 
+```
+
+This will return a confirmation of the file that has been processed.
+
+Then update `_quarto.yml` by adding your file (`external/<target`) to the appropriate location in the Cookbook.
+
 ## Code Review
 
 Upcoming.
