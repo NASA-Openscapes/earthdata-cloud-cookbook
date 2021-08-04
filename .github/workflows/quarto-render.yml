@@ -1,13 +1,30 @@
 name: Render and deploy quarto files
-on: 
+on:
   push:
   pull_request:
 
 jobs:
   quarto-render-and-deploy:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash -l {0}
     steps:
     - uses: actions/checkout@v2
+    - uses: conda-incubator/setup-miniconda@v2
+      with:
+        python-version: 3.8
+        channels: conda-forge
+        mamba-version: "*"
+        activate-environment: quarto-import
+        environment-file: _import/environment.yml
+
+    - name: "Import external notebooks"
+      working-directory: ./_import
+      run: |
+        conda info
+        pytest
+        python quarto_import.py -f assets.json
 
     - name: "Install Quarto and render project"
       uses: pommevilla/quarto-render@v0.3.1
