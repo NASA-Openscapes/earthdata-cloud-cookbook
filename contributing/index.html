@@ -278,23 +278,23 @@
         <div class="me-auto ">
           <div class="d-inline-flex w-100 sidebar-section-item">
             <div class="sidebar-section-link me-auto ">
-            <a href="../examples/index.html" class="">End-to-end Examples</a>
+            <a href="../examples/index.html" class="">Example notebooks</a>
             </div>
-            <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#end-to-endexamples-collapse" aria-expanded="true">
+            <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#examplenotebooks-collapse" aria-expanded="true">
               <div><i class="bi bi-chevron-right ms-2 "></i></div>
             </a>
             </div>
         </div>
-      <div class="collapse  show" id="end-to-endexamples-collapse">
+      <div class="collapse  show" id="examplenotebooks-collapse">
         <ul class="list-unstyled sidebar-item-contents">
           <li class="sidebar-item">
-  <a href="../examples/python-example.html" class="">Python example with Quarto</a>
+  <a href="../examples/ipynb-example.html" class="">.ipynb notebook (python)</a>
 </li>
           <li class="sidebar-item">
-  <a href="../examples/r-example.html" class="">RMarkdown example .Rmd</a>
+  <a href="../examples/qmd-example.html" class="">.qmd notebook (python)</a>
 </li>
           <li class="sidebar-item">
-  <a href="../examples/notebook-example.html" class="">Notebook example</a>
+  <a href="../examples/rmd-example.html" class="">.Rmd notebook (R)</a>
 </li>
         </ul>
       </div>
@@ -367,18 +367,19 @@
 
 <section id="intro" class="level2">
 <h2 class="anchored" data-anchor-id="intro">Intro</h2>
-<p>This Section is about how our Openscapes Cohort collaborates to create this book, with an eye towards how others could collaborate with us in the future.</p>
+<p>This section describes how our NASA Openscapes team collaborates to create this Cookbook, with an eye towards how others could collaborate with us in the future.</p>
 <p>Our style of working is greatly influenced by:</p>
 <ul>
 <li><a href="https://the-turing-way.netlify.app/community-handbook/community-handbook.html">The Turing Way Community Handbook</a></li>
 <li><a href="https://carpentries.github.io/curriculum-development">The Carpentries Curriculum Development Handbook</a></li>
+<li><a href="https://documentation.divio.com/">The Documentation System</a></li>
 </ul>
 </section>
 <section id="quarto" class="level2">
 <h2 class="anchored" data-anchor-id="quarto">Quarto</h2>
 <p>We’re making the EarthData Cloud Cookbook with <strong>Quarto</strong>: <a href="https://quarto.org/">quarto.org</a>. Quarto makes collaborating to create technical documentation streamlined because we work in plain text documents that can have executable code (Python, R) and are rendered using Jupyter and Knitr engines.</p>
-<p>What is Quarto? Quarto builds from what RStudio learned from RMarkdown but enables different engines (Jupyter and knitr). It is both a Command Line Tool and R package. <code>.qmd</code> is a new filetype like <code>.Rmd</code> — meaning it’s a text file but coupled with an engine can execute code and be rendered as html, pdf, word, and beyond — but for other languages like Python. Quarto can convert <code>.ipynb</code> files to and from <code>.md</code> and <code>.qmd</code> easily so you can develop and publish with collaborators that have different workflows. Once the book is “served” locally, <code>.md</code> files auto-update as you edit, and files with executable code can be rendered individually, and the behavior of different code chunks can be controlled and cached.</p>
-<p>(Note: with Quarto, e-books and websites are very similarly structured, with e-books being set up for numbered chapters and references and websites set up for higher number of pages and organization. We can talk about our book as a book even as we explore whether book/website better suits our needs. This is assigned in <code>_quarto.yml</code>, as we’ll explore later).</p>
+<p>What is Quarto? Quarto builds from what RStudio learned from RMarkdown but enables different engines (Jupyter and knitr). It is both a Command Line Tool and R package. <code>.qmd</code> is a new filetype like <code>.Rmd</code> — meaning it’s a text file but when coupled with an engine that executes code it can be rendered as html, pdf, word, and beyond. Collaborators can develop text and notebooks in wherever they are most comfortable. Then Quarto builds them together as a book or website, even converting between file types like <code>.ipynb</code>, <code>.md</code> and <code>.qmd</code> it’s a streamlined was to develop and publish with collaborators that have different workflows. Once the book is “served” locally, <code>.md</code> files auto-update as you edit, and files with executable code can be rendered individually, and the behavior of different code chunks can be controlled and cached.</p>
+<p>(Note: with Quarto, e-books and websites are very similarly structured, with e-books being set up for numbered chapters and references and websites set up for higher number of pages and organization. We can talk about our book as a book even as we explore whether book/website better suits our needs. Our Cookbook is currently a website; this is assigned in <code>_quarto.yml</code>, as we’ll explore later).</p>
 <!-- -->
 </section>
 </main>

@@ -3,7 +3,7 @@
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>RMarkdown example .Rmd</title>
+  <title>.ipynb notebook (python)</title>
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -85,8 +85,8 @@
   <script src="../site_libs/quarto-search/autocomplete.min.js"></script>
   <script src="../site_libs/quarto-search/fuse.min.js"></script>
   <script src="../site_libs/quarto-search/quarto-search.js"></script>
-  <link href="../examples/notebook-example.html" rel="next">
-  <link href="../examples/python-example.html" rel="prev">
+  <link href="../examples/qmd-example.html" rel="next">
+  <link href="../examples/index.html" rel="prev">
   <script src="../site_libs/quarto-html/quarto.js"></script>
   <script src="../site_libs/quarto-html/popper.min.js"></script>
   <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -107,7 +107,7 @@
 <header id="quarto-header" class="headroom fixed-top">
 <nav class="quarto-secondary-nav py-2 d-lg-none d-md-block " data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <div class="container-fluid d-flex justify-content-between">
-    <h1 class="quarto-secondary-nav-title mb-0 fs-3 d-inline">RMarkdown example .Rmd</h1>
+    <h1 class="quarto-secondary-nav-title mb-0 fs-3 d-inline">.ipynb notebook (python)</h1>
     <button type="button" class="quarto-btn-toggle btn d-lg-none py-0 px-1 d-inline-block border-0 ">
       <i class="bi bi-chevron-right"></i>
     </button>
@@ -341,23 +341,23 @@
         <div class="me-auto ">
           <div class="d-inline-flex w-100 sidebar-section-item">
             <div class="sidebar-section-link me-auto ">
-            <a href="../examples/index.html" class="">End-to-end Examples</a>
+            <a href="../examples/index.html" class="">Example notebooks</a>
             </div>
-            <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#end-to-endexamples-collapse" aria-expanded="true">
+            <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#examplenotebooks-collapse" aria-expanded="true">
               <div><i class="bi bi-chevron-right ms-2 "></i></div>
             </a>
             </div>
         </div>
-      <div class="collapse  show" id="end-to-endexamples-collapse">
+      <div class="collapse  show" id="examplenotebooks-collapse">
         <ul class="list-unstyled sidebar-item-contents">
           <li class="sidebar-item">
-  <a href="../examples/python-example.html" class="">Python example with Quarto</a>
+  <a href="../examples/ipynb-example.html" class="active">.ipynb notebook (python)</a>
 </li>
           <li class="sidebar-item">
-  <a href="../examples/r-example.html" class="active">RMarkdown example .Rmd</a>
+  <a href="../examples/qmd-example.html" class="">.qmd notebook (python)</a>
 </li>
           <li class="sidebar-item">
-  <a href="../examples/notebook-example.html" class="">Notebook example</a>
+  <a href="../examples/rmd-example.html" class="">.Rmd notebook (R)</a>
 </li>
         </ul>
       </div>
@@ -415,34 +415,51 @@
   </div>
 </nav>
   </div>
-  <div id="quarto-toc-sidebar" class="col col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-toc order-last"></div>
+  <div id="quarto-toc-sidebar" class="col col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-toc order-last"><nav id="TOC" role="doc-toc">
+<h2 id="toc-title">On this page</h2>
+<ul>
+<li><a href="#im-editing-this-in-jupyter-lab" class="nav-link active" data-scroll-target="#im-editing-this-in-jupyter-lab">I’m editing this in Jupyter Lab </a><a id="1.1" class="nav-link" data-scroll-target="undefined"></a></li>
+</ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/edit/main/examples/ipynb-example.ipynb">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/issues/new">Report an issue</a></p></div></div></nav></div>
   <div class="col mx-auto col-sm-12 col-md-9 col-lg-7 px-lg-4">
 <main>
 <header id="title-block-header">
-<h1 class="title d-none d-lg-block display-7">RMarkdown example .Rmd</h1>
+<h1 class="title d-none d-lg-block display-7">.ipynb notebook (python)</h1>
 </header>
-<p>This is an <a href="http://rmarkdown.rstudio.com">R Markdown</a> Notebook. When you execute code within the notebook, the results appear beneath the code.</p>
-<p>Try executing this chunk by clicking the <em>Run</em> button within the chunk or by placing your cursor inside it and pressing <em>Cmd+Shift+Enter</em>.</p>
+
+<section id="im-editing-this-in-jupyter-lab" class="level2">
+<h2 class="anchored" data-anchor-id="im-editing-this-in-jupyter-lab">I’m editing this in Jupyter Lab <a id="1.1"></a></h2>
+<p>And I will execute the cells as I develop the notebook. Then the executed notebook will display in our Cookbook through Quarto.</p>
+<section id="import-the-required-packages-and-set-the-inputworking-directory-to-run-this-jupyter-notebook-locally." class="level4">
+<h4 class="anchored" data-anchor-id="import-the-required-packages-and-set-the-inputworking-directory-to-run-this-jupyter-notebook-locally.">Import the required packages and set the input/working directory to run this Jupyter Notebook locally.</h4>
 <div class="cell">
-<div class="sourceCode" id="cb1"><pre class="sourceCode r cell-code code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(cars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> np.arange(<span class="dv">0</span>, <span class="dv">2</span>, <span class="fl">0.01</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>theta <span class="op">=</span> <span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> r</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(subplot_kw<span class="op">=</span>{<span class="st">'projection'</span>: <span class="st">'polar'</span>})</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>ax.plot(theta, r)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>ax.set_rticks([<span class="fl">0.5</span>, <span class="dv">1</span>, <span class="fl">1.5</span>, <span class="dv">2</span>])</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>ax.grid(<span class="va">True</span>)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="r-example_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
+<p><img src="ipynb-example_files/figure-html/cell-2-output-1.png" class="img-fluid"></p>
 </div>
 </div>
-<p>Add a new chunk by clicking the <em>Insert Chunk</em> button on the <u><strong>toolbar</strong></u> or by pressing <em>Cmd+Option+I</em>.</p>
-<p>When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the <em>Preview</em> button or press <em>Cmd+Shift+K</em> to preview the HTML file).</p>
-<p>The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike <em>Knit</em>, <em>Preview</em> does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.</p>
 <!-- -->
+</section>
+</section>
 </main>
 <div class="page-navigation page-navigation-docked">
   <div class="nav-page nav-page-previous">
-      <a href="../examples/python-example.html">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Python example with Quarto</span>
+      <a href="../examples/index.html">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Example notebooks</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../examples/notebook-example.html">
-        <span class="nav-page-text">Notebook example</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../examples/qmd-example.html">
+        <span class="nav-page-text">.qmd notebook (python)</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </div>
