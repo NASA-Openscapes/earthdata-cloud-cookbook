@@ -327,6 +327,9 @@
           <li class="sidebar-item">
   <a href="../transformations/opendap-cloud.html" class="">OPeNDAP in the Cloud</a>
 </li>
+          <li class="sidebar-item">
+  <a href="../external/zarr-eosdis-store.html" class="">Zarr Example</a>
+</li>
         </ul>
       </div>
     </li>
@@ -436,6 +439,7 @@
 <li><a href="#cookbook-practices" class="nav-link" data-scroll-target="#cookbook-practices">Cookbook Practices</a>
 <ul class="collapse">
 <li><a href="#executing-notebooks" class="nav-link" data-scroll-target="#executing-notebooks">Executing notebooks</a></li>
+<li><a href="#including-remote-notebooks" class="nav-link" data-scroll-target="#including-remote-notebooks">Including remote notebooks</a></li>
 </ul></li>
 <li><a href="#code-review" class="nav-link" data-scroll-target="#code-review">Code Review</a></li>
 <li><a href="#troubleshooting" class="nav-link" data-scroll-target="#troubleshooting">Troubleshooting</a>
@@ -677,6 +681,29 @@ This command line instance is now being used to serve Quarto
 <h3 class="anchored" data-anchor-id="executing-notebooks">Executing notebooks</h3>
 <p>As you develop files with executable code ( <code>.qmd</code>, <code>.Rmd</code>, and <code>.ipynb</code>), you can decide if you don’t want the notebook to execute. By adding YAML as a raw text cell at the top of an <code>.ipynb</code> file, you can control whether it is executed or not. Adding <code>execute: false</code> to the YAML at the top of the file basically means that Quarto never runs the code, but the user of course still can interactively in Jupyter.</p>
 <p>Using <code>.qmd</code> there are also ways to control execution cell-by-cell via <code># |</code> syntax within a code chunk; see <a href="https://quarto.org/docs/computations/execution-options.html" class="uri">https://quarto.org/docs/computations/execution-options.html</a></p>
+</section>
+<section id="including-remote-notebooks" class="level3">
+<h3 class="anchored" data-anchor-id="including-remote-notebooks">Including remote notebooks</h3>
+<p>We can include remote notebooks in the Cookbook by explicitly importing them with the following steps. This will create a local copy of them that have additional preamble inserted that includes the original urls and attribution for the notebook.</p>
+<ol type="1">
+<li><p>Navigate to the <code>_import</code> directory.</p></li>
+<li><p>Open <code>assets.json</code> in a text editor. Copy an existing example and use the same structure to indicate the remote notebook you’d like to include. You can write Markdown in the preamble.</p>
+<ol type="1">
+<li><p>title: this will be the new title of the notebook</p></li>
+<li><p>preamble: this text will be inserted into the notebook below the new title. It should include any description and attribution of the notebook. The preamble is followed by two URL fields (next):</p></li>
+<li><p>source: the url landing page. This should be more general than the specific notebook (i.e.&nbsp;this could be the root GitHub repository).</p></li>
+<li><p>url: the url of the notebook. (i.e.&nbsp;a url that ends with .<code>ipynb</code>)</p></li>
+<li><p>target: the local filename to give the notebook. The notebook will be saved in the <code>external</code> folder in the root directory.</p></li>
+<li><p>process: true or false: whether or not to include the entire entry when running the <code>quarto_import.py</code> script</p></li>
+</ol></li>
+</ol>
+<p>After these updates to <code>_import/assets.json</code>, to the following in the terminal:</p>
+<pre class="{bash}"><code>cd _import
+conda env update -f environment.yml
+conda activate quarto-import
+python quarto_import.py -f assets.json </code></pre>
+<p>This will return a confirmation of the file that has been processed.</p>
+<p>Then update <code>_quarto.yml</code> by adding your file (<code>external/&lt;target</code>) to the appropriate location in the Cookbook.</p>
 </section>
 </section>
 <section id="code-review" class="level2">
