@@ -19,12 +19,15 @@ dependencies:
 - joblib~=1.0.1
 - requests~=2.25.1
 - tqdm~=4.59.0
-- dask~=2021.3.0
+- dask~=2021.7.2
 - dask-labextension~=5.0.1
 - jupyterlab=3
 - ipympl~=0.6.3
 - s3fs~=2021.6
 - sidecar~=0.5.0
+- fsspec~=2021.6.1
+- s3fs~=2021.6.1
+- zarr~=2.8
 - pip
 - pip:
   - pqdm

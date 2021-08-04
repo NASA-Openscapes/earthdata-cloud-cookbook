@@ -52,8 +52,11 @@ class QueryGranule(object):
         total_size = sum([float(s['Size']) for s in self._data['umm']['DataGranule']['ArchiveAndDistributionInformation']])
         return total_size
 
-    def data_links(self):
+    def data_links(self, only_s3=False):
         links = self._filter_related_links('GET DATA')
+        s3_links = [l for l in links if l.startswith('s3')]
+        if only_s3 is True:
+            return s3_links
         return links
 
     def dataviz_links(self):
@@ -82,7 +85,7 @@ class QueryResult(object):
         """
         return None
 
-    def crop(self, geometry: Any):
+    def crop(self, geometry):
         """
         Spatial crop of each of the granules using a geojson geometry
         """
