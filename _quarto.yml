@@ -59,15 +59,15 @@ site:
               - transformations/harmony-subsetting.qmd
           - transformations/earthdata-search.md
           - transformations/opendap-cloud.md
+          - external/zarr-eosdis-store.ipynb
       - section: examples/index.md
         contents:
-          - examples/python-example.qmd
-          - examples/r-example.Rmd
-          - examples/notebook-example.ipynb
+          - examples/ipynb-example.ipynb
+          - examples/qmd-example.qmd
+          - examples/rmd-example.Rmd
           - examples/NSIDC/ISat2_from_CMR_to_S3.ipynb
       - section: appendix/index.md
         contents:
-          - appendix/about.md
           - appendix/glossary.md
           - transformations/harmonypy.md
       - section: contributing/index.md

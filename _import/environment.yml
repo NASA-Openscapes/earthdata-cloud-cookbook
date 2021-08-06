@@ -1,0 +1,12 @@
+name: quarto-import
+channels:
+- conda-forge
+dependencies:
+- python=3.8
+- nbformat=5.1
+- requests=2.26
+- pytest=6.2
+- pytest-watch=4.1
+- pip
+- pip:
+  - pqdm
