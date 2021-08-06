@@ -54,7 +54,9 @@ site:
           - transformations/harmony-api.md
           - transformations/HarmonyPy_intro_tutorial.ipynb
           - transformations/netcdf-to-zarr.md
-          - transformations/L2-subsetter.md
+          - section: transformations/L2-subsetter.md
+            contents: 
+              - transformations/harmony-subsetting.qmd
           - transformations/earthdata-search.md
           - transformations/opendap-cloud.md
       - section: examples/index.md
@@ -70,7 +72,7 @@ site:
           - transformations/harmonypy.md
       - section: contributing/index.md
         contents:
-          - contributing/setup.md
+          - contributing/setup.qmd
           - contributing/workflow.md
 
 bibliography: references.bib
@@ -83,4 +85,4 @@ format:
     code-background: true
     code-copy: true
     css: styles.css
-    toc: true 
+    toc: true

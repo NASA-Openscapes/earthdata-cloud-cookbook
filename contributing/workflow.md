@@ -95,6 +95,13 @@ From [R Packages](https://r-pkgs.org/git.html#git-commit):
 
 Here are some of Hadley Wickham's suggested [best practices](https://r-pkgs.org/git.html#commit-best-practices)
 
+:::{.callout-important}
+## You must re-render documents where code was added or changed before continuing
+If you added or made changes to any code (including changing the dataset upon which existing code relies), re-render those files individudally. See the [Quarto render](#quarto-render) section for more details. Afterwards, `git add` and `git commit` any changes to the updated `_freeze` directory before continuining on to the next step.
+
+Local re-rendering is necessary in cases where code is changed because the [workflow used to make this site](https://github.com/NASA-Openscapes/earthdata-cloud-cookbook/blob/main/.github/workflows/quarto-render.yml) assumes that all code has been pre-executed. Read more about this at [freeze section](https://quarto.org/docs/books/book-authoring.html?q=freeze#freezing) at the Quarto docs. 
+:::
+
 ### Push changes
 
 When you're ready to push changes you've made in your branch, you'll first need to connect it to github.com by pushing it "upstream" to the "origin repository" (`-u` below is short for `--set-upstream`):
@@ -109,18 +116,30 @@ The above is a one-time command to connect your local branch back to github.com.
 git push
 ```
 
+
+
 ### Update Local Branch with remote Main 
 
-If while you're working you would like to update your local branch with the most recent updates on the `main` branch on GitHub.com, you can do so like this:
+If while you're working you would like to update your local `your-branch` with the most recent updates on the `main` branch on GitHub.com, there are several ways to do this. 
+
+#### checkouts and merge main
 
 [Git Update Local Branch with remote Master](https://stackoverflow.com/questions/34656523/git-update-local-branch-with-remote-master)
 
-    git checkout main
-    git pull
-    git checkout your-branch
-    git merge main
+```{bash}
+git checkout main
+git pull
+git checkout your-branch
+git merge main
+```
 
-There are other ways to do this too (please let us know!)
+#### fetch and merge origin/main
+
+```{bash}
+git checkout your-branch 
+git fetch
+git merge origin/main
+```
 
 ### Pull Request
 
