@@ -455,6 +455,12 @@
 <li><a href="#develop-cookbook-content" class="nav-link" data-scroll-target="#develop-cookbook-content">Develop Cookbook Content</a></li>
 <li><a href="#quarto-render" class="nav-link" data-scroll-target="#quarto-render">Quarto render</a></li>
 </ul></li>
+<li><a href="#i2c-workflow" class="nav-link" data-scroll-target="#i2c-workflow">2i2c Workflow</a>
+<ul class="collapse">
+<li><a href="#log-into-2i2c" class="nav-link" data-scroll-target="#log-into-2i2c">Log into 2i2c</a></li>
+<li><a href="#start-a-2i2c-session" class="nav-link" data-scroll-target="#start-a-2i2c-session">Start a 2i2c session</a></li>
+<li><a href="#create-a-jupyter-kernel-to-run-notebooks" class="nav-link" data-scroll-target="#create-a-jupyter-kernel-to-run-notebooks">Create a Jupyter kernel to run notebooks</a></li>
+</ul></li>
 <li><a href="#virtual-environments" class="nav-link" data-scroll-target="#virtual-environments">Virtual Environments</a></li>
 <li><a href="#cookbook-structure" class="nav-link" data-scroll-target="#cookbook-structure">Cookbook Structure</a></li>
 <li><a href="#cookbook-practices" class="nav-link" data-scroll-target="#cookbook-practices">Cookbook Practices</a>
@@ -511,7 +517,7 @@ Summary of GitHub and Quarto commands detailed below
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull</span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co">## create and switch to new branch</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout <span class="at">-b</span> branch-name </span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout <span class="at">-b</span> branch-name</span>
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co">## develop content: write prose in markdown, code in R and Python</span></span>
 <span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co">## remember to render any .ipynb, .rmd, or .qmd files before pushing</span></span>
@@ -519,9 +525,9 @@ Summary of GitHub and Quarto commands detailed below
 <span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render <span class="co"># can also render single file</span></span>
 <span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="co">## commit changes</span></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add <span class="at">--all</span> </span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add <span class="at">--all</span></span>
 <span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"my commit message here"</span> </span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"my commit message here"</span></span>
 <span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="co">## push changes</span></span>
 <span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push <span class="at">-u</span> origin branch-name  <span class="co"># connect your branch to github.com and push</span></span>
@@ -563,8 +569,8 @@ Summary of GitHub and Quarto commands detailed below
 <section id="commit-changes" class="level3">
 <h3 class="anchored" data-anchor-id="commit-changes">Commit changes</h3>
 <p>You’ll commit your work regularly as you go, likely using the following, which commits all files you’ve affected within the Cookbook project:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add <span class="at">--all</span> </span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"my commit message here"</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add <span class="at">--all</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"my commit message here"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>From <a href="https://r-pkgs.org/git.html#git-commit">R Packages</a> by Hadley Wickham:</p>
 <blockquote class="blockquote">
 <p>A commit takes a snapshot of your code at a specified point in time. Using a Git commit is like using anchors and other protection when climbing. If you’re crossing a dangerous rock face you want to make sure you’ve used protection to catch you if you fall. Commits play a similar role: if you make a mistake, you can’t fall past the previous commit.</p>
@@ -605,7 +611,7 @@ git merge main</code></pre>
 </section>
 <section id="fetch-and-merge-originmain" class="level4">
 <h4 class="anchored" data-anchor-id="fetch-and-merge-originmain">fetch and merge origin/main</h4>
-<pre class="{bash}"><code>git checkout your-branch 
+<pre class="{bash}"><code>git checkout your-branch
 git fetch
 git merge origin/main</code></pre>
 </section>
@@ -688,6 +694,45 @@ This command line instance is now being used to serve Quarto
 </blockquote>
 </section>
 </section>
+<section id="i2c-workflow" class="level2">
+<h2 class="anchored" data-anchor-id="i2c-workflow">2i2c Workflow</h2>
+<p>We use <a href="https://2i2c.org/">2i2c</a> to run notebooks.</p>
+<section id="log-into-2i2c" class="level3">
+<h3 class="anchored" data-anchor-id="log-into-2i2c">Log into 2i2c</h3>
+<ol type="1">
+<li>Go to the <a href="https://openscapes.2i2c.cloud/hub/login?next=%2Fhub%2F">openscapes 2i2c</a>. <em>You should see the openscapes 2i2c instance.</em></li>
+<li>Click on the orange “Log in to continue” button. <em>You should see the Openscapes-Prod page.</em></li>
+<li>Click the “Sign in with Github” button and log in. <em>If you aren’t already logged into Github, you should see the login prompt. Otherwise, you will be logged in automatically.</em></li>
+</ol>
+</section>
+<section id="start-a-2i2c-session" class="level3">
+<h3 class="anchored" data-anchor-id="start-a-2i2c-session">Start a 2i2c session</h3>
+<p>At this point, what you see depends on whether or not you have an active session. If your session is active, JupyterLab will load and you can start your work. If not, you’ll need to start a new session:</p>
+<ol type="1">
+<li>Select a server based on the size of your job. <em>You should see a progress window showing you what 2i2c is doing to get your session started. It may take several minutes, but you’ll eventually see a JupyterLab instance.</em></li>
+</ol>
+</section>
+<section id="create-a-jupyter-kernel-to-run-notebooks" class="level3">
+<h3 class="anchored" data-anchor-id="create-a-jupyter-kernel-to-run-notebooks">Create a Jupyter kernel to run notebooks</h3>
+<p>The default jupyter kernel may not have all the libraries you need to run a notebook. Fortunately, you can make a new kernel on the fly to use with the notebook.</p>
+<ol type="1">
+<li>Open a terminal in JupyterLab.
+<ol type="1">
+<li>Click on the large blue “+” button on the upper left. <em>You should get a new Laucher tab.</em></li>
+<li>In the Launcher tab, click on “Terminal” under “Other.” <em>You should get a tab with a command line prompt.</em></li>
+</ol></li>
+<li>Create a conda environment using your <a href="https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html">favorite method</a>.</li>
+<li>Activate the new environment with <code>conda activate YOUR_ENVIRONMENT_HERE</code>. <em>You should see the name of the new environment in your command line prompt.</em></li>
+<li>Create a new kernel by calling <code>ipython kernel install --name YOUR_ENVIRONMENT_HERE --user</code>. <em>You should get a response saying saying the kernel has been installed.</em></li>
+</ol>
+<p>To use this new kernel,</p>
+<ol type="1">
+<li>Open the notebook you want to run. <em>You should see the notebook in a tab.</em></li>
+<li>Click on the current kernel on the upper right. The default kernel is called <code>Python 3</code>. <em>You should see a kernel selection widget.</em></li>
+<li>Select the new kernel you created and click the “Select” button. <em>The kernel on the upper right should now give the name of your custom kernel.</em></li>
+</ol>
+</section>
+</section>
 <section id="virtual-environments" class="level2">
 <h2 class="anchored" data-anchor-id="virtual-environments">Virtual Environments</h2>
 <p>If you are working on a chapter that loads any Python or R packages, to make your work reproducible you’ll need to create and then update the <code>environments.txt</code> file. Do this use the <code>pip freeze</code> command:</p>
@@ -735,7 +780,7 @@ This command line instance is now being used to serve Quarto
 <pre class="{bash}"><code>cd _import
 conda env update -f environment.yml
 conda activate quarto-import
-python quarto_import.py -f assets.json </code></pre>
+python quarto_import.py -f assets.json</code></pre>
 <p>This will return a confirmation of the file that has been processed.</p>
 <p>Then update <code>_quarto.yml</code> by adding your file (<code>external/&lt;target</code>) to the appropriate location in the Cookbook.</p>
 </section>
@@ -757,7 +802,7 @@ python quarto_import.py -f assets.json </code></pre>
 <pre class="{bash}"><code>deactivate</code></pre>
 <p>The way you tell that you are in a virtual environment: it’s named in parentheses at the beginning of your prompt:</p>
 <pre class="{bash}"><code>(.venv) (base) JLos-Macbook-Pro:earthdata-cloud-cookbook lowndes$ deactivate
-(base) JLos-Macbook-Pro:earthdata-cloud-cookbook lowndes$ </code></pre>
+(base) JLos-Macbook-Pro:earthdata-cloud-cookbook lowndes$</code></pre>
 <!-- -->
 </section>
 </section>
