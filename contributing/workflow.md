@@ -36,7 +36,7 @@ git checkout main
 git pull
 
 ## create and switch to new branch
-git checkout -b branch-name 
+git checkout -b branch-name
 
 ## develop content: write prose in markdown, code in R and Python
 ## remember to render any .ipynb, .rmd, or .qmd files before pushing
@@ -44,9 +44,9 @@ quarto serve
 quarto render # can also render single file
 
 ## commit changes
-git add --all 
+git add --all
 git status
-git commit -m "my commit message here" 
+git commit -m "my commit message here"
 
 ## push changes
 git push -u origin branch-name  # connect your branch to github.com and push
@@ -102,8 +102,8 @@ Time to edit and develop content, and run your Quarto Workflow -- see [specific 
 You'll commit your work regularly as you go, likely using the following, which commits all files you've affected within the Cookbook project:
 
 ``` bash
-git add --all 
-git commit -m "my commit message here" 
+git add --all
+git commit -m "my commit message here"
 ```
 
 From [R Packages](https://r-pkgs.org/git.html#git-commit) by Hadley Wickham:
@@ -152,7 +152,7 @@ git merge main
 #### fetch and merge origin/main
 
 ```{bash}
-git checkout your-branch 
+git checkout your-branch
 git fetch
 git merge origin/main
 ```
@@ -247,6 +247,49 @@ Learn more about [rendering with Quarto](https://quarto.org/docs/computations/ru
 
 > The reason Quarto doesn't render `.Rmd` and `.qmd` on save is that render could (potentially) be very long running and that cost shouldn't be imposed on you whenever you save. Here we are talking about the age old debate of whether computational markdown should be rendered on save when running a development server. Quarto currently doesn't do this to give the user a choice between an expensive render and a cheap save.
 
+## 2i2c Workflow
+
+We use [2i2c](https://2i2c.org/) to run notebooks.
+
+### Log into 2i2c
+
+1. Go to the [openscapes 2i2c](https://openscapes.2i2c.cloud/hub/login?next=%2Fhub%2F). _You should see the openscapes 2i2c instance._
+2. Click on the orange "Log in to continue" button. _You should see the Openscapes-Prod page._
+3. Click the "Sign in with Github" button and log in. _If you aren't already logged into Github, you should see the login prompt. Otherwise, you will be logged in automatically._
+
+### Start a 2i2c session
+
+At this point, what you see depends on whether or not you have an active session. If
+your session is active, JupyterLab will load and you can start your work. If not,
+you'll need to start a new session:
+
+1. Select a server based on the size of your job. _You should see a progress window
+showing you what 2i2c is doing to get your session started. It may take several minutes, but you'll eventually
+see a JupyterLab instance._
+
+### Create a Jupyter kernel to run notebooks
+
+The default jupyter kernel may not have all the libraries you need to run a notebook.
+Fortunately, you can make a new kernel on the fly to use with the notebook.
+
+1. Open a terminal in JupyterLab.
+    1. Click on the large blue "+" button on the upper left. _You should get a new
+    Laucher tab._
+    2. In the Launcher tab, click on "Terminal" under "Other." _You should get a tab
+    with a command line prompt._
+2. Create a conda environment using your [favorite method](https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html).
+3. Activate the new environment with `conda activate YOUR_ENVIRONMENT_HERE`. _You
+should see the name of the new environment in your command line prompt._
+4. Create a new kernel by calling `ipython kernel install --name YOUR_ENVIRONMENT_HERE --user`. _You should get a response saying saying the kernel
+has been installed._
+
+To use this new kernel,
+
+1. Open the notebook you want to run. _You should see the notebook in a tab._
+2. Click on the current kernel on the upper right. The default kernel is called `Python 3`. _You should see a kernel selection widget._
+3. Select the new kernel you created and click the "Select" button. _The kernel on
+the upper right should now give the name of your custom kernel._
+
 ## Virtual Environments
 
 If you are working on a chapter that loads any Python or R packages, to make your work reproducible you'll need to create and then update the `environments.txt` file. Do this use the `pip freeze` command:
@@ -307,7 +350,7 @@ After these updates to `_import/assets.json`, to the following in the terminal:
 cd _import
 conda env update -f environment.yml
 conda activate quarto-import
-python quarto_import.py -f assets.json 
+python quarto_import.py -f assets.json
 ```
 
 This will return a confirmation of the file that has been processed.
@@ -338,5 +381,5 @@ The way you tell that you are in a virtual environment: it's named in parenthese
 
 ```{bash}
 (.venv) (base) JLos-Macbook-Pro:earthdata-cloud-cookbook lowndes$ deactivate
-(base) JLos-Macbook-Pro:earthdata-cloud-cookbook lowndes$ 
+(base) JLos-Macbook-Pro:earthdata-cloud-cookbook lowndes$
 ```
