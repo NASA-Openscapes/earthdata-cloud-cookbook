@@ -47,7 +47,9 @@ site:
           - section: access/direct-in-region.md
             contents:
               - access/podaac-ecco-data_access-cloud_direct_access_s3.ipynb
-          - access/cof-via-harmony.md
+          - section: access/cof-via-harmony.md
+            contents:
+              - external/cof-zarr-reformat.ipynb
           - access/download-to-local.md
       - section: transformations/index.md
         contents:
