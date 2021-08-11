@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang=""><head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>cof-zarr-reformat</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+  <script src="../site_libs/quarto-nav/headroom.min.js"></script>
+  <meta name="quarto:offset" content="../">
+  <script src="../site_libs/quarto-search/autocomplete.min.js"></script>
+  <script src="../site_libs/quarto-search/fuse.min.js"></script>
+  <script src="../site_libs/quarto-search/quarto-search.js"></script>
+  <link href="../access/download-to-local.html" rel="next">
+  <link href="../access/cof-via-harmony.html" rel="prev">
+  <script src="../site_libs/quarto-html/quarto.js"></script>
+  <script src="../site_libs/quarto-html/popper.min.js"></script>
+  <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+  <script src="../site_libs/quarto-html/clipboard.min.js"></script>
+  <script src="../site_libs/quarto-html/anchor.min.js"></script>
+  <script src="../site_libs/quarto-html/quarto-html.js"></script>
+  <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+  <link class="quarto-color-scheme" href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet">
+  <link class="quarto-color-scheme quarto-color-alternate" rel="prefetch" href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css">
+  <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+  <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+  <link class="quarto-color-scheme" href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet">
+  <link class="quarto-color-scheme quarto-color-alternate" rel="prefetch" href="../site_libs/bootstrap/bootstrap-dark.min.css">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+<div id="quarto-search-results"></div>
+<header id="quarto-header" class="headroom fixed-top">
+<nav class="quarto-secondary-nav py-2 d-lg-none d-md-block " data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <div class="container-fluid d-flex justify-content-between">
+    <h1 class="quarto-secondary-nav-title mb-0 fs-3 d-inline">(Untitled)</h1>
+    <button type="button" class="quarto-btn-toggle btn d-lg-none py-0 px-1 d-inline-block border-0 ">
+      <i class="bi bi-chevron-right"></i>
+    </button>
+  </div>
+</nav>
+</header>
+ <!-- /navbar/sidebar -->
+<div class="container-fluid quarto-container d-flex flex-column page-layout-article">
+<div class="row flex-fill" id="quarto-content">
+  <div id="quarto-sidebar" class="col col-12 col-lg-3 d-lg-flex px-0 pt-0 sidebar collapse sidebar-navigation">
+    <nav class="me-lg-auto py-2 docked  overflow-scroll">
+  <div class="px-3 pt-lg-2 mt-1 text-left sidebar-header sidebar-header-stacked">
+    <img src="../nasa-openscapes.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">
+      EarthData Cloud Cookbook
+      </a>
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook" title="" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
+  <a href="" class="quarto-color-scheme-toggle " onclick="window.quartoToggleColorScheme(); return false;"><i class="bi"></i></a>
+</div>
+    </div>
+  </div>
+    <div class="d-flex px-3 mt-2 flex-shrink-0 align-items-center">
+      <div class="sidebar-search">
+      <form class="d-flex mb-0">
+  <input id="quarto-search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+      </div>
+        <div class="sidebar-tools-collapse">
+    <a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook" title="" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
+  <a href="" class="quarto-color-scheme-toggle " onclick="window.quartoToggleColorScheme(); return false;"><i class="bi"></i></a>
+</div>
+    </div>
+  <div class="sidebar-menu-container"> 
+  <ul class="list-unstyled mt-3 px-3">
+      <li class="sidebar-item">
+  <a href="../index.html" class="">Welcome</a>
+</li>
+      <ul class="list-unstyled sidebar-section depth1">
+    <li class="">
+        <div class="me-auto ">
+          <div class="d-inline-flex w-100 sidebar-section-item">
+            <div class="sidebar-section-link me-auto ">
+            <a href="../get-started/index.html" class="">Getting Started</a>
+            </div>
+            <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#gettingstarted-collapse" aria-expanded="true">
+              <div><i class="bi bi-chevron-right ms-2 "></i></div>
+            </a>
+            </div>
+        </div>
+      <div class="collapse  show" id="gettingstarted-collapse">
+        <ul class="list-unstyled sidebar-item-contents">
+          <li class="sidebar-item">
+  <a href="../get-started/how-to-use.html" class="">How to use this book</a>
+</li>
+          <li class="sidebar-item">
+  <a href="../get-started/earthdata-login.html" class="">EarthData Login</a>
+</li>
+          <ul class="list-unstyled sidebar-section depth2">
+    <li class="">
+        <div class="me-auto ">
+          <div class="d-inline-flex w-100 sidebar-item">
+            <div class="sidebar-section-link me-auto ">
+            <a href="../get-started/authentication.html" class="">Authentication</a>
+            </div>
+            <a class="text-start collapsed " data-bs-toggle="collapse" data-bs-target="#authentication-collapse" aria-expanded="false">
+              <div><i class="bi bi-chevron-right ms-2 "></i></div>
+            </a>
+            </div>
+        </div>
+      <div class="collapse  " id="authentication-collapse">
+        <ul class="list-unstyled sidebar-item-contents">
+          <li class="sidebar-item">
+  <a href="../get-started/lpdaac-netrc.html" class="">LP DAAC Authentication Example</a>
+</li>
+          <li class="sidebar-item">
+  <a href="../get-started/podaac-ecco-netrc.html" class="">PO DAAC Authentication Example</a>
+</li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+          <li class="sidebar-item">
+  <a href="../get-started/api-primer.html" class="">API Primer</a>
+</li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+      <ul class="list-unstyled sidebar-section depth1">
+    <li class="">
+        <div class="me-auto ">
+          <div class="d-inline-flex w-100 sidebar-section-item">
+            <div class="sidebar-section-link me-auto ">
+            <a href="../discovery/index.html" class="">NASA Cloud Data Discovery</a>
+            </div>
+            <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#nasaclouddatadiscovery-collapse" aria-expanded="true">
+              <div><i class="bi bi-chevron-right ms-2 "></i></div>
+            </a>
+            </div>
+        </div>
+      <div class="collapse  show" id="nasaclouddatadiscovery-collapse">
+        <ul class="list-unstyled sidebar-item-contents">
+          <li class="sidebar-item">
+  <a href="../discovery/Navigate_CMR_STAC.html" class="">CMR and CMR-STAC API</a>
+</li>
+          <li class="sidebar-item">
+  <a href="../discovery/earthdata-search-ui.html" class="">Earthdata Search UI</a>
+</li>
+          <li class="sidebar-item">
+  <a href="../discovery/cmr-virtual-directories.html" class="">CMR Virtual Directories</a>
+</li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+      <ul class="list-unstyled sidebar-section depth1">
+    <li class="">
+        <div class="me-auto ">
+          <div class="d-inline-flex w-100 sidebar-section-item">
+            <div class="sidebar-section-link me-auto ">
+            <a href="../access/index.html" class="">NASA Cloud Data Access</a>
+            </div>
+            <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#nasaclouddataaccess-collapse" aria-expanded="true">
+              <div><i class="bi bi-chevron-right ms-2 "></i></div>
+            </a>
+            </div>
+        </div>
+      <div class="collapse  show" id="nasaclouddataaccess-collapse">
+        <ul class="list-unstyled sidebar-item-contents">
+          <li class="sidebar-item">
+  <a href="../access/data-access-example.html" class="">Data access demo</a>
+</li>
+          <li class="sidebar-item">
+  <a href="../access/earthdata-search.html" class="">Earthdata Search</a>
+</li>
+          <li class="sidebar-item">
+  <a href="../access/opendap-cloud.html" class="">OPeNDAP in the Cloud</a>
+</li>
+          <ul class="list-unstyled sidebar-section depth2">
+    <li class="">
+        <div class="me-auto ">
+          <div class="d-inline-flex w-100 sidebar-item">
+            <div class="sidebar-section-link me-auto ">
+            <a href="../access/direct-in-region.html" class="">Direct in-region</a>
+            </div>
+            <a class="text-start collapsed " data-bs-toggle="collapse" data-bs-target="#directin-region-collapse" aria-expanded="false">
+              <div><i class="bi bi-chevron-right ms-2 "></i></div>
+            </a>
+            </div>
+        </div>
+      <div class="collapse  " id="directin-region-collapse">
+        <ul class="list-unstyled sidebar-item-contents">
+          <li class="sidebar-item">
+  <a href="../access/podaac-ecco-data_access-cloud_direct_access_s3.html" class="">Direct access to ECCO data in S3 (from *us-west-2*)</a>
+</li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+          <ul class="list-unstyled sidebar-section depth2">
+    <li class="">
+        <div class="me-auto ">
+          <div class="d-inline-flex w-100 sidebar-item">
+            <div class="sidebar-section-link me-auto ">
+            <a href="../access/cof-via-harmony.html" class="">COF via Earthdata Harmony</a>
+            </div>
+            <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#cofviaearthdataharmony-collapse" aria-expanded="true">
+              <div><i class="bi bi-chevron-right ms-2 "></i></div>
+            </a>
+            </div>
+        </div>
+      <div class="collapse  show" id="cofviaearthdataharmony-collapse">
+        <ul class="list-unstyled sidebar-item-contents">
+          <li class="sidebar-item">
+  <a href="../external/cof-zarr-reformat.html" class="active">COF Zarr Access via Reformat</a>
+</li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+          <li class="sidebar-item">
+  <a href="../access/download-to-local.html" class="">Download to local</a>
+</li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+      <ul class="list-unstyled sidebar-section depth1">
+    <li class="">
+        <div class="me-auto ">
+          <div class="d-inline-flex w-100 sidebar-section-item">
+            <div class="sidebar-section-link me-auto ">
+            <a href="../transformations/index.html" class="">NASA Cloud Data Transformations</a>
+            </div>
+            <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#nasaclouddatatransformations-collapse" aria-expanded="true">
+              <div><i class="bi bi-chevron-right ms-2 "></i></div>
+            </a>
+            </div>
+        </div>
+      <div class="collapse  show" id="nasaclouddatatransformations-collapse">
+        <ul class="list-unstyled sidebar-item-contents">
+          <li class="sidebar-item">
+  <a href="../transformations/harmony-api.html" class="">Harmony API</a>
+</li>
+          <li class="sidebar-item">
+  <a href="../transformations/HarmonyPy_intro_tutorial.html" class="">HarmonyPy Introduction</a>
+</li>
+          <li class="sidebar-item">
+  <a href="../transformations/netcdf-to-zarr.html" class="">netCDF to Zarr</a>
+</li>
+          <ul class="list-unstyled sidebar-section depth2">
+    <li class="">
+        <div class="me-auto ">
+          <div class="d-inline-flex w-100 sidebar-item">
+            <div class="sidebar-section-link me-auto ">
+            <a href="../transformations/L2-subsetter.html" class="">L2 Subsetter</a>
+            </div>
+            <a class="text-start collapsed " data-bs-toggle="collapse" data-bs-target="#l2subsetter-collapse" aria-expanded="false">
+              <div><i class="bi bi-chevron-right ms-2 "></i></div>
+            </a>
+            </div>
+        </div>
+      <div class="collapse  " id="l2subsetter-collapse">
+        <ul class="list-unstyled sidebar-item-contents">
+          <li class="sidebar-item">
+  <a href="../transformations/harmony-subsetting.html" class="">Harmony Subsetting</a>
+</li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+          <li class="sidebar-item">
+  <a href="../transformations/earthdata-search.html" class="">Earthdata Search UI</a>
+</li>
+          <li class="sidebar-item">
+  <a href="../transformations/opendap-cloud.html" class="">OPeNDAP in the Cloud</a>
+</li>
+          <li class="sidebar-item">
+  <a href="../external/zarr-eosdis-store.html" class="">Zarr Example</a>
+</li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+      <ul class="list-unstyled sidebar-section depth1">
+    <li class="">
+        <div class="me-auto ">
+          <div class="d-inline-flex w-100 sidebar-section-item">
+            <div class="sidebar-section-link me-auto ">
+            <a href="../examples/index.html" class="">Example notebooks</a>
+            </div>
+            <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#examplenotebooks-collapse" aria-expanded="true">
+              <div><i class="bi bi-chevron-right ms-2 "></i></div>
+            </a>
+            </div>
+        </div>
+      <div class="collapse  show" id="examplenotebooks-collapse">
+        <ul class="list-unstyled sidebar-item-contents">
+          <li class="sidebar-item">
+  <a href="../examples/ipynb-example.html" class="">.ipynb notebook (python)</a>
+</li>
+          <li class="sidebar-item">
+  <a href="../examples/qmd-example.html" class="">.qmd notebook (python)</a>
+</li>
+          <li class="sidebar-item">
+  <a href="../examples/rmd-example.html" class="">.Rmd notebook (R)</a>
+</li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+      <ul class="list-unstyled sidebar-section depth1">
+    <li class="">
+        <div class="me-auto ">
+          <div class="d-inline-flex w-100 sidebar-section-item">
+            <div class="sidebar-section-link me-auto ">
+            <a href="../appendix/index.html" class="">Appendix</a>
+            </div>
+            <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#appendix-collapse" aria-expanded="true">
+              <div><i class="bi bi-chevron-right ms-2 "></i></div>
+            </a>
+            </div>
+        </div>
+      <div class="collapse  show" id="appendix-collapse">
+        <ul class="list-unstyled sidebar-item-contents">
+          <li class="sidebar-item">
+  <a href="../appendix/glossary.html" class="">Glossary</a>
+</li>
+          <li class="sidebar-item">
+  <a href="../transformations/harmonypy.html" class="">Harmony Py Library</a>
+</li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+      <ul class="list-unstyled sidebar-section depth1">
+    <li class="">
+        <div class="me-auto ">
+          <div class="d-inline-flex w-100 sidebar-section-item">
+            <div class="sidebar-section-link me-auto ">
+            <a href="../contributing/index.html" class="">Contributing</a>
+            </div>
+            <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#contributing-collapse" aria-expanded="true">
+              <div><i class="bi bi-chevron-right ms-2 "></i></div>
+            </a>
+            </div>
+        </div>
+      <div class="collapse  show" id="contributing-collapse">
+        <ul class="list-unstyled sidebar-item-contents">
+          <li class="sidebar-item">
+  <a href="../contributing/setup.html" class="">Initial Setup</a>
+</li>
+          <li class="sidebar-item">
+  <a href="../contributing/workflow.html" class="">Workflow</a>
+</li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+  </ul>
+  </div>
+</nav>
+  </div>
+  <div id="quarto-toc-sidebar" class="col col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-toc order-last"><nav id="TOC" role="doc-toc">
+<h2 id="toc-title">On this page</h2>
+<ul>
+<li><a href="#cof-zarr-access-via-reformat" class="nav-link active" data-scroll-target="#cof-zarr-access-via-reformat">COF Zarr Access via Reformat</a></li>
+<li><a href="#access-ecco-data-via-harmony-the-zarr-reformatter-service" class="nav-link" data-scroll-target="#access-ecco-data-via-harmony-the-zarr-reformatter-service">Access ECCO data via Harmony &amp; the Zarr reformatter service</a>
+<ul class="collapse">
+<li><a href="#getting-started" class="nav-link" data-scroll-target="#getting-started">Getting Started</a>
+<ul class="collapse">
+<li><a href="#requirements" class="nav-link" data-scroll-target="#requirements">Requirements</a></li>
+<li><a href="#requirements-1" class="nav-link" data-scroll-target="#requirements-1">Requirements</a></li>
+<li><a href="#study-period" class="nav-link" data-scroll-target="#study-period">Study period</a></li>
+<li><a href="#data-access" class="nav-link" data-scroll-target="#data-access">Data Access</a></li>
+</ul></li>
+</ul></li>
+</ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/edit/main/external/cof-zarr-reformat.ipynb">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/issues/new">Report an issue</a></p></div></div></nav></div>
+  <div class="col mx-auto col-sm-12 col-md-9 col-lg-7 px-lg-4">
+<main>
+
+<section id="cof-zarr-access-via-reformat" class="level1">
+<h1>COF Zarr Access via Reformat</h1>
+<p>imported on: <strong>2021-08-11</strong></p>
+<p>This notebook is from NASA’s PO.DAAC, Access ECCO data via Harmony and the Zarr reformatter service example &gt; The original source for this document is https://github.com/podaac/ECCO/blob/main/Data_Access/cloud_harmony_zarr_reformat.ipynb</p>
+</section>
+<section id="access-ecco-data-via-harmony-the-zarr-reformatter-service" class="level1">
+<h1>Access ECCO data via Harmony &amp; the Zarr reformatter service</h1>
+<p>This notebook leverages the Zarr reformatter service (available through <a href="https://harmony.earthdata.nasa.gov/">Harmony API</a>) to access ocean bottom pressure (OBP) data from ECCO V4r4 in Zarr format (instead of native netCDF4 file format).</p>
+<section id="getting-started" class="level2">
+<h2 class="anchored" data-anchor-id="getting-started">Getting Started</h2>
+<p>We will access monthly ocean bottom pressure (OBP) data from ECCO V4r4 (<a href="https://doi.org/10.5067/ECG5M-OBP44">10.5067/ECG5M-OBP44</a>), which are provided as a monthly time series on a 0.5-degree latitude/longitude grid.</p>
+<p>The data are archived in netCDF format. However, this notebook demonstration will request conversion to Zarr format for files covering the period between 2010 and 2018. Upon receiving our request, Harmony’s backend will convert the files and stage them in S3 for native access in AWS (<code>us-west-2</code> region, specifically). We will access the new Zarr datasets as an aggregated dataset using xarray, and leverage the S3 native protocols for direct access to the data in an efficient manner.</p>
+<p><img src="https://podaac.jpl.nasa.gov/Podaac/thumbnails/ECCO_L4_OBP_05DEG_MONTHLY_V4R4.jpg" width="50%"></p>
+<section id="requirements" class="level3">
+<h3 class="anchored" data-anchor-id="requirements">Requirements</h3>
+<section id="aws" class="level4">
+<h4 class="anchored" data-anchor-id="aws">AWS</h4>
+<p>This notebook should be running in an EC2 instance in AWS region <em>us-west-2</em>, as previously mentioned. We recommend using an EC2 with at least 8GB of memory available.</p>
+<p>The notebook was developed and tested using a <em>t2.large</em> instance (2 cpus; 8GB memory).</p>
+</section>
+<section id="python-3" class="level4">
+<h4 class="anchored" data-anchor-id="python-3">Python 3</h4>
+<p>Most of these imports are from the Python standard library. However, you will need to install these packages into your Python 3 environment if you have not already done so:</p>
+<ul>
+<li>s3fs</li>
+<li>requests</li>
+<li>pandas</li>
+<li>xarray</li>
+<li>matplotlib</li>
+</ul>
+</section>
+</section>
+<section id="requirements-1" class="level3">
+<h3 class="anchored" data-anchor-id="requirements-1">Requirements</h3>
+<div class="cell">
+<div class="sourceCode" id="cb1"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> xarray <span class="im">as</span> xr</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> s3fs</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>ShortName <span class="op">=</span> <span class="st">"ECCO_L4_OBP_05DEG_MONTHLY_V4R4"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="study-period" class="level3">
+<h3 class="anchored" data-anchor-id="study-period">Study period</h3>
+<p>Set some “master” inputs to define the time and place contexts for our case studies in the ipynb. This example will be requesting time subsets and receiving global data back from the Harmony API.</p>
+<div class="cell">
+<div class="sourceCode" id="cb2"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>start_date <span class="op">=</span> <span class="st">"2010-01-01"</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>end_date   <span class="op">=</span> <span class="st">"2018-12-31"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="data-access" class="level3">
+<h3 class="anchored" data-anchor-id="data-access">Data Access</h3>
+<p>Some features in the Harmony API require us to identify the target dataset/collection by its <em>concept-id</em> (which uniquely idenfifies it among the other datasets in the Common Metadata Repository). Support for selection by the dataset <em>ShortName</em> will be added in a future release.</p>
+<section id="common-metadata-repository-cmr" class="level4">
+<h4 class="anchored" data-anchor-id="common-metadata-repository-cmr">Common Metadata Repository (CMR)</h4>
+<p>For now, we will need to get the <em>concept-id</em> that corresponds to our dataset by accessing its metadata from the CMR. Read more about the CMR at: https://cmr.earthdata.nasa.gov/</p>
+<p>Request the UMM Collection metadata (i.e.&nbsp;metadata about the dataset) from the CMR and select the <em>concept-id</em> as a new variable <em>ccid</em>.</p>
+<div class="cell">
+<div class="sourceCode" id="cb3"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.get(</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    url<span class="op">=</span><span class="st">'https://cmr.earthdata.nasa.gov/search/collections.umm_json'</span>, </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    params<span class="op">=</span>{<span class="st">'provider'</span>: <span class="st">"POCLOUD"</span>,</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>            <span class="st">'ShortName'</span>: ShortName,</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>            <span class="st">'page_size'</span>: <span class="dv">1</span>}</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>ummc <span class="op">=</span> response.json()[<span class="st">'items'</span>][<span class="dv">0</span>]</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>ccid <span class="op">=</span> ummc[<span class="st">'meta'</span>][<span class="st">'concept-id'</span>]</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>ccid</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p>‘C1990404791-POCLOUD’</p>
+</div>
+</div>
+</section>
+<section id="harmony-api" class="level4">
+<h4 class="anchored" data-anchor-id="harmony-api">Harmony API</h4>
+<p>And get the Harmony API endpoint and zarr parameter like we did for SMAP before:</p>
+<div class="cell">
+<div class="sourceCode" id="cb4"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>base <span class="op">=</span> <span class="ss">f"https://harmony.earthdata.nasa.gov/</span><span class="sc">{</span>ccid<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>hreq <span class="op">=</span> <span class="ss">f"</span><span class="sc">{</span>base<span class="sc">}</span><span class="ss">/ogc-api-coverages/1.0.0/collections/all/coverage/rangeset"</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>rurl <span class="op">=</span> <span class="ss">f"</span><span class="sc">{</span>hreq<span class="sc">}</span><span class="ss">?format=application/x-zarr"</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(rurl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-stdout">
+<pre><code>https://harmony.earthdata.nasa.gov/C1990404791-POCLOUD/ogc-api-coverages/1.0.0/collections/all/coverage/rangeset?format=application/x-zarr</code></pre>
+</div>
+</div>
+<p>ECCO monthly collections have 312 granules in V4r4 (you can confirm with the granule listing from CMR Search API) so we can get the entire time series for 2010 to 2018 with one request to the Harmony API.</p>
+<p>Format a string of query parameters to limit the processing to the desired time period. Then, append the string of time subset parameters to the variable <em><code>rurl</code></em>.</p>
+<div class="cell">
+<div class="sourceCode" id="cb6"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>subs <span class="op">=</span> <span class="st">'&amp;'</span>.join([<span class="ss">f'subset=time("</span><span class="sc">{</span>start_date<span class="sc">}</span><span class="ss">T00:00:00.000Z":"</span><span class="sc">{</span>end_date<span class="sc">}</span><span class="ss">T23:59:59.999Z")'</span>])</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>rurl <span class="op">=</span> <span class="ss">f"</span><span class="sc">{</span>rurl<span class="sc">}</span><span class="ss">&amp;</span><span class="sc">{</span>subs<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(rurl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-stdout">
+<pre><code>https://harmony.earthdata.nasa.gov/C1990404791-POCLOUD/ogc-api-coverages/1.0.0/collections/all/coverage/rangeset?format=application/x-zarr&amp;subset=time("2010-01-01T00:00:00.000Z":"2018-12-31T23:59:59.999Z")</code></pre>
+</div>
+</div>
+<p>Submit the request and monitor the processing status in a <em>while</em> loop, breaking it on completion of the request job:</p>
+<div class="cell">
+<div class="sourceCode" id="cb8"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.get(url<span class="op">=</span>rurl).json()</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Monitor status in a while loop. Wait 10 seconds for each check.</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>wait <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="va">True</span>:</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    response <span class="op">=</span> requests.get(url<span class="op">=</span>response[<span class="st">'links'</span>][<span class="dv">0</span>][<span class="st">'href'</span>]).json()</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> response[<span class="st">'status'</span>]<span class="op">!=</span><span class="st">'running'</span>:</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">break</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Job in progress (</span><span class="sc">{</span>response[<span class="st">'progress'</span>]<span class="sc">}</span><span class="ss">%)"</span>)</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    time.sleep(wait)</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"DONE!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-stdout">
+<pre><code>Job in progress (0%)
+Job in progress (0%)
+Job in progress (0%)
+Job in progress (0%)
+Job in progress (0%)
+Job in progress (0%)
+Job in progress (0%)
+Job in progress (0%)
+Job in progress (0%)
+Job in progress (0%)
+Job in progress (0%)
+Job in progress (0%)
+Job in progress (0%)
+Job in progress (0%)
+Job in progress (0%)
+Job in progress (0%)
+Job in progress (0%)
+Job in progress (0%)
+Job in progress (0%)
+Job in progress (0%)
+Job in progress (0%)
+Job in progress (0%)
+Job in progress (0%)
+Job in progress (0%)
+Job in progress (0%)
+Job in progress (0%)
+Job in progress (0%)
+Job in progress (0%)
+Job in progress (0%)
+Job in progress (0%)
+Job in progress (0%)
+Job in progress (0%)
+Job in progress (0%)
+Job in progress (0%)
+Job in progress (0%)
+Job in progress (0%)
+Job in progress (0%)
+Job in progress (0%)
+Job in progress (0%)
+Job in progress (0%)
+DONE!</code></pre>
+</div>
+</div>
+<p><strong>Access the staged cloud datasets over native AWS interfaces</strong></p>
+<p>Check the <em>message</em> field in the response for clues about how to proceed:</p>
+<div class="cell">
+<div class="sourceCode" id="cb10"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(response[<span class="st">'message'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-stdout">
+<pre><code>The job has completed successfully. Contains results in AWS S3. Access from AWS us-west-2 with keys from https://harmony.earthdata.nasa.gov/cloud-access.sh</code></pre>
+</div>
+</div>
+<p>The third item in the list of <em>links</em> contains the shell script from the job status message printed above. Let’s download the same information in JSON format. It should be the fourth item; check to be sure:</p>
+<div class="cell">
+<div class="sourceCode" id="cb12"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(response[<span class="st">'links'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p>102</p>
+</div>
+</div>
+<p>Select the url and download the json, then load to Python dictionary and print the keys:</p>
+<div class="cell">
+<div class="sourceCode" id="cb13"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> requests.get(response[<span class="st">'links'</span>][<span class="dv">3</span>][<span class="st">'href'</span>]) <span class="im">as</span> r:</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    creds <span class="op">=</span> r.json()</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(creds.keys())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-stdout">
+<pre><code>dict_keys(['AccessKeyId', 'SecretAccessKey', 'SessionToken', 'Expiration'])</code></pre>
+</div>
+</div>
+<p>Check the expiration timestamp for the temporary credentials:</p>
+<div class="cell">
+<div class="sourceCode" id="cb15"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>creds[<span class="st">'Expiration'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p>‘2021-06-11T02:36:29.000Z’</p>
+</div>
+</div>
+<p><strong>Open zarr datasets with <em>s3fs</em> and <em>xarray</em></strong></p>
+<p>Get the s3 output directory and list of zarr datasets from the list of <em>links</em>. The s3 directory should be the fifth item; the urls are from item six onward:</p>
+<div class="cell">
+<div class="sourceCode" id="cb16"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>s3_dir <span class="op">=</span> response[<span class="st">'links'</span>][<span class="dv">4</span>][<span class="st">'href'</span>]</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(s3_dir)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-stdout">
+<pre><code>s3://harmony-prod-staging/public/harmony/netcdf-to-zarr/2295236b-8086-4543-9482-f524a9f2d0c3/</code></pre>
+</div>
+</div>
+<p>Now select the URLs for the staged files and print the first one:</p>
+<div class="cell">
+<div class="sourceCode" id="cb18"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>s3_urls <span class="op">=</span> [u[<span class="st">'href'</span>] <span class="cf">for</span> u <span class="kw">in</span> response[<span class="st">'links'</span>][<span class="dv">5</span>:]]</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(s3_urls[<span class="dv">0</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-stdout">
+<pre><code>s3://harmony-prod-staging/public/harmony/netcdf-to-zarr/2295236b-8086-4543-9482-f524a9f2d0c3/OCEAN_BOTTOM_PRESSURE_mon_mean_2009-12_ECCO_V4r4_latlon_0p50deg.zarr</code></pre>
+</div>
+</div>
+<p>Use the AWS <em>s3fs</em> package and your temporary <em><code>aws_creds</code></em> to open the zarr directory storage:</p>
+<div class="cell">
+<div class="sourceCode" id="cb20"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>s3 <span class="op">=</span> s3fs.S3FileSystem(</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>    key<span class="op">=</span>creds[<span class="st">'AccessKeyId'</span>],</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>    secret<span class="op">=</span>creds[<span class="st">'SecretAccessKey'</span>],</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>    token<span class="op">=</span>creds[<span class="st">'SessionToken'</span>],</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>    client_kwargs<span class="op">=</span>{<span class="st">'region_name'</span>:<span class="st">'us-west-2'</span>},</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(s3.ls(s3_dir))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p>97</p>
+</div>
+</div>
+<p><strong>Plot the first <em>Ocean Bottom Pressure</em> dataset</strong></p>
+<p>Check out the documentation for xarray’s open_zarr method at <a href="http://xarray.pydata.org/en/stable/generated/xarray.open_zarr.html">this link</a>. Open the first dataset and plot the OBP variable:</p>
+<div class="cell">
+<div class="sourceCode" id="cb21"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>ds0 <span class="op">=</span> xr.open_zarr(s3.get_mapper(s3_urls[<span class="dv">0</span>]), decode_cf<span class="op">=</span><span class="va">True</span>, mask_and_scale<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Mask the dataset where OBP is not within the bounds of the variable's valid min/max:</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>ds0_masked <span class="op">=</span> ds0.where((ds0.OBP<span class="op">&gt;=</span>ds0.OBP.valid_min) <span class="op">&amp;</span> (ds0.OBP<span class="op">&lt;=</span>ds0.OBP.valid_max))</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the masked dataset</span></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>ds0_masked.OBP.isel(time<span class="op">=</span><span class="dv">0</span>).plot.imshow(size<span class="op">=</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p>&lt;matplotlib.image.AxesImage at 0x7f28ed2ba4c0&gt;</p>
+</div>
+<div class="cell-output-display">
+<p><img src="cof-zarr-reformat_files/figure-html/cell-15-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+<p><strong>Load the zarr datasets into one large <em>xarray</em> dataset</strong></p>
+<p>Load all the datasets in a loop and concatenate them:</p>
+<div class="cell">
+<div class="sourceCode" id="cb22"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>zds <span class="op">=</span> xr.concat([xr.open_zarr(s3.get_mapper(u)) <span class="cf">for</span> u <span class="kw">in</span> s3_urls], dim<span class="op">=</span><span class="st">"time"</span>)</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(zds)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-stdout">
+<pre><code>&lt;xarray.Dataset&gt;
+Dimensions:         (latitude: 360, longitude: 720, nv: 2, time: 97)
+Coordinates:
+  * latitude        (latitude) float64 -89.75 -89.25 -88.75 ... 89.25 89.75
+    latitude_bnds   (latitude, nv) float64 -90.0 -89.5 -89.5 ... 89.5 89.5 90.0
+  * longitude       (longitude) float64 -179.8 -179.2 -178.8 ... 179.2 179.8
+    longitude_bnds  (longitude, nv) float64 -180.0 -179.5 -179.5 ... 179.5 180.0
+  * time            (time) datetime64[ns] 2009-12-16T12:00:00 ... 2017-12-16T...
+    time_bnds       (time, nv) datetime64[ns] dask.array&lt;chunksize=(1, 2), meta=np.ndarray&gt;
+Dimensions without coordinates: nv
+Data variables:
+    OBP             (time, latitude, longitude) float64 dask.array&lt;chunksize=(1, 360, 720), meta=np.ndarray&gt;
+    OBPGMAP         (time, latitude, longitude) float64 dask.array&lt;chunksize=(1, 360, 720), meta=np.ndarray&gt;
+Attributes: (12/57)
+    Conventions:                  CF-1.8, ACDD-1.3
+    acknowledgement:              This research was carried out by the Jet Pr...
+    author:                       Ian Fenty and Ou Wang
+    cdm_data_type:                Grid
+    comment:                      Fields provided on a regular lat-lon grid. ...
+    coordinates_comment:          Note: the global 'coordinates' attribute de...
+    ...                           ...
+    time_coverage_duration:       P1M
+    time_coverage_end:            2010-01-01T00:00:00
+    time_coverage_resolution:     P1M
+    time_coverage_start:          2009-12-01T00:00:00
+    title:                        ECCO Ocean Bottom Pressure - Monthly Mean 0...
+    uuid:                         297c8df0-4158-11eb-b208-0cc47a3f687b</code></pre>
+</div>
+</div>
+<p>Reference OBP and mask the dataset according to the valid minimum and maximum:</p>
+<div class="cell">
+<div class="sourceCode" id="cb24"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>obp <span class="op">=</span> zds.OBP</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(obp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-stdout">
+<pre><code>&lt;xarray.DataArray 'OBP' (time: 97, latitude: 360, longitude: 720)&gt;
+dask.array&lt;concatenate, shape=(97, 360, 720), dtype=float64, chunksize=(1, 360, 720), chunktype=numpy.ndarray&gt;
+Coordinates:
+  * latitude   (latitude) float64 -89.75 -89.25 -88.75 ... 88.75 89.25 89.75
+  * longitude  (longitude) float64 -179.8 -179.2 -178.8 ... 178.8 179.2 179.8
+  * time       (time) datetime64[ns] 2009-12-16T12:00:00 ... 2017-12-16T06:00:00
+Attributes:
+    comment:                OBP excludes the contribution from global mean at...
+    coverage_content_type:  modelResult
+    long_name:              Ocean bottom pressure given as equivalent water t...
+    units:                  m
+    valid_max:              72.07011413574219
+    valid_min:              -1.7899188995361328</code></pre>
+</div>
+</div>
+<p>Get the valid min and max from the corresponding CF attributes:</p>
+<div class="cell">
+<div class="sourceCode" id="cb26"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>obp_vmin, obp_vmax <span class="op">=</span> obp.valid_min, obp.valid_max</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>obp_vmin, obp_vmax</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p>(-1.7899188995361328, 72.07011413574219)</p>
+</div>
+</div>
+<p>Mask the dataset according to the OBP min and max and plot a series:</p>
+<div class="cell">
+<div class="sourceCode" id="cb27"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Mask dataset where not inside OBP variable valid min/max:</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>zds_masked <span class="op">=</span> zds.where((obp<span class="op">&gt;=</span>obp_vmin)<span class="op">&amp;</span>(obp<span class="op">&lt;=</span>obp_vmax))</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot SSH again for the first 12 time slices:</span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>obpp <span class="op">=</span> zds_masked.OBP.isel(time<span class="op">=</span><span class="bu">slice</span>(<span class="dv">0</span>, <span class="dv">6</span>)).plot(</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="st">"longitude"</span>, </span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span><span class="st">"latitude"</span>, </span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>    col<span class="op">=</span><span class="st">"time"</span>,</span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>    levels<span class="op">=</span><span class="dv">8</span>,</span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>    col_wrap<span class="op">=</span><span class="dv">3</span>, </span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>    add_colorbar<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>    figsize<span class="op">=</span>(<span class="dv">14</span>, <span class="dv">8</span>)</span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot a colorbar on a secondary axis</span></span>
+<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a>mappable <span class="op">=</span> obpp.axes[<span class="dv">0</span>][<span class="dv">0</span>].collections[<span class="dv">0</span>]</span>
+<span id="cb27-17"><a href="#cb27-17" aria-hidden="true" tabindex="-1"></a>cax <span class="op">=</span> plt.axes([<span class="fl">0.05</span>, <span class="op">-</span><span class="fl">0.04</span>, <span class="fl">0.95</span>, <span class="fl">0.04</span>])</span>
+<span id="cb27-18"><a href="#cb27-18" aria-hidden="true" tabindex="-1"></a>cbar1 <span class="op">=</span> plt.colorbar(mappable, cax<span class="op">=</span>cax, orientation<span class="op">=</span><span class="st">'horizontal'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="cof-zarr-reformat_files/figure-html/cell-19-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<!-- -->
+</section>
+</section>
+</section>
+</section>
+</main>
+<div class="page-navigation page-navigation-docked">
+  <div class="nav-page nav-page-previous">
+      <a href="../access/cof-via-harmony.html">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">COF via Earthdata Harmony</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../access/download-to-local.html">
+        <span class="nav-page-text">Download to local</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</div>
+</div> <!-- /main column -->
+</div> <!-- /row -->
+</div> <!-- /container fluid -->
+
+
+</body></html>
