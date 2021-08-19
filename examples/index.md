@@ -1,5 +1,5 @@
 ---
-title: Example notebooks
+title: Example tutorials 
 ---
 
 Upcoming, there will be end-to-end workflow examples, linked to pieces from examples above and vice-versa. 
