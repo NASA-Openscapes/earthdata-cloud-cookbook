@@ -5,15 +5,12 @@ import os
 from datetime import date
 
 import requests
+import markdown
 import nbformat as nbf
 from pqdm.processes import pqdm
 
 IMPORTED_PATH = '../external'
 
-def open_json(file_path):
-    with open(file_path) as f:
-        json_input = json.load(f)
-    return json_input
 
 def import_remote(url, target):
     if not os.path.exists(IMPORTED_PATH):
@@ -32,15 +29,15 @@ def inject_content(content, notebook):
     nb['cells'].insert(0, preamble_cell)
     nbf.write(nb, f'{IMPORTED_PATH}/{notebook}')
 
-
 def create_preamble_cell(document):
     target = document['target']
     url = document['url']
     import_date = date.today().strftime('%Y-%m-%d')
-    cell_content = f"""# {document['title']}\nimported on: **{import_date}** \n\n{document['preamble']}\n> The original source for this document is {document['source']}
-    """
+    cell_content = "\n\n".join( [f"# {document['title']}",
+                                   f"imported on: **{import_date}**",
+                                   f"{markdown.markdown(document['preamble'])}",
+                                   f"> The original source for this document is {document['source']}"])
     return cell_content
-
 
 def process_document(document):
     local_target = document['target']
@@ -51,18 +48,15 @@ def process_document(document):
         inject_content(preamble_cell, local_target)
     print(f'Processed: {local_target}')
 
-
-
-def main(json_input):
+def main(assets):
     """
     This module will fetch a URL, save it locally and inject some preamble
     The currently supported formats are: .ipynb
     """
-    for document in json_input:
+    for document in assets:
         process_document(document)
     # result = pqdm(json_input, process_document, n_jobs=2)
     return None
-
 
 
 if __name__ == '__main__':
@@ -73,5 +67,7 @@ if __name__ == '__main__':
                         help = "File to parse",
                         type = str)
     args=parser.parse_args()
-    documents_to_import = open_json(args.file)
-    result = main(documents_to_import)
+
+    with open(args.file) as f:
+        assets = json.load(f)
+    result = main(assets)
