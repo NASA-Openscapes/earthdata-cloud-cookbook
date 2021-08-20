@@ -370,8 +370,68 @@
 <header id="title-block-header">
 <h1 class="title d-none d-lg-block display-7">API Primer</h1>
 </header>
-<p>“Primer” about Interacting with NASA Earthdata APIs</p>
-<p>We’re going to discuss all of the different use cases across the NASA EOSDIS search and access APIs….</p>
+<p>The code-based chapters of this Cookbook utilize several NASA EOSDIS-supported Application Programming Interfaces, or APIs, to discover and access data programmatically.</p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>What is an API? You can think of an API as a middle man between an application or end-use and a data provider. In most cases the data provider is either the NASA Common Metadata Repository (CMR), which houses data information, or one or more of the NASA DAACs as the data distributors. These APIs are generally structured as a root URL, plus individual key-value-pairs separated by ‘&amp;’.</p>
+</div>
+</div>
+<p>Programmatic API access is beneficial for those who want to incorporate data access into a visualization and analysis workflow. This method is also reproducible and documented to ensure data provenance.</p>
+<p>The table below describes each of the common NASA Earthdata APIs along with their functions and use case examples. Documentation for each API is linked in each row.</p>
+<table class="table">
+<colgroup>
+<col style="width: 19%">
+<col style="width: 44%">
+<col style="width: 36%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>API</th>
+<th>Key Functions</th>
+<th>Use Case Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><a href="https://cmr.earthdata.nasa.gov/search/site/docs/search/api.html">Common Metadata Repository (CMR)</a></td>
+<td><code>Search</code> for datasets and data files using several filtering options, as well as associated tools, services, and data variables.</td>
+<td>For a given data set, I want to retrieve file information, including data access URLs, for all data occurring over my region and time period of interest.</td>
+</tr>
+<tr class="even">
+<td><p>CMR-STAC:</p>
+<ul>
+<li><p><a href="https://cmr.earthdata.nasa.gov/stac/docs/index.html">CMR STAC Catalog Documentation</a></p></li>
+<li><p><a href="https://cmr.earthdata.nasa.gov/stac">CMR STAC Catalog Endpoint</a></p></li>
+<li><p><a href="https://cmr.earthdata.nasa.gov/cloudstac">CMR STAC Catalog Endpoint for Cloud-hosted Holdings Only</a></p></li>
+</ul></td>
+<td><code>Search</code> data information housed by the CMR as assets through the SpatioTemporal Asset Catalog specification (STAC), which provides a common language for interpreting geospatial information in order to standardize indexing and discovering data.</td>
+<td>In addition to the CMR use case example above, I also want to use Python to directly load a dataset STAC asset into memory in order to view imagery and plot the data.</td>
+</tr>
+<tr class="odd">
+<td><a href="https://wiki.earthdata.nasa.gov/display/GIBS/GIBS+API+for+Developers">Global Imagery Browse Service (GIBS)</a></td>
+<td><code>Access</code> full-resolution browse imagery using standards-based web services and formats.</td>
+<td>I want to access and browse near real-time satellite imagery in a programming language or GIS application.</td>
+</tr>
+<tr class="even">
+<td><a href="https://harmony.earthdata.nasa.gov/">Harmony</a></td>
+<td><code>Access</code> and <code>Customize</code> data through subsetting, reformatting, and reprojection options.</td>
+<td>I want to receive subsetted data by time, area, and variables of interest in order to reduce data volume, as well as reformat to a cloud-optimized format to improve analysis performance in the cloud.</td>
+</tr>
+<tr class="odd">
+<td><a href="https://opendap.earthdata.nasa.gov/">OPeNDAP</a></td>
+<td><code>Access</code> and <code>Customize</code> data through subsetting and reformatting options.</td>
+<td>I want to access data files on-the-fly, subsetted by area or time dimensions.</td>
+</tr>
+</tbody>
+</table>
 <!-- -->
 </main>
 <div class="page-navigation page-navigation-docked">
