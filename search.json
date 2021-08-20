@@ -1,27 +1,9 @@
 [
   {
-    "href": "examples/ipynb-example.html#im-editing-this-in-jupyter-lab",
-    "title": ".ipynb notebook (python)",
-    "section": "I’m editing this in Jupyter Lab ",
-    "text": "And I will execute the cells as I develop the notebook. Then the executed notebook will display in our Cookbook through Quarto.\n\nImport the required packages and set the input/working directory to run this Jupyter Notebook locally.\n\nimport numpy as np\nimport matplotlib.pyplot as plt\n\nr = np.arange(0, 2, 0.01)\ntheta = 2 * np.pi * r\nfig, ax = plt.subplots(subplot_kw={'projection': 'polar'})\nax.plot(theta, r)\nax.set_rticks([0.5, 1, 1.5, 2])\nax.grid(True)\nplt.show()"
-  },
-  {
-    "href": "examples/qmd-example.html",
-    "title": ".qmd notebook (python)",
-    "section": "",
-    "text": "This is a .qmd file. I write prose here, using keyboard shortcuts or clicking above to make text bold and other formatting.\nAs I develop I’ll interactively run the following, but can set up caching so that it doesn’t execute the code\n\nimport numpy as np\nimport matplotlib.pyplot as plt\n\nr = np.arange(0, 2, 0.01)\ntheta = 2 * np.pi * r\nfig, ax = plt.subplots(subplot_kw={'projection': 'polar'})\nax.plot(theta, r)\nax.set_rticks([0.5, 1, 1.5, 2])\nax.grid(True)\nplt.show()\n\n\n\n\ntext boxes like this one are in markdown"
-  },
-  {
     "href": "examples/index.html",
-    "title": "Example notebooks",
+    "title": "Example tutorials",
     "section": "",
     "text": "Upcoming, there will be end-to-end workflow examples, linked to pieces from examples above and vice-versa.\nFor the moment, the following notebooks illustrate how we’re able to include .ipynb, .rmd, and .qmd files and execute python and R code in our tutorials."
-  },
-  {
-    "href": "examples/python-example.html",
-    "title": "Python example with Quarto",
-    "section": "",
-    "text": "This is a .qmd file. I write prose here, using keyboard shortcuts or clicking above to make text bold and other formatting.\nAs I develop I’ll interactively run the following, but can set up caching so that it doesn’t execute the code\n\nimport numpy as np\nimport matplotlib.pyplot as plt\n\nr = np.arange(0, 2, 0.01)\ntheta = 2 * np.pi * r\nfig, ax = plt.subplots(subplot_kw={'projection': 'polar'})\nax.plot(theta, r)\nax.set_rticks([0.5, 1, 1.5, 2])\nax.grid(True)\nplt.show()\n\ntext boxes like this one are in markdown"
   },
   {
     "href": "examples/NSIDC/ICESat2-CMR-AWS-S3.html#the-big-picture",
@@ -94,12 +76,6 @@
     "title": "",
     "section": "Data Access using AWS S3",
     "text": "IMPORTANT: This section will only work if this notebook is running on the AWS us-west-2 zone\n\nThere is more than one way of accessing data on AWS S3, either downloading it to your local machine using the official client library or using a python library.\nPerformance tip: using the HTTPS URLs will decrease the access performance since these links have to internally be processed by AWS’s content delivery system (CloudFront). To get a better performance we should access the S3:// URLs with BOTO3 or a high level S3 enabled library (i.e. S3FS)\nRelated links: * HDF in the Cloud challenges and solutions for scientific data * Cloud Storage (Amazon S3) HDF5 Connector\n\n# READ only temporary credentials\nimport s3fs\nimport h5py\n\n# This credentials only last 1 hour.\ns3_cred = CMR_auth.get_s3_credentials()\n\n\ns3_fs = s3fs.S3FileSystem(key=s3_cred['accessKeyId'],\n                          secret=s3_cred['secretAccessKey'],\n                          token=s3_cred['sessionToken'])\n\n# Now you could grab S3 links to your cloud instance (EC2, Hub etc) using:\n# s3_fs.get('s3://SOME_LOCATION/ATL03_20181015124359_02580106_004_01.h5', 'test.h5')\n\n\nWe now have the propper credentials and file mapper to access the data within AWS us-west-2.\n\nwith s3_fs.open('s3://nsidc-cumulus-prod-protected/ATLAS/ATL03/004/2018/10/15/ATL03_20181015124359_02580106_004_01.h5', 'rb') as s3f:\n    with h5py.File(s3f, 'r') as f:\n        print([key for key in f.keys()])\n\n\n\nUsing xarray to open files on S3\nATL data is complex so xarray doesn’t know how to extract the important bits out of it.\n\nimport xarray\n\nwith s3_fs.open('s3://nsidc-cumulus-prod-protected/ATLAS/ATL03/004/2018/10/15/ATL03_20181015124359_02580106_004_01.h5', 'rb') as s3f:\n    ds= xarray.open_dataset(s3f)\n    for varname in ds:\n        print(varname)\nds\n\n\n\n“Downloading” files on S3 using the official aws-cli library\nThe quotes on downloading are because ideally you’ll be working on an EC2 (virtual machine for short) instance on the us-west-2 region."
-  },
-  {
-    "href": "examples/rmd-example.html",
-    "title": ".Rmd notebook (R)",
-    "section": "",
-    "text": "This is an R Markdown Notebook. When you execute code within the notebook, the results appear beneath the code.\nTry executing this chunk by clicking the Run button within the chunk or by placing your cursor inside it and pressing Cmd+Shift+Enter.\n\nplot(cars)\n\n\n\n\nAdd a new chunk by clicking the Insert Chunk button on the toolbar or by pressing Cmd+Option+I.\nWhen you save the notebook, an HTML file containing the code and output will be saved alongside it (click the Preview button or press Cmd+Shift+K to preview the HTML file).\nThe preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike Knit, Preview does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed."
   },
   {
     "href": "discovery/Navigate_CMR_STAC.html#introduction-to-the-cmr-stac-api",
@@ -288,12 +264,6 @@
     "text": "More cool stuff."
   },
   {
-    "href": "appendix/glossary.html",
-    "title": "Glossary",
-    "section": "",
-    "text": "All the NASA (and more) acronyms, uncovered\nCOG: Cloud-optimized geo-tiff\nCTL: Command Line Tool"
-  },
-  {
     "href": "transformations/HarmonyPy_intro_tutorial.html#harmonypy-introduction",
     "title": "",
     "section": "HarmonyPy Introduction",
@@ -387,7 +357,7 @@
     "href": "external/zarr-eosdis-store.html",
     "title": "",
     "section": "",
-    "text": "Zarr Example\nimported on: 2021-08-19\nThis notebook is from NASA’s Zarr EOSDIS store notebook > The original source for this document is https://github.com/nasa/zarr-eosdis-store\n\n\nzarr-eosdis-store example\nInstall dependencies\n\nimport sys\n\n# zarr and zarr-eosdis-store, the main libraries being demoed\n!{sys.executable} -m pip install zarr zarr-eosdis-store\n\n# Notebook-specific libraries\n!{sys.executable} -m pip install matplotlib\n\nImportant: To run this, you must first create an Earthdata Login account (https://urs.earthdata.nasa.gov) and place your credentials in ~/.netrc e.g.:\n   machine urs.earthdata.nasa.gov login YOUR_USER password YOUR_PASSWORD\nNever share or commit your password / .netrc file!\nBasic usage. After these lines, we work with ds as though it were a normal Zarr dataset\n\nimport zarr\nfrom eosdis_store import EosdisStore\n\nurl = 'https://archive.podaac.earthdata.nasa.gov/podaac-ops-cumulus-protected/MUR-JPL-L4-GLOB-v4.1/20210715090000-JPL-L4_GHRSST-SSTfnd-MUR-GLOB-v02.0-fv04.1.nc'\n\nds = zarr.open(EosdisStore(url))\n\nView the file’s variable structure\n\nprint(ds.tree())\n\n/\n ├── analysed_sst (1, 17999, 36000) int16\n ├── analysis_error (1, 17999, 36000) int16\n ├── dt_1km_data (1, 17999, 36000) int16\n ├── lat (17999,) float32\n ├── lon (36000,) float32\n ├── mask (1, 17999, 36000) int16\n ├── sea_ice_fraction (1, 17999, 36000) int16\n ├── sst_anomaly (1, 17999, 36000) int16\n └── time (1,) int32\n\n\nFetch the latitude and longitude arrays and determine start and end indices for our area of interest. In this case, we’re looking at the Great Lakes, which have a nice, recognizeable shape. Latitudes 41 to 49, longitudes -93 to 76.\n\nlats = ds['lat'][:]\nlons = ds['lon'][:]\nlat_range = slice(lats.searchsorted(41), lats.searchsorted(49))\nlon_range = slice(lons.searchsorted(-93), lons.searchsorted(-76))\n\nGet the analysed sea surface temperature variable over our area of interest and apply scale factor and offset from the file metadata. In a future release, scale factor and add offset will be automatically applied.\n\nvar = ds['analysed_sst']\nanalysed_sst = var[0, lat_range, lon_range] * var.attrs['scale_factor'] + var.attrs['add_offset']\n\nDraw a pretty picture\n\nfrom matplotlib import pyplot as plt\n\nplt.rcParams[\"figure.figsize\"] = [16, 8]\nplt.imshow(analysed_sst[::-1, :])\nNone\n\n\n\n\nIn a dozen lines of code and a few seconds, we have managed to fetch and visualize the 3.2 megabyte we needed from a 732 megabyte file using the original archive URL and no processing services"
+    "text": "Zarr Example\nimported on: 2021-08-20\nThis notebook is from NASA’s Zarr EOSDIS store notebook > The original source for this document is https://github.com/nasa/zarr-eosdis-store\n\n\nzarr-eosdis-store example\nInstall dependencies\n\nimport sys\n\n# zarr and zarr-eosdis-store, the main libraries being demoed\n!{sys.executable} -m pip install zarr zarr-eosdis-store\n\n# Notebook-specific libraries\n!{sys.executable} -m pip install matplotlib\n\nImportant: To run this, you must first create an Earthdata Login account (https://urs.earthdata.nasa.gov) and place your credentials in ~/.netrc e.g.:\n   machine urs.earthdata.nasa.gov login YOUR_USER password YOUR_PASSWORD\nNever share or commit your password / .netrc file!\nBasic usage. After these lines, we work with ds as though it were a normal Zarr dataset\n\nimport zarr\nfrom eosdis_store import EosdisStore\n\nurl = 'https://archive.podaac.earthdata.nasa.gov/podaac-ops-cumulus-protected/MUR-JPL-L4-GLOB-v4.1/20210715090000-JPL-L4_GHRSST-SSTfnd-MUR-GLOB-v02.0-fv04.1.nc'\n\nds = zarr.open(EosdisStore(url))\n\nView the file’s variable structure\n\nprint(ds.tree())\n\n/\n ├── analysed_sst (1, 17999, 36000) int16\n ├── analysis_error (1, 17999, 36000) int16\n ├── dt_1km_data (1, 17999, 36000) int16\n ├── lat (17999,) float32\n ├── lon (36000,) float32\n ├── mask (1, 17999, 36000) int16\n ├── sea_ice_fraction (1, 17999, 36000) int16\n ├── sst_anomaly (1, 17999, 36000) int16\n └── time (1,) int32\n\n\nFetch the latitude and longitude arrays and determine start and end indices for our area of interest. In this case, we’re looking at the Great Lakes, which have a nice, recognizeable shape. Latitudes 41 to 49, longitudes -93 to 76.\n\nlats = ds['lat'][:]\nlons = ds['lon'][:]\nlat_range = slice(lats.searchsorted(41), lats.searchsorted(49))\nlon_range = slice(lons.searchsorted(-93), lons.searchsorted(-76))\n\nGet the analysed sea surface temperature variable over our area of interest and apply scale factor and offset from the file metadata. In a future release, scale factor and add offset will be automatically applied.\n\nvar = ds['analysed_sst']\nanalysed_sst = var[0, lat_range, lon_range] * var.attrs['scale_factor'] + var.attrs['add_offset']\n\nDraw a pretty picture\n\nfrom matplotlib import pyplot as plt\n\nplt.rcParams[\"figure.figsize\"] = [16, 8]\nplt.imshow(analysed_sst[::-1, :])\nNone\n\n\n\n\nIn a dozen lines of code and a few seconds, we have managed to fetch and visualize the 3.2 megabyte we needed from a 732 megabyte file using the original archive URL and no processing services"
   },
   {
     "href": "access/download-to-local.html",
