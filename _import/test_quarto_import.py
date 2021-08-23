@@ -4,14 +4,10 @@ import shutil
 import nbformat as nbf
 import pytest
 
-from quarto_import import open_json, import_remote, inject_content
+from quarto_import import import_remote, inject_content
 
 LOCAL_IMPORT_PATH = '../external'
 
-def test_quarto_import_can_read_json():
-    file_path = 'assets.json'
-    json_input = open_json(file_path)
-    assert len(json_input) > 0
 
 def test_quarto_import_can_import_remote():
     remote_url = 'https://raw.githubusercontent.com/nasa-jpl/itslive-explorer/main/notebooks/itslive-notebook-rendered.ipynb'
