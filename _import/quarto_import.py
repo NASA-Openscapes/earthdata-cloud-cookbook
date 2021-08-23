@@ -32,11 +32,12 @@ def inject_content(content, notebook):
 def create_preamble_cell(document):
     target = document['target']
     url = document['url']
+    source_link = f"[{document['source']}]({document['source']})"
     import_date = date.today().strftime('%Y-%m-%d')
     cell_content = "\n\n".join( [f"# {document['title']}",
                                    f"imported on: **{import_date}**",
                                    f"{markdown.markdown(document['preamble'])}",
-                                   f"> The original source for this document is {document['source']}"])
+                                   f"> The original source for this document is {source_link}"])
     return cell_content
 
 def process_document(document):
