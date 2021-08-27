@@ -1,7 +1,7 @@
 ---
 title: Search by shapefile
 execute:
-  eval: false
+  freeze: true
 ---
 
 ## Introduction
@@ -36,7 +36,7 @@ As NASA Earthdata transitions to the Earthdata Cloud, it will be common for some
 
 ## First, import needed packages and libraries
 
-```{python}
+```{.python}
 #| ExecuteTime: {end_time: '2020-12-04T06:29:48.865985Z', start_time: '2020-12-04T06:29:47.947204Z'}
 %matplotlib inline
 
@@ -75,7 +75,7 @@ Make sure that this file is only readable by the current user or you will receiv
 
 `$ chmod 0600 ~/.netrc` 
 
-```{python}
+```{.python}
 #| ExecuteTime: {end_time: '2020-12-04T06:33:37.797905Z', start_time: '2020-12-04T06:33:37.789707Z'}
 from netrc import netrc
 from platform import system
@@ -150,7 +150,7 @@ In this tutorial we will be using the **MODIS-Terra SST L2 collection**, with th
 
 To search Earthdata from this notebook, we can use the following code with key words that describe our dataset (also knows as a **collection**). This snippet of Python code uses the `requests` module to get collection metadata from the CMR, with our dataset of interset *shortname* and *provider* as search criteria (parameters). In subsequet notebooks (demos), this functionality is hidden in a package called `tutorial_helper_functions` for ease of use. For now, this code snippet will help us understand how the request is made:
 
-```{python}
+```{.python}
 #| ExecuteTime: {end_time: '2020-12-04T06:29:54.594592Z', start_time: '2020-12-04T06:29:54.153543Z'}
 modis_coll = requests.get(
     url="https://cmr.earthdata.nasa.gov/search/collections.umm_json",    # CMR API url
@@ -166,7 +166,7 @@ Based on the metadata retrieved above, we now know the collection ID (*concept-i
 
 To **retrieve the *granule (file)* metadata** from the CMR:
 
-```{python}
+```{.python}
 #| ExecuteTime: {end_time: '2020-12-04T06:29:55.049622Z', start_time: '2020-12-04T06:29:54.597071Z'}
 modis_gran = requests.get(
     url="https://cmr.earthdata.nasa.gov/search/granules.umm_json", 
@@ -185,7 +185,7 @@ In this case, the metadata tells us that the the granule ID is `G1967602341-POCL
 ### Access & preview the data - get a quick feel for what the data looks like
 Here is how to list the URLs needed to access the data:
 
-```{python}
+```{.python}
 #| ExecuteTime: {end_time: '2020-12-04T06:29:55.055258Z', start_time: '2020-12-04T06:29:55.051358Z'}
 modis_gran['items'][0]['umm']['RelatedUrls']
 ```

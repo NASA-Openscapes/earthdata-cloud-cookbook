@@ -1,5 +1,5 @@
 ---
-title: EarthData Login {#earthdata-login}
+title: EarthData Login 
 execute:
   eval: false
 format:
@@ -117,6 +117,20 @@ except TypeError:
 ```
 
 **PO.DAAC Approach:**
+
+```
+Julie note to Catalina/Jack: I wasn't sure if this would be best here or in the search-by-shapefile.qmd: 
+
+The setup_earthdata_login_auth function will allow Python scripts to log into any Earthdata Login application programmatically. To avoid being prompted for credentials every time you run and also allow clients such as curl to log in, you can add the following to a .netrc (_netrc on Windows) file in your home directory:
+
+machine urs.earthdata.nasa.gov
+    login <your username>
+    password <your password>
+Make sure that this file is only readable by the current user or you will receive an error stating "netrc access too permissive."
+
+$ chmod 0600 ~/.netrc
+```
+
 
 ```{python}
 #| eval: FALSE

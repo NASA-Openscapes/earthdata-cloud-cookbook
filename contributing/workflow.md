@@ -547,6 +547,7 @@ This is a bit of a hacky way that we can formalize further if it's useful:
 1. In the command line: 
 
 ```{.bash}
+#| eval: false
 quarto convert help # reminder of commands!
 quarto convert discovery/search-by-shapefile.ipynb # convert to .qmd
 rm discovery/search-by-shapefile.ipynb # delete .ipynb
