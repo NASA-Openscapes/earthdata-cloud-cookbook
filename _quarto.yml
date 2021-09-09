@@ -4,6 +4,7 @@ project:
 
 execute:
   ipynb: false
+  qmd: false
   freeze: true
 
 site:
@@ -36,6 +37,7 @@ site:
           - get-started/api-primer.qmd
       - section: discovery/index.md
         contents:
+          - discovery/search-by-shapefile.qmd
           - discovery/Navigate_CMR_STAC.ipynb
           - discovery/earthdata-search-ui.md
           - discovery/cmr-virtual-directories.md
