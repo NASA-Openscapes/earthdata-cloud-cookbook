@@ -1,7 +1,5 @@
 ---
-title: Search by shapefile
-execute:
-  freeze: true
+title: "Search by shapefile"
 ---
 
 ## Introduction
@@ -129,7 +127,7 @@ To access POCLOUD Earthdata Cloud data, you want URLs with 'Type': `'GET DATA'` 
 
 **Lesson note:** This URL points you to data that is archived in a cloud environment, namely, PO.DAAC's 'space' in the AWS S3 storage environment.
 
-```{python}
+```{.python}
 #| ExecuteTime: {end_time: '2020-12-04T06:29:55.060096Z', start_time: '2020-12-04T06:29:55.056913Z'}
 modis_url = modis_gran['items'][0]['umm']['RelatedUrls'][1]['URL']
 modis_url
@@ -141,7 +139,7 @@ Download the file and open it with xarray in memory. This will pull cloud-stored
 
 **Lesson note:** You are now downloading a file to your local space, from the PO.DAAC (Earthdata) archive that lives in the AWS cloud. Again, there is no charge for the user in doing so.
 
-```{python}
+```{.python}
 #| ExecuteTime: {end_time: '2020-12-04T06:30:04.410453Z', start_time: '2020-12-04T06:29:55.061545Z'}
 with request.urlopen(modis_url) as response, open('tutorial1_data_MODIS.nc', 'wb') as out_file:
     print('Content Size:', response.headers['Content-length'])
@@ -151,12 +149,12 @@ with request.urlopen(modis_url) as response, open('tutorial1_data_MODIS.nc', 'wb
 
 You can preview metadata of the downloaded file with `ncdump`, or open in memory wtih `xarray`.
 
-```{python}
+```{.python}
 #| ExecuteTime: {end_time: '2020-12-04T06:30:04.421842Z', start_time: '2020-12-04T06:30:04.418347Z'}
 #!ncdump -h tutorial1_data_MODIS.nc
 ```
 
-```{python}
+```{.python}
 #| ExecuteTime: {end_time: '2020-12-04T06:30:04.487207Z', start_time: '2020-12-04T06:30:04.426000Z'}
 import xarray as xr
 ds_MODIS = xr.open_dataset('tutorial1_data_MODIS.nc')
@@ -165,7 +163,7 @@ print(ds_MODIS)
 
 Let's do a **quick plot** of the `sea_surface_temperature` variable:
 
-```{python}
+```{.python}
 #| ExecuteTime: {end_time: '2020-12-04T06:30:06.085479Z', start_time: '2020-12-04T06:30:04.488930Z'}
 from pandas.plotting import register_matplotlib_converters
 
@@ -174,7 +172,7 @@ ds_MODIS.sea_surface_temperature.plot()
 
 We can see the time this file represents, and the variable, but it's hard to tell where on the map we are. Let's try it another way:
 
-```{python}
+```{.python}
 #| ExecuteTime: {end_time: '2020-12-04T06:30:48.432752Z', start_time: '2020-12-04T06:30:06.086741Z'}
 import cartopy.crs as ccrs
 import matplotlib.pyplot as plt
@@ -223,7 +221,7 @@ We will now search with an ESRI shapefile and a temporal bound to limit our spac
 
 (Side note: the token parameter below allows you to access this new PO.DAAC cloud operational archive space. This is possible because your Earthdata login was added to a list of early access users to this cloud environment, for this workshop.)
 
-```{python}
+```{.python}
 #| ExecuteTime: {end_time: '2020-12-04T06:30:49.137241Z', start_time: '2020-12-04T06:30:48.434222Z'}
 #| scrolled: false
 # the URL of the CMR searvice
@@ -252,13 +250,13 @@ Let's take a look at the url for the first data file this spatial and temporal s
 
 **For now, let's plot the first files** from our query, that we have downloaded to your local space.
 
-```{python}
+```{.python}
 #| ExecuteTime: {end_time: '2020-12-04T06:30:49.142051Z', start_time: '2020-12-04T06:30:49.138854Z'}
 new_modis_url = results['items'][0]['umm']['RelatedUrls'][1]['URL']
 new_modis_url
 ```
 
-```{python}
+```{.python}
 #| ExecuteTime: {end_time: '2020-12-04T06:30:52.119682Z', start_time: '2020-12-04T06:30:49.143442Z'}
 with request.urlopen(new_modis_url) as response, open('tutorial1_data_MODIS_from_shp.nc', 'wb') as out_file:
     print('Content Size:', response.headers['Content-length'])
@@ -266,13 +264,13 @@ with request.urlopen(new_modis_url) as response, open('tutorial1_data_MODIS_from
     print("Downloaded request to tutorial1_data_MODIS_from_shp.nc")
 ```
 
-```{python}
+```{.python}
 #| ExecuteTime: {end_time: '2020-12-04T06:30:52.172485Z', start_time: '2020-12-04T06:30:52.121636Z'}
 ds_MODIS_shp = xr.open_dataset('tutorial1_data_MODIS_from_shp.nc')
 ds_MODIS_shp
 ```
 
-```{python}
+```{.python}
 #| ExecuteTime: {end_time: '2020-12-04T06:31:34.060892Z', start_time: '2020-12-04T06:30:52.174585Z'}
 import cartopy.crs as ccrs
 import matplotlib.pyplot as plt
@@ -298,7 +296,7 @@ Indeed the granule returned matches the search boundary:
 ## 5. Download after spatial and temporal selection
 Loop to download the MODIS SST files based on our search criteria (those that intersect the region of interest (defined by our shapefile here) and our period of interest.
 
-```{python}
+```{.python}
 #| ExecuteTime: {end_time: '2020-12-04T06:31:34.072671Z', start_time: '2020-12-04T06:31:34.068053Z'}
 urls = []
 for r in results['items']:
@@ -308,7 +306,7 @@ for r in results['items']:
 urls
 ```
 
-```{python}
+```{.python}
 #| ExecuteTime: {end_time: '2020-12-04T06:33:08.813653Z', start_time: '2020-12-04T06:31:34.074108Z'}
 for u in urls:
     print(u)
