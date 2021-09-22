@@ -143,7 +143,7 @@
   <div class="sidebar-menu-container"> 
   <ul class="list-unstyled mt-3 px-3">
       <li class="sidebar-item">
-  <a href="../index.html" class="">Welcome</a>
+  <a href="../index.md" class="">Welcome</a>
 </li>
       <ul class="list-unstyled sidebar-section depth1">
     <li class="">
@@ -210,6 +210,9 @@
         </div>
       <div class="collapse  show" id="nasaclouddatadiscovery-collapse">
         <ul class="list-unstyled sidebar-item-contents">
+          <li class="sidebar-item">
+  <a href="../discovery/search-by-shapefile.html" class="">Search by shapefile</a>
+</li>
           <li class="sidebar-item">
   <a href="../discovery/Navigate_CMR_STAC.html" class="">CMR and CMR-STAC API</a>
 </li>
@@ -461,6 +464,7 @@
 <ul class="collapse">
 <li><a href="#executing-notebooks" class="nav-link" data-scroll-target="#executing-notebooks">Executing notebooks</a></li>
 <li><a href="#including-remote-notebooks" class="nav-link" data-scroll-target="#including-remote-notebooks">Including remote notebooks</a></li>
+<li><a href="#create-a-.qmd-from-external-.ipynb" class="nav-link" data-scroll-target="#create-a-.qmd-from-external-.ipynb">Create a .qmd from external .ipynb</a></li>
 </ul></li>
 <li><a href="#code-review" class="nav-link" data-scroll-target="#code-review">Code Review</a></li>
 <li><a href="#troubleshooting" class="nav-link" data-scroll-target="#troubleshooting">Troubleshooting</a>
@@ -710,14 +714,14 @@ This command line instance is now being used to serve Quarto
 <h3 class="anchored" data-anchor-id="create-a-jupyter-kernel-to-run-notebooks">Create a Jupyter kernel to run notebooks</h3>
 <p>The default jupyter kernel may not have all the libraries you need to run a notebook. Fortunately, you can make a new kernel on the fly to use with the notebook.</p>
 <ol type="1">
-<li>Open a terminal in JupyterLab.
+<li><p>Open a terminal in JupyterLab.</p>
 <ol type="1">
 <li>Click on the large blue “+” button on the upper left. <em>You should get a new Laucher tab.</em></li>
 <li>In the Launcher tab, click on “Terminal” under “Other.” <em>You should get a tab with a command line prompt.</em></li>
 </ol></li>
-<li>Create a conda environment using your <a href="https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html">favorite method</a>.</li>
-<li>Activate the new environment with <code>conda activate YOUR_ENVIRONMENT_HERE</code>. <em>You should see the name of the new environment in your command line prompt.</em></li>
-<li>Create a new kernel by calling <code>ipython kernel install --name YOUR_ENVIRONMENT_HERE --user</code>. <em>You should get a response saying saying the kernel has been installed.</em></li>
+<li><p>Create a conda environment using your <a href="https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html">favorite method</a>.</p></li>
+<li><p>Activate the new environment with <code>conda activate YOUR_ENVIRONMENT_HERE</code>. <em>You should see the name of the new environment in your command line prompt.</em></p></li>
+<li><p>Create a new kernel by calling <code>ipython kernel install --name YOUR_ENVIRONMENT_HERE --user</code>. <em>You should get a response saying saying the kernel has been installed.</em></p></li>
 </ol>
 <p>To use this new kernel,</p>
 <ol type="1">
@@ -771,12 +775,27 @@ This command line instance is now being used to serve Quarto
 </ol></li>
 </ol>
 <p>After these updates to <code>_import/assets.json</code>, to the following in the terminal:</p>
-<pre class="{bash}"><code>cd _import
-conda env update -f environment.yml
-conda activate quarto-import
-python quarto_import.py -f assets.json</code></pre>
+<div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> _import</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env update <span class="at">-f</span> environment.yml</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate quarto-import</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> quarto_import.py <span class="at">-f</span> assets.json</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This will return a confirmation of the file that has been processed.</p>
 <p>Then update <code>_quarto.yml</code> by adding your file (<code>external/&lt;target</code>) to the appropriate location in the Cookbook.</p>
+</section>
+<section id="create-a-.qmd-from-external-.ipynb" class="level3">
+<h3 class="anchored" data-anchor-id="create-a-.qmd-from-external-.ipynb">Create a .qmd from external .ipynb</h3>
+<p>This is a bit of a hacky way that we can formalize further if it’s useful:</p>
+<ol type="1">
+<li>Go to an existing notebook, e.g.&nbsp;<a href="https://github.com/podaac/AGU-2020/blob/main/Part-II/01_sst_shpfile/AGU_tutorial1_shp_search.ipynb" class="uri">https://github.com/podaac/AGU-2020/blob/main/Part-II/01_sst_shpfile/AGU_tutorial1_shp_search.ipynb</a></li>
+<li>Click on Raw, e.g.&nbsp;<a href="https://raw.githubusercontent.com/podaac/AGU-2020/main/Part-II/01_sst_shpfile/AGU_tutorial1_shp_search.ipynb" class="uri">https://raw.githubusercontent.com/podaac/AGU-2020/main/Part-II/01_sst_shpfile/AGU_tutorial1_shp_search.ipynb</a></li>
+<li>Copy text</li>
+<li>In your local setup (e.g.&nbsp;RStudio IDE): New File &gt; Text File &gt; Paste &gt; Save (with the same name if appropriate) and <code>.ipynb</code> extension, e.g.: <code>discovery/search-by-shapefile.ipynb</code></li>
+<li>In the command line:</li>
+</ol>
+<div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> convert help <span class="co"># reminder of commands!</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> convert discovery/search-by-shapefile.ipynb <span class="co"># convert to .qmd</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> discovery/search-by-shapefile.ipynb <span class="co"># delete .ipynb</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 <section id="code-review" class="level2">
@@ -793,10 +812,10 @@ python quarto_import.py -f assets.json</code></pre>
 <section id="leaveexit-a-virtual-environment" class="level3">
 <h3 class="anchored" data-anchor-id="leaveexit-a-virtual-environment">Leave/exit a virtual environment</h3>
 <p>In your Command Line Shell, if you want to leave your virtual environment, the command is:</p>
-<pre class="{bash}"><code>deactivate</code></pre>
+<div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">deactivate</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The way you tell that you are in a virtual environment: it’s named in parentheses at the beginning of your prompt:</p>
-<pre class="{bash}"><code>(.venv) (base) JLos-Macbook-Pro:earthdata-cloud-cookbook lowndes$ deactivate
-(base) JLos-Macbook-Pro:earthdata-cloud-cookbook lowndes$</code></pre>
+<div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">.venv</span><span class="kw">)</span> <span class="kw">(</span><span class="ex">base</span><span class="kw">)</span> <span class="ex">JLos-Macbook-Pro:earthdata-cloud-cookbook</span> lowndes$ deactivate</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">base</span><span class="kw">)</span> <span class="ex">JLos-Macbook-Pro:earthdata-cloud-cookbook</span> lowndes$</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <!-- -->
 </section>
 </section>
@@ -807,6 +826,9 @@ python quarto_import.py -f assets.json</code></pre>
   <div class="nav-page nav-page-next">
   </div>
 </div>
+  <div class="row nav-footer">
+    <div class="nav-footer-contents">NASA Openscapes Team (2021). Earthdata Cloud Cookbook (Version v0.0.1).</div>
+  </div>
 </div> <!-- /main column -->
 </div> <!-- /row -->
 </div> <!-- /container fluid -->
