@@ -10,10 +10,10 @@ Different workflows: UI and programmatic.
 
 For programmatic access to NASA data on the cloud, we recommend familiarity with the following:
 
-Basic Programming in R or Python through Carpentries:
+Basic Programming in R and Python:
 
--   [**Introduction to Open Data Science with R**](https://carpentries-incubator.github.io/open-science-with-r/)
--   [**Introduction to Geospatial Raster and Vector Data with Python**](https://carpentries-incubator.github.io/geospatial-python/)
+-   [**Introduction to Open Data Science with R**](https://rstudio-conf-2020.github.io/r-for-excel/) - Lowndes & Horst, RStudio Conference 2020
+-   [**Introduction to Geospatial Raster and Vector Data with Python**](https://carpentries-incubator.github.io/geospatial-python/) - Carpentries Incubator
 
 Using both the Scientific Python Ecosystem and Cloud Computing together:
 
