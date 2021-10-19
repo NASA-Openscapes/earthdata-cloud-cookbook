@@ -372,6 +372,38 @@ From J.J. Allaire:
 > doesn't do this to give the user a choice between an expensive render
 > and a cheap save.
 
+### Includes (re-use markdown)
+
+We are setup with an **includes filter** (details at [Quarto.org](https://quarto.org/docs/authoring/shortcodes-and-filters.html#includes)) that lets us re-use markdown content within a project! (You can think of this like "knit child" in R Markdown and lets you source text like you source scripts from each other). This means that we can write text more modularly and re-use it in multiple places so that it's always up to date. 
+
+An example of this in action is in our [2021-Cloud-Hackathon](https://nasa-openscapes.github.io/2021-Cloud-Hackathon/logistics/schedule.html) Quarto book, where each day of the [schedule](https://nasa-openscapes.github.io/2021-Cloud-Hackathon/logistics/schedule.html) is saved in a separate file:
+
+![](images/schedule-lua-md.png)
+
+<br>
+
+This is then called within a book chapter, with a relative filepath:
+
+
+```
+The Clinic will occur in 2 halves, with a 5 minute break in-between:
+
+{.include}
+../logistics/_schedule-clinic.md
+```
+
+
+
+...to finally look like so: 
+
+![](images/schedule-lua.png)
+
+
+**Includes - things to note**
+
+- prefix files to include with an underscore. 
+  - From [quarto.org](https://quarto.org/docs/authoring/shortcodes-and-filters.html#includes): You should always use an underscore prefix with included files so that they are automatically ignored (i.e. not treated as standalone files) by a `quarto render` of your project.
+
 ## 2i2c Workflow
 
 We use [2i2c](https://2i2c.org/) to run notebooks.
