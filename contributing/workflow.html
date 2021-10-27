@@ -467,6 +467,11 @@
 <li><a href="#including-remote-notebooks" class="nav-link" data-scroll-target="#including-remote-notebooks">Including remote notebooks</a></li>
 <li><a href="#create-a-.qmd-from-external-.ipynb" class="nav-link" data-scroll-target="#create-a-.qmd-from-external-.ipynb">Create a .qmd from external .ipynb</a></li>
 </ul></li>
+<li><a href="#notebook-review" class="nav-link" data-scroll-target="#notebook-review">Notebook Review</a>
+<ul class="collapse">
+<li><a href="#preamble" class="nav-link" data-scroll-target="#preamble">Preamble</a></li>
+<li><a href="#review-with-.qmds" class="nav-link" data-scroll-target="#review-with-.qmds">Review with .qmds</a></li>
+</ul></li>
 <li><a href="#code-review" class="nav-link" data-scroll-target="#code-review">Code Review</a></li>
 <li><a href="#troubleshooting" class="nav-link" data-scroll-target="#troubleshooting">Troubleshooting</a>
 <ul class="collapse">
@@ -820,6 +825,43 @@ This command line instance is now being used to serve Quarto
 <span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> discovery/search-by-shapefile.ipynb <span class="co"># delete .ipynb</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
+<section id="notebook-review" class="level2">
+<h2 class="anchored" data-anchor-id="notebook-review">Notebook Review</h2>
+<section id="preamble" class="level3">
+<h3 class="anchored" data-anchor-id="preamble">Preamble</h3>
+<p>GitHub displays differences in code, so a nice way to review other people’s work (or your own) is to edit files directly and view the commit differences at GitHub. We’ll do this by first creating a branch and pull request so that that there is a chance for the original author to be notified of the suggestions and review them before merging back to the main branch (at which point the quarto book/site will be rebuilt since we have a GitHub action setup to do so).</p>
+<p>GitHub can have trouble with <code>.ipynb</code> notebooks; their differences include file-formatting changes and are often too big to display. See examples: <a href="https://github.com/NASA-Openscapes/2021-Cloud-Hackathon/pull/13/files#diff-04b62f1a27203bba0cb44a2a0360a3c68e19b2199dd4e3c96a59156b5d253884">CMR notebook</a> with file-formatting diffs and the <a href="https://github.com/NASA-Openscapes/2021-Cloud-Hackathon/pull/18/files#diff-4bd08e3e686fffae6339ffad77be5ad50879704bdf57f0505f11dbffeb43e0d3">CMR-STAC API notebook review</a> with diffs too big to display. This means that while you can still edit it directly, it’s hard to alert the author to what changes you made. Some emerging conventions to help with this:</p>
+<ul>
+<li>write <code>TODO</code> for “to do’s”, but this as one word all-caps makes it easier to search</li>
+</ul>
+</section>
+<section id="review-with-.qmds" class="level3">
+<h3 class="anchored" data-anchor-id="review-with-.qmds">Review with .qmds</h3>
+<p>Since quarto notebook files (<code>.qmd</code>s) are text files, GitHub can display their differences nicely, for example: <a href="https://github.com/NASA-Openscapes/2021-Cloud-Hackathon/pull/18/commits/755a17abec3d9b18d1b8b12bf951455fec351213#diff-753f51abfb9f0a881920f172502191350a37d651f89d29e04b1e1e563a1e07af">CMR-STAC API qmd</a>.</p>
+<p>Here is a workflow to leverage <code>.qmd</code>s in our review process:</p>
+<ol type="1">
+<li>Clone/pull the repo, create a branch following our <a href="#github-workflow">GitHub Workflow</a> above</li>
+<li>In the terminal, use <code>quarto convert</code> to convert a notebook from <code>.ipynb</code> to <code>.qmd</code>. You’ll have to either <code>cd</code> into the folder or you can convert by specifying the filepath. Typing <code>quarto convert help</code> will describe more options.</li>
+</ol>
+<pre class="{bash}"><code>| eval: false
+## git clone and branch
+git clone https://github.com/NASA-Openscapes/2021-Cloud-Hackathon/
+git checkout -b my-new-branch
+
+## quarto convert
+quarto convert tutorials/Data_Discovery__CMR-STAC_API.ipynb</code></pre>
+<p>This creates <code>tutorials/Data_Discovery__CMR-STAC_API.qmd</code>.</p>
+<p>Commit this so that the whole file is tracked and any changes you make will be viewed as diffs. Follow the <a href="#github-workflow">GitHub Workflow</a> above.</p>
+<p>Now, make edits/review the <code>.qmd</code> in your editor of choice, which will likely also have spell-check and markdown support.</p>
+<p>At the moment, this is best with making edits to the <code>.qmd</code> locally while ALSO running the <code>.ipynb</code> notebook in 2i2c. This will iterate as we get quarto set up in 2i2c (and as we work more with <code>.qmd</code>s).</p>
+<p>When you’re done with your review, you will want to push not only your edited <code>.qmd</code>, but also a <code>.ipynb</code> with all your changes. This way, the notebook author can both easily see the diffs made to the <code>.qmd</code>, and run the <code>.ipynb</code> as they normally would. To do so:</p>
+<pre class="{bash}"><code>#| eval: false
+quarto convert tutorials/Data_Discovery__CMR-STAC_API.qmd </code></pre>
+<p>This will create <code>tutorials/Data_Discovery__CMR-STAC_API.ipynb</code>, and over-write the original with your changes.</p>
+<p><strong>Note</strong>: Quarto will consider the <code>.qmd</code> book chapter and try to render it. To avoid this, by hand you can prefix the filename with an underscore: before you push: <code>_Data_Discovery__CMR-STAC_API.qmd</code></p>
+<p>Now, commit and push your review!</p>
+</section>
+</section>
 <section id="code-review" class="level2">
 <h2 class="anchored" data-anchor-id="code-review">Code Review</h2>
 <p>Upcoming.</p>
@@ -834,10 +876,10 @@ This command line instance is now being used to serve Quarto
 <section id="leaveexit-a-virtual-environment" class="level3">
 <h3 class="anchored" data-anchor-id="leaveexit-a-virtual-environment">Leave/exit a virtual environment</h3>
 <p>In your Command Line Shell, if you want to leave your virtual environment, the command is:</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ex">deactivate</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="ex">deactivate</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The way you tell that you are in a virtual environment: it’s named in parentheses at the beginning of your prompt:</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">.venv</span><span class="kw">)</span> <span class="kw">(</span><span class="ex">base</span><span class="kw">)</span> <span class="ex">JLos-Macbook-Pro:earthdata-cloud-cookbook</span> lowndes$ deactivate</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">base</span><span class="kw">)</span> <span class="ex">JLos-Macbook-Pro:earthdata-cloud-cookbook</span> lowndes$</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">.venv</span><span class="kw">)</span> <span class="kw">(</span><span class="ex">base</span><span class="kw">)</span> <span class="ex">JLos-Macbook-Pro:earthdata-cloud-cookbook</span> lowndes$ deactivate</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">base</span><span class="kw">)</span> <span class="ex">JLos-Macbook-Pro:earthdata-cloud-cookbook</span> lowndes$</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <!-- -->
 </section>
 </section>
