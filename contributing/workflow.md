@@ -585,6 +585,55 @@ quarto convert discovery/search-by-shapefile.ipynb # convert to .qmd
 rm discovery/search-by-shapefile.ipynb # delete .ipynb
 ```
 
+## Notebook Review
+
+### Preamble
+
+GitHub displays differences in code, so a nice way to review other people's work (or your own) is to edit files directly and view the commit differences  at GitHub. We'll do this by first creating a branch and pull request so that that there is a chance for the original author to be notified of the suggestions and review them before merging back to the main branch (at which point the quarto book/site will be rebuilt since we have a GitHub action setup to do so). 
+
+GitHub can have trouble with `.ipynb` notebooks; their differences include file-formatting changes and are often too big to display. See examples: [CMR notebook](https://github.com/NASA-Openscapes/2021-Cloud-Hackathon/pull/13/files#diff-04b62f1a27203bba0cb44a2a0360a3c68e19b2199dd4e3c96a59156b5d253884) with file-formatting diffs and the [CMR-STAC API notebook review](https://github.com/NASA-Openscapes/2021-Cloud-Hackathon/pull/18/files#diff-4bd08e3e686fffae6339ffad77be5ad50879704bdf57f0505f11dbffeb43e0d3) with diffs too big to display. This means that while you can still edit it directly, it's hard to alert the author to what changes you made. Some emerging conventions to help with this: 
+
+- write `TODO` for "to do's", but this as one word all-caps makes it easier to search
+
+### Review with .qmds
+
+Since quarto notebook files (`.qmd`s) are text files, GitHub can display their differences nicely, for  example: [CMR-STAC API qmd](https://github.com/NASA-Openscapes/2021-Cloud-Hackathon/pull/18/commits/755a17abec3d9b18d1b8b12bf951455fec351213#diff-753f51abfb9f0a881920f172502191350a37d651f89d29e04b1e1e563a1e07af). 
+
+Here is a workflow to leverage `.qmd`s in our review process: 
+
+1. Clone/pull the repo, create a branch following our [GitHub Workflow](#github-workflow) above
+1. In the terminal, use `quarto convert` to convert a notebook from `.ipynb` to `.qmd`. You'll have to either `cd` into the folder or you can convert by specifying the filepath. Typing `quarto convert help` will describe more options. 
+
+```{bash}
+| eval: false
+## git clone and branch
+git clone https://github.com/NASA-Openscapes/2021-Cloud-Hackathon/
+git checkout -b my-new-branch
+
+## quarto convert
+quarto convert tutorials/Data_Discovery__CMR-STAC_API.ipynb
+```
+
+This creates `tutorials/Data_Discovery__CMR-STAC_API.qmd`. 
+
+Commit this so that the whole file is tracked and any changes you make will be viewed as diffs. Follow the [GitHub Workflow](#github-workflow) above. 
+
+Now, make edits/review the `.qmd` in your editor of choice, which will likely also have spell-check and markdown support.
+
+At the moment, this is best with making edits to the `.qmd` locally while ALSO running the `.ipynb` notebook in 2i2c. This will iterate as we get quarto set up in 2i2c (and as we work more with `.qmd`s). 
+
+When you're done with your review, you will want to push not only your edited `.qmd`, but also a `.ipynb` with all your changes. This way, the notebook author can both easily see the diffs made to the `.qmd`, and run the `.ipynb` as they normally would. To do so: 
+
+```{bash}
+#| eval: false
+quarto convert tutorials/Data_Discovery__CMR-STAC_API.qmd 
+```
+
+This will create `tutorials/Data_Discovery__CMR-STAC_API.ipynb`, and over-write the original with your changes.
+
+**Note**: Quarto will consider the `.qmd` book chapter and try to render it. To avoid this, by hand you can prefix the filename with an underscore: before you push: `_Data_Discovery__CMR-STAC_API.qmd`
+
+Now, commit and push your review!
 
 ## Code Review
 
