@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang=""><head>
   <meta charset="utf-8">
-  <meta name="generator" content="pandoc">
+  <meta name="generator" content="quarto-0.2.232">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <title>zarr-eosdis-store</title>
   <style>
@@ -81,8 +81,9 @@
   <![endif]-->
   <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
   <script src="../site_libs/quarto-nav/headroom.min.js"></script>
+  <script src="../site_libs/clipboard/clipboard.min.js"></script>
   <meta name="quarto:offset" content="../">
-  <script src="../site_libs/quarto-search/autocomplete.min.js"></script>
+  <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
   <script src="../site_libs/quarto-search/fuse.min.js"></script>
   <script src="../site_libs/quarto-search/quarto-search.js"></script>
   <link href="../examples/index.html" rel="next">
@@ -90,9 +91,7 @@
   <script src="../site_libs/quarto-html/quarto.js"></script>
   <script src="../site_libs/quarto-html/popper.min.js"></script>
   <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-  <script src="../site_libs/quarto-html/clipboard.min.js"></script>
   <script src="../site_libs/quarto-html/anchor.min.js"></script>
-  <script src="../site_libs/quarto-html/quarto-html.js"></script>
   <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
   <link class="quarto-color-scheme" href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet">
   <link class="quarto-color-scheme quarto-color-alternate" rel="prefetch" href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css">
@@ -100,6 +99,14 @@
   <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
   <link class="quarto-color-scheme" href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet">
   <link class="quarto-color-scheme quarto-color-alternate" rel="prefetch" href="../site_libs/bootstrap/bootstrap-dark.min.css">
+  <script id="quarto-search-options" type="application/json">{
+    "location": "sidebar",
+    "copy-button": false,
+    "collapse-after": 2,
+    "panel-placement": "start",
+    "type": "textbox",
+    "limit": 20
+  }</script>
   <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
@@ -118,44 +125,37 @@
 <div class="container-fluid quarto-container d-flex flex-column page-layout-article">
 <div class="row flex-fill" id="quarto-content">
   <div id="quarto-sidebar" class="col col-12 col-lg-3 d-lg-flex px-0 pt-0 sidebar collapse sidebar-navigation">
-    <nav class="me-lg-auto py-2 docked  overflow-scroll">
-  <div class="px-3 pt-lg-2 mt-1 text-left sidebar-header sidebar-header-stacked">
+    <nav class="me-lg-auto docked overflow-auto">
+  <div class="px-3 pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
     <img src="../nasa-openscapes.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
     <div class="sidebar-title mb-0 py-0">
-      <a href="../">
-      EarthData Cloud Cookbook
-      </a>
+      <a href="../">EarthData Cloud Cookbook</a> 
         <div class="sidebar-tools-main">
     <a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook" title="" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
-  <a href="" class="quarto-color-scheme-toggle " onclick="window.quartoToggleColorScheme(); return false;"><i class="bi"></i></a>
+  <a href="" class="quarto-color-scheme-toggle sidebar-tool" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
     </div>
   </div>
-    <div class="d-flex px-3 mt-2 flex-shrink-0 align-items-center">
+    <div class="px-3 mt-2 flex-shrink-0 align-items-center">
       <div class="sidebar-search">
-      <form class="d-flex mb-0">
-  <input id="quarto-search" class="form-control" type="search" placeholder="Search" aria-label="Search">
-</form>
-      </div>
-        <div class="sidebar-tools-collapse">
-    <a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook" title="" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
-  <a href="" class="quarto-color-scheme-toggle " onclick="window.quartoToggleColorScheme(); return false;"><i class="bi"></i></a>
+      <div id="quarto-search" class="mb-0 " title="Search">
 </div>
+      </div>
     </div>
   <div class="sidebar-menu-container"> 
-  <ul class="list-unstyled mt-3 px-3">
+  <ul class="list-unstyled mt-1 px-3">
       <li class="sidebar-item">
   <a href="../index.md" class="">Welcome</a>
 </li>
       <ul class="list-unstyled sidebar-section depth1">
     <li class="">
-        <div class="me-auto ">
+        <div class="me-auto">
           <div class="d-inline-flex w-100 sidebar-section-item">
-            <div class="sidebar-section-link me-auto ">
+            <div class="sidebar-section-link me-auto">
             <a href="../get-started/index.html" class="">Getting Started</a>
             </div>
             <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#gettingstarted-collapse" aria-expanded="true">
-              <div><i class="bi bi-chevron-right ms-2 "></i></div>
+              <div><i class="bi bi-chevron-right ms-2"></i></div>
             </a>
             </div>
         </div>
@@ -169,13 +169,13 @@
 </li>
           <ul class="list-unstyled sidebar-section depth2">
     <li class="">
-        <div class="me-auto ">
+        <div class="me-auto">
           <div class="d-inline-flex w-100 sidebar-item">
-            <div class="sidebar-section-link me-auto ">
+            <div class="sidebar-section-link me-auto">
             <a href="../get-started/authentication.html" class="">Authentication</a>
             </div>
             <a class="text-start collapsed " data-bs-toggle="collapse" data-bs-target="#authentication-collapse" aria-expanded="false">
-              <div><i class="bi bi-chevron-right ms-2 "></i></div>
+              <div><i class="bi bi-chevron-right ms-2"></i></div>
             </a>
             </div>
         </div>
@@ -200,13 +200,13 @@
   </ul>
       <ul class="list-unstyled sidebar-section depth1">
     <li class="">
-        <div class="me-auto ">
+        <div class="me-auto">
           <div class="d-inline-flex w-100 sidebar-section-item">
-            <div class="sidebar-section-link me-auto ">
+            <div class="sidebar-section-link me-auto">
             <a href="../discovery/index.html" class="">NASA Cloud Data Discovery</a>
             </div>
             <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#nasaclouddatadiscovery-collapse" aria-expanded="true">
-              <div><i class="bi bi-chevron-right ms-2 "></i></div>
+              <div><i class="bi bi-chevron-right ms-2"></i></div>
             </a>
             </div>
         </div>
@@ -230,13 +230,13 @@
   </ul>
       <ul class="list-unstyled sidebar-section depth1">
     <li class="">
-        <div class="me-auto ">
+        <div class="me-auto">
           <div class="d-inline-flex w-100 sidebar-section-item">
-            <div class="sidebar-section-link me-auto ">
+            <div class="sidebar-section-link me-auto">
             <a href="../access/index.html" class="">NASA Cloud Data Access</a>
             </div>
             <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#nasaclouddataaccess-collapse" aria-expanded="true">
-              <div><i class="bi bi-chevron-right ms-2 "></i></div>
+              <div><i class="bi bi-chevron-right ms-2"></i></div>
             </a>
             </div>
         </div>
@@ -253,20 +253,20 @@
 </li>
           <ul class="list-unstyled sidebar-section depth2">
     <li class="">
-        <div class="me-auto ">
+        <div class="me-auto">
           <div class="d-inline-flex w-100 sidebar-item">
-            <div class="sidebar-section-link me-auto ">
+            <div class="sidebar-section-link me-auto">
             <a href="../access/direct-in-region.html" class="">Direct in-region</a>
             </div>
             <a class="text-start collapsed " data-bs-toggle="collapse" data-bs-target="#directin-region-collapse" aria-expanded="false">
-              <div><i class="bi bi-chevron-right ms-2 "></i></div>
+              <div><i class="bi bi-chevron-right ms-2"></i></div>
             </a>
             </div>
         </div>
       <div class="collapse  " id="directin-region-collapse">
         <ul class="list-unstyled sidebar-item-contents">
           <li class="sidebar-item">
-  <a href="../access/podaac-ecco-data_access-cloud_direct_access_s3.html" class="">Direct access to ECCO data in S3 (from *us-west-2*)</a>
+  <a href="../access/podaac-ecco-data_access-cloud_direct_access_s3.html" class="">Direct access to ECCO data in S3 (from <em>us-west-2</em>)</a>
 </li>
         </ul>
       </div>
@@ -274,13 +274,13 @@
   </ul>
           <ul class="list-unstyled sidebar-section depth2">
     <li class="">
-        <div class="me-auto ">
+        <div class="me-auto">
           <div class="d-inline-flex w-100 sidebar-item">
-            <div class="sidebar-section-link me-auto ">
+            <div class="sidebar-section-link me-auto">
             <a href="../access/cof-via-harmony.html" class="">COF via Earthdata Harmony</a>
             </div>
             <a class="text-start collapsed " data-bs-toggle="collapse" data-bs-target="#cofviaearthdataharmony-collapse" aria-expanded="false">
-              <div><i class="bi bi-chevron-right ms-2 "></i></div>
+              <div><i class="bi bi-chevron-right ms-2"></i></div>
             </a>
             </div>
         </div>
@@ -302,13 +302,13 @@
   </ul>
       <ul class="list-unstyled sidebar-section depth1">
     <li class="">
-        <div class="me-auto ">
+        <div class="me-auto">
           <div class="d-inline-flex w-100 sidebar-section-item">
-            <div class="sidebar-section-link me-auto ">
+            <div class="sidebar-section-link me-auto">
             <a href="../transformations/index.html" class="">NASA Cloud Data Transformations</a>
             </div>
             <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#nasaclouddatatransformations-collapse" aria-expanded="true">
-              <div><i class="bi bi-chevron-right ms-2 "></i></div>
+              <div><i class="bi bi-chevron-right ms-2"></i></div>
             </a>
             </div>
         </div>
@@ -325,13 +325,13 @@
 </li>
           <ul class="list-unstyled sidebar-section depth2">
     <li class="">
-        <div class="me-auto ">
+        <div class="me-auto">
           <div class="d-inline-flex w-100 sidebar-item">
-            <div class="sidebar-section-link me-auto ">
+            <div class="sidebar-section-link me-auto">
             <a href="../transformations/L2-subsetter.html" class="">L2 Subsetter</a>
             </div>
             <a class="text-start collapsed " data-bs-toggle="collapse" data-bs-target="#l2subsetter-collapse" aria-expanded="false">
-              <div><i class="bi bi-chevron-right ms-2 "></i></div>
+              <div><i class="bi bi-chevron-right ms-2"></i></div>
             </a>
             </div>
         </div>
@@ -359,13 +359,13 @@
   </ul>
       <ul class="list-unstyled sidebar-section depth1">
     <li class="">
-        <div class="me-auto ">
+        <div class="me-auto">
           <div class="d-inline-flex w-100 sidebar-section-item">
-            <div class="sidebar-section-link me-auto ">
+            <div class="sidebar-section-link me-auto">
             <a href="../examples/index.html" class="">Example tutorials</a>
             </div>
             <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#exampletutorials-collapse" aria-expanded="true">
-              <div><i class="bi bi-chevron-right ms-2 "></i></div>
+              <div><i class="bi bi-chevron-right ms-2"></i></div>
             </a>
             </div>
         </div>
@@ -383,13 +383,13 @@
   </ul>
       <ul class="list-unstyled sidebar-section depth1">
     <li class="">
-        <div class="me-auto ">
+        <div class="me-auto">
           <div class="d-inline-flex w-100 sidebar-section-item">
-            <div class="sidebar-section-link me-auto ">
+            <div class="sidebar-section-link me-auto">
             <a href="../appendix/index.html" class="">Appendix</a>
             </div>
             <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#appendix-collapse" aria-expanded="true">
-              <div><i class="bi bi-chevron-right ms-2 "></i></div>
+              <div><i class="bi bi-chevron-right ms-2"></i></div>
             </a>
             </div>
         </div>
@@ -404,13 +404,13 @@
   </ul>
       <ul class="list-unstyled sidebar-section depth1">
     <li class="">
-        <div class="me-auto ">
+        <div class="me-auto">
           <div class="d-inline-flex w-100 sidebar-section-item">
-            <div class="sidebar-section-link me-auto ">
+            <div class="sidebar-section-link me-auto">
             <a href="../contributing/index.html" class="">Contributing</a>
             </div>
             <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#contributing-collapse" aria-expanded="true">
-              <div><i class="bi bi-chevron-right ms-2 "></i></div>
+              <div><i class="bi bi-chevron-right ms-2"></i></div>
             </a>
             </div>
         </div>
@@ -430,19 +430,19 @@
   </div>
 </nav>
   </div>
-  <div id="quarto-toc-sidebar" class="col col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-toc order-last"><nav id="TOC" role="doc-toc">
+  <div id="quarto-toc-sidebar" class=" pt-0 col col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-toc order-last"><nav id="TOC" role="doc-toc">
 <h2 id="toc-title">On this page</h2>
 <ul>
 <li><a href="#zarr-example" class="nav-link active" data-scroll-target="#zarr-example">Zarr Example</a></li>
 <li><a href="#zarr-eosdis-store-example" class="nav-link" data-scroll-target="#zarr-eosdis-store-example">zarr-eosdis-store example</a></li>
 </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/edit/main/external/zarr-eosdis-store.ipynb">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/issues/new">Report an issue</a></p></div></div></nav></div>
-  <div class="col mx-auto col-sm-12 col-md-9 col-lg-7 px-lg-4">
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/edit/main/external/zarr-eosdis-store.ipynb" class="toc-action">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/issues/new" class="toc-action">Report an issue</a></p></div></div></nav></div>
+  <div class="col mx-auto col-sm-12 col-md-9 col-lg-7 col-xl-7 px-lg-4 pe-xxl-4 ps-xxl-0">
 <main>
 
 <section id="zarr-example" class="level1">
 <h1>Zarr Example</h1>
-<p>imported on: <strong>2021-10-27</strong></p>
+<p>imported on: <strong>2021-10-28</strong></p>
 <p>
 This notebook is from NASA’s Zarr <strong>EOSDIS</strong> store notebook
 </p>
@@ -453,7 +453,6 @@ This notebook is from NASA’s Zarr <strong>EOSDIS</strong> store notebook
 <section id="zarr-eosdis-store-example" class="level1">
 <h1>zarr-eosdis-store example</h1>
 <p>Install dependencies</p>
-<div class="cell">
 <div class="sourceCode" id="cb1"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># zarr and zarr-eosdis-store, the main libraries being demoed</span></span>
@@ -461,21 +460,18 @@ This notebook is from NASA’s Zarr <strong>EOSDIS</strong> store notebook
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Notebook-specific libraries</span></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>{sys.executable} <span class="op">-</span>m pip install matplotlib</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 <p><strong>Important</strong>: To run this, you must first create an Earthdata Login account (https://urs.earthdata.nasa.gov) and place your credentials in ~/.netrc e.g.:</p>
 <pre><code>   machine urs.earthdata.nasa.gov login YOUR_USER password YOUR_PASSWORD</code></pre>
 <p>Never share or commit your password / .netrc file!</p>
 <p>Basic usage. After these lines, we work with <code>ds</code> as though it were a normal Zarr dataset</p>
-<div class="cell">
 <div class="sourceCode" id="cb3"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> zarr</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> eosdis_store <span class="im">import</span> EosdisStore</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">'https://archive.podaac.earthdata.nasa.gov/podaac-ops-cumulus-protected/MUR-JPL-L4-GLOB-v4.1/20210715090000-JPL-L4_GHRSST-SSTfnd-MUR-GLOB-v02.0-fv04.1.nc'</span></span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>ds <span class="op">=</span> zarr.<span class="bu">open</span>(EosdisStore(url))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 <p>View the file’s variable structure</p>
-<div class="cell">
+<div class="cell" data-execution_count="3">
 <div class="sourceCode" id="cb4"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(ds.tree())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-stdout">
 <pre><code>/
@@ -491,19 +487,15 @@ This notebook is from NASA’s Zarr <strong>EOSDIS</strong> store notebook
 </div>
 </div>
 <p>Fetch the latitude and longitude arrays and determine start and end indices for our area of interest. In this case, we’re looking at the Great Lakes, which have a nice, recognizeable shape. Latitudes 41 to 49, longitudes -93 to 76.</p>
-<div class="cell">
 <div class="sourceCode" id="cb6"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>lats <span class="op">=</span> ds[<span class="st">'lat'</span>][:]</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>lons <span class="op">=</span> ds[<span class="st">'lon'</span>][:]</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>lat_range <span class="op">=</span> <span class="bu">slice</span>(lats.searchsorted(<span class="dv">41</span>), lats.searchsorted(<span class="dv">49</span>))</span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>lon_range <span class="op">=</span> <span class="bu">slice</span>(lons.searchsorted(<span class="op">-</span><span class="dv">93</span>), lons.searchsorted(<span class="op">-</span><span class="dv">76</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 <p>Get the analysed sea surface temperature variable over our area of interest and apply scale factor and offset from the file metadata. In a future release, scale factor and add offset will be automatically applied.</p>
-<div class="cell">
 <div class="sourceCode" id="cb7"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>var <span class="op">=</span> ds[<span class="st">'analysed_sst'</span>]</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>analysed_sst <span class="op">=</span> var[<span class="dv">0</span>, lat_range, lon_range] <span class="op">*</span> var.attrs[<span class="st">'scale_factor'</span>] <span class="op">+</span> var.attrs[<span class="st">'add_offset'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 <p>Draw a pretty picture</p>
-<div class="cell">
+<div class="cell" data-execution_count="6">
 <div class="sourceCode" id="cb8"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib <span class="im">import</span> pyplot <span class="im">as</span> plt</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>plt.rcParams[<span class="st">"figure.figsize"</span>] <span class="op">=</span> [<span class="dv">16</span>, <span class="dv">8</span>]</span>
@@ -514,8 +506,177 @@ This notebook is from NASA’s Zarr <strong>EOSDIS</strong> store notebook
 </div>
 </div>
 <p>In a dozen lines of code and a few seconds, we have managed to fetch and visualize the 3.2 megabyte we needed from a 732 megabyte file using the original archive URL and no processing services</p>
-<!-- -->
+
+
 </section>
+<script type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('div.sidebar-toc .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+    } else {
+      disableStylesheet(alternateStylesheets);
+    }
+    manageTransitions('.quarto-toc-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      return window.localStorage.getItem("quarto-color-scheme");
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = null;
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.id = "quarto-color-scheme-toggle";
+    a.classList.add('top-right');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } 
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    setTimeout(function() {
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    window.tippy(el, {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    }); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
 </main>
 <div class="page-navigation page-navigation-docked">
   <div class="nav-page nav-page-previous">
@@ -529,11 +690,13 @@ This notebook is from NASA’s Zarr <strong>EOSDIS</strong> store notebook
       </a>
   </div>
 </div>
-  <div class="row nav-footer">
-    <div class="nav-footer-contents">NASA Openscapes Team (2021). Earthdata Cloud Cookbook (Version v0.0.1).</div>
-  </div>
 </div> <!-- /main column -->
 </div> <!-- /row -->
+<div class="row">
+  <div class="nav-footer">
+      <div class="nav-footer-center me-auto ms-auto">NASA Openscapes Team (2021). Earthdata Cloud Cookbook (Version v0.0.1).</div>
+  </div>
+</div>
 </div> <!-- /container fluid -->
 
 

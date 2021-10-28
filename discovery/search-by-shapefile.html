@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang=""><head>
   <meta charset="utf-8">
-  <meta name="generator" content="pandoc">
+  <meta name="generator" content="quarto-0.2.232">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>quarto-input0a311ea1</title>
+  <title>Search by shapefile</title>
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -81,8 +81,9 @@
   <![endif]-->
   <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
   <script src="../site_libs/quarto-nav/headroom.min.js"></script>
+  <script src="../site_libs/clipboard/clipboard.min.js"></script>
   <meta name="quarto:offset" content="../">
-  <script src="../site_libs/quarto-search/autocomplete.min.js"></script>
+  <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
   <script src="../site_libs/quarto-search/fuse.min.js"></script>
   <script src="../site_libs/quarto-search/quarto-search.js"></script>
   <link href="../discovery/Navigate_CMR_STAC.html" rel="next">
@@ -90,9 +91,7 @@
   <script src="../site_libs/quarto-html/quarto.js"></script>
   <script src="../site_libs/quarto-html/popper.min.js"></script>
   <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-  <script src="../site_libs/quarto-html/clipboard.min.js"></script>
   <script src="../site_libs/quarto-html/anchor.min.js"></script>
-  <script src="../site_libs/quarto-html/quarto-html.js"></script>
   <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
   <link class="quarto-color-scheme" href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet">
   <link class="quarto-color-scheme quarto-color-alternate" rel="prefetch" href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css">
@@ -100,6 +99,14 @@
   <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
   <link class="quarto-color-scheme" href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet">
   <link class="quarto-color-scheme quarto-color-alternate" rel="prefetch" href="../site_libs/bootstrap/bootstrap-dark.min.css">
+  <script id="quarto-search-options" type="application/json">{
+    "location": "sidebar",
+    "copy-button": false,
+    "collapse-after": 2,
+    "panel-placement": "start",
+    "type": "textbox",
+    "limit": 20
+  }</script>
   <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
@@ -107,7 +114,7 @@
 <header id="quarto-header" class="headroom fixed-top">
 <nav class="quarto-secondary-nav py-2 d-lg-none d-md-block " data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <div class="container-fluid d-flex justify-content-between">
-    <h1 class="quarto-secondary-nav-title mb-0 fs-3 d-inline">(Untitled)</h1>
+    <h1 class="quarto-secondary-nav-title mb-0 fs-3 d-inline">Search by shapefile</h1>
     <button type="button" class="quarto-btn-toggle btn d-lg-none py-0 px-1 d-inline-block border-0 ">
       <i class="bi bi-chevron-right"></i>
     </button>
@@ -118,44 +125,37 @@
 <div class="container-fluid quarto-container d-flex flex-column page-layout-article">
 <div class="row flex-fill" id="quarto-content">
   <div id="quarto-sidebar" class="col col-12 col-lg-3 d-lg-flex px-0 pt-0 sidebar collapse sidebar-navigation">
-    <nav class="me-lg-auto py-2 docked  overflow-scroll">
-  <div class="px-3 pt-lg-2 mt-1 text-left sidebar-header sidebar-header-stacked">
+    <nav class="me-lg-auto docked overflow-auto">
+  <div class="px-3 pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
     <img src="../nasa-openscapes.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
     <div class="sidebar-title mb-0 py-0">
-      <a href="../">
-      EarthData Cloud Cookbook
-      </a>
+      <a href="../">EarthData Cloud Cookbook</a> 
         <div class="sidebar-tools-main">
     <a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook" title="" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
-  <a href="" class="quarto-color-scheme-toggle " onclick="window.quartoToggleColorScheme(); return false;"><i class="bi"></i></a>
+  <a href="" class="quarto-color-scheme-toggle sidebar-tool" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
     </div>
   </div>
-    <div class="d-flex px-3 mt-2 flex-shrink-0 align-items-center">
+    <div class="px-3 mt-2 flex-shrink-0 align-items-center">
       <div class="sidebar-search">
-      <form class="d-flex mb-0">
-  <input id="quarto-search" class="form-control" type="search" placeholder="Search" aria-label="Search">
-</form>
-      </div>
-        <div class="sidebar-tools-collapse">
-    <a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook" title="" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
-  <a href="" class="quarto-color-scheme-toggle " onclick="window.quartoToggleColorScheme(); return false;"><i class="bi"></i></a>
+      <div id="quarto-search" class="mb-0 " title="Search">
 </div>
+      </div>
     </div>
   <div class="sidebar-menu-container"> 
-  <ul class="list-unstyled mt-3 px-3">
+  <ul class="list-unstyled mt-1 px-3">
       <li class="sidebar-item">
   <a href="../index.md" class="">Welcome</a>
 </li>
       <ul class="list-unstyled sidebar-section depth1">
     <li class="">
-        <div class="me-auto ">
+        <div class="me-auto">
           <div class="d-inline-flex w-100 sidebar-section-item">
-            <div class="sidebar-section-link me-auto ">
+            <div class="sidebar-section-link me-auto">
             <a href="../get-started/index.html" class="">Getting Started</a>
             </div>
             <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#gettingstarted-collapse" aria-expanded="true">
-              <div><i class="bi bi-chevron-right ms-2 "></i></div>
+              <div><i class="bi bi-chevron-right ms-2"></i></div>
             </a>
             </div>
         </div>
@@ -169,13 +169,13 @@
 </li>
           <ul class="list-unstyled sidebar-section depth2">
     <li class="">
-        <div class="me-auto ">
+        <div class="me-auto">
           <div class="d-inline-flex w-100 sidebar-item">
-            <div class="sidebar-section-link me-auto ">
+            <div class="sidebar-section-link me-auto">
             <a href="../get-started/authentication.html" class="">Authentication</a>
             </div>
             <a class="text-start collapsed " data-bs-toggle="collapse" data-bs-target="#authentication-collapse" aria-expanded="false">
-              <div><i class="bi bi-chevron-right ms-2 "></i></div>
+              <div><i class="bi bi-chevron-right ms-2"></i></div>
             </a>
             </div>
         </div>
@@ -200,13 +200,13 @@
   </ul>
       <ul class="list-unstyled sidebar-section depth1">
     <li class="">
-        <div class="me-auto ">
+        <div class="me-auto">
           <div class="d-inline-flex w-100 sidebar-section-item">
-            <div class="sidebar-section-link me-auto ">
+            <div class="sidebar-section-link me-auto">
             <a href="../discovery/index.html" class="">NASA Cloud Data Discovery</a>
             </div>
             <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#nasaclouddatadiscovery-collapse" aria-expanded="true">
-              <div><i class="bi bi-chevron-right ms-2 "></i></div>
+              <div><i class="bi bi-chevron-right ms-2"></i></div>
             </a>
             </div>
         </div>
@@ -230,13 +230,13 @@
   </ul>
       <ul class="list-unstyled sidebar-section depth1">
     <li class="">
-        <div class="me-auto ">
+        <div class="me-auto">
           <div class="d-inline-flex w-100 sidebar-section-item">
-            <div class="sidebar-section-link me-auto ">
+            <div class="sidebar-section-link me-auto">
             <a href="../access/index.html" class="">NASA Cloud Data Access</a>
             </div>
             <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#nasaclouddataaccess-collapse" aria-expanded="true">
-              <div><i class="bi bi-chevron-right ms-2 "></i></div>
+              <div><i class="bi bi-chevron-right ms-2"></i></div>
             </a>
             </div>
         </div>
@@ -253,20 +253,20 @@
 </li>
           <ul class="list-unstyled sidebar-section depth2">
     <li class="">
-        <div class="me-auto ">
+        <div class="me-auto">
           <div class="d-inline-flex w-100 sidebar-item">
-            <div class="sidebar-section-link me-auto ">
+            <div class="sidebar-section-link me-auto">
             <a href="../access/direct-in-region.html" class="">Direct in-region</a>
             </div>
             <a class="text-start collapsed " data-bs-toggle="collapse" data-bs-target="#directin-region-collapse" aria-expanded="false">
-              <div><i class="bi bi-chevron-right ms-2 "></i></div>
+              <div><i class="bi bi-chevron-right ms-2"></i></div>
             </a>
             </div>
         </div>
       <div class="collapse  " id="directin-region-collapse">
         <ul class="list-unstyled sidebar-item-contents">
           <li class="sidebar-item">
-  <a href="../access/podaac-ecco-data_access-cloud_direct_access_s3.html" class="">Direct access to ECCO data in S3 (from *us-west-2*)</a>
+  <a href="../access/podaac-ecco-data_access-cloud_direct_access_s3.html" class="">Direct access to ECCO data in S3 (from <em>us-west-2</em>)</a>
 </li>
         </ul>
       </div>
@@ -274,13 +274,13 @@
   </ul>
           <ul class="list-unstyled sidebar-section depth2">
     <li class="">
-        <div class="me-auto ">
+        <div class="me-auto">
           <div class="d-inline-flex w-100 sidebar-item">
-            <div class="sidebar-section-link me-auto ">
+            <div class="sidebar-section-link me-auto">
             <a href="../access/cof-via-harmony.html" class="">COF via Earthdata Harmony</a>
             </div>
             <a class="text-start collapsed " data-bs-toggle="collapse" data-bs-target="#cofviaearthdataharmony-collapse" aria-expanded="false">
-              <div><i class="bi bi-chevron-right ms-2 "></i></div>
+              <div><i class="bi bi-chevron-right ms-2"></i></div>
             </a>
             </div>
         </div>
@@ -302,13 +302,13 @@
   </ul>
       <ul class="list-unstyled sidebar-section depth1">
     <li class="">
-        <div class="me-auto ">
+        <div class="me-auto">
           <div class="d-inline-flex w-100 sidebar-section-item">
-            <div class="sidebar-section-link me-auto ">
+            <div class="sidebar-section-link me-auto">
             <a href="../transformations/index.html" class="">NASA Cloud Data Transformations</a>
             </div>
             <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#nasaclouddatatransformations-collapse" aria-expanded="true">
-              <div><i class="bi bi-chevron-right ms-2 "></i></div>
+              <div><i class="bi bi-chevron-right ms-2"></i></div>
             </a>
             </div>
         </div>
@@ -325,13 +325,13 @@
 </li>
           <ul class="list-unstyled sidebar-section depth2">
     <li class="">
-        <div class="me-auto ">
+        <div class="me-auto">
           <div class="d-inline-flex w-100 sidebar-item">
-            <div class="sidebar-section-link me-auto ">
+            <div class="sidebar-section-link me-auto">
             <a href="../transformations/L2-subsetter.html" class="">L2 Subsetter</a>
             </div>
             <a class="text-start collapsed " data-bs-toggle="collapse" data-bs-target="#l2subsetter-collapse" aria-expanded="false">
-              <div><i class="bi bi-chevron-right ms-2 "></i></div>
+              <div><i class="bi bi-chevron-right ms-2"></i></div>
             </a>
             </div>
         </div>
@@ -359,13 +359,13 @@
   </ul>
       <ul class="list-unstyled sidebar-section depth1">
     <li class="">
-        <div class="me-auto ">
+        <div class="me-auto">
           <div class="d-inline-flex w-100 sidebar-section-item">
-            <div class="sidebar-section-link me-auto ">
+            <div class="sidebar-section-link me-auto">
             <a href="../examples/index.html" class="">Example tutorials</a>
             </div>
             <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#exampletutorials-collapse" aria-expanded="true">
-              <div><i class="bi bi-chevron-right ms-2 "></i></div>
+              <div><i class="bi bi-chevron-right ms-2"></i></div>
             </a>
             </div>
         </div>
@@ -383,13 +383,13 @@
   </ul>
       <ul class="list-unstyled sidebar-section depth1">
     <li class="">
-        <div class="me-auto ">
+        <div class="me-auto">
           <div class="d-inline-flex w-100 sidebar-section-item">
-            <div class="sidebar-section-link me-auto ">
+            <div class="sidebar-section-link me-auto">
             <a href="../appendix/index.html" class="">Appendix</a>
             </div>
             <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#appendix-collapse" aria-expanded="true">
-              <div><i class="bi bi-chevron-right ms-2 "></i></div>
+              <div><i class="bi bi-chevron-right ms-2"></i></div>
             </a>
             </div>
         </div>
@@ -404,13 +404,13 @@
   </ul>
       <ul class="list-unstyled sidebar-section depth1">
     <li class="">
-        <div class="me-auto ">
+        <div class="me-auto">
           <div class="d-inline-flex w-100 sidebar-section-item">
-            <div class="sidebar-section-link me-auto ">
+            <div class="sidebar-section-link me-auto">
             <a href="../contributing/index.html" class="">Contributing</a>
             </div>
             <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#contributing-collapse" aria-expanded="true">
-              <div><i class="bi bi-chevron-right ms-2 "></i></div>
+              <div><i class="bi bi-chevron-right ms-2"></i></div>
             </a>
             </div>
         </div>
@@ -430,18 +430,42 @@
   </div>
 </nav>
   </div>
-  <div id="quarto-toc-sidebar" class="col col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-toc order-last"><nav id="TOC" role="doc-toc">
+  <div id="quarto-toc-sidebar" class=" pt-0 col col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-toc order-last"><nav id="TOC" role="doc-toc">
+<h2 id="toc-title">On this page</h2>
 <ul>
 <li><a href="#introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a>
 <ul class="collapse">
 <li><a href="#explore-gulf-of-mexico-ssts-during-the-2020-hurricane-season" class="nav-link" data-scroll-target="#explore-gulf-of-mexico-ssts-during-the-2020-hurricane-season">Explore Gulf of Mexico SSTs during the 2020 hurricane season</a></li>
 </ul></li>
 <li><a href="#first-import-needed-packages-and-libraries" class="nav-link" data-scroll-target="#first-import-needed-packages-and-libraries">First, import needed packages and libraries</a></li>
-<li><a href="#earthdata-login-authentication" class="nav-link" data-scroll-target="#earthdata-login-authentication">Earthdata Login Authentication</a></li>
+<li><a href="#earthdata-login-authentication" class="nav-link" data-scroll-target="#earthdata-login-authentication">Earthdata Login Authentication</a>
+<ul class="collapse">
+<li><a href="#explore-data-availability-using-the-common-metadata-repository" class="nav-link" data-scroll-target="#explore-data-availability-using-the-common-metadata-repository">Explore data availability using the Common Metadata Repository</a></li>
+</ul></li>
+<li><a href="#identify-a-data-collection-of-interest" class="nav-link" data-scroll-target="#identify-a-data-collection-of-interest">1. Identify a data collection of interest</a>
+<ul class="collapse">
+<li><a href="#search-by-dataset-shortname-and-provider" class="nav-link" data-scroll-target="#search-by-dataset-shortname-and-provider">Search by dataset shortname and provider</a></li>
+</ul></li>
+<li><a href="#download-a-granule-preview-data" class="nav-link" data-scroll-target="#download-a-granule-preview-data">2. Download a granule &amp; preview data</a>
+<ul class="collapse">
+<li><a href="#access-preview-the-data---get-a-quick-feel-for-what-the-data-looks-like" class="nav-link" data-scroll-target="#access-preview-the-data---get-a-quick-feel-for-what-the-data-looks-like">Access &amp; preview the data - get a quick feel for what the data looks like</a></li>
+<li><a href="#download-a-file-and-open-to-explore" class="nav-link" data-scroll-target="#download-a-file-and-open-to-explore">Download a file and open to explore</a></li>
+</ul></li>
+<li><a href="#select-data-with-shp-file-using-the-cmr-api" class="nav-link" data-scroll-target="#select-data-with-shp-file-using-the-cmr-api">3. Select data with shp file using the CMR API</a>
+<ul class="collapse">
+<li><a href="#access-data-selected-by-geographic-shapefile" class="nav-link" data-scroll-target="#access-data-selected-by-geographic-shapefile">Access data selected by geographic shapefile</a></li>
+<li><a href="#example-with-esri-.shp-file" class="nav-link" data-scroll-target="#example-with-esri-.shp-file">Example with ESRI .shp file:</a></li>
+</ul></li>
+<li><a href="#preview-the-selected-data" class="nav-link" data-scroll-target="#preview-the-selected-data">4. Preview the selected data</a></li>
+<li><a href="#download-after-spatial-and-temporal-selection" class="nav-link" data-scroll-target="#download-after-spatial-and-temporal-selection">5. Download after spatial and temporal selection</a></li>
+<li><a href="#tutorial-summary-discusssion" class="nav-link" data-scroll-target="#tutorial-summary-discusssion">Tutorial Summary &amp; Discusssion</a></li>
 </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/edit/main/discovery/search-by-shapefile.qmd">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/issues/new">Report an issue</a></p></div></div></nav></div>
-  <div class="col mx-auto col-sm-12 col-md-9 col-lg-7 px-lg-4">
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/edit/main/discovery/search-by-shapefile.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/issues/new" class="toc-action">Report an issue</a></p></div></div></nav></div>
+  <div class="col mx-auto col-sm-12 col-md-9 col-lg-7 col-xl-7 px-lg-4 pe-xxl-4 ps-xxl-0">
 <main>
+<header id="title-block-header">
+<h1 class="title d-none d-lg-block display-7">Search by shapefile</h1>
+</header>
 
 <section id="introduction" class="level2">
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
@@ -491,22 +515,387 @@
 <section id="earthdata-login-authentication" class="level2">
 <h2 class="anchored" data-anchor-id="earthdata-login-authentication">Earthdata Login Authentication</h2>
 <p>You’ll need to create an Earthdata Login account to access data, as well as discover restricted data, from the NASA Earthdata system. <a href="../get-started/earthdata-login.html">Follow these setup instructions</a></p>
+<hr>
+<section id="explore-data-availability-using-the-common-metadata-repository" class="level3">
+<h3 class="anchored" data-anchor-id="explore-data-availability-using-the-common-metadata-repository">Explore data availability using the Common Metadata Repository</h3>
+<p>The Common Metadata Repository (CMR) is a robust metadata system that catalogs Earth Science data and associated service metadata records. CMR supports data search and discovery through an Application Programming Interface, or API, enabling reproducible data product and data file searches using a number of helpful variables, including geographic area, keyword, provider, and time.</p>
+<p>General CMR API documentation: https://cmr.earthdata.nasa.gov/search/site/docs/search/api.html</p>
+</section>
+</section>
+<section id="identify-a-data-collection-of-interest" class="level2">
+<h2 class="anchored" data-anchor-id="identify-a-data-collection-of-interest">1. Identify a data collection of interest</h2>
+<p>Data sets are selected by data set IDs (e.g.&nbsp;<code>MODIS_T-JPL-L2P-v2019.0</code>). In the CMR API documentation, a data set id is referred to as a “short name”. These short names are located at the top of each NSIDC data set landing page in gray above the full title:</p>
+<ul>
+<li>go to https://search.earthdata.nasa.gov/search and type <em>POCLOUD</em> in the search box (which is the PO.DAAC data provider for cloud-based Pathfinder datasets in a restricted operational cloud environment). Click on the (i) next to the data collection of interest; the <code>shortname</code> is the subheader name below the main full data collection name.</li>
+</ul>
+<p><img align="center" src="EDS_info.png"></p>
+<p>ShortName: <img align="center" src="EDS_shortname.png"></p>
+<p>In this tutorial we will be using the <strong>MODIS-Terra SST L2 collection</strong>, with the shortname: <code>MODIS_T-JPL-L2P-v2019.0</code>. Data from our collection of interest can be obtained from the PO.DAAC (Earthdata) cloud archive.</p>
+<section id="search-by-dataset-shortname-and-provider" class="level3">
+<h3 class="anchored" data-anchor-id="search-by-dataset-shortname-and-provider">Search by dataset shortname and provider</h3>
+<p>To search Earthdata from this notebook, we can use the following code with key words that describe our dataset (also knows as a <strong>collection</strong>). This snippet of Python code uses the <code>requests</code> module to get collection metadata from the CMR, with our dataset of interset <em>shortname</em> and <em>provider</em> as search criteria (parameters). In subsequet notebooks (demos), this functionality is hidden in a package called <code>tutorial_helper_functions</code> for ease of use. For now, this code snippet will help us understand how the request is made:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| ExecuteTime: {end_time: '2020-12-04T06:29:54.594592Z', start_time: '2020-12-04T06:29:54.153543Z'}</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>modis_coll <span class="op">=</span> requests.get(</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    url<span class="op">=</span><span class="st">"https://cmr.earthdata.nasa.gov/search/collections.umm_json"</span>,    <span class="co"># CMR API url</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    params<span class="op">=</span>{<span class="st">'ShortName'</span>: <span class="st">"MODIS_T-JPL-L2P-v2019.0"</span>,      <span class="co"># dataset collection shortname</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>            <span class="st">'provider'</span>: <span class="st">"POCLOUD"</span>,      <span class="co"># data provider</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>            <span class="st">'token'</span>: _token},</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>).json()</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>modis_coll[<span class="st">'items'</span>][<span class="dv">0</span>][<span class="st">'meta'</span>]   <span class="co"># print collection metadata</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Based on the metadata retrieved above, we now know the collection ID (<em>concept-id</em>) is <code>C1940475563-POCLOUD</code></p>
+<p>To <strong>retrieve the <em>granule (file)</em> metadata</strong> from the CMR:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| ExecuteTime: {end_time: '2020-12-04T06:29:55.049622Z', start_time: '2020-12-04T06:29:54.597071Z'}</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>modis_gran <span class="op">=</span> requests.get(</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    url<span class="op">=</span><span class="st">"https://cmr.earthdata.nasa.gov/search/granules.umm_json"</span>, </span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    params<span class="op">=</span>{<span class="st">'ShortName'</span>: <span class="st">"MODIS_T-JPL-L2P-v2019.0"</span>, </span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>            <span class="st">'provider'</span>: <span class="st">"POCLOUD"</span>,</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>            <span class="st">'token'</span>: _token, },</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>).json()</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>modis_gran[<span class="st">'items'</span>][<span class="dv">0</span>][<span class="st">'meta'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>In this case, the metadata tells us that the the granule ID is <code>G1967602341-POCLOUD</code>, among other information.</p>
+</section>
+</section>
+<section id="download-a-granule-preview-data" class="level2">
+<h2 class="anchored" data-anchor-id="download-a-granule-preview-data">2. Download a granule &amp; preview data</h2>
+<section id="access-preview-the-data---get-a-quick-feel-for-what-the-data-looks-like" class="level3">
+<h3 class="anchored" data-anchor-id="access-preview-the-data---get-a-quick-feel-for-what-the-data-looks-like">Access &amp; preview the data - get a quick feel for what the data looks like</h3>
+<p>Here is how to list the URLs needed to access the data:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| ExecuteTime: {end_time: '2020-12-04T06:29:55.055258Z', start_time: '2020-12-04T06:29:55.051358Z'}</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>modis_gran[<span class="st">'items'</span>][<span class="dv">0</span>][<span class="st">'umm'</span>][<span class="st">'RelatedUrls'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>To access POCLOUD Earthdata Cloud data, you want URLs with ‘Type’: <code>'GET DATA'</code> and host <code>https://archive.podaac.earthdata.nasa.gov</code>.</p>
+<p><strong>Lesson note:</strong> This URL points you to data that is archived in a cloud environment, namely, PO.DAAC’s ‘space’ in the AWS S3 storage environment.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| ExecuteTime: {end_time: '2020-12-04T06:29:55.060096Z', start_time: '2020-12-04T06:29:55.056913Z'}</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>modis_url <span class="op">=</span> modis_gran[<span class="st">'items'</span>][<span class="dv">0</span>][<span class="st">'umm'</span>][<span class="st">'RelatedUrls'</span>][<span class="dv">1</span>][<span class="st">'URL'</span>]</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>modis_url</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="download-a-file-and-open-to-explore" class="level3">
+<h3 class="anchored" data-anchor-id="download-a-file-and-open-to-explore">Download a file and open to explore</h3>
+<p>Download the file and open it with xarray in memory. This will pull cloud-stored data onto local space. <em>Note there is no charge for the user in doing so.</em></p>
+<p><strong>Lesson note:</strong> You are now downloading a file to your local space, from the PO.DAAC (Earthdata) archive that lives in the AWS cloud. Again, there is no charge for the user in doing so.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| ExecuteTime: {end_time: '2020-12-04T06:30:04.410453Z', start_time: '2020-12-04T06:29:55.061545Z'}</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> request.urlopen(modis_url) <span class="im">as</span> response, <span class="bu">open</span>(<span class="st">'tutorial1_data_MODIS.nc'</span>, <span class="st">'wb'</span>) <span class="im">as</span> out_file:</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'Content Size:'</span>, response.headers[<span class="st">'Content-length'</span>])</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    shutil.copyfileobj(response, out_file)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Downloaded request to tutorial1_data_MODIS.nc"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>You can preview metadata of the downloaded file with <code>ncdump</code>, or open in memory wtih <code>xarray</code>.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| ExecuteTime: {end_time: '2020-12-04T06:30:04.421842Z', start_time: '2020-12-04T06:30:04.418347Z'}</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co">#!ncdump -h tutorial1_data_MODIS.nc</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| ExecuteTime: {end_time: '2020-12-04T06:30:04.487207Z', start_time: '2020-12-04T06:30:04.426000Z'}</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> xarray <span class="im">as</span> xr</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>ds_MODIS <span class="op">=</span> xr.open_dataset(<span class="st">'tutorial1_data_MODIS.nc'</span>)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(ds_MODIS)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Let’s do a <strong>quick plot</strong> of the <code>sea_surface_temperature</code> variable:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| ExecuteTime: {end_time: '2020-12-04T06:30:06.085479Z', start_time: '2020-12-04T06:30:04.488930Z'}</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pandas.plotting <span class="im">import</span> register_matplotlib_converters</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>ds_MODIS.sea_surface_temperature.plot()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>We can see the time this file represents, and the variable, but it’s hard to tell where on the map we are. Let’s try it another way:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| ExecuteTime: {end_time: '2020-12-04T06:30:48.432752Z', start_time: '2020-12-04T06:30:06.086741Z'}</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> cartopy.crs <span class="im">as</span> ccrs</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> mpl_toolkits.axes_grid1 <span class="im">import</span> make_axes_locatable</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> plt.axes(projection<span class="op">=</span>ccrs.PlateCarree())</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>ax.coastlines()</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>plt.scatter(ds_MODIS.lon, ds_MODIS.lat, lw<span class="op">=</span><span class="dv">2</span>, c<span class="op">=</span>ds_MODIS.sea_surface_temperature)</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>plt.colorbar()</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="co">#plt.clim(-0.3, 0.3)</span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img align="left" src="MODIS_SST_1stFile.png"></p>
+</section>
+</section>
+<section id="select-data-with-shp-file-using-the-cmr-api" class="level2">
+<h2 class="anchored" data-anchor-id="select-data-with-shp-file-using-the-cmr-api">3. Select data with shp file using the CMR API</h2>
+<p>Now that we’ve previewed the data and decided we’d like to request more, specific to our use case, we can pass the collection ID into the CMR API to <em>search</em> by geographic shape file. The service to <em>subset by shp</em> is also in development and should be available in 2021.</p>
+<section id="access-data-selected-by-geographic-shapefile" class="level3">
+<h3 class="anchored" data-anchor-id="access-data-selected-by-geographic-shapefile">Access data selected by geographic shapefile</h3>
+<p>We will request data overlapping the Gulf of Mexico by uploading a shape file with that boundary. This shape file can be one that you created, shred by a collaborator, or any other user, as long as it follows shape file convention. In essence, this following service allows the user to bring their own shape file to do a data search. The returned response will provide a list of data files from the cloud-based PO.DAAC archive (Earthdata Cloud) that intersect this given shape file.</p>
+<p>This requires the use of a multipart/form-data POST request. Supported shapefile formats include ESRI, GeoJSON, and KML. The associated mime-types are as follows:</p>
 <table class="table">
-<colgroup>
-<col style="width: 5%">
-</colgroup>
 <thead>
 <tr class="header">
-<th>### Explore data availability using the Common Metadata Repository The Common Metadata Repository (CMR) is a robust metadata system that catalogs Earth Science data and associated service metadata records. CMR supports data search and discovery through an Application Programming Interface, or API, enabling reproducible data product and data file searches using a number of helpful variables, including geographic area, keyword, provider, and time.</th>
+<th style="text-align: left;">Shapefile Format</th>
+<th style="text-align: right;">mime-type</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>document-css: false link-citations: true project: type: site output-dir: ../_site lib-dir: ../site_libs site: site-url: ‘https://nasa-openscapes.github.io/earthdata-cloud-cookbook’ repo-url: ‘https://github.com/nasa-openscapes/earthdata-cloud-cookbook’ repo-actions: - edit - issue page-navigation: true sidebar: title: EarthData Cloud Cookbook logo: ../nasa-openscapes.png style: docked background: light search: true collapse-level: 2 align: left tools: - icon: github href: ‘https://github.com/nasa-openscapes/earthdata-cloud-cookbook’ contents: - text: Welcome href: index.md - section: ../get-started/index.md contents: - ../get-started/how-to-use.md - ../get-started/earthdata-login.qmd - section: ../get-started/authentication.md contents: - ../get-started/lpdaac-netrc.ipynb - ../get-started/podaac-ecco-netrc.ipynb - ../get-started/api-primer.qmd - section: ../discovery/index.md contents: - ../discovery/search-by-shapefile.qmd - ../discovery/Navigate_CMR_STAC.ipynb - ../discovery/earthdata-search-ui.md - ../discovery/cmr-virtual-directories.md - section: ../access/index.md contents: - ../access/data-access-example.ipynb - ../access/earthdata-search.md - ../access/opendap-cloud.md - section: ../access/direct-in-region.md contents: - ../access/podaac-ecco-data_access-cloud_direct_access_s3.ipynb - section: ../access/cof-via-harmony.md contents: - ../external/cof-zarr-reformat.ipynb - ../access/download-to-local.md - section: ../transformations/index.md contents: - ../transformations/harmony-api.md - ../transformations/HarmonyPy_intro_tutorial.ipynb - ../transformations/netcdf-to-zarr.md - section: ../transformations/L2-subsetter.md contents: - ../transformations/harmony-subsetting.qmd - ../transformations/earthdata-search.md - ../transformations/opendap-cloud.md - ../external/zarr-eosdis-store.ipynb - section: ../examples/index.md contents: - ../examples/NSIDC/ICESat2-CMR-OnPrem-vs-Cloud.ipynb - ../examples/NSIDC/ICESat2-CMR-AWS-S3.ipynb - section: ../appendix/index.md contents: - ../transformations/harmonypy.md - section: ../contributing/index.md contents: - ../contributing/setup.qmd - ../contributing/workflow.md footer: NASA Openscapes Team (2021). Earthdata Cloud Cookbook (Version v0.0.1). bibliography: - ../references.bib format: html: theme: light: cosmo dark: - cosmo - ../theme-dark.scss code-background: true code-copy: true css: - ../styles.css toc: true theme: light: cosmo dark: - cosmo - ../theme-dark.scss code-background: true code-copy: true title: Search by shapefile toc-title: On this page</td>
+<td style="text-align: left;">ESRI</td>
+<td style="text-align: right;">application/shapefile+zip</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">GeoJSON</td>
+<td style="text-align: right;">application/geo+json</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">KML</td>
+<td style="text-align: right;">application/vnd.google-earth.kml+xml</td>
 </tr>
 </tbody>
 </table>
+<p>ESRI shapefiles must be uploaded as a single .zip file.</p>
 </section>
+<section id="example-with-esri-.shp-file" class="level3">
+<h3 class="anchored" data-anchor-id="example-with-esri-.shp-file">Example with ESRI .shp file:</h3>
+<p>We will now search with an ESRI shapefile and a temporal bound to limit our space and time region of interest. Namely, we will search over the Gulf of Mexico during the period 1 Aug 2020 to 1 Nov 2020, since we are interested in exploring how SST responds during the latest Atlantic hurricane season. Our spatial boundary shape file to search with over the Gulf of Mexico looks like this (previewed in QGIS):</p>
+<p><img align="center" src="Gulf_Mexico_shp_QGIS_zoom.png"></p>
+<p><strong>Lesson Note:</strong> You are once again searching on data that lives in the PO.DAAC (Earthdata) cloud archive, from your local computer, by running this next code snippet. You are searching spatially (via shape file boundaries) and temporally.</p>
+<p>(Side note: the token parameter below allows you to access this new PO.DAAC cloud operational archive space. This is possible because your Earthdata login was added to a list of early access users to this cloud environment, for this workshop.)</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| ExecuteTime: {end_time: '2020-12-04T06:30:49.137241Z', start_time: '2020-12-04T06:30:48.434222Z'}</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| scrolled: false</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># the URL of the CMR searvice</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">'https://cmr.earthdata.nasa.gov/search/granules.umm_json'</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="co">#The shapefile we want to use in our search</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>shp_file <span class="op">=</span> <span class="bu">open</span>(<span class="st">'resources/gulf_shapefile.zip'</span>, <span class="st">'rb'</span>)</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="co">#need to declare the file and the type we are uploading</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>files <span class="op">=</span> {<span class="st">'shapefile'</span>:(<span class="st">'gulf_shapefile.zip'</span>,shp_file, <span class="st">'application/shapefile+zip'</span>)}</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="co">#used to define parameters such as the concept-id and things like temporal searches</span></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>parameters <span class="op">=</span> {<span class="st">'collection_concept_id'</span>:<span class="st">'C1940475563-POCLOUD'</span>, <span class="st">'token'</span>: _token, <span class="st">'temporal'</span>:<span class="st">'2020-08-23T00:00:00Z,2020-08-29T00:00:00Z'</span>, <span class="st">'page_size'</span>:<span class="dv">33</span>}</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.post(url, files<span class="op">=</span>files, params<span class="op">=</span>parameters)</span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>results  <span class="op">=</span> response.json()</span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(json.dumps(results[<span class="st">'items'</span>][<span class="dv">0</span>], indent<span class="op">=</span><span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="preview-the-selected-data" class="level2">
+<h2 class="anchored" data-anchor-id="preview-the-selected-data">4. Preview the selected data</h2>
+<p>The <code>POCLOUD</code> in the response above signals that you are indeed searching on data from the PO.DAAC archive within the Earthdata Cloud.</p>
+<p>Let’s take a look at the url for the first data file this spatial and temporal search result returned:</p>
+<p><strong>For now, let’s plot the first files</strong> from our query, that we have downloaded to your local space.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| ExecuteTime: {end_time: '2020-12-04T06:30:49.142051Z', start_time: '2020-12-04T06:30:49.138854Z'}</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>new_modis_url <span class="op">=</span> results[<span class="st">'items'</span>][<span class="dv">0</span>][<span class="st">'umm'</span>][<span class="st">'RelatedUrls'</span>][<span class="dv">1</span>][<span class="st">'URL'</span>]</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>new_modis_url</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| ExecuteTime: {end_time: '2020-12-04T06:30:52.119682Z', start_time: '2020-12-04T06:30:49.143442Z'}</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> request.urlopen(new_modis_url) <span class="im">as</span> response, <span class="bu">open</span>(<span class="st">'tutorial1_data_MODIS_from_shp.nc'</span>, <span class="st">'wb'</span>) <span class="im">as</span> out_file:</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'Content Size:'</span>, response.headers[<span class="st">'Content-length'</span>])</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    shutil.copyfileobj(response, out_file)</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Downloaded request to tutorial1_data_MODIS_from_shp.nc"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| ExecuteTime: {end_time: '2020-12-04T06:30:52.172485Z', start_time: '2020-12-04T06:30:52.121636Z'}</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>ds_MODIS_shp <span class="op">=</span> xr.open_dataset(<span class="st">'tutorial1_data_MODIS_from_shp.nc'</span>)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>ds_MODIS_shp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| ExecuteTime: {end_time: '2020-12-04T06:31:34.060892Z', start_time: '2020-12-04T06:30:52.174585Z'}</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> cartopy.crs <span class="im">as</span> ccrs</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> mpl_toolkits.axes_grid1 <span class="im">import</span> make_axes_locatable</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> plt.axes(projection<span class="op">=</span>ccrs.PlateCarree())</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>ax.coastlines()</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>plt.scatter(ds_MODIS_shp.lon, ds_MODIS_shp.lat, lw<span class="op">=</span><span class="dv">2</span>, c<span class="op">=</span>ds_MODIS_shp.sea_surface_temperature)</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>plt.colorbar()</span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a><span class="co">#plt.clim(-0.3, 0.3)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This file from 23 Aug 2020 intersects our shp boundary. In this case, overlap is not extensive, but it does overlap. We can confirm our search by doing the same query in the <strong>Earthdata Search</strong> portal mentioned at the beginning of the tutorial. https://search.earthdata.nasa.gov/search/granules?projectId=8195834861</p>
+<p>Indeed the granule returned matches the search boundary:</p>
+<p><img align="center" src="EDS_shp_granule1.png"></p>
+</section>
+<section id="download-after-spatial-and-temporal-selection" class="level2">
+<h2 class="anchored" data-anchor-id="download-after-spatial-and-temporal-selection">5. Download after spatial and temporal selection</h2>
+<p>Loop to download the MODIS SST files based on our search criteria (those that intersect the region of interest (defined by our shapefile here) and our period of interest.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| ExecuteTime: {end_time: '2020-12-04T06:31:34.072671Z', start_time: '2020-12-04T06:31:34.068053Z'}</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>urls <span class="op">=</span> []</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> r <span class="kw">in</span> results[<span class="st">'items'</span>]:</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> u <span class="kw">in</span> r[<span class="st">'umm'</span>][<span class="st">'RelatedUrls'</span>]:</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> u[<span class="st">'URL'</span>].startswith(<span class="st">"https://archive.podaac"</span>) <span class="kw">and</span> u[<span class="st">'Type'</span>]<span class="op">==</span><span class="st">"GET DATA"</span>:</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>            urls.append(u[<span class="st">'URL'</span>])</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>urls</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| ExecuteTime: {end_time: '2020-12-04T06:33:08.813653Z', start_time: '2020-12-04T06:31:34.074108Z'}</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> u <span class="kw">in</span> urls:</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(u)</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> request.urlopen(u) <span class="im">as</span> response, <span class="bu">open</span>(<span class="ss">f'</span><span class="sc">{</span>basename(u)<span class="sc">}</span><span class="ss">'</span>, <span class="st">'wb'</span>) <span class="im">as</span> out_file:</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">'Content Size:'</span>, response.headers[<span class="st">'Content-length'</span>])</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>        shutil.copyfileobj(response, out_file)</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Downloaded request to </span><span class="sc">{</span>basename(u)<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>We now have the 33 files from our search downloaded to our local environment (computer).</p>
+<p><img align="center" src="files_download.png"></p>
+</section>
+<section id="tutorial-summary-discusssion" class="level2">
+<h2 class="anchored" data-anchor-id="tutorial-summary-discusssion">Tutorial Summary &amp; Discusssion</h2>
+<p>We’ve searched for a dataset of interest that is archived in the PO.DAAC Earthdata Cloud, previewed it, selected certain data granules that matched a user-defined spatial area (by using .shp files) and temporal range, and downloaded the serach results to our local computer, from the Earthdata Cloud.</p>
+<p>From here, additional analysis can be done. In future guiding notebooks, handling of MODIS L2 SST data into analysis ready data (ARD) ‘data cubes’or ’time series stacks’ will also be made available, which further shows how to treat level 2 data to create level 3-like uniformly gridded L2 data to your exact specifications.</p>
+<p>And as mentioned at the beginning of the notebook, in this example we are using a shape file to search on ocean remote sensing data, although one can do this type of search on any Earthdata (DAAC) data. For example, of particular interest could be using shape files to search on terrestrial hydrology data (e.g watersheds), globally (depending on data availability of course), or other coastal regions with unique boundaries.</p>
+
+
+</section>
+<script type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('div.sidebar-toc .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+    } else {
+      disableStylesheet(alternateStylesheets);
+    }
+    manageTransitions('.quarto-toc-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      return window.localStorage.getItem("quarto-color-scheme");
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = null;
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.id = "quarto-color-scheme-toggle";
+    a.classList.add('top-right');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } 
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    setTimeout(function() {
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    window.tippy(el, {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    }); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
 </main>
 <div class="page-navigation page-navigation-docked">
   <div class="nav-page nav-page-previous">
@@ -520,11 +909,13 @@
       </a>
   </div>
 </div>
-  <div class="row nav-footer">
-    <div class="nav-footer-contents">NASA Openscapes Team (2021). Earthdata Cloud Cookbook (Version v0.0.1).</div>
-  </div>
 </div> <!-- /main column -->
 </div> <!-- /row -->
+<div class="row">
+  <div class="nav-footer">
+      <div class="nav-footer-center me-auto ms-auto">NASA Openscapes Team (2021). Earthdata Cloud Cookbook (Version v0.0.1).</div>
+  </div>
+</div>
 </div> <!-- /container fluid -->
 
 
