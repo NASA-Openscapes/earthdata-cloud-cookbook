@@ -1,4 +1,4 @@
-# Hello! 
+# Hello!  
 
 This Earthdata Cloud Cookbook is being developed by the [NASA-Openscapes team](https://nasa-openscapes.github.io/).
 
