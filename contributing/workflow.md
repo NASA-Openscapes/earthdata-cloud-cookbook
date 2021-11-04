@@ -203,6 +203,29 @@ continue to commit, you'll be able to push as normal:
 git push
 ```
 
+### Delete your local changes
+
+There are several ways to delete your local changes if you were playing around and want to reset. Here are a few: 
+
+**Burn it all down** - delete the whole repo that you have locally, and then reclone. 
+
+```{.bash}
+cd 2021-Cloud-Hackathon
+rm -rf 2021-Cloud-Hackathon 
+```
+
+**Undo changes you've maybe saved or committed, but not pushed**. This is less time and internet intensive (no new clone/download). 
+
+If you've got changes saved, but not yet staged, committed, or pushed, you'll delete unstaged changes in the working directory with clean:
+
+```{.bash}
+cd 2021-Cloud-Hackathon
+git clean -df
+git checkout -- .
+```
+
+Here is a whole blog on how to do this, with conceptual diagrams, command line code, and screenshots from RStudio. <https://ohi-science.org/news/github-going-back-in-time>
+
 ### Update local branch with remote main branch
 
 If while you're working you would like to update your local
