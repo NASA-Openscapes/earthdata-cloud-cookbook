@@ -443,6 +443,7 @@
 <li><a href="#develop-content" class="nav-link" data-scroll-target="#develop-content">Develop content</a></li>
 <li><a href="#commit-changes" class="nav-link" data-scroll-target="#commit-changes">Commit changes</a></li>
 <li><a href="#push-changes" class="nav-link" data-scroll-target="#push-changes">Push changes</a></li>
+<li><a href="#delete-your-local-changes" class="nav-link" data-scroll-target="#delete-your-local-changes">Delete your local changes</a></li>
 <li><a href="#update-local-branch-with-remote-main-branch" class="nav-link" data-scroll-target="#update-local-branch-with-remote-main-branch">Update local branch with remote main branch</a></li>
 <li><a href="#pull-request" class="nav-link" data-scroll-target="#pull-request">Pull Request</a></li>
 <li><a href="#delete-branch" class="nav-link" data-scroll-target="#delete-branch">Delete Branch</a></li>
@@ -603,6 +604,19 @@ You must re-render all files that aren’t plain <code>.md</code>s to view your 
 <p>The above is a one-time command to connect your local branch back to github.com. After you’ve pushed successfully the first time, then as you continue to commit, you’ll be able to push as normal:</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
+<section id="delete-your-local-changes" class="level3">
+<h3 class="anchored" data-anchor-id="delete-your-local-changes">Delete your local changes</h3>
+<p>There are several ways to delete your local changes if you were playing around and want to reset. Here are a few:</p>
+<p><strong>Burn it all down</strong> - delete the whole repo that you have locally, and then reclone.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> 2021-Cloud-Hackathon</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-rf</span> 2021-Cloud-Hackathon </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Undo changes you’ve maybe saved or committed, but not pushed</strong>. This is less time and internet intensive (no new clone/download).</p>
+<p>If you’ve got changes saved, but not yet staged, committed, or pushed, you’ll delete unstaged changes in the working directory with clean:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> 2021-Cloud-Hackathon</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clean <span class="at">-df</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout <span class="at">--</span> .</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Here is a whole blog on how to do this, with conceptual diagrams, command line code, and screenshots from RStudio. <a href="https://ohi-science.org/news/github-going-back-in-time" class="uri">https://ohi-science.org/news/github-going-back-in-time</a></p>
+</section>
 <section id="update-local-branch-with-remote-main-branch" class="level3">
 <h3 class="anchored" data-anchor-id="update-local-branch-with-remote-main-branch">Update local branch with remote main branch</h3>
 <p>If while you’re working you would like to update your local <code>your-branch</code> with the most recent updates on the <code>main</code> branch on GitHub.com, there are several ways to do this.</p>
@@ -635,9 +649,9 @@ git merge origin/main</code></pre>
 <section id="delete-branch" class="level3">
 <h3 class="anchored" data-anchor-id="delete-branch">Delete Branch</h3>
 <p>Once your pull request is merged and you’ve deleted the branch from github.com, then come back to your local setup and delete the branch locally:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout main         <span class="co"># switch to the main branch</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull                  <span class="co"># pull merged updates from github.com</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch <span class="at">-d</span> branch-name <span class="co"># delete old local  branch</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout main         <span class="co"># switch to the main branch</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull                  <span class="co"># pull merged updates from github.com</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch <span class="at">-d</span> branch-name <span class="co"># delete old local  branch</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 <section id="quarto-workflow" class="level2">
@@ -650,7 +664,7 @@ git merge origin/main</code></pre>
 <h3 class="anchored" data-anchor-id="quarto-serve">Quarto serve</h3>
 <p>The thing to do first is to “serve” the Cookbook so that we can see what it looks like as we develop the chapters (it’s called “serve” because it’s really a website that looks like a book).</p>
 <p>Run the following from your branch in your <code>earthdata-cloud-cookbook</code> directory from the command line:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> serve</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> serve</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>And after it’s is served, you can click from the console (or paste the url into your browser) to see the development version of the Cookbook.</p>
 <div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
@@ -687,12 +701,12 @@ This command line instance is now being used to serve Quarto
 <h3 class="anchored" data-anchor-id="quarto-render">Quarto render</h3>
 <p>As you develop book chapters and edit files, any <code>.md</code> files will automatically refresh in the browser (so long as quarto serve is running)!</p>
 <p>To refresh files with executable code, you’ll need to render them individually. You can do the following to render <code>.ipynb</code>/<code>.qmd</code>/<code>.Rmd</code> files so that they show up refreshed in the served Cookbook.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render my-document.ipynb      <span class="co">## render a notebook</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render my-work.qmd            <span class="co">## render a Quarto file</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render my-contribution.Rmd    <span class="co">## render a RMarkdown file</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render my-document.ipynb      <span class="co">## render a notebook</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render my-work.qmd            <span class="co">## render a Quarto file</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render my-contribution.Rmd    <span class="co">## render a RMarkdown file</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>From the RStudio IDE, you can also press the <strong>Render</strong> button to render <code>.qmd</code> and <code>.Rmd</code> files.</p>
 <p>And you can also render the whole book:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Learn more about <a href="https://quarto.org/docs/computations/running-code.html#rendering">rendering with Quarto</a>. From J.J. Allaire:</p>
 <blockquote class="blockquote">
 <p>The reason Quarto doesn’t render <code>.Rmd</code> and <code>.qmd</code> on save is that render could (potentially) be very long running and that cost shouldn’t be imposed on you whenever you save. Here we are talking about the age old debate of whether computational markdown should be rendered on save when running a development server. Quarto currently doesn’t do this to give the user a choice between an expensive render and a cheap save.</p>
@@ -762,7 +776,7 @@ This command line instance is now being used to serve Quarto
 <section id="virtual-environments" class="level2">
 <h2 class="anchored" data-anchor-id="virtual-environments">Virtual Environments</h2>
 <p>If you are working on a chapter that loads any Python or R packages, to make your work reproducible you’ll need to create and then update the <code>environments.txt</code> file. Do this use the <code>pip freeze</code> command:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> freeze <span class="op">&gt;</span> requirements.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> freeze <span class="op">&gt;</span> requirements.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This will overwrite/update the <code>requirements.txt</code> file. Depending on where you are working, you might also want to create a new subfolder to store the <code>requirements.txt</code>. See the next section on Cookbook Structure.</p>
 <p>You you will then commit and push along with your other edits back to github.com.</p>
 <p>TODO: info about conda…</p>
@@ -803,10 +817,10 @@ This command line instance is now being used to serve Quarto
 </ol></li>
 </ol>
 <p>After these updates to <code>_import/assets.json</code>, to the following in the terminal:</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> _import</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env update <span class="at">-f</span> environment.yml</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate quarto-import</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> quarto_import.py <span class="at">-f</span> assets.json</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> _import</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env update <span class="at">-f</span> environment.yml</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate quarto-import</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> quarto_import.py <span class="at">-f</span> assets.json</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This will return a confirmation of the file that has been processed.</p>
 <p>Then update <code>_quarto.yml</code> by adding your file (<code>external/&lt;target</code>) to the appropriate location in the Cookbook.</p>
 </section>
@@ -820,10 +834,10 @@ This command line instance is now being used to serve Quarto
 <li>In your local setup (e.g.&nbsp;RStudio IDE): New File &gt; Text File &gt; Paste &gt; Save (with the same name if appropriate) and <code>.ipynb</code> extension, e.g.: <code>discovery/search-by-shapefile.ipynb</code></li>
 <li>In the command line:</li>
 </ol>
-<div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> convert help <span class="co"># reminder of commands!</span></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> convert discovery/search-by-shapefile.ipynb <span class="co"># convert to .qmd</span></span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> discovery/search-by-shapefile.ipynb <span class="co"># delete .ipynb</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> convert help <span class="co"># reminder of commands!</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> convert discovery/search-by-shapefile.ipynb <span class="co"># convert to .qmd</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> discovery/search-by-shapefile.ipynb <span class="co"># delete .ipynb</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 <section id="notebook-review" class="level2">
@@ -842,25 +856,25 @@ This command line instance is now being used to serve Quarto
 <p>Here is a workflow to leverage <code>.qmd</code>s in our review process:</p>
 <ol type="1">
 <li>Clone/pull the repo, create a branch following our <a href="#github-workflow">GitHub Workflow</a> above</li>
-<li>In the terminal, use <code>quarto convert</code> to convert a notebook from <code>.ipynb</code> to <code>.qmd</code>. You’ll have to either <code>cd</code> into the folder or you can convert by specifying the filepath. Typing <code>quarto convert help</code> will describe more options.</li>
 </ol>
-<pre class="{bash}"><code>| eval: false
-## git clone and branch
-git clone https://github.com/NASA-Openscapes/2021-Cloud-Hackathon/
-git checkout -b my-new-branch
-
-## quarto convert
-quarto convert tutorials/Data_Discovery__CMR-STAC_API.ipynb</code></pre>
-<p>This creates <code>tutorials/Data_Discovery__CMR-STAC_API.qmd</code>.</p>
-<p>Commit this so that the whole file is tracked and any changes you make will be viewed as diffs. Follow the <a href="#github-workflow">GitHub Workflow</a> above.</p>
-<p>Now, make edits/review the <code>.qmd</code> in your editor of choice, which will likely also have spell-check and markdown support.</p>
-<p>At the moment, this is best with making edits to the <code>.qmd</code> locally while ALSO running the <code>.ipynb</code> notebook in 2i2c. This will iterate as we get quarto set up in 2i2c (and as we work more with <code>.qmd</code>s).</p>
-<p>When you’re done with your review, you will want to push not only your edited <code>.qmd</code>, but also a <code>.ipynb</code> with all your changes. This way, the notebook author can both easily see the diffs made to the <code>.qmd</code>, and run the <code>.ipynb</code> as they normally would. To do so:</p>
-<pre class="{bash}"><code>#| eval: false
-quarto convert tutorials/Data_Discovery__CMR-STAC_API.qmd </code></pre>
-<p>This will create <code>tutorials/Data_Discovery__CMR-STAC_API.ipynb</code>, and over-write the original with your changes.</p>
-<p><strong>Note</strong>: Quarto will consider the <code>.qmd</code> book chapter and try to render it. To avoid this, by hand you can prefix the filename with an underscore: before you push: <code>_Data_Discovery__CMR-STAC_API.qmd</code></p>
-<p>Now, commit and push your review!</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co">## git clone and branch</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/NASA-Openscapes/2021-Cloud-Hackathon/</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout <span class="at">-b</span> my-new-branch</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="2" type="1">
+<li>In the terminal, use <code>quarto convert</code> to convert a notebook from <code>.ipynb</code> to <code>.qmd</code>. You’ll have to either <code>cd</code> into the folder or you can convert by specifying the filepath. Typing <code>quarto convert help</code> will describe more options. The following will create <code>tutorials/Data_Discovery__CMR-STAC_API.qmd</code>.</li>
+</ol>
+<div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co">## quarto convert</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> convert tutorials/Data_Discovery__CMR-STAC_API.ipynb</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="3" type="1">
+<li><p>Commit this file now so that the whole file is tracked and any changes you make will be viewed as diffs.</p></li>
+<li><p>Now, make edits/review the <code>.qmd</code> in your editor of choice, which will likely also have spell-check and markdown support. At the moment, this is best with making edits to the <code>.qmd</code> locally while ALSO running the <code>.ipynb</code> notebook in 2i2c. This will iterate as we get quarto set up in 2i2c (and as we work more with <code>.qmd</code>s).</p></li>
+<li><p>When you’re done with your review, you’ll want to copy all your edits from the <code>.qmd</code> back to the <code>.ipynb</code>. This way, the notebook author can both easily see the diffs made to the <code>.qmd</code>, and run the <code>.ipynb</code> as they normally would in 2i2c. The following code creates <code>tutorials/Data_Discovery__CMR-STAC_API.ipynb</code>, and over-write the original <code>.ipynb</code> with your changes.</p></li>
+</ol>
+<div class="sourceCode" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> convert tutorials/Data_Discovery__CMR-STAC_API.qmd </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="6" type="1">
+<li><p>Quarto will consider the <code>.qmd</code> book chapter and try to render it. To avoid this, by hand you can prefix the filename with an underscore: before you push: <code>_Data_Discovery__CMR-STAC_API.qmd</code> (do this by hand for now, we’ll iterate further)</p></li>
+<li><p>Finally, commit and push your review!</p></li>
+</ol>
 </section>
 </section>
 <section id="code-review" class="level2">
@@ -877,10 +891,10 @@ quarto convert tutorials/Data_Discovery__CMR-STAC_API.qmd </code></pre>
 <section id="leaveexit-a-virtual-environment" class="level3">
 <h3 class="anchored" data-anchor-id="leaveexit-a-virtual-environment">Leave/exit a virtual environment</h3>
 <p>In your Command Line Shell, if you want to leave your virtual environment, the command is:</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="ex">deactivate</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="ex">deactivate</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The way you tell that you are in a virtual environment: it’s named in parentheses at the beginning of your prompt:</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">.venv</span><span class="kw">)</span> <span class="kw">(</span><span class="ex">base</span><span class="kw">)</span> <span class="ex">JLos-Macbook-Pro:earthdata-cloud-cookbook</span> lowndes$ deactivate</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">base</span><span class="kw">)</span> <span class="ex">JLos-Macbook-Pro:earthdata-cloud-cookbook</span> lowndes$</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">.venv</span><span class="kw">)</span> <span class="kw">(</span><span class="ex">base</span><span class="kw">)</span> <span class="ex">JLos-Macbook-Pro:earthdata-cloud-cookbook</span> lowndes$ deactivate</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">base</span><span class="kw">)</span> <span class="ex">JLos-Macbook-Pro:earthdata-cloud-cookbook</span> lowndes$</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 </section>
