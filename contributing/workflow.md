@@ -203,6 +203,29 @@ continue to commit, you'll be able to push as normal:
 git push
 ```
 
+### Delete your local changes
+
+There are several ways to delete your local changes if you were playing around and want to reset. Here are a few: 
+
+**Burn it all down** - delete the whole repo that you have locally, and then reclone. 
+
+```{.bash}
+cd 2021-Cloud-Hackathon
+rm -rf 2021-Cloud-Hackathon 
+```
+
+**Undo changes you've maybe saved or committed, but not pushed**. This is less time and internet intensive (no new clone/download). 
+
+If you've got changes saved, but not yet staged, committed, or pushed, you'll delete unstaged changes in the working directory with clean:
+
+```{.bash}
+cd 2021-Cloud-Hackathon
+git clean -df
+git checkout -- .
+```
+
+Here is a whole blog on how to do this, with conceptual diagrams, command line code, and screenshots from RStudio. <https://ohi-science.org/news/github-going-back-in-time>
+
 ### Update local branch with remote main branch
 
 If while you're working you would like to update your local
@@ -601,39 +624,34 @@ Since quarto notebook files (`.qmd`s) are text files, GitHub can display their d
 
 Here is a workflow to leverage `.qmd`s in our review process: 
 
-1. Clone/pull the repo, create a branch following our [GitHub Workflow](#github-workflow) above
-1. In the terminal, use `quarto convert` to convert a notebook from `.ipynb` to `.qmd`. You'll have to either `cd` into the folder or you can convert by specifying the filepath. Typing `quarto convert help` will describe more options. 
+1.  Clone/pull the repo, create a branch following our [GitHub Workflow](#github-workflow) above
 
-```{bash}
-| eval: false
+```{.bash}
 ## git clone and branch
 git clone https://github.com/NASA-Openscapes/2021-Cloud-Hackathon/
 git checkout -b my-new-branch
+```
 
+2. In the terminal, use `quarto convert` to convert a notebook from `.ipynb` to `.qmd`. You'll have to either `cd` into the folder or you can convert by specifying the filepath. Typing `quarto convert help` will describe more options. The following will create `tutorials/Data_Discovery__CMR-STAC_API.qmd`. 
+
+```{.bash}
 ## quarto convert
 quarto convert tutorials/Data_Discovery__CMR-STAC_API.ipynb
 ```
 
-This creates `tutorials/Data_Discovery__CMR-STAC_API.qmd`. 
+3. Commit this file now so that the whole file is tracked and any changes you make will be viewed as diffs. 
 
-Commit this so that the whole file is tracked and any changes you make will be viewed as diffs. Follow the [GitHub Workflow](#github-workflow) above. 
+4. Now, make edits/review the `.qmd` in your editor of choice, which will likely also have spell-check and markdown support. At the moment, this is best with making edits to the `.qmd` locally while ALSO running the `.ipynb` notebook in 2i2c. This will iterate as we get quarto set up in 2i2c (and as we work more with `.qmd`s). 
 
-Now, make edits/review the `.qmd` in your editor of choice, which will likely also have spell-check and markdown support.
+5. When you're done with your review, you'll want to copy all your edits from the `.qmd` back to the `.ipynb`. This way, the notebook author can both easily see the diffs made to the `.qmd`, and run the `.ipynb` as they normally would in 2i2c. The following code creates `tutorials/Data_Discovery__CMR-STAC_API.ipynb`, and over-write the original `.ipynb` with your changes.
 
-At the moment, this is best with making edits to the `.qmd` locally while ALSO running the `.ipynb` notebook in 2i2c. This will iterate as we get quarto set up in 2i2c (and as we work more with `.qmd`s). 
-
-When you're done with your review, you will want to push not only your edited `.qmd`, but also a `.ipynb` with all your changes. This way, the notebook author can both easily see the diffs made to the `.qmd`, and run the `.ipynb` as they normally would. To do so: 
-
-```{bash}
-#| eval: false
+```{.bash}
 quarto convert tutorials/Data_Discovery__CMR-STAC_API.qmd 
 ```
 
-This will create `tutorials/Data_Discovery__CMR-STAC_API.ipynb`, and over-write the original with your changes.
+6. Quarto will consider the `.qmd` book chapter and try to render it. To avoid this, by hand you can prefix the filename with an underscore: before you push: `_Data_Discovery__CMR-STAC_API.qmd` (do this by hand for now, we'll iterate further)
 
-**Note**: Quarto will consider the `.qmd` book chapter and try to render it. To avoid this, by hand you can prefix the filename with an underscore: before you push: `_Data_Discovery__CMR-STAC_API.qmd`
-
-Now, commit and push your review!
+7. Finally, commit and push your review!
 
 ## Code Review
 
