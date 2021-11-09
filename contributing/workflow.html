@@ -800,10 +800,21 @@ This command line instance is now being used to serve Quarto
 <section id="markdown-formatting-with-quarto" class="level3">
 <h3 class="anchored" data-anchor-id="markdown-formatting-with-quarto">Markdown formatting with Quarto</h3>
 <p>Quarto expects a certain “flavor of Markdown”, which means there are a few things we should be aware of with any Markdown in notebooks:</p>
-<ul>
-<li>avoid <code>---</code> as Markdown breaks because it is confused with yaml headers</li>
-<li>place a carriage return before lists</li>
-</ul>
+<p><strong>Avoid <code>---</code></strong> as Markdown breaks because it is confused with yaml headers and will stop displaying your notebook.</p>
+<p><strong>Put a carriage return before lists</strong></p>
+<p>This will avoid the following, when ipynb can display the list correctly but quarto does not:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/markdown-nospace-ipynb.png" class="img-fluid figure-img"></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption">markdown-nospace-ipynb</figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/markdown-nospace-quarto.png" class="img-fluid figure-img"></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption">markdown-nospace-quarto</figcaption><p></p>
+</figure>
+</div>
 </section>
 <section id="executing-notebooks" class="level3">
 <h3 class="anchored" data-anchor-id="executing-notebooks">Executing notebooks</h3>
