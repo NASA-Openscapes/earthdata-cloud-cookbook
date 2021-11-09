@@ -465,6 +465,7 @@
 <li><a href="#cookbook-structure" class="nav-link" data-scroll-target="#cookbook-structure">Cookbook Structure</a></li>
 <li><a href="#cookbook-practices" class="nav-link" data-scroll-target="#cookbook-practices">Cookbook Practices</a>
 <ul class="collapse">
+<li><a href="#markdown-formatting-with-quarto" class="nav-link" data-scroll-target="#markdown-formatting-with-quarto">Markdown formatting with Quarto</a></li>
 <li><a href="#executing-notebooks" class="nav-link" data-scroll-target="#executing-notebooks">Executing notebooks</a></li>
 <li><a href="#including-remote-notebooks" class="nav-link" data-scroll-target="#including-remote-notebooks">Including remote notebooks</a></li>
 <li><a href="#create-a-.qmd-from-external-.ipynb" class="nav-link" data-scroll-target="#create-a-.qmd-from-external-.ipynb">Create a .qmd from external .ipynb</a></li>
@@ -796,6 +797,14 @@ This command line instance is now being used to serve Quarto
 <section id="cookbook-practices" class="level2">
 <h2 class="anchored" data-anchor-id="cookbook-practices">Cookbook Practices</h2>
 <p>These are shared practices that we have for co-developing the Cookbook. This will be developed further as we go!</p>
+<section id="markdown-formatting-with-quarto" class="level3">
+<h3 class="anchored" data-anchor-id="markdown-formatting-with-quarto">Markdown formatting with Quarto</h3>
+<p>Quarto expects a certain “flavor of Markdown”, which means there are a few things we should be aware of with any Markdown in notebooks:</p>
+<ul>
+<li>avoid <code>---</code> as Markdown breaks because it is confused with yaml headers</li>
+<li>place a carriage return before lists</li>
+</ul>
+</section>
 <section id="executing-notebooks" class="level3">
 <h3 class="anchored" data-anchor-id="executing-notebooks">Executing notebooks</h3>
 <p>As you develop files with executable code ( <code>.qmd</code>, <code>.Rmd</code>, and <code>.ipynb</code>), you can decide if you don’t want the notebook to execute. By adding YAML as a raw text cell at the top of an <code>.ipynb</code> file, you can control whether it is executed or not. Adding <code>execute: false</code> to the YAML at the top of the file basically means that Quarto never runs the code, but the user of course still can interactively in Jupyter.</p>
