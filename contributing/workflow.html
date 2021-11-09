@@ -800,7 +800,7 @@ This command line instance is now being used to serve Quarto
 <section id="markdown-formatting-with-quarto" class="level3">
 <h3 class="anchored" data-anchor-id="markdown-formatting-with-quarto">Markdown formatting with Quarto</h3>
 <p>Quarto expects a certain “flavor of Markdown”, which means there are a few things we should be aware of with any Markdown in notebooks:</p>
-<p><strong>Avoid <code>---</code></strong> as Markdown breaks because it is confused with yaml headers and will stop displaying your notebook.</p>
+<p><strong>Avoid <code>---</code></strong> as Markdown breaks because it is confused with yaml headers and will stop displaying your notebook. Instead, use <code>***</code> to make any line breaks.</p>
 <p><strong>Put a carriage return before lists</strong></p>
 <p>This will avoid the following, when ipynb can display the list correctly with no carriage return but quarto does not.</p>
 <div class="quarto-figure quarto-figure-center">
