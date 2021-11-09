@@ -531,6 +531,13 @@ set in stone.
 These are shared practices that we have for co-developing the Cookbook.
 This will be developed further as we go!
 
+### Markdown formatting with Quarto
+
+Quarto expects a certain "flavor of Markdown", which means there are a few things we should be aware of with any Markdown in notebooks: 
+
+- avoid `---` as Markdown breaks because it is confused with yaml headers
+- place a carriage return before lists
+
 ### Executing notebooks
 
 As you develop files with executable code ( `.qmd`, `.Rmd`, and
