@@ -535,8 +535,15 @@ This will be developed further as we go!
 
 Quarto expects a certain "flavor of Markdown", which means there are a few things we should be aware of with any Markdown in notebooks: 
 
-- avoid `---` as Markdown breaks because it is confused with yaml headers
-- place a carriage return before lists
+**Avoid `---`** as Markdown breaks because it is confused with yaml headers and will stop displaying your notebook.
+
+**Put a carriage return before lists**
+
+This will avoid the following, when ipynb can display the list correctly but quarto does not: 
+
+![markdown-nospace-ipynb](images/markdown-nospace-ipynb.png)
+
+![markdown-nospace-quarto](images/markdown-nospace-quarto.png)
 
 ### Executing notebooks
 
