@@ -535,7 +535,7 @@ This will be developed further as we go!
 
 Quarto expects a certain "flavor of Markdown", which means there are a few things we should be aware of with any Markdown in notebooks: 
 
-**Avoid `---`** as Markdown breaks because it is confused with yaml headers and will stop displaying your notebook.
+**Avoid `---`** as Markdown breaks because it is confused with yaml headers and will stop displaying your notebook. Instead, use `***` to make any line breaks.
 
 **Put a carriage return before lists**
 
