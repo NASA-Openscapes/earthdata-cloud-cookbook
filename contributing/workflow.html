@@ -802,17 +802,11 @@ This command line instance is now being used to serve Quarto
 <p>Quarto expects a certain “flavor of Markdown”, which means there are a few things we should be aware of with any Markdown in notebooks:</p>
 <p><strong>Avoid <code>---</code></strong> as Markdown breaks because it is confused with yaml headers and will stop displaying your notebook.</p>
 <p><strong>Put a carriage return before lists</strong></p>
-<p>This will avoid the following, when ipynb can display the list correctly but quarto does not:</p>
+<p>This will avoid the following, when ipynb can display the list correctly with no carriage return but quarto does not.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/markdown-nospace-ipynb.png" class="img-fluid figure-img"></p>
+<p><img src="images/markdown-ipynb-quarto-compare.png" class="img-fluid figure-img"></p>
 <p></p><figcaption aria-hidden="true" class="figure-caption">markdown-nospace-ipynb</figcaption><p></p>
-</figure>
-</div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/markdown-nospace-quarto.png" class="img-fluid figure-img"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption">markdown-nospace-quarto</figcaption><p></p>
 </figure>
 </div>
 </section>
