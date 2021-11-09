@@ -539,11 +539,9 @@ Quarto expects a certain "flavor of Markdown", which means there are a few thing
 
 **Put a carriage return before lists**
 
-This will avoid the following, when ipynb can display the list correctly but quarto does not: 
+This will avoid the following, when ipynb can display the list correctly with no carriage return but quarto does not. 
 
-![markdown-nospace-ipynb](images/markdown-nospace-ipynb.png)
-
-![markdown-nospace-quarto](images/markdown-nospace-quarto.png)
+![markdown-nospace-ipynb](images/markdown-ipynb-quarto-compare.png)
 
 ### Executing notebooks
 
