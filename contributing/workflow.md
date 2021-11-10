@@ -237,7 +237,7 @@ GitHub.com, there are several ways to do this.
 [Git Update Local Branch with remote
 Master](https://stackoverflow.com/questions/34656523/git-update-local-branch-with-remote-master)
 
-```{bash}
+```{.bash}
 git checkout main
 git pull
 git checkout your-branch
@@ -246,7 +246,7 @@ git merge main
 
 #### fetch and merge origin/main
 
-```{bash}
+```{.bash}
 git checkout your-branch
 git fetch
 git merge origin/main
@@ -274,7 +274,7 @@ Once your pull request is merged and you've deleted the branch from
 github.com, then come back to your local setup and delete the branch
 locally:
 
-``` bash
+```{.bash}
 git checkout main         # switch to the main branch
 git pull                  # pull merged updates from github.com
 git branch -d branch-name # delete old local  branch
@@ -312,7 +312,7 @@ it's really a website that looks like a book).
 Run the following from your branch in your `earthdata-cloud-cookbook`
 directory from the command line:
 
-``` bash
+```{.bash}
 quarto serve
 ```
 
@@ -368,7 +368,7 @@ To refresh files with executable code, you'll need to render them
 individually. You can do the following to render `.ipynb`/`.qmd`/`.Rmd`
 files so that they show up refreshed in the served Cookbook.
 
-``` bash
+```{.bash}
 quarto render my-document.ipynb      ## render a notebook
 quarto render my-work.qmd            ## render a Quarto file
 quarto render my-contribution.Rmd    ## render a RMarkdown file
@@ -379,7 +379,7 @@ From the RStudio IDE, you can also press the **Render** button to render
 
 And you can also render the whole book:
 
-``` bash
+```{.bash}
 quarto render
 ```
 
