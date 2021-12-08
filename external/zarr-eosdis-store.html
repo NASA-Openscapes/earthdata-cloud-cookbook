@@ -3,7 +3,7 @@
   <meta charset="utf-8">
   <meta name="generator" content="quarto-0.2.232">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>zarr-eosdis-store</title>
+  <title>EarthData Cloud Cookbook – zarr-eosdis-store</title>
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -100,11 +100,11 @@
   <link class="quarto-color-scheme" href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet">
   <link class="quarto-color-scheme quarto-color-alternate" rel="prefetch" href="../site_libs/bootstrap/bootstrap-dark.min.css">
   <script id="quarto-search-options" type="application/json">{
-    "location": "sidebar",
+    "location": "navbar",
     "copy-button": false,
     "collapse-after": 2,
-    "panel-placement": "start",
-    "type": "textbox",
+    "panel-placement": "end",
+    "type": "overlay",
     "limit": 20
   }</script>
   <link rel="stylesheet" href="../styles.css">
@@ -112,6 +112,130 @@
 <body>
 <div id="quarto-search-results"></div>
 <header id="quarto-header" class="headroom fixed-top">
+<nav class="navbar navbar-expand-lg navbar-light ">
+    <div class="container-fluid">
+  <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">EarthData Cloud Cookbook</span>
+  </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-menu" role="button" data-bs-toggle="dropdown" aria-expanded="false">Menu</a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-menu">    
+        <li>
+    <a class="dropdown-item" href="../index.md">Welcome</a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">Getting Started</li>
+        <li>
+    <a class="dropdown-item" href="../get-started/how-to-use.html">How to use this book</a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../get-started/earthdata-login.html">EarthData Login</a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../get-started/lpdaac-netrc.html">Authentication</a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../get-started/api-primer.html">API Primer</a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">NASA Cloud Data Discovery</li>
+        <li>
+    <a class="dropdown-item" href="../discovery/search-by-shapefile.html">Search by shapefile</a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../discovery/Navigate_CMR_STAC.html">CMR and CMR-STAC API</a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../discovery/earthdata-search-ui.html">Earthdata Search UI</a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../discovery/cmr-virtual-directories.html">CMR Virtual Directories</a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">NASA Cloud Data Access</li>
+        <li>
+    <a class="dropdown-item" href="../access/data-access-example.html">Data access demo</a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../access/earthdata-search.html">Earthdata Search</a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../access/opendap-cloud.html">OPeNDAP in the Cloud</a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../access/podaac-ecco-data_access-cloud_direct_access_s3.html">Direct in-region</a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../external/cof-zarr-reformat.html">COF via Earthdata Harmony</a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../access/download-to-local.html">Download to local</a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">NASA Cloud Data Transformations</li>
+        <li>
+    <a class="dropdown-item" href="../transformations/harmony-api.html">Harmony API</a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../transformations/HarmonyPy_intro_tutorial.html">HarmonyPy Introduction</a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../transformations/netcdf-to-zarr.html">netCDF to Zarr</a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../transformations/harmony-subsetting.html">L2 Subsetter</a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../transformations/earthdata-search.html">Earthdata Search UI</a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../transformations/opendap-cloud.html">OPeNDAP in the Cloud</a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../external/zarr-eosdis-store.html">Zarr Example</a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">Example tutorials</li>
+        <li>
+    <a class="dropdown-item" href="../examples/NSIDC/ICESat2-CMR-OnPrem-vs-Cloud.html">Searching and Downloading NSIDC Cloud Collections</a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../examples/NSIDC/ICESat2-CMR-AWS-S3.html">Accessing NSIDC Cloud Collections Using CMR</a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">Appendix</li>
+        <li>
+    <a class="dropdown-item" href="../transformations/harmonypy.html">Harmony Py Library</a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">Contributing</li>
+        <li>
+    <a class="dropdown-item" href="../contributing/setup.html">Initial Setup</a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../contributing/workflow.html">Workflow</a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook"><i class="bi-github" role="img">
+</i> 
+ </a>
+  </li>  
+</ul>
+          <div>
+            <a href="" class="quarto-color-scheme-toggle nav-link" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+          </div>
+          <div id="quarto-search" class="mb-0 " title="Search">
+</div>
+      </div> <!-- /navcollapse -->
+  </div> <!-- /container-fluid -->
+</nav>
 <nav class="quarto-secondary-nav py-2 d-lg-none d-md-block " data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <div class="container-fluid d-flex justify-content-between">
     <h1 class="quarto-secondary-nav-title mb-0 fs-3 d-inline">(Untitled)</h1>
@@ -128,20 +252,7 @@
     <nav class="me-lg-auto docked overflow-auto">
   <div class="px-3 pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
     <img src="../nasa-openscapes.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
-    <div class="sidebar-title mb-0 py-0">
-      <a href="../">EarthData Cloud Cookbook</a> 
-        <div class="sidebar-tools-main">
-    <a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook" title="" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
-  <a href="" class="quarto-color-scheme-toggle sidebar-tool" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
-</div>
-    </div>
   </div>
-    <div class="px-3 mt-2 flex-shrink-0 align-items-center">
-      <div class="sidebar-search">
-      <div id="quarto-search" class="mb-0 " title="Search">
-</div>
-      </div>
-    </div>
   <div class="sidebar-menu-container"> 
   <ul class="list-unstyled mt-1 px-3">
       <li class="sidebar-item">
@@ -442,7 +553,7 @@
 
 <section id="zarr-example" class="level1">
 <h1>Zarr Example</h1>
-<p>imported on: <strong>2021-11-10</strong></p>
+<p>imported on: <strong>2021-12-08</strong></p>
 <p>
 This notebook is from NASA’s Zarr <strong>EOSDIS</strong> store notebook
 </p>
@@ -692,11 +803,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>
 </div> <!-- /main column -->
 </div> <!-- /row -->
-<div class="row">
-  <div class="nav-footer">
-      <div class="nav-footer-center me-auto ms-auto">NASA Openscapes Team (2021). Earthdata Cloud Cookbook (Version v0.0.1).</div>
-  </div>
-</div>
 </div> <!-- /container fluid -->
 
 
