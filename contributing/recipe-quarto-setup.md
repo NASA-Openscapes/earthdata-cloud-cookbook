@@ -55,15 +55,18 @@ jobs:
 1. Wait until orange dot turns green
 1. Inspect: `https://your-username/your-repo-name.github.io`. For example: <https://openscapes.github.io/quarto-site-template>
 
-## Edit
+## Develop content
 
-Now you can start editing. Start off from the browser, using Markdown. 
+Now you can start editing these files with what you want them to say! Start off from the browser, using Markdown. *Add details here*. 
 
-Then also, download RStudio IDE and set up to work locally.
+If you'd like to add a new chapter, you'll need to update the `_quarto.yml` file and create a new .md file; start by copying an existing one. *More details coming as we do this together.*
 
-## Setup RStudio
+Instead of editing from the browser, you can work locally with whatever software/editor you like (RStudio, JupyterLab, etc). 
 
-Consolidated from <https://rstudio-conf-2020.github.io/r-for-excel/>
+## Setup RStudio (optional)
+
+
+*The following is consolidated from <https://rstudio-conf-2020.github.io/r-for-excel/>.* 
 
 ### Download and install 
 
@@ -127,9 +130,8 @@ also in the File menu).
 
 <br>
 
-```{r, echo=FALSE, out.width="80%"}
-knitr::include_graphics("img/new_project1.png")  
-```
+
+![](images/new_project1.png){width="80%"} 
 
 <br>
 
@@ -138,9 +140,7 @@ knitr::include_graphics("img/new_project1.png")
 
 <br>
 
-```{r, echo=FALSE, out.width="80%"}
-knitr::include_graphics("img/new_project2.png")  
-```
+![](images/new_project2.png){width="80%"} 
 
 <br>
 
@@ -150,9 +150,7 @@ Since we are using git.
 
 <br>
 
-```{r, echo=FALSE, out.width="80%"}
-knitr::include_graphics("img/new_project3.png")  
-```
+![](images/new_project3.png){width="80%"} ```
 
 <br>
 
@@ -160,9 +158,7 @@ Do you see what I see?
 
 <br>
 
-```{r, echo=FALSE, out.width="80%"}
-knitr::include_graphics("img/new_project4b.png")  
-```
+![](images/new_project4.png){width="80%"} 
 
 <br>
 
@@ -258,9 +254,8 @@ Syncing to GitHub.com means 4 steps:
 
 <br>
 
-```{r, echo=FALSE, out.width="100%"}
-knitr::include_graphics("img/commit_steps.png")  
-```
+![](images/commit_steps.png){width="80%"} 
+
 
 <br>
 
@@ -268,9 +263,8 @@ We start off this whole process by clicking on the Commit section.
 
 <br>
 
-```{r, echo=FALSE, out.width="100%"}
-knitr::include_graphics("img/commit_circled.png")  
-```
+
+![](images/commit_circled.png){width="80%"} 
 
 <br>
 
@@ -282,9 +276,8 @@ Pull by clicking the teal Down Arrow. (Notice also how when you highlight a file
 
 <br>
 
-```{r, echo=FALSE, out.width="100%"}
-knitr::include_graphics("img/commit_pull.png")  
-```
+![](images/commit_pull.png){width="80%"} 
+
 
 <br>
 
@@ -299,9 +292,8 @@ These are the codes used to describe how the files are changed, (from the RStudi
 
 <br>
 
-```{r, echo=FALSE, out.width="30%"}
-knitr::include_graphics("img/commit_codes_added_modified.png")  
-```
+
+![](images/commit_codes_added_modified.png){width="80%"} 
 
 <br>
 
@@ -317,9 +309,8 @@ Second, you press Commit.
 
 <br>
 
-```{r, echo=FALSE, out.width="100%"}
-knitr::include_graphics("img/commit_message_arrow.png")  
-```
+
+![](images/commit_message_arrow.png){width="80%"} 
 
 <br>
 
@@ -330,9 +321,7 @@ If our attempt was not successful, we will see an Error. Otherwise, interpret th
 > Does your pop-up message say "Aborting commit due to empty commit message."? GitHub is really serious about writing human-readable commit messages.
 <br>
 
-```{r, echo=FALSE, out.width="100%"}
-knitr::include_graphics("img/commit_success.png")  
-```
+![](images/commit_success.png){width="80%"} 
 
 <br>
 
@@ -340,9 +329,7 @@ When we close this window there is going to be (in my opinion) a very subtle ind
 
 <br>
 
-```{r, echo=FALSE, out.width="100%"}
-knitr::include_graphics("img/commit_branch_ahead_of_origin_master.png")  
-```
+![](images/commit_branch_ahead_of_origin_master.png){width="80%"} 
 
 <br>
 
@@ -356,9 +343,8 @@ The last step in the syncing process is to Push!
 
 <br>
 
-```{r, echo=FALSE, out.width="100%"}
-knitr::include_graphics("img/commit_push.png")  
-```
+![](images/commit_push.png){width="80%"} 
+
 
 <br>
 
@@ -372,8 +358,6 @@ Notice how the README.md file we created is automatically displayed at the botto
 
 <br>
 
-```{r, echo=FALSE, out.width="100%"}
-knitr::include_graphics("img/gh_repo_view.png")  
-
+![](images/gh_repo_view.png){width="80%"} 
 
 ## install Quarto
