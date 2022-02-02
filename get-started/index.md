@@ -20,6 +20,8 @@ Using both the Scientific Python Ecosystem and Cloud Computing together:
 -   [**Project Pythia Foundations Book**](https://foundations.projectpythia.org/landing-page.html)
 -   [**Jupyter meets Earth**](https://jupytearth.org/)
 
+TODO https://fabienmaussion.info/scientific_programming/welcome.html
+
 ## Cloud Optimized Data Formats
 
 Some great info here about Cloud Optimized Data Formats.

@@ -1,6 +1,5 @@
 ---
 title: Workflow
-execute: false
 editor_options: 
   markdown: 
     wrap: 72
@@ -80,7 +79,7 @@ git branch -d branch-name # delete old local  branch
 ```
 :::
 
-## GitHub Workflow
+## GitHub Workflow {#github-workflow}
 
 First let's talk about the GitHub part of the workflow.
 
@@ -205,26 +204,32 @@ git push
 
 ### Delete your local changes
 
-There are several ways to delete your local changes if you were playing around and want to reset. Here are a few: 
+There are several ways to delete your local changes if you were playing
+around and want to reset. Here are a few:
 
-**Burn it all down** - delete the whole repo that you have locally, and then reclone. 
+**Burn it all down** - delete the whole repo that you have locally, and
+then reclone.
 
-```{.bash}
+``` bash
 cd 2021-Cloud-Hackathon
 rm -rf 2021-Cloud-Hackathon 
 ```
 
-**Undo changes you've maybe saved or committed, but not pushed**. This is less time and internet intensive (no new clone/download). 
+**Undo changes you've maybe saved or committed, but not pushed**. This
+is less time and internet intensive (no new clone/download).
 
-If you've got changes saved, but not yet staged, committed, or pushed, you'll delete unstaged changes in the working directory with clean:
+If you've got changes saved, but not yet staged, committed, or pushed,
+you'll delete unstaged changes in the working directory with clean:
 
-```{.bash}
+``` bash
 cd 2021-Cloud-Hackathon
 git clean -df
 git checkout -- .
 ```
 
-Here is a whole blog on how to do this, with conceptual diagrams, command line code, and screenshots from RStudio. <https://ohi-science.org/news/github-going-back-in-time>
+Here is a whole blog on how to do this, with conceptual diagrams,
+command line code, and screenshots from RStudio.
+<https://ohi-science.org/news/github-going-back-in-time>
 
 ### Update local branch with remote main branch
 
@@ -237,7 +242,7 @@ GitHub.com, there are several ways to do this.
 [Git Update Local Branch with remote
 Master](https://stackoverflow.com/questions/34656523/git-update-local-branch-with-remote-master)
 
-```{.bash}
+``` bash
 git checkout main
 git pull
 git checkout your-branch
@@ -246,7 +251,7 @@ git merge main
 
 #### fetch and merge origin/main
 
-```{.bash}
+``` bash
 git checkout your-branch
 git fetch
 git merge origin/main
@@ -274,7 +279,7 @@ Once your pull request is merged and you've deleted the branch from
 github.com, then come back to your local setup and delete the branch
 locally:
 
-```{.bash}
+``` bash
 git checkout main         # switch to the main branch
 git pull                  # pull merged updates from github.com
 git branch -d branch-name # delete old local  branch
@@ -312,7 +317,7 @@ it's really a website that looks like a book).
 Run the following from your branch in your `earthdata-cloud-cookbook`
 directory from the command line:
 
-```{.bash}
+``` bash
 quarto serve
 ```
 
@@ -368,7 +373,7 @@ To refresh files with executable code, you'll need to render them
 individually. You can do the following to render `.ipynb`/`.qmd`/`.Rmd`
 files so that they show up refreshed in the served Cookbook.
 
-```{.bash}
+``` bash
 quarto render my-document.ipynb      ## render a notebook
 quarto render my-work.qmd            ## render a Quarto file
 quarto render my-contribution.Rmd    ## render a RMarkdown file
@@ -379,7 +384,7 @@ From the RStudio IDE, you can also press the **Render** button to render
 
 And you can also render the whole book:
 
-```{.bash}
+``` bash
 quarto render
 ```
 
@@ -397,9 +402,19 @@ From J.J. Allaire:
 
 ### Includes (re-use markdown)
 
-We are setup with an **includes filter** (details at [Quarto.org](https://quarto.org/docs/authoring/shortcodes-and-filters.html#includes)) that lets us re-use markdown content within a project! (You can think of this like "knit child" in R Markdown and lets you source text like you source scripts from each other). This means that we can write text more modularly and re-use it in multiple places so that it's always up to date. 
+We are setup with an **includes filter** (details at
+[Quarto.org](https://quarto.org/docs/authoring/shortcodes-and-filters.html#includes))
+that lets us re-use markdown content within a project! (You can think of
+this like "knit child" in R Markdown and lets you source text like you
+source scripts from each other). This means that we can write text more
+modularly and re-use it in multiple places so that it's always up to
+date.
 
-An example of this in action is in our [2021-Cloud-Hackathon](https://nasa-openscapes.github.io/2021-Cloud-Hackathon/logistics/schedule.html) Quarto book, where each day of the [schedule](https://nasa-openscapes.github.io/2021-Cloud-Hackathon/logistics/schedule.html) is saved in a separate file:
+An example of this in action is in our
+[2021-Cloud-Hackathon](https://nasa-openscapes.github.io/2021-Cloud-Hackathon/logistics/schedule.html)
+Quarto book, where each day of the
+[schedule](https://nasa-openscapes.github.io/2021-Cloud-Hackathon/logistics/schedule.html)
+is saved in a separate file:
 
 ![](images/schedule-lua-md.png)
 
@@ -407,25 +422,23 @@ An example of this in action is in our [2021-Cloud-Hackathon](https://nasa-opens
 
 This is then called within a book chapter, with a relative filepath:
 
+    The Clinic will occur in 2 halves, with a 5 minute break in-between:
 
-```
-The Clinic will occur in 2 halves, with a 5 minute break in-between:
+    {.include}
+    ../logistics/_schedule-clinic.md
 
-{.include}
-../logistics/_schedule-clinic.md
-```
-
-
-
-...to finally look like so: 
+...to finally look like so:
 
 ![](images/schedule-lua.png)
 
-
 **Includes - things to note**
 
-- prefix files to include with an underscore. 
-  - From [quarto.org](https://quarto.org/docs/authoring/shortcodes-and-filters.html#includes): You should always use an underscore prefix with included files so that they are automatically ignored (i.e. not treated as standalone files) by a `quarto render` of your project.
+-   prefix files to include with an underscore.
+    -   From
+        [quarto.org](https://quarto.org/docs/authoring/shortcodes-and-filters.html#includes):
+        You should always use an underscore prefix with included files
+        so that they are automatically ignored (i.e. not treated as
+        standalone files) by a `quarto render` of your project.
 
 ## 2i2c Workflow
 
@@ -487,6 +500,33 @@ To use this new kernel,
     *The kernel on the upper right should now give the name of your
     custom kernel.*
 
+### Dockerfile
+
+Julie can merge PR
+
+It takes 10 mins to rebuild. In the beginning our image was 10 mb. After
+Hackathon 1 GB now
+
+Once it builds the image it should build to Dockerhub but it doesn't
+rebuild the Hub.
+
+Once the GA finishes it never updates the 2i2c Hub despite code to do
+so - something to follow up on
+
+\<https://github.com/NASA-Openscapes/corn>
+
+Rebuilding image takes about 10-13 minutes
+
+In GitHub \> Actions, click on the successful build to DockerHub, copy
+the tag from "Push new image to Hub"
+
+Then in 2i2c \> Services \> Configuration \> Click Authorize \> "User
+Docker Image": paste the tag from GitHub Actions. Click Submit, then
+navigate away
+
+Every once in a while, delete tags from the DockerHub:
+https://hub.docker.com/repository/docker/openscapes/corn/tags?page=1&ordering=last_updated
+
 ## Virtual Environments
 
 If you are working on a chapter that loads any Python or R packages, to
@@ -533,13 +573,17 @@ This will be developed further as we go!
 
 ### Markdown formatting with Quarto
 
-Quarto expects a certain "flavor of Markdown", which means there are a few things we should be aware of with any Markdown in notebooks: 
+Quarto expects a certain "flavor of Markdown", which means there are a
+few things we should be aware of with any Markdown in notebooks:
 
-**Avoid `---`** as Markdown breaks because it is confused with yaml headers and will stop displaying your notebook. Instead, use `***` to make any line breaks.
+**Avoid `---`** as Markdown breaks because it is confused with yaml
+headers and will stop displaying your notebook. Instead, use `***` to
+make any line breaks.
 
 **Put a carriage return before lists**
 
-This will avoid the following, when ipynb can display the list correctly with no carriage return but quarto does not. 
+This will avoid the following, when ipynb can display the list correctly
+with no carriage return but quarto does not.
 
 ![markdown-nospace-ipynb](images/markdown-ipynb-quarto-compare.png)
 
@@ -591,7 +635,7 @@ and attribution for the notebook.
 After these updates to `_import/assets.json`, to the following in the
 terminal:
 
-```{.bash}
+``` bash
 cd _import
 conda env update -f environment.yml
 conda activate quarto-import
@@ -605,15 +649,20 @@ the appropriate location in the Cookbook.
 
 ### Create a .qmd from external .ipynb
 
-This is a bit of a hacky way that we can formalize further if it's useful: 
+This is a bit of a hacky way that we can formalize further if it's
+useful:
 
-1. Go to an existing notebook, e.g. <https://github.com/podaac/AGU-2020/blob/main/Part-II/01_sst_shpfile/AGU_tutorial1_shp_search.ipynb>
-1. Click on Raw, e.g. <https://raw.githubusercontent.com/podaac/AGU-2020/main/Part-II/01_sst_shpfile/AGU_tutorial1_shp_search.ipynb>
-1. Copy text
-1. In your local setup (e.g. RStudio IDE): New File > Text File > Paste > Save (with the same name if appropriate) and `.ipynb` extension, e.g.: `discovery/search-by-shapefile.ipynb`
-1. In the command line: 
+1.  Go to an existing notebook, e.g.
+    <https://github.com/podaac/AGU-2020/blob/main/Part-II/01_sst_shpfile/AGU_tutorial1_shp_search.ipynb>
+2.  Click on Raw, e.g.
+    <https://raw.githubusercontent.com/podaac/AGU-2020/main/Part-II/01_sst_shpfile/AGU_tutorial1_shp_search.ipynb>
+3.  Copy text
+4.  In your local setup (e.g. RStudio IDE): New File \> Text File \>
+    Paste \> Save (with the same name if appropriate) and `.ipynb`
+    extension, e.g.: `discovery/search-by-shapefile.ipynb`
+5.  In the command line:
 
-```{.bash}
+``` bash
 #| eval: false
 quarto convert help # reminder of commands!
 quarto convert discovery/search-by-shapefile.ipynb # convert to .qmd
@@ -624,46 +673,81 @@ rm discovery/search-by-shapefile.ipynb # delete .ipynb
 
 ### Preamble
 
-GitHub displays differences in code, so a nice way to review other people's work (or your own) is to edit files directly and view the commit differences  at GitHub. We'll do this by first creating a branch and pull request so that that there is a chance for the original author to be notified of the suggestions and review them before merging back to the main branch (at which point the quarto book/site will be rebuilt since we have a GitHub action setup to do so). 
+GitHub displays differences in code, so a nice way to review other
+people's work (or your own) is to edit files directly and view the
+commit differences at GitHub. We'll do this by first creating a branch
+and pull request so that that there is a chance for the original author
+to be notified of the suggestions and review them before merging back to
+the main branch (at which point the quarto book/site will be rebuilt
+since we have a GitHub action setup to do so).
 
-GitHub can have trouble with `.ipynb` notebooks; their differences include file-formatting changes and are often too big to display. See examples: [CMR notebook](https://github.com/NASA-Openscapes/2021-Cloud-Hackathon/pull/13/files#diff-04b62f1a27203bba0cb44a2a0360a3c68e19b2199dd4e3c96a59156b5d253884) with file-formatting diffs and the [CMR-STAC API notebook review](https://github.com/NASA-Openscapes/2021-Cloud-Hackathon/pull/18/files#diff-4bd08e3e686fffae6339ffad77be5ad50879704bdf57f0505f11dbffeb43e0d3) with diffs too big to display. This means that while you can still edit it directly, it's hard to alert the author to what changes you made. Some emerging conventions to help with this: 
+GitHub can have trouble with `.ipynb` notebooks; their differences
+include file-formatting changes and are often too big to display. See
+examples: [CMR
+notebook](https://github.com/NASA-Openscapes/2021-Cloud-Hackathon/pull/13/files#diff-04b62f1a27203bba0cb44a2a0360a3c68e19b2199dd4e3c96a59156b5d253884)
+with file-formatting diffs and the [CMR-STAC API notebook
+review](https://github.com/NASA-Openscapes/2021-Cloud-Hackathon/pull/18/files#diff-4bd08e3e686fffae6339ffad77be5ad50879704bdf57f0505f11dbffeb43e0d3)
+with diffs too big to display. This means that while you can still edit
+it directly, it's hard to alert the author to what changes you made.
+Some emerging conventions to help with this:
 
-- write `TODO` for "to do's", but this as one word all-caps makes it easier to search
+-   write `TODO` for "to do's", but this as one word all-caps makes it
+    easier to search
 
 ### Review with .qmds
 
-Since quarto notebook files (`.qmd`s) are text files, GitHub can display their differences nicely, for  example: [CMR-STAC API qmd](https://github.com/NASA-Openscapes/2021-Cloud-Hackathon/pull/18/commits/755a17abec3d9b18d1b8b12bf951455fec351213#diff-753f51abfb9f0a881920f172502191350a37d651f89d29e04b1e1e563a1e07af). 
+Since quarto notebook files (`.qmd`s) are text files, GitHub can display
+their differences nicely, for example: [CMR-STAC API
+qmd](https://github.com/NASA-Openscapes/2021-Cloud-Hackathon/pull/18/commits/755a17abec3d9b18d1b8b12bf951455fec351213#diff-753f51abfb9f0a881920f172502191350a37d651f89d29e04b1e1e563a1e07af).
 
-Here is a workflow to leverage `.qmd`s in our review process: 
+Here is a workflow to leverage `.qmd`s in our review process:
 
-1.  Clone/pull the repo, create a branch following our [GitHub Workflow](#github-workflow) above
+1.  Clone/pull the repo, create a branch following our [GitHub
+    Workflow](#github-workflow) above
 
-```{.bash}
+``` bash
 ## git clone and branch
 git clone https://github.com/NASA-Openscapes/2021-Cloud-Hackathon/
 git checkout -b my-new-branch
 ```
 
-2. In the terminal, use `quarto convert` to convert a notebook from `.ipynb` to `.qmd`. You'll have to either `cd` into the folder or you can convert by specifying the filepath. Typing `quarto convert help` will describe more options. The following will create `tutorials/Data_Discovery__CMR-STAC_API.qmd`. 
+2.  In the terminal, use `quarto convert` to convert a notebook from
+    `.ipynb` to `.qmd`. You'll have to either `cd` into the folder or
+    you can convert by specifying the filepath. Typing
+    `quarto convert help` will describe more options. The following will
+    create `tutorials/Data_Discovery__CMR-STAC_API.qmd`.
 
-```{.bash}
+``` bash
 ## quarto convert
 quarto convert tutorials/Data_Discovery__CMR-STAC_API.ipynb
 ```
 
-3. Commit this file now so that the whole file is tracked and any changes you make will be viewed as diffs. 
+3.  Commit this file now so that the whole file is tracked and any
+    changes you make will be viewed as diffs.
 
-4. Now, make edits/review the `.qmd` in your editor of choice, which will likely also have spell-check and markdown support. At the moment, this is best with making edits to the `.qmd` locally while ALSO running the `.ipynb` notebook in 2i2c. This will iterate as we get quarto set up in 2i2c (and as we work more with `.qmd`s). 
+4.  Now, make edits/review the `.qmd` in your editor of choice, which
+    will likely also have spell-check and markdown support. At the
+    moment, this is best with making edits to the `.qmd` locally while
+    ALSO running the `.ipynb` notebook in 2i2c. This will iterate as we
+    get quarto set up in 2i2c (and as we work more with `.qmd`s).
 
-5. When you're done with your review, you'll want to copy all your edits from the `.qmd` back to the `.ipynb`. This way, the notebook author can both easily see the diffs made to the `.qmd`, and run the `.ipynb` as they normally would in 2i2c. The following code creates `tutorials/Data_Discovery__CMR-STAC_API.ipynb`, and over-write the original `.ipynb` with your changes.
+5.  When you're done with your review, you'll want to copy all your
+    edits from the `.qmd` back to the `.ipynb`. This way, the notebook
+    author can both easily see the diffs made to the `.qmd`, and run the
+    `.ipynb` as they normally would in 2i2c. The following code creates
+    `tutorials/Data_Discovery__CMR-STAC_API.ipynb`, and over-write the
+    original `.ipynb` with your changes.
 
-```{.bash}
+``` bash
 quarto convert tutorials/Data_Discovery__CMR-STAC_API.qmd 
 ```
 
-6. Quarto will consider the `.qmd` book chapter and try to render it. To avoid this, by hand you can prefix the filename with an underscore: before you push: `_Data_Discovery__CMR-STAC_API.qmd` (do this by hand for now, we'll iterate further)
+6.  Quarto will consider the `.qmd` book chapter and try to render it.
+    To avoid this, by hand you can prefix the filename with an
+    underscore: before you push: `_Data_Discovery__CMR-STAC_API.qmd` (do
+    this by hand for now, we'll iterate further)
 
-7. Finally, commit and push your review!
+7.  Finally, commit and push your review!
 
 ## Code Review
 
@@ -685,14 +769,14 @@ it will automatically make sure you only ever have 1 instance.)
 In your Command Line Shell, if you want to leave your virtual
 environment, the command is:
 
-```{.bash}
+``` bash
 deactivate
 ```
 
 The way you tell that you are in a virtual environment: it's named in
 parentheses at the beginning of your prompt:
 
-```{.bash}
+``` bash
 (.venv) (base) JLos-Macbook-Pro:earthdata-cloud-cookbook lowndes$ deactivate
 (base) JLos-Macbook-Pro:earthdata-cloud-cookbook lowndes$
 ```
