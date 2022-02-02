@@ -570,7 +570,7 @@
 <ul class="collapse">
 <li><a href="#download-and-install" class="nav-link" data-scroll-target="#download-and-install">Download and install</a></li>
 </ul></li>
-<li><a href="#configure-rstudio-with-github" class="nav-link" data-scroll-target="#configure-rstudio-with-github">Configure RStudio with GitHub</a>
+<li><a href="#configure-rstudio-with-github-and-quarto" class="nav-link" data-scroll-target="#configure-rstudio-with-github-and-quarto">Configure RStudio with GitHub and Quarto</a>
 <ul class="collapse">
 <li><a href="#configure-github" class="nav-link" data-scroll-target="#configure-github">Configure GitHub</a></li>
 <li><a href="#ensure-that-gitgithubrstudio-are-communicating" class="nav-link" data-scroll-target="#ensure-that-gitgithubrstudio-are-communicating">Ensure that Git/GitHub/RStudio are communicating</a></li>
@@ -579,8 +579,8 @@
 <li><a href="#sync-from-rstudio-local-to-github-remote" class="nav-link" data-scroll-target="#sync-from-rstudio-local-to-github-remote">Sync from RStudio (local) to GitHub (remote)</a>
 <ul class="collapse">
 <li><a href="#commit-history" class="nav-link" data-scroll-target="#commit-history">Commit history</a></li>
+<li><a href="#set-up-quarto" class="nav-link" data-scroll-target="#set-up-quarto">Set up Quarto</a></li>
 </ul></li>
-<li><a href="#install-quarto" class="nav-link" data-scroll-target="#install-quarto">install Quarto</a></li>
 </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/edit/main/contributing/recipe-quarto-setup.md" class="toc-action">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
@@ -685,10 +685,9 @@
 </ol>
 </section>
 </section>
-<section id="configure-rstudio-with-github" class="level2">
-<h2 class="anchored" data-anchor-id="configure-rstudio-with-github">Configure RStudio with GitHub</h2>
+<section id="configure-rstudio-with-github-and-quarto" class="level2">
+<h2 class="anchored" data-anchor-id="configure-rstudio-with-github-and-quarto">Configure RStudio with GitHub and Quarto</h2>
 <p><em>From <a href="https://rstudio-conf-2020.github.io/r-for-excel/rstudio.html#github-brief-intro-config">r-for-excel::github-brief-intro-config</a></em></p>
-<p>Before we break, we are going to set up Git and GitHub which we will be using along with R and RStudio for the rest of the workshop.</p>
 <p>Before we do the setup configuration, let me take a moment to talk about what Git and GitHub are.</p>
 <p>It helps me to think of GitHub like Dropbox: you identify folders for GitHub to ‘track’ and it syncs them to the cloud. This is good first-and-foremost because it makes a back-up copy of your files: if your computer dies not all of your work is gone. But with GitHub, you have to be more deliberate about when syncs are made. This is because GitHub saves these as different versions, with information about who contributed when, line-by-line. This makes collaboration easier, and it allows you to roll-back to different versions or contribute to others’ work.</p>
 <p>git will track and version your files, GitHub stores this online and enables you to collaborate with others (and yourself). Although git and GitHub are two different things, distinct from each other, we can think of them as a bundle since we will always use them together.</p>
@@ -776,16 +775,16 @@ usethis::use_git_config(user.name = "jules32", user.email = "jules32@example.org
 <p>and</p>
 <pre><code>fatal: not in a git directory</code></pre>
 <p>To solve this, go to the Terminal and type: <code>which git</code></p>
-<p><img src="img/git_whichgit.png" width="250px"></p>
+<p><img src="images/git_whichgit.png" class="img-fluid" style="width:80.0%"></p>
 <p>Look at the filepath that is returned. Does it say anything to do with Apple?</p>
 <p>-&gt; If yes, then the <a href="https://git-scm.com/downloads">Git you downloaded</a> isn’t installed, please redownload if necessary, and follow instructions to install.</p>
 <p>-&gt; If no, (in the example image, the filepath does not say anything with Apple) then proceed below:</p>
 <p>In RStudio, navigate to: Tools &gt; Global Options &gt; Git/SVN.</p>
-<p><img src="img/git_options.png" width="250px"></p>
+<p><img src="images/git_options.png" class="img-fluid" style="width:80.0%"></p>
 <p><br></p>
 <p>Does the <strong>“Git executable”</strong> filepath match what the url in Terminal says?</p>
 <p><br></p>
-<p><img src="img/git_options_filepath.png" width="500px"></p>
+<p><img src="images/git_options_filepath.png" class="img-fluid" style="width:80.0%"></p>
 <p>If not, click the browse button and navigate there.</p>
 <blockquote class="blockquote">
 <p><em>Note</em>: on my laptop, even though I navigated to /usr/local/bin/git, it then automatically redirect because /usr/local/bin/git was an alias on my computer. That is fine. Click OK.</p>
@@ -867,11 +866,12 @@ usethis::use_git_config(user.name = "jules32", user.email = "jules32@example.org
 <p><br></p>
 <p><img src="images/gh_repo_view.png" class="img-fluid" style="width:80.0%"></p>
 </section>
+<section id="set-up-quarto" class="level3">
+<h3 class="anchored" data-anchor-id="set-up-quarto">Set up Quarto</h3>
+<p>Details coming!</p>
+
+
 </section>
-<section id="install-quarto" class="level2">
-<h2 class="anchored" data-anchor-id="install-quarto">install Quarto</h2>
-
-
 </section>
 </main> <!-- /main -->
 <script type="application/javascript">
