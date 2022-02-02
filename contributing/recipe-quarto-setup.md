@@ -88,11 +88,10 @@ Instead of editing from the browser, you can work locally with whatever software
     - Save it temporarily somewhere you will remember; we will move it together
    
    
-## Configure RStudio with GitHub
+## Configure RStudio with GitHub and Quarto
 
 *From [r-for-excel::github-brief-intro-config](https://rstudio-conf-2020.github.io/r-for-excel/rstudio.html#github-brief-intro-config)*
 
-Before we break, we are going to set up Git and GitHub which we will be using along with R and RStudio for the rest of the workshop. 
 
 Before we do the setup configuration, let me take a moment to talk about what Git and GitHub are. 
 
@@ -215,7 +214,7 @@ To solve this, go to the Terminal and type:
 which git
 ```
 
-<img src="img/git_whichgit.png" width="250px">
+![](images/git_whichgit.png){width="80%"} 
 
   
 Look at the filepath that is returned. Does it say anything to do with Apple?
@@ -226,8 +225,7 @@ Look at the filepath that is returned. Does it say anything to do with Apple?
 
 In RStudio, navigate to: Tools > Global Options > Git/SVN. 
 
-<img src="img/git_options.png" width="250px">
-
+![](images/git_options.png){width="80%"} 
 
 <br>
 
@@ -235,7 +233,7 @@ Does the **“Git executable”** filepath match what the url in Terminal says?
 
 <br>
 
-<img src="img/git_options_filepath.png" width="500px">
+![](images/git_options_filepath.png){width="80%"} 
 
 
 If not, click the browse button and navigate there.   
@@ -360,4 +358,6 @@ Notice how the README.md file we created is automatically displayed at the botto
 
 ![](images/gh_repo_view.png){width="80%"} 
 
-## install Quarto
+### Set up Quarto
+
+Details coming!
