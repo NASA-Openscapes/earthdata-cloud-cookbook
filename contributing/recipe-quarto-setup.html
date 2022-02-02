@@ -560,12 +560,27 @@
 <ul>
 <li><a href="#setup" class="nav-link active" data-scroll-target="#setup">Setup</a>
 <ul class="collapse">
-<li><a href="#download-tempate-site" class="nav-link" data-scroll-target="#download-tempate-site">Download tempate site</a></li>
+<li><a href="#download-template-site" class="nav-link" data-scroll-target="#download-template-site">Download template site</a></li>
 <li><a href="#create-a-github-repo" class="nav-link" data-scroll-target="#create-a-github-repo">Create a GitHub repo</a></li>
 <li><a href="#add-template-site-files" class="nav-link" data-scroll-target="#add-template-site-files">Add template site files</a></li>
 <li><a href="#set-up-github-publishing" class="nav-link" data-scroll-target="#set-up-github-publishing">Set up GitHub publishing</a></li>
 </ul></li>
 <li><a href="#edit" class="nav-link" data-scroll-target="#edit">Edit</a></li>
+<li><a href="#setup-rstudio" class="nav-link" data-scroll-target="#setup-rstudio">Setup RStudio</a>
+<ul class="collapse">
+<li><a href="#download-and-install" class="nav-link" data-scroll-target="#download-and-install">Download and install</a></li>
+</ul></li>
+<li><a href="#configure-rstudio-with-github" class="nav-link" data-scroll-target="#configure-rstudio-with-github">Configure RStudio with GitHub</a>
+<ul class="collapse">
+<li><a href="#configure-github" class="nav-link" data-scroll-target="#configure-github">Configure GitHub</a></li>
+<li><a href="#ensure-that-gitgithubrstudio-are-communicating" class="nav-link" data-scroll-target="#ensure-that-gitgithubrstudio-are-communicating">Ensure that Git/GitHub/RStudio are communicating</a></li>
+<li><a href="#troubleshooting" class="nav-link" data-scroll-target="#troubleshooting">Troubleshooting</a></li>
+</ul></li>
+<li><a href="#sync-from-rstudio-local-to-github-remote" class="nav-link" data-scroll-target="#sync-from-rstudio-local-to-github-remote">Sync from RStudio (local) to GitHub (remote)</a>
+<ul class="collapse">
+<li><a href="#commit-history" class="nav-link" data-scroll-target="#commit-history">Commit history</a></li>
+</ul></li>
+<li><a href="#install-quarto" class="nav-link" data-scroll-target="#install-quarto">install Quarto</a></li>
 </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/edit/main/contributing/recipe-quarto-setup.md" class="toc-action">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
@@ -579,8 +594,8 @@
 <p>We’ll create a copy of this book that you can edit yourself: <a href="https://openscapes.github.io/quarto-site-template" class="uri">https://openscapes.github.io/quarto-site-template</a></p>
 <section id="setup" class="level2">
 <h2 class="anchored" data-anchor-id="setup">Setup</h2>
-<section id="download-tempate-site" class="level3">
-<h3 class="anchored" data-anchor-id="download-tempate-site">Download tempate site</h3>
+<section id="download-template-site" class="level3">
+<h3 class="anchored" data-anchor-id="download-template-site">Download template site</h3>
 <ol type="1">
 <li>Download <a href="https://github.com/Openscapes/quarto-site-template" class="uri">https://github.com/Openscapes/quarto-site-template</a></li>
 <li>Green button &gt; Download ZIP</li>
@@ -624,10 +639,11 @@
 <span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">github_token</span><span class="kw">:</span><span class="at"> ${{ secrets.GITHUB_TOKEN }}</span></span>
 <span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">publish_dir</span><span class="kw">:</span><span class="at"> ./_site</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ol type="1">
-<li>Create a branch called <code>gh-pages</code> - all lowercase, with a hyphen</li>
+<li>(Don’t Create a branch called <code>gh-pages</code> - all lowercase, with a hyphen bc already made!)</li>
 <li>(Don’t need to 1. Settings &gt; Pages &gt; Source) bc it’s automatic</li>
+<li>Go into <code>_quarto.yml</code> and update the urls with your own urls, i.e.&nbsp;<code>https://your-username/your-repo-name.github.io</code></li>
 <li>Wait until orange dot turns green</li>
-<li>Inspect: https://your-username/your-repo-name.github.io. For example: <a href="https://openscapes.github.io/quarto-site-template" class="uri">https://openscapes.github.io/quarto-site-template</a></li>
+<li>Inspect: <code>https://your-username/your-repo-name.github.io</code>. For example: <a href="https://openscapes.github.io/quarto-site-template" class="uri">https://openscapes.github.io/quarto-site-template</a></li>
 </ol>
 </section>
 </section>
@@ -635,6 +651,224 @@
 <h2 class="anchored" data-anchor-id="edit">Edit</h2>
 <p>Now you can start editing. Start off from the browser, using Markdown.</p>
 <p>Then also, download RStudio IDE and set up to work locally.</p>
+</section>
+<section id="setup-rstudio" class="level2">
+<h2 class="anchored" data-anchor-id="setup-rstudio">Setup RStudio</h2>
+<p>Consolidated from <a href="https://rstudio-conf-2020.github.io/r-for-excel/" class="uri">https://rstudio-conf-2020.github.io/r-for-excel/</a></p>
+<section id="download-and-install" class="level3">
+<h3 class="anchored" data-anchor-id="download-and-install">Download and install</h3>
+<p><em>From <a href="https://rstudio-conf-2020.github.io/r-for-excel/index.html#prerequisites">r-for-excel::prerequesites</a></em></p>
+<ol type="1">
+<li><strong>Download and install R and RStudio</strong>
+<ul>
+<li>R: <a href="https://cloud.r-project.org/" class="uri">https://cloud.r-project.org/</a></li>
+<li>RStudio: <a href="http://www.rstudio.com/download" class="uri">http://www.rstudio.com/download</a></li>
+<li>Follow your operating system’s normal installation process</li>
+</ul></li>
+<li><strong>Create a GitHub account</strong>
+<ul>
+<li>GitHub: <a href="https://github.com" class="uri">https://github.com</a></li>
+<li>Follow optional <a href="https://happygitwithr.com/github-acct.html">advice on choosing your username</a></li>
+<li>Remember your username, email and password; we will need them for the workshop!</li>
+</ul></li>
+<li><strong>Download and install Git</strong>
+<ul>
+<li>Git: <a href="https://git-scm.com/downloads" class="uri">https://git-scm.com/downloads</a></li>
+<li>Follow your operating system’s normal installation process. Note: you will not see an application called Git listed but if the installation process completed it was likely successful, and we will confirm together</li>
+</ul></li>
+<li><strong>Download workshop data</strong>
+<ul>
+<li>Google Drive folder: <a href="https://drive.google.com/drive/folders/1RywSUw8hxETlROdIhLIntxPsZq0tKSdS?usp=sharing">r-for-excel-data</a></li>
+<li>Save it temporarily somewhere you will remember; we will move it together</li>
+</ul></li>
+</ol>
+</section>
+</section>
+<section id="configure-rstudio-with-github" class="level2">
+<h2 class="anchored" data-anchor-id="configure-rstudio-with-github">Configure RStudio with GitHub</h2>
+<p><em>From <a href="https://rstudio-conf-2020.github.io/r-for-excel/rstudio.html#github-brief-intro-config">r-for-excel::github-brief-intro-config</a></em></p>
+<p>Before we break, we are going to set up Git and GitHub which we will be using along with R and RStudio for the rest of the workshop.</p>
+<p>Before we do the setup configuration, let me take a moment to talk about what Git and GitHub are.</p>
+<p>It helps me to think of GitHub like Dropbox: you identify folders for GitHub to ‘track’ and it syncs them to the cloud. This is good first-and-foremost because it makes a back-up copy of your files: if your computer dies not all of your work is gone. But with GitHub, you have to be more deliberate about when syncs are made. This is because GitHub saves these as different versions, with information about who contributed when, line-by-line. This makes collaboration easier, and it allows you to roll-back to different versions or contribute to others’ work.</p>
+<p>git will track and version your files, GitHub stores this online and enables you to collaborate with others (and yourself). Although git and GitHub are two different things, distinct from each other, we can think of them as a bundle since we will always use them together.</p>
+<section id="configure-github" class="level3">
+<h3 class="anchored" data-anchor-id="configure-github">Configure GitHub</h3>
+<p>This set up is a one-time thing! You will only have to do this once per computer. We’ll walk through this together. In a browser, go to github.com and to your profile page as a reminder.</p>
+<p><strong>You will need to remember your GitHub username, the email address you created your GitHub account with, and your GitHub password.</strong></p>
+<p>We will be using the <code>use_git_config()</code> function from the <code>usethis</code> package we just installed.</p>
+<pre class="{r}"><code>#| eval: false
+## install the usethis package
+install.packages("usethis")
+
+## use_git_config function with my username and email as arguments
+usethis::use_git_config(user.name = "jules32", user.email = "jules32@example.org")</code></pre>
+<p>If you see <code>Error in use_git_config() : could not find function "use_git_config"</code> please run <code>library("usethis")</code></p>
+</section>
+<section id="ensure-that-gitgithubrstudio-are-communicating" class="level3">
+<h3 class="anchored" data-anchor-id="ensure-that-gitgithubrstudio-are-communicating">Ensure that Git/GitHub/RStudio are communicating</h3>
+<p>We are going to go through a few steps to ensure the Git/GitHub are communicating with RStudio</p>
+<section id="rstudio-new-project" class="level4">
+<h4 class="anchored" data-anchor-id="rstudio-new-project">RStudio: New Project</h4>
+<p>Click on New Project. There are a few different ways; you could also go to File &gt; New Project…, or click the little green + with the R box in the top left. also in the File menu).</p>
+<p><br></p>
+<p><code>{r, echo=FALSE, out.width="80%"} knitr::include_graphics("img/new_project1.png")</code></p>
+<p><br></p>
+</section>
+<section id="select-version-control" class="level4">
+<h4 class="anchored" data-anchor-id="select-version-control">Select Version Control</h4>
+<p><br></p>
+<p><code>{r, echo=FALSE, out.width="80%"} knitr::include_graphics("img/new_project2.png")</code></p>
+<p><br></p>
+</section>
+<section id="select-git" class="level4">
+<h4 class="anchored" data-anchor-id="select-git">Select Git</h4>
+<p>Since we are using git.</p>
+<p><br></p>
+<p><code>{r, echo=FALSE, out.width="80%"} knitr::include_graphics("img/new_project3.png")</code></p>
+<p><br></p>
+<p>Do you see what I see?</p>
+<p><br></p>
+<p><code>{r, echo=FALSE, out.width="80%"} knitr::include_graphics("img/new_project4b.png")</code></p>
+<p><br></p>
+<p>If yes, hooray! Time for a break!</p>
+<p>If no, we will help you troubleshoot.</p>
+<ol type="1">
+<li>Double check that GitHub username and email are correct</li>
+<li>Troubleshooting, starting with <a href="http://happygitwithr.com/troubleshooting.html">HappyGitWithR’s troubleshooting chapter</a></li>
+</ol>
+<ul>
+<li><code>which git</code> (Mac, Linux, or anything running a bash shell)</li>
+<li><code>where git</code> (Windows, when not in a bash shell)</li>
+</ul>
+<ol type="1">
+<li>Potentially set up a RStudio Cloud account: <a href="https://rstudio.cloud/" class="uri">https://rstudio.cloud/</a></li>
+</ol>
+<!--- [Allison 206/244 googledoc](https://docs.google.com/document/d/1zx2upJJqFZe94O3BQSMI56Z76s3haLXC0otKSpcZaJQ/edit)
+--->
+</section>
+</section>
+<section id="troubleshooting" class="level3">
+<h3 class="anchored" data-anchor-id="troubleshooting">Troubleshooting</h3>
+<section id="configure-git-from-terminal" class="level4">
+<h4 class="anchored" data-anchor-id="configure-git-from-terminal">Configure git from Terminal</h4>
+<p>If <code>usethis</code> fails, the following is the classic approach to configuring <strong>git</strong>. Open the Git Bash program (Windows) or the Terminal (Mac) and type the following:</p>
+<pre><code>    # display your version of git
+    git --version
+    
+    # replace USER with your Github user account
+    git config --global user.name USER
+    
+    # replace NAME@EMAIL.EDU with the email you used to register with Github
+    git config --global user.email NAME@EMAIL.EDU
+    
+    # list your config to confirm user.* variables set
+    git config --list</code></pre>
+<p>This will configure git with global (<code>--global</code>) commands, which means it will apply ‘globally’ to all your future github repositories, rather than only to this one now. <strong>Note for PCs</strong>: We’ve seen PC failures correct themselves by doing the above but omitting <code>--global</code>. (Then you will need to configure GitHub for every repo you clone but that is fine for now).</p>
+</section>
+<section id="troubleshooting-1" class="level4">
+<h4 class="anchored" data-anchor-id="troubleshooting-1">Troubleshooting</h4>
+<p>All troubleshooting starts with reading Happy Git With R’s <a href="http://happygitwithr.com/troubleshooting.html">RStudio, Git, GitHub Hell</a> troubleshooting chapter.</p>
+<section id="newish-error-on-a-mac" class="level5">
+<h5 class="anchored" data-anchor-id="newish-error-on-a-mac">New(ish) Error on a Mac</h5>
+<p>We’ve also seen the following errors from RStudio:</p>
+<pre><code>error key does not contain a section --global terminal</code></pre>
+<p>and</p>
+<pre><code>fatal: not in a git directory</code></pre>
+<p>To solve this, go to the Terminal and type: <code>which git</code></p>
+<p><img src="img/git_whichgit.png" width="250px"></p>
+<p>Look at the filepath that is returned. Does it say anything to do with Apple?</p>
+<p>-&gt; If yes, then the <a href="https://git-scm.com/downloads">Git you downloaded</a> isn’t installed, please redownload if necessary, and follow instructions to install.</p>
+<p>-&gt; If no, (in the example image, the filepath does not say anything with Apple) then proceed below:</p>
+<p>In RStudio, navigate to: Tools &gt; Global Options &gt; Git/SVN.</p>
+<p><img src="img/git_options.png" width="250px"></p>
+<p><br></p>
+<p>Does the <strong>“Git executable”</strong> filepath match what the url in Terminal says?</p>
+<p><br></p>
+<p><img src="img/git_options_filepath.png" width="500px"></p>
+<p>If not, click the browse button and navigate there.</p>
+<blockquote class="blockquote">
+<p><em>Note</em>: on my laptop, even though I navigated to /usr/local/bin/git, it then automatically redirect because /usr/local/bin/git was an alias on my computer. That is fine. Click OK.</p>
+</blockquote>
+</section>
+</section>
+</section>
+</section>
+<section id="sync-from-rstudio-local-to-github-remote" class="level2">
+<h2 class="anchored" data-anchor-id="sync-from-rstudio-local-to-github-remote">Sync from RStudio (local) to GitHub (remote)</h2>
+<p>Syncing to GitHub.com means 4 steps:</p>
+<ol type="1">
+<li>Pull</li>
+<li>Stage</li>
+<li>Commit</li>
+<li>Push</li>
+</ol>
+<p><br></p>
+<p><code>{r, echo=FALSE, out.width="100%"} knitr::include_graphics("img/commit_steps.png")</code></p>
+<p><br></p>
+<p>We start off this whole process by clicking on the Commit section.</p>
+<p><br></p>
+<p><code>{r, echo=FALSE, out.width="100%"} knitr::include_graphics("img/commit_circled.png")</code></p>
+<p><br></p>
+<section id="pull" class="level4">
+<h4 class="anchored" data-anchor-id="pull">Pull</h4>
+<p>We start off by “Pulling” from the remote repository (GitHub.com) to make sure that our local copy has the most up-to-date information that is available online. Right now, since we just created the repo and are the only ones that have permission to work on it, we can be pretty confident that there isn’t new information available. But we pull anyways because this is a very safe habit to get into for when you start collaborating with yourself across computers or others. Best practice is to pull often: it costs nothing (other than an internet connection).</p>
+<p>Pull by clicking the teal Down Arrow. (Notice also how when you highlight a filename, a preview of the differences displays below).</p>
+<p><br></p>
+<p><code>{r, echo=FALSE, out.width="100%"} knitr::include_graphics("img/commit_pull.png")</code></p>
+<p><br></p>
+</section>
+<section id="stage" class="level4">
+<h4 class="anchored" data-anchor-id="stage">Stage</h4>
+<p>Let’s click the boxes next to each file. This is called “staging a file”: you are indicating that you want GitHub to track this file, and that you will be syncing it shortly. Notice:</p>
+<ul>
+<li>.Rproj and .gitignore files: the question marks turn into an A because these are new files that have been added to your repo (automatically by RStudio, not by you).</li>
+<li>README.md file: the M indicates that this was modified (by you)</li>
+</ul>
+<p>These are the codes used to describe how the files are changed, (from the RStudio <a href="http://www.rstudio.com/wp-content/uploads/2016/01/rstudio-IDE-cheatsheet.pdf">cheatsheet</a>):</p>
+<p><br></p>
+<p><code>{r, echo=FALSE, out.width="30%"} knitr::include_graphics("img/commit_codes_added_modified.png")</code></p>
+<p><br></p>
+</section>
+<section id="commit" class="level4">
+<h4 class="anchored" data-anchor-id="commit">Commit</h4>
+<p>Committing is different from saving our files (which we still have to do! RStudio will indicate a file is unsaved with red text and an asterix). We commit a single file or a group of files when we are ready to save a snapshot in time of the progress we’ve made. Maybe this is after a big part of the analysis was done, or when you’re done working for the day.</p>
+<p>Committing our files is a 2-step process.</p>
+<p>First, you write a “commit message”, which is a human-readable note about what has changed that will accompany GitHub’s non-human-readable alphanumeric code to track our files. I think of commit messages like breadcrumbs to my Future Self: how can I use this space to be useful for me if I’m trying to retrace my steps (and perhaps in a panic?).</p>
+<p>Second, you press Commit.</p>
+<p><br></p>
+<p><code>{r, echo=FALSE, out.width="100%"} knitr::include_graphics("img/commit_message_arrow.png")</code></p>
+<p><br></p>
+<p>When we have committed successfully, we get a rather unsuccessful-looking pop-up message. You can read this message as “Congratulations! You’ve successfully committed 3 files, 2 of which are new!” It is also providing you with that alphanumeric SHA code that GitHub is using to track these files.</p>
+<p>If our attempt was not successful, we will see an Error. Otherwise, interpret this message as a joyous one.</p>
+<blockquote class="blockquote">
+<p>Does your pop-up message say “Aborting commit due to empty commit message.”? GitHub is really serious about writing human-readable commit messages. <br></p>
+</blockquote>
+<p><code>{r, echo=FALSE, out.width="100%"} knitr::include_graphics("img/commit_success.png")</code></p>
+<p><br></p>
+<p>When we close this window there is going to be (in my opinion) a very subtle indication that we are not done with the syncing process.</p>
+<p><br></p>
+<p><code>{r, echo=FALSE, out.width="100%"} knitr::include_graphics("img/commit_branch_ahead_of_origin_master.png")</code></p>
+<p><br></p>
+<p>We have successfully committed our work as a breadcrumb-message-approved snapshot in time, but it still only exists locally on our computer. We can commit without an internet connection; we have not done anything yet to tell GitHub that we want this pushed to the remote repo at GitHub.com. So as the last step, we push.</p>
+</section>
+<section id="push" class="level4">
+<h4 class="anchored" data-anchor-id="push">Push</h4>
+<p>The last step in the syncing process is to Push!</p>
+<p><br></p>
+<p><code>{r, echo=FALSE, out.width="100%"} knitr::include_graphics("img/commit_push.png")</code></p>
+<p><br></p>
+<p>Awesome! We’re done here in RStudio for the moment, let’s check out the remote on GitHub.com.</p>
+</section>
+<section id="commit-history" class="level3">
+<h3 class="anchored" data-anchor-id="commit-history">Commit history</h3>
+<p>The files you added should be on github.com.</p>
+<p>Notice how the README.md file we created is automatically displayed at the bottom. Since it is good practice to have a README file that identifies what code does (i.e.&nbsp;why it exists), GitHub will display a Markdown file called README nicely formatted.</p>
+<p><br></p>
+<p>```{r, echo=FALSE, out.width=“100%”} knitr::include_graphics(“img/gh_repo_view.png”)</p>
+</section>
+</section>
+<section id="install-quarto" class="level2">
+<h2 class="anchored" data-anchor-id="install-quarto">install Quarto</h2>
 
 
 </section>
