@@ -229,6 +229,9 @@
         <li>
     <a class="dropdown-item" href="../contributing/workflow.html">Workflow</a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../contributing/recipe-quarto-setup.html">Create &amp; Publish with Quarto (without R or Python)</a>
+  </li>  
     </ul>
   </li>
   <li class="nav-item compact">
@@ -540,6 +543,9 @@
           <li class="sidebar-item">
   <a href="../contributing/workflow.html" class="active">Workflow</a>
 </li>
+          <li class="sidebar-item">
+  <a href="../contributing/recipe-quarto-setup.html" class="">Create &amp; Publish with Quarto (without R or Python)</a>
+</li>
         </ul>
       </div>
     </li>
@@ -580,6 +586,7 @@
 <li><a href="#log-into-2i2c" class="nav-link" data-scroll-target="#log-into-2i2c">Log into 2i2c</a></li>
 <li><a href="#start-a-2i2c-session" class="nav-link" data-scroll-target="#start-a-2i2c-session">Start a 2i2c session</a></li>
 <li><a href="#create-a-jupyter-kernel-to-run-notebooks" class="nav-link" data-scroll-target="#create-a-jupyter-kernel-to-run-notebooks">Create a Jupyter kernel to run notebooks</a></li>
+<li><a href="#dockerfile" class="nav-link" data-scroll-target="#dockerfile">Dockerfile</a></li>
 </ul></li>
 <li><a href="#virtual-environments" class="nav-link" data-scroll-target="#virtual-environments">Virtual Environments</a></li>
 <li><a href="#cookbook-structure" class="nav-link" data-scroll-target="#cookbook-structure">Cookbook Structure</a></li>
@@ -894,6 +901,18 @@ This command line instance is now being used to serve Quarto
 <li>Select the new kernel you created and click the “Select” button. <em>The kernel on the upper right should now give the name of your custom kernel.</em></li>
 </ol>
 </section>
+<section id="dockerfile" class="level3">
+<h3 class="anchored" data-anchor-id="dockerfile">Dockerfile</h3>
+<p>Julie can merge PR</p>
+<p>It takes 10 mins to rebuild. In the beginning our image was 10 mb. After Hackathon 1 GB now</p>
+<p>Once it builds the image it should build to Dockerhub but it doesn’t rebuild the Hub.</p>
+<p>Once the GA finishes it never updates the 2i2c Hub despite code to do so - something to follow up on</p>
+<p>&lt;https://github.com/NASA-Openscapes/corn&gt;</p>
+<p>Rebuilding image takes about 10-13 minutes</p>
+<p>In GitHub &gt; Actions, click on the successful build to DockerHub, copy the tag from “Push new image to Hub”</p>
+<p>Then in 2i2c &gt; Services &gt; Configuration &gt; Click Authorize &gt; “User Docker Image”: paste the tag from GitHub Actions. Click Submit, then navigate away</p>
+<p>Every once in a while, delete tags from the DockerHub: https://hub.docker.com/repository/docker/openscapes/corn/tags?page=1&amp;ordering=last_updated</p>
+</section>
 </section>
 <section id="virtual-environments" class="level2">
 <h2 class="anchored" data-anchor-id="virtual-environments">Virtual Environments</h2>
@@ -963,8 +982,8 @@ This command line instance is now being used to serve Quarto
 <h3 class="anchored" data-anchor-id="create-a-.qmd-from-external-.ipynb">Create a .qmd from external .ipynb</h3>
 <p>This is a bit of a hacky way that we can formalize further if it’s useful:</p>
 <ol type="1">
-<li>Go to an existing notebook, e.g.&nbsp;<a href="https://github.com/podaac/AGU-2020/blob/main/Part-II/01_sst_shpfile/AGU_tutorial1_shp_search.ipynb" class="uri">https://github.com/podaac/AGU-2020/blob/main/Part-II/01_sst_shpfile/AGU_tutorial1_shp_search.ipynb</a></li>
-<li>Click on Raw, e.g.&nbsp;<a href="https://raw.githubusercontent.com/podaac/AGU-2020/main/Part-II/01_sst_shpfile/AGU_tutorial1_shp_search.ipynb" class="uri">https://raw.githubusercontent.com/podaac/AGU-2020/main/Part-II/01_sst_shpfile/AGU_tutorial1_shp_search.ipynb</a></li>
+<li>Go to an existing notebook, e.g. <a href="https://github.com/podaac/AGU-2020/blob/main/Part-II/01_sst_shpfile/AGU_tutorial1_shp_search.ipynb" class="uri">https://github.com/podaac/AGU-2020/blob/main/Part-II/01_sst_shpfile/AGU_tutorial1_shp_search.ipynb</a></li>
+<li>Click on Raw, e.g. <a href="https://raw.githubusercontent.com/podaac/AGU-2020/main/Part-II/01_sst_shpfile/AGU_tutorial1_shp_search.ipynb" class="uri">https://raw.githubusercontent.com/podaac/AGU-2020/main/Part-II/01_sst_shpfile/AGU_tutorial1_shp_search.ipynb</a></li>
 <li>Copy text</li>
 <li>In your local setup (e.g.&nbsp;RStudio IDE): New File &gt; Text File &gt; Paste &gt; Save (with the same name if appropriate) and <code>.ipynb</code> extension, e.g.: <code>discovery/search-by-shapefile.ipynb</code></li>
 <li>In the command line:</li>
