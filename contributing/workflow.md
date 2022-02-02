@@ -446,8 +446,8 @@ We use [2i2c](https://2i2c.org/) to run notebooks.
 
 ### Log into 2i2c
 
-1.  Go to the [openscapes
-    2i2c](https://openscapes.2i2c.cloud/hub/login?next=%2Fhub%2F). *You
+1.  Go to the openscapes
+    2i2c. *You
     should see the openscapes 2i2c instance.*
 2.  Click on the orange "Log in to continue" button. *You should see the
     Openscapes-Prod page.*
