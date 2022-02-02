@@ -565,8 +565,8 @@
 <li><a href="#add-template-site-files" class="nav-link" data-scroll-target="#add-template-site-files">Add template site files</a></li>
 <li><a href="#set-up-github-publishing" class="nav-link" data-scroll-target="#set-up-github-publishing">Set up GitHub publishing</a></li>
 </ul></li>
-<li><a href="#edit" class="nav-link" data-scroll-target="#edit">Edit</a></li>
-<li><a href="#setup-rstudio" class="nav-link" data-scroll-target="#setup-rstudio">Setup RStudio</a>
+<li><a href="#develop-content" class="nav-link" data-scroll-target="#develop-content">Develop content</a></li>
+<li><a href="#setup-rstudio-optional" class="nav-link" data-scroll-target="#setup-rstudio-optional">Setup RStudio (optional)</a>
 <ul class="collapse">
 <li><a href="#download-and-install" class="nav-link" data-scroll-target="#download-and-install">Download and install</a></li>
 </ul></li>
@@ -647,14 +647,15 @@
 </ol>
 </section>
 </section>
-<section id="edit" class="level2">
-<h2 class="anchored" data-anchor-id="edit">Edit</h2>
-<p>Now you can start editing. Start off from the browser, using Markdown.</p>
-<p>Then also, download RStudio IDE and set up to work locally.</p>
+<section id="develop-content" class="level2">
+<h2 class="anchored" data-anchor-id="develop-content">Develop content</h2>
+<p>Now you can start editing these files with what you want them to say! Start off from the browser, using Markdown. <em>Add details here</em>.</p>
+<p>If you’d like to add a new chapter, you’ll need to update the <code>_quarto.yml</code> file and create a new .md file; start by copying an existing one. <em>More details coming as we do this together.</em></p>
+<p>Instead of editing from the browser, you can work locally with whatever software/editor you like (RStudio, JupyterLab, etc).</p>
 </section>
-<section id="setup-rstudio" class="level2">
-<h2 class="anchored" data-anchor-id="setup-rstudio">Setup RStudio</h2>
-<p>Consolidated from <a href="https://rstudio-conf-2020.github.io/r-for-excel/" class="uri">https://rstudio-conf-2020.github.io/r-for-excel/</a></p>
+<section id="setup-rstudio-optional" class="level2">
+<h2 class="anchored" data-anchor-id="setup-rstudio-optional">Setup RStudio (optional)</h2>
+<p><em>The following is consolidated from <a href="https://rstudio-conf-2020.github.io/r-for-excel/" class="uri">https://rstudio-conf-2020.github.io/r-for-excel/</a>.</em></p>
 <section id="download-and-install" class="level3">
 <h3 class="anchored" data-anchor-id="download-and-install">Download and install</h3>
 <p><em>From <a href="https://rstudio-conf-2020.github.io/r-for-excel/index.html#prerequisites">r-for-excel::prerequesites</a></em></p>
@@ -711,24 +712,24 @@ usethis::use_git_config(user.name = "jules32", user.email = "jules32@example.org
 <h4 class="anchored" data-anchor-id="rstudio-new-project">RStudio: New Project</h4>
 <p>Click on New Project. There are a few different ways; you could also go to File &gt; New Project…, or click the little green + with the R box in the top left. also in the File menu).</p>
 <p><br></p>
-<p><code>{r, echo=FALSE, out.width="80%"} knitr::include_graphics("img/new_project1.png")</code></p>
+<p><img src="images/new_project1.png" class="img-fluid" style="width:80.0%"></p>
 <p><br></p>
 </section>
 <section id="select-version-control" class="level4">
 <h4 class="anchored" data-anchor-id="select-version-control">Select Version Control</h4>
 <p><br></p>
-<p><code>{r, echo=FALSE, out.width="80%"} knitr::include_graphics("img/new_project2.png")</code></p>
+<p><img src="images/new_project2.png" class="img-fluid" style="width:80.0%"></p>
 <p><br></p>
 </section>
 <section id="select-git" class="level4">
 <h4 class="anchored" data-anchor-id="select-git">Select Git</h4>
 <p>Since we are using git.</p>
 <p><br></p>
-<p><code>{r, echo=FALSE, out.width="80%"} knitr::include_graphics("img/new_project3.png")</code></p>
+<p><img src="images/new_project3.png" class="img-fluid" style="width:80.0%"> ```</p>
 <p><br></p>
 <p>Do you see what I see?</p>
 <p><br></p>
-<p><code>{r, echo=FALSE, out.width="80%"} knitr::include_graphics("img/new_project4b.png")</code></p>
+<p><img src="images/new_project4.png" class="img-fluid" style="width:80.0%"></p>
 <p><br></p>
 <p>If yes, hooray! Time for a break!</p>
 <p>If no, we will help you troubleshoot.</p>
@@ -803,18 +804,18 @@ usethis::use_git_config(user.name = "jules32", user.email = "jules32@example.org
 <li>Push</li>
 </ol>
 <p><br></p>
-<p><code>{r, echo=FALSE, out.width="100%"} knitr::include_graphics("img/commit_steps.png")</code></p>
+<p><img src="images/commit_steps.png" class="img-fluid" style="width:80.0%"></p>
 <p><br></p>
 <p>We start off this whole process by clicking on the Commit section.</p>
 <p><br></p>
-<p><code>{r, echo=FALSE, out.width="100%"} knitr::include_graphics("img/commit_circled.png")</code></p>
+<p><img src="images/commit_circled.png" class="img-fluid" style="width:80.0%"></p>
 <p><br></p>
 <section id="pull" class="level4">
 <h4 class="anchored" data-anchor-id="pull">Pull</h4>
 <p>We start off by “Pulling” from the remote repository (GitHub.com) to make sure that our local copy has the most up-to-date information that is available online. Right now, since we just created the repo and are the only ones that have permission to work on it, we can be pretty confident that there isn’t new information available. But we pull anyways because this is a very safe habit to get into for when you start collaborating with yourself across computers or others. Best practice is to pull often: it costs nothing (other than an internet connection).</p>
 <p>Pull by clicking the teal Down Arrow. (Notice also how when you highlight a filename, a preview of the differences displays below).</p>
 <p><br></p>
-<p><code>{r, echo=FALSE, out.width="100%"} knitr::include_graphics("img/commit_pull.png")</code></p>
+<p><img src="images/commit_pull.png" class="img-fluid" style="width:80.0%"></p>
 <p><br></p>
 </section>
 <section id="stage" class="level4">
@@ -826,7 +827,7 @@ usethis::use_git_config(user.name = "jules32", user.email = "jules32@example.org
 </ul>
 <p>These are the codes used to describe how the files are changed, (from the RStudio <a href="http://www.rstudio.com/wp-content/uploads/2016/01/rstudio-IDE-cheatsheet.pdf">cheatsheet</a>):</p>
 <p><br></p>
-<p><code>{r, echo=FALSE, out.width="30%"} knitr::include_graphics("img/commit_codes_added_modified.png")</code></p>
+<p><img src="images/commit_codes_added_modified.png" class="img-fluid" style="width:80.0%"></p>
 <p><br></p>
 </section>
 <section id="commit" class="level4">
@@ -836,18 +837,18 @@ usethis::use_git_config(user.name = "jules32", user.email = "jules32@example.org
 <p>First, you write a “commit message”, which is a human-readable note about what has changed that will accompany GitHub’s non-human-readable alphanumeric code to track our files. I think of commit messages like breadcrumbs to my Future Self: how can I use this space to be useful for me if I’m trying to retrace my steps (and perhaps in a panic?).</p>
 <p>Second, you press Commit.</p>
 <p><br></p>
-<p><code>{r, echo=FALSE, out.width="100%"} knitr::include_graphics("img/commit_message_arrow.png")</code></p>
+<p><img src="images/commit_message_arrow.png" class="img-fluid" style="width:80.0%"></p>
 <p><br></p>
 <p>When we have committed successfully, we get a rather unsuccessful-looking pop-up message. You can read this message as “Congratulations! You’ve successfully committed 3 files, 2 of which are new!” It is also providing you with that alphanumeric SHA code that GitHub is using to track these files.</p>
 <p>If our attempt was not successful, we will see an Error. Otherwise, interpret this message as a joyous one.</p>
 <blockquote class="blockquote">
 <p>Does your pop-up message say “Aborting commit due to empty commit message.”? GitHub is really serious about writing human-readable commit messages. <br></p>
 </blockquote>
-<p><code>{r, echo=FALSE, out.width="100%"} knitr::include_graphics("img/commit_success.png")</code></p>
+<p><img src="images/commit_success.png" class="img-fluid" style="width:80.0%"></p>
 <p><br></p>
 <p>When we close this window there is going to be (in my opinion) a very subtle indication that we are not done with the syncing process.</p>
 <p><br></p>
-<p><code>{r, echo=FALSE, out.width="100%"} knitr::include_graphics("img/commit_branch_ahead_of_origin_master.png")</code></p>
+<p><img src="images/commit_branch_ahead_of_origin_master.png" class="img-fluid" style="width:80.0%"></p>
 <p><br></p>
 <p>We have successfully committed our work as a breadcrumb-message-approved snapshot in time, but it still only exists locally on our computer. We can commit without an internet connection; we have not done anything yet to tell GitHub that we want this pushed to the remote repo at GitHub.com. So as the last step, we push.</p>
 </section>
@@ -855,7 +856,7 @@ usethis::use_git_config(user.name = "jules32", user.email = "jules32@example.org
 <h4 class="anchored" data-anchor-id="push">Push</h4>
 <p>The last step in the syncing process is to Push!</p>
 <p><br></p>
-<p><code>{r, echo=FALSE, out.width="100%"} knitr::include_graphics("img/commit_push.png")</code></p>
+<p><img src="images/commit_push.png" class="img-fluid" style="width:80.0%"></p>
 <p><br></p>
 <p>Awesome! We’re done here in RStudio for the moment, let’s check out the remote on GitHub.com.</p>
 </section>
@@ -864,7 +865,7 @@ usethis::use_git_config(user.name = "jules32", user.email = "jules32@example.org
 <p>The files you added should be on github.com.</p>
 <p>Notice how the README.md file we created is automatically displayed at the bottom. Since it is good practice to have a README file that identifies what code does (i.e.&nbsp;why it exists), GitHub will display a Markdown file called README nicely formatted.</p>
 <p><br></p>
-<p>```{r, echo=FALSE, out.width=“100%”} knitr::include_graphics(“img/gh_repo_view.png”)</p>
+<p><img src="images/gh_repo_view.png" class="img-fluid" style="width:80.0%"></p>
 </section>
 </section>
 <section id="install-quarto" class="level2">
