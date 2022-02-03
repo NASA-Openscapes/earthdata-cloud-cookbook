@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang=""><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
   <meta charset="utf-8">
-  <meta name="generator" content="quarto-0.2.339">
+  <meta name="generator" content="quarto-0.3.79">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <title>EarthData Cloud Cookbook – zarr-eosdis-store</title>
   <style>
@@ -76,9 +76,6 @@
     code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
   </style>
 
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
   <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
   <script src="../site_libs/quarto-nav/headroom.min.js"></script>
   <script src="../site_libs/clipboard/clipboard.min.js"></script>
@@ -86,6 +83,8 @@
   <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
   <script src="../site_libs/quarto-search/fuse.min.js"></script>
   <script src="../site_libs/quarto-search/quarto-search.js"></script>
+  <link href="../examples/index.html" rel="next">
+  <link href="../transformations/opendap-cloud.html" rel="prev">
   <script src="../site_libs/quarto-html/quarto.js"></script>
   <script src="../site_libs/quarto-html/popper.min.js"></script>
   <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -116,12 +115,15 @@
       "search-submit-button-title": "Submit"
     }
   }</script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
   <link rel="stylesheet" href="../styles.css">
 </head>
 <body class="docked">
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-light ">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">EarthData Cloud Cookbook</span>
@@ -240,8 +242,8 @@
  </a>
   </li>  
 </ul>
-              <div>
-                <a href="" class="quarto-color-scheme-toggle nav-link" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+              <div class="quarto-toggle-container">
+                  <a href="" class="quarto-color-scheme-toggle nav-link" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
               </div>
               <div id="quarto-search" class="" title="Search"></div>
           </div> <!-- /navcollapse -->
@@ -260,302 +262,274 @@
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
-  <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
-    <img src="../nasa-openscapes.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="../">
+      <img src="../nasa-openscapes.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text ">Welcome</a>
   </div>
-  <div class="sidebar-menu-container"> 
-  <ul class="list-unstyled mt-1">
-      <li class="sidebar-item">
-  <a href="../index.html" class="">Welcome</a>
 </li>
-      <ul class="list-unstyled sidebar-section depth1">
-    <li class="">
-        <div class="me-auto">
-          <div class="d-inline-flex w-100 sidebar-section-item">
-            <div class="sidebar-section-link me-auto">
-            <a href="../get-started/index.html" class="">Getting Started</a>
-            </div>
-            <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-get-startedindex.md" aria-expanded="true">
-              <div><i class="bi bi-chevron-right ms-2"></i></div>
-            </a>
-            </div>
-        </div>
-      <div class="collapse  show" id="quarto-sidebar-section-get-startedindex.md">
-        <ul class="list-unstyled sidebar-item-contents">
-          <li class="sidebar-item">
-  <a href="../get-started/how-to-use.html" class="">How to use this book</a>
-</li>
-          <li class="sidebar-item">
-  <a href="../get-started/earthdata-login.html" class="">EarthData Login</a>
-</li>
-          <ul class="list-unstyled sidebar-section depth2">
-    <li class="">
-        <div class="me-auto">
-          <div class="d-inline-flex w-100 sidebar-item">
-            <div class="sidebar-section-link me-auto">
-            <a href="../get-started/authentication.html" class="">Authentication</a>
-            </div>
-            <a class="text-start collapsed " data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-get-startedauthentication.md" aria-expanded="false">
-              <div><i class="bi bi-chevron-right ms-2"></i></div>
-            </a>
-            </div>
-        </div>
-      <div class="collapse  " id="quarto-sidebar-section-get-startedauthentication.md">
-        <ul class="list-unstyled sidebar-item-contents">
-          <li class="sidebar-item">
-  <a href="../get-started/lpdaac-netrc.html" class="">LP DAAC Authentication Example</a>
-</li>
-          <li class="sidebar-item">
-  <a href="../get-started/podaac-ecco-netrc.html" class="">PO DAAC Authentication Example</a>
-</li>
-        </ul>
-      </div>
-    </li>
-  </ul>
-          <li class="sidebar-item">
-  <a href="../get-started/api-primer.html" class="">API Primer</a>
-</li>
-        </ul>
-      </div>
-    </li>
-  </ul>
-      <ul class="list-unstyled sidebar-section depth1">
-    <li class="">
-        <div class="me-auto">
-          <div class="d-inline-flex w-100 sidebar-section-item">
-            <div class="sidebar-section-link me-auto">
-            <a href="../discovery/index.html" class="">NASA Cloud Data Discovery</a>
-            </div>
-            <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-discoveryindex.md" aria-expanded="true">
-              <div><i class="bi bi-chevron-right ms-2"></i></div>
-            </a>
-            </div>
-        </div>
-      <div class="collapse  show" id="quarto-sidebar-section-discoveryindex.md">
-        <ul class="list-unstyled sidebar-item-contents">
-          <li class="sidebar-item">
-  <a href="../discovery/search-by-shapefile.html" class="">Search by shapefile</a>
-</li>
-          <li class="sidebar-item">
-  <a href="../discovery/Navigate_CMR_STAC.html" class="">CMR and CMR-STAC API</a>
-</li>
-          <li class="sidebar-item">
-  <a href="../discovery/earthdata-search-ui.html" class="">Earthdata Search UI</a>
-</li>
-          <li class="sidebar-item">
-  <a href="../discovery/cmr-virtual-directories.html" class="">CMR Virtual Directories</a>
-</li>
-        </ul>
-      </div>
-    </li>
-  </ul>
-      <ul class="list-unstyled sidebar-section depth1">
-    <li class="">
-        <div class="me-auto">
-          <div class="d-inline-flex w-100 sidebar-section-item">
-            <div class="sidebar-section-link me-auto">
-            <a href="../access/index.html" class="">NASA Cloud Data Access</a>
-            </div>
-            <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-accessindex.md" aria-expanded="true">
-              <div><i class="bi bi-chevron-right ms-2"></i></div>
-            </a>
-            </div>
-        </div>
-      <div class="collapse  show" id="quarto-sidebar-section-accessindex.md">
-        <ul class="list-unstyled sidebar-item-contents">
-          <li class="sidebar-item">
-  <a href="../access/data-access-example.html" class="">Data access demo</a>
-</li>
-          <li class="sidebar-item">
-  <a href="../access/earthdata-search.html" class="">Earthdata Search</a>
-</li>
-          <li class="sidebar-item">
-  <a href="../access/opendap-cloud.html" class="">OPeNDAP in the Cloud</a>
-</li>
-          <ul class="list-unstyled sidebar-section depth2">
-    <li class="">
-        <div class="me-auto">
-          <div class="d-inline-flex w-100 sidebar-item">
-            <div class="sidebar-section-link me-auto">
-            <a href="../access/direct-in-region.html" class="">Direct in-region</a>
-            </div>
-            <a class="text-start collapsed " data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-accessdirect-in-region.md" aria-expanded="false">
-              <div><i class="bi bi-chevron-right ms-2"></i></div>
-            </a>
-            </div>
-        </div>
-      <div class="collapse  " id="quarto-sidebar-section-accessdirect-in-region.md">
-        <ul class="list-unstyled sidebar-item-contents">
-          <li class="sidebar-item">
-  <a href="../access/podaac-ecco-data_access-cloud_direct_access_s3.html" class="">Direct access to ECCO data in S3 (from <em>us-west-2</em>)</a>
-</li>
-        </ul>
-      </div>
-    </li>
-  </ul>
-          <ul class="list-unstyled sidebar-section depth2">
-    <li class="">
-        <div class="me-auto">
-          <div class="d-inline-flex w-100 sidebar-item">
-            <div class="sidebar-section-link me-auto">
-            <a href="../access/cof-via-harmony.html" class="">COF via Earthdata Harmony</a>
-            </div>
-            <a class="text-start collapsed " data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-accesscof-via-harmony.md" aria-expanded="false">
-              <div><i class="bi bi-chevron-right ms-2"></i></div>
-            </a>
-            </div>
-        </div>
-      <div class="collapse  " id="quarto-sidebar-section-accesscof-via-harmony.md">
-        <ul class="list-unstyled sidebar-item-contents">
-          <li class="sidebar-item">
-  <a href="../external/cof-zarr-reformat.html" class="">COF Zarr Access via Reformat</a>
-</li>
-        </ul>
-      </div>
-    </li>
-  </ul>
-          <li class="sidebar-item">
-  <a href="../access/download-to-local.html" class="">Download to local</a>
-</li>
-        </ul>
-      </div>
-    </li>
-  </ul>
-      <ul class="list-unstyled sidebar-section depth1">
-    <li class="">
-        <div class="me-auto">
-          <div class="d-inline-flex w-100 sidebar-section-item">
-            <div class="sidebar-section-link me-auto">
-            <a href="../transformations/index.html" class="">NASA Cloud Data Transformations</a>
-            </div>
-            <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-transformationsindex.md" aria-expanded="true">
-              <div><i class="bi bi-chevron-right ms-2"></i></div>
-            </a>
-            </div>
-        </div>
-      <div class="collapse  show" id="quarto-sidebar-section-transformationsindex.md">
-        <ul class="list-unstyled sidebar-item-contents">
-          <li class="sidebar-item">
-  <a href="../transformations/harmony-api.html" class="">Harmony API</a>
-</li>
-          <li class="sidebar-item">
-  <a href="../transformations/HarmonyPy_intro_tutorial.html" class="">HarmonyPy Introduction</a>
-</li>
-          <li class="sidebar-item">
-  <a href="../transformations/netcdf-to-zarr.html" class="">netCDF to Zarr</a>
-</li>
-          <ul class="list-unstyled sidebar-section depth2">
-    <li class="">
-        <div class="me-auto">
-          <div class="d-inline-flex w-100 sidebar-item">
-            <div class="sidebar-section-link me-auto">
-            <a href="../transformations/L2-subsetter.html" class="">L2 Subsetter</a>
-            </div>
-            <a class="text-start collapsed " data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-transformationsl2-subsetter.md" aria-expanded="false">
-              <div><i class="bi bi-chevron-right ms-2"></i></div>
-            </a>
-            </div>
-        </div>
-      <div class="collapse  " id="quarto-sidebar-section-transformationsl2-subsetter.md">
-        <ul class="list-unstyled sidebar-item-contents">
-          <li class="sidebar-item">
-  <a href="../transformations/harmony-subsetting.html" class="">Harmony Subsetting</a>
-</li>
-        </ul>
-      </div>
-    </li>
-  </ul>
-          <li class="sidebar-item">
-  <a href="../transformations/earthdata-search.html" class="">Earthdata Search UI</a>
-</li>
-          <li class="sidebar-item">
-  <a href="../transformations/opendap-cloud.html" class="">OPeNDAP in the Cloud</a>
-</li>
-          <li class="sidebar-item">
-  <a href="../external/zarr-eosdis-store.html" class="active">Zarr Example</a>
-</li>
-        </ul>
-      </div>
-    </li>
-  </ul>
-      <ul class="list-unstyled sidebar-section depth1">
-    <li class="">
-        <div class="me-auto">
-          <div class="d-inline-flex w-100 sidebar-section-item">
-            <div class="sidebar-section-link me-auto">
-            <a href="../examples/index.html" class="">Example tutorials</a>
-            </div>
-            <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-examplesindex.md" aria-expanded="true">
-              <div><i class="bi bi-chevron-right ms-2"></i></div>
-            </a>
-            </div>
-        </div>
-      <div class="collapse  show" id="quarto-sidebar-section-examplesindex.md">
-        <ul class="list-unstyled sidebar-item-contents">
-          <li class="sidebar-item">
-  <a href="../examples/NSIDC/ICESat2-CMR-OnPrem-vs-Cloud.html" class="">Searching and Downloading NSIDC Cloud Collections</a>
-</li>
-          <li class="sidebar-item">
-  <a href="../examples/NSIDC/ICESat2-CMR-AWS-S3.html" class="">Accessing NSIDC Cloud Collections Using CMR</a>
-</li>
-        </ul>
-      </div>
-    </li>
-  </ul>
-      <ul class="list-unstyled sidebar-section depth1">
-    <li class="">
-        <div class="me-auto">
-          <div class="d-inline-flex w-100 sidebar-section-item">
-            <div class="sidebar-section-link me-auto">
-            <a href="../appendix/index.html" class="">Appendix</a>
-            </div>
-            <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-appendixindex.md" aria-expanded="true">
-              <div><i class="bi bi-chevron-right ms-2"></i></div>
-            </a>
-            </div>
-        </div>
-      <div class="collapse  show" id="quarto-sidebar-section-appendixindex.md">
-        <ul class="list-unstyled sidebar-item-contents">
-          <li class="sidebar-item">
-  <a href="../transformations/harmonypy.html" class="">Harmony Py Library</a>
-</li>
-        </ul>
-      </div>
-    </li>
-  </ul>
-      <ul class="list-unstyled sidebar-section depth1">
-    <li class="">
-        <div class="me-auto">
-          <div class="d-inline-flex w-100 sidebar-section-item">
-            <div class="sidebar-section-link me-auto">
-            <a href="../contributing/index.html" class="">Contributing</a>
-            </div>
-            <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-contributingindex.md" aria-expanded="true">
-              <div><i class="bi bi-chevron-right ms-2"></i></div>
-            </a>
-            </div>
-        </div>
-      <div class="collapse  show" id="quarto-sidebar-section-contributingindex.md">
-        <ul class="list-unstyled sidebar-item-contents">
-          <li class="sidebar-item">
-  <a href="../contributing/setup.html" class="">Initial Setup</a>
-</li>
-          <li class="sidebar-item">
-  <a href="../contributing/workflow.html" class="">Workflow</a>
-</li>
-          <li class="sidebar-item">
-  <a href="../contributing/recipe-quarto-setup.html" class="">Create &amp; Publish with Quarto (without R or Python)</a>
-</li>
-        </ul>
-      </div>
-    </li>
-  </ul>
-  </ul>
+        <li class="sidebar-item sidebar-item-section">
+    <div class="sidebar-item-container"> 
+        <a href="../get-started/index.html" class="sidebar-item-text ">Getting Started</a>
+      <a class="sidebar-item-toggle text-start  " data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-get-startedindexmd" aria-expanded="true">
+        <i class="bi bi-chevron-right ms-2"></i>
+      </a>
+    </div>
+    <ul id="quarto-sidebar-section-get-startedindexmd" class="collapse list-unstyled sidebar-section depth1 show">  
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../get-started/how-to-use.html" class="sidebar-item-text ">How to use this book</a>
   </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../get-started/earthdata-login.html" class="sidebar-item-text ">EarthData Login</a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+    <div class="sidebar-item-container"> 
+        <a href="../get-started/authentication.html" class="sidebar-item-text ">Authentication</a>
+      <a class="sidebar-item-toggle text-start collapsed " data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-get-startedauthenticationmd" aria-expanded="false">
+        <i class="bi bi-chevron-right ms-2"></i>
+      </a>
+    </div>
+    <ul id="quarto-sidebar-section-get-startedauthenticationmd" class="collapse list-unstyled sidebar-section depth2 ">  
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../get-started/lpdaac-netrc.html" class="sidebar-item-text ">LP DAAC Authentication Example</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../get-started/podaac-ecco-netrc.html" class="sidebar-item-text ">PO DAAC Authentication Example</a>
+  </div>
+</li>
+    </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../get-started/api-primer.html" class="sidebar-item-text ">API Primer</a>
+  </div>
+</li>
+    </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+    <div class="sidebar-item-container"> 
+        <a href="../discovery/index.html" class="sidebar-item-text ">NASA Cloud Data Discovery</a>
+      <a class="sidebar-item-toggle text-start  " data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-discoveryindexmd" aria-expanded="true">
+        <i class="bi bi-chevron-right ms-2"></i>
+      </a>
+    </div>
+    <ul id="quarto-sidebar-section-discoveryindexmd" class="collapse list-unstyled sidebar-section depth1 show">  
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../discovery/search-by-shapefile.html" class="sidebar-item-text ">Search by shapefile</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../discovery/Navigate_CMR_STAC.html" class="sidebar-item-text ">CMR and CMR-STAC API</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../discovery/earthdata-search-ui.html" class="sidebar-item-text ">Earthdata Search UI</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../discovery/cmr-virtual-directories.html" class="sidebar-item-text ">CMR Virtual Directories</a>
+  </div>
+</li>
+    </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+    <div class="sidebar-item-container"> 
+        <a href="../access/index.html" class="sidebar-item-text ">NASA Cloud Data Access</a>
+      <a class="sidebar-item-toggle text-start  " data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-accessindexmd" aria-expanded="true">
+        <i class="bi bi-chevron-right ms-2"></i>
+      </a>
+    </div>
+    <ul id="quarto-sidebar-section-accessindexmd" class="collapse list-unstyled sidebar-section depth1 show">  
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../access/data-access-example.html" class="sidebar-item-text ">Data access demo</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../access/earthdata-search.html" class="sidebar-item-text ">Earthdata Search</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../access/opendap-cloud.html" class="sidebar-item-text ">OPeNDAP in the Cloud</a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+    <div class="sidebar-item-container"> 
+        <a href="../access/direct-in-region.html" class="sidebar-item-text ">Direct in-region</a>
+      <a class="sidebar-item-toggle text-start collapsed " data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-accessdirect-in-regionmd" aria-expanded="false">
+        <i class="bi bi-chevron-right ms-2"></i>
+      </a>
+    </div>
+    <ul id="quarto-sidebar-section-accessdirect-in-regionmd" class="collapse list-unstyled sidebar-section depth2 ">  
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../access/podaac-ecco-data_access-cloud_direct_access_s3.html" class="sidebar-item-text ">Direct access to ECCO data in S3 (from <em>us-west-2</em>)</a>
+  </div>
+</li>
+    </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+    <div class="sidebar-item-container"> 
+        <a href="../access/cof-via-harmony.html" class="sidebar-item-text ">COF via Earthdata Harmony</a>
+      <a class="sidebar-item-toggle text-start collapsed " data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-accesscof-via-harmonymd" aria-expanded="false">
+        <i class="bi bi-chevron-right ms-2"></i>
+      </a>
+    </div>
+    <ul id="quarto-sidebar-section-accesscof-via-harmonymd" class="collapse list-unstyled sidebar-section depth2 ">  
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../external/cof-zarr-reformat.html" class="sidebar-item-text ">COF Zarr Access via Reformat</a>
+  </div>
+</li>
+    </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../access/download-to-local.html" class="sidebar-item-text ">Download to local</a>
+  </div>
+</li>
+    </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+    <div class="sidebar-item-container"> 
+        <a href="../transformations/index.html" class="sidebar-item-text ">NASA Cloud Data Transformations</a>
+      <a class="sidebar-item-toggle text-start  " data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-transformationsindexmd" aria-expanded="true">
+        <i class="bi bi-chevron-right ms-2"></i>
+      </a>
+    </div>
+    <ul id="quarto-sidebar-section-transformationsindexmd" class="collapse list-unstyled sidebar-section depth1 show">  
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../transformations/harmony-api.html" class="sidebar-item-text ">Harmony API</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../transformations/HarmonyPy_intro_tutorial.html" class="sidebar-item-text ">HarmonyPy Introduction</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../transformations/netcdf-to-zarr.html" class="sidebar-item-text ">netCDF to Zarr</a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+    <div class="sidebar-item-container"> 
+        <a href="../transformations/L2-subsetter.html" class="sidebar-item-text ">L2 Subsetter</a>
+      <a class="sidebar-item-toggle text-start collapsed " data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-transformationsl2-subsettermd" aria-expanded="false">
+        <i class="bi bi-chevron-right ms-2"></i>
+      </a>
+    </div>
+    <ul id="quarto-sidebar-section-transformationsl2-subsettermd" class="collapse list-unstyled sidebar-section depth2 ">  
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../transformations/harmony-subsetting.html" class="sidebar-item-text ">Harmony Subsetting</a>
+  </div>
+</li>
+    </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../transformations/earthdata-search.html" class="sidebar-item-text ">Earthdata Search UI</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../transformations/opendap-cloud.html" class="sidebar-item-text ">OPeNDAP in the Cloud</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../external/zarr-eosdis-store.html" class="sidebar-item-text active">Zarr Example</a>
+  </div>
+</li>
+    </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+    <div class="sidebar-item-container"> 
+        <a href="../examples/index.html" class="sidebar-item-text ">Example tutorials</a>
+      <a class="sidebar-item-toggle text-start  " data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-examplesindexmd" aria-expanded="true">
+        <i class="bi bi-chevron-right ms-2"></i>
+      </a>
+    </div>
+    <ul id="quarto-sidebar-section-examplesindexmd" class="collapse list-unstyled sidebar-section depth1 show">  
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../examples/NSIDC/ICESat2-CMR-OnPrem-vs-Cloud.html" class="sidebar-item-text ">Searching and Downloading NSIDC Cloud Collections</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../examples/NSIDC/ICESat2-CMR-AWS-S3.html" class="sidebar-item-text ">Accessing NSIDC Cloud Collections Using CMR</a>
+  </div>
+</li>
+    </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+    <div class="sidebar-item-container"> 
+        <a href="../appendix/index.html" class="sidebar-item-text ">Appendix</a>
+      <a class="sidebar-item-toggle text-start  " data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-appendixindexmd" aria-expanded="true">
+        <i class="bi bi-chevron-right ms-2"></i>
+      </a>
+    </div>
+    <ul id="quarto-sidebar-section-appendixindexmd" class="collapse list-unstyled sidebar-section depth1 show">  
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../transformations/harmonypy.html" class="sidebar-item-text ">Harmony Py Library</a>
+  </div>
+</li>
+    </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+    <div class="sidebar-item-container"> 
+        <a href="../contributing/index.html" class="sidebar-item-text ">Contributing</a>
+      <a class="sidebar-item-toggle text-start  " data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-contributingindexmd" aria-expanded="true">
+        <i class="bi bi-chevron-right ms-2"></i>
+      </a>
+    </div>
+    <ul id="quarto-sidebar-section-contributingindexmd" class="collapse list-unstyled sidebar-section depth1 show">  
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../contributing/setup.html" class="sidebar-item-text ">Initial Setup</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../contributing/workflow.html" class="sidebar-item-text ">Workflow</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../contributing/recipe-quarto-setup.html" class="sidebar-item-text ">Create &amp; Publish with Quarto (without R or Python)</a>
+  </div>
+</li>
+    </ul>
+  </li>
+    </ul>
+    </div>
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-      <nav id="TOC" role="doc-toc">
+        <nav id="TOC" role="doc-toc">
 <h2 id="toc-title">On this page</h2>
 <ul>
 <li><a href="#zarr-example" class="nav-link active" data-scroll-target="#zarr-example">Zarr Example</a></li>
@@ -568,7 +542,7 @@
 
 <section id="zarr-example" class="level1">
 <h1>Zarr Example</h1>
-<p>imported on: <strong>2022-02-02</strong></p>
+<p>imported on: <strong>2022-02-03</strong></p>
 <p>
 This notebook is from NASA’s Zarr <strong>EOSDIS</strong> store notebook
 </p>
@@ -579,6 +553,7 @@ This notebook is from NASA’s Zarr <strong>EOSDIS</strong> store notebook
 <section id="zarr-eosdis-store-example" class="level1">
 <h1>zarr-eosdis-store example</h1>
 <p>Install dependencies</p>
+<div class="cell" data-tags="[]">
 <div class="sourceCode" id="cb1"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># zarr and zarr-eosdis-store, the main libraries being demoed</span></span>
@@ -586,16 +561,19 @@ This notebook is from NASA’s Zarr <strong>EOSDIS</strong> store notebook
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Notebook-specific libraries</span></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>{sys.executable} <span class="op">-</span>m pip install matplotlib</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p><strong>Important</strong>: To run this, you must first create an Earthdata Login account (https://urs.earthdata.nasa.gov) and place your credentials in ~/.netrc e.g.:</p>
 <pre><code>   machine urs.earthdata.nasa.gov login YOUR_USER password YOUR_PASSWORD</code></pre>
 <p>Never share or commit your password / .netrc file!</p>
 <p>Basic usage. After these lines, we work with <code>ds</code> as though it were a normal Zarr dataset</p>
+<div class="cell" data-execution_count="2">
 <div class="sourceCode" id="cb3"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> zarr</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> eosdis_store <span class="im">import</span> EosdisStore</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">'https://archive.podaac.earthdata.nasa.gov/podaac-ops-cumulus-protected/MUR-JPL-L4-GLOB-v4.1/20210715090000-JPL-L4_GHRSST-SSTfnd-MUR-GLOB-v02.0-fv04.1.nc'</span></span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>ds <span class="op">=</span> zarr.<span class="bu">open</span>(EosdisStore(url))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>View the file’s variable structure</p>
 <div class="cell" data-execution_count="3">
 <div class="sourceCode" id="cb4"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(ds.tree())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -613,13 +591,17 @@ This notebook is from NASA’s Zarr <strong>EOSDIS</strong> store notebook
 </div>
 </div>
 <p>Fetch the latitude and longitude arrays and determine start and end indices for our area of interest. In this case, we’re looking at the Great Lakes, which have a nice, recognizeable shape. Latitudes 41 to 49, longitudes -93 to 76.</p>
+<div class="cell" data-execution_count="4">
 <div class="sourceCode" id="cb6"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>lats <span class="op">=</span> ds[<span class="st">'lat'</span>][:]</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>lons <span class="op">=</span> ds[<span class="st">'lon'</span>][:]</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>lat_range <span class="op">=</span> <span class="bu">slice</span>(lats.searchsorted(<span class="dv">41</span>), lats.searchsorted(<span class="dv">49</span>))</span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>lon_range <span class="op">=</span> <span class="bu">slice</span>(lons.searchsorted(<span class="op">-</span><span class="dv">93</span>), lons.searchsorted(<span class="op">-</span><span class="dv">76</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>Get the analysed sea surface temperature variable over our area of interest and apply scale factor and offset from the file metadata. In a future release, scale factor and add offset will be automatically applied.</p>
+<div class="cell" data-execution_count="5">
 <div class="sourceCode" id="cb7"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>var <span class="op">=</span> ds[<span class="st">'analysed_sst'</span>]</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>analysed_sst <span class="op">=</span> var[<span class="dv">0</span>, lat_range, lon_range] <span class="op">*</span> var.attrs[<span class="st">'scale_factor'</span>] <span class="op">+</span> var.attrs[<span class="st">'add_offset'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>Draw a pretty picture</p>
 <div class="cell" data-execution_count="6">
 <div class="sourceCode" id="cb8"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib <span class="im">import</span> pyplot <span class="im">as</span> plt</span>
@@ -810,8 +792,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="../transformations/opendap-cloud.html">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">OPeNDAP in the Cloud</span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="../examples/index.html">
+        <span class="nav-page-text">Example tutorials</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->
