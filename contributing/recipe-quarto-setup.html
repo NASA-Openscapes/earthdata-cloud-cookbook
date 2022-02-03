@@ -531,7 +531,7 @@
         <nav id="TOC" role="doc-toc">
 <h2 id="toc-title">On this page</h2>
 <ul>
-<li><a href="#setup" class="nav-link active" data-scroll-target="#setup">Setup</a>
+<li><a href="#option-1-setup-from-the-browser" class="nav-link active" data-scroll-target="#option-1-setup-from-the-browser">Option 1: Setup from the Browser</a>
 <ul class="collapse">
 <li><a href="#download-template-site" class="nav-link" data-scroll-target="#download-template-site">Download template site</a></li>
 <li><a href="#create-a-github-repo" class="nav-link" data-scroll-target="#create-a-github-repo">Create a GitHub repo</a></li>
@@ -547,7 +547,6 @@
 <ul class="collapse">
 <li><a href="#configure-github" class="nav-link" data-scroll-target="#configure-github">Configure GitHub</a></li>
 <li><a href="#ensure-that-gitgithubrstudio-are-communicating" class="nav-link" data-scroll-target="#ensure-that-gitgithubrstudio-are-communicating">Ensure that Git/GitHub/RStudio are communicating</a></li>
-<li><a href="#troubleshooting" class="nav-link" data-scroll-target="#troubleshooting">Troubleshooting</a></li>
 </ul></li>
 <li><a href="#sync-from-rstudio-local-to-github-remote" class="nav-link" data-scroll-target="#sync-from-rstudio-local-to-github-remote">Sync from RStudio (local) to GitHub (remote)</a>
 <ul class="collapse">
@@ -563,10 +562,10 @@
 <h1 class="title d-none d-lg-block display-7">Create &amp; Publish with Quarto (without R or Python)</h1>
 </header>
 
-<p>This is an intro workflow to set up and contribute to a Quarto book, originally from the GitHub browser. Originally created to help a colleague who is Deputy Director of an academic center to create open onboarding docs.</p>
-<p>We’ll create a copy of this book that you can edit yourself: <a href="https://openscapes.github.io/quarto-site-template" class="uri">https://openscapes.github.io/quarto-site-template</a></p>
-<section id="setup" class="level2">
-<h2 class="anchored" data-anchor-id="setup">Setup</h2>
+<p>This is an intro workflow to set up and contribute to a Quarto book, from the GitHub browser. We’ll start off only from the GitHub browser so you can edit there without R or Python if that’s best for you. A workflow from the browser if good for getting started/making small contributions but is definitely limited, so once that is set up, we’ll show other options with RStudio (and other options down the line).</p>
+<p><strong>Here is the example template that you will use to customize and make your own: <a href="https://openscapes.github.io/quarto-site-template" class="uri">https://openscapes.github.io/quarto-site-template</a>.</strong> There are many ways to organize and style this; learn more at <a href="https://quarto.org" class="uri">https://quarto.org</a>. (Sidenote: this is actually a Quarto website that looks like a book - books are better for cross-referencing chapters, figures, equations, and references so that might be an option for you to explore too!)</p>
+<section id="option-1-setup-from-the-browser" class="level2">
+<h2 class="anchored" data-anchor-id="option-1-setup-from-the-browser">Option 1: Setup from the Browser</h2>
 <section id="download-template-site" class="level3">
 <h3 class="anchored" data-anchor-id="download-template-site">Download template site</h3>
 <ol type="1">
@@ -703,66 +702,11 @@ usethis::use_git_config(user.name = "jules32", user.email = "jules32@example.org
 <p><br></p>
 <p><img src="images/new_project4.png" class="img-fluid" style="width:80.0%"></p>
 <p><br></p>
-<p>If yes, hooray! Time for a break!</p>
-<p>If no, we will help you troubleshoot.</p>
+<p>If yes, hooray! Let’s troubleshoot. See:</p>
 <ol type="1">
-<li>Double check that GitHub username and email are correct</li>
-<li>Troubleshooting, starting with <a href="http://happygitwithr.com/troubleshooting.html">HappyGitWithR’s troubleshooting chapter</a></li>
+<li><a href="http://happygitwithr.com/troubleshooting.html">HappyGitWithR’s troubleshooting chapter</a></li>
+<li><a href="https://rstudio-conf-2020.github.io/r-for-excel/rstudio.html#troubleshooting">R-for-excel troubleshooting chapter</a></li>
 </ol>
-<ul>
-<li><code>which git</code> (Mac, Linux, or anything running a bash shell)</li>
-<li><code>where git</code> (Windows, when not in a bash shell)</li>
-</ul>
-<ol type="1">
-<li>Potentially set up a RStudio Cloud account: <a href="https://rstudio.cloud/" class="uri">https://rstudio.cloud/</a></li>
-</ol>
-<!--- [Allison 206/244 googledoc](https://docs.google.com/document/d/1zx2upJJqFZe94O3BQSMI56Z76s3haLXC0otKSpcZaJQ/edit)
---->
-</section>
-</section>
-<section id="troubleshooting" class="level3">
-<h3 class="anchored" data-anchor-id="troubleshooting">Troubleshooting</h3>
-<section id="configure-git-from-terminal" class="level4">
-<h4 class="anchored" data-anchor-id="configure-git-from-terminal">Configure git from Terminal</h4>
-<p>If <code>usethis</code> fails, the following is the classic approach to configuring <strong>git</strong>. Open the Git Bash program (Windows) or the Terminal (Mac) and type the following:</p>
-<pre><code>    # display your version of git
-    git --version
-    
-    # replace USER with your Github user account
-    git config --global user.name USER
-    
-    # replace NAME@EMAIL.EDU with the email you used to register with Github
-    git config --global user.email NAME@EMAIL.EDU
-    
-    # list your config to confirm user.* variables set
-    git config --list</code></pre>
-<p>This will configure git with global (<code>--global</code>) commands, which means it will apply ‘globally’ to all your future github repositories, rather than only to this one now. <strong>Note for PCs</strong>: We’ve seen PC failures correct themselves by doing the above but omitting <code>--global</code>. (Then you will need to configure GitHub for every repo you clone but that is fine for now).</p>
-</section>
-<section id="troubleshooting-1" class="level4">
-<h4 class="anchored" data-anchor-id="troubleshooting-1">Troubleshooting</h4>
-<p>All troubleshooting starts with reading Happy Git With R’s <a href="http://happygitwithr.com/troubleshooting.html">RStudio, Git, GitHub Hell</a> troubleshooting chapter.</p>
-<section id="newish-error-on-a-mac" class="level5">
-<h5 class="anchored" data-anchor-id="newish-error-on-a-mac">New(ish) Error on a Mac</h5>
-<p>We’ve also seen the following errors from RStudio:</p>
-<pre><code>error key does not contain a section --global terminal</code></pre>
-<p>and</p>
-<pre><code>fatal: not in a git directory</code></pre>
-<p>To solve this, go to the Terminal and type: <code>which git</code></p>
-<p><img src="images/git_whichgit.png" class="img-fluid" style="width:80.0%"></p>
-<p>Look at the filepath that is returned. Does it say anything to do with Apple?</p>
-<p>-&gt; If yes, then the <a href="https://git-scm.com/downloads">Git you downloaded</a> isn’t installed, please redownload if necessary, and follow instructions to install.</p>
-<p>-&gt; If no, (in the example image, the filepath does not say anything with Apple) then proceed below:</p>
-<p>In RStudio, navigate to: Tools &gt; Global Options &gt; Git/SVN.</p>
-<p><img src="images/git_options.png" class="img-fluid" style="width:80.0%"></p>
-<p><br></p>
-<p>Does the <strong>“Git executable”</strong> filepath match what the url in Terminal says?</p>
-<p><br></p>
-<p><img src="images/git_options_filepath.png" class="img-fluid" style="width:80.0%"></p>
-<p>If not, click the browse button and navigate there.</p>
-<blockquote class="blockquote">
-<p><em>Note</em>: on my laptop, even though I navigated to /usr/local/bin/git, it then automatically redirect because /usr/local/bin/git was an alias on my computer. That is fine. Click OK.</p>
-</blockquote>
-</section>
 </section>
 </section>
 </section>
@@ -841,7 +785,7 @@ usethis::use_git_config(user.name = "jules32", user.email = "jules32@example.org
 </section>
 <section id="set-up-quarto" class="level3">
 <h3 class="anchored" data-anchor-id="set-up-quarto">Set up Quarto</h3>
-<p>Details coming!</p>
+<p>Install Quarto from <a href="https://quarto.org" class="uri">https://quarto.org</a>. You will use your computer’s install wizard to do this, and then you’re set! There won’t be a separate app or anything installed, but now this will be available to RStudio.</p>
 
 
 </section>
