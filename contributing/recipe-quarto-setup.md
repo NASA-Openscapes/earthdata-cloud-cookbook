@@ -49,8 +49,8 @@ jobs:
         publish_dir: ./_site
 ```
 
-1.  (Don't Create a branch called `gh-pages` - all lowercase, with a hyphen bc already made!)
-2.  (Don't need to 1. Settings \> Pages \> Source) bc it's automatic
+1. Check that there is a second branch called `gh-pages` - all lowercase, with a hyphen - should be already made!
+2.  Settings \> Pages \> Source > make sure this is set to `gh-pages` > root
 3.  Go into `_quarto.yml` and update the urls with your own urls, i.e. `https://your-username/your-repo-name.github.io`
 4.  Wait until orange dot turns green
 5.  Inspect: `https://your-username/your-repo-name.github.io`. For example: <https://openscapes.github.io/quarto-site-template>
