@@ -668,12 +668,12 @@
 <p>This set up is a one-time thing! You will only have to do this once per computer. We’ll walk through this together. In a browser, go to github.com and to your profile page as a reminder.</p>
 <p><strong>You will need to remember your GitHub username, the email address you created your GitHub account with, and your GitHub password.</strong></p>
 <p>We will be using the <code>use_git_config()</code> function from the <code>usethis</code> package we just installed.</p>
-<pre class="{r}"><code>#| eval: false
-## install the usethis package
-install.packages("usethis")
-
-## use_git_config function with my username and email as arguments
-usethis::use_git_config(user.name = "jules32", user.email = "jules32@example.org")</code></pre>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="do">## install the usethis package</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"usethis"</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="do">## use_git_config function with my username and email as arguments</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_git_config</span>(<span class="at">user.name =</span> <span class="st">"jules32"</span>, <span class="at">user.email =</span> <span class="st">"jules32@example.org"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>If you see <code>Error in use_git_config() : could not find function "use_git_config"</code> please run <code>library("usethis")</code></p>
 </section>
 <section id="ensure-that-gitgithubrstudio-are-communicating" class="level3">
