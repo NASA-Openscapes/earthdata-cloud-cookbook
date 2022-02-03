@@ -611,8 +611,8 @@
 <span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">github_token</span><span class="kw">:</span><span class="at"> ${{ secrets.GITHUB_TOKEN }}</span></span>
 <span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">publish_dir</span><span class="kw">:</span><span class="at"> ./_site</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ol type="1">
-<li>(Don’t Create a branch called <code>gh-pages</code> - all lowercase, with a hyphen bc already made!)</li>
-<li>(Don’t need to 1. Settings &gt; Pages &gt; Source) bc it’s automatic</li>
+<li>Check that there is a second branch called <code>gh-pages</code> - all lowercase, with a hyphen - should be already made!</li>
+<li>Settings &gt; Pages &gt; Source &gt; make sure this is set to <code>gh-pages</code> &gt; root</li>
 <li>Go into <code>_quarto.yml</code> and update the urls with your own urls, i.e.&nbsp;<code>https://your-username/your-repo-name.github.io</code></li>
 <li>Wait until orange dot turns green</li>
 <li>Inspect: <code>https://your-username/your-repo-name.github.io</code>. For example: <a href="https://openscapes.github.io/quarto-site-template" class="uri">https://openscapes.github.io/quarto-site-template</a></li>
