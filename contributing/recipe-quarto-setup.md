@@ -104,7 +104,7 @@ This set up is a one-time thing! You will only have to do this once per computer
 
 We will be using the `use_git_config()` function from the `usethis` package we just installed.
 
-```{r}
+``` r
 #| eval: false
 ## install the usethis package
 install.packages("usethis")
