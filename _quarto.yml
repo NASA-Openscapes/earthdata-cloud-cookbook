@@ -19,15 +19,15 @@ site:
   #       href: https://github.com/nasa-openscapes/earthdata-cloud-cookbook  
   # 
   sidebar:
-      logo: nasa-openscapes.png
-      pinned: true
-      align: center
-      tools: 
-        - icon: globe
-          href: https://nasa-openscapes.github.io
-          text: "NASA-Openscapes website"
-        - icon: github
-          href: https://github.com/nasa-openscapes/earthdata-cloud-cookbook
+    logo: nasa-openscapes.png
+    pinned: true
+    align: center
+    tools: 
+      - icon: globe
+        href: https://nasa-openscapes.github.io
+        text: "NASA-Openscapes website"
+      - icon: github
+        href: https://github.com/nasa-openscapes/earthdata-cloud-cookbook
         text: "Earthdata Cloud Cookbook repo"
         
     style: "docked"
@@ -45,14 +45,14 @@ site:
               - get-started/lpdaac-netrc.ipynb
               - get-started/podaac-ecco-netrc.ipynb
               - get-started/api-primer.qmd
-       - section: discovery/index.md
-         contents:
-           - discovery/search-by-shapefile.qmd
-           - discovery/Navigate_CMR_STAC.ipynb
-           - discovery/earthdata-search-ui.md
+      - section: discovery/index.md
+        contents:
+          - discovery/search-by-shapefile.qmd
+          - discovery/Navigate_CMR_STAC.ipynb
+          - discovery/earthdata-search-ui.md
           - discovery/cmr-virtual-directories.md
-       - section: access/index.md
-         contents:
+      - section: access/index.md
+        contents:
           - access/data-access-example.ipynb
           - access/earthdata-search.md
           - access/opendap-cloud.md
@@ -63,19 +63,19 @@ site:
             contents:
               - external/cof-zarr-reformat.ipynb
           - access/download-to-local.md
-       - section: transformations/index.md
-         contents:
+      - section: transformations/index.md
+        contents:
           - transformations/harmony-api.md
           - transformations/HarmonyPy_intro_tutorial.ipynb
           - transformations/netcdf-to-zarr.md
           - section: transformations/L2-subsetter.md
             contents: 
-              - transformations/harmony-subsetting.qmd
+             #  - transformations/harmony-subsetting.qmd old testing but worth revisiting
           - transformations/earthdata-search.md
           - transformations/opendap-cloud.md
           - external/zarr-eosdis-store.ipynb
-       - section: examples/index.md
-         contents:
+      - section: examples/index.md
+        contents:
           - examples/NSIDC/ICESat2-CMR-OnPrem-vs-Cloud.ipynb
           - examples/NSIDC/ICESat2-CMR-AWS-S3.ipynb
       - section: appendix/index.md
