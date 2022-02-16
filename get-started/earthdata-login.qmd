@@ -29,7 +29,7 @@ Below are ways to create a "netrc" file in your home directory.
 Create a "netrc" file by running the following code in your R console (or after saving to an R script).
 
 ```{r}
-#| eval: FALSE
+#| eval: false
 
 # Required packages for this script
 packages = c('sys', 'getPass')
@@ -63,7 +63,7 @@ if (up == "") {
 netrc_path <- file.path(up, netrc_type, fsep = .Platform$file.sep)    # Path to netrc file
 
 # Create a netrc file if one does not exist already
-if (file.exists(netrc_path) == FALSE || grepl("urs.earthdata.nasa.gov", readLines(netrc_path)) == FALSE) {
+if (file.exists(netrc_path) == false || grepl("urs.earthdata.nasa.gov", readLines(netrc_path)) == false) {
     netrc_conn <- file(netrc_path)
     
     # User will be prompted for NASA Earthdata Login Username and Password below
@@ -82,7 +82,7 @@ Create a "netrc" file by running the following code in your python console (or a
 **LP DAAC Approach:**
 
 ```{python}
-#| eval: FALSE
+#| eval: false
 
 # Load necessary packages into Python
 from netrc import netrc
@@ -130,7 +130,7 @@ except TypeError:
     $ chmod 0600 ~/.netrc
 
 ```{python}
-#| eval: FALSE
+#| eval: false
 from netrc import netrc
 from platform import system
 from getpass import getpass
