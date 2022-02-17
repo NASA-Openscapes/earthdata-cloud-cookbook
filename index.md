@@ -1,7 +1,7 @@
 ---
 title: "Earthdata Cloud Cookbook"
 subtitle: "Supporting NASA Earth science research teams’ migration to the cloud" 
-date: "`r Sys.Date()`"
+date: "Summer 2021"
 author: "NASA Openscapes Team"
 citation_url: https://nasa-openscapes.github.io/earthdata-cloud-cookbook/
 slug: index
@@ -26,7 +26,6 @@ As this data migration occurs, DAACs will have more information about how users 
 
 - [How we work](https://vimeo.com/434343794) - Katie Baynes, Keynote at FedGeoDay2020 (video). Nice overview of EOSDIS work and emphasis on open science
 - [Cloud Data Egress: How EOSDIS Supports User Needs](https://earthdata.nasa.gov/learn/articles/cloud-data-egress) - Emily Cassidy (blog). Describes supporting users’ needs during cloud migration by providing analysis-ready data
-
 
 
 ## About
