@@ -26,7 +26,7 @@ Below are ways to create a "netrc" file in your home directory.
 
 Create a "netrc" file by running the following code in your R console (or after saving to an R script).
 
-```{bash}
+```{.bash}
 #| eval: false
 
 # Required packages for this script
@@ -79,7 +79,7 @@ Create a "netrc" file by running the following code in your python console (or a
 
 **LP DAAC Approach:**
 
-```{bash}
+```{.bash}
 #| eval: false
 
 # Load necessary packages into Python
@@ -127,7 +127,7 @@ except TypeError:
 
     $ chmod 0600 ~/.netrc
 
-```{bash}
+```{.bash}
 #| eval: false
 from netrc import netrc
 from platform import system
