@@ -1,7 +1,7 @@
 ---
 title: "Earthdata Cloud Cookbook"
 subtitle: "Supporting NASA Earth science research teams’ migration to the cloud" 
-date: "Summer 2021"
+date: "Last updated March 2022"
 author: "NASA Openscapes Team"
 citation_url: https://nasa-openscapes.github.io/earthdata-cloud-cookbook/
 slug: index
