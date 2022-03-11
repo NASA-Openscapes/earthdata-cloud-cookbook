@@ -1,5 +1,5 @@
 ---
-title: Getting Started
+title: Overview
 ---
 
 There are several things you need to set up to get started. This includes XYZ that are included in this section.

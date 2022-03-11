@@ -1,7 +1,8 @@
-project: 
+project:
   type: website
+  output-dir: _site
 
-site:
+website:
   page-navigation: true
   title: "EarthData Cloud Cookbook"
   site-url: https://nasa-openscapes.github.io/earthdata-cloud-cookbook
@@ -11,13 +12,6 @@ site:
 
   page-footer: "NASA Openscapes Team (2021). Earthdata Cloud Cookbook (Version v0.0.1)."
   
-  # navbar: 
-  #   background: light
-  #   right: 
-  #     - sidebar:menu
-  #     - icon: github
-  #       href: https://github.com/nasa-openscapes/earthdata-cloud-cookbook  
-  # 
   sidebar:
     logo: nasa-openscapes.png
     pinned: true
@@ -36,8 +30,9 @@ site:
     contents:
       - text: "Welcome"
         href: index.html
-      - section: get-started/index.md
+      - section: "Getting Started"
         contents:
+          - get-started/index.md
           - get-started/how-to-use.md
           - get-started/earthdata-login.qmd
           - section: get-started/authentication.md
@@ -45,14 +40,16 @@ site:
               - get-started/lpdaac-netrc.ipynb
               - get-started/podaac-ecco-netrc.ipynb
               - get-started/api-primer.qmd
-      - section: discovery/index.md
+      - section: "NASA Cloud Data Discovery"
         contents:
+          - discovery/index.md
           - discovery/search-by-shapefile.qmd
           - discovery/Navigate_CMR_STAC.ipynb
           - discovery/earthdata-search-ui.md
           - discovery/cmr-virtual-directories.md
-      - section: access/index.md
+      - section: "NASA Cloud Data Access"
         contents:
+          - access/index.md
           - access/data-access-example.ipynb
           - access/earthdata-search.md
           - access/opendap-cloud.md
@@ -63,7 +60,7 @@ site:
             contents:
               - external/cof-zarr-reformat.ipynb
           - access/download-to-local.md
-      - section: transformations/index.md
+      - section: "NASA Cloud Data Transformations"
         contents:
           - transformations/harmony-api.md
           - transformations/HarmonyPy_intro_tutorial.ipynb
@@ -71,19 +68,21 @@ site:
           - section: transformations/L2-subsetter.md
             contents: 
              #  - transformations/harmony-subsetting.qmd old testing but worth revisiting
-          - transformations/earthdata-search.md
-          - transformations/opendap-cloud.md
-          - external/zarr-eosdis-store.ipynb
-      - section: examples/index.md
+              - transformations/earthdata-search.md
+              - transformations/opendap-cloud.md
+              - external/zarr-eosdis-store.ipynb
+      - section: "Example tutorials"
         contents:
           - examples/NSIDC/ICESat2-CMR-OnPrem-vs-Cloud.ipynb
           - examples/NSIDC/ICESat2-CMR-AWS-S3.ipynb
           - examples/Transform-workflow.ipynb
-      - section: appendix/index.md
+      - section: "Appendix"
         contents:
+          - appendix/index.md
           - transformations/harmonypy.md
-      - section: contributing/index.md
+      - section: "Contributing"
         contents:
+          - contributing/index.md
           - contributing/setup.qmd
           - contributing/workflow.md
           - contributing/resources.md
