@@ -73,9 +73,14 @@ website:
               - external/zarr-eosdis-store.ipynb
       - section: "Example tutorials"
         contents:
-          - examples/NSIDC/ICESat2-CMR-OnPrem-vs-Cloud.ipynb
-          - examples/NSIDC/ICESat2-CMR-AWS-S3.ipynb
-          - examples/Transform-workflow.ipynb
+          - href: examples/NSIDC/ICESat2-CMR-OnPrem-vs-Cloud.ipynb
+            text: "Search & Download NSIDC Cloud"
+          - href: examples/NSIDC/ICESat2-CMR-AWS-S3.ipynb
+            text: "Access NSIDC Cloud w/ CMR"          
+          - href: examples/Transform-workflow.ipynb
+            text: "Direct Access & Harmony Workflow"
+          - href: examples/USGS_Landsat/Landsat_C2_Search_Access.ipynb
+            text: "Search & Access USGS Landsat Cloud"            
       - section: "Appendix"
         contents:
           - appendix/index.md
