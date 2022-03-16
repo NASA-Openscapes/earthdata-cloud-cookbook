@@ -27,7 +27,7 @@ jobs:
         python quarto_import.py -f assets.json
 
     - name: "Install Quarto and render project"
-      uses: nasa-openscapes/quarto-render@v0.9.105 
+      uses: quarto-dev/quarto-actions/install-quarto@main 
 
     - name: "Deploy to gh-pages"
       uses: peaceiris/actions-gh-pages@v3
