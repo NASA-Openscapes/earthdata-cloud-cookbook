@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+  <meta charset="utf-8">
+  <meta name="generator" content="quarto-0.9.106">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>EarthData Cloud Cookbook – navigate_cmr_stac</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+
+  <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+  <script src="../site_libs/clipboard/clipboard.min.js"></script>
+  <meta name="quarto:offset" content="../">
+  <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+  <script src="../site_libs/quarto-search/fuse.min.js"></script>
+  <script src="../site_libs/quarto-search/quarto-search.js"></script>
+  <link href="../discovery/earthdata-search-ui.html" rel="next">
+  <link href="../discovery/search-by-shapefile.html" rel="prev">
+  <script src="../site_libs/quarto-html/quarto.js"></script>
+  <script src="../site_libs/quarto-html/popper.min.js"></script>
+  <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+  <script src="../site_libs/quarto-html/anchor.min.js"></script>
+  <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+  <link class="quarto-color-scheme" href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet">
+  <link class="quarto-color-scheme quarto-color-alternate" rel="prefetch" href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css">
+  <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+  <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+  <link class="quarto-color-scheme" href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet">
+  <link class="quarto-color-scheme quarto-color-alternate" rel="prefetch" href="../site_libs/bootstrap/bootstrap-dark.min.css">
+  <script id="quarto-search-options" type="application/json">{
+    "location": "sidebar",
+    "copy-button": false,
+    "collapse-after": 2,
+    "panel-placement": "start",
+    "type": "textbox",
+    "limit": 20,
+    "language": {
+      "search-no-results-text": "No results",
+      "search-matching-documents-text": "matching documents",
+      "search-copy-link-title": "Copy link to search",
+      "search-hide-matches-text": "Hide additional matches",
+      "search-more-match-text": "more match in this document",
+      "search-more-matches-text": "more matches in this document",
+      "search-clear-button-title": "Clear",
+      "search-detached-cancel-button-title": "Cancel",
+      "search-submit-button-title": "Submit"
+    }
+  }</script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body class="docked">
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">(Untitled)</h1>
+      <button type="button" class="quarto-btn-toggle btn">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-center sidebar-header">
+      <a href="../">
+      <img src="../nasa-openscapes.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+      <div class="sidebar-tools-main tools-wide">
+    <a href="https://nasa-openscapes.github.io" title="NASA-Openscapes website" class="sidebar-tool px-1"><i class="bi bi-globe"></i></a>
+    <a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook" title="Earthdata Cloud Cookbook repo" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
+  <a href="" class="quarto-color-scheme-toggle sidebar-tool" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">Welcome</a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+    <div class="sidebar-item-container"> 
+        <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-getting-started" aria-expanded="false">Getting Started</a>
+      <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-getting-started" aria-expanded="false">
+        <i class="bi bi-chevron-right ms-2"></i>
+      </a>
+    </div>
+    <ul id="quarto-sidebar-section-getting-started" class="collapse list-unstyled sidebar-section depth1 ">  
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../get-started/index.html" class="sidebar-item-text sidebar-link">Overview</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../get-started/how-to-use.html" class="sidebar-item-text sidebar-link">How to use this book</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../get-started/earthdata-login.html" class="sidebar-item-text sidebar-link">EarthData Login</a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+    <div class="sidebar-item-container"> 
+        <a href="../get-started/authentication.html" class="sidebar-item-text sidebar-link">Authentication</a>
+      <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-get-startedauthenticationmd" aria-expanded="false">
+        <i class="bi bi-chevron-right ms-2"></i>
+      </a>
+    </div>
+    <ul id="quarto-sidebar-section-get-startedauthenticationmd" class="collapse list-unstyled sidebar-section depth2 ">  
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../get-started/lpdaac-netrc.html" class="sidebar-item-text sidebar-link">LP DAAC Authentication Example</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../get-started/podaac-ecco-netrc.html" class="sidebar-item-text sidebar-link">PO DAAC Authentication Example</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../get-started/api-primer.html" class="sidebar-item-text sidebar-link">API Primer</a>
+  </div>
+</li>
+    </ul>
+  </li>
+    </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+    <div class="sidebar-item-container"> 
+        <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-nasa-cloud-data-discovery" aria-expanded="true">NASA Cloud Data Discovery</a>
+      <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-nasa-cloud-data-discovery" aria-expanded="true">
+        <i class="bi bi-chevron-right ms-2"></i>
+      </a>
+    </div>
+    <ul id="quarto-sidebar-section-nasa-cloud-data-discovery" class="collapse list-unstyled sidebar-section depth1 show">  
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../discovery/index.html" class="sidebar-item-text sidebar-link">Overview</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../discovery/search-by-shapefile.html" class="sidebar-item-text sidebar-link">Search by shapefile</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../discovery/Navigate_CMR_STAC.html" class="sidebar-item-text sidebar-link active">CMR and CMR-STAC API</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../discovery/earthdata-search-ui.html" class="sidebar-item-text sidebar-link">Earthdata Search UI</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../discovery/cmr-virtual-directories.html" class="sidebar-item-text sidebar-link">CMR Virtual Directories</a>
+  </div>
+</li>
+    </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+    <div class="sidebar-item-container"> 
+        <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-nasa-cloud-data-access" aria-expanded="false">NASA Cloud Data Access</a>
+      <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-nasa-cloud-data-access" aria-expanded="false">
+        <i class="bi bi-chevron-right ms-2"></i>
+      </a>
+    </div>
+    <ul id="quarto-sidebar-section-nasa-cloud-data-access" class="collapse list-unstyled sidebar-section depth1 ">  
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../access/index.html" class="sidebar-item-text sidebar-link">NASA Cloud Data Access</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../access/data-access-example.html" class="sidebar-item-text sidebar-link">Data access demo</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../access/earthdata-search.html" class="sidebar-item-text sidebar-link">Earthdata Search</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../access/opendap-cloud.html" class="sidebar-item-text sidebar-link">OPeNDAP in the Cloud</a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+    <div class="sidebar-item-container"> 
+        <a href="../access/direct-in-region.html" class="sidebar-item-text sidebar-link">Direct in-region</a>
+      <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-accessdirect-in-regionmd" aria-expanded="false">
+        <i class="bi bi-chevron-right ms-2"></i>
+      </a>
+    </div>
+    <ul id="quarto-sidebar-section-accessdirect-in-regionmd" class="collapse list-unstyled sidebar-section depth2 ">  
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../access/podaac-ecco-data_access-cloud_direct_access_s3.html" class="sidebar-item-text sidebar-link">Direct access to ECCO data in S3 (from <em>us-west-2</em>)</a>
+  </div>
+</li>
+    </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+    <div class="sidebar-item-container"> 
+        <a href="../access/cof-via-harmony.html" class="sidebar-item-text sidebar-link">COF via Earthdata Harmony</a>
+      <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-accesscof-via-harmonymd" aria-expanded="false">
+        <i class="bi bi-chevron-right ms-2"></i>
+      </a>
+    </div>
+    <ul id="quarto-sidebar-section-accesscof-via-harmonymd" class="collapse list-unstyled sidebar-section depth2 ">  
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../external/cof-zarr-reformat.html" class="sidebar-item-text sidebar-link">COF Zarr Access via Reformat</a>
+  </div>
+</li>
+    </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../access/download-to-local.html" class="sidebar-item-text sidebar-link">Download to local</a>
+  </div>
+</li>
+    </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+    <div class="sidebar-item-container"> 
+        <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-nasa-cloud-data-transformations" aria-expanded="false">NASA Cloud Data Transformations</a>
+      <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-nasa-cloud-data-transformations" aria-expanded="false">
+        <i class="bi bi-chevron-right ms-2"></i>
+      </a>
+    </div>
+    <ul id="quarto-sidebar-section-nasa-cloud-data-transformations" class="collapse list-unstyled sidebar-section depth1 ">  
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../transformations/harmony-api.html" class="sidebar-item-text sidebar-link">Harmony API</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../transformations/HarmonyPy_intro_tutorial.html" class="sidebar-item-text sidebar-link">HarmonyPy Introduction</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../transformations/netcdf-to-zarr.html" class="sidebar-item-text sidebar-link">netCDF to Zarr</a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+    <div class="sidebar-item-container"> 
+        <a href="../transformations/L2-subsetter.html" class="sidebar-item-text sidebar-link">L2 Subsetter</a>
+      <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-transformationsl2-subsettermd" aria-expanded="false">
+        <i class="bi bi-chevron-right ms-2"></i>
+      </a>
+    </div>
+    <ul id="quarto-sidebar-section-transformationsl2-subsettermd" class="collapse list-unstyled sidebar-section depth2 ">  
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../transformations/earthdata-search.html" class="sidebar-item-text sidebar-link">Earthdata Search UI</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../transformations/opendap-cloud.html" class="sidebar-item-text sidebar-link">OPeNDAP in the Cloud</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../external/zarr-eosdis-store.html" class="sidebar-item-text sidebar-link">Zarr Example</a>
+  </div>
+</li>
+    </ul>
+  </li>
+    </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+    <div class="sidebar-item-container"> 
+        <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-example-tutorials" aria-expanded="false">Example tutorials</a>
+      <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-example-tutorials" aria-expanded="false">
+        <i class="bi bi-chevron-right ms-2"></i>
+      </a>
+    </div>
+    <ul id="quarto-sidebar-section-example-tutorials" class="collapse list-unstyled sidebar-section depth1 ">  
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../examples/NSIDC/ICESat2-CMR-OnPrem-vs-Cloud.html" class="sidebar-item-text sidebar-link">Search &amp; Download NSIDC Cloud</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../examples/NSIDC/ICESat2-CMR-AWS-S3.html" class="sidebar-item-text sidebar-link">Access NSIDC Cloud w/ CMR</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../examples/Transform-workflow.html" class="sidebar-item-text sidebar-link">Direct Access &amp; Harmony Workflow</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../examples/USGS_Landsat/Landsat_C2_Search_Access.html" class="sidebar-item-text sidebar-link">Search &amp; Access USGS Landsat Cloud</a>
+  </div>
+</li>
+    </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+    <div class="sidebar-item-container"> 
+        <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-appendix" aria-expanded="false">Appendix</a>
+      <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-appendix" aria-expanded="false">
+        <i class="bi bi-chevron-right ms-2"></i>
+      </a>
+    </div>
+    <ul id="quarto-sidebar-section-appendix" class="collapse list-unstyled sidebar-section depth1 ">  
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../appendix/index.html" class="sidebar-item-text sidebar-link">Appendix</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../transformations/harmonypy.html" class="sidebar-item-text sidebar-link">Harmony Py Library</a>
+  </div>
+</li>
+    </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+    <div class="sidebar-item-container"> 
+        <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-contributing" aria-expanded="false">Contributing</a>
+      <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-contributing" aria-expanded="false">
+        <i class="bi bi-chevron-right ms-2"></i>
+      </a>
+    </div>
+    <ul id="quarto-sidebar-section-contributing" class="collapse list-unstyled sidebar-section depth1 ">  
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../contributing/index.html" class="sidebar-item-text sidebar-link">Contributing</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../contributing/setup.html" class="sidebar-item-text sidebar-link">Initial Setup</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../contributing/workflow.html" class="sidebar-item-text sidebar-link">Workflow</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../contributing/resources.html" class="sidebar-item-text sidebar-link">Resources</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../contributing/quarto-website-tutorial.html" class="sidebar-item-text sidebar-link">Quarto Tutorial</a>
+  </div>
+</li>
+    </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc">
+<h2 id="toc-title">On this page</h2>
+<ul>
+<li><a href="#cmr-and-cmr-stac-api" class="nav-link active" data-scroll-target="#cmr-and-cmr-stac-api">CMR and CMR-STAC API</a></li>
+<li><a href="#getting-started" class="nav-link" data-scroll-target="#getting-started">1. Getting Started </a><a id="getstarted" class="nav-link" data-scroll-target="undefined"></a>
+<ul class="collapse">
+<li><a href="#import-packages" class="nav-link" data-scroll-target="#import-packages">1.1 Import Packages </a><a id="1.1" class="nav-link" data-scroll-target="undefined"></a></li>
+</ul></li>
+<li><a href="#navigating-the-cmr-stac-api" class="nav-link" data-scroll-target="#navigating-the-cmr-stac-api">2. Navigating the CMR-STAC API </a><a id="navigatestac" class="nav-link" data-scroll-target="undefined"></a>
+<ul class="collapse">
+<li><a href="#introduction-to-the-cmr-stac-api" class="nav-link" data-scroll-target="#introduction-to-the-cmr-stac-api">2.1 Introduction to the CMR-STAC API </a><a id="2.1" class="nav-link" data-scroll-target="undefined"></a>
+<ul class="collapse">
+<li><a href="#what-is-stac" class="nav-link" data-scroll-target="#what-is-stac">What is STAC?</a></li>
+<li><a href="#stac-api-endpoint-that-enables-the-querying-of-stac-items." class="nav-link" data-scroll-target="#stac-api-endpoint-that-enables-the-querying-of-stac-items.">1. STAC API: Endpoint that enables the querying of STAC items.</a></li>
+<li><a href="#stac-catalog-contains-a-json-file-of-links-that-organize-all-of-the-collections-available." class="nav-link" data-scroll-target="#stac-catalog-contains-a-json-file-of-links-that-organize-all-of-the-collections-available.">2. STAC Catalog: Contains a JSON file of links that organize all of the collections available.</a></li>
+<li><a href="#stac-collection-extension-of-stac-catalog-containing-additional-information-that-describe-the-stac-items-in-that-collection." class="nav-link" data-scroll-target="#stac-collection-extension-of-stac-catalog-containing-additional-information-that-describe-the-stac-items-in-that-collection.">3. STAC Collection: Extension of STAC Catalog containing additional information that describe the STAC Items in that Collection.</a></li>
+<li><a href="#stac-item-represents-data-and-metadata-assets-that-are-spatiotemporally-coincident" class="nav-link" data-scroll-target="#stac-item-represents-data-and-metadata-assets-that-are-spatiotemporally-coincident">4. STAC Item: Represents data and metadata assets that are spatiotemporally coincident</a></li>
+</ul></li>
+</ul></li>
+</ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/edit/main/discovery/Navigate_CMR_STAC.ipynb" class="toc-action">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<section id="cmr-and-cmr-stac-api" class="level1">
+<h1>CMR and CMR-STAC API</h1>
+<p><em>Contributed by: TODO: credit where this came from</em></p>
+</section>
+<section id="getting-started" class="level1">
+<h1>1. Getting Started <a id="getstarted"></a></h1>
+<section id="import-packages" class="level2">
+<h2 class="anchored" data-anchor-id="import-packages">1.1 Import Packages <a id="1.1"></a></h2>
+<section id="import-the-required-packages-and-set-the-inputworking-directory-to-run-this-jupyter-notebook-locally." class="level4">
+<h4 class="anchored" data-anchor-id="import-the-required-packages-and-set-the-inputworking-directory-to-run-this-jupyter-notebook-locally.">Import the required packages and set the input/working directory to run this Jupyter Notebook locally.</h4>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode" id="cb1"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests <span class="im">as</span> r</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> skimage <span class="im">import</span> io</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<hr>
+</section>
+</section>
+</section>
+<section id="navigating-the-cmr-stac-api" class="level1">
+<h1>2. Navigating the CMR-STAC API <a id="navigatestac"></a></h1>
+<section id="learn-about-navigating-nasas-common-metadata-repository-cmr-spatiotemporal-asset-catalog-stac-api." class="level4">
+<h4 class="anchored" data-anchor-id="learn-about-navigating-nasas-common-metadata-repository-cmr-spatiotemporal-asset-catalog-stac-api.">Learn about navigating NASA’s Common Metadata Repository (CMR) SpatioTemporal Asset Catalog (<a href="https://stacspec.org/">STAC</a>) API.</h4>
+</section>
+<section id="introduction-to-the-cmr-stac-api" class="level2">
+<h2 class="anchored" data-anchor-id="introduction-to-the-cmr-stac-api">2.1 Introduction to the CMR-STAC API <a id="2.1"></a></h2>
+<section id="what-is-stac" class="level3">
+<h3 class="anchored" data-anchor-id="what-is-stac">What is STAC?</h3>
+<blockquote class="blockquote">
+<p>STAC is a specification that provides a common language for interpreting geospatial information in order to standardize indexing and discovering data. ### Four STAC Specifications: 1. <a href="https://github.com/radiantearth/stac-api-spec">STAC API</a><br>
+2. <a href="https://github.com/radiantearth/stac-spec/blob/master/catalog-spec/catalog-spec.md">STAC Catalog</a><br>
+3. <a href="https://github.com/radiantearth/stac-spec/blob/master/collection-spec/collection-spec.md">STAC Collection</a><br>
+4. <a href="https://github.com/radiantearth/stac-spec/blob/master/item-spec/item-spec.md">STAC Item</a><br>
+#### In the section below, we will walk through an example of each specification. For additional information, check out: https://stacspec.org/.</p>
+</blockquote>
+</section>
+<section id="stac-api-endpoint-that-enables-the-querying-of-stac-items." class="level3">
+<h3 class="anchored" data-anchor-id="stac-api-endpoint-that-enables-the-querying-of-stac-items.">1. STAC API: Endpoint that enables the querying of STAC items.</h3>
+<section id="below-set-the-cmr-stac-api-endpoint-to-a-variable-and-use-the-requests-package-to-send-a-get-request-to-the-endpoint-and-set-the-response-to-a-variable." class="level4">
+<h4 class="anchored" data-anchor-id="below-set-the-cmr-stac-api-endpoint-to-a-variable-and-use-the-requests-package-to-send-a-get-request-to-the-endpoint-and-set-the-response-to-a-variable.">Below, set the CMR-STAC API Endpoint to a variable, and use the <code>requests</code> package to send a GET request to the endpoint, and set the response to a variable.</h4>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode" id="cb2"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>stac <span class="op">=</span> <span class="st">'https://cmr.earthdata.nasa.gov/stac/'</span> <span class="co"># CMR-STAC API Endpoint</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>stac_response <span class="op">=</span> r.get(stac).json()            <span class="co"># Call the STAC API endpoint</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> s <span class="kw">in</span> stac_response: <span class="bu">print</span>(s)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-stdout">
+<pre><code>id
+title
+stac_version
+type
+description
+links</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="4">
+<div class="sourceCode" id="cb4"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"You are now using the </span><span class="sc">{</span>stac_response[<span class="st">'id'</span>]<span class="sc">}</span><span class="ss"> API (STAC Version: </span><span class="sc">{</span>stac_response[<span class="st">'stac_version'</span>]<span class="sc">}</span><span class="ss">). </span><span class="sc">{</span>stac_response[<span class="st">'description'</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"There are </span><span class="sc">{</span><span class="bu">len</span>(stac_response[<span class="st">'links'</span>])<span class="sc">}</span><span class="ss"> STAC catalogs available in CMR."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-stdout">
+<pre><code>You are now using the stac API (STAC Version: 1.0.0). This is the landing page for CMR-STAC. Each provider link contains a STAC endpoint.
+There are 46 STAC catalogs available in CMR.</code></pre>
+</div>
+</div>
+</section>
+<section id="you-will-notice-above-that-the-cmr-stac-api-contains-many-different-endpointsnot-just-from-nasa-lp-daac-but-also-contains-endpoints-for-other-nasa-esdis-daacs." class="level4">
+<h4 class="anchored" data-anchor-id="you-will-notice-above-that-the-cmr-stac-api-contains-many-different-endpointsnot-just-from-nasa-lp-daac-but-also-contains-endpoints-for-other-nasa-esdis-daacs.">You will notice above that the CMR-STAC API contains many different endpoints–not just from NASA LP DAAC, but also contains endpoints for other NASA ESDIS DAACs.</h4>
+</section>
+</section>
+<section id="stac-catalog-contains-a-json-file-of-links-that-organize-all-of-the-collections-available." class="level3">
+<h3 class="anchored" data-anchor-id="stac-catalog-contains-a-json-file-of-links-that-organize-all-of-the-collections-available.">2. STAC Catalog: Contains a JSON file of links that organize all of the collections available.</h3>
+<section id="below-search-for-lp-daac-catalogs-and-print-the-information-contained-in-the-catalog-that-we-will-be-using-today-lpcloud." class="level4">
+<h4 class="anchored" data-anchor-id="below-search-for-lp-daac-catalogs-and-print-the-information-contained-in-the-catalog-that-we-will-be-using-today-lpcloud.">Below, search for LP DAAC Catalogs, and print the information contained in the Catalog that we will be using today, <code>LPCLOUD</code>.</h4>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode" id="cb6"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>stac_lp <span class="op">=</span> [s <span class="cf">for</span> s <span class="kw">in</span> stac_response[<span class="st">'links'</span>] <span class="cf">if</span> <span class="st">'LP'</span> <span class="kw">in</span> s[<span class="st">'title'</span>]]  <span class="co"># Search for only LP-specific catalogs</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># LPCLOUD is the STAC catalog we will be using and exploring today</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>lp_cloud <span class="op">=</span> r.get([s <span class="cf">for</span> s <span class="kw">in</span> stac_lp <span class="cf">if</span> s[<span class="st">'title'</span>] <span class="op">==</span> <span class="st">'LPCLOUD'</span>][<span class="dv">0</span>][<span class="st">'href'</span>]).json()</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> l <span class="kw">in</span> lp_cloud: <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>l<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>lp_cloud[l]<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-stdout">
+<pre><code>id: LPCLOUD
+title: LPCLOUD
+description: Root catalog for LPCLOUD
+type: Catalog
+stac_version: 1.0.0
+links: [{'rel': 'self', 'href': 'https://cmr.earthdata.nasa.gov/stac/LPCLOUD', 'title': 'Provider catalog', 'type': 'application/json'}, {'rel': 'root', 'href': 'https://cmr.earthdata.nasa.gov/stac/', 'title': 'Root catalog', 'type': 'application/json'}, {'rel': 'collections', 'href': 'https://cmr.earthdata.nasa.gov/stac/LPCLOUD/collections', 'title': 'Provider Collections', 'type': 'application/json'}, {'rel': 'search', 'href': 'https://cmr.earthdata.nasa.gov/stac/LPCLOUD/search', 'title': 'Provider Item Search', 'type': 'application/geo+json', 'method': 'GET'}, {'rel': 'search', 'href': 'https://cmr.earthdata.nasa.gov/stac/LPCLOUD/search', 'title': 'Provider Item Search', 'type': 'application/geo+json', 'method': 'POST'}, {'rel': 'conformance', 'href': 'https://cmr.earthdata.nasa.gov/stac/LPCLOUD/conformance', 'title': 'Conformance Classes', 'type': 'application/geo+json'}, {'rel': 'service-desc', 'href': 'https://api.stacspec.org/v1.0.0-beta.1/openapi.yaml', 'title': 'OpenAPI Doc', 'type': 'application/vnd.oai.openapi+json;version=3.0'}, {'rel': 'service-doc', 'href': 'https://api.stacspec.org/v1.0.0-beta.1/index.html', 'title': 'HTML documentation', 'type': 'text/html'}, {'rel': 'child', 'href': 'https://cmr.earthdata.nasa.gov/stac/LPCLOUD/collections/ASTGTM.v003', 'type': 'application/json'}, {'rel': 'child', 'href': 'https://cmr.earthdata.nasa.gov/stac/LPCLOUD/collections/HLSL30.v1.5', 'type': 'application/json'}, {'rel': 'child', 'href': 'https://cmr.earthdata.nasa.gov/stac/LPCLOUD/collections/HLSS30.v1.5', 'type': 'application/json'}]
+conformsTo: ['https://api.stacspec.org/v1.0.0-beta.1/core', 'https://api.stacspec.org/v1.0.0-beta.1/item-search', 'https://api.stacspec.org/v1.0.0-beta.1/item-search#fields', 'https://api.stacspec.org/v1.0.0-beta.1/item-search#query', 'https://api.stacspec.org/v1.0.0-beta.1/item-search#sort', 'https://api.stacspec.org/v1.0.0-beta.1/item-search#context', 'http://www.opengis.net/spec/ogcapi-features-1/1.0/conf/core', 'http://www.opengis.net/spec/ogcapi-features-1/1.0/conf/oas30', 'http://www.opengis.net/spec/ogcapi-features-1/1.0/conf/geojson']</code></pre>
+</div>
+</div>
+</section>
+<section id="below-print-the-links-contained-in-the-lp-cloud-stac-catalog" class="level4">
+<h4 class="anchored" data-anchor-id="below-print-the-links-contained-in-the-lp-cloud-stac-catalog">Below, print the links contained in the LP CLOUD STAC Catalog:</h4>
+<div class="cell" data-execution_count="6">
+<div class="sourceCode" id="cb8"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>lp_links <span class="op">=</span> lp_cloud[<span class="st">'links'</span>]</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> l <span class="kw">in</span> lp_links: </span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>: </span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>l[<span class="st">'href'</span>]<span class="sc">}</span><span class="ss"> is the </span><span class="sc">{</span>l[<span class="st">'title'</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span>:</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>l[<span class="st">'href'</span>]<span class="sc">}</span><span class="ss">"</span>)       </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-stdout">
+<pre><code>https://cmr.earthdata.nasa.gov/stac/LPCLOUD is the Provider catalog
+https://cmr.earthdata.nasa.gov/stac/ is the Root catalog
+https://cmr.earthdata.nasa.gov/stac/LPCLOUD/collections is the Provider Collections
+https://cmr.earthdata.nasa.gov/stac/LPCLOUD/search is the Provider Item Search
+https://cmr.earthdata.nasa.gov/stac/LPCLOUD/search is the Provider Item Search
+https://cmr.earthdata.nasa.gov/stac/LPCLOUD/conformance is the Conformance Classes
+https://api.stacspec.org/v1.0.0-beta.1/openapi.yaml is the OpenAPI Doc
+https://api.stacspec.org/v1.0.0-beta.1/index.html is the HTML documentation
+https://cmr.earthdata.nasa.gov/stac/LPCLOUD/collections/ASTGTM.v003
+https://cmr.earthdata.nasa.gov/stac/LPCLOUD/collections/HLSL30.v1.5
+https://cmr.earthdata.nasa.gov/stac/LPCLOUD/collections/HLSS30.v1.5</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="stac-collection-extension-of-stac-catalog-containing-additional-information-that-describe-the-stac-items-in-that-collection." class="level3">
+<h3 class="anchored" data-anchor-id="stac-collection-extension-of-stac-catalog-containing-additional-information-that-describe-the-stac-items-in-that-collection.">3. STAC Collection: Extension of STAC Catalog containing additional information that describe the STAC Items in that Collection.</h3>
+<section id="below-get-a-response-from-the-lpcloud-collection-and-print-the-information-included-in-the-response." class="level4">
+<h4 class="anchored" data-anchor-id="below-get-a-response-from-the-lpcloud-collection-and-print-the-information-included-in-the-response.">Below, get a response from the LPCLOUD Collection and print the information included in the response.</h4>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode" id="cb10"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>lp_collections <span class="op">=</span> [l[<span class="st">'href'</span>] <span class="cf">for</span> l <span class="kw">in</span> lp_links <span class="cf">if</span> l[<span class="st">'rel'</span>] <span class="op">==</span> <span class="st">'collections'</span>][<span class="dv">0</span>]  <span class="co"># Set collections endpoint to variable</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>collections_response <span class="op">=</span> r.get(<span class="ss">f"</span><span class="sc">{</span>lp_collections<span class="sc">}</span><span class="ss">"</span>).json()                        <span class="co"># Call collections endpoint</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"This collection contains </span><span class="sc">{</span>collections_response[<span class="st">'description'</span>]<span class="sc">}</span><span class="ss"> (</span><span class="sc">{</span><span class="bu">len</span>(collections_response[<span class="st">'collections'</span>])<span class="sc">}</span><span class="ss"> available)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-stdout">
+<pre><code>This collection contains All collections provided by LPCLOUD (3 available)</code></pre>
+</div>
+</div>
+</section>
+<section id="as-of-march-3-2021-there-are-three-collections-available-and-more-will-be-added-in-the-future." class="level4">
+<h4 class="anchored" data-anchor-id="as-of-march-3-2021-there-are-three-collections-available-and-more-will-be-added-in-the-future.">As of March 3, 2021, there are three collections available, and more will be added in the future.</h4>
+</section>
+<section id="print-out-one-of-the-collections" class="level4">
+<h4 class="anchored" data-anchor-id="print-out-one-of-the-collections">Print out one of the collections:</h4>
+<div class="cell" data-execution_count="8">
+<div class="sourceCode" id="cb12"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>collections <span class="op">=</span> collections_response[<span class="st">'collections'</span>]</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>collections[<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display" data-execution_count="7">
+<pre><code>{'id': 'HLSL30.v1.5',
+ 'stac_version': '1.0.0',
+ 'license': 'not-provided',
+ 'title': 'HLS Operational Land Imager Surface Reflectance and TOA Brightness Daily Global 30 m V1.5',
+ 'type': 'Collection',
+ 'description': 'PROVISIONAL - The Harmonized Landsat and Sentinel-2 (HLS) project provides consistent surface reflectance (SR) and top of atmosphere (TOA) brightness data from the Operational Land Imager (OLI) aboard the joint NASA/USGS Landsat 8 satellite and the Multi-Spectral Instrument (MSI) aboard Europe’s Copernicus Sentinel-2A and Sentinel-2B satellites. The combined measurement enables global observations of the land every 2–3 days at 30-meter (m) spatial resolution. The HLS project uses a set of algorithms to obtain seamless products from OLI and MSI that include atmospheric correction, cloud and cloud-shadow masking, spatial co-registration and common gridding, illumination and view angle normalization, and spectral bandpass adjustment. \r\n\r\nThe HLSL30 product provides 30-m Nadir Bidirectional Reflectance Distribution Function (BRDF)-Adjusted Reflectance (NBAR) and is derived from Landsat 8 OLI data products. The  HLSS30 (https://doi.org/10.5067/HLS/HLSS30.015) and HLSL30 products are gridded to the same resolution and Military Grid Reference System (MGRS) (https://hls.gsfc.nasa.gov/products-description/tiling-system/) tiling system, and thus are “stackable” for time series analysis.\r\n\r\nThe HLSL30 product is provided in Cloud Optimized GeoTIFF (COG) format, and each band is distributed as a separate file. There are 10 bands included in the HLSL30 product along with one quality assessment (QA) band and four angle bands. For a more detailed description of the individual bands provided in the HLSL30 product, please see the User Guide (https://lpdaac.usgs.gov/documents/878/HLS_User_Guide_V15_provisional.pdf).\r\n\r\n',
+ 'links': [{'rel': 'self',
+   'href': 'https://cmr.earthdata.nasa.gov/stac/LPCLOUD/collections/HLSL30.v1.5',
+   'title': 'Info about this collection',
+   'type': 'application/json'},
+  {'rel': 'root',
+   'href': 'https://cmr.earthdata.nasa.gov/stac',
+   'title': 'Root catalog',
+   'type': 'application/json'},
+  {'rel': 'parent',
+   'href': 'https://cmr.earthdata.nasa.gov/stac/LPCLOUD',
+   'title': 'Parent catalog',
+   'type': 'application/json'},
+  {'rel': 'items',
+   'href': 'https://cmr.earthdata.nasa.gov/stac/LPCLOUD/collections/HLSL30.v1.5/items',
+   'title': 'Granules in this collection',
+   'type': 'application/json'},
+  {'rel': 'about',
+   'href': 'https://cmr.earthdata.nasa.gov/search/concepts/C1711972753-LPCLOUD.html',
+   'title': 'HTML metadata for collection',
+   'type': 'text/html'},
+  {'rel': 'via',
+   'href': 'https://cmr.earthdata.nasa.gov/search/concepts/C1711972753-LPCLOUD.json',
+   'title': 'CMR JSON metadata for collection',
+   'type': 'application/json'}],
+ 'extent': {'crs': 'http://www.opengis.net/def/crs/OGC/1.3/CRS84',
+  'spatial': {'bbox': [[-180, -90, 180, 90]]},
+  'trs': 'http://www.opengis.net/def/uom/ISO-8601/0/Gregorian',
+  'temporal': {'interval': [['2013-04-11T00:00:00.000Z', None]]}}}</code></pre>
+</div>
+</div>
+</section>
+<section id="in-cmr-id-is-used-to-query-by-a-specific-product-so-be-sure-to-save-the-id-for-the-hls-s30-and-l30-v1.5-products-below" class="level4">
+<h4 class="anchored" data-anchor-id="in-cmr-id-is-used-to-query-by-a-specific-product-so-be-sure-to-save-the-id-for-the-hls-s30-and-l30-v1.5-products-below">In CMR, <code>id</code> is used to query by a specific product, so be sure to save the ID for the HLS S30 and L30 V1.5 products below:</h4>
+<div class="cell" data-execution_count="9">
+<div class="sourceCode" id="cb14"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Search available collections for HLS and print them out</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>hls_collections <span class="op">=</span> [c <span class="cf">for</span> c <span class="kw">in</span> collections <span class="cf">if</span> <span class="st">'HLS'</span> <span class="kw">in</span> c[<span class="st">'title'</span>]]</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> h <span class="kw">in</span> hls_collections: <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>h[<span class="st">'title'</span>]<span class="sc">}</span><span class="ss"> has an ID (shortname) of: </span><span class="sc">{</span>h[<span class="st">'id'</span>]<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-stdout">
+<pre><code>HLS Operational Land Imager Surface Reflectance and TOA Brightness Daily Global 30 m V1.5 has an ID (shortname) of: HLSL30.v1.5
+HLS Sentinel-2 Multi-spectral Instrument Surface Reflectance Daily Global 30 m V1.5 has an ID (shortname) of: HLSS30.v1.5</code></pre>
+</div>
+</div>
+<blockquote class="blockquote">
+<h4 id="note-that-the-id-shortname-is-in-the-format-productshortname.vvvv-where-vvv-product-version" class="anchored">Note that the “id” shortname is in the format: productshortname.vVVV (where VVV = product version)</h4>
+</blockquote>
+</section>
+<section id="explore-the-attributes-contained-in-the-hlss30-collection." class="level4">
+<h4 class="anchored" data-anchor-id="explore-the-attributes-contained-in-the-hlss30-collection.">Explore the attributes contained in the HLSS30 Collection.</h4>
+<div class="cell" data-execution_count="10">
+<div class="sourceCode" id="cb16"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>s30 <span class="op">=</span> [h <span class="cf">for</span> h <span class="kw">in</span> hls_collections <span class="cf">if</span> h[<span class="st">'id'</span>] <span class="op">==</span> <span class="st">'HLSS30.v1.5'</span>][<span class="dv">0</span>]  <span class="co"># Grab HLSS30 collection</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> s <span class="kw">in</span> s30[<span class="st">'extent'</span>]: <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>s<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>s30[<span class="st">'extent'</span>][s]<span class="sc">}</span><span class="ss">"</span>)          <span class="co"># Check out the extent of this collection</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-stdout">
+<pre><code>crs: http://www.opengis.net/def/crs/OGC/1.3/CRS84
+spatial: {'bbox': [[-180, -90, 180, 90]]}
+trs: http://www.opengis.net/def/uom/ISO-8601/0/Gregorian
+temporal: {'interval': [['2014-04-03T00:00:00.000Z', None]]}</code></pre>
+</div>
+</div>
+</section>
+<section id="so-here-we-can-see-that-the-extent-is-global-and-can-also-see-the-temporal-rangewhere-none-means-on-going-or-to-present." class="level4">
+<h4 class="anchored" data-anchor-id="so-here-we-can-see-that-the-extent-is-global-and-can-also-see-the-temporal-rangewhere-none-means-on-going-or-to-present.">So here we can see that the extent is global, and can also see the temporal range–where “None” means on-going or to present.</h4>
+<div class="cell" data-execution_count="11">
+<div class="sourceCode" id="cb18"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"HLS S30 Start Date is: </span><span class="sc">{</span>s30[<span class="st">'extent'</span>][<span class="st">'temporal'</span>][<span class="st">'interval'</span>][<span class="dv">0</span>][<span class="dv">0</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>s30_id <span class="op">=</span> s30[<span class="st">'id'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-stdout">
+<pre><code>HLS S30 Start Date is: 2014-04-03T00:00:00.000Z</code></pre>
+</div>
+</div>
+</section>
+<section id="next-explore-the-attributes-of-the-hlsl30-collection." class="level4">
+<h4 class="anchored" data-anchor-id="next-explore-the-attributes-of-the-hlsl30-collection.">Next, explore the attributes of the HLSL30 collection.</h4>
+<div class="cell" data-execution_count="12">
+<div class="sourceCode" id="cb20"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>l30 <span class="op">=</span> [h <span class="cf">for</span> h <span class="kw">in</span> hls_collections <span class="cf">if</span> h[<span class="st">'id'</span>] <span class="op">==</span> <span class="st">'HLSL30.v1.5'</span>][<span class="dv">0</span>]     <span class="co"># Grab HLSL30 collection</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> l <span class="kw">in</span> l30[<span class="st">'extent'</span>]: <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>l<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>l30[<span class="st">'extent'</span>][l]<span class="sc">}</span><span class="ss">"</span>)             <span class="co"># Check out the extent of this collection</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"HLS L30 Start Date is: </span><span class="sc">{</span>l30[<span class="st">'extent'</span>][<span class="st">'temporal'</span>][<span class="st">'interval'</span>][<span class="dv">0</span>][<span class="dv">0</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>l30_id <span class="op">=</span> l30[<span class="st">'id'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-stdout">
+<pre><code>crs: http://www.opengis.net/def/crs/OGC/1.3/CRS84
+spatial: {'bbox': [[-180, -90, 180, 90]]}
+trs: http://www.opengis.net/def/uom/ISO-8601/0/Gregorian
+temporal: {'interval': [['2013-04-11T00:00:00.000Z', None]]}
+HLS L30 Start Date is: 2013-04-11T00:00:00.000Z</code></pre>
+</div>
+</div>
+</section>
+<section id="above-notice-that-the-l30-product-has-a-different-start-date-than-the-s30-product." class="level4">
+<h4 class="anchored" data-anchor-id="above-notice-that-the-l30-product-has-a-different-start-date-than-the-s30-product.">Above, notice that the L30 product has a different start date than the S30 product.</h4>
+</section>
+</section>
+<section id="stac-item-represents-data-and-metadata-assets-that-are-spatiotemporally-coincident" class="level3">
+<h3 class="anchored" data-anchor-id="stac-item-represents-data-and-metadata-assets-that-are-spatiotemporally-coincident">4. STAC Item: Represents data and metadata assets that are spatiotemporally coincident</h3>
+<section id="below-query-the-hlss30-collection-for-items-and-return-the-first-item-in-the-collection." class="level4">
+<h4 class="anchored" data-anchor-id="below-query-the-hlss30-collection-for-items-and-return-the-first-item-in-the-collection.">Below, query the HLSS30 collection for items and return the first item in the collection.</h4>
+<div class="cell" data-execution_count="13">
+<div class="sourceCode" id="cb22"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Below, go through all links in the collection and return the link containing the items endpoint</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>s30_items <span class="op">=</span> [s[<span class="st">'href'</span>] <span class="cf">for</span> s <span class="kw">in</span> s30[<span class="st">'links'</span>] <span class="cf">if</span> s[<span class="st">'rel'</span>] <span class="op">==</span> <span class="st">'items'</span>][<span class="dv">0</span>]  <span class="co"># Set items endpoint to variable</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>s30_items</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display" data-execution_count="12">
+<pre><code>'https://cmr.earthdata.nasa.gov/stac/LPCLOUD/collections/HLSS30.v1.5/items'</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="14">
+<div class="sourceCode" id="cb24"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>s30_items_response <span class="op">=</span> r.get(<span class="ss">f"</span><span class="sc">{</span>s30_items<span class="sc">}</span><span class="ss">"</span>).json()                        <span class="co"># Call items endpoint</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>s30_item <span class="op">=</span> s30_items_response[<span class="st">'features'</span>][<span class="dv">0</span>]                             <span class="co"># select first item (10 items returned by default)</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>s30_item</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display" data-execution_count="13">
+<pre><code>{'type': 'Feature',
+ 'id': 'G1969487860-LPCLOUD',
+ 'stac_version': '1.0.0',
+ 'stac_extensions': ['https://stac-extensions.github.io/eo/v1.0.0/schema.json'],
+ 'collection': 'HLSS30.v1.5',
+ 'geometry': {'type': 'Polygon',
+  'coordinates': [[[-119.1488671, 33.3327671],
+    [-118.9832795, 33.3355226],
+    [-118.6783731, 34.3301598],
+    [-119.1737801, 34.3223655],
+    [-119.1488671, 33.3327671]]]},
+ 'bbox': [-119.17378, 33.332767, -118.678373, 34.33016],
+ 'links': [{'rel': 'self',
+   'href': 'https://cmr.earthdata.nasa.gov/stac/LPCLOUD/collections/HLSS30.v1.5/items/G1969487860-LPCLOUD'},
+  {'rel': 'parent',
+   'href': 'https://cmr.earthdata.nasa.gov/stac/LPCLOUD/collections/HLSS30.v1.5'},
+  {'rel': 'collection',
+   'href': 'https://cmr.earthdata.nasa.gov/stac/LPCLOUD/collections/HLSS30.v1.5'},
+  {'rel': 'root', 'href': 'https://cmr.earthdata.nasa.gov/stac/'},
+  {'rel': 'provider', 'href': 'https://cmr.earthdata.nasa.gov/stac/LPCLOUD'},
+  {'rel': 'via',
+   'href': 'https://cmr.earthdata.nasa.gov/search/concepts/G1969487860-LPCLOUD.json'},
+  {'rel': 'via',
+   'href': 'https://cmr.earthdata.nasa.gov/search/concepts/G1969487860-LPCLOUD.umm_json'}],
+ 'properties': {'datetime': '2015-08-26T18:54:35.450Z',
+  'start_datetime': '2015-08-26T18:54:35.450Z',
+  'end_datetime': '2015-08-26T18:54:35.450Z',
+  'eo:cloud_cover': 6},
+ 'assets': {'VZA': {'title': 'Download HLS.S30.T11SLT.2015238T185436.v1.5.VZA.tif',
+   'href': 'https://lpdaac.earthdata.nasa.gov/lp-prod-protected/HLSS30.015/HLS.S30.T11SLT.2015238T185436.v1.5.VZA.tif'},
+  'VAA': {'title': 'Download HLS.S30.T11SLT.2015238T185436.v1.5.VAA.tif',
+   'href': 'https://lpdaac.earthdata.nasa.gov/lp-prod-protected/HLSS30.015/HLS.S30.T11SLT.2015238T185436.v1.5.VAA.tif'},
+  'SAA': {'title': 'Download HLS.S30.T11SLT.2015238T185436.v1.5.SAA.tif',
+   'href': 'https://lpdaac.earthdata.nasa.gov/lp-prod-protected/HLSS30.015/HLS.S30.T11SLT.2015238T185436.v1.5.SAA.tif'},
+  'B11': {'title': 'Download HLS.S30.T11SLT.2015238T185436.v1.5.B11.tif',
+   'href': 'https://lpdaac.earthdata.nasa.gov/lp-prod-protected/HLSS30.015/HLS.S30.T11SLT.2015238T185436.v1.5.B11.tif'},
+  'B02': {'title': 'Download HLS.S30.T11SLT.2015238T185436.v1.5.B02.tif',
+   'href': 'https://lpdaac.earthdata.nasa.gov/lp-prod-protected/HLSS30.015/HLS.S30.T11SLT.2015238T185436.v1.5.B02.tif'},
+  'B09': {'title': 'Download HLS.S30.T11SLT.2015238T185436.v1.5.B09.tif',
+   'href': 'https://lpdaac.earthdata.nasa.gov/lp-prod-protected/HLSS30.015/HLS.S30.T11SLT.2015238T185436.v1.5.B09.tif'},
+  'B12': {'title': 'Download HLS.S30.T11SLT.2015238T185436.v1.5.B12.tif',
+   'href': 'https://lpdaac.earthdata.nasa.gov/lp-prod-protected/HLSS30.015/HLS.S30.T11SLT.2015238T185436.v1.5.B12.tif'},
+  'B03': {'title': 'Download HLS.S30.T11SLT.2015238T185436.v1.5.B03.tif',
+   'href': 'https://lpdaac.earthdata.nasa.gov/lp-prod-protected/HLSS30.015/HLS.S30.T11SLT.2015238T185436.v1.5.B03.tif'},
+  'B01': {'title': 'Download HLS.S30.T11SLT.2015238T185436.v1.5.B01.tif',
+   'href': 'https://lpdaac.earthdata.nasa.gov/lp-prod-protected/HLSS30.015/HLS.S30.T11SLT.2015238T185436.v1.5.B01.tif'},
+  'B07': {'title': 'Download HLS.S30.T11SLT.2015238T185436.v1.5.B07.tif',
+   'href': 'https://lpdaac.earthdata.nasa.gov/lp-prod-protected/HLSS30.015/HLS.S30.T11SLT.2015238T185436.v1.5.B07.tif'},
+  'SZA': {'title': 'Download HLS.S30.T11SLT.2015238T185436.v1.5.SZA.tif',
+   'href': 'https://lpdaac.earthdata.nasa.gov/lp-prod-protected/HLSS30.015/HLS.S30.T11SLT.2015238T185436.v1.5.SZA.tif'},
+  'B05': {'title': 'Download HLS.S30.T11SLT.2015238T185436.v1.5.B05.tif',
+   'href': 'https://lpdaac.earthdata.nasa.gov/lp-prod-protected/HLSS30.015/HLS.S30.T11SLT.2015238T185436.v1.5.B05.tif'},
+  'B06': {'title': 'Download HLS.S30.T11SLT.2015238T185436.v1.5.B06.tif',
+   'href': 'https://lpdaac.earthdata.nasa.gov/lp-prod-protected/HLSS30.015/HLS.S30.T11SLT.2015238T185436.v1.5.B06.tif'},
+  'Fmask': {'title': 'Download HLS.S30.T11SLT.2015238T185436.v1.5.Fmask.tif',
+   'href': 'https://lpdaac.earthdata.nasa.gov/lp-prod-protected/HLSS30.015/HLS.S30.T11SLT.2015238T185436.v1.5.Fmask.tif'},
+  'B10': {'title': 'Download HLS.S30.T11SLT.2015238T185436.v1.5.B10.tif',
+   'href': 'https://lpdaac.earthdata.nasa.gov/lp-prod-protected/HLSS30.015/HLS.S30.T11SLT.2015238T185436.v1.5.B10.tif'},
+  'B08': {'title': 'Download HLS.S30.T11SLT.2015238T185436.v1.5.B08.tif',
+   'href': 'https://lpdaac.earthdata.nasa.gov/lp-prod-protected/HLSS30.015/HLS.S30.T11SLT.2015238T185436.v1.5.B08.tif'},
+  'B8A': {'title': 'Download HLS.S30.T11SLT.2015238T185436.v1.5.B8A.tif',
+   'href': 'https://lpdaac.earthdata.nasa.gov/lp-prod-protected/HLSS30.015/HLS.S30.T11SLT.2015238T185436.v1.5.B8A.tif'},
+  'B04': {'title': 'Download HLS.S30.T11SLT.2015238T185436.v1.5.B04.tif',
+   'href': 'https://lpdaac.earthdata.nasa.gov/lp-prod-protected/HLSS30.015/HLS.S30.T11SLT.2015238T185436.v1.5.B04.tif'},
+  'browse': {'title': 'Download HLS.S30.T11SLT.2015238T185436.v1.5.jpg',
+   'href': 'https://lpdaac.earthdata.nasa.gov/lp-prod-public/HLSS30.015/HLS.S30.T11SLT.2015238T185436.v1.5.jpg',
+   'type': 'image/jpeg'},
+  'metadata': {'href': 'https://cmr.earthdata.nasa.gov/search/concepts/G1969487860-LPCLOUD.xml',
+   'type': 'application/xml'}}}</code></pre>
+</div>
+</div>
+</section>
+<section id="stac-metadata-provides-valuable-information-on-the-item-including-a-unique-id-when-it-was-acquired-the-location-of-the-observation-and-a-cloud-cover-assessment." class="level4">
+<h4 class="anchored" data-anchor-id="stac-metadata-provides-valuable-information-on-the-item-including-a-unique-id-when-it-was-acquired-the-location-of-the-observation-and-a-cloud-cover-assessment.">STAC metadata provides valuable information on the item, including a unique ID, when it was acquired, the location of the observation, and a cloud cover assessment.</h4>
+<div class="cell" data-execution_count="15">
+<div class="sourceCode" id="cb26"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print metadata attributes from this observation</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"The ID for this item is: </span><span class="sc">{</span>s30_item[<span class="st">'id'</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"It was acquired on: </span><span class="sc">{</span>s30_item[<span class="st">'properties'</span>][<span class="st">'datetime'</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"over: </span><span class="sc">{</span>s30_item[<span class="st">'bbox'</span>]<span class="sc">}</span><span class="ss"> (Lower Left, Upper Right corner coordinates)"</span>)</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"It contains </span><span class="sc">{</span><span class="bu">len</span>(s30_item[<span class="st">'assets'</span>])<span class="sc">}</span><span class="ss"> assets"</span>)</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"and is </span><span class="sc">{</span>s30_item[<span class="st">'properties'</span>][<span class="st">'eo:cloud_cover'</span>]<span class="sc">}</span><span class="ss">% cloudy."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-stdout">
+<pre><code>The ID for this item is: G1969487860-LPCLOUD
+It was acquired on: 2015-08-26T18:54:35.450Z
+over: [-119.17378, 33.332767, -118.678373, 34.33016] (Lower Left, Upper Right corner coordinates)
+It contains 20 assets
+and is 6% cloudy.</code></pre>
+</div>
+</div>
+</section>
+<section id="below-print-out-the-ten-items-and-the-percent-cloud-coverwe-will-use-this-to-decide-which-item-to-visualize-in-the-next-section." class="level4">
+<h4 class="anchored" data-anchor-id="below-print-out-the-ten-items-and-the-percent-cloud-coverwe-will-use-this-to-decide-which-item-to-visualize-in-the-next-section.">Below, print out the ten items and the percent cloud cover–we will use this to decide which item to visualize in the next section.</h4>
+<div class="cell" data-execution_count="16">
+<div class="sourceCode" id="cb28"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, s <span class="kw">in</span> <span class="bu">enumerate</span>(s30_items_response[<span class="st">'features'</span>]):</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Item at index </span><span class="sc">{</span>i<span class="sc">}</span><span class="ss"> is </span><span class="sc">{</span>s[<span class="st">'properties'</span>][<span class="st">'eo:cloud_cover'</span>]<span class="sc">}</span><span class="ss">% cloudy."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-stdout">
+<pre><code>Item at index 0 is 6% cloudy.
+Item at index 1 is 4% cloudy.
+Item at index 2 is 0% cloudy.
+Item at index 3 is 64% cloudy.
+Item at index 4 is 0% cloudy.
+Item at index 5 is 39% cloudy.
+Item at index 6 is 74% cloudy.
+Item at index 7 is 100% cloudy.
+Item at index 8 is 30% cloudy.
+Item at index 9 is 67% cloudy.</code></pre>
+</div>
+</div>
+</section>
+<section id="using-the-information-printed-above-set-the-item_index-below-to-whichever-observation-is-the-least-cloudy-above." class="level4">
+<h4 class="anchored" data-anchor-id="using-the-information-printed-above-set-the-item_index-below-to-whichever-observation-is-the-least-cloudy-above.">Using the information printed above, set the <code>item_index</code> below to whichever observation is the least cloudy above.</h4>
+<div class="cell" data-execution_count="17">
+<div class="sourceCode" id="cb30"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>item_index <span class="op">=</span> <span class="dv">9</span>  <span class="co"># Indexing starts at 0 in Python, so here select the eighth item in the list at index 7</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="18">
+<div class="sourceCode" id="cb31"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>s30_item <span class="op">=</span> s30_items_response[<span class="st">'features'</span>][item_index]  <span class="co"># Grab the next item in the list</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"The ID for this item is: </span><span class="sc">{</span>s30_item[<span class="st">'id'</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"It was acquired on: </span><span class="sc">{</span>s30_item[<span class="st">'properties'</span>][<span class="st">'datetime'</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"over: </span><span class="sc">{</span>s30_item[<span class="st">'bbox'</span>]<span class="sc">}</span><span class="ss"> (Lower Left, Upper Right corner coordinates)"</span>)</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"It contains </span><span class="sc">{</span><span class="bu">len</span>(s30_item[<span class="st">'assets'</span>])<span class="sc">}</span><span class="ss"> assets"</span>)</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"and is </span><span class="sc">{</span>s30_item[<span class="st">'properties'</span>][<span class="st">'eo:cloud_cover'</span>]<span class="sc">}</span><span class="ss">% cloudy."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-stdout">
+<pre><code>The ID for this item is: G2010287698-LPCLOUD
+It was acquired on: 2016-11-06T08:21:39.880Z
+over: [24.875464, -26.295042, 25.108568, -25.427554] (Lower Left, Upper Right corner coordinates)
+It contains 20 assets
+and is 67% cloudy.</code></pre>
+</div>
+</div>
+</section>
+<section id="below-print-out-the-names-of-all-of-the-assets-included-in-this-item." class="level4">
+<h4 class="anchored" data-anchor-id="below-print-out-the-names-of-all-of-the-assets-included-in-this-item.">Below, print out the names of all of the assets included in this item.</h4>
+<div class="cell" data-execution_count="19">
+<div class="sourceCode" id="cb33"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"The following assets are available for download:"</span>)</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> a <span class="kw">in</span> s30_item[<span class="st">'assets'</span>]: <span class="bu">print</span>(a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-stdout">
+<pre><code>The following assets are available for download:
+SZA
+B01
+VAA
+SAA
+B10
+B8A
+B05
+B09
+Fmask
+B02
+B12
+B11
+B03
+B06
+B04
+B08
+VZA
+B07
+browse
+metadata</code></pre>
+</div>
+</div>
+</section>
+<section id="notice-that-each-hls-item-includes-a-browse-image.-read-the-browse-file-into-memory-and-visualize-the-hls-acquisition." class="level4">
+<h4 class="anchored" data-anchor-id="notice-that-each-hls-item-includes-a-browse-image.-read-the-browse-file-into-memory-and-visualize-the-hls-acquisition.">Notice that each HLS item includes a browse image. Read the browse file into memory and visualize the HLS acquisition.</h4>
+<div class="cell" data-execution_count="20">
+<div class="sourceCode" id="cb35"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>s30_item[<span class="st">'assets'</span>][<span class="st">'browse'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display" data-execution_count="19">
+<pre><code>{'title': 'Download HLS.S30.T35JKM.2016311T080122.v1.5.jpg',
+ 'href': 'https://lpdaac.earthdata.nasa.gov/lp-prod-public/HLSS30.015/HLS.S30.T35JKM.2016311T080122.v1.5.jpg',
+ 'type': 'image/jpeg'}</code></pre>
+</div>
+</div>
+</section>
+<section id="use-the-skimage-package-to-load-the-browse-image-into-memory-and-matplotlib-to-quickly-visualize-it." class="level4">
+<h4 class="anchored" data-anchor-id="use-the-skimage-package-to-load-the-browse-image-into-memory-and-matplotlib-to-quickly-visualize-it.">Use the <code>skimage</code> package to load the browse image into memory and <code>matplotlib</code> to quickly visualize it.</h4>
+<div class="cell" data-execution_count="21">
+<div class="sourceCode" id="cb37"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>image <span class="op">=</span> io.imread(s30_item[<span class="st">'assets'</span>][<span class="st">'browse'</span>][<span class="st">'href'</span>])  <span class="co"># Load jpg browse image into memory</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Basic plot of the image</span></span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">10</span>))              </span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>plt.imshow(image)</span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Navigate_CMR_STAC_files/figure-html/cell-21-output-1.png" width="779" height="771"></p>
+</div>
+</div>
+</section>
+<section id="congrats-you-have-visualized-your-first-cloud-native-hls-asset" class="level4">
+<h4 class="anchored" data-anchor-id="congrats-you-have-visualized-your-first-cloud-native-hls-asset">Congrats! You have visualized your first Cloud-Native HLS asset!</h4>
+
+
+</section>
+</section>
+</section>
+</section>
+</main> <!-- /main -->
+<script type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+    } else {
+      disableStylesheet(alternateStylesheets);
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } 
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    setTimeout(function() {
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../discovery/search-by-shapefile.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Search by shapefile</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../discovery/earthdata-search-ui.html" class="pagination-link">
+        <span class="nav-page-text">Earthdata Search UI</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+      <div class="nav-footer-center">NASA Openscapes Team (2021). Earthdata Cloud Cookbook (Version v0.0.1).</div>
+  </div>
+</footer>
+
+
+</body></html>
