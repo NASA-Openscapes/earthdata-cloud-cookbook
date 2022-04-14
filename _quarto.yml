@@ -36,6 +36,8 @@ website:
          # - get-started/api-primer.qmd
       - section: "Example tutorials"
         contents:
+          - href: examples/earthdata-access-demo.ipynb
+            text: "NASA Earthdata Access Demo"
           - href: examples/NSIDC/ICESat2-CMR-OnPrem-vs-Cloud.ipynb
             text: "Search & Download NSIDC Cloud"
           - href: examples/NSIDC/ICESat2-CMR-AWS-S3.ipynb
