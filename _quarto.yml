@@ -30,12 +30,10 @@ website:
     contents:
       - text: "Welcome"
         href: index.html
-      - section: "Getting Started"
-        contents:
-          - get-started/index.md
-          - get-started/how-to-use.md
+      - text: "Overview"
+        href: get-started/index.md
          # - get-started/earthdata-login.qmd
-          - get-started/api-primer.qmd
+         # - get-started/api-primer.qmd
       - section: "Example tutorials"
         contents:
           - href: examples/NSIDC/ICESat2-CMR-OnPrem-vs-Cloud.ipynb
