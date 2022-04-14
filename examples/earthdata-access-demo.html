@@ -262,9 +262,9 @@
 <ul>
 <li><a href="#nasa-earthdata-api-client" class="nav-link active" data-scroll-target="#nasa-earthdata-api-client"><img src="https://logos-world.net/wp-content/uploads/2020/05/NASA-Logo-1959-present.png" width="100px" align="middle"> NASA Earthdata API Client 🌍</a>
 <ul class="collapse">
-<li><a href="#overview-test" class="nav-link" data-scroll-target="#overview-test">Overview TEST</a>
+<li><a href="#overview" class="nav-link" data-scroll-target="#overview">Overview</a>
 <ul class="collapse">
-<li><a href="#why" class="nav-link" data-scroll-target="#why">Why?</a></li>
+<li><a href="#why-use-the-earthdata-python-package" class="nav-link" data-scroll-target="#why-use-the-earthdata-python-package">Why use the <code>earthdata</code> Python package?</a></li>
 <li><a href="#installing-earthdata-with-condamamba" class="nav-link" data-scroll-target="#installing-earthdata-with-condamamba">Installing earthdata with conda/mamba</a></li>
 <li><a href="#nasa-edl-and-the-auth-class" class="nav-link" data-scroll-target="#nasa-edl-and-the-auth-class">NASA EDL and the Auth class</a></li>
 </ul></li>
@@ -292,8 +292,8 @@
 
 <section id="nasa-earthdata-api-client" class="level1">
 <h1><img src="https://logos-world.net/wp-content/uploads/2020/05/NASA-Logo-1959-present.png" width="100px" align="middle"> NASA Earthdata API Client 🌍</h1>
-<section id="overview-test" class="level2">
-<h2 class="anchored" data-anchor-id="overview-test">Overview TEST</h2>
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
 <section id="tldr-earthdata-is-a-python-package-to-search-preview-and-access-nasa-datasets-on-prem-or-in-the-cloud-with-a-few-lines-of-code." class="level4">
 <h4 class="anchored" data-anchor-id="tldr-earthdata-is-a-python-package-to-search-preview-and-access-nasa-datasets-on-prem-or-in-the-cloud-with-a-few-lines-of-code.">TL;DR: <a href="https://github.com/nsidc/earthdata"><strong>earthdata</strong></a> is a Python package to search, preview and access NASA datasets (on-prem or in the cloud) with a few lines of code.</h4>
 <div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a></span>
@@ -313,22 +313,22 @@
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Now to the important science!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="why" class="level3">
-<h3 class="anchored" data-anchor-id="why">Why?</h3>
+<section id="why-use-the-earthdata-python-package" class="level3">
+<h3 class="anchored" data-anchor-id="why-use-the-earthdata-python-package">Why use the <code>earthdata</code> Python package?</h3>
 <p>There are many ways to access NASA datasets, we can use the <a href="https://search.earthdata.nasa.gov/">Earthdata search portal</a>. We can use DAAC specific portals or tools. We could even use <a href="https://data.gov">data.gov</a>! Web portals are great but they are not designed for programmatic access and reproducible workflows. This is extremely important in the age of the cloud and reproducible open science.</p>
 <p>The good news is that NASA also exposes APIs that allows us to search, transform and access data in a programmatic way. Many of these libraries contain amazing features and some similarities. In this context, <strong>earthdata</strong> aims to be a simple library that can deal with the important parts of the metadata so we can access or download data without having to worry if a given dataset is on-prem or in the cloud.</p>
-<hr>
 <table class="table">
+<caption>Earthdata Access Comparison</caption>
 <colgroup>
-<col style="width: 14%">
-<col style="width: 8%">
-<col style="width: 14%">
-<col style="width: 8%">
-<col style="width: 14%">
-<col style="width: 8%">
-<col style="width: 14%">
-<col style="width: 8%">
-<col style="width: 8%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -434,7 +434,6 @@
 </tr>
 </tbody>
 </table>
-<hr>
 </section>
 <section id="installing-earthdata-with-condamamba" class="level3">
 <h3 class="anchored" data-anchor-id="installing-earthdata-with-condamamba">Installing earthdata with conda/mamba</h3>
