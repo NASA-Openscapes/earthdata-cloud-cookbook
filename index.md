@@ -13,7 +13,7 @@ slug: index
 
 This Cookbook is under active development but is an open resource as we iterate. Its purpose is to learning-oriented to support scientific researchers using NASA Earthdata from Distributed Active Archive Centers (DAACs) as they migrate their workflows to the cloud. 
 
-See **[nasa-openscapes.github.io/tutorials](https://nasa-openscapes.github.io/tutorials)** for links to other resources supporting researchers migrating their NASA Earthdata workflows to the cloud.
+This Earthdata Cloud Cookbook complements the **[nasa-openscapes.github.io/tutorials](https://nasa-openscapes.github.io/tutorials)**, which have notebooks created for specific events and are available for reuse and self-paced learning. This Cookbook has several accompanying stand-alone lessons and example notebooks, as well as documentation for how we support researchers. 
 
 ## The new cloud paradigm
 

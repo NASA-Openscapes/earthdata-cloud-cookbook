@@ -30,49 +30,14 @@ website:
     contents:
       - text: "Welcome"
         href: index.html
-      - section: "Getting Started"
-        contents:
-          - get-started/index.md
-          - get-started/how-to-use.md
-          - get-started/earthdata-login.qmd
-          - section: get-started/authentication.md
-            contents:
-              - get-started/lpdaac-netrc.ipynb
-              - get-started/podaac-ecco-netrc.ipynb
-              - get-started/api-primer.qmd
-      - section: "NASA Cloud Data Discovery"
-        contents:
-          - discovery/index.md
-          - discovery/search-by-shapefile.qmd
-          - discovery/Navigate_CMR_STAC.ipynb
-          - discovery/earthdata-search-ui.md
-          - discovery/cmr-virtual-directories.md
-      - section: "NASA Cloud Data Access"
-        contents:
-          - access/index.md
-          - access/data-access-example.ipynb
-          - access/earthdata-search.md
-          - access/opendap-cloud.md
-          - section: access/direct-in-region.md
-            contents:
-              - access/podaac-ecco-data_access-cloud_direct_access_s3.ipynb
-          - section: access/cof-via-harmony.md
-            contents:
-              - external/cof-zarr-reformat.ipynb
-          - access/download-to-local.md
-      - section: "NASA Cloud Data Transformations"
-        contents:
-          - transformations/harmony-api.md
-          - transformations/HarmonyPy_intro_tutorial.ipynb
-          - transformations/netcdf-to-zarr.md
-          - section: transformations/L2-subsetter.md
-            contents: 
-             #  - transformations/harmony-subsetting.qmd old testing but worth revisiting
-              - transformations/earthdata-search.md
-              - transformations/opendap-cloud.md
-              - external/zarr-eosdis-store.ipynb
+      - text: "Overview"
+        href: get-started/index.md
+         # - get-started/earthdata-login.qmd
+         # - get-started/api-primer.qmd
       - section: "Example tutorials"
         contents:
+          - href: examples/earthdata-access-demo.ipynb
+            text: "NASA Earthdata Access Demo"
           - href: examples/NSIDC/ICESat2-CMR-OnPrem-vs-Cloud.ipynb
             text: "Search & Download NSIDC Cloud"
           - href: examples/NSIDC/ICESat2-CMR-AWS-S3.ipynb
@@ -80,7 +45,8 @@ website:
           - href: examples/Transform-workflow.ipynb
             text: "Direct Access & Harmony Workflow"
           - href: examples/USGS_Landsat/Landsat_C2_Search_Access.ipynb
-            text: "Search & Access USGS Landsat Cloud"            
+            text: "Search & Access USGS Landsat Cloud"  
+          - examples/ORNL/Data_Access__Direct_S3_Access__ORNL_DAYMET.ipynb  
       - section: "Appendix"
         contents:
           - appendix/index.md
