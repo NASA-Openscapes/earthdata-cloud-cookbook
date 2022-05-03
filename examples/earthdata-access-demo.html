@@ -3,7 +3,7 @@
   <meta charset="utf-8">
   <meta name="generator" content="quarto-0.9.105">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>EarthData Cloud Cookbook - NASA Earthdata API Client 🌍</title>
+  <title>EarthData Cloud Cookbook – earthdata-access-demo</title>
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -124,7 +124,7 @@
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">NASA Earthdata API Client 🌍</h1>
+      <h1 class="quarto-secondary-nav-title">(Untitled)</h1>
       <button type="button" class="quarto-btn-toggle btn">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -200,19 +200,14 @@
   <a href="../examples/ORNL/Data_Access__Direct_S3_Access__ORNL_DAYMET.html" class="sidebar-item-text sidebar-link">Direct S3 Data Access: NetCDF - Daymet v4 Daily TMAX Example</a>
   </div>
 </li>
-    </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-    <div class="sidebar-item-container"> 
-        <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-appendix" aria-expanded="false">Appendix</a>
-      <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-appendix" aria-expanded="false">
-        <i class="bi bi-chevron-right ms-2"></i>
-      </a>
-    </div>
-    <ul id="quarto-sidebar-section-appendix" class="collapse list-unstyled sidebar-section depth1 ">  
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../appendix/index.html" class="sidebar-item-text sidebar-link">Appendix</a>
+  <a href="../external/cof-zarr-reformat.html" class="sidebar-item-text sidebar-link">COF Zarr Access via Reformat</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../external/zarr-eosdis-store.html" class="sidebar-item-text sidebar-link">Zarr Example</a>
   </div>
 </li>
     </ul>
@@ -260,36 +255,21 @@
         <nav id="TOC" role="doc-toc">
 <h2 id="toc-title">On this page</h2>
 <ul>
-<li><a href="#overview" class="nav-link active" data-scroll-target="#overview">Overview</a>
+<li><a href="#nasa-earthdata-api-client" class="nav-link active" data-scroll-target="#nasa-earthdata-api-client"><img src="https://logos-world.net/wp-content/uploads/2020/05/NASA-Logo-1959-present.png" width="100px" align="middle"> NASA Earthdata API Client 🌍</a>
 <ul class="collapse">
-<li><a href="#why-use-the-earthdata-python-package" class="nav-link" data-scroll-target="#why-use-the-earthdata-python-package">Why use the <code>earthdata</code> Python package?</a></li>
-<li><a href="#installing-earthdata-with-condamamba" class="nav-link" data-scroll-target="#installing-earthdata-with-condamamba">Installing earthdata with conda/mamba</a></li>
-<li><a href="#nasa-edl-and-the-auth-class" class="nav-link" data-scroll-target="#nasa-edl-and-the-auth-class">NASA EDL and the Auth class</a></li>
+<li><a href="#overview" class="nav-link" data-scroll-target="#overview">Overview</a>
+<ul class="collapse">
+<li><a href="#why" class="nav-link" data-scroll-target="#why">Why?</a></li>
 </ul></li>
-<li><a href="#querying-for-data-collections-datasets" class="nav-link" data-scroll-target="#querying-for-data-collections-datasets">1. <strong>Querying for data collections</strong> (datasets)</a>
-<ul class="collapse">
-<li><a href="#cloud-or-on-prem-with-a-simple-parameter" class="nav-link" data-scroll-target="#cloud-or-on-prem-with-a-simple-parameter">Cloud or On-prem with a simple parameter</a></li>
-</ul></li>
-<li><a href="#querying-for-data-granules" class="nav-link" data-scroll-target="#querying-for-data-granules">2. <strong>Querying for data granules</strong></a></li>
-<li><a href="#accessing-the-data" class="nav-link" data-scroll-target="#accessing-the-data">3. <strong>Accessing the data</strong></a>
-<ul class="collapse">
-<li><a href="#on-prem-access" class="nav-link" data-scroll-target="#on-prem-access"><strong>On-prem access</strong> 📡</a></li>
-<li><a href="#cloud-access" class="nav-link" data-scroll-target="#cloud-access"><strong>Cloud access</strong> ☁️</a></li>
-<li><a href="#cloud-access-part-ii-opening-files-with-s3fs" class="nav-link" data-scroll-target="#cloud-access-part-ii-opening-files-with-s3fs">☁️ <strong>Cloud Access Part II: Opening files with S3FS</strong></a></li>
-</ul></li>
-<li><a href="#recap" class="nav-link" data-scroll-target="#recap">Recap</a>
-<ul class="collapse">
-<li><a href="#related-links" class="nav-link" data-scroll-target="#related-links">Related links</a></li>
 </ul></li>
 </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/edit/main/examples/earthdata-access-demo.ipynb" class="toc-action">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/edit/main/examples/earthdata-access-demo.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
-<header id="title-block-header" class="quarto-title-block default">
 
-<div class="quarto-title"><h1 class="title d-none d-lg-block display-7">NASA Earthdata API Client 🌍</h1></div></header>
-
+<section id="nasa-earthdata-api-client" class="level1">
+<h1><img src="https://logos-world.net/wp-content/uploads/2020/05/NASA-Logo-1959-present.png" width="100px" align="middle"> NASA Earthdata API Client 🌍</h1>
 <section id="overview" class="level2">
 <h2 class="anchored" data-anchor-id="overview">Overview</h2>
 <section id="tldr-earthdata-is-a-python-package-to-search-preview-and-access-nasa-datasets-on-prem-or-in-the-cloud-with-a-few-lines-of-code." class="level4">
@@ -311,22 +291,21 @@
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Now to the important science!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="why-use-the-earthdata-python-package" class="level3">
-<h3 class="anchored" data-anchor-id="why-use-the-earthdata-python-package">Why use the <code>earthdata</code> Python package?</h3>
+<section id="why" class="level3">
+<h3 class="anchored" data-anchor-id="why">Why?</h3>
 <p>There are many ways to access NASA datasets, we can use the <a href="https://search.earthdata.nasa.gov/">Earthdata search portal</a>. We can use DAAC specific portals or tools. We could even use <a href="https://data.gov">data.gov</a>! Web portals are great but they are not designed for programmatic access and reproducible workflows. This is extremely important in the age of the cloud and reproducible open science.</p>
 <p>The good news is that NASA also exposes APIs that allows us to search, transform and access data in a programmatic way. Many of these libraries contain amazing features and some similarities. In this context, <strong>earthdata</strong> aims to be a simple library that can deal with the important parts of the metadata so we can access or download data without having to worry if a given dataset is on-prem or in the cloud.</p>
 <table class="table">
-<caption>Earthdata Access Comparison</caption>
 <colgroup>
-<col style="width: 11%">
-<col style="width: 11%">
-<col style="width: 11%">
-<col style="width: 11%">
-<col style="width: 11%">
-<col style="width: 11%">
-<col style="width: 11%">
-<col style="width: 11%">
-<col style="width: 11%">
+<col style="width: 14%">
+<col style="width: 8%">
+<col style="width: 14%">
+<col style="width: 8%">
+<col style="width: 14%">
+<col style="width: 8%">
+<col style="width: 14%">
+<col style="width: 8%">
+<col style="width: 8%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -432,223 +411,9 @@
 </tr>
 </tbody>
 </table>
-</section>
-<section id="installing-earthdata-with-condamamba" class="level3">
-<h3 class="anchored" data-anchor-id="installing-earthdata-with-condamamba">Installing earthdata with conda/mamba</h3>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> <span class="at">-c</span> conda-forge install earthdata</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="nasa-edl-and-the-auth-class" class="level3">
-<h3 class="anchored" data-anchor-id="nasa-edl-and-the-auth-class">NASA EDL and the Auth class</h3>
-<p>What is Earthdata Login (EDL)?</p>
-<p>Earthdata Login provides free and immediate access to thousands of EOSDIS data products covering all Earth science disciplines and topic areas for researchers, applied science users, application developers, and the general public. For more information about Earthdata Login benefits, features, and terms of service, go to What do I need to know about Earthdata Login.To learn more about EOSDIS and its mission to meet the needs of diverse users, please visit our <a href="https://urs.earthdata.nasa.gov/documentation/for_users/welcome">Earthdata Website</a>.</p>
-<p>The <code>Auth</code> class will handle authentication with NASA Earthdata for both on-prem or cloud-hosted datasets</p>
-<div class="cell">
-<div class="sourceCode" id="cb3"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># We import the classes from earthdata</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> earthdata <span class="im">import</span> Auth, DataCollections, DataGranules, Store</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>auth <span class="op">=</span> Auth()</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># First we try to use a .netrc, if it's not present we use the interactive login</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="kw">not</span> auth.login(strategy<span class="op">=</span><span class="st">"netrc"</span>):</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    auth.login(strategy<span class="op">=</span><span class="st">"interactive"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-</section>
-<section id="querying-for-data-collections-datasets" class="level2">
-<h2 class="anchored" data-anchor-id="querying-for-data-collections-datasets">1. <strong>Querying for data collections</strong> (datasets)</h2>
-<p>The DataCollection client can query CMR for any collection using all of CMR’s Query parameters and has built-in accessors for the common ones. This makes it ideal for one liners and easier search notation.</p>
-<blockquote class="blockquote">
-<p>Note: use bbox finder to get bounding box coordinates of an area of interest, <a href="http://bboxfinder.com/#0.000000,0.000000,0.000000,0.000000">bboxfinder</a></p>
-</blockquote>
-<p><strong><a href="https://cmr.earthdata.nasa.gov/search/site/docs/search/api.html">CMR API Documentation</a></strong></p>
-<div class="cell">
-<div class="sourceCode" id="cb4"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pprint <span class="im">import</span> pprint</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># We can now search for collections using a pythonic API client for CMR.</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># CollectionQuery = DataCollections().keyword('elevation change').bounding_box(-134.7,58.9,-133.9,59.2).temporal("2016-01-01", "2020-12-12")</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>CollectionQuery <span class="op">=</span> DataCollections().parameters(</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    keyword <span class="op">=</span> <span class="st">'earth wind fire'</span>,</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    bounding_box <span class="op">=</span> (<span class="op">-</span><span class="fl">134.7</span>,<span class="fl">58.9</span>,<span class="op">-</span><span class="fl">133.9</span>,<span class="fl">59.2</span>),</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    temporal <span class="op">=</span> (<span class="st">"2016-01-01"</span>, <span class="st">"2020-12-12"</span>)</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Collections found: </span><span class="sc">{</span>CollectionQuery<span class="sc">.</span>hits()<span class="sc">}</span><span class="ss">'</span>)</span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="co"># filtering what UMM fields to print using display(), meta is always included</span></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>collections <span class="op">=</span> CollectionQuery.fields([<span class="st">'ShortName'</span>, <span class="st">'Abstract'</span>, <span class="st">'Version'</span>]).get(<span class="dv">5</span>)</span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Inspect 5 results printing just the ShortName and Abstract</span></span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> collection <span class="kw">in</span> collections:</span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>    <span class="co"># print(collection["meta"]["concept-id"])</span></span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(collection.concept_id(), collection.version())</span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>    <span class="co"># pprint(collection)</span></span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>    <span class="co"># display(collection)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>The DataCollections class returns python dictionaries with some handy methods.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>collection.concept_id() <span class="co"># returns the concept-id, used to search for data granules</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>collection.abstract() <span class="co"># returns the abstract</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>collection.landing_page() <span class="co"># returns the landing page if present in the UMM fields</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>collection.get_data() <span class="co"># returns the portal where data can be accessed.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>The same results can be obtained using the <code>dict</code> syntax:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>collection[<span class="st">"meta"</span>][<span class="st">"concept-id"</span>] <span class="co"># concept-id</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>collection[<span class="st">"umm"</span>][<span class="st">"RelatedUrls"</span>] <span class="co"># URLs, with GET DATA, LANDING PAGE etc</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell">
-<div class="sourceCode" id="cb7"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># What if we want cloud collections</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>CollectionQuery <span class="op">=</span> DataCollections().daac(<span class="st">"PODAAC"</span>).cloud_hosted(<span class="va">True</span>)</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Collections found: </span><span class="sc">{</span>CollectionQuery<span class="sc">.</span>hits()<span class="sc">}</span><span class="ss">'</span>)</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>collections <span class="op">=</span> CollectionQuery.fields([<span class="st">'ShortName'</span>]).get(<span class="dv">10</span>)</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Printing 3 collections</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>collections[<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode" id="cb8"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Printing the concept-id for the first 10 collections</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>[collection.concept_id() <span class="cf">for</span> collection <span class="kw">in</span> collections]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<section id="cloud-or-on-prem-with-a-simple-parameter" class="level3">
-<h3 class="anchored" data-anchor-id="cloud-or-on-prem-with-a-simple-parameter">Cloud or On-prem with a simple parameter</h3>
-<ul>
-<li><code>cloud_hosted(True)</code> will return cloud collections</li>
-<li><code>cloud_hosted(False)</code> will return on-prem collections</li>
-</ul>
-<div class="cell">
-<div class="sourceCode" id="cb9"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>ShortName <span class="op">=</span> <span class="st">"SMAP_JPL_L3_SSS_CAP_8DAY-RUNNINGMEAN_V5"</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>collections <span class="op">=</span> DataCollections().short_name(ShortName).cloud_hosted(<span class="va">True</span>).get()</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> collection <span class="kw">in</span> collections:</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    concept_id <span class="op">=</span> collection.concept_id()</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(concept_id)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-</section>
-<section id="querying-for-data-granules" class="level2">
-<h2 class="anchored" data-anchor-id="querying-for-data-granules">2. <strong>Querying for data granules</strong></h2>
-<p>The DataGranules class provides similar functionality as the collection class. To query for granules in a more reliable way concept-id would be the main key. You can search data granules using a short name but that could (more likely will) return different versions of the same data granules.</p>
-<p>In this example we’re querying for 20 data grnaules from ICESat-2 <a href="https://nsidc.org/data/ATL03/versions/">ATL05</a> version <code>005</code> dataset.</p>
-<div class="cell">
-<div class="sourceCode" id="cb10"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generally speaking we won't need the auth instance for queries to collections and granules</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Query = DataGranules().short_name('ATL03').version("005").bounding_box(-134.7,58.9,-133.9,59.2)</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>GranuleQuery <span class="op">=</span> DataGranules().parameters(</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    short_name <span class="op">=</span> <span class="st">"ATL03"</span>,</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    version <span class="op">=</span> <span class="st">"005"</span>,</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    bounding_box <span class="op">=</span> (<span class="op">-</span><span class="fl">134.7</span>,<span class="fl">58.9</span>,<span class="op">-</span><span class="fl">133.9</span>,<span class="fl">59.2</span>),</span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># day_night_flag = "day",</span></span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># cloud_cover = (0,25),</span></span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># instrument = "MODIS",</span></span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># platform = "TERRA"</span></span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>granules <span class="op">=</span> GranuleQuery.get(<span class="dv">3</span>)</span>
-<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> granule <span class="kw">in</span> granules:</span>
-<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>    <span class="co"># print(granule)</span></span>
-<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>    <span class="co"># pprint(granule)</span></span>
-<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>    display(granule)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="accessing-the-data" class="level2">
-<h2 class="anchored" data-anchor-id="accessing-the-data">3. <strong>Accessing the data</strong></h2>
-<p>With <code>earthdata</code> a researcher can get the files regardless if they are on-prem or cloud based with the same API call, although an important consideration is that if we want to access data in the cloud we must run the code in the cloud. This is because some S3 buckets are configured to only allow direct access (s3:// links) if the requester is in the same zone, <code>us-west-2</code>.</p>
-<section id="on-prem-access" class="level3">
-<h3 class="anchored" data-anchor-id="on-prem-access"><strong>On-prem access</strong> 📡</h3>
-<p>DAAC hosted data</p>
-<div class="cell">
-<div class="sourceCode" id="cb11"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># C2208422957-POCLOUD, cloud hosted</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>cloud_collection <span class="op">=</span> <span class="st">"C2208422957-POCLOUD"</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>onprem_collection <span class="op">=</span> <span class="st">"C1972955240-PODAAC"</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="co"># The store class will get us the granules from their location</span></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>store <span class="op">=</span> Store(auth) </span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>GranuleQuery <span class="op">=</span> DataGranules().concept_id(onprem_collection).bounding_box(<span class="op">-</span><span class="fl">134.7</span>,<span class="fl">54.9</span>,<span class="op">-</span><span class="fl">100.9</span>,<span class="fl">69.2</span>)</span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Granule hits: </span><span class="sc">{</span>GranuleQuery<span class="sc">.</span>hits()<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="co"># getting more than 6,000 metadata records for demo purposes is going to slow us down a bit so let's get only 100</span></span>
-<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>onprem_granules <span class="op">=</span> GranuleQuery.get(<span class="dv">10</span>)</span>
-<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Does this granule belong to a cloud-based collection?</span></span>
-<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>onprem_granules[<span class="dv">0</span>].cloud_hosted</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode" id="cb12"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>time</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co"># accessing the data on prem means downloading it if we are in a local environment or "uploading them" if we are in the cloud.</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>files <span class="op">=</span> store.get(onprem_granules[<span class="dv">0</span>:<span class="dv">3</span>], <span class="st">"./data/"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="cloud-access" class="level3">
-<h3 class="anchored" data-anchor-id="cloud-access"><strong>Cloud access</strong> ☁️</h3>
-<p>Same API, just a different place</p>
-<div class="cell">
-<div class="sourceCode" id="cb13"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>GranuleQuery <span class="op">=</span> DataGranules().concept_id(cloud_collection).bounding_box(<span class="op">-</span><span class="fl">134.7</span>,<span class="fl">54.9</span>,<span class="op">-</span><span class="fl">100.9</span>,<span class="fl">69.2</span>)</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Granule hits: </span><span class="sc">{</span>GranuleQuery<span class="sc">.</span>hits()<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>cloud_granules <span class="op">=</span> GranuleQuery.get(<span class="dv">10</span>)</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co"># is this a cloud hosted data granule?</span></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>cloud_granules[<span class="dv">0</span>].cloud_hosted</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode" id="cb14"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>time</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"># accessing the data on prem means downloading it if we are in a local environment or "uploading them" if we are in the cloud.</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>files <span class="op">=</span> store.get(cloud_granules[<span class="dv">0</span>:<span class="dv">3</span>], <span class="st">"./data/"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="cloud-access-part-ii-opening-files-with-s3fs" class="level3">
-<h3 class="anchored" data-anchor-id="cloud-access-part-ii-opening-files-with-s3fs">☁️ <strong>Cloud Access Part II: Opening files with S3FS</strong></h3>
-<p>Being in the cloud allows us to stream data as if we were using it locally. Pairing gridded datasets on S3 and xarray isa very useful patter when we deal with a lot of data.</p>
-<div class="cell">
-<div class="sourceCode" id="cb15"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># data_links = cloud_granules[0].data_links(s3_only=True)</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>https_links <span class="op">=</span> []</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>s3_links <span class="op">=</span> []</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: earthdata should be able to infer the provider based on URL, </span></span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="co"># it does it when we use the DataGranules but not with plain URLs</span></span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>fs <span class="op">=</span> Store(auth).get_s3fs_session(<span class="st">'POCLOUD'</span>)</span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> granule <span class="kw">in</span> cloud_granules[<span class="dv">0</span>:<span class="dv">10</span>]:</span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>    https_links.append(granule.data_links()[<span class="dv">0</span>])</span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>    s3_links.append(granule.data_links(s3_only<span class="op">=</span><span class="va">True</span>)[<span class="dv">0</span>])</span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>fileset <span class="op">=</span> [fs.<span class="bu">open</span>(s3_granule)<span class="cf">for</span> s3_granule <span class="kw">in</span> s3_links[<span class="dv">0</span>:<span class="dv">5</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode" id="cb16"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>time</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> xarray <span class="im">as</span> xr</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>lonrange <span class="op">=</span> [<span class="op">-</span><span class="dv">160</span>, <span class="op">-</span><span class="dv">130</span>]</span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>latrange <span class="op">=</span> [<span class="dv">68</span>, <span class="dv">80</span>]</span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>ds_smap_L3 <span class="op">=</span> xr.open_mfdataset(</span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>    fileset,</span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>    combine<span class="op">=</span><span class="st">'nested'</span>,</span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>    concat_dim<span class="op">=</span><span class="st">'time'</span>,</span>
-<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>    decode_cf<span class="op">=</span><span class="va">True</span>,</span>
-<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>    coords<span class="op">=</span><span class="st">'minimal'</span>,</span>
-<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>    chunks<span class="op">=</span>{<span class="st">'time'</span>: <span class="dv">1</span>}</span>
-<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>    ).sel(longitude<span class="op">=</span><span class="bu">slice</span>(lonrange[<span class="dv">0</span>],lonrange[<span class="dv">1</span>]), latitude<span class="op">=</span><span class="bu">slice</span>(latrange[<span class="dv">1</span>],latrange[<span class="dv">0</span>]))</span>
-<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>ds_smap_L3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-</section>
-<section id="recap" class="level2">
-<h2 class="anchored" data-anchor-id="recap">Recap</h2>
-<p><strong>Wait, we said 4 lines of Python</strong></p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> earthdata <span class="im">import</span> Auth, DataGranules, Store</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>auth <span class="op">=</span> Auth().login(strategy<span class="op">=</span><span class="st">"netrc"</span>)</span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>granules <span class="op">=</span> DataGranules().concept_id(<span class="st">"C1575731655-LPDAAC_ECS"</span>).bounding_box(<span class="op">-</span><span class="fl">134.7</span>,<span class="fl">58.9</span>,<span class="op">-</span><span class="fl">133.9</span>,<span class="fl">59.2</span>).get()</span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>files <span class="op">=</span> Store(auth).get(granules, local_path<span class="op">=</span><span class="st">'./data'</span>)</span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Now to the important science!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<section id="related-links" class="level3">
-<h3 class="anchored" data-anchor-id="related-links">Related links</h3>
-<p><strong>CMR</strong> API documentation: https://cmr.earthdata.nasa.gov/search/site/docs/search/api.html</p>
-<p><strong>EDL</strong> API documentation: https://urs.earthdata.nasa.gov/</p>
-<p>NASA OpenScapes: https://nasa-openscapes.github.io/earthdata-cloud-cookbook/</p>
-<p>Github repository: https://github.com/nsidc/earthdata</p>
-<p>Contact: luis.lopez@nsidc.org</p>
 
 
+</section>
 </section>
 </section>
 </main> <!-- /main -->
