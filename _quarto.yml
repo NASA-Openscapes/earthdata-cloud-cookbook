@@ -36,7 +36,7 @@ website:
          # - get-started/api-primer.qmd
       - section: "Example tutorials"
         contents:
-          - href: examples/earthdata-access-demo.ipynb
+          - href: examples/earthdata-access-demo.qmd
             text: "NASA Earthdata Access Demo"
           - href: examples/NSIDC/ICESat2-CMR-OnPrem-vs-Cloud.ipynb
             text: "Search & Download NSIDC Cloud"
@@ -46,11 +46,9 @@ website:
             text: "Direct Access & Harmony Workflow"
           - href: examples/USGS_Landsat/Landsat_C2_Search_Access.ipynb
             text: "Search & Access USGS Landsat Cloud"  
-          - examples/ORNL/Data_Access__Direct_S3_Access__ORNL_DAYMET.ipynb  
-      - section: "Appendix"
-        contents:
-          - appendix/index.md
-          - transformations/harmonypy.md
+          - examples/ORNL/Data_Access__Direct_S3_Access__ORNL_DAYMET.ipynb
+          - external/cof-zarr-reformat.ipynb
+          - external/zarr-eosdis-store.ipynb
       - section: "Contributing"
         contents:
           - contributing/index.md
