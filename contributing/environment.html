@@ -3,7 +3,7 @@
   <meta charset="utf-8">
   <meta name="generator" content="quarto-0.9.105">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>EarthData Cloud Cookbook – zarr-eosdis-store</title>
+  <title>EarthData Cloud Cookbook - JupyterHub environment</title>
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -11,69 +11,6 @@
     div.column{display: inline-block; vertical-align: top; width: 50%;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
-    pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-    pre > code.sourceCode > span:empty { height: 1.2em; }
-    .sourceCode { overflow: visible; }
-    code.sourceCode > span { color: inherit; text-decoration: inherit; }
-    div.sourceCode { margin: 1em 0; }
-    pre.sourceCode { margin: 0; }
-    @media screen {
-    div.sourceCode { overflow: auto; }
-    }
-    @media print {
-    pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-    }
-    pre.numberSource code
-      { counter-reset: source-line 0; }
-    pre.numberSource code > span
-      { position: relative; left: -4em; counter-increment: source-line; }
-    pre.numberSource code > span > a:first-child::before
-      { content: counter(source-line);
-        position: relative; left: -1em; text-align: right; vertical-align: baseline;
-        border: none; display: inline-block;
-        -webkit-touch-callout: none; -webkit-user-select: none;
-        -khtml-user-select: none; -moz-user-select: none;
-        -ms-user-select: none; user-select: none;
-        padding: 0 4px; width: 4em;
-        color: #aaaaaa;
-      }
-    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-    div.sourceCode
-      {   }
-    @media screen {
-    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-    }
-    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-    code span.at { color: #7d9029; } /* Attribute */
-    code span.bn { color: #40a070; } /* BaseN */
-    code span.bu { } /* BuiltIn */
-    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-    code span.ch { color: #4070a0; } /* Char */
-    code span.cn { color: #880000; } /* Constant */
-    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-    code span.dt { color: #902000; } /* DataType */
-    code span.dv { color: #40a070; } /* DecVal */
-    code span.er { color: #ff0000; font-weight: bold; } /* Error */
-    code span.ex { } /* Extension */
-    code span.fl { color: #40a070; } /* Float */
-    code span.fu { color: #06287e; } /* Function */
-    code span.im { } /* Import */
-    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-    code span.op { color: #666666; } /* Operator */
-    code span.ot { color: #007020; } /* Other */
-    code span.pp { color: #bc7a00; } /* Preprocessor */
-    code span.sc { color: #4070a0; } /* SpecialChar */
-    code span.ss { color: #bb6688; } /* SpecialString */
-    code span.st { color: #4070a0; } /* String */
-    code span.va { color: #19177c; } /* Variable */
-    code span.vs { color: #4070a0; } /* VerbatimString */
-    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
   </style>
 
   <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -82,8 +19,6 @@
   <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
   <script src="../site_libs/quarto-search/fuse.min.js"></script>
   <script src="../site_libs/quarto-search/quarto-search.js"></script>
-  <link href="../contributing/index.html" rel="next">
-  <link href="../external/cof-zarr-reformat.html" rel="prev">
   <script src="../site_libs/quarto-html/quarto.js"></script>
   <script src="../site_libs/quarto-html/popper.min.js"></script>
   <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -124,7 +59,7 @@
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">(Untitled)</h1>
+      <h1 class="quarto-secondary-nav-title">JupyterHub environment</h1>
       <button type="button" class="quarto-btn-toggle btn">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -164,12 +99,12 @@
 </li>
         <li class="sidebar-item sidebar-item-section">
     <div class="sidebar-item-container"> 
-        <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-example-tutorials" aria-expanded="true">Example tutorials</a>
-      <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-example-tutorials" aria-expanded="true">
+        <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-example-tutorials" aria-expanded="false">Example tutorials</a>
+      <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-example-tutorials" aria-expanded="false">
         <i class="bi bi-chevron-right ms-2"></i>
       </a>
     </div>
-    <ul id="quarto-sidebar-section-example-tutorials" class="collapse list-unstyled sidebar-section depth1 show">  
+    <ul id="quarto-sidebar-section-example-tutorials" class="collapse list-unstyled sidebar-section depth1 ">  
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../examples/earthdata-access-demo.html" class="sidebar-item-text sidebar-link">NASA Earthdata Access Demo</a>
@@ -207,7 +142,7 @@
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../external/zarr-eosdis-store.html" class="sidebar-item-text sidebar-link active">Zarr Example</a>
+  <a href="../external/zarr-eosdis-store.html" class="sidebar-item-text sidebar-link">Zarr Example</a>
   </div>
 </li>
     </ul>
@@ -255,88 +190,34 @@
         <nav id="TOC" role="doc-toc">
 <h2 id="toc-title">On this page</h2>
 <ul>
-<li><a href="#zarr-example" class="nav-link active" data-scroll-target="#zarr-example">Zarr Example</a></li>
-<li><a href="#zarr-eosdis-store-example" class="nav-link" data-scroll-target="#zarr-eosdis-store-example">zarr-eosdis-store example</a></li>
+<li><a href="#introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+<li><a href="#more-background" class="nav-link" data-scroll-target="#more-background">More background</a></li>
 </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/edit/main/external/zarr-eosdis-store.ipynb" class="toc-action">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/edit/main/contributing/environment.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
+<header id="title-block-header" class="quarto-title-block default">
 
-<section id="zarr-example" class="level1">
-<h1>Zarr Example</h1>
-<p>imported on: <strong>2022-05-09</strong></p>
-<p>
-This notebook is from NASA’s Zarr <strong>EOSDIS</strong> store notebook
-</p>
-<blockquote class="blockquote">
-<p>The original source for this document is <a href="https://github.com/nasa/zarr-eosdis-store">https://github.com/nasa/zarr-eosdis-store</a></p>
-</blockquote>
+<div class="quarto-title"><h1 class="title d-none d-lg-block display-7">JupyterHub environment</h1></div></header>
+
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>Our JupyterHub is managed by 2i2c; see background from the 2021 Cloud Hackathon [JupyterHub intro]](https://nasa-openscapes.github.io/2021-Cloud-Hackathon/clinic/jupyterhub.html).</p>
+<p>We create the environment with software packages for everyone to use - this includes python packages and quarto. Our environment is called <a href="https://github.com/NASA-Openscapes/corn"><strong>corn</strong></a>, developed by NSIDC software engineer Luis Lopez. Here are some notes about corn; please refer to the GitHub README for details about installation.</p>
+<p>When looking at <code>environment.yml</code>: - Main dependency is <code>python</code>. Python 3.9 has some stability “pinned” the version - Next thing: <code>pangeo-notebook</code>. This is not pinned to a version, whatever their latest is best. This is what makes environment run in 2i2c - The rest are optional, they’ve been added as different groups want them - It runs on linux-64 and mac-OS - side note: <code>~</code> means “don’t update past breaking versions”.</p>
+<p>Now getting to a point where they are conflicting and can get into problems with deprecation and failing the environment. Next strategy: trim down “core” corn environment. Then have a process &amp; writeup for teams to copy that environment and add their additional packages, and make sure it’s the one running in 2i2c. Point to existing resources as much as possible (i.e.&nbsp;Turing Way, Pangeo, Pythia); link to them from here and provide our-case-specific details here.</p>
 </section>
-<section id="zarr-eosdis-store-example" class="level1">
-<h1>zarr-eosdis-store example</h1>
-<p>Install dependencies</p>
-<div class="cell" data-tags="[]">
-<div class="sourceCode" id="cb1"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># zarr and zarr-eosdis-store, the main libraries being demoed</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>{sys.executable} <span class="op">-</span>m pip install zarr zarr<span class="op">-</span>eosdis<span class="op">-</span>store</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Notebook-specific libraries</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>{sys.executable} <span class="op">-</span>m pip install matplotlib</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><strong>Important</strong>: To run this, you must first create an Earthdata Login account (https://urs.earthdata.nasa.gov) and place your credentials in ~/.netrc e.g.:</p>
-<pre><code>   machine urs.earthdata.nasa.gov login YOUR_USER password YOUR_PASSWORD</code></pre>
-<p>Never share or commit your password / .netrc file!</p>
-<p>Basic usage. After these lines, we work with <code>ds</code> as though it were a normal Zarr dataset</p>
-<div class="cell" data-execution_count="2">
-<div class="sourceCode" id="cb3"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> zarr</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> eosdis_store <span class="im">import</span> EosdisStore</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">'https://archive.podaac.earthdata.nasa.gov/podaac-ops-cumulus-protected/MUR-JPL-L4-GLOB-v4.1/20210715090000-JPL-L4_GHRSST-SSTfnd-MUR-GLOB-v02.0-fv04.1.nc'</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>ds <span class="op">=</span> zarr.<span class="bu">open</span>(EosdisStore(url))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>View the file’s variable structure</p>
-<div class="cell" data-execution_count="3">
-<div class="sourceCode" id="cb4"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(ds.tree())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
-<pre><code>/
- ├── analysed_sst (1, 17999, 36000) int16
- ├── analysis_error (1, 17999, 36000) int16
- ├── dt_1km_data (1, 17999, 36000) int16
- ├── lat (17999,) float32
- ├── lon (36000,) float32
- ├── mask (1, 17999, 36000) int16
- ├── sea_ice_fraction (1, 17999, 36000) int16
- ├── sst_anomaly (1, 17999, 36000) int16
- └── time (1,) int32</code></pre>
-</div>
-</div>
-<p>Fetch the latitude and longitude arrays and determine start and end indices for our area of interest. In this case, we’re looking at the Great Lakes, which have a nice, recognizeable shape. Latitudes 41 to 49, longitudes -93 to 76.</p>
-<div class="cell" data-execution_count="4">
-<div class="sourceCode" id="cb6"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>lats <span class="op">=</span> ds[<span class="st">'lat'</span>][:]</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>lons <span class="op">=</span> ds[<span class="st">'lon'</span>][:]</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>lat_range <span class="op">=</span> <span class="bu">slice</span>(lats.searchsorted(<span class="dv">41</span>), lats.searchsorted(<span class="dv">49</span>))</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>lon_range <span class="op">=</span> <span class="bu">slice</span>(lons.searchsorted(<span class="op">-</span><span class="dv">93</span>), lons.searchsorted(<span class="op">-</span><span class="dv">76</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Get the analysed sea surface temperature variable over our area of interest and apply scale factor and offset from the file metadata. In a future release, scale factor and add offset will be automatically applied.</p>
-<div class="cell" data-execution_count="5">
-<div class="sourceCode" id="cb7"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>var <span class="op">=</span> ds[<span class="st">'analysed_sst'</span>]</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>analysed_sst <span class="op">=</span> var[<span class="dv">0</span>, lat_range, lon_range] <span class="op">*</span> var.attrs[<span class="st">'scale_factor'</span>] <span class="op">+</span> var.attrs[<span class="st">'add_offset'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Draw a pretty picture</p>
-<div class="cell" data-execution_count="6">
-<div class="sourceCode" id="cb8"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib <span class="im">import</span> pyplot <span class="im">as</span> plt</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>plt.rcParams[<span class="st">"figure.figsize"</span>] <span class="op">=</span> [<span class="dv">16</span>, <span class="dv">8</span>]</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>plt.imshow(analysed_sst[::<span class="op">-</span><span class="dv">1</span>, :])</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="va">None</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="zarr-eosdis-store_files/figure-html/cell-7-output-1.png" class="img-fluid"></p>
-</div>
-</div>
-<p>In a dozen lines of code and a few seconds, we have managed to fetch and visualize the 3.2 megabyte we needed from a 732 megabyte file using the original archive URL and no processing services</p>
+<section id="more-background" class="level2">
+<h2 class="anchored" data-anchor-id="more-background">More background</h2>
+<p>Some articles about Python environments with Conda that are interesting and related to our 2i2c workflow:</p>
+<ul>
+<li>https://www.anaconda.com/blog/understanding-and-improving-condas-performance</li>
+<li>https://medium.com/<span class="citation" data-cites="marius.v.niekerk/conda-metachannel-f962241c9437">@marius.v.niekerk/conda-metachannel-f962241c9437</span></li>
+<li>https://wolfv.medium.com/making-conda-fast-again-4da4debfb3b7</li>
+<li>https://pythonspeed.com/articles/conda-dependency-management/</li>
+</ul>
+<p>We are doing what article the fourth article describes. We are using conda-lock with versioned dependencies. Since corn was designed to run in 2i2c I never bothered to test it for windows or OSx but I think we should offer that possibility. I added OSX and will need some volunteers to test it on Windows.</p>
 
 
 </section>
@@ -514,18 +395,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="../external/cof-zarr-reformat.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">COF Zarr Access via Reformat</span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="../contributing/index.html" class="pagination-link">
-        <span class="nav-page-text">Contributing</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
