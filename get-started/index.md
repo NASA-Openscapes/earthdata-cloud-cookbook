@@ -8,20 +8,44 @@ Working with NASA Earthdata in the Cloud requires programmatic access, which for
 
 ## Learning to code
 
-For programmatic access to NASA data on the cloud, we recommend familiarity with basic programming in R or Python. Here are resources we recommend to help get you started:
+For programmatic access to NASA data on the cloud, we recommend familiarity with basic programming in R or Python. Here are resources we recommend to help get you started.
 
--   [**Introduction to Open Data Science with R**](https://rstudio-conf-2020.github.io/r-for-excel/) - Lowndes & Horst, RStudio Conference 2020
--   [**Introduction to Geospatial Raster and Vector Data with Python**](https://carpentries-incubator.github.io/geospatial-python/) - Carpentries Incubator
+-   **Intro NASA Earthdata on the Cloud**
 
-Using both the Scientific Python Ecosystem and Cloud Computing together:
+    -   [NASA Earthdata Cloud tutorials - NASA Openscapes Mentors](https://nasa-openscapes.github.io/tutorials.html). Follow-along tutorials for the Openscapes 2i2c JupyterHub
 
--   [**Project Pythia Foundations Book**](https://foundations.projectpythia.org/landing-page.html)
--   [**Jupyter meets Earth**](https://jupytearth.org/)
+    -   [NASA Earthdata Glossary](https://earthdata.nasa.gov/learn/user-resources/glossary) 
 
+-   **Intro Python**
+
+    -   [Duke STA-663 - Colin Rundel](https://sta663-sp22.github.io/). Lecture slides & recordings, code & notebooks. Features Jupyter, git, numpy, scipy, pandas, scikit-learn...
+
+    -   [Intro to Geospatial Raster and Vector Data with Python - Carpentries](https://carpentries-incubator.github.io/geospatial-python/). Follow-along tutorials & code. Features NEON data, intro to rasters & geostats rioxarray, geopandas...
+
+    -   [Intro to Earth and Environmental Data Science- Ryan Abernathy](https://earth-env-data-science.github.io/intro.html). Intro to Python, JupyterLab, Unix, Git, some packages & workflows
+
+-   **Intro R**
+
+    -   [Intro to Open Data Science with R - Lowndes & Horst](https://rstudio-conf-2020.github.io/r-for-excel/). Follow-along tutorials & code. Features workflows with RMarkdown, tidyverse, RStudio, GitHub...
+
+    -   [What they forgot to teach you about R - Bryan & Hester](https://rstats.wtf/). Reinforcing lessons for moderately experienced R users
+
+    -   [R for Data Science - Wickham & Grolemund.](https://r4ds.had.co.nz/) - All things tidyverse, including dates, plots, modeling, programming, RMarkdown
+
+        -   Online learning community/book club: [rfordatasci.com](https://www.rfordatasci.com/)
+
+-   **Scientific Python Ecosystem and Cloud Computing together:**
+
+        -   [Project Pythia Foundations Book](https://foundations.projectpythia.org/landing-page.html)
+
+        -   [Jupyter meets Earth](https://jupytearth.org/)
+
+
+```{=html}
 <!---TODO https://fabienmaussion.info/scientific_programming/welcome.html 
 review Tiffany Timbers eg https://ubc-mds.github.io/DSCI_524_collab-sw-dev/README.html
 --->
-
+```
 ## Cloud Optimized Data Formats
 
 Some nice info here from Pangeo about Cloud Optimized Data Formats.

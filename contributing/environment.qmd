@@ -1,0 +1,29 @@
+---
+title: JupyterHub environment
+---
+
+## Introduction
+
+Our JupyterHub is managed by 2i2c; see background from the 2021 Cloud Hackathon [JupyterHub intro]](https://nasa-openscapes.github.io/2021-Cloud-Hackathon/clinic/jupyterhub.html). 
+
+We create the environment with software packages for everyone to use - this includes python packages and quarto. Our environment is called [**corn**](https://github.com/NASA-Openscapes/corn), developed by NSIDC software engineer Luis Lopez. Here are some notes about corn; please refer to the GitHub README for details about installation. 
+
+When looking at `environment.yml`:
+- Main dependency is `python`. Python 3.9 has some stability “pinned” the version
+- Next thing: `pangeo-notebook`. This is not pinned to a version, whatever their latest is best. This is what makes environment run in 2i2c
+- The rest are optional, they've been added as different groups want them
+- It runs on linux-64 and mac-OS
+- side note: `~` means “don’t update past breaking versions”. 
+
+Now getting to a point where they are conflicting and can get into problems with deprecation and failing the environment. Next strategy: trim down “core” corn environment. Then have a process & writeup for teams to copy that environment and add their additional packages, and make sure it’s the one running in 2i2c. Point to existing resources as much as possible (i.e. Turing Way, Pangeo, Pythia); link to them from here and provide our-case-specific details here.
+
+## More background
+
+Some articles about Python environments with Conda that are interesting and related to our 2i2c workflow:
+
+- https://www.anaconda.com/blog/understanding-and-improving-condas-performance
+- https://medium.com/@marius.v.niekerk/conda-metachannel-f962241c9437
+- https://wolfv.medium.com/making-conda-fast-again-4da4debfb3b7
+- https://pythonspeed.com/articles/conda-dependency-management/
+
+We are doing what article the fourth article describes. We are using conda-lock with versioned dependencies. Since corn was designed to run in 2i2c I never bothered to test it for windows or OSx but I think we should offer that possibility. I added OSX and will need some volunteers to test it on Windows. 
