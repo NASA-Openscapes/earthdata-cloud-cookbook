@@ -49,6 +49,11 @@ website:
           - examples/ORNL/Data_Access__Direct_S3_Access__ORNL_DAYMET.ipynb
           - external/cof-zarr-reformat.ipynb
           - external/zarr-eosdis-store.ipynb
+          - section: "Kerchunk examples"
+            contents: 
+              - examples/GESDISC/GESDISC_MERRA2_tavg1_2d_flx_Nx__Kerchunk.ipynb
+              - examples/LPDAAC/LPDAAC_ECOSTRESS_LSTE__Kerchunk.ipynb
+              - examples/PODAAC/PODAAC_ECCO_SSH__Kerchunk.ipynb
       - section: "Contributing"
         contents:
           - contributing/index.md
