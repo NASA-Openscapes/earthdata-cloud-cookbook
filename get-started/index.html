@@ -3,7 +3,7 @@
   <meta charset="utf-8">
   <meta name="generator" content="quarto-0.9.105">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>EarthData Cloud Cookbook - Overview: How to use this Cookbook</title>
+  <title>EarthData Cloud Cookbook - Overview</title>
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -19,8 +19,6 @@
   <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
   <script src="../site_libs/quarto-search/fuse.min.js"></script>
   <script src="../site_libs/quarto-search/quarto-search.js"></script>
-  <link href="../examples/earthdata-access-demo.html" rel="next">
-  <link href="../index.html" rel="prev">
   <script src="../site_libs/quarto-html/quarto.js"></script>
   <script src="../site_libs/quarto-html/popper.min.js"></script>
   <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -56,12 +54,12 @@
   <![endif]-->
   <link rel="stylesheet" href="../styles.css">
 </head>
-<body class="docked">
+<body class="docked fullcontent">
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Overview: How to use this Cookbook</h1>
+      <h1 class="quarto-secondary-nav-title">Overview</h1>
       <button type="button" class="quarto-btn-toggle btn">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -74,7 +72,7 @@
   <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-center sidebar-header">
       <a href="../">
-      <img src="../nasa-openscapes.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      <img src="../images/nasa-openscapes.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
       <div class="sidebar-tools-main tools-wide">
     <a href="https://nasa-openscapes.github.io" title="NASA-Openscapes website" class="sidebar-tool px-1"><i class="bi bi-globe"></i></a>
@@ -96,17 +94,57 @@
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../get-started/index.html" class="sidebar-item-text sidebar-link active">Overview</a>
+  <a href="../cheatsheet.html" class="sidebar-item-text sidebar-link">Workflow Cheatsheet</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../using-cookbook.html" class="sidebar-item-text sidebar-link">Using the Cookbook</a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
     <div class="sidebar-item-container"> 
-        <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-example-tutorials" aria-expanded="false">Example tutorials</a>
-      <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-example-tutorials" aria-expanded="false">
+        <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-how-to-guides" aria-expanded="false">How To Guides</a>
+      <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-how-to-guides" aria-expanded="false">
         <i class="bi bi-chevron-right ms-2"></i>
       </a>
     </div>
-    <ul id="quarto-sidebar-section-example-tutorials" class="collapse list-unstyled sidebar-section depth1 ">  
+    <ul id="quarto-sidebar-section-how-to-guides" class="collapse list-unstyled sidebar-section depth1 ">  
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../how-to/search.html" class="sidebar-item-text sidebar-link">Search and discover</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../how-to/access.html" class="sidebar-item-text sidebar-link">Access</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../how-to/subset.html" class="sidebar-item-text sidebar-link">Subset</a>
+  </div>
+</li>
+    </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+    <div class="sidebar-item-container"> 
+        <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-tutorials" aria-expanded="false">Tutorials</a>
+      <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-tutorials" aria-expanded="false">
+        <i class="bi bi-chevron-right ms-2"></i>
+      </a>
+    </div>
+    <ul id="quarto-sidebar-section-tutorials" class="collapse list-unstyled sidebar-section depth1 ">  
+    </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+    <div class="sidebar-item-container"> 
+        <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-sandbox" aria-expanded="false">Sandbox</a>
+      <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-sandbox" aria-expanded="false">
+        <i class="bi bi-chevron-right ms-2"></i>
+      </a>
+    </div>
+    <ul id="quarto-sidebar-section-sandbox" class="collapse list-unstyled sidebar-section depth1 ">  
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../examples/earthdata-access-demo.html" class="sidebar-item-text sidebar-link">NASA Earthdata Access Demo</a>
@@ -208,72 +246,14 @@
     </div>
 </nav>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc">
-<h2 id="toc-title">On this page</h2>
-<ul>
-<li><a href="#learning-to-code" class="nav-link active" data-scroll-target="#learning-to-code">Learning to code</a></li>
-<li><a href="#cloud-optimized-data-formats" class="nav-link" data-scroll-target="#cloud-optimized-data-formats">Cloud Optimized Data Formats</a></li>
-<li><a href="#sw3-buckets-etc" class="nav-link" data-scroll-target="#sw3-buckets-etc">SW3 Buckets, etc</a></li>
-</ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/edit/main/get-started/index.md" class="toc-action">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
-    </div>
+    
 <!-- main -->
 <main class="content" id="quarto-document-content">
 <header id="title-block-header" class="quarto-title-block default">
 
-<div class="quarto-title"><h1 class="title d-none d-lg-block display-7">Overview: How to use this Cookbook</h1></div></header>
-
-<p>This Cookbook has mostly stand-alone recipes: both building blocks and end-to-end workflow examples that put together some of those building blocks. User can ‘choose their own adventure’ and build their own workflows based on their need.</p>
-<p>Working with NASA Earthdata in the Cloud requires programmatic access, which for open source languages often means coding in Python or R.</p>
-<section id="learning-to-code" class="level2">
-<h2 class="anchored" data-anchor-id="learning-to-code">Learning to code</h2>
-<p>For programmatic access to NASA data on the cloud, we recommend familiarity with basic programming in R or Python. Here are resources we recommend to help get you started.</p>
-<ul>
-<li><p><strong>Intro NASA Earthdata on the Cloud</strong></p>
-<ul>
-<li><p><a href="https://nasa-openscapes.github.io/tutorials.html">NASA Earthdata Cloud tutorials - NASA Openscapes Mentors</a>. Follow-along tutorials for the Openscapes 2i2c JupyterHub</p></li>
-<li><p><a href="https://earthdata.nasa.gov/learn/user-resources/glossary">NASA Earthdata Glossary</a>&nbsp;</p></li>
-</ul></li>
-<li><p><strong>Intro Python</strong></p>
-<ul>
-<li><p><a href="https://sta663-sp22.github.io/">Duke STA-663 - Colin Rundel</a>. Lecture slides &amp; recordings, code &amp; notebooks. Features Jupyter, git, numpy, scipy, pandas, scikit-learn…</p></li>
-<li><p><a href="https://carpentries-incubator.github.io/geospatial-python/">Intro to Geospatial Raster and Vector Data with Python - Carpentries</a>. Follow-along tutorials &amp; code. Features NEON data, intro to rasters &amp; geostats rioxarray, geopandas…</p></li>
-<li><p><a href="https://earth-env-data-science.github.io/intro.html">Intro to Earth and Environmental Data Science- Ryan Abernathy</a>. Intro to Python, JupyterLab, Unix, Git, some packages &amp; workflows</p></li>
-</ul></li>
-<li><p><strong>Intro R</strong></p>
-<ul>
-<li><p><a href="https://rstudio-conf-2020.github.io/r-for-excel/">Intro to Open Data Science with R - Lowndes &amp; Horst</a>. Follow-along tutorials &amp; code. Features workflows with RMarkdown, tidyverse, RStudio, GitHub…</p></li>
-<li><p><a href="https://rstats.wtf/">What they forgot to teach you about R - Bryan &amp; Hester</a>. Reinforcing lessons for moderately experienced R users</p></li>
-<li><p><a href="https://r4ds.had.co.nz/">R for Data Science - Wickham &amp; Grolemund.</a> - All things tidyverse, including dates, plots, modeling, programming, RMarkdown</p>
-<ul>
-<li>Online learning community/book club: <a href="https://www.rfordatasci.com/">rfordatasci.com</a></li>
-</ul></li>
-</ul></li>
-<li><p><strong>Scientific Python Ecosystem and Cloud Computing together:</strong></p>
-<pre><code>-   [Project Pythia Foundations Book](https://foundations.projectpythia.org/landing-page.html)
-
--   [Jupyter meets Earth](https://jupytearth.org/)</code></pre></li>
-</ul>
-<!---TODO https://fabienmaussion.info/scientific_programming/welcome.html 
-review Tiffany Timbers eg https://ubc-mds.github.io/DSCI_524_collab-sw-dev/README.html
---->
-</section>
-<section id="cloud-optimized-data-formats" class="level2">
-<h2 class="anchored" data-anchor-id="cloud-optimized-data-formats">Cloud Optimized Data Formats</h2>
-<p>Some nice info here from Pangeo about Cloud Optimized Data Formats.</p>
-<ul>
-<li><a href="https://medium.com/pangeo/cloud-performant-reading-of-netcdf4-hdf5-data-using-the-zarr-library-1a95c5c92314"><strong>Cloud-Performant NetCDF4/HDF5 Reading with the Zarr Library</strong></a></li>
-</ul>
-</section>
-<section id="sw3-buckets-etc" class="level2">
-<h2 class="anchored" data-anchor-id="sw3-buckets-etc">SW3 Buckets, etc</h2>
-<ul>
-<li><a href="https://earthdata.nasa.gov/learn/user-resources/webinars-and-tutorials/cloud-primer"><strong>NASA AWS Cloud Primer</strong></a></li>
-</ul>
+<div class="quarto-title"><h1 class="title d-none d-lg-block display-7">Overview</h1></div></header>
 
 
-</section>
 </main> <!-- /main -->
 <script type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -448,18 +428,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="../index.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Welcome</span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="../examples/earthdata-access-demo.html" class="pagination-link">
-        <span class="nav-page-text">NASA Earthdata Access Demo</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">

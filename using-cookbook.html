@@ -3,8 +3,7 @@
   <meta charset="utf-8">
   <meta name="generator" content="quarto-0.9.105">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <meta name="author" content="NASA Openscapes Team">
-  <title>EarthData Cloud Cookbook - Earthdata Cloud Cookbook</title>
+  <title>EarthData Cloud Cookbook - Using the Cookbook</title>
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -20,7 +19,8 @@
   <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
   <script src="site_libs/quarto-search/fuse.min.js"></script>
   <script src="site_libs/quarto-search/quarto-search.js"></script>
-  <link href="./cheatsheet.html" rel="next">
+  <link href="./how-to/search.html" rel="next">
+  <link href="./cheatsheet.html" rel="prev">
   <script src="site_libs/quarto-html/quarto.js"></script>
   <script src="site_libs/quarto-html/popper.min.js"></script>
   <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -61,7 +61,7 @@
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Earthdata Cloud Cookbook</h1>
+      <h1 class="quarto-secondary-nav-title">Using the Cookbook</h1>
       <button type="button" class="quarto-btn-toggle btn">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -91,7 +91,7 @@
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">Welcome</a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Welcome</a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -101,7 +101,7 @@
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./using-cookbook.html" class="sidebar-item-text sidebar-link">Using the Cookbook</a>
+  <a href="./using-cookbook.html" class="sidebar-item-text sidebar-link active">Using the Cookbook</a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -252,46 +252,62 @@
         <nav id="TOC" role="doc-toc">
 <h2 id="toc-title">On this page</h2>
 <ul>
-<li><a href="#welcome" class="nav-link active" data-scroll-target="#welcome">Welcome</a></li>
-<li><a href="#the-new-cloud-paradigm" class="nav-link" data-scroll-target="#the-new-cloud-paradigm">The new cloud paradigm</a></li>
-<li><a href="#about" class="nav-link" data-scroll-target="#about">About</a></li>
+<li><a href="#learning-to-code" class="nav-link active" data-scroll-target="#learning-to-code">Learning to code</a></li>
+<li><a href="#cloud-optimized-data-formats" class="nav-link" data-scroll-target="#cloud-optimized-data-formats">Cloud Optimized Data Formats</a></li>
+<li><a href="#sw3-buckets-etc" class="nav-link" data-scroll-target="#sw3-buckets-etc">SW3 Buckets, etc</a></li>
 </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/edit/main/index.md" class="toc-action">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/edit/main/using-cookbook.md" class="toc-action">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 <header id="title-block-header" class="quarto-title-block default">
 
+<div class="quarto-title"><h1 class="title d-none d-lg-block display-7">Using the Cookbook</h1></div></header>
 
-
-
-<div class="quarto-title"><h1 class="title d-none d-lg-block display-7">Earthdata Cloud Cookbook</h1><p class="subtitle lead">Supporting NASA Earth science research teams’ migration to the cloud</p></div><div class="quarto-title-meta"><div><div class="quarto-title-meta-heading">Author</div><div class="quarto-title-meta-contents"><div class="quarto-title-authors"><p>NASA Openscapes Team</p></div></div></div><div><div class="quarto-title-meta-heading">Published</div><div class="quarto-title-meta-contents"><p class="date">March 1, 2022</p></div></div></div></header>
-
-<section id="welcome" class="level2">
-<h2 class="anchored" data-anchor-id="welcome">Welcome</h2>
-<p><strong>Welcome to the NASA Openscapes EarthData Cloud Cookbook!</strong></p>
-<p>This Earthdata Cloud Cookbook is learning-oriented to support scientific researchers using NASA Earthdata from Distributed Active Archive Centers (DAACs) as they migrate their workflows to the cloud. It complements the <strong><a href="https://nasa-openscapes.github.io/tutorials">nasa-openscapes.github.io/tutorials</a></strong>, which were created for specific events and are available for reuse and self-paced learning. This Cookbook has several accompanying stand-alone lessons and example notebooks, as well as documentation for how we support researchers.</p>
-<p>This Cookbook is under active development but is an open resource as we iterate, and we welcome contributions.</p>
-</section>
-<section id="the-new-cloud-paradigm" class="level2">
-<h2 class="anchored" data-anchor-id="the-new-cloud-paradigm">The new cloud paradigm</h2>
-<p>NASA Distributed Active Archive Centers (DAACs) are in the process of moving their data holdings to the cloud. In the new paradigm, data storage (orange in the illustration) will migrate to the cloud (green) and DAAC-provided tools and services built on top of the data are co-located in the Earthdata Cloud.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/cloud-paradigm-earthdata-oaida.jpg" class="img-fluid figure-img"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption">Illustration by Catalina Oaida, PO.DAAC</figcaption><p></p>
-</figure>
-</div>
-<p>As this data migration occurs, DAACs will have more information about how users can access data. For example, the <a href="https://podaac.jpl.nasa.gov/cloud-datasets/about">Cloud Data page at PO.DAAC</a> offers access to resources to help guide data users in discovering, accessing, and utilizing cloud data. During this transition, some data will continue to be available from the traditional on premise archive, while some data will also be available from and within the Earthdata Cloud.</p>
-<p><strong>To learn more about NASA’s EarthData Cloud Migration:</strong></p>
+<p>This Cookbook has <strong>How To</strong> building blocks and <strong>Tutorials</strong> that connect these building blocks through an example research question and specific data. How To guides and Tutorials are stable approaches we’ve developed and used to teach; they have been iterated and improved through feedback from researchers during <a href="https://nasa-openscapes.github.io/tutorials.html">events we’ve led</a>. We also have a <strong>Sandbox</strong> with lessons that are works-in-progress that we’re developing.</p>
+<p>Working with NASA Earthdata in the Cloud means using a combination of software, tools, many of which require coding and are unfamiliar when we first get started. We have found it helpful to have a growth mindset - these approaches are new and we don’t know how to do them <strong><em>yet</em></strong>. And, know that we’re all in this together as part of the open source community learning and co-creating together.</p>
+<p>You’re able to reuse any code in this book, adapting it for your own purposes. All chapters in the book are a combination of narrative, links, code, and outputs — and underlying each chapter is a Markdown (<code>.md</code>), Jupyter (<code>.ipynb</code>), or Quarto (<code>.qmd</code>) notebooks that you can access on GitHub: <a href="https://github.com/NASA-Openscapes/earthdata-cloud-cookbook" class="uri">https://github.com/NASA-Openscapes/earthdata-cloud-cookbook</a></p>
+<section id="learning-to-code" class="level2">
+<h2 class="anchored" data-anchor-id="learning-to-code">Learning to code</h2>
+<p>Here are resources we recommend to help strengthen your coding skills for programmatic access to NASA data on the cloud.</p>
 <ul>
-<li><a href="https://vimeo.com/434343794">How we work</a> - Katie Baynes, Keynote at FedGeoDay2020 (video). Nice overview of EOSDIS work and emphasis on open science</li>
-<li><a href="https://earthdata.nasa.gov/learn/articles/cloud-data-egress">Cloud Data Egress: How EOSDIS Supports User Needs</a> - Emily Cassidy (blog). Describes supporting users’ needs during cloud migration by providing analysis-ready data</li>
+<li><p><strong>Intro Python</strong></p>
+<ul>
+<li><p><a href="https://sta663-sp22.github.io/">Duke STA-663 - Colin Rundel</a>. Lecture slides &amp; recordings, code &amp; notebooks. Features Jupyter, git, numpy, scipy, pandas, scikit-learn…</p></li>
+<li><p><a href="https://carpentries-incubator.github.io/geospatial-python/">Intro to Geospatial Raster and Vector Data with Python - Carpentries</a>. Follow-along tutorials &amp; code. Features NEON data, intro to rasters &amp; geostats rioxarray, geopandas…</p></li>
+<li><p><a href="https://earth-env-data-science.github.io/intro.html">Intro to Earth and Environmental Data Science- Ryan Abernathy</a>. Intro to Python, JupyterLab, Unix, Git, some packages &amp; workflows</p></li>
+</ul></li>
+<li><p><strong>Intro R</strong></p>
+<ul>
+<li><p><a href="https://rstudio-conf-2020.github.io/r-for-excel/">Intro to Open Data Science with R - Lowndes &amp; Horst</a>. Follow-along tutorials &amp; code. Features workflows with RMarkdown, tidyverse, RStudio, GitHub…</p></li>
+<li><p><a href="https://rstats.wtf/">What they forgot to teach you about R - Bryan &amp; Hester</a>. Reinforcing lessons for moderately experienced R users</p></li>
+<li><p><a href="https://r4ds.had.co.nz/">R for Data Science - Wickham &amp; Grolemund.</a> - All things tidyverse, including dates, plots, modeling, programming, RMarkdown</p>
+<ul>
+<li>Online learning community/book club: <a href="https://www.rfordatasci.com/">rfordatasci.com</a></li>
+</ul></li>
+</ul></li>
+<li><p><strong>Scientific Python Ecosystem and Cloud Computing together:</strong></p>
+<ul>
+<li><p><a href="https://foundations.projectpythia.org/landing-page.html">Project Pythia Foundations Book</a></p></li>
+<li><p><a href="https://jupytearth.org/">Jupyter meets Earth</a></p></li>
+</ul></li>
+</ul>
+<!---TODO https://fabienmaussion.info/scientific_programming/welcome.html 
+review Tiffany Timbers eg https://ubc-mds.github.io/DSCI_524_collab-sw-dev/README.html
+--->
+</section>
+<section id="cloud-optimized-data-formats" class="level2">
+<h2 class="anchored" data-anchor-id="cloud-optimized-data-formats">Cloud Optimized Data Formats</h2>
+<p>Some nice info here from Pangeo about Cloud Optimized Data Formats.</p>
+<ul>
+<li><a href="https://medium.com/pangeo/cloud-performant-reading-of-netcdf4-hdf5-data-using-the-zarr-library-1a95c5c92314"><strong>Cloud-Performant NetCDF4/HDF5 Reading with the Zarr Library</strong></a></li>
 </ul>
 </section>
-<section id="about" class="level2">
-<h2 class="anchored" data-anchor-id="about">About</h2>
-<p>This Earthdata Cloud Cookbook is being developed as a cross-DAAC collaboration by the NASA-Openscapes team. Learn more at <a href="https://nasa-openscapes.github.io">nasa-openscapes.github.io</a>.</p>
+<section id="sw3-buckets-etc" class="level2">
+<h2 class="anchored" data-anchor-id="sw3-buckets-etc">SW3 Buckets, etc</h2>
+<ul>
+<li><a href="https://earthdata.nasa.gov/learn/user-resources/webinars-and-tutorials/cloud-primer"><strong>NASA AWS Cloud Primer</strong></a></li>
+</ul>
 
 
 </section>
@@ -471,10 +487,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./cheatsheet.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Workflow Cheatsheet</span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./cheatsheet.html" class="pagination-link">
-        <span class="nav-page-text">Workflow Cheatsheet</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./how-to/search.html" class="pagination-link">
+        <span class="nav-page-text">Search and discover</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
