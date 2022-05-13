@@ -13,7 +13,7 @@ website:
   page-footer: "NASA Openscapes Team (2021). Earthdata Cloud Cookbook (Version v0.0.1)."
   
   sidebar:
-    logo: nasa-openscapes.png
+    logo: images/nasa-openscapes.png
     pinned: true
     align: center
     tools: 
@@ -29,12 +29,23 @@ website:
     collapse-level: 1
     contents:
       - text: "Welcome"
-        href: index.html
-      - text: "Overview"
-        href: get-started/index.md
+        href: index.md
+      - cheatsheet.md
+      - using-cookbook.md  
+      - section: "How To Guides"
+        contents: 
+          - how-to/search.md
+          - how-to/access.md
+          - how-to/subset.md
+      - section: "Tutorials"
+        contents:
+          - tutorials/index.md
+      # - section: "Getting Started"
+      #   contents:
+       #   - get-started/index.md
          # - get-started/earthdata-login.qmd
          # - get-started/api-primer.qmd
-      - section: "Example tutorials"
+      - section: "Sandbox"
         contents:
           - href: examples/earthdata-access-demo.qmd
             text: "NASA Earthdata Access Demo"
