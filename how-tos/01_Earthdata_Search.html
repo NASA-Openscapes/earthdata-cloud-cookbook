@@ -323,7 +323,7 @@
 <p>Click on the <em><strong>“Available from AWS Cloud”</strong></em> filter option on the left. Here, 104 matching collections were found with the basic <code>ECCO</code> search.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="./img/search_ecco.png" class="img-fluid figure-img"></p>
+<p><img src="./images/search_ecco.png" class="img-fluid figure-img"></p>
 <p></p><figcaption aria-hidden="true" class="figure-caption"><em>Figure caption: Search for ECCO data available in AWS cloud in Earthdata Search portal</em></figcaption><p></p>
 </figure>
 </div>
@@ -332,7 +332,7 @@
 <p>We can click on the (i) icon for the dataset to read more details, including the <strong>dataset shortname</strong> (helpful for programmatic workflows) just below the dataset name; here <code>ECCO_L4_SSH_05DEG_MONTHLY_V4R4</code>.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="./img/refine_ecco.png" class="img-fluid figure-img"></p>
+<p><img src="./images/refine_ecco.png" class="img-fluid figure-img"></p>
 <p></p><figcaption aria-hidden="true" class="figure-caption"><em>Figure caption: Refine search, set temporal bounds, get more information</em></figcaption><p></p>
 </figure>
 </div>
@@ -349,13 +349,13 @@
 </ul>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="./img/cloud_access_info.png" class="img-fluid figure-img"></p>
+<p><img src="./images/cloud_access_info.png" class="img-fluid figure-img"></p>
 <p></p><figcaption aria-hidden="true" class="figure-caption"><em>Figure caption: Cloud access info in EDS</em></figcaption><p></p>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="./img/cloud_access_documentation.png" class="img-fluid figure-img"></p>
+<p><img src="./images/cloud_access_documentation.png" class="img-fluid figure-img"></p>
 <p></p><figcaption aria-hidden="true" class="figure-caption"><em>Figure caption: Documentation describing the In-region Direct S3 Access to Buckets</em></figcaption><p></p>
 </figure>
 </div>
@@ -368,7 +368,7 @@
 <p>Click on the green <strong>+</strong> symbol to add a few files to our project. Here we added the first 3 listed for 2015. Then click on the green button towards the bottom that says “Download”. This will take us to another page with options to customize our download or access link(s).</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="./img/select_granules_download.png" class="img-fluid figure-img"></p>
+<p><img src="./images/select_granules_download.png" class="img-fluid figure-img"></p>
 <p></p><figcaption aria-hidden="true" class="figure-caption"><em>Figure caption: Select granules and click download</em></figcaption><p></p>
 </figure>
 </div>
@@ -377,12 +377,12 @@
 <p>Let’s stay we are interested in the entire file content, so we select the <strong>“Direct Download”</strong> option (as opposed to other options to subset or transform the data):</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="./img/custom_download.png" class="img-fluid figure-img"></p>
+<p><img src="./images/custom_download.png" class="img-fluid figure-img"></p>
 <p></p><figcaption aria-hidden="true" class="figure-caption"><em>Figure caption: Customize your download or access</em></figcaption><p></p>
 </figure>
 </div>
 <p>Clicking the green Download Data button again, will take us to the final page for instructions to download and links for data access in the cloud. You should see three tabs: <code>Download Files</code>, <code>AWS S3 Access</code>, <code>Download Script</code>:</p>
-<p><img src="./img/download.png" class="img-fluid" alt="Figure caption: Download to local"> <img src="./img/AWS_s3_access.png" class="img-fluid" alt="Figure caption: Direct S3 access"> <img src="./img/download_script.png" class="img-fluid" alt="Figure caption: Downloading scrip"></p>
+<p><img src="./images/download.png" class="img-fluid" alt="Figure caption: Download to local"> <img src="./images/AWS_s3_access.png" class="img-fluid" alt="Figure caption: Direct S3 access"> <img src="./images/download_script.png" class="img-fluid" alt="Figure caption: Downloading scrip"></p>
 <p>The <em>Download Files</em> tab provides the <code>https://</code> links for downloading the files locally. E.g.: <code>https://archive.podaac.earthdata.nasa.gov/podaac-ops-cumulus-protected/ECCO_L4_SSH_05DEG_MONTHLY_V4R4/SEA_SURFACE_HEIGHT_mon_mean_2015-09_ECCO_V4r4_latlon_0p50deg.nc</code></p>
 <p>The <em>AWS S3 Access</em> tab provides the <code>S3://</code> links, which is what we would use to access the data directly in-region (us-west-2) within the AWS cloud (an example will be shown in Tutorial 3). E.g.: <code>s3://podaac-ops-cumulus-protected/ECCO_L4_SSH_05DEG_MONTHLY_V4R4/SEA_SURFACE_HEIGHT_mon_mean_2015-09_ECCO_V4r4_latlon_0p50deg.nc</code> where <code>s3</code> indicates data is stored in AWS S3 storage, <code>podaac-ops-cumulus-protected</code> is the <em>bucket</em>, and <code>ECCO_L4_SSH_05DEG_MONTHLY_V4R4</code> is the <em>object prefix</em> (the latter two are also listed in the dataset collection information under Cloud Access (step 3 above)).</p>
 <p><strong>Tip</strong>: Another quicker way to find the <em>bucket</em> and <em>object prefix</em> is from the list of data files the search returns. Next to the <strong>+</strong> green button is a grey <em>donwload</em> symbol. Click on that to see the <em>Download Files</em> <code>https://</code> links or on the <em>AWS S3 Access</em> to get the direct <code>S3://</code> access links, which contain the <em>bucket</em> and <em>object prefix</em> where data is stored.</p>
@@ -395,14 +395,14 @@
 <p><a href="https://harmony.earthdata.nasa.gov/">Harmony</a> allows you to seamlessly analyze Earth observation data from different NASA data centers. These services (API endpoints) provide data reduction (e.g.&nbsp;subsetting) and transfromation services (e.g.&nbsp;convert netCDF data to Zarr cloud optimized format).</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="./img/eds_harmony.png" class="img-fluid figure-img"></p>
+<p><img src="./images/eds_harmony.png" class="img-fluid figure-img"></p>
 <p></p><figcaption aria-hidden="true" class="figure-caption"><em>Figure caption: Leverage Harmony cloud-based data transformation services</em></figcaption><p></p>
 </figure>
 </div>
 <p>When you click the final green <em>Download</em> button, the links provided are to data that had been transformed based on our selections on the previous screen (here chosing to use the Harmony service to reformat the data to Zarr). These data are staged for us in an S3 bucket in AWS, and we can use the <code>s3://</code> links to access those specific data. This service also provides <code>STAC</code> access links. This particular example is applicable if your workflow is in the AWS us-west-2 region.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="./img/eds_harmony_links.png" class="img-fluid figure-img"></p>
+<p><img src="./images/eds_harmony_links.png" class="img-fluid figure-img"></p>
 <p></p><figcaption aria-hidden="true" class="figure-caption"><em>Figure caption: Harmony-staged data in S3</em></figcaption><p></p>
 </figure>
 </div>
