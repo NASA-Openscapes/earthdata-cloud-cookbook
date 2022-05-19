@@ -159,12 +159,12 @@
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../cheatsheet.html" class="sidebar-item-text sidebar-link">Workflow Cheatsheet</a>
+  <a href="../our-cookbook.html" class="sidebar-item-text sidebar-link">Our Cookbook</a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../using-cookbook.html" class="sidebar-item-text sidebar-link">Using the Cookbook</a>
+  <a href="../cheatsheet.html" class="sidebar-item-text sidebar-link">Workflow Cheatsheet</a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -177,17 +177,47 @@
     <ul id="quarto-sidebar-section-how-to-guides" class="collapse list-unstyled sidebar-section depth1 ">  
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../how-to/search.html" class="sidebar-item-text sidebar-link">Search and discover</a>
+  <a href="../how-tos/01_Earthdata_Search.html" class="sidebar-item-text sidebar-link">Use Earthdata Search</a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../how-to/access.html" class="sidebar-item-text sidebar-link">Access</a>
+  <a href="../how-tos/authentication.html" class="sidebar-item-text sidebar-link">Authenticate and login</a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+    <div class="sidebar-item-container"> 
+        <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-access-data" aria-expanded="false">Access data</a>
+      <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-access-data" aria-expanded="false">
+        <i class="bi bi-chevron-right ms-2"></i>
+      </a>
+    </div>
+    <ul id="quarto-sidebar-section-access-data" class="collapse list-unstyled sidebar-section depth2 ">  
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../how-tos/Earthdata_Cloud__Single_File__HTTPS_Access_COG_Example.html" class="sidebar-item-text sidebar-link">Accessing Cloud Optimized GeoTIFF (COG) - HTTPS Example</a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../how-to/subset.html" class="sidebar-item-text sidebar-link">Subset</a>
+  <a href="../how-tos/Earthdata_Cloud__Single_File__Direct_S3_Access_COG_Example.html" class="sidebar-item-text sidebar-link">Accessing Cloud Optimized GeoTIFF (COG) - S3 Direct Access</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../how-tos/Earthdata_Cloud__Single_File__Direct_S3_Access_NetCDF4_Example.html" class="sidebar-item-text sidebar-link">Accessing a NetCDF4/HDF5 File - S3 Direct Access</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../how-tos/Multi-File_Direct_S3_Access_NetCDF_Example.html" class="sidebar-item-text sidebar-link">Accessing Multiple NetCDF4/HDF5 Files - S3 Direct Access</a>
+  </div>
+</li>
+    </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../how-tos/subset.html" class="sidebar-item-text sidebar-link">Subset</a>
   </div>
 </li>
     </ul>
@@ -200,6 +230,16 @@
       </a>
     </div>
     <ul id="quarto-sidebar-section-tutorials" class="collapse list-unstyled sidebar-section depth1 ">  
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tutorials/index.html" class="sidebar-item-text sidebar-link">Overview</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tutorials/04_On-Prem_Cloud.html" class="sidebar-item-text sidebar-link">Pairing Cloud and non-Cloud Data</a>
+  </div>
+</li>
     </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -307,6 +347,11 @@
 </li>
     </ul>
   </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../troubleshooting.html" class="sidebar-item-text sidebar-link">Troubleshooting</a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -334,7 +379,7 @@
 
 <section id="cof-zarr-access-via-reformat" class="level1">
 <h1>COF Zarr Access via Reformat</h1>
-<p>imported on: <strong>2022-05-13</strong></p>
+<p>imported on: <strong>2022-05-19</strong></p>
 <p>
 This notebook is from NASA’s PO.DAAC, Access ECCO data via Harmony and the Zarr reformatter service example
 </p>
