@@ -30,16 +30,25 @@ website:
     contents:
       - text: "Welcome"
         href: index.md
-      - cheatsheet.md
-      - using-cookbook.md  
+      - our-cookbook.md  
+      - cheatsheet.md      
       - section: "How To Guides"
         contents: 
-          - how-to/search.md
-          - how-to/access.md
-          - how-to/subset.md
+          - text: "Use Earthdata Search"        
+            href: how-tos/01_Earthdata_Search.md
+          - text: "Authenticate and login"
+            href: how-tos/authentication.md
+          - section: "Access data"
+            contents:
+              - how-tos/Earthdata_Cloud__Single_File__HTTPS_Access_COG_Example.ipynb
+              - how-tos/Earthdata_Cloud__Single_File__Direct_S3_Access_COG_Example.ipynb
+              - how-tos/Earthdata_Cloud__Single_File__Direct_S3_Access_NetCDF4_Example.ipynb
+              - how-tos/Multi-File_Direct_S3_Access_NetCDF_Example.ipynb
+          - how-tos/subset.md
       - section: "Tutorials"
         contents:
           - tutorials/index.md
+          - tutorials/04_On-Prem_Cloud.ipynb
       # - section: "Getting Started"
       #   contents:
        #   - get-started/index.md
@@ -74,6 +83,7 @@ website:
           - contributing/workflow.md
           - contributing/resources.md
           - contributing/quarto-website-tutorial.md
+      - troubleshooting.md
 
 format:
   html:
