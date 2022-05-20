@@ -2,9 +2,26 @@
 title: "Workflow Cheatsheet"
 ---
 
+
 ## What does a Cloud workflow with NASA Earthdata look like?
 
 *coming soon: Catalina & Cassie's diagram-cheatsheet*
+
+### General Data Workflow 
+
+*Describes the above graphics*
+
+Search
+
+Login via Earthdata Login (EDL) for access
+
+Authenticate with AWS credentials for access
+
+Preprocess data using transformation services e.g. subset in space, time, by variable; reformat to COF || e.g. service: OPeNDAP, Harmony
+
+Visualize data accessed
+
+Continue science or applications analysis
 
 
 ## Glossary (abridged)
