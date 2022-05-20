@@ -1,7 +1,7 @@
 ---
 title: "Earthdata Cloud Cookbook"
 subtitle: "Supporting NASA Earth science research teams’ migration to the cloud" 
-date: "Last updated March 2022"
+date: "Last updated May 2022"
 author: "NASA Openscapes Team"
 citation_url: https://nasa-openscapes.github.io/earthdata-cloud-cookbook/
 slug: index
@@ -16,6 +16,9 @@ This Earthdata Cloud Cookbook is learning-oriented to support scientific researc
 This Cookbook is under active development but is an open resource as we iterate, and we welcome contributions. 
 
 ## The new cloud paradigm
+TODO: Add Slides
+
+TODO: example tutorials as an chapter. This is one pathway that these recipes work together as a menu
 
 NASA Distributed Active Archive Centers (DAACs) are in the process of moving their data holdings to the cloud. In the new paradigm, data storage (orange in the illustration) will migrate to the cloud (green) and DAAC-provided tools and services built on top of the data are co-located in the Earthdata Cloud.
 

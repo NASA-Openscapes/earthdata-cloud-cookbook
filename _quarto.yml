@@ -31,23 +31,29 @@ website:
       - text: "Welcome"
         href: index.md
       - our-cookbook.md  
-      - cheatsheet.md      
-      - section: "How To Guides"
+      - cheatsheet.qmd      
+      - section: "Recipes (How To's)"
         contents: 
-          - text: "Use Earthdata Search"        
-            href: how-tos/01_Earthdata_Search.md
-          - text: "Authenticate and login"
+          - section: "Find data"
+            contents:
+              - find-data/index.md
+              - text: "Earthdata Search"        
+                href: how-tos/01_Earthdata_Search.md
+          - text: "Authentication"
             href: how-tos/authentication.md
-          - section: "Access data"
+          - section: "Transform"
+            contents:
+              - transform/index.md
+          - section: "Access - Cloud Workflow"
             contents:
               - how-tos/Earthdata_Cloud__Single_File__HTTPS_Access_COG_Example.ipynb
               - how-tos/Earthdata_Cloud__Single_File__Direct_S3_Access_COG_Example.ipynb
               - how-tos/Earthdata_Cloud__Single_File__Direct_S3_Access_NetCDF4_Example.ipynb
               - how-tos/Multi-File_Direct_S3_Access_NetCDF_Example.ipynb
-          - how-tos/subset.md
-      - section: "Tutorials"
+          - how-tos/download.qmd
+          - how-tos/tech-setup.qmd
+      - section: tutorials/index.md
         contents:
-          - tutorials/index.md
           - tutorials/04_On-Prem_Cloud.ipynb
       # - section: "Getting Started"
       #   contents:
@@ -69,7 +75,7 @@ website:
           - examples/ORNL/Data_Access__Direct_S3_Access__ORNL_DAYMET.ipynb
           - external/cof-zarr-reformat.ipynb
           - external/zarr-eosdis-store.ipynb
-          - section: "Kerchunk examples"
+          - section: examples/index.qmd
             contents: 
               #- examples/GESDISC/GESDISC_MERRA2_tavg1_2d_flx_Nx__Kerchunk.ipynb
               - href: examples/LPDAAC/LPDAAC_ECOSTRESS_LSTE__Kerchunk.ipynb
@@ -78,7 +84,8 @@ website:
                 text: "PODAAC ECCO kerchunk example"
       - section: "Contributing"
         contents:
-          - contributing/index.md
+          - contributing/index.qmd
+          - contributing/onboarding.qmd
           - contributing/setup.qmd
           - contributing/workflow.md
           - contributing/resources.md
