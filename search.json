@@ -121,7 +121,7 @@
   {
     "objectID": "tutorials/index.html",
     "href": "tutorials/index.html",
-    "title": "Overview",
+    "title": "Tutorials",
     "section": "",
     "text": "More coming soon\nCurrent tutorial from https://nasa-openscapes.github.io/2021-Cloud-Workshop-AGU/tutorials/04_On-Prem_Cloud.html"
   },
@@ -469,13 +469,6 @@
     "text": "Resources\nDirect access to ECCO data in S3 (from us-west-2)\nData_Access__Direct_S3_Access__PODAAC_ECCO_SSH using CMR-STAC API to retrieve S3 links"
   },
   {
-    "objectID": "how-tos/subset.html",
-    "href": "how-tos/subset.html",
-    "title": "Subset",
-    "section": "",
-    "text": "coming soon"
-  },
-  {
     "objectID": "how-tos/Earthdata_Cloud__Single_File__Direct_S3_Access_COG_Example.html#summary",
     "href": "how-tos/Earthdata_Cloud__Single_File__Direct_S3_Access_COG_Example.html#summary",
     "title": "EarthData Cloud Cookbook",
@@ -525,6 +518,13 @@
     "text": "Resources\nDirect S3 Data Access with rioxarray\nDirect_S3_Access__gdalvrt\nDirect_S3_Access__rioxarray_clipping\nGetting Started with Cloud-Native Harmonized Landsat Sentinel-2 (HLS) Data in R"
   },
   {
+    "objectID": "how-tos/download.html",
+    "href": "how-tos/download.html",
+    "title": "Download",
+    "section": "",
+    "text": "coming soon"
+  },
+  {
     "objectID": "how-tos/Earthdata_Cloud__Data_Access_OPeNDAP_Example.html#import-packages",
     "href": "how-tos/Earthdata_Cloud__Data_Access_OPeNDAP_Example.html#import-packages",
     "title": "EarthData Cloud Cookbook",
@@ -560,6 +560,13 @@
     "text": "The original source for this document is https://nasa-openscapes.github.io/2021-Cloud-Workshop-AGU/tutorials/01_Earthdata_Search.html\nThis tutorial guides you through how to use Earthdata Search for NASA Earth observations search and discovery, and how to connect the search output (e.g. download or access links) to a programmatic workflow (locally or from within the cloud).\n\nStep 1. Go to Earthdata Search and Login\nGo to Earthdata Search https://search.earthdata.nasa.gov and use your Earthdata login credentials to log in. If you do not have an Earthdata account, please see the Workshop Prerequisites for guidance.\n\n\nStep 2. Search for dataset of interest\nUse the search box in the upper left to type key words. In this example we are interested in the ECCO dataset, hosted by the PO.DAAC. This dataset is available from the NASA Earthdata Cloud archive hosted in AWS cloud.\nClick on the “Available from AWS Cloud” filter option on the left. Here, 104 matching collections were found with the basic ECCO search.\n\n\n\nFigure caption: Search for ECCO data available in AWS cloud in Earthdata Search portal\n\n\nLet’s refine our search further. Let’s search for ECCO monthly SSH in the search box (which will produce 39 matching collections), and for the time period for year 2015. The latter can be done using the calendar icon on the left under the search box.\nScroll down the list of returned matches until we see the dataset of interest, in this case ECCO Sea Surface Height - Monthly Mean 0.5 Degree (Version 4 Release 4).\nWe can click on the (i) icon for the dataset to read more details, including the dataset shortname (helpful for programmatic workflows) just below the dataset name; here ECCO_L4_SSH_05DEG_MONTHLY_V4R4.\n\n\n\nFigure caption: Refine search, set temporal bounds, get more information\n\n\n\n\nStep 3. Explore the dataset details, including Cloud Access information\nOnce we clicked the (i), scrolling down the info page for the dataset we will see Cloud Access information, such as:\n\nwhether the dataset is available in the cloud\nthe cloud Region (all NASA Earthdata Cloud data is/will be in us-west-2 region)\nthe S3 storage bucket and object prefix where this data is located\nlink that generates AWS S3 Credentials for in-cloud data access (we will cover this in the Direct Data Access Tutorials)\nlink to documentation describing the In-region Direct S3 Access to Buckets. Note: these will be unique depending on the DAAC where the data is archived. (We will show examples of direct in-region access in Tutorial 3.)\n\n\n\n\nFigure caption: Cloud access info in EDS\n\n\n\n\n\nFigure caption: Documentation describing the In-region Direct S3 Access to Buckets\n\n\nPro Tip: Clicking on “For Developers” to exapnd will provide programmatic endpoints such as those for the CMR API, and more. CMR API and CMR STAC API tutorials can be found on the 2021 Cloud Hackathon website.\nFor now, let’s say we are intersted in getting download link(s) or access link(s) for specific data files (granules) within this collection.\nAt the top of the dataset info section, click on Search Results, which will take us back to the list of datasets matching our search parameters. Clicking on the dataset (here again it’s the same ECCO Sea Surface Height - Monthly Mean 0.5 Degree (Version 4 Release 4)) we now see a list of files (granules) that are part of the dataset (collection).\n\n\nStep 4. Customize the download or data access\nClick on the green + symbol to add a few files to our project. Here we added the first 3 listed for 2015. Then click on the green button towards the bottom that says “Download”. This will take us to another page with options to customize our download or access link(s).\n\n\n\nFigure caption: Select granules and click download\n\n\n\n4.a. Entire file content\nLet’s stay we are interested in the entire file content, so we select the “Direct Download” option (as opposed to other options to subset or transform the data):\n\n\n\nFigure caption: Customize your download or access\n\n\nClicking the green Download Data button again, will take us to the final page for instructions to download and links for data access in the cloud. You should see three tabs: Download Files, AWS S3 Access, Download Script:\n  \nThe Download Files tab provides the https:// links for downloading the files locally. E.g.: https://archive.podaac.earthdata.nasa.gov/podaac-ops-cumulus-protected/ECCO_L4_SSH_05DEG_MONTHLY_V4R4/SEA_SURFACE_HEIGHT_mon_mean_2015-09_ECCO_V4r4_latlon_0p50deg.nc\nThe AWS S3 Access tab provides the S3:// links, which is what we would use to access the data directly in-region (us-west-2) within the AWS cloud (an example will be shown in Tutorial 3). E.g.: s3://podaac-ops-cumulus-protected/ECCO_L4_SSH_05DEG_MONTHLY_V4R4/SEA_SURFACE_HEIGHT_mon_mean_2015-09_ECCO_V4r4_latlon_0p50deg.nc where s3 indicates data is stored in AWS S3 storage, podaac-ops-cumulus-protected is the bucket, and ECCO_L4_SSH_05DEG_MONTHLY_V4R4 is the object prefix (the latter two are also listed in the dataset collection information under Cloud Access (step 3 above)).\nTip: Another quicker way to find the bucket and object prefix is from the list of data files the search returns. Next to the + green button is a grey donwload symbol. Click on that to see the Download Files https:// links or on the AWS S3 Access to get the direct S3:// access links, which contain the bucket and object prefix where data is stored.\n\n\n4.b. Subset or transform before download or access\nDAAC tools and services are also being migrated or developed in the cloud, next to that data. These include the Harmony API and OPeNDAP in the cloud, as a few examples.\nWe can leverage these cloud-based services on cloud-archived data to reduce or transform the data (depending on need) before getting the access links regardless of whether we prefer to download the data and work on a local machine or whether we want to access the data in the cloud (from a cloud workspace). These can be useful data reduction services that support a faster time to science.\nHarmony\nHarmony allows you to seamlessly analyze Earth observation data from different NASA data centers. These services (API endpoints) provide data reduction (e.g. subsetting) and transfromation services (e.g. convert netCDF data to Zarr cloud optimized format).\n\n\n\nFigure caption: Leverage Harmony cloud-based data transformation services\n\n\nWhen you click the final green Download button, the links provided are to data that had been transformed based on our selections on the previous screen (here chosing to use the Harmony service to reformat the data to Zarr). These data are staged for us in an S3 bucket in AWS, and we can use the s3:// links to access those specific data. This service also provides STAC access links. This particular example is applicable if your workflow is in the AWS us-west-2 region.\n\n\n\nFigure caption: Harmony-staged data in S3\n\n\n\n\n\nStep 5. Integrate file links into programmatic workflow, locally or in the AWS cloud.\nIn tutorial 3 Direct Data Access, we will work programmatically in the cloud to access datasets of interest, to get us set up for further scientific analysis of choice. There are several ways to do this. One way to connect the search part of the workflow we just did in Earthdata Search to our next steps working in the cloud is to simply copy/paste the s3:// links provides in Step 4 above into a JupyterHub notebook or script in our cloud workspace, and continue the data analysis from there.\nOne could also copy/paste the s3:// links and save them in a text file, then open and read the text file in the notebook or script in the JupyterHub in the cloud.\nTutorial 3 will pick up from here and cover these next steps in more detail."
   },
   {
+    "objectID": "how-tos/tech-setup.html",
+    "href": "how-tos/tech-setup.html",
+    "title": "Tech Setup (AWS)",
+    "section": "",
+    "text": "Coming soon"
+  },
+  {
     "objectID": "how-tos/access.html",
     "href": "how-tos/access.html",
     "title": "Access",
@@ -579,6 +586,20 @@
     "title": "Authenticate with Earthdata Login",
     "section": "",
     "text": "This page will change soon - past guidance was https://nasa-openscapes.github.io/2021-Cloud-Workshop-AGU/tutorials/02_NASA_Earthdata_Authentication.html but we’ll be instead using https://nasa-openscapes.github.io/earthdata-cloud-cookbook/examples/earthdata-access-demo.html going forward."
+  },
+  {
+    "objectID": "cheatsheet.html#what-does-a-cloud-workflow-with-nasa-earthdata-look-like",
+    "href": "cheatsheet.html#what-does-a-cloud-workflow-with-nasa-earthdata-look-like",
+    "title": "Workflow Cheatsheet",
+    "section": "What does a Cloud workflow with NASA Earthdata look like?",
+    "text": "What does a Cloud workflow with NASA Earthdata look like?\ncoming soon: Catalina & Cassie’s diagram-cheatsheet\n\nGeneral Data Workflow\nDescribes the above graphics\nSearch\nLogin via Earthdata Login (EDL) for access\nAuthenticate with AWS credentials for access\nPreprocess data using transformation services e.g. subset in space, time, by variable; reformat to COF || e.g. service: OPeNDAP, Harmony\nVisualize data accessed\nContinue science or applications analysis"
+  },
+  {
+    "objectID": "cheatsheet.html#glossary-abridged",
+    "href": "cheatsheet.html#glossary-abridged",
+    "title": "Workflow Cheatsheet",
+    "section": "Glossary (abridged)",
+    "text": "Glossary (abridged)\nHere is an abridged glossary of the relevant terms above, in the context of this workflow diagram/Cookbook. See NASA Earthdata Glossary for a full list.\ncoming soon"
   },
   {
     "objectID": "troubleshooting.html#jupyterhub",
@@ -684,6 +705,13 @@
     "title": "EarthData Cloud Cookbook",
     "section": "Overview",
     "text": "Overview\n\nTL;DR: earthdata is a Python package to search, preview and access NASA datasets (on-prem or in the cloud) with a few lines of code.\n\nfrom earthdata import Auth, DataGranules, Store\n\n# first we authenticate with NASA EDL\nauth = Auth().login(strategy=\"netrc\")\n\n# Then we build a Query with spatiotemporal parameters\nGranuleQuery = DataGranules().concept_id(\"C1575731655-LPDAAC_ECS\").bounding_box(-134.7,58.9,-133.9,59.2)\n\n# We get the metadata records from CMR\ngranules = GranuleQuery.get()\n\n# Now it{s time to download (or open) our data granules list with get()\nfiles = Store(auth).get(granules, local_path='./data')\n\n# Now to the important science!\n\n\nWhy?\nThere are many ways to access NASA datasets, we can use the Earthdata search portal. We can use DAAC specific portals or tools. We could even use data.gov! Web portals are great but they are not designed for programmatic access and reproducible workflows. This is extremely important in the age of the cloud and reproducible open science.\nThe good news is that NASA also exposes APIs that allows us to search, transform and access data in a programmatic way. Many of these libraries contain amazing features and some similarities. In this context, earthdata aims to be a simple library that can deal with the important parts of the metadata so we can access or download data without having to worry if a given dataset is on-prem or in the cloud.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLibrary\nLanguage Agnostic\nOn-Prem Access\nCloud Access\nProgrammatic\nSubsetting\nGIS Operations\nAuthentication\nFull Archive Coverage\n\n\n\n\nearthdata\nPython\n✅\n✅\n✅\nNo\nNo\n✅\n✅\n\n\nHarmonyPy\nPython*\n✅\n✅\n✅\n✅\n✅\n✅\nNo\n\n\nOpenDAP\n✅\n✅\nNo\n✅\n✅\nNo\nNo\n✅\n\n\ncmr-stac\nPython\n✅\n✅\n✅\nNo\nNo\nNo\n✅\n\n\nEarthdata Portal\n✅\n✅\n✅\nNo\nNo\nNo\n✅\n✅\n\n\nGDAL\n✅*\n✅\n✅\n✅\nNo\n✅*\n✅*\n✅\n\n\nrsat\nR\n✅\nNo\n✅\nNo\n✅*\n✅*\nNo\n\n\ngetSpatialData\nR\n✅\nNo\n✅\nNo\n✅*\n✅*\nNo"
+  },
+  {
+    "objectID": "examples/index.html",
+    "href": "examples/index.html",
+    "title": "Kerchunk Examples",
+    "section": "",
+    "text": "Here are some examples for Kerchunk!"
   },
   {
     "objectID": "examples/GESDISC/GESDISC_MERRA2_tavg1_2d_flx_Nx__Kerchunk.html#requirements",
@@ -952,11 +980,53 @@
     "text": "Build Cookbook!\nYou should now be able to serve our Cookbook from the earthdata-cloud-cookbook directory.\nquarto serve\nThis will open the Cookbook as a new tab in your browser. Now you’re all set to contribute to the Cookbook! Read about how in the next chapter."
   },
   {
+    "objectID": "contributing/onboarding.html#welcome-to-the-team",
+    "href": "contributing/onboarding.html#welcome-to-the-team",
+    "title": "Onboarding Mentors",
+    "section": "Welcome to the team!",
+    "text": "Welcome to the team!\nAs we onboard our second year of folks to grow our cross-DAAC NASA Mentors community, we will be documenting the onboarding process here. We expect Mentors to have different experiences, expertise, technical skills, and job responsibilities. Goals of onboarding will be:\n\nget to know each other\nshare previous work by NASA Mentors\nidentify common needs and priorities\nstrengthen technical skills\nstrengthen teaching skills\nbuild habits and confidence contributing to common materials\nmeet Champions and other researchers to better design how we support them\n\nWe will meet completely remotely, and primarily through Cohort Calls and Co-working sessions, and we’ll lead events like Hackathons, Workshops, and Champions Cohorts, which are all described in the approach-guide."
+  },
+  {
+    "objectID": "contributing/onboarding.html#mentor-schedule",
+    "href": "contributing/onboarding.html#mentor-schedule",
+    "title": "Onboarding Mentors",
+    "section": "Mentor schedule",
+    "text": "Mentor schedule\nSee our schedule of events at https://nasa-openscapes.github.io/mentors"
+  },
+  {
+    "objectID": "contributing/onboarding.html#tooling",
+    "href": "contributing/onboarding.html#tooling",
+    "title": "Onboarding Mentors",
+    "section": "Tooling",
+    "text": "Tooling\nThe tooling we use to collaborate include the following. We will hold skill-building clinics to help strengthen these skills and the goal is for everyone to have overlapping and interoperable skills.\n\nJupyterHub with 2i2c\n\nJupyterLab and RStudio IDE\n\nNotebooks, Coding\n\nJupyter, RMarkdown, Quarto and Python, R, Matlab\n\nTerminal/shell\nGitHub: forking, cloning, pulling, committing, pushing\nGitHub Issues, project boards, code review\nSlack\n\n\nOpenscapes Slack\nChannels to join:\n\nDAAC Mentors (private)\n2022-nasa-champions (private)\n#cloud-infrastructure"
+  },
+  {
+    "objectID": "contributing/onboarding.html#background",
+    "href": "contributing/onboarding.html#background",
+    "title": "Onboarding Mentors",
+    "section": "Background",
+    "text": "Background\nNASA Openscapes is a cross-DAAC mentor community creating & teaching resources to help researchers migrate workflows to the cloud. We meet and learn together, working with alignment on common needs for researchers using NASA Earthdata. Mentors receive Carpentries Instructor training and Openscapes mentorship to help you refine teaching strategies for Cloud, while collaborating on cloud tutorials to reuse rather than reinventing separately.\nTogether, we will teach and support in opportunities of different types: Hackathons, Workshops, and the Openscapes Champions program. We expect a range of technical ability and teaching experience. Through these growth opportunities within a broader community engagement approach, you will also gain visibility for your work as well as for your DAACs. The expected time commitment is 3-4 days/month per year. This accounts for a minimum of 4 hours/month of synchronous calls with the rest of the time being self-directed towards improving support approaches for your specific DAAC."
+  },
+  {
     "objectID": "contributing/slides.html#quarto-slides",
     "href": "contributing/slides.html#quarto-slides",
     "title": "EarthData Cloud Cookbook",
     "section": "Quarto slides",
     "text": "Quarto slides\nquarto preview\nThis will return a url - open that url in another browser window and it will auto-refresh as you save your document. Note that previews will auto-update - but if they don’t, refresh the browser and the updates should flow again after that.\n<— From J.J.:\n\nThe websocket connection used to keep the preview live does seem to work, although I’ve seen times where a manual refresh of the browser is required. This is likely due to some very obscure websocket handling issue somewhere in the networking stack (so not really worth or even possible to debug). I would just tell people that previews will auto-update and if they don’t just refresh the browser and the updates should flow again after that.\n\n—>"
+  },
+  {
+    "objectID": "contributing/index.html#our-approach",
+    "href": "contributing/index.html#our-approach",
+    "title": "How we work",
+    "section": "Our approach",
+    "text": "Our approach\nThe Openscapes Approach Guide describes how we work, including creating space and place, having a growth mindset, psychological safety, and continual learning, practice, and iteration. It also has our code of conduct and an overview of some of the workflows and tooling we use.\nWe believe open practices can accelerate data-driven solutions and increase diversity, equity, inclusion, and belonging in science. These are critical to uncovering enduring science-based solutions faster, as well as for the well-being and resilience of research communities. We work towards kinder science.\nOur NASA Openscapes team is collaborating to create this Cookbook, with an eye towards how others could collaborate with us in the future.\nOur style of working is greatly influenced by:\n\nThe Turing Way Community Handbook\nThe Carpentries Curriculum Development Handbook\nThe Documentation System"
+  },
+  {
+    "objectID": "contributing/index.html#quarto",
+    "href": "contributing/index.html#quarto",
+    "title": "How we work",
+    "section": "Quarto",
+    "text": "Quarto\nWe’re making the EarthData Cloud Cookbook with Quarto: quarto.org. Quarto makes collaborating to create technical documentation streamlined because we work in plain text documents that can have executable code (Python, R) and are rendered using Jupyter and Knitr engines.\nWhat is Quarto? Quarto builds from what RStudio learned from RMarkdown but enables different engines (Jupyter and knitr). It is both a Command Line Tool and R package. .qmd is a new filetype like .Rmd — meaning it’s a text file but when coupled with an engine that executes code it can be rendered as html, pdf, word, and beyond. Collaborators can develop text and notebooks in wherever they are most comfortable. Then Quarto builds them together as a book or website, even converting between file types like .ipynb, .md and .qmd it’s a streamlined was to develop and publish with collaborators that have different workflows. Once the book is “served” locally, .md files auto-update as you edit, and files with executable code can be rendered individually, and the behavior of different code chunks can be controlled and cached."
   },
   {
     "objectID": "contributing/environment.html#introduction",
@@ -971,20 +1041,6 @@
     "title": "JupyterHub environment",
     "section": "More background",
     "text": "More background\nSome articles about Python environments with Conda that are interesting and related to our 2i2c workflow:\n\nhttps://www.anaconda.com/blog/understanding-and-improving-condas-performance\nhttps://medium.com/@marius.v.niekerk/conda-metachannel-f962241c9437\nhttps://wolfv.medium.com/making-conda-fast-again-4da4debfb3b7\nhttps://pythonspeed.com/articles/conda-dependency-management/\n\nWe are doing what article the fourth article describes. We are using conda-lock with versioned dependencies. Since corn was designed to run in 2i2c I never bothered to test it for windows or OSx but I think we should offer that possibility. I added OSX and will need some volunteers to test it on Windows."
-  },
-  {
-    "objectID": "contributing/index.html#intro",
-    "href": "contributing/index.html#intro",
-    "title": "Contributing",
-    "section": "Intro",
-    "text": "Intro\nThis section describes how our NASA Openscapes team collaborates to create this Cookbook, with an eye towards how others could collaborate with us in the future.\nOur style of working is greatly influenced by:\n\nThe Turing Way Community Handbook\nThe Carpentries Curriculum Development Handbook\nThe Documentation System"
-  },
-  {
-    "objectID": "contributing/index.html#quarto",
-    "href": "contributing/index.html#quarto",
-    "title": "Contributing",
-    "section": "Quarto",
-    "text": "Quarto\nWe’re making the EarthData Cloud Cookbook with Quarto: quarto.org. Quarto makes collaborating to create technical documentation streamlined because we work in plain text documents that can have executable code (Python, R) and are rendered using Jupyter and Knitr engines.\nWhat is Quarto? Quarto builds from what RStudio learned from RMarkdown but enables different engines (Jupyter and knitr). It is both a Command Line Tool and R package. .qmd is a new filetype like .Rmd — meaning it’s a text file but when coupled with an engine that executes code it can be rendered as html, pdf, word, and beyond. Collaborators can develop text and notebooks in wherever they are most comfortable. Then Quarto builds them together as a book or website, even converting between file types like .ipynb, .md and .qmd it’s a streamlined was to develop and publish with collaborators that have different workflows. Once the book is “served” locally, .md files auto-update as you edit, and files with executable code can be rendered individually, and the behavior of different code chunks can be controlled and cached.\n(Note: with Quarto, e-books and websites are very similarly structured, with e-books being set up for numbered chapters and references and websites set up for higher number of pages and organization. We can talk about our book as a book even as we explore whether book/website better suits our needs. Our Cookbook is currently a website; this is assigned in _quarto.yml, as we’ll explore later)."
   },
   {
     "objectID": "contributing/community.html",
@@ -1082,7 +1138,7 @@
     "href": "external/zarr-eosdis-store.html",
     "title": "EarthData Cloud Cookbook",
     "section": "",
-    "text": "Zarr Example\nimported on: 2022-05-19\n\nThis notebook is from NASA’s Zarr EOSDIS store notebook\n\n\nThe original source for this document is https://github.com/nasa/zarr-eosdis-store\n\n\n\nzarr-eosdis-store example\nInstall dependencies\n\nimport sys\n\n# zarr and zarr-eosdis-store, the main libraries being demoed\n!{sys.executable} -m pip install zarr zarr-eosdis-store\n\n# Notebook-specific libraries\n!{sys.executable} -m pip install matplotlib\n\nImportant: To run this, you must first create an Earthdata Login account (https://urs.earthdata.nasa.gov) and place your credentials in ~/.netrc e.g.:\n   machine urs.earthdata.nasa.gov login YOUR_USER password YOUR_PASSWORD\nNever share or commit your password / .netrc file!\nBasic usage. After these lines, we work with ds as though it were a normal Zarr dataset\n\nimport zarr\nfrom eosdis_store import EosdisStore\n\nurl = 'https://archive.podaac.earthdata.nasa.gov/podaac-ops-cumulus-protected/MUR-JPL-L4-GLOB-v4.1/20210715090000-JPL-L4_GHRSST-SSTfnd-MUR-GLOB-v02.0-fv04.1.nc'\n\nds = zarr.open(EosdisStore(url))\n\nView the file’s variable structure\n\nprint(ds.tree())\n\n/\n ├── analysed_sst (1, 17999, 36000) int16\n ├── analysis_error (1, 17999, 36000) int16\n ├── dt_1km_data (1, 17999, 36000) int16\n ├── lat (17999,) float32\n ├── lon (36000,) float32\n ├── mask (1, 17999, 36000) int16\n ├── sea_ice_fraction (1, 17999, 36000) int16\n ├── sst_anomaly (1, 17999, 36000) int16\n └── time (1,) int32\n\n\nFetch the latitude and longitude arrays and determine start and end indices for our area of interest. In this case, we’re looking at the Great Lakes, which have a nice, recognizeable shape. Latitudes 41 to 49, longitudes -93 to 76.\n\nlats = ds['lat'][:]\nlons = ds['lon'][:]\nlat_range = slice(lats.searchsorted(41), lats.searchsorted(49))\nlon_range = slice(lons.searchsorted(-93), lons.searchsorted(-76))\n\nGet the analysed sea surface temperature variable over our area of interest and apply scale factor and offset from the file metadata. In a future release, scale factor and add offset will be automatically applied.\n\nvar = ds['analysed_sst']\nanalysed_sst = var[0, lat_range, lon_range] * var.attrs['scale_factor'] + var.attrs['add_offset']\n\nDraw a pretty picture\n\nfrom matplotlib import pyplot as plt\n\nplt.rcParams[\"figure.figsize\"] = [16, 8]\nplt.imshow(analysed_sst[::-1, :])\nNone\n\n\n\n\nIn a dozen lines of code and a few seconds, we have managed to fetch and visualize the 3.2 megabyte we needed from a 732 megabyte file using the original archive URL and no processing services"
+    "text": "Zarr Example\nimported on: 2022-05-20\n\nThis notebook is from NASA’s Zarr EOSDIS store notebook\n\n\nThe original source for this document is https://github.com/nasa/zarr-eosdis-store\n\n\n\nzarr-eosdis-store example\nInstall dependencies\n\nimport sys\n\n# zarr and zarr-eosdis-store, the main libraries being demoed\n!{sys.executable} -m pip install zarr zarr-eosdis-store\n\n# Notebook-specific libraries\n!{sys.executable} -m pip install matplotlib\n\nImportant: To run this, you must first create an Earthdata Login account (https://urs.earthdata.nasa.gov) and place your credentials in ~/.netrc e.g.:\n   machine urs.earthdata.nasa.gov login YOUR_USER password YOUR_PASSWORD\nNever share or commit your password / .netrc file!\nBasic usage. After these lines, we work with ds as though it were a normal Zarr dataset\n\nimport zarr\nfrom eosdis_store import EosdisStore\n\nurl = 'https://archive.podaac.earthdata.nasa.gov/podaac-ops-cumulus-protected/MUR-JPL-L4-GLOB-v4.1/20210715090000-JPL-L4_GHRSST-SSTfnd-MUR-GLOB-v02.0-fv04.1.nc'\n\nds = zarr.open(EosdisStore(url))\n\nView the file’s variable structure\n\nprint(ds.tree())\n\n/\n ├── analysed_sst (1, 17999, 36000) int16\n ├── analysis_error (1, 17999, 36000) int16\n ├── dt_1km_data (1, 17999, 36000) int16\n ├── lat (17999,) float32\n ├── lon (36000,) float32\n ├── mask (1, 17999, 36000) int16\n ├── sea_ice_fraction (1, 17999, 36000) int16\n ├── sst_anomaly (1, 17999, 36000) int16\n └── time (1,) int32\n\n\nFetch the latitude and longitude arrays and determine start and end indices for our area of interest. In this case, we’re looking at the Great Lakes, which have a nice, recognizeable shape. Latitudes 41 to 49, longitudes -93 to 76.\n\nlats = ds['lat'][:]\nlons = ds['lon'][:]\nlat_range = slice(lats.searchsorted(41), lats.searchsorted(49))\nlon_range = slice(lons.searchsorted(-93), lons.searchsorted(-76))\n\nGet the analysed sea surface temperature variable over our area of interest and apply scale factor and offset from the file metadata. In a future release, scale factor and add offset will be automatically applied.\n\nvar = ds['analysed_sst']\nanalysed_sst = var[0, lat_range, lon_range] * var.attrs['scale_factor'] + var.attrs['add_offset']\n\nDraw a pretty picture\n\nfrom matplotlib import pyplot as plt\n\nplt.rcParams[\"figure.figsize\"] = [16, 8]\nplt.imshow(analysed_sst[::-1, :])\nNone\n\n\n\n\nIn a dozen lines of code and a few seconds, we have managed to fetch and visualize the 3.2 megabyte we needed from a 732 megabyte file using the original archive URL and no processing services"
   },
   {
     "objectID": "external/cof-zarr-reformat.html#getting-started",
@@ -1103,7 +1159,7 @@
     "href": "index.html#the-new-cloud-paradigm",
     "title": "Earthdata Cloud Cookbook",
     "section": "The new cloud paradigm",
-    "text": "The new cloud paradigm\nNASA Distributed Active Archive Centers (DAACs) are in the process of moving their data holdings to the cloud. In the new paradigm, data storage (orange in the illustration) will migrate to the cloud (green) and DAAC-provided tools and services built on top of the data are co-located in the Earthdata Cloud.\n\n\n\nIllustration by Catalina Oaida, PO.DAAC\n\n\nAs this data migration occurs, DAACs will have more information about how users can access data. For example, the Cloud Data page at PO.DAAC offers access to resources to help guide data users in discovering, accessing, and utilizing cloud data. During this transition, some data will continue to be available from the traditional on premise archive, while some data will also be available from and within the Earthdata Cloud.\nTo learn more about NASA’s EarthData Cloud Migration:\n\nHow we work - Katie Baynes, Keynote at FedGeoDay2020 (video). Nice overview of EOSDIS work and emphasis on open science\nCloud Data Egress: How EOSDIS Supports User Needs - Emily Cassidy (blog). Describes supporting users’ needs during cloud migration by providing analysis-ready data"
+    "text": "The new cloud paradigm\nTODO: Add Slides\nTODO: example tutorials as an chapter. This is one pathway that these recipes work together as a menu\nNASA Distributed Active Archive Centers (DAACs) are in the process of moving their data holdings to the cloud. In the new paradigm, data storage (orange in the illustration) will migrate to the cloud (green) and DAAC-provided tools and services built on top of the data are co-located in the Earthdata Cloud.\n\n\n\nIllustration by Catalina Oaida, PO.DAAC\n\n\nAs this data migration occurs, DAACs will have more information about how users can access data. For example, the Cloud Data page at PO.DAAC offers access to resources to help guide data users in discovering, accessing, and utilizing cloud data. During this transition, some data will continue to be available from the traditional on premise archive, while some data will also be available from and within the Earthdata Cloud.\nTo learn more about NASA’s EarthData Cloud Migration:\n\nHow we work - Katie Baynes, Keynote at FedGeoDay2020 (video). Nice overview of EOSDIS work and emphasis on open science\nCloud Data Egress: How EOSDIS Supports User Needs - Emily Cassidy (blog). Describes supporting users’ needs during cloud migration by providing analysis-ready data"
   },
   {
     "objectID": "index.html#about",
@@ -1111,20 +1167,6 @@
     "title": "Earthdata Cloud Cookbook",
     "section": "About",
     "text": "About\nThis Earthdata Cloud Cookbook is being developed as a cross-DAAC collaboration by the NASA-Openscapes team. Learn more at nasa-openscapes.github.io."
-  },
-  {
-    "objectID": "cheatsheet.html#what-does-a-cloud-workflow-with-nasa-earthdata-look-like",
-    "href": "cheatsheet.html#what-does-a-cloud-workflow-with-nasa-earthdata-look-like",
-    "title": "Workflow Cheatsheet",
-    "section": "What does a Cloud workflow with NASA Earthdata look like?",
-    "text": "What does a Cloud workflow with NASA Earthdata look like?\ncoming soon: Catalina & Cassie’s diagram-cheatsheet"
-  },
-  {
-    "objectID": "cheatsheet.html#glossary-abridged",
-    "href": "cheatsheet.html#glossary-abridged",
-    "title": "Workflow Cheatsheet",
-    "section": "Glossary (abridged)",
-    "text": "Glossary (abridged)\nHere is an abridged glossary of the relevant terms above, in the context of this workflow diagram/Cookbook. See NASA Earthdata Glossary for a full list.\ncoming soon"
   },
   {
     "objectID": "our-cookbook.html#learning-to-code",
