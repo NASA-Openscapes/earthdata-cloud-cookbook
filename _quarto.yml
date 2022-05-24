@@ -32,7 +32,7 @@ website:
         href: index.md
       - our-cookbook.md  
       - cheatsheet.qmd      
-      - section: "Recipes (How To's)"
+      - section: how-tos/index.qmd
         contents: 
           - section: "Find data"
             contents:
@@ -52,7 +52,7 @@ website:
               - how-tos/Multi-File_Direct_S3_Access_NetCDF_Example.ipynb
           - how-tos/download.qmd
           - how-tos/tech-setup.qmd
-      - section: tutorials/index.md
+      - section: tutorials/index.qmd
         contents:
           - tutorials/04_On-Prem_Cloud.ipynb
       # - section: "Getting Started"
@@ -60,7 +60,7 @@ website:
        #   - get-started/index.md
          # - get-started/earthdata-login.qmd
          # - get-started/api-primer.qmd
-      - section: "Sandbox"
+      - section: in-development/index.qmd
         contents:
           - href: examples/earthdata-access-demo.qmd
             text: "NASA Earthdata Access Demo"
@@ -82,9 +82,8 @@ website:
                 text: "LPDAAC kerchunk example"
               - href: examples/PODAAC/PODAAC_ECCO_SSH__Kerchunk.ipynb
                 text: "PODAAC ECCO kerchunk example"
-      - section: "Contributing"
-        contents:
-          - contributing/index.qmd
+      - section: contributing/index.qmd
+        contents: 
           - contributing/onboarding.qmd
           - contributing/setup.qmd
           - contributing/workflow.md
