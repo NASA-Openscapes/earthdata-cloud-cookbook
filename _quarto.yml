@@ -77,11 +77,9 @@ website:
           - external/zarr-eosdis-store.ipynb
           - section: examples/index.qmd
             contents: 
-              #- examples/GESDISC/GESDISC_MERRA2_tavg1_2d_flx_Nx__Kerchunk.ipynb
-              - href: examples/LPDAAC/LPDAAC_ECOSTRESS_LSTE__Kerchunk.ipynb
-                text: "LPDAAC kerchunk example"
-              - href: examples/PODAAC/PODAAC_ECCO_SSH__Kerchunk.ipynb
-                text: "PODAAC ECCO kerchunk example"
+              - examples/GESDISC/GESDISC_MERRA2_tavg1_2d_flx_Nx__Kerchunk.ipynb
+              - examples/LPDAAC/LPDAAC_ECOSTRESS_LSTE__Kerchunk.ipynb
+              - examples/PODAAC/PODAAC_ECCO_SSH__Kerchunk.ipynb
       - section: contributing/index.qmd
         contents: 
           - contributing/onboarding.qmd
