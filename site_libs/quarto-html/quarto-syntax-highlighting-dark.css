@@ -21,6 +21,7 @@
   --quarto-hl-in-color: #d4d0ab;
   --quarto-hl-kw-color: #ffa07a;
   --quarto-hl-op-color: #ffa07a;
+  --quarto-hl-ot-color: #00e0e0;
   --quarto-hl-pp-color: #dcc6e0;
   --quarto-hl-re-color: #00e0e0;
   --quarto-hl-sc-color: #abe338;
@@ -126,12 +127,21 @@ code span {
   color: #f8f8f2;
 }
 
-div.sourceCode {
+code.sourceCode > span {
+  color: #f8f8f2;
+}
+
+div.sourceCode,
+div.sourceCode pre.sourceCode {
   color: #f8f8f2;
 }
 
 code span.op {
   color: #ffa07a;
+}
+
+code span.ot {
+  color: #00e0e0;
 }
 
 code span.pp {
@@ -164,6 +174,10 @@ code span.vs {
 
 code span.wa {
   color: #dcc6e0;
+}
+
+.prevent-inlining {
+  content: "</";
 }
 
 /*# sourceMappingURL=935a306eefa94366c21e1a970dddb765.css.map */
