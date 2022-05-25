@@ -29,7 +29,7 @@ jobs:
     - name: "Install Quarto"
       uses: quarto-dev/quarto-actions/install-quarto@main
       with:
-        version: 0.9.105
+        version: 0.9.449
       
     - name: "Quarto render"
       shell: bash
