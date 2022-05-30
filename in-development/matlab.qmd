@@ -1,0 +1,50 @@
+---
+title: "matlab"
+editor: visual
+---
+
+# NASA EarthData and the AWS Cloud for Matlab Users 
+
+This chapter is for research teams currently working in Matlab with NASA EarthData and wanting to take advantage of doing analysis in the Cloud. Our initial focus is on Amazon Web Services (AWS). For general, background on the Cloud and NASA Earthdata's migration to the Cloud, checkout earlier chapters of the cookbook \[TO DO: Add a link and specific reference\].
+
+## Prerequisites 
+
+1.  Matlab License - You must have access to a Matlab license that allows for access to the cloud. To check your license, in the matlab command line enter:
+
+        ver -support
+
+2.  AWS Account - For the current experiments, we will access the AWS console, so you need an AWS account. It is free to set up, but will require a credit card linked to the account. <https://aws.amazon.com/>
+
+3.  Github Account - If you want to use Github as part of your workflow and don't already have an account, create a Github account: <https://github.com/>
+
+4.  NASA Earthdata login - Create an account here: <https://urs.earthdata.nasa.gov/users/new>
+
+5.  Microsoft Remote Desktop - When we spin up the AWS virtual machine with Matlab, we will need to have a remote desktop option. These how-to's were done on a mac and we tested the free Microsoft Remote Desktop. [Download for macs](https://apps.apple.com/us/app/microsoft-remote-desktop/id1295203466?mt=12)
+
+## Prerequisite: AWS EC2 Key Pair
+
+This isn't included in the numbered prereq list above because it is a bit more involved than creating an account. You need to create an SSH Key Pair in the region you want to work in. This is a one-time step that you won't need to do each time you launch the stack.
+
+1.  Log in to AWS
+
+2.  In the search box enter, 'Create AWS Key Pair.' Under features choose 'Key Pairs' ([AWS help](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/create-key-pairs.html))\
+    ![AWS search for key pair](images/Screen%20Shot%202022-05-30%20at%2011.30.57%20AM.png)
+
+3.  Check that the top bar says, 'Oregon' (AKA - US-West-2) and if not, click that down arrow to choose US-West-2. Then click the orange 'Create key pair' button.
+
+    ![](images/Screen%20Shot%202022-05-30%20at%2011.32.52%20AM.png)\
+    *Troubleshooting tip: If you create the key outside of the region you want to work in, it will not show up when you launch the stack below.*
+
+4.  On the form - give your key a name, choose the RSA and PEM options (these should be the defaults.)
+
+**Ok - now we are ready to start!**
+
+## Launching AWS Stack with Matlab 
+
+*Note: The first time I launched the AWS Stack it seemed to take for-ever. I thought "how could I possibly need to do this every time I want to use Matlab in the cloud?" It does speed up, eventually it get's a bit faster. I also have learned to plan a bit better - if I know I want to do some work, I get the launched, have coffee, and when I come back it's ready to roll.*
+
+1.  From this Matlab Github page click the Linux 2022a button for US-west-2.
+2.  Fill out the form to create the AWS stack
+    1.  Give the stack a name like 'matlab-test'
+
+    2.  "Allow Connections From: " You will need to know your IP address. You can google, "what's my IP address?"? enter this IP address followed by a /32
