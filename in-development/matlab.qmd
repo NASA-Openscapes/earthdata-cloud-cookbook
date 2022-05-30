@@ -15,15 +15,17 @@ This chapter is for research teams currently working in Matlab with NASA EarthDa
 
 2.  AWS Account - For the current experiments, we will access the AWS console, so you need an AWS account. It is free to set up, but will require a credit card linked to the account. <https://aws.amazon.com/>
 
-3.  Github Account - If you want to use Github as part of your workflow and don't already have an account, create a Github account: <https://github.com/>
+3.  AWS Region: We are working in AWS US-West-2 because NASA Earthdata is hosted in US-West-2. If there is an option to pick an AWS region, pick US-West-2.
 
-4.  NASA Earthdata login - Create an account here: <https://urs.earthdata.nasa.gov/users/new>
+4.  Github Account - If you want to use Github as part of your workflow and don't already have an account, create a Github account: <https://github.com/>
 
-5.  Microsoft Remote Desktop - When we spin up the AWS virtual machine with Matlab, we will need to have a remote desktop option. These how-to's were done on a mac and we tested the free Microsoft Remote Desktop. [Download for macs](https://apps.apple.com/us/app/microsoft-remote-desktop/id1295203466?mt=12)
+5.  NASA Earthdata login - Create an account here: <https://urs.earthdata.nasa.gov/users/new>
+
+6.  Microsoft Remote Desktop - When we spin up the AWS virtual machine with Matlab, we will need to have a remote desktop option. These how-to's were done on a mac and we tested the free Microsoft Remote Desktop. [Download for macs](https://apps.apple.com/us/app/microsoft-remote-desktop/id1295203466?mt=12)
 
 ## Prerequisite: AWS EC2 Key Pair
 
-This isn't included in the numbered prereq list above because it is a bit more involved than creating an account. You need to create an SSH Key Pair in the region you want to work in. This is a one-time step that you won't need to do each time you launch the stack.
+This isn't included in the numbered prereq list above because it is a bit more involved than creating an account or knowing what region we work in. You need to create an SSH Key Pair in the region you want to work in. This is a one-time step that you won't need to do each time you launch the stack.
 
 1.  Log in to AWS
 
@@ -39,12 +41,39 @@ This isn't included in the numbered prereq list above because it is a bit more i
 
 **Ok - now we are ready to start!**
 
-## Launching AWS Stack with Matlab 
+## Creating the AWS Stack with Matlab 
 
 *Note: The first time I launched the AWS Stack it seemed to take for-ever. I thought "how could I possibly need to do this every time I want to use Matlab in the cloud?" It does speed up, eventually it get's a bit faster. I also have learned to plan a bit better - if I know I want to do some work, I get the launched, have coffee, and when I come back it's ready to roll.*
 
-1.  From this Matlab Github page click the Linux 2022a button for US-west-2.
-2.  Fill out the form to create the AWS stack
+1.  From this [Matlab Github page](https://github.com/mathworks-ref-arch/matlab-on-aws) click the release for 2022a under deployment steps.
+2.  This brings up a list of Matlab on Amazon Web Services (Linux VM). Choose & click the 'launch stack' link for US-West-2. \
+    ![](images/Screen%20Shot%202022-05-30%20at%2011.42.47%20AM.png)
+3.  This opens the 'Quick create stack' form based on the Matlab template. That means that when you launch this stack it will come with Matlab on the desktop. Fill out the form to create the AWS stack:
     1.  Give the stack a name like 'matlab-test'
 
-    2.  "Allow Connections From: " You will need to know your IP address. You can google, "what's my IP address?"? enter this IP address followed by a /32
+    2.  Keep the pre-filled options the same for now.
+
+    3.  Remote Access:
+
+        1.  "Allow Connections From: " You will need to know your IP address. You can google, "what's my IP address?"? enter this IP address followed by a /32
+
+        2.  In the SSH Key Pair - the key pair you created above should show up in the drop down. If it doesn't show up, see the troubleshooting tip.
+
+        3.  Pick a remote password. This is not your AWS password or your Github password, this is the password that you will use to login with the microsoft remote desktop (username: ubuntu)
+
+    4.  Network configuration
+
+        1.  There is one VPC option - choose that
+
+        2.  For subnet - I pick the first one and it works. So pick the first option.
+
+    5.  Autoshutdown hasn't worked for me so far, so for now I leave this set as never and delete the stack when I am finished.
+
+    6.  Check the box that "I acknowledge that AWS CloudFormation might create IAM resources."
+
+    7.  Click 'Create stack'
+
+    8.  Wait.... \[\~ 10 minutes\]
+
+    9.  You can check the status by clicking the refresh button on the right corner \
+        ![](images/Screen%20Shot%202022-05-30%20at%2011.52.53%20AM.png)
