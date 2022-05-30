@@ -46,9 +46,12 @@ This isn't included in the numbered prereq list above because it is a bit more i
 *Note: The first time I launched the AWS Stack it seemed to take for-ever. I thought "how could I possibly need to do this every time I want to use Matlab in the cloud?" It does speed up, eventually it get's a bit faster. I also have learned to plan a bit better - if I know I want to do some work, I get the launched, have coffee, and when I come back it's ready to roll.*
 
 1.  From this [Matlab Github page](https://github.com/mathworks-ref-arch/matlab-on-aws) click the release for 2022a under deployment steps.
+
 2.  This brings up a list of Matlab on Amazon Web Services (Linux VM). Choose & click the 'launch stack' link for US-West-2. \
     ![](images/Screen%20Shot%202022-05-30%20at%2011.42.47%20AM.png)
+
 3.  This opens the 'Quick create stack' form based on the Matlab template. That means that when you launch this stack it will come with Matlab on the desktop. Fill out the form to create the AWS stack:
+
     1.  Give the stack a name like 'matlab-test'
 
     2.  Keep the pre-filled options the same for now.
@@ -75,5 +78,41 @@ This isn't included in the numbered prereq list above because it is a bit more i
 
     8.  Wait.... \[\~ 10 minutes\]
 
-    9.  You can check the status by clicking the refresh button on the right corner \
-        ![](images/Screen%20Shot%202022-05-30%20at%2011.52.53%20AM.png)
+4.  You can check the status by clicking the refresh button on the right corner \
+    ![](images/Screen%20Shot%202022-05-30%20at%2011.52.53%20AM.png)
+
+## Launch the AWS Stack with Microsoft Remote Desktop
+
+1.  Once the stack is created it will say 'Create_complete' on the left side. \
+    ![](images/Screen%20Shot%202022-05-30%20at%2011.58.22%20AM.png)
+
+2.  Click the outputs tab and copy the value text. It will start with 'ec2-...'
+
+3.  Open Microsoft Remote Desktop
+
+    1.  Click the + to add a PC
+
+    2.  Paste the value text as the PC Name
+
+    3.  Click on the grey box of your new computer in the remote desktop window
+
+    4.  A login will pop up\
+        ![](images/Screen%20Shot%202022-05-30%20at%2012.02.04%20PM.png)
+
+        1.  Username is ubuntu
+
+        2.  Password is the password you set in 3.3.3 above in the section on 'Creating AWS Stack'
+
+    5.  A certificate message will pop up - say ok
+
+    6.  The desktop will launch
+
+4.  Wait ... \[\~2 mins\]
+
+## Open Matlab on Remote Desktop
+
+1.  Click the Matlab icon on the remote desktop \
+    ![](images/Screen%20Shot%202022-05-30%20at%2012.07.18%20PM.png)
+2.  Wait ... \[\~4 mins\]
+3.  Login with your matlab credentials
+4.  You are in!
