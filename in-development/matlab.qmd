@@ -3,11 +3,11 @@ title: "matlab"
 editor: visual
 ---
 
-# NASA EarthData and the AWS Cloud for Matlab Users 
+# NASA EarthData and the AWS Cloud for Matlab Users
 
 This chapter is for research teams currently working in Matlab with NASA EarthData and wanting to take advantage of doing analysis in the Cloud. Our initial focus is on Amazon Web Services (AWS). For general, background on the Cloud and NASA Earthdata's migration to the Cloud, checkout earlier chapters of the cookbook \[TO DO: Add a link and specific reference\].
 
-## Prerequisites 
+## Prerequisites
 
 1.  Matlab License - You must have access to a Matlab license that allows for access to the cloud. To check your license, in the matlab command line enter:
 
@@ -41,13 +41,13 @@ This isn't included in the numbered prereq list above because it is a bit more i
 
 **Ok - now we are ready to start!**
 
-## Creating the AWS Stack with Matlab 
+## Creating the AWS Stack with Matlab
 
 *Note: The first time I launched the AWS Stack it seemed to take for-ever. I thought "how could I possibly need to do this every time I want to use Matlab in the cloud?" It does speed up, eventually it get's a bit faster. I also have learned to plan a bit better - if I know I want to do some work, I get the launched, have coffee, and when I come back it's ready to roll.*
 
 1.  From this [Matlab Github page](https://github.com/mathworks-ref-arch/matlab-on-aws) click the release for 2022a under deployment steps.
 
-2.  This brings up a list of Matlab on Amazon Web Services (Linux VM). Choose & click the 'launch stack' link for US-West-2. \
+2.  This brings up a list of Matlab on Amazon Web Services (Linux VM). Choose & click the 'launch stack' link for US-West-2.\
     ![](images/Screen%20Shot%202022-05-30%20at%2011.42.47%20AM.png)
 
 3.  This opens the 'Quick create stack' form based on the Matlab template. That means that when you launch this stack it will come with Matlab on the desktop. Fill out the form to create the AWS stack:
@@ -58,11 +58,13 @@ This isn't included in the numbered prereq list above because it is a bit more i
 
     3.  Remote Access:
 
-        1.  "Allow Connections From: " You will need to know your IP address. You can google, "what's my IP address?"? enter this IP address followed by a /32
+        1.  "Allow Connections From:" You will need to know your IP address. You can google, ["what's my IP address?"](https://duckduckgo.com/?q=what%27s+my+IP+address%3F&ia=answer)
 
-        2.  In the SSH Key Pair - the key pair you created above should show up in the drop down. If it doesn't show up, see the troubleshooting tip.
+        2.  Enter your IP address followed by a /32 like this -\> \[my.IP.address/32\]
 
-        3.  Pick a remote password. This is not your AWS password or your Github password, this is the password that you will use to login with the microsoft remote desktop (username: ubuntu)
+        3.  In the SSH Key Pair - the key pair you created above should show up in the drop down. If it doesn't show up, see the troubleshooting tip.
+
+        4.  Pick a remote password. This is not your AWS password or your Github password, this is the password that you will use to login with the microsoft remote desktop (username: ubuntu)
 
     4.  Network configuration
 
@@ -78,12 +80,12 @@ This isn't included in the numbered prereq list above because it is a bit more i
 
     8.  Wait.... \[\~ 10 minutes\]
 
-4.  You can check the status by clicking the refresh button on the right corner \
+4.  You can check the status by clicking the refresh button on the right corner\
     ![](images/Screen%20Shot%202022-05-30%20at%2011.52.53%20AM.png)
 
 ## Launch the AWS Stack with Microsoft Remote Desktop
 
-1.  Once the stack is created it will say 'Create_complete' on the left side. \
+1.  Once the stack is created it will say 'Create_complete' on the left side.\
     ![](images/Screen%20Shot%202022-05-30%20at%2011.58.22%20AM.png)
 
 2.  Click the outputs tab and copy the value text. It will start with 'ec2-...'
@@ -111,8 +113,145 @@ This isn't included in the numbered prereq list above because it is a bit more i
 
 ## Open Matlab on Remote Desktop
 
-1.  Click the Matlab icon on the remote desktop \
+1.  Click the Matlab icon on the remote desktop\
     ![](images/Screen%20Shot%202022-05-30%20at%2012.07.18%20PM.png)
 2.  Wait ... \[\~4 mins\]
-3.  Login with your matlab credentials
+3.  Login with your Matlab credentials
 4.  You are in!
+
+## Access Single NASA EarthData L2 Netcdf (EXPERIMENTAL) 
+
+The general approach to access NASA Earthdata follows the Python tutorials. Direct S3 access is achieved by passing NASA supplied temporary credentials to AWS so we can interact with S3 objects from applicable Earthdata Cloud buckets. For now, each NASA DAAC has different AWS credentials endpoints. Below are some of the credential endpoints to various DAACs:
+
+-   podaac: <https://archive.podaac.earthdata.nasa.gov/s3credentials>
+
+-   gesdisc: <https://data.gesdisc.earthdata.nasa.gov/s3credentials>
+
+-   lpdaac: <https://data.lpdaac.earthdatacloud.nasa.gov/s3credentials>
+
+-   ornldaac: <https://data.ornldaac.earthdata.nasa.gov/s3credentials>
+
+-   ghrcdaac: <https://data.ghrc.earthdata.nasa.gov/s3credentials>
+
+You will need your EarthData login to access these links.
+
+1.  Search NASA Earthdata and find the S3 link you want to access \[LINK TO TUTORIAL\]
+
+2.  Set AWS Environment Variables - Go to the link above for the Access key, secret access key and token.
+
+3.  Copy and past those variables into the code below
+
+    `setenv('AWS_ACCESS_KEY_ID', 'REPLACE WITH PODAAC ACCESS KEY');`
+
+    `setenv('AWS_SECRET_ACCESS_KEY', 'REPLACE WITH PODAAC SECRET KEY');`
+
+    `setenv('AWS_SESSION_TOKEN',  'REPLACE WITH PODAAC SESSION TOKEN');`
+
+    `setenv('AWS_DEFAULT_REGION', 'us-west-2');`
+
+    NOTE: These expire ever 30 mins or so and this step needs to be done. We are searching for a better method.
+
+4.  In Matlab on AWS only the HDF commands work
+
+    `FILE_NAME = 's3://podaac-ops-cumulus-protected/MODIS_A-JPL-L2P-v2019.0/20100619062008-JPL-L2P_GHRSST-SSTskin-MODIS_A-N-v02.0-fv01.0.nc';`
+
+    `file_id = H5F.open(FILE_NAME, 'H5F_ACC_RDONLY', 'H5P_DEFAULT');`
+
+5.  This code works to read the file - Copy each section into the Matlab command \
+    NOTE: We need a way to find all variables in a given netcdf file. I used the python code to find variables and then brought it here.
+
+    `DATAFIELD_NAME='sea_surface_temperature_4um';`
+
+    `data_id = H5D.open(file_id, DATAFIELD_NAME);`
+
+    `data=H5D.read(data_id,'H5T_NATIVE_DOUBLE', 'H5S_ALL', 'H5S_ALL', 'H5P_DEFAULT');`
+
+    `% Read units.`
+
+    `ATTRIBUTE = 'units';`
+
+    `attr_id = H5A.open_name(data_id, ATTRIBUTE);`
+
+    `units = H5A.read(attr_id, 'H5ML_DEFAULT');`
+
+    `H5A.close(attr_id);`
+
+    `% Read long_name.`
+
+    `ATTRIBUTE = 'long_name';`
+
+    `attr_id = H5A.open_name (data_id, ATTRIBUTE);`
+
+    `long_name=H5A.read (attr_id, 'H5ML_DEFAULT');`
+
+    `H5A.close(attr_id);`
+
+    `% Read the fill value.`
+
+    `ATTRIBUTE = '_FillValue';`
+
+    `attr_id = H5A.open_name(data_id, ATTRIBUTE);`
+
+    `fillvalue=H5A.read(attr_id, 'H5T_NATIVE_DOUBLE');`
+
+    `H5A.close(attr_id);`
+
+    `% Read latitude data.`
+
+    `LAT_NAME='lat';`
+
+    `lat_id=H5D.open(file_id, LAT_NAME);`
+
+    `lat=H5D.read(lat_id, 'H5T_NATIVE_DOUBLE', 'H5S_ALL', 'H5S_ALL', 'H5P_DEFAULT');`
+
+    `% Read longitude data.`
+
+    `LON_NAME='lon';`
+
+    `lon_id=H5D.open(file_id, LON_NAME);`
+
+    `lon=H5D.read(lon_id, 'H5T_NATIVE_DOUBLE', 'H5S_ALL', 'H5S_ALL', 'H5P_DEFAULT');`
+
+    `% Close and release resources.`
+
+    `H5D.close(data_id);`
+
+    `H5D.close(lat_id);`
+
+    `H5D.close(lon_id);`
+
+    `H5F.close(file_id);`
+
+    `% Replace the fill value with NaN.`
+
+    `data(data==fillvalue) = NaN;`
+
+6.  Create an image
+
+    `contour(data);`
+
+    ![](images/Screen%20Shot%202022-05-30%20at%207.00.01%20PM.png)
+
+## Shutdown your AWS Stack
+
+After each session you need to turn off the AWS Stack. If you forget this step and leave it running it is like keeping a computer on for the month. For the large instance it costs \$0.5/day so it's a few dollars a month.
+
+1.  Go back to AWS
+
+2.  Search for stack
+
+3.  Click on the name of your stack
+
+4.  Click 'Delete'
+
+    ![](images/Screen%20Shot%202022-05-30%20at%206.41.02%20PM.png)
+
+5.  Confirm the delete
+
+    ![](images/Screen%20Shot%202022-05-30%20at%203.06.40%20PM.png)
+
+**To do:**
+
+-   Add Github & Matlab project instructions
+
+-   Alternative experiments to this stack - Octave in the 2i2c Jupyter hub or Matlab in the 2i2c Jupyter hub.
