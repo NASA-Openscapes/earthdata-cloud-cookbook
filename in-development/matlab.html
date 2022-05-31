@@ -340,6 +340,8 @@ ul.task-list{list-style: none;}
   <li><a href="#creating-the-aws-stack-with-matlab" id="toc-creating-the-aws-stack-with-matlab" class="nav-link" data-scroll-target="#creating-the-aws-stack-with-matlab">Creating the AWS Stack with Matlab</a></li>
   <li><a href="#launch-the-aws-stack-with-microsoft-remote-desktop" id="toc-launch-the-aws-stack-with-microsoft-remote-desktop" class="nav-link" data-scroll-target="#launch-the-aws-stack-with-microsoft-remote-desktop">Launch the AWS Stack with Microsoft Remote Desktop</a></li>
   <li><a href="#open-matlab-on-remote-desktop" id="toc-open-matlab-on-remote-desktop" class="nav-link" data-scroll-target="#open-matlab-on-remote-desktop">Open Matlab on Remote Desktop</a></li>
+  <li><a href="#access-single-nasa-earthdata-l2-netcdf-experimental" id="toc-access-single-nasa-earthdata-l2-netcdf-experimental" class="nav-link" data-scroll-target="#access-single-nasa-earthdata-l2-netcdf-experimental">Access Single NASA EarthData L2 Netcdf (EXPERIMENTAL)</a></li>
+  <li><a href="#shutdown-your-aws-stack" id="toc-shutdown-your-aws-stack" class="nav-link" data-scroll-target="#shutdown-your-aws-stack">Shutdown your AWS Stack</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/edit/main/in-development/matlab.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
@@ -405,7 +407,8 @@ ul.task-list{list-style: none;}
 <li><p>Keep the pre-filled options the same for now.</p></li>
 <li><p>Remote Access:</p>
 <ol type="1">
-<li><p>“Allow Connections From:” You will need to know your IP address. You can google, “what’s my IP address?”? enter this IP address followed by a /32</p></li>
+<li><p>“Allow Connections From:” You will need to know your IP address. You can google, <a href="https://duckduckgo.com/?q=what%27s+my+IP+address%3F&amp;ia=answer">“what’s my IP address?”</a></p></li>
+<li><p>Enter your IP address followed by a /32 like this -&gt; [my.IP.address/32]</p></li>
 <li><p>In the SSH Key Pair - the key pair you created above should show up in the drop down. If it doesn’t show up, see the troubleshooting tip.</p></li>
 <li><p>Pick a remote password. This is not your AWS password or your Github password, this is the password that you will use to login with the microsoft remote desktop (username: ubuntu)</p></li>
 </ol></li>
@@ -452,9 +455,90 @@ ul.task-list{list-style: none;}
 <li>Click the Matlab icon on the remote desktop<br>
 <img src="images/Screen%20Shot%202022-05-30%20at%2012.07.18%20PM.png" class="img-fluid"></li>
 <li>Wait … [~4 mins]</li>
-<li>Login with your matlab credentials</li>
+<li>Login with your Matlab credentials</li>
 <li>You are in!</li>
 </ol>
+</section>
+<section id="access-single-nasa-earthdata-l2-netcdf-experimental" class="level2">
+<h2 class="anchored" data-anchor-id="access-single-nasa-earthdata-l2-netcdf-experimental">Access Single NASA EarthData L2 Netcdf (EXPERIMENTAL)</h2>
+<p>The general approach to access NASA Earthdata follows the Python tutorials. Direct S3 access is achieved by passing NASA supplied temporary credentials to AWS so we can interact with S3 objects from applicable Earthdata Cloud buckets. For now, each NASA DAAC has different AWS credentials endpoints. Below are some of the credential endpoints to various DAACs:</p>
+<ul>
+<li><p>podaac: <a href="https://archive.podaac.earthdata.nasa.gov/s3credentials" class="uri">https://archive.podaac.earthdata.nasa.gov/s3credentials</a></p></li>
+<li><p>gesdisc: <a href="https://data.gesdisc.earthdata.nasa.gov/s3credentials" class="uri">https://data.gesdisc.earthdata.nasa.gov/s3credentials</a></p></li>
+<li><p>lpdaac: <a href="https://data.lpdaac.earthdatacloud.nasa.gov/s3credentials" class="uri">https://data.lpdaac.earthdatacloud.nasa.gov/s3credentials</a></p></li>
+<li><p>ornldaac: <a href="https://data.ornldaac.earthdata.nasa.gov/s3credentials" class="uri">https://data.ornldaac.earthdata.nasa.gov/s3credentials</a></p></li>
+<li><p>ghrcdaac: <a href="https://data.ghrc.earthdata.nasa.gov/s3credentials" class="uri">https://data.ghrc.earthdata.nasa.gov/s3credentials</a></p></li>
+</ul>
+<p>You will need your EarthData login to access these links.</p>
+<ol type="1">
+<li><p>Search NASA Earthdata and find the S3 link you want to access [LINK TO TUTORIAL]</p></li>
+<li><p>Set AWS Environment Variables - Go to the link above for the Access key, secret access key and token.</p></li>
+<li><p>Copy and past those variables into the code below</p>
+<p><code>setenv('AWS_ACCESS_KEY_ID', 'REPLACE WITH PODAAC ACCESS KEY');</code></p>
+<p><code>setenv('AWS_SECRET_ACCESS_KEY', 'REPLACE WITH PODAAC SECRET KEY');</code></p>
+<p><code>setenv('AWS_SESSION_TOKEN',  'REPLACE WITH PODAAC SESSION TOKEN');</code></p>
+<p><code>setenv('AWS_DEFAULT_REGION', 'us-west-2');</code></p>
+<p>NOTE: These expire ever 30 mins or so and this step needs to be done. We are searching for a better method.</p></li>
+<li><p>In Matlab on AWS only the HDF commands work</p>
+<p><code>FILE_NAME = 's3://podaac-ops-cumulus-protected/MODIS_A-JPL-L2P-v2019.0/20100619062008-JPL-L2P_GHRSST-SSTskin-MODIS_A-N-v02.0-fv01.0.nc';</code></p>
+<p><code>file_id = H5F.open(FILE_NAME, 'H5F_ACC_RDONLY', 'H5P_DEFAULT');</code></p></li>
+<li><p>This code works to read the file - Copy each section into the Matlab command<br>
+NOTE: We need a way to find all variables in a given netcdf file. I used the python code to find variables and then brought it here.</p>
+<p><code>DATAFIELD_NAME='sea_surface_temperature_4um';</code></p>
+<p><code>data_id = H5D.open(file_id, DATAFIELD_NAME);</code></p>
+<p><code>data=H5D.read(data_id,'H5T_NATIVE_DOUBLE', 'H5S_ALL', 'H5S_ALL', 'H5P_DEFAULT');</code></p>
+<p><code>% Read units.</code></p>
+<p><code>ATTRIBUTE = 'units';</code></p>
+<p><code>attr_id = H5A.open_name(data_id, ATTRIBUTE);</code></p>
+<p><code>units = H5A.read(attr_id, 'H5ML_DEFAULT');</code></p>
+<p><code>H5A.close(attr_id);</code></p>
+<p><code>% Read long_name.</code></p>
+<p><code>ATTRIBUTE = 'long_name';</code></p>
+<p><code>attr_id = H5A.open_name (data_id, ATTRIBUTE);</code></p>
+<p><code>long_name=H5A.read (attr_id, 'H5ML_DEFAULT');</code></p>
+<p><code>H5A.close(attr_id);</code></p>
+<p><code>% Read the fill value.</code></p>
+<p><code>ATTRIBUTE = '_FillValue';</code></p>
+<p><code>attr_id = H5A.open_name(data_id, ATTRIBUTE);</code></p>
+<p><code>fillvalue=H5A.read(attr_id, 'H5T_NATIVE_DOUBLE');</code></p>
+<p><code>H5A.close(attr_id);</code></p>
+<p><code>% Read latitude data.</code></p>
+<p><code>LAT_NAME='lat';</code></p>
+<p><code>lat_id=H5D.open(file_id, LAT_NAME);</code></p>
+<p><code>lat=H5D.read(lat_id, 'H5T_NATIVE_DOUBLE', 'H5S_ALL', 'H5S_ALL', 'H5P_DEFAULT');</code></p>
+<p><code>% Read longitude data.</code></p>
+<p><code>LON_NAME='lon';</code></p>
+<p><code>lon_id=H5D.open(file_id, LON_NAME);</code></p>
+<p><code>lon=H5D.read(lon_id, 'H5T_NATIVE_DOUBLE', 'H5S_ALL', 'H5S_ALL', 'H5P_DEFAULT');</code></p>
+<p><code>% Close and release resources.</code></p>
+<p><code>H5D.close(data_id);</code></p>
+<p><code>H5D.close(lat_id);</code></p>
+<p><code>H5D.close(lon_id);</code></p>
+<p><code>H5F.close(file_id);</code></p>
+<p><code>% Replace the fill value with NaN.</code></p>
+<p><code>data(data==fillvalue) = NaN;</code></p></li>
+<li><p>Create an image</p>
+<p><code>contour(data);</code></p>
+<p><img src="images/Screen%20Shot%202022-05-30%20at%207.00.01%20PM.png" class="img-fluid"></p></li>
+</ol>
+</section>
+<section id="shutdown-your-aws-stack" class="level2">
+<h2 class="anchored" data-anchor-id="shutdown-your-aws-stack">Shutdown your AWS Stack</h2>
+<p>After each session you need to turn off the AWS Stack. If you forget this step and leave it running it is like keeping a computer on for the month. For the large instance it costs $0.5/day so it’s a few dollars a month.</p>
+<ol type="1">
+<li><p>Go back to AWS</p></li>
+<li><p>Search for stack</p></li>
+<li><p>Click on the name of your stack</p></li>
+<li><p>Click ‘Delete’</p>
+<p><img src="images/Screen%20Shot%202022-05-30%20at%206.41.02%20PM.png" class="img-fluid"></p></li>
+<li><p>Confirm the delete</p>
+<p><img src="images/Screen%20Shot%202022-05-30%20at%203.06.40%20PM.png" class="img-fluid"></p></li>
+</ol>
+<p><strong>To do:</strong></p>
+<ul>
+<li><p>Add Github &amp; Matlab project instructions</p></li>
+<li><p>Alternative experiments to this stack - Octave in the 2i2c Jupyter hub or Matlab in the 2i2c Jupyter hub.</p></li>
+</ul>
 
 
 </section>
