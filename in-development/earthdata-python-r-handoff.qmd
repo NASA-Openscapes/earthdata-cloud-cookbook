@@ -1,0 +1,142 @@
+---
+title: "`earthdata`: Python-R Handoff"
+---
+
+## The dream
+
+Create once, use often: using `earthdata` package for auth & data access, then passing those python objects to R through Quarto. These notes are a work-in-progress by Julie and Luis and we'll tidy them up as we develop them further.
+
+## Python: `earthdata` package for auth & s3 links
+
+`earthdata` gets me the credentials, it gets me the links based on the queries.
+
+The data we want is in the Cloud. For this examples we're using this data we identified from [earthdata-cloud-cookbook/how-tos/Multi-File_Direct_S3_Access_NetCDF_Example](https://nasa-openscapes.github.io/earthdata-cloud-cookbook/how-tos/Multi-File_Direct_S3_Access_NetCDF_Example.html), which has the `short_name = 'ECCO_L4_SSH_05DEG_MONTHLY_V4R4'` .
+
+### Identify the s3 links
+
+```{python}
+## import DataCollections class from earthdata library
+from earthdata import DataCollections
+
+## To find the concept_id from the shortname that we copied from 
+# short_name = 'ECCO_L4_SSH_05DEG_MONTHLY_V4R4' 
+# collection = DataCollections().short_name(short_name).get()
+# [c.concept_id() for c in collection] ## returned 'C1990404799-POCLOUD'
+
+# Then we build a Query with spatiotemporal parameters. Pretend that was the bounding box we want.
+GranuleQuery = DataGranules().concept_id('C1990404799-POCLOUD').bounding_box(-134.7,58.9,-133.9,59.2)
+
+## We get the metadata records from CMR
+granules = GranuleQuery.get()
+
+## Now it's time to open our data granules list. 
+## This code would work for Python users, but won't work for R users, see explanation below.
+# files = Store(auth).open(granules) 
+ 
+s3_links = [granule.data_links(access='direct') for granule in granules] 
+s3_links[0] ## returns ['s3://podaac-ops-cumulus-protected/ECCO_L4_SSH_05DEG_MONTHLY_V4R4/SEA_SURFACE_HEIGHT_mon_mean_1992-01_ECCO_V4r4_latlon_0p50deg.nc']
+ 
+```
+
+Note that `files = Store(auth).open(granules)` would work for Python users but `open` won't work in the R world because it will create some kind of python file handlers from fsspec.
+
+### Get the Cloud credentials
+
+Prerequesite: you'll need a functioning .netrc here. `earthdata` expects interactivity and that did not work here with Quarto in the RStudio IDE\< and it also did not work for Julie in Jupyter notebook (June 7 2022). So, we followed the [2021-Cloud-Hackathon/tutorials/04_NASA_Earthdata_Authentication](https://nasa-openscapes.github.io/2021-Cloud-Hackathon/tutorials/04_NASA_Earthdata_Authentication.html), copying and pasting and running that code in a Jupyter notebook. (remember to `rm .netrc` beforehand!)
+
+Then, with a nice .netrc file, the next step is to get Cloud credentials:
+
+```{python}
+## import the Auth class from the earthdata library
+from earthdata import Auth
+
+auth = Auth().login(strategy="netrc")
+credentials = auth.get_s3_credentials(cloud_provider = "POCLOUD") # Luis will make this automatic so we don't have to know POCLOUD vs PODAAC
+# credentials you actually don't want to print your credentials, we were just checking that they worked
+
+```
+
+So now we have the s3 links and the credentials to download the links, so now we can use the tutorial in R!!
+
+**Notes**
+
+The resulting JSON dictionary is what we'll export to R, and it will be valid for 1 hour. When I run into issues, I'll say "why is this not working", and it's because it's expired in 1 hour.
+
+The bucket level: need to remove the name of the file (eg remove SEA_SURFACE). So for example:
+
+> \['s3://podaac-ops-cumulus-protected/ECCO_L4_SSH_05DEG_MONTHLY_V4R4/SEA_SURFACE_HEIGHT_mon_mean_1992-01_ECCO_V4r4_latlon_0p50deg.nc'\]
+
+THis is the bucket: \> \['s3://podaac-ops-cumulus-protected/ECCO_L4_SSH_05DEG_MONTHLY_V4R4/'\]
+
+Expect to run into issues with listing the files in the bucket (bc maybe something restricted or maybe you can access files but not list everything that's inside the bucket)
+
+Q for Luis: Now when I get the credentials, how do I export your AWS credentials into the environment for R? (if you're just using one provider like PODAAC you could potentially set up a daemon to reset the credentials every hour)
+
+## R: data access from s3 links!
+
+And now I can switch to R, if R is my preferred language.
+
+Then I can use Danielle's tutorial to access! <https://blog.djnavarro.net/posts/2022-03-17_using-aws-s3-in-r/#accounts-and-credentials>
+
+This is coming up next!
+
+```{.r}
+bucket_exists("s3://tiny-herbs/") 
+```
+
+## Dev notes
+
+### Chat with Andy May 26
+
+Maybe have a python script that takes arguments, compiled in a way that then in MatLab you can sys.admin that python script. Then he doesn't need to know python
+
+Other approach would be MatLab to re-write earthdata in MatLab
+
+Our dream, revised: the code should be language-agnostic
+
+### Notes, May 20 2022
+
+I tried this in our staging 2i2c instance, sort of simulataneously in the RStudio IDE (which needed python to be installed) and also in JupyterLab (which also wasn't happy). But we have the vision, this is going to be great.
+
+Working in RStudio IDE in 2i2c.
+
+When first tried to run Python section below, asked to install `reticulate`
+
+```{.r}
+# install.packages("reticulate") # < should quarto need this? 
+
+reticulate::repl_python()
+No non-system installation of Python could be found.
+Would you like to download and install Miniconda?
+Miniconda is an open source environment management system for Python.
+See https://docs.conda.io/en/latest/miniconda.html for more details.
+
+Would you like to install Miniconda? [Y/n]: from earthdata import Auth, DataGranules, Store
+Please answer yes or no: y
+* Installing Miniconda -- please wait a moment ...
+* Downloading 'https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh' ...
+trying URL 'https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh'
+Content type 'application/x-sh' length 76607678 bytes (73.1 MB)
+==================================================
+downloaded 73.1 MB
+```
+
+## Background
+
+This was Luis' original example code, but it downloads data. The examples above access it in the cloud. *From <https://nasa-openscapes.github.io/earthdata-cloud-cookbook/examples/earthdata-access-demo.html>*
+
+```{.python}
+from earthdata import Auth, DataGranules, Store
+
+# first we authenticate with NASA EDL
+auth = Auth().login(strategy="netrc")
+
+# Then we build a Query with spatiotemporal parameters
+GranuleQuery = DataGranules().concept_id("C1575731655-LPDAAC_ECS").bounding_box(-134.7,58.9,-133.9,59.2)
+
+# We get the metadata records from CMR
+granules = GranuleQuery.get()
+
+# Now it{s time to download (or open) our data granules list with get()
+files = Store(auth).get(granules, local_path='./data')
+```
