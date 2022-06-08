@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>EarthData Cloud Cookbook - PO DAAC Authentication Example</title>
+<title>EarthData Cloud Cookbook - earthdata: Python-R Handoff</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -86,6 +86,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
+<link href="../contributing/index.html" rel="next">
+<link href="../in-development/matlab.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -127,7 +129,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">PO DAAC Authentication Example</h1>
+      <h1 class="quarto-secondary-nav-title"><code>earthdata</code>: Python-R Handoff</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -268,11 +270,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         <li class="sidebar-item sidebar-item-section">
     <div class="sidebar-item-container"> 
         <a href="../in-development/index.html" class="sidebar-item-text sidebar-link">In Development</a>
-      <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
+      <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
         <i class="bi bi-chevron-right ms-2"></i>
       </a>
     </div>
-    <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
+    <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../examples/earthdata-access-demo.ipynb" class="sidebar-item-text sidebar-link">Earthdata Access (Python Library)</a>
@@ -345,7 +347,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../in-development/earthdata-python-r-handoff.html" class="sidebar-item-text sidebar-link"><code>earthdata</code>: Python-R Handoff</a>
+  <a href="../in-development/earthdata-python-r-handoff.html" class="sidebar-item-text sidebar-link active"><code>earthdata</code>: Python-R Handoff</a>
   </div>
 </li>
     </ul>
@@ -399,16 +401,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#configure-your-.netrc-file" id="toc-configure-your-.netrc-file" class="nav-link active" data-scroll-target="#configure-your-.netrc-file">Configure your <em>.netrc</em> file</a></li>
+  <li><a href="#the-dream" id="toc-the-dream" class="nav-link active" data-scroll-target="#the-dream">The dream</a></li>
+  <li><a href="#python-earthdata-package-for-auth-s3-links" id="toc-python-earthdata-package-for-auth-s3-links" class="nav-link" data-scroll-target="#python-earthdata-package-for-auth-s3-links">Python: <code>earthdata</code> package for auth &amp; s3 links</a>
+  <ul class="collapse">
+  <li><a href="#identify-the-s3-links" id="toc-identify-the-s3-links" class="nav-link" data-scroll-target="#identify-the-s3-links">Identify the s3 links</a></li>
+  <li><a href="#get-the-cloud-credentials" id="toc-get-the-cloud-credentials" class="nav-link" data-scroll-target="#get-the-cloud-credentials">Get the Cloud credentials</a></li>
+  </ul></li>
+  <li><a href="#r-data-access-from-s3-links" id="toc-r-data-access-from-s3-links" class="nav-link" data-scroll-target="#r-data-access-from-s3-links">R: data access from s3 links!</a></li>
+  <li><a href="#dev-notes" id="toc-dev-notes" class="nav-link" data-scroll-target="#dev-notes">Dev notes</a>
+  <ul class="collapse">
+  <li><a href="#chat-with-andy-may-26" id="toc-chat-with-andy-may-26" class="nav-link" data-scroll-target="#chat-with-andy-may-26">Chat with Andy May 26</a></li>
+  <li><a href="#notes-may-20-2022" id="toc-notes-may-20-2022" class="nav-link" data-scroll-target="#notes-may-20-2022">Notes, May 20 2022</a></li>
+  </ul></li>
+  <li><a href="#background" id="toc-background" class="nav-link" data-scroll-target="#background">Background</a></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.dev/nasa-openscapes/earthdata-cloud-cookbook/blob/main/get-started/podaac-ecco-netrc.ipynb" class="toc-action">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/edit/main/in-development/earthdata-python-r-handoff.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">PO DAAC Authentication Example</h1>
+<h1 class="title d-none d-lg-block"><code>earthdata</code>: Python-R Handoff</h1>
 </div>
 
 
@@ -422,315 +436,115 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<p><strong>Note this is currently copied from <a href="https://github.com/podaac/ECCO/blob/main/Data_Access/local_bulk_download_and_open_in_py3.ipynb" class="uri">https://github.com/podaac/ECCO/blob/main/Data_Access/local_bulk_download_and_open_in_py3.ipynb</a> as a starting point and will be refined</strong></p>
-<center>
-<img src="https://podaac.jpl.nasa.gov/sites/default/files/mission_themes/featured_image/%20Estimating-the-Circulation-and-Climate-of-the-Ocean-ECCO-opt2.jpg" width="600px">
-</center>
-<section id="configure-your-.netrc-file" class="level3">
-<h3 class="anchored" data-anchor-id="configure-your-.netrc-file">Configure your <em>.netrc</em> file</h3>
-<p>Good idea to back up your existing netrc file, if you have one. And while youre at it check for these entries because they might exist in there already:</p>
-<div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2021-05-27T10:39:46.711996Z&quot;,&quot;start_time&quot;:&quot;2021-05-27T10:39:46.584071Z&quot;}" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>cp <span class="op">~/</span>.netrc <span class="op">~/</span>bak.netrc</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>cat <span class="op">~/</span>.netrc <span class="op">|</span> grep <span class="st">'.earthdata.nasa.gov'</span> <span class="op">|</span> cut <span class="op">-</span>f<span class="op">-</span><span class="dv">5</span> <span class="op">-</span>d<span class="st">" "</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password</code></pre>
-</div>
-</div>
+<section id="the-dream" class="level2">
+<h2 class="anchored" data-anchor-id="the-dream">The dream</h2>
+<p>Create once, use often: using <code>earthdata</code> package for auth &amp; data access, then passing those python objects to R through Quarto. These notes are a work-in-progress by Julie and Luis and we’ll tidy them up as we develop them further.</p>
+</section>
+<section id="python-earthdata-package-for-auth-s3-links" class="level2">
+<h2 class="anchored" data-anchor-id="python-earthdata-package-for-auth-s3-links">Python: <code>earthdata</code> package for auth &amp; s3 links</h2>
+<p><code>earthdata</code> gets me the credentials, it gets me the links based on the queries.</p>
+<p>The data we want is in the Cloud. For this examples we’re using this data we identified from <a href="https://nasa-openscapes.github.io/earthdata-cloud-cookbook/how-tos/Multi-File_Direct_S3_Access_NetCDF_Example.html">earthdata-cloud-cookbook/how-tos/Multi-File_Direct_S3_Access_NetCDF_Example</a>, which has the <code>short_name = 'ECCO_L4_SSH_05DEG_MONTHLY_V4R4'</code> .</p>
+<section id="identify-the-s3-links" class="level3">
+<h3 class="anchored" data-anchor-id="identify-the-s3-links">Identify the s3 links</h3>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">## import DataCollections class from earthdata library</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> earthdata <span class="im">import</span> DataGranules</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">## To find the concept_id from the shortname that we copied from </span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># short_name = 'ECCO_L4_SSH_05DEG_MONTHLY_V4R4' </span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># collection = DataCollections().short_name(short_name).get()</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># [c.concept_id() for c in collection] ## returned 'C1990404799-POCLOUD'</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Then we build a Query with spatiotemporal parameters. Pretend that was the bounding box we want.</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>GranuleQuery <span class="op">=</span> DataGranules().concept_id(<span class="st">'C1990404799-POCLOUD'</span>).bounding_box(<span class="op">-</span><span class="fl">134.7</span>,<span class="fl">58.9</span>,<span class="op">-</span><span class="fl">133.9</span>,<span class="fl">59.2</span>)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co">## We get the metadata records from CMR</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>granules <span class="op">=</span> GranuleQuery.get()</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co">## Now it's time to open our data granules list. </span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co">## This code would work for Python users, but won't work for R users, see explanation below.</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co"># files = Store(auth).open(granules) </span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>s3_links <span class="op">=</span> [granule.data_links(access<span class="op">=</span><span class="st">'direct'</span>) <span class="cf">for</span> granule <span class="kw">in</span> granules] </span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>s3_links[<span class="dv">0</span>] <span class="co">## returns ['s3://podaac-ops-cumulus-protected/ECCO_L4_SSH_05DEG_MONTHLY_V4R4/SEA_SURFACE_HEIGHT_mon_mean_1992-01_ECCO_V4r4_latlon_0p50deg.nc']</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Note that <code>files = Store(auth).open(granules)</code> would work for Python users but <code>open</code> won’t work in the R world because it will create some kind of python file handlers from fsspec.</p>
+</section>
+<section id="get-the-cloud-credentials" class="level3">
+<h3 class="anchored" data-anchor-id="get-the-cloud-credentials">Get the Cloud credentials</h3>
+<p>Prerequesite: you’ll need a functioning .netrc here. <code>earthdata</code> expects interactivity and that did not work here with Quarto in the RStudio IDE&lt; and it also did not work for Julie in Jupyter notebook (June 7 2022). So, we followed the <a href="https://nasa-openscapes.github.io/2021-Cloud-Hackathon/tutorials/04_NASA_Earthdata_Authentication.html">2021-Cloud-Hackathon/tutorials/04_NASA_Earthdata_Authentication</a>, copying and pasting and running that code in a Jupyter notebook. (remember to <code>rm .netrc</code> beforehand!)</p>
+<p>Then, with a nice .netrc file, the next step is to get Cloud credentials:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">## import the Auth class from the earthdata library</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> earthdata <span class="im">import</span> Auth</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>auth <span class="op">=</span> Auth().login(strategy<span class="op">=</span><span class="st">"netrc"</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>credentials <span class="op">=</span> auth.get_s3_credentials(cloud_provider <span class="op">=</span> <span class="st">"POCLOUD"</span>) <span class="co"># Luis will make this automatic so we don't have to know POCLOUD vs PODAAC</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co"># credentials you actually don't want to print your credentials, we were just checking that they worked</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>So now we have the s3 links and the credentials to download the links, so now we can use the tutorial in R!!</p>
+<p><strong>Notes</strong></p>
+<p>The resulting JSON dictionary is what we’ll export to R, and it will be valid for 1 hour. When I run into issues, I’ll say “why is this not working”, and it’s because it’s expired in 1 hour.</p>
+<p>The bucket level: need to remove the name of the file (eg remove SEA_SURFACE). So for example:</p>
 <blockquote class="blockquote">
-<p>Add entries to your netrc for these two <em>earthdata.nasa.gov</em> sub domains, at a minimum:</p>
-<pre><code>machine urs.earthdata.nasa.gov login jmcnelis password ***
-machine opendap.earthdata.nasa.gov login jmcnelis password ***</code></pre>
-<p>and replace <code>jmcnelis</code> and <code>***</code> with your Earthdata Login <em>username</em> and <em>password</em>, respectively…</p>
+<p>[‘s3://podaac-ops-cumulus-protected/ECCO_L4_SSH_05DEG_MONTHLY_V4R4/SEA_SURFACE_HEIGHT_mon_mean_1992-01_ECCO_V4r4_latlon_0p50deg.nc’]</p>
 </blockquote>
-<p>Replace <code>jmcnelis</code> and <code>***</code> with your Earthdata <em>username</em> and <em>password</em>, and then run the cell to <em>append</em> these two lines to your netrc file, if one exists. Otherwise write them to a new one. (all set up by <code>-a</code>)</p>
-<div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2021-05-27T10:39:47.549656Z&quot;,&quot;start_time&quot;:&quot;2021-05-27T10:39:47.545449Z&quot;}" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span><span class="bu">file</span> <span class="op">-</span>a <span class="op">~/</span>.netrc</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>machine urs.earthdata.nasa.gov login jmcnelis password <span class="op">***</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>machine opendap.earthdata.nasa.gov login jmcnelis password <span class="op">***</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Appending to /Users/lowndes/.netrc</code></pre>
-</div>
-</div>
-<p>Dump the netrc again sans passwords to confirm that it worked:</p>
-<div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2021-05-27T10:39:48.488604Z&quot;,&quot;start_time&quot;:&quot;2021-05-27T10:39:48.365081Z&quot;}" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>cat <span class="op">~/</span>.netrc <span class="op">|</span> grep <span class="st">'.earthdata.nasa.gov'</span> <span class="op">|</span> cut <span class="op">-</span>f<span class="op">-</span><span class="dv">5</span> <span class="op">-</span>d<span class="st">" "</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password</code></pre>
-</div>
-</div>
-<p>Finally, you need to make sure to limit access to the netrc file because it stores your plain text password. Simple on MacOS and Linux:</p>
-<div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2021-05-27T10:39:48.969549Z&quot;,&quot;start_time&quot;:&quot;2021-05-27T10:39:48.843529Z&quot;}" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>chmod <span class="dv">0</span><span class="er">600</span> <span class="op">~/</span>.netrc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<p>THis is the bucket: &gt; [‘s3://podaac-ops-cumulus-protected/ECCO_L4_SSH_05DEG_MONTHLY_V4R4/’]</p>
+<p>Expect to run into issues with listing the files in the bucket (bc maybe something restricted or maybe you can access files but not list everything that’s inside the bucket)</p>
+<p>Q for Luis: Now when I get the credentials, how do I export your AWS credentials into the environment for R? (if you’re just using one provider like PODAAC you could potentially set up a daemon to reset the credentials every hour)</p>
+</section>
+</section>
+<section id="r-data-access-from-s3-links" class="level2">
+<h2 class="anchored" data-anchor-id="r-data-access-from-s3-links">R: data access from s3 links!</h2>
+<p>And now I can switch to R, if R is my preferred language.</p>
+<p>Then I can use Danielle’s tutorial to access! <a href="https://blog.djnavarro.net/posts/2022-03-17_using-aws-s3-in-r/#accounts-and-credentials" class="uri">https://blog.djnavarro.net/posts/2022-03-17_using-aws-s3-in-r/#accounts-and-credentials</a></p>
+<p>This is coming up next!</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bucket_exists</span>(<span class="st">"s3://tiny-herbs/"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="dev-notes" class="level2">
+<h2 class="anchored" data-anchor-id="dev-notes">Dev notes</h2>
+<section id="chat-with-andy-may-26" class="level3">
+<h3 class="anchored" data-anchor-id="chat-with-andy-may-26">Chat with Andy May 26</h3>
+<p>Maybe have a python script that takes arguments, compiled in a way that then in MatLab you can sys.admin that python script. Then he doesn’t need to know python</p>
+<p>Other approach would be MatLab to re-write earthdata in MatLab</p>
+<p>Our dream, revised: the code should be language-agnostic</p>
+</section>
+<section id="notes-may-20-2022" class="level3">
+<h3 class="anchored" data-anchor-id="notes-may-20-2022">Notes, May 20 2022</h3>
+<p>I tried this in our staging 2i2c instance, sort of simulataneously in the RStudio IDE (which needed python to be installed) and also in JupyterLab (which also wasn’t happy). But we have the vision, this is going to be great.</p>
+<p>Working in RStudio IDE in 2i2c.</p>
+<p>When first tried to run Python section below, asked to install <code>reticulate</code></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("reticulate") # &lt; should quarto need this? </span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>reticulate<span class="sc">::</span><span class="fu">repl_python</span>()</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>No non<span class="sc">-</span>system installation of Python could be found.</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>Would you like to download and install Miniconda?</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>Miniconda is an open source environment management system <span class="cf">for</span> Python.</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>See https<span class="sc">:</span><span class="er">//</span>docs.conda.io<span class="sc">/</span>en<span class="sc">/</span>latest<span class="sc">/</span>miniconda.html <span class="cf">for</span> more details.</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>Would you like to install Miniconda? [Y<span class="sc">/</span>n]<span class="sc">:</span> from earthdata import Auth, DataGranules, Store</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>Please answer yes or no<span class="sc">:</span> y</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="sc">*</span> Installing Miniconda <span class="sc">--</span> please wait a moment ...</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="sc">*</span> Downloading <span class="st">'https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh'</span> ...</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>trying URL <span class="st">'https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh'</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>Content type <span class="st">'application/x-sh'</span> length <span class="dv">76607678</span> <span class="fu">bytes</span> (<span class="fl">73.1</span> MB)</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="sc">==</span><span class="er">================================================</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>downloaded <span class="fl">73.1</span> MB</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="background" class="level2">
+<h2 class="anchored" data-anchor-id="background">Background</h2>
+<p>This was Luis’ original example code, but it downloads data. The examples above access it in the cloud. <em>From <a href="https://nasa-openscapes.github.io/earthdata-cloud-cookbook/examples/earthdata-access-demo.html" class="uri">https://nasa-openscapes.github.io/earthdata-cloud-cookbook/examples/earthdata-access-demo.html</a></em></p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> earthdata <span class="im">import</span> Auth, DataGranules, Store</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># first we authenticate with NASA EDL</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>auth <span class="op">=</span> Auth().login(strategy<span class="op">=</span><span class="st">"netrc"</span>)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Then we build a Query with spatiotemporal parameters</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>GranuleQuery <span class="op">=</span> DataGranules().concept_id(<span class="st">"C1575731655-LPDAAC_ECS"</span>).bounding_box(<span class="op">-</span><span class="fl">134.7</span>,<span class="fl">58.9</span>,<span class="op">-</span><span class="fl">133.9</span>,<span class="fl">59.2</span>)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co"># We get the metadata records from CMR</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>granules <span class="op">=</span> GranuleQuery.get()</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Now it{s time to download (or open) our data granules list with get()</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>files <span class="op">=</span> Store(auth).get(granules, local_path<span class="op">=</span><span class="st">'./data'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 </section>
@@ -912,6 +726,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../in-development/matlab.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Matlab &amp; AWS</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../contributing/index.html" class="pagination-link">
+        <span class="nav-page-text">Contributing</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
