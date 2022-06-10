@@ -101,7 +101,7 @@ R](https://happygitwithr.com/), which includes fantastic background
 philosophy as well as bash commands for setup, workflows, and
 collaboration.
 
-The following assumes you're all [setup](contributing/setup) from the
+The following assumes you've completed the [initial setup](/contributing/setup.qmd) from the
 previous chapter.
 
 ### Branch setup
