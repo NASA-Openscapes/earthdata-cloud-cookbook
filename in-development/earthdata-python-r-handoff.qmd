@@ -14,9 +14,9 @@ The data we want is in the Cloud. For this examples we're using this data we ide
 
 ### Identify the s3 links
 
-```{python}
+```{.python}
 ## import DataCollections class from earthdata library
-from earthdata import DataCollections
+from earthdata import DataGranules
 
 ## To find the concept_id from the shortname that we copied from 
 # short_name = 'ECCO_L4_SSH_05DEG_MONTHLY_V4R4' 
@@ -46,7 +46,7 @@ Prerequesite: you'll need a functioning .netrc here. `earthdata` expects interac
 
 Then, with a nice .netrc file, the next step is to get Cloud credentials:
 
-```{python}
+```{.python}
 ## import the Auth class from the earthdata library
 from earthdata import Auth
 
