@@ -1,5 +1,7 @@
 ---
 title: "`earthdata`: Python-R Handoff"
+execute:
+  freeze: true  # never re-render during project render
 ---
 
 ## The dream
@@ -14,7 +16,7 @@ The data we want is in the Cloud. For this examples we're using this data we ide
 
 ### Identify the s3 links
 
-```{.python}
+```{python}
 ## import DataCollections class from earthdata library
 from earthdata import DataGranules
 
@@ -30,12 +32,8 @@ GranuleQuery = DataGranules().concept_id('C1990404799-POCLOUD').bounding_box(-13
 granules = GranuleQuery.get()
 
 ## Now it's time to open our data granules list. 
-## This code would work for Python users, but won't work for R users, see explanation below.
-# files = Store(auth).open(granules) 
- 
 s3_links = [granule.data_links(access='direct') for granule in granules] 
-s3_links[0] ## returns ['s3://podaac-ops-cumulus-protected/ECCO_L4_SSH_05DEG_MONTHLY_V4R4/SEA_SURFACE_HEIGHT_mon_mean_1992-01_ECCO_V4r4_latlon_0p50deg.nc']
- 
+s3_links[0]
 ```
 
 Note that `files = Store(auth).open(granules)` would work for Python users but `open` won't work in the R world because it will create some kind of python file handlers from fsspec.
@@ -46,43 +44,133 @@ Prerequesite: you'll need a functioning .netrc here. `earthdata` expects interac
 
 Then, with a nice .netrc file, the next step is to get Cloud credentials:
 
-```{.python}
+```{python}
 ## import the Auth class from the earthdata library
 from earthdata import Auth
 
 auth = Auth().login(strategy="netrc")
-credentials = auth.get_s3_credentials(cloud_provider = "POCLOUD") # Luis will make this automatic so we don't have to know POCLOUD vs PODAAC
-# credentials you actually don't want to print your credentials, we were just checking that they worked
-
+credentials = auth.get_s3_credentials(cloud_provider = "POCLOUD") 
 ```
 
 So now we have the s3 links and the credentials to download the links, so now we can use the tutorial in R!!
 
 **Notes**
 
-The resulting JSON dictionary is what we'll export to R, and it will be valid for 1 hour. When I run into issues, I'll say "why is this not working", and it's because it's expired in 1 hour.
-
-The bucket level: need to remove the name of the file (eg remove SEA_SURFACE). So for example:
-
-> \['s3://podaac-ops-cumulus-protected/ECCO_L4_SSH_05DEG_MONTHLY_V4R4/SEA_SURFACE_HEIGHT_mon_mean_1992-01_ECCO_V4r4_latlon_0p50deg.nc'\]
-
-THis is the bucket: \> \['s3://podaac-ops-cumulus-protected/ECCO_L4_SSH_05DEG_MONTHLY_V4R4/'\]
-
-Expect to run into issues with listing the files in the bucket (bc maybe something restricted or maybe you can access files but not list everything that's inside the bucket)
-
-Q for Luis: Now when I get the credentials, how do I export your AWS credentials into the environment for R? (if you're just using one provider like PODAAC you could potentially set up a daemon to reset the credentials every hour)
+- Luis will update `earthdata` to automatically know the cloud provider so that you don't have to specify for example POCLOUD vs PODAAC
+# credentials you actually don't want to print your credentials, we were just checking that they worked
+- The resulting JSON dictionary is what we'll export to R, and it will be valid for 1 hour. When I run into issues, I'll say "why is this not working", and it's because it's expired in 1 hour.
+- When we want to identify the bucket level, we'll need to remove the name of the file. For example:
+  - 's3://podaac-ops-cumulus-protected/ECCO_L4_SSH_05DEG_MONTHLY_V4R4/SEA_SURFACE_HEIGHT_mon_mean_1992-01_ECCO_V4r4_latlon_0p50deg.nc' includes the filename
+  - 's3://podaac-ops-cumulus-protected/ECCO_L4_SSH_05DEG_MONTHLY_V4R4/' is only the bucket
+- Expect to run into issues with listing the files in the bucket (because maybe something is restricted or maybe you can access files but not list everything that's inside the bucket)
 
 ## R: data access from s3 links!
 
 And now I can switch to R, if R is my preferred language.
 
-Then I can use Danielle's tutorial to access! <https://blog.djnavarro.net/posts/2022-03-17_using-aws-s3-in-r/#accounts-and-credentials>
+The blog post [Using Amazon S3 with R](https://blog.djnavarro.net/posts/2022-03-17_using-aws-s3-in-r/) by Danielle Navarro is hugely informative and describes how to use the [aws.s3](https://github.com/cloudyr/aws.s3) R package.
 
-This is coming up next!
+First load libraries: 
+```{r}
+#| label: setup
 
-```{.r}
-bucket_exists("s3://tiny-herbs/") 
+library(dplyr)
+library(readr)
+library(purrr)
+library(stringr)
+library(tibble)
+library(aws.s3) # install.packages("aws.s3")
+library(reticulate)
 ```
+
+Translate credentials from python variables (created with `earthdata` above) to R variables using `reticulate`'s `py$` syntax and `purr`'s `pluck()` to isolate a variable from a list:
+
+```{r}
+## translate credentials from python to R
+credentials_r <- py$credentials #YAY!
+
+## pluck my information
+mykey <- credentials_r %>% pluck("accessKeyId")
+mysecretkey <- credentials_r %>% pluck("secretAccessKey")
+mytoken <- credentials_r %>% pluck("sessionToken")
+
+## translate s3 links from python to R
+s3_links_r <- py$s3_links
+
+## pluck and create my bucket (currently pasted from above but come back to do programatically)
+# my_link <- pluck(s3_links_r, 1) # TODO stringr::str_split(my_link, "/").  
+my_bucket <- "s3://podaac-ops-cumulus-protected/ECCO_L4_SSH_05DEG_MONTHLY_V4R4/"
+  
+```
+
+From the [`aws.s3` documentation](https://github.com/cloudyr/aws.s3#aws-s3-client-package), set up system environment variables for AWS:
+
+```{r}
+Sys.setenv("AWS_ACCESS_KEY_ID" = mykey,
+           "AWS_SECRET_ACCESS_KEY" = mysecretkey,
+           "AWS_DEFAULT_REGION" = "us-west-2",
+           "AWS_SESSION_TOKEN" = mytoken)
+```
+
+```{r}
+# testing by hand: Luis
+Sys.setenv("AWS_ACCESS_KEY_ID" = "ASIATNGJQBXBHRPIKFFB",
+           "AWS_SECRET_ACCESS_KEY" = "zbYP2fueNxLK/joDAcz678mkjjzP6fz4HUN131ID",
+           "AWS_DEFAULT_REGION" = "us-west-2")
+```
+
+First let's test Danielle's code to see if it runs. Note to Luis: the following only works when the `Sys.setenv` is not set:
+
+```{r}
+library(aws.s3)
+
+bucket_exists(
+  bucket = "s3://herbariumnsw-pds/", 
+  region = "ap-southeast-2"
+)
+```
+
+Now, see if the PODAAC bucket exists:
+
+```{r}
+aws.s3::bucket_exists(
+  bucket = "s3://podaac-ops-cumulus-protected/", 
+  region = "us-west-2"
+)
+```
+
+```{r}
+herbarium_files <- get_bucket_df(
+  bucket = "s3://podaac-ops-cumulus-protected/ECCO_L4_SSH_05DEG_MONTHLY_V4R4/", 
+  region = "us-west-2",
+  max = 20000
+) %>% 
+  as_tibble()
+```
+
+
+If forbidden: 
+- 1 hour expiration time
+- this bucket is not listable (or protected) (hopefully this error will be clear enough)
+
+If you get the following error, it's likely because your credentials have expired:
+
+::: callout-important
+    Client error: (403) Forbidden
+    [1] FALSE
+    attr(,"x-amz-bucket-region")
+    [1] "us-west-2"
+    attr(,"x-amz-request-id")
+    [1] "W2PQV030PDTGDD32"
+    attr(,"x-amz-id-2")
+    [1] "S8C0qzL1lAYLufzUupjqplyyS/3fWCKxIELk0OJLVHGzTOqlyhof+IPFYbaRUhmJwXQelfprYCU="
+    attr(,"content-type")
+    [1] "application/xml"
+    attr(,"date")
+    [1] "Wed, 08 Jun 2022 03:11:16 GMT"
+    attr(,"server")
+    [1] "AmazonS3"
+:::
 
 ## Dev notes
 
@@ -94,38 +182,11 @@ Other approach would be MatLab to re-write earthdata in MatLab
 
 Our dream, revised: the code should be language-agnostic
 
-### Notes, May 20 2022
-
-I tried this in our staging 2i2c instance, sort of simulataneously in the RStudio IDE (which needed python to be installed) and also in JupyterLab (which also wasn't happy). But we have the vision, this is going to be great.
-
-Working in RStudio IDE in 2i2c.
-
-When first tried to run Python section below, asked to install `reticulate`
-
-```{.r}
-# install.packages("reticulate") # < should quarto need this? 
-
-reticulate::repl_python()
-No non-system installation of Python could be found.
-Would you like to download and install Miniconda?
-Miniconda is an open source environment management system for Python.
-See https://docs.conda.io/en/latest/miniconda.html for more details.
-
-Would you like to install Miniconda? [Y/n]: from earthdata import Auth, DataGranules, Store
-Please answer yes or no: y
-* Installing Miniconda -- please wait a moment ...
-* Downloading 'https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh' ...
-trying URL 'https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh'
-Content type 'application/x-sh' length 76607678 bytes (73.1 MB)
-==================================================
-downloaded 73.1 MB
-```
-
 ## Background
 
 This was Luis' original example code, but it downloads data. The examples above access it in the cloud. *From <https://nasa-openscapes.github.io/earthdata-cloud-cookbook/examples/earthdata-access-demo.html>*
 
-```{.python}
+``` python
 from earthdata import Auth, DataGranules, Store
 
 # first we authenticate with NASA EDL
