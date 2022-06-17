@@ -6,26 +6,30 @@ execute:
 
 ## The dream
 
-Create once, use often: using `earthdata` package for auth & data access, then passing those python objects to R through Quarto. These notes are a work-in-progress by Julie and Luis and we'll tidy them up as we develop them further.
+Create once, use often: using `earthdata` python package for NASA Earthdata authorization and identifying the s3 links (i.e. the locations where the data are stored on Amazon Web Services), then passing those python objects to R through Quarto for analysis by R folks. These notes are a work-in-progress by Julie and Luis and we'll tidy them up as we develop them further.
 
 ## Python: `earthdata` package for auth & s3 links
 
 `earthdata` gets me the credentials, it gets me the links based on the queries.
 
-The data we want is in the Cloud. For this examples we're using this data we identified from [earthdata-cloud-cookbook/how-tos/Multi-File_Direct_S3_Access_NetCDF_Example](https://nasa-openscapes.github.io/earthdata-cloud-cookbook/how-tos/Multi-File_Direct_S3_Access_NetCDF_Example.html), which has the `short_name = 'ECCO_L4_SSH_05DEG_MONTHLY_V4R4'` .
+In this example, the data we want is in the Cloud. For this examples we're using this data we identified from the Earthdata Cloud Cookbook's  [Multi-File_Direct_S3_Access_NetCDF_Example](https://nasa-openscapes.github.io/earthdata-cloud-cookbook/how-tos/Multi-File_Direct_S3_Access_NetCDF_Example.html), and its `short_name` is `'ECCO_L4_SSH_05DEG_MONTHLY_V4R4'`.
 
 ### Identify the s3 links
 
+Below is our query, pretending that that is the data and the bounding box we want.
+
 ```{python}
+#| eval: false
+#| 
 ## import DataCollections class from earthdata library
 from earthdata import DataGranules
 
-## To find the concept_id from the shortname that we copied from 
+## To find the concept_id from the shortname that we copied: 
 # short_name = 'ECCO_L4_SSH_05DEG_MONTHLY_V4R4' 
 # collection = DataCollections().short_name(short_name).get()
-# [c.concept_id() for c in collection] ## returned 'C1990404799-POCLOUD'
+# [c.concept_id() for c in collection] ## this returned 'C1990404799-POCLOUD'
 
-# Then we build a Query with spatiotemporal parameters. Pretend that was the bounding box we want.
+# Then we build a Query with spatiotemporal parameters. 
 GranuleQuery = DataGranules().concept_id('C1990404799-POCLOUD').bounding_box(-134.7,58.9,-133.9,59.2)
 
 ## We get the metadata records from CMR
@@ -36,15 +40,17 @@ s3_links = [granule.data_links(access='direct') for granule in granules]
 s3_links[0]
 ```
 
-Note that `files = Store(auth).open(granules)` would work for Python users but `open` won't work in the R world because it will create some kind of python file handlers from fsspec.
+Note that `files = Store(auth).open(granules)` would work for Python users but `open` won't work in the R world because it will create some kind of python file handlers from `fsspec`.
 
 ### Get the Cloud credentials
 
-Prerequesite: you'll need a functioning .netrc here. `earthdata` expects interactivity and that did not work here with Quarto in the RStudio IDE\< and it also did not work for Julie in Jupyter notebook (June 7 2022). So, we followed the [2021-Cloud-Hackathon/tutorials/04_NASA_Earthdata_Authentication](https://nasa-openscapes.github.io/2021-Cloud-Hackathon/tutorials/04_NASA_Earthdata_Authentication.html), copying and pasting and running that code in a Jupyter notebook. (remember to `rm .netrc` beforehand!)
+Prerequesite: you'll need a functioning .netrc here. `earthdata` expects interactivity and that did not work here with Quarto in the RStudio IDE (and it also did not work for Julie in Jupyter notebook (June 7 2022)). So, we followed the 2021-Cloud-Hackathon's  [NASA_Earthdata_Authentication](https://nasa-openscapes.github.io/2021-Cloud-Hackathon/tutorials/04_NASA_Earthdata_Authentication.html), copying and pasting and running that code in a Jupyter notebook. (remember to `rm .netrc` beforehand!)
 
 Then, with a nice .netrc file, the next step is to get Cloud credentials:
 
 ```{python}
+#| eval: false
+#| 
 ## import the Auth class from the earthdata library
 from earthdata import Auth
 
@@ -60,8 +66,8 @@ So now we have the s3 links and the credentials to download the links, so now we
 # credentials you actually don't want to print your credentials, we were just checking that they worked
 - The resulting JSON dictionary is what we'll export to R, and it will be valid for 1 hour. When I run into issues, I'll say "why is this not working", and it's because it's expired in 1 hour.
 - When we want to identify the bucket level, we'll need to remove the name of the file. For example:
-  - 's3://podaac-ops-cumulus-protected/ECCO_L4_SSH_05DEG_MONTHLY_V4R4/SEA_SURFACE_HEIGHT_mon_mean_1992-01_ECCO_V4r4_latlon_0p50deg.nc' includes the filename
-  - 's3://podaac-ops-cumulus-protected/ECCO_L4_SSH_05DEG_MONTHLY_V4R4/' is only the bucket
+  - <s3://podaac-ops-cumulus-protected/ECCO_L4_SSH_05DEG_MONTHLY_V4R4/SEA_SURFACE_HEIGHT_mon_mean_1992-01_ECCO_V4r4_latlon_0p50deg.nc> includes the filename
+  - <s3://podaac-ops-cumulus-protected/ECCO_L4_SSH_05DEG_MONTHLY_V4R4/> is only the bucket
 - Expect to run into issues with listing the files in the bucket (because maybe something is restricted or maybe you can access files but not list everything that's inside the bucket)
 
 ## R: data access from s3 links!
@@ -73,6 +79,7 @@ The blog post [Using Amazon S3 with R](https://blog.djnavarro.net/posts/2022-03-
 First load libraries: 
 ```{r}
 #| label: setup
+#| warning: false
 
 library(dplyr)
 library(readr)
@@ -86,19 +93,17 @@ library(reticulate)
 Translate credentials from python variables (created with `earthdata` above) to R variables using `reticulate`'s `py$` syntax and `purr`'s `pluck()` to isolate a variable from a list:
 
 ```{r}
-## translate credentials from python to R
-credentials_r <- py$credentials #YAY!
+## translate credentials from python to R, map to dataframe
+credentials_r_list <- py$credentials #YAY!
+credentials_r <- purrr::map_df(credentials_r_list, print)
 
-## pluck my information
-mykey <- credentials_r %>% pluck("accessKeyId")
-mysecretkey <- credentials_r %>% pluck("secretAccessKey")
-mytoken <- credentials_r %>% pluck("sessionToken")
-
-## translate s3 links from python to R
-s3_links_r <- py$s3_links
-
-## pluck and create my bucket (currently pasted from above but come back to do programatically)
-# my_link <- pluck(s3_links_r, 1) # TODO stringr::str_split(my_link, "/").  
+## translate s3 links from python to R, create my_bucket
+s3_links_r_list <- py$s3_links
+my_link_list <- s3_links_r_list[1] # let's just start with one
+my_link_chr <- purrr:::map_chr(my_link_list, paste, collapse="")
+#my_link <- as_tibble(my_link_chr)
+#my_link_split <- stringr::str_split(my_link, "/")
+#my_bucket <- str_c("s3://", my_link_split[3], my_link_split[4])
 my_bucket <- "s3://podaac-ops-cumulus-protected/ECCO_L4_SSH_05DEG_MONTHLY_V4R4/"
   
 ```
@@ -106,10 +111,12 @@ my_bucket <- "s3://podaac-ops-cumulus-protected/ECCO_L4_SSH_05DEG_MONTHLY_V4R4/"
 From the [`aws.s3` documentation](https://github.com/cloudyr/aws.s3#aws-s3-client-package), set up system environment variables for AWS:
 
 ```{r}
-Sys.setenv("AWS_ACCESS_KEY_ID" = mykey,
-           "AWS_SECRET_ACCESS_KEY" = mysecretkey,
+#| eval: false
+
+Sys.setenv("AWS_ACCESS_KEY_ID" = credentials_r$accessKeyId,
+           "AWS_SECRET_ACCESS_KEY" = credentials_r$secretAccessKey,
            "AWS_DEFAULT_REGION" = "us-west-2",
-           "AWS_SESSION_TOKEN" = mytoken)
+           "AWS_SESSION_TOKEN" = credentials_r$sessionToken)
 ```
 
 ```{r}
@@ -140,6 +147,7 @@ aws.s3::bucket_exists(
 ```
 
 ```{r}
+#| eval: false
 herbarium_files <- get_bucket_df(
   bucket = "s3://podaac-ops-cumulus-protected/ECCO_L4_SSH_05DEG_MONTHLY_V4R4/", 
   region = "us-west-2",
