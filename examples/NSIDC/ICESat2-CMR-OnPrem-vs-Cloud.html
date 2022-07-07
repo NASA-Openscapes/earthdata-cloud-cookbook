@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-0.9.449">
+<meta name="generator" content="quarto-0.9.653">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -80,12 +80,13 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<meta name="quarto:offset" content="../../">
 <script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
 <link href="../../examples/NSIDC/ICESat2-CMR-AWS-S3.html" rel="next">
 <link href="../../examples/earthdata-access-demo.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
@@ -93,12 +94,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link class="quarto-color-scheme" id="quarto-text-highlighting-styles" href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet">
-<link class="quarto-color-scheme quarto-color-alternate" rel="prefetch" id="quarto-text-highlighting-styles" href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link class="quarto-color-scheme" href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet">
-<link class="quarto-color-scheme quarto-color-alternate" rel="prefetch" href="../../site_libs/bootstrap/bootstrap-dark.min.css">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme">
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -143,15 +144,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
-    <div class="pt-lg-2 mt-2 text-center sidebar-header">
+    <div class="pt-lg-2 mt-2 text-center sidebar-header sidebar-header-stacked">
       <a href="../../" class="sidebar-logo-link">
       <img src="../../images/nasa-openscapes.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
-      <div class="sidebar-tools-main tools-wide">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../../">NASA Earthdata Cloud Cookbook</a> 
+        <div class="sidebar-tools-main tools-wide">
     <a href="https://nasa-openscapes.github.io" title="NASA-Openscapes website" class="sidebar-tool px-1"><i class="bi bi-globe"></i></a>
     <a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook" title="Earthdata Cloud Cookbook repo" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle sidebar-tool" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
+    </div>
       </div>
       <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
@@ -625,11 +629,9 @@ explicitly required for ATL03.
         
 </div>
 </div>
-<div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># We  can access the data links with the data_links()</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> g <span class="kw">in</span> granules[<span class="dv">0</span>:<span class="dv">10</span>]:</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(g.data_links())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 </section>
 <section id="cloud-collections" class="level2">
 <h2 class="anchored" data-anchor-id="cloud-collections">Cloud Collections</h2>
@@ -786,7 +788,6 @@ explicitly required for ATL03.
 <p>There is more than one way of accessing data on AWS S3, either downloading it to your local machine using the official client library or using a python library.</p>
 <p><strong>Performance tip</strong>: using the HTTPS URLs will decrease the access performance since these links have to internally be processed by AWS’s content delivery system (CloudFront). To get a better performance we should access the <code>S3://</code> URLs with BOTO3 or a high level S3 enabled library (i.e.&nbsp;S3FS)</p>
 <p>Related links: * <a href="http://matthewrocklin.com/blog/work/2018/02/06/hdf-in-the-cloud">HDF in the Cloud challenges and solutions for scientific data</a> * <a href="https://www.hdfgroup.org/solutions/enterprise-support/cloud-amazon-s3-storage-hdf5-connector/">Cloud Storage (Amazon S3) HDF5 Connector</a></p>
-<div class="cell">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># READ only temporary credentials</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> s3fs</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> h5py</span>
@@ -801,19 +802,15 @@ explicitly required for ATL03.
 <span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Now you could grab S3 links to your cloud instance (EC2, Hub etc) using:</span></span>
 <span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a><span class="co"># s3_fs.get('s3://SOME_LOCATION/ATL03_20181015124359_02580106_004_01.h5', 'test.h5')</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 <section id="we-now-have-the-propper-credentials-and-file-mapper-to-access-the-data-within-aws-us-west-2." class="level3">
 <h3 class="anchored" data-anchor-id="we-now-have-the-propper-credentials-and-file-mapper-to-access-the-data-within-aws-us-west-2.">We now have the propper credentials and file mapper to access the data within AWS us-west-2.</h3>
-<div class="cell">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> s3_fs.<span class="bu">open</span>(<span class="st">'s3://nsidc-cumulus-prod-protected/ATLAS/ATL03/004/2018/10/15/ATL03_20181015124359_02580106_004_01.h5'</span>, <span class="st">'rb'</span>) <span class="im">as</span> s3f:</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> h5py.File(s3f, <span class="st">'r'</span>) <span class="im">as</span> f:</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>([key <span class="cf">for</span> key <span class="kw">in</span> f.keys()])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 </section>
 <section id="using-xarray-to-open-files-on-s3" class="level3">
 <h3 class="anchored" data-anchor-id="using-xarray-to-open-files-on-s3">Using xarray to open files on S3</h3>
 <p>ATL data is complex so xarray doesn’t know how to extract the important bits out of it.</p>
-<div class="cell">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> xarray</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> s3_fs.<span class="bu">open</span>(<span class="st">'s3://nsidc-cumulus-prod-protected/ATLAS/ATL03/004/2018/10/15/ATL03_20181015124359_02580106_004_01.h5'</span>, <span class="st">'rb'</span>) <span class="im">as</span> s3f:</span>
@@ -821,7 +818,6 @@ explicitly required for ATL03.
 <span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> varname <span class="kw">in</span> ds:</span>
 <span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(varname)</span>
 <span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>ds</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 </section>
 <section id="downloading-files-on-s3-using-the-official-aws-cli-library" class="level3">
 <h3 class="anchored" data-anchor-id="downloading-files-on-s3-using-the-official-aws-cli-library">“Downloading” files on S3 using the official aws-cli library</h3>

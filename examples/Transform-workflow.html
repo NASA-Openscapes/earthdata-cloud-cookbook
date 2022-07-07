@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-0.9.449">
+<meta name="generator" content="quarto-0.9.653">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -80,12 +80,13 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
-<meta name="quarto:offset" content="../">
 <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
 <link href="../examples/USGS_Landsat/Landsat_C2_Search_Access.html" rel="next">
 <link href="../examples/NSIDC/ICESat2-CMR-AWS-S3.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
@@ -93,12 +94,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link class="quarto-color-scheme" id="quarto-text-highlighting-styles" href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet">
-<link class="quarto-color-scheme quarto-color-alternate" rel="prefetch" id="quarto-text-highlighting-styles" href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link class="quarto-color-scheme" href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet">
-<link class="quarto-color-scheme quarto-color-alternate" rel="prefetch" href="../site_libs/bootstrap/bootstrap-dark.min.css">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -143,15 +144,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
-    <div class="pt-lg-2 mt-2 text-center sidebar-header">
+    <div class="pt-lg-2 mt-2 text-center sidebar-header sidebar-header-stacked">
       <a href="../" class="sidebar-logo-link">
       <img src="../images/nasa-openscapes.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
-      <div class="sidebar-tools-main tools-wide">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">NASA Earthdata Cloud Cookbook</a> 
+        <div class="sidebar-tools-main tools-wide">
     <a href="https://nasa-openscapes.github.io" title="NASA-Openscapes website" class="sidebar-tool px-1"><i class="bi bi-globe"></i></a>
     <a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook" title="Earthdata Cloud Cookbook repo" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle sidebar-tool" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
+    </div>
       </div>
       <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
@@ -2418,7 +2422,6 @@ password &lt;PASSWORD&gt;</code></pre>
 <li>check if you have an netrc file, and if so, varify if those credentials are for the Earthdata endpoint</li>
 <li>create a netrc file if a netrc file is not present.</li>
 </ol>
-<div class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>urs <span class="op">=</span> <span class="st">'urs.earthdata.nasa.gov'</span>    <span class="co"># Earthdata URL endpoint for authentication</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>prompts <span class="op">=</span> [<span class="st">'Enter NASA Earthdata Login Username: '</span>,</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>           <span class="st">'Enter NASA Earthdata Login Password: '</span>]</span>
@@ -2446,16 +2449,13 @@ password &lt;PASSWORD&gt;</code></pre>
 <span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>    Popen(<span class="st">'echo machine </span><span class="sc">{1}</span><span class="st"> &gt;&gt; </span><span class="sc">{0}{2}</span><span class="st">'</span>.<span class="bu">format</span>(homeDir <span class="op">+</span> os.sep, urs, netrc_name), shell<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>    Popen(<span class="st">'echo login </span><span class="sc">{}</span><span class="st"> &gt;&gt; </span><span class="sc">{}{}</span><span class="st">'</span>.<span class="bu">format</span>(getpass(prompt<span class="op">=</span>prompts[<span class="dv">0</span>]), homeDir <span class="op">+</span> os.sep, netrc_name), shell<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>    Popen(<span class="st">'echo </span><span class="ch">\'</span><span class="st">password </span><span class="sc">{}</span><span class="st"> </span><span class="ch">\'</span><span class="st">&gt;&gt; </span><span class="sc">{}{}</span><span class="st">'</span>.<span class="bu">format</span>(getpass(prompt<span class="op">=</span>prompts[<span class="dv">1</span>]), homeDir <span class="op">+</span> os.sep, netrc_name), shell<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 <section id="see-if-the-file-was-created" class="level4">
 <h4 class="anchored" data-anchor-id="see-if-the-file-was-created">See if the file was created</h4>
 <p>If the file was created, we’ll see a <code>.netrc</code> file (<code>_netrc</code> for Window OS) in the list printed below. To view the contents from a Jupyter environment, click <strong>File</strong> on the top toolbar, select <strong>Open from Path…</strong>, type <strong>.netrc</strong>, and click <strong>Open</strong>. The <code>.netrc</code> file will open within the text editor.</p>
 <blockquote class="blockquote">
 <p><strong>!!! Beware,</strong> your password will be visible if the <code>.netrc</code> file is opened in the text editor.</p>
 </blockquote>
-<div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>ls <span class="op">-</span>al <span class="op">~/</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 <hr>
 </section>
 </section>
@@ -2492,7 +2492,6 @@ password &lt;PASSWORD&gt;</code></pre>
 <section id="get-temporary-aws-credentials" class="level3">
 <h3 class="anchored" data-anchor-id="get-temporary-aws-credentials">Get Temporary AWS Credentials</h3>
 <p>Direct S3 access is achieved by passing NASA supplied temporary credentials to AWS so we can interact with S3 objects from applicable Earthdata Cloud buckets. For now, each NASA DAAC has different AWS credentials endpoints. Below are some of the credential endpoints to various DAACs:</p>
-<div class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>s3_cred_endpoint <span class="op">=</span> {</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">'podaac'</span>:<span class="st">'https://archive.podaac.earthdata.nasa.gov/s3credentials'</span>,</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'gesdisc'</span>: <span class="st">'https://data.gesdisc.earthdata.nasa.gov/s3credentials'</span>,</span>
@@ -2500,39 +2499,28 @@ password &lt;PASSWORD&gt;</code></pre>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">'ornldaac'</span>: <span class="st">'https://data.ornldaac.earthdata.nasa.gov/s3credentials'</span>,</span>
 <span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">'ghrcdaac'</span>: <span class="st">'https://data.ghrc.earthdata.nasa.gov/s3credentials'</span></span>
 <span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 <p>Create a function to make a request to an endpoint for temporary credentials. Remember, each DAAC has their own endpoint and credentials are not usable for cloud data from other DAACs.</p>
-<div class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_temp_creds(provider):</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> requests.get(s3_cred_endpoint[provider]).json()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>temp_creds_req <span class="op">=</span> get_temp_creds(<span class="st">'podaac'</span>)</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co">#temp_creds_req</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 </section>
 <section id="set-up-an-s3fs-session-for-direct-access" class="level3">
 <h3 class="anchored" data-anchor-id="set-up-an-s3fs-session-for-direct-access">Set up an <code>s3fs</code> session for Direct Access</h3>
 <p><code>s3fs</code> sessions are used for authenticated access to s3 buckets and allow for typical file-system style operations. Below we create session by passing in the temporary credentials we recieved from our temporary credentials endpoint.</p>
-<div class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>fs_s3 <span class="op">=</span> s3fs.S3FileSystem(anon<span class="op">=</span><span class="va">False</span>, </span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>                          key<span class="op">=</span>temp_creds_req[<span class="st">'accessKeyId'</span>], </span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>                          secret<span class="op">=</span>temp_creds_req[<span class="st">'secretAccessKey'</span>], </span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>                          token<span class="op">=</span>temp_creds_req[<span class="st">'sessionToken'</span>],</span>
 <span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>                          client_kwargs<span class="op">=</span>{<span class="st">'region_name'</span>:<span class="st">'us-west-2'</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 <p>In this example we’re interested in the GHRSST MODIS L2 collection from NASA’s PO.DAAC in Earthdata Cloud. Below we specify the s3 URL to the data asset in Earthdata Cloud. This URL can be found via <a href="https://nasa-openscapes.github.io/2021-Cloud-Workshop-AGU/tutorials/01_Earthdata_Search.html">Earthdata Search</a> or programmatically through the <a href="https://nasa-openscapes.github.io/2021-Cloud-Hackathon/tutorials/01_Data_Discovery_CMR.html">CMR</a> and <a href="https://nasa-openscapes.github.io/2021-Cloud-Hackathon/tutorials/02_Data_Discovery_CMR-STAC_API.html">CMR-STAC</a> APIs.</p>
-<div class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>short_name <span class="op">=</span> <span class="st">'MODIS_T-JPL-L2P-v2019.0'</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>s3_url <span class="op">=</span> <span class="st">'s3://podaac-ops-cumulus-protected/MODIS_T-JPL-L2P-v2019.0/20210820033500-JPL-L2P_GHRSST-SSTskin-MODIS_T-N-v02.0-fv01.0.nc'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 </section>
 <section id="direct-in-region-access" class="level3">
 <h3 class="anchored" data-anchor-id="direct-in-region-access">Direct In-region Access</h3>
 <p>Open with the netCDF file using the s3fs package, then load the cloud asset into a concatenated <code>xarray</code> <code>dataset</code>.</p>
-<div class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>s3_file_obj <span class="op">=</span> fs_s3.<span class="bu">open</span>(s3_url, mode<span class="op">=</span><span class="st">'rb'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 <div class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>ssh_ds <span class="op">=</span> xr.open_dataset(s3_file_obj)</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>ssh_ds</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -2993,9 +2981,7 @@ Attributes: (12/49)
 <h3 class="anchored" data-anchor-id="create-harmony-client-object">Create Harmony Client object</h3>
 <p>First, we need to create a Harmony Client, which is what we will interact with to submit and inspect a data request to Harmony, as well as to retrieve results.</p>
 <p>When creating the Client, we need to provide Earthdata Login credentials, which are required to access data from NASA EOSDIS. This basic line below assumes that we have a <code>.netrc</code> available.</p>
-<div class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>harmony_client <span class="op">=</span> Client()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 </section>
 <section id="create-harmony-request" class="level3">
 <h3 class="anchored" data-anchor-id="create-harmony-request">Create Harmony Request</h3>
@@ -3010,7 +2996,6 @@ Attributes: (12/49)
 <li><code>temporal</code>: Date/time constraints on the data. The example below demonstrates temporal start and end ranges using the python datetime library.</li>
 </ul>
 <p>As we identified above, only subsetting options are available for this dataset. If other service options such as reformatting are available for a given dataset, these can also be specified using Harmony-py: See the <a href="https://harmony-py.readthedocs.io/en/latest/">documentation</a> for details on how to construct these parameters.</p>
-<div class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>request <span class="op">=</span> Request(</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    collection<span class="op">=</span>Collection(<span class="bu">id</span><span class="op">=</span>short_name),</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    spatial<span class="op">=</span>BBox(<span class="op">-</span><span class="fl">97.77667</span>,<span class="fl">21.20806</span>,<span class="op">-</span><span class="fl">83.05197</span>,<span class="fl">30.16605</span>),</span>
@@ -3019,7 +3004,6 @@ Attributes: (12/49)
 <span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>        <span class="st">'stop'</span>: dt.datetime(<span class="dv">2021</span>, <span class="dv">8</span>, <span class="dv">21</span>),</span>
 <span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>    },</span>
 <span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 </section>
 <section id="submit-request" class="level3">
 <h3 class="anchored" data-anchor-id="submit-request">Submit request</h3>
@@ -3146,22 +3130,18 @@ Attributes: (12/49)
 <section id="aws-credential-retrieval" class="level4">
 <h4 class="anchored" data-anchor-id="aws-credential-retrieval">AWS credential retrieval</h4>
 <p>Using aws_credentials you can retrieve the credentials needed to access the Harmony s3 staging bucket and its contents.</p>
-<div class="cell" data-tags="[]" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>creds <span class="op">=</span> harmony_client.aws_credentials()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 </section>
 </section>
 <section id="open-staged-files-with-s3fs-and-xarray" class="level3">
 <h3 class="anchored" data-anchor-id="open-staged-files-with-s3fs-and-xarray">Open staged files with <em>s3fs</em> and <em>xarray</em></h3>
 <p>We use the AWS <code>s3fs</code> package to create a file system that can then be read by xarray:</p>
-<div class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>s3_fs <span class="op">=</span> s3fs.S3FileSystem(</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>    key<span class="op">=</span>creds[<span class="st">'aws_access_key_id'</span>],</span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>    secret<span class="op">=</span>creds[<span class="st">'aws_secret_access_key'</span>],</span>
 <span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>    token<span class="op">=</span>creds[<span class="st">'aws_session_token'</span>],</span>
 <span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>    client_kwargs<span class="op">=</span>{<span class="st">'region_name'</span>:<span class="st">'us-west-2'</span>},</span>
 <span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 <p>Now that we have our s3 file system set, including our declared credentials, we’ll use that to open the url, and read in the file through xarray. This extra step is needed because xarray cannot open the S3 location directly. Instead, the S3 file object is passed to xarray, in order to then open the dataset.</p>
 <div class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> s3_fs.<span class="bu">open</span>(url, mode<span class="op">=</span><span class="st">'rb'</span>)</span>

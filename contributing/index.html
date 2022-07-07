@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-0.9.449">
+<meta name="generator" content="quarto-0.9.653">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -17,12 +17,13 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 </style>
 
+
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
-<meta name="quarto:offset" content="../">
 <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
 <link href="../contributing/onboarding.html" rel="next">
 <link href="../in-development/earthdata-python-r-handoff.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
@@ -30,12 +31,12 @@ ul.task-list{list-style: none;}
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link class="quarto-color-scheme" id="quarto-text-highlighting-styles" href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet">
-<link class="quarto-color-scheme quarto-color-alternate" rel="prefetch" id="quarto-text-highlighting-styles" href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link class="quarto-color-scheme" href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet">
-<link class="quarto-color-scheme quarto-color-alternate" rel="prefetch" href="../site_libs/bootstrap/bootstrap-dark.min.css">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -77,15 +78,18 @@ ul.task-list{list-style: none;}
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
-    <div class="pt-lg-2 mt-2 text-center sidebar-header">
+    <div class="pt-lg-2 mt-2 text-center sidebar-header sidebar-header-stacked">
       <a href="../" class="sidebar-logo-link">
       <img src="../images/nasa-openscapes.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
-      <div class="sidebar-tools-main tools-wide">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">NASA Earthdata Cloud Cookbook</a> 
+        <div class="sidebar-tools-main tools-wide">
     <a href="https://nasa-openscapes.github.io" title="NASA-Openscapes website" class="sidebar-tool px-1"><i class="bi bi-globe"></i></a>
     <a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook" title="Earthdata Cloud Cookbook repo" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle sidebar-tool" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
+    </div>
       </div>
       <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
@@ -339,7 +343,7 @@ ul.task-list{list-style: none;}
    
   <ul>
   <li><a href="#how-we-work" id="toc-how-we-work" class="nav-link active" data-scroll-target="#how-we-work">How we work</a></li>
-  <li><a href="#quarto" id="toc-quarto" class="nav-link" data-scroll-target="#quarto">Quarto</a></li>
+  <li><a href="#our-cookbook-is-made-with-quarto" id="toc-our-cookbook-is-made-with-quarto" class="nav-link" data-scroll-target="#our-cookbook-is-made-with-quarto">Our Cookbook is made with Quarto</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/edit/main/contributing/index.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
@@ -369,15 +373,16 @@ ul.task-list{list-style: none;}
 <p>Our NASA Openscapes team is collaborating to create this Cookbook, with an eye towards how others could collaborate with us in the future.</p>
 <p>Our style of working is greatly influenced by:</p>
 <ul>
+<li><a href="https://foundation.mozilla.org/en/initiatives/mozilla-open-leaders/">Mozilla Open Leaders</a></li>
 <li><a href="https://the-turing-way.netlify.app/community-handbook/community-handbook.html">The Turing Way Community Handbook</a></li>
 <li><a href="https://carpentries.github.io/curriculum-development">The Carpentries Curriculum Development Handbook</a></li>
 <li><a href="https://documentation.divio.com/">The Documentation System</a></li>
 </ul>
 </section>
-<section id="quarto" class="level2">
-<h2 class="anchored" data-anchor-id="quarto">Quarto</h2>
-<p>We’re making the EarthData Cloud Cookbook with <strong>Quarto</strong>: <a href="https://quarto.org/">quarto.org</a>. Quarto makes collaborating to create technical documentation streamlined because we work in plain text documents that can have executable code (Python, R) and are rendered using Jupyter and Knitr engines.</p>
-<p>What is Quarto? Quarto builds from what RStudio learned from RMarkdown but enables different engines (Jupyter and knitr). It is both a Command Line Tool and R package. <code>.qmd</code> is a new filetype like <code>.Rmd</code> — meaning it’s a text file but when coupled with an engine that executes code it can be rendered as html, pdf, word, and beyond. Collaborators can develop text and notebooks in wherever they are most comfortable. Then Quarto builds them together as a book or website, even converting between file types like <code>.ipynb</code>, <code>.md</code> and <code>.qmd</code> it’s a streamlined was to develop and publish with collaborators that have different workflows. Once the book is “served” locally, <code>.md</code> files auto-update as you edit, and files with executable code can be rendered individually, and the behavior of different code chunks can be controlled and cached.</p>
+<section id="our-cookbook-is-made-with-quarto" class="level2">
+<h2 class="anchored" data-anchor-id="our-cookbook-is-made-with-quarto">Our Cookbook is made with Quarto</h2>
+<p>We’re making the Earthdata Cloud Cookbook with <a href="https://quarto.org/"><strong>Quarto</strong></a>, a new open-source scientific and technical publishing system. We have been early external users and testers as it has been developed; learn more about this in our <a href="https://www.openscapes.org/blog/2022/06/22/hello-quarto/">Hello Quarto Community Call</a> and in our RStudio::conf keynote (upcoming).</p>
+<p>See more about how to use Quarto to contribute to the Cookbook in the following <a href="../contributing/setup.html">setup</a> and <a href="workflows.qmd">workflow</a> chapters.</p>
 
 
 </section>

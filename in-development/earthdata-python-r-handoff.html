@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-0.9.449">
+<meta name="generator" content="quarto-0.9.653">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -80,12 +80,13 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
-<meta name="quarto:offset" content="../">
 <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
 <link href="../contributing/index.html" rel="next">
 <link href="../in-development/matlab.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
@@ -93,12 +94,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link class="quarto-color-scheme" id="quarto-text-highlighting-styles" href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet">
-<link class="quarto-color-scheme quarto-color-alternate" rel="prefetch" id="quarto-text-highlighting-styles" href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link class="quarto-color-scheme" href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet">
-<link class="quarto-color-scheme quarto-color-alternate" rel="prefetch" href="../site_libs/bootstrap/bootstrap-dark.min.css">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -140,15 +141,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
-    <div class="pt-lg-2 mt-2 text-center sidebar-header">
+    <div class="pt-lg-2 mt-2 text-center sidebar-header sidebar-header-stacked">
       <a href="../" class="sidebar-logo-link">
       <img src="../images/nasa-openscapes.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
-      <div class="sidebar-tools-main tools-wide">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">NASA Earthdata Cloud Cookbook</a> 
+        <div class="sidebar-tools-main tools-wide">
     <a href="https://nasa-openscapes.github.io" title="NASA-Openscapes website" class="sidebar-tool px-1"><i class="bi bi-globe"></i></a>
     <a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook" title="Earthdata Cloud Cookbook repo" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle sidebar-tool" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
+    </div>
       </div>
       <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
@@ -411,7 +415,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#dev-notes" id="toc-dev-notes" class="nav-link" data-scroll-target="#dev-notes">Dev notes</a>
   <ul class="collapse">
   <li><a href="#chat-with-andy-may-26" id="toc-chat-with-andy-may-26" class="nav-link" data-scroll-target="#chat-with-andy-may-26">Chat with Andy May 26</a></li>
-  <li><a href="#notes-may-20-2022" id="toc-notes-may-20-2022" class="nav-link" data-scroll-target="#notes-may-20-2022">Notes, May 20 2022</a></li>
   </ul></li>
   <li><a href="#background" id="toc-background" class="nav-link" data-scroll-target="#background">Background</a></li>
   </ul>
@@ -438,65 +441,192 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <section id="the-dream" class="level2">
 <h2 class="anchored" data-anchor-id="the-dream">The dream</h2>
-<p>Create once, use often: using <code>earthdata</code> package for auth &amp; data access, then passing those python objects to R through Quarto. These notes are a work-in-progress by Julie and Luis and we’ll tidy them up as we develop them further.</p>
+<p>Create once, use often: using <code>earthdata</code> python package for NASA Earthdata authorization and identifying the s3 links (i.e.&nbsp;the locations where the data are stored on Amazon Web Services), then passing those python objects to R through Quarto for analysis by R folks. These notes are a work-in-progress by Julie and Luis and we’ll tidy them up as we develop them further.</p>
+<p><span style="color: red">Note: this dream is currently not working but we are sharing our progress.</span></p>
 </section>
 <section id="python-earthdata-package-for-auth-s3-links" class="level2">
 <h2 class="anchored" data-anchor-id="python-earthdata-package-for-auth-s3-links">Python: <code>earthdata</code> package for auth &amp; s3 links</h2>
 <p><code>earthdata</code> gets me the credentials, it gets me the links based on the queries.</p>
-<p>The data we want is in the Cloud. For this examples we’re using this data we identified from <a href="https://nasa-openscapes.github.io/earthdata-cloud-cookbook/how-tos/Multi-File_Direct_S3_Access_NetCDF_Example.html">earthdata-cloud-cookbook/how-tos/Multi-File_Direct_S3_Access_NetCDF_Example</a>, which has the <code>short_name = 'ECCO_L4_SSH_05DEG_MONTHLY_V4R4'</code> .</p>
+<p>In this example, the data we want is in the Cloud. For this examples we’re using this data we identified from the Earthdata Cloud Cookbook’s <a href="https://nasa-openscapes.github.io/earthdata-cloud-cookbook/how-tos/Multi-File_Direct_S3_Access_NetCDF_Example.html">Multi-File_Direct_S3_Access_NetCDF_Example</a>, and its <code>short_name</code> is <code>'ECCO_L4_SSH_05DEG_MONTHLY_V4R4'</code>.</p>
 <section id="identify-the-s3-links" class="level3">
 <h3 class="anchored" data-anchor-id="identify-the-s3-links">Identify the s3 links</h3>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">## import DataCollections class from earthdata library</span></span>
+<p>Below is our query, pretending that that is the data and the bounding box we want.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">## import DataCollections class from earthdata library</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> earthdata <span class="im">import</span> DataGranules</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">## To find the concept_id from the shortname that we copied from </span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">## To find the concept_id from the shortname that we copied: </span></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># short_name = 'ECCO_L4_SSH_05DEG_MONTHLY_V4R4' </span></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># collection = DataCollections().short_name(short_name).get()</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># [c.concept_id() for c in collection] ## returned 'C1990404799-POCLOUD'</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># [c.concept_id() for c in collection] ## this returned 'C1990404799-POCLOUD'</span></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Then we build a Query with spatiotemporal parameters. Pretend that was the bounding box we want.</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Then we build a Query with spatiotemporal parameters. </span></span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>GranuleQuery <span class="op">=</span> DataGranules().concept_id(<span class="st">'C1990404799-POCLOUD'</span>).bounding_box(<span class="op">-</span><span class="fl">134.7</span>,<span class="fl">58.9</span>,<span class="op">-</span><span class="fl">133.9</span>,<span class="fl">59.2</span>)</span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co">## We get the metadata records from CMR</span></span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>granules <span class="op">=</span> GranuleQuery.get()</span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co">## Now it's time to open our data granules list. </span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co">## This code would work for Python users, but won't work for R users, see explanation below.</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co"># files = Store(auth).open(granules) </span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>s3_links <span class="op">=</span> [granule.data_links(access<span class="op">=</span><span class="st">'direct'</span>) <span class="cf">for</span> granule <span class="kw">in</span> granules] </span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>s3_links[<span class="dv">0</span>] <span class="co">## returns ['s3://podaac-ops-cumulus-protected/ECCO_L4_SSH_05DEG_MONTHLY_V4R4/SEA_SURFACE_HEIGHT_mon_mean_1992-01_ECCO_V4r4_latlon_0p50deg.nc']</span></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Note that <code>files = Store(auth).open(granules)</code> would work for Python users but <code>open</code> won’t work in the R world because it will create some kind of python file handlers from fsspec.</p>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>s3_links <span class="op">=</span> [granule.data_links(access<span class="op">=</span><span class="st">'direct'</span>) <span class="cf">for</span> granule <span class="kw">in</span> granules] </span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>s3_links[<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Note that <code>files = Store(auth).open(granules)</code> would work for Python users but <code>open</code> won’t work in the R world because it will create some kind of python file handlers from <code>fsspec</code>.</p>
 </section>
 <section id="get-the-cloud-credentials" class="level3">
 <h3 class="anchored" data-anchor-id="get-the-cloud-credentials">Get the Cloud credentials</h3>
-<p>Prerequesite: you’ll need a functioning .netrc here. <code>earthdata</code> expects interactivity and that did not work here with Quarto in the RStudio IDE&lt; and it also did not work for Julie in Jupyter notebook (June 7 2022). So, we followed the <a href="https://nasa-openscapes.github.io/2021-Cloud-Hackathon/tutorials/04_NASA_Earthdata_Authentication.html">2021-Cloud-Hackathon/tutorials/04_NASA_Earthdata_Authentication</a>, copying and pasting and running that code in a Jupyter notebook. (remember to <code>rm .netrc</code> beforehand!)</p>
+<p>Prerequesite: you’ll need a functioning .netrc here. <code>earthdata</code> expects interactivity and that did not work here with Quarto in the RStudio IDE (and it also did not work for Julie in Jupyter notebook (June 7 2022)). So, we followed the 2021-Cloud-Hackathon’s <a href="https://nasa-openscapes.github.io/2021-Cloud-Hackathon/tutorials/04_NASA_Earthdata_Authentication.html">NASA_Earthdata_Authentication</a>, copying and pasting and running that code in a Jupyter notebook. (remember to <code>rm .netrc</code> beforehand!)</p>
 <p>Then, with a nice .netrc file, the next step is to get Cloud credentials:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">## import the Auth class from the earthdata library</span></span>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">## import the Auth class from the earthdata library</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> earthdata <span class="im">import</span> Auth</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>auth <span class="op">=</span> Auth().login(strategy<span class="op">=</span><span class="st">"netrc"</span>)</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>credentials <span class="op">=</span> auth.get_s3_credentials(cloud_provider <span class="op">=</span> <span class="st">"POCLOUD"</span>) <span class="co"># Luis will make this automatic so we don't have to know POCLOUD vs PODAAC</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co"># credentials you actually don't want to print your credentials, we were just checking that they worked</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>credentials <span class="op">=</span> auth.get_s3_credentials(cloud_provider <span class="op">=</span> <span class="st">"POCLOUD"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>So now we have the s3 links and the credentials to download the links, so now we can use the tutorial in R!!</p>
 <p><strong>Notes</strong></p>
-<p>The resulting JSON dictionary is what we’ll export to R, and it will be valid for 1 hour. When I run into issues, I’ll say “why is this not working”, and it’s because it’s expired in 1 hour.</p>
-<p>The bucket level: need to remove the name of the file (eg remove SEA_SURFACE). So for example:</p>
-<blockquote class="blockquote">
-<p>[‘s3://podaac-ops-cumulus-protected/ECCO_L4_SSH_05DEG_MONTHLY_V4R4/SEA_SURFACE_HEIGHT_mon_mean_1992-01_ECCO_V4r4_latlon_0p50deg.nc’]</p>
-</blockquote>
-<p>THis is the bucket: &gt; [‘s3://podaac-ops-cumulus-protected/ECCO_L4_SSH_05DEG_MONTHLY_V4R4/’]</p>
-<p>Expect to run into issues with listing the files in the bucket (bc maybe something restricted or maybe you can access files but not list everything that’s inside the bucket)</p>
-<p>Q for Luis: Now when I get the credentials, how do I export your AWS credentials into the environment for R? (if you’re just using one provider like PODAAC you could potentially set up a daemon to reset the credentials every hour)</p>
+<ul>
+<li>Luis will update <code>earthdata</code> to automatically know the cloud provider so that you don’t have to specify for example POCLOUD vs PODAAC # credentials you actually don’t want to print your credentials, we were just checking that they worked</li>
+<li>The resulting JSON dictionary is what we’ll export to R, and it will be valid for 1 hour. When I run into issues, I’ll say “why is this not working”, and it’s because it’s expired in 1 hour.</li>
+<li>When we want to identify the bucket level, we’ll need to remove the name of the file. For example:
+<ul>
+<li>&lt;s3://podaac-ops-cumulus-protected/ECCO_L4_SSH_05DEG_MONTHLY_V4R4/SEA_SURFACE_HEIGHT_mon_mean_1992-01_ECCO_V4r4_latlon_0p50deg.nc&gt; includes the filename</li>
+<li>&lt;s3://podaac-ops-cumulus-protected/ECCO_L4_SSH_05DEG_MONTHLY_V4R4/&gt; is only the bucket</li>
+</ul></li>
+<li>Expect to run into issues with listing the files in the bucket (because maybe something is restricted or maybe you can access files but not list everything that’s inside the bucket)</li>
+</ul>
 </section>
 </section>
 <section id="r-data-access-from-s3-links" class="level2">
 <h2 class="anchored" data-anchor-id="r-data-access-from-s3-links">R: data access from s3 links!</h2>
 <p>And now I can switch to R, if R is my preferred language.</p>
-<p>Then I can use Danielle’s tutorial to access! <a href="https://blog.djnavarro.net/posts/2022-03-17_using-aws-s3-in-r/#accounts-and-credentials" class="uri">https://blog.djnavarro.net/posts/2022-03-17_using-aws-s3-in-r/#accounts-and-credentials</a></p>
-<p>This is coming up next!</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bucket_exists</span>(<span class="st">"s3://tiny-herbs/"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The blog post <a href="https://blog.djnavarro.net/posts/2022-03-17_using-aws-s3-in-r/">Using Amazon S3 with R</a> by Danielle Navarro is hugely informative and describes how to use the <a href="https://github.com/cloudyr/aws.s3">aws.s3</a> R package.</p>
+<p>First load libraries:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(purrr)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tibble)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(aws.s3) <span class="co"># install.packages("aws.s3")</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reticulate)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Translate credentials from python variables (created with <code>earthdata</code> above) to R variables using <code>reticulate</code>’s <code>py$</code> syntax and <code>purr</code>’s <code>pluck()</code> to isolate a variable from a list:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="do">## translate credentials from python to R, map to dataframe</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>credentials_r_list <span class="ot">&lt;-</span> py<span class="sc">$</span>credentials <span class="co">#YAY!</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>credentials_r <span class="ot">&lt;-</span> purrr<span class="sc">::</span><span class="fu">map_df</span>(credentials_r_list, print)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="do">## translate s3 links from python to R, create my_bucket</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>s3_links_r_list <span class="ot">&lt;-</span> py<span class="sc">$</span>s3_links</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>my_link_list <span class="ot">&lt;-</span> s3_links_r_list[<span class="dv">1</span>] <span class="co"># let's just start with one</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>my_link_chr <span class="ot">&lt;-</span> purrr<span class="sc">:::</span><span class="fu">map_chr</span>(my_link_list, paste, <span class="at">collapse=</span><span class="st">""</span>)</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co">#my_link &lt;- as_tibble(my_link_chr)</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co">#my_link_split &lt;- stringr::str_split(my_link, "/")</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co">#my_bucket &lt;- str_c("s3://", my_link_split[3], my_link_split[4])</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>my_bucket <span class="ot">&lt;-</span> <span class="st">"s3://podaac-ops-cumulus-protected/ECCO_L4_SSH_05DEG_MONTHLY_V4R4/"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>From the <a href="https://github.com/cloudyr/aws.s3#aws-s3-client-package"><code>aws.s3</code> documentation</a>, set up system environment variables for AWS:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.setenv</span>(<span class="st">"AWS_ACCESS_KEY_ID"</span> <span class="ot">=</span> credentials_r<span class="sc">$</span>accessKeyId,</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>           <span class="st">"AWS_SECRET_ACCESS_KEY"</span> <span class="ot">=</span> credentials_r<span class="sc">$</span>secretAccessKey,</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>           <span class="st">"AWS_DEFAULT_REGION"</span> <span class="ot">=</span> <span class="st">"us-west-2"</span>,</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>           <span class="st">"AWS_SESSION_TOKEN"</span> <span class="ot">=</span> credentials_r<span class="sc">$</span>sessionToken)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># testing by hand: Luis</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.setenv</span>(<span class="st">"AWS_ACCESS_KEY_ID"</span> <span class="ot">=</span> <span class="st">"ASIATNGJQBXBHRPIKFFB"</span>,</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>           <span class="st">"AWS_SECRET_ACCESS_KEY"</span> <span class="ot">=</span> <span class="st">"zbYP2fueNxLK/joDAcz678mkjjzP6fz4HUN131ID"</span>,</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>           <span class="st">"AWS_DEFAULT_REGION"</span> <span class="ot">=</span> <span class="st">"us-west-2"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>First let’s test Danielle’s code to see if it runs. Note to Luis: the following only works when the <code>Sys.setenv</code> is not set:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(aws.s3)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">bucket_exists</span>(</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">bucket =</span> <span class="st">"s3://herbariumnsw-pds/"</span>, </span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">region =</span> <span class="st">"ap-southeast-2"</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Client error: (403) Forbidden</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE
+attr(,"x-amz-bucket-region")
+[1] "ap-southeast-2"
+attr(,"x-amz-request-id")
+[1] "0FQ1R57F2VHGFPDF"
+attr(,"x-amz-id-2")
+[1] "N6RPTKPN3/H9tDuKNHM2ZAcChhkkn2WpfcTzhpxC3fUmiZdNEIiu1xJsQAvFSecYIuWZ28pchQW3sAPAdVU57Q=="
+attr(,"content-type")
+[1] "application/xml"
+attr(,"date")
+[1] "Thu, 07 Jul 2022 23:11:30 GMT"
+attr(,"server")
+[1] "AmazonS3"</code></pre>
+</div>
+</div>
+<p>Now, see if the PODAAC bucket exists:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>aws.s3<span class="sc">::</span><span class="fu">bucket_exists</span>(</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">bucket =</span> <span class="st">"s3://podaac-ops-cumulus-protected/"</span>, </span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">region =</span> <span class="st">"us-west-2"</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Client error: (403) Forbidden</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE
+attr(,"x-amz-bucket-region")
+[1] "us-west-2"
+attr(,"x-amz-request-id")
+[1] "M4T3W1JZ93M08AZB"
+attr(,"x-amz-id-2")
+[1] "hvGLWqGCRB4lLf9pD8f67OsTDulSOgqd+yLWzUTRFz2tlLPVpxHr9mSREL0bQPVyo70j0hvJp+8="
+attr(,"content-type")
+[1] "application/xml"
+attr(,"date")
+[1] "Thu, 07 Jul 2022 23:11:30 GMT"
+attr(,"server")
+[1] "AmazonS3"</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>herbarium_files <span class="ot">&lt;-</span> <span class="fu">get_bucket_df</span>(</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">bucket =</span> <span class="st">"s3://podaac-ops-cumulus-protected/ECCO_L4_SSH_05DEG_MONTHLY_V4R4/"</span>, </span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">region =</span> <span class="st">"us-west-2"</span>,</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">max =</span> <span class="dv">20000</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span> </span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>If forbidden: - 1 hour expiration time - this bucket is not listable (or protected) (hopefully this error will be clear enough)</p>
+<p>If you get the following error, it’s likely because your credentials have expired:</p>
+<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<pre><code>Client error: (403) Forbidden
+[1] FALSE
+attr(,"x-amz-bucket-region")
+[1] "us-west-2"
+attr(,"x-amz-request-id")
+[1] "W2PQV030PDTGDD32"
+attr(,"x-amz-id-2")
+[1] "S8C0qzL1lAYLufzUupjqplyyS/3fWCKxIELk0OJLVHGzTOqlyhof+IPFYbaRUhmJwXQelfprYCU="
+attr(,"content-type")
+[1] "application/xml"
+attr(,"date")
+[1] "Wed, 08 Jun 2022 03:11:16 GMT"
+attr(,"server")
+[1] "AmazonS3"</code></pre>
+</div>
+</div>
 </section>
 <section id="dev-notes" class="level2">
 <h2 class="anchored" data-anchor-id="dev-notes">Dev notes</h2>
@@ -506,45 +636,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Other approach would be MatLab to re-write earthdata in MatLab</p>
 <p>Our dream, revised: the code should be language-agnostic</p>
 </section>
-<section id="notes-may-20-2022" class="level3">
-<h3 class="anchored" data-anchor-id="notes-may-20-2022">Notes, May 20 2022</h3>
-<p>I tried this in our staging 2i2c instance, sort of simulataneously in the RStudio IDE (which needed python to be installed) and also in JupyterLab (which also wasn’t happy). But we have the vision, this is going to be great.</p>
-<p>Working in RStudio IDE in 2i2c.</p>
-<p>When first tried to run Python section below, asked to install <code>reticulate</code></p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("reticulate") # &lt; should quarto need this? </span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>reticulate<span class="sc">::</span><span class="fu">repl_python</span>()</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>No non<span class="sc">-</span>system installation of Python could be found.</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>Would you like to download and install Miniconda?</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>Miniconda is an open source environment management system <span class="cf">for</span> Python.</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>See https<span class="sc">:</span><span class="er">//</span>docs.conda.io<span class="sc">/</span>en<span class="sc">/</span>latest<span class="sc">/</span>miniconda.html <span class="cf">for</span> more details.</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>Would you like to install Miniconda? [Y<span class="sc">/</span>n]<span class="sc">:</span> from earthdata import Auth, DataGranules, Store</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>Please answer yes or no<span class="sc">:</span> y</span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="sc">*</span> Installing Miniconda <span class="sc">--</span> please wait a moment ...</span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="sc">*</span> Downloading <span class="st">'https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh'</span> ...</span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>trying URL <span class="st">'https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh'</span></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>Content type <span class="st">'application/x-sh'</span> length <span class="dv">76607678</span> <span class="fu">bytes</span> (<span class="fl">73.1</span> MB)</span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="sc">==</span><span class="er">================================================</span></span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>downloaded <span class="fl">73.1</span> MB</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
 </section>
 <section id="background" class="level2">
 <h2 class="anchored" data-anchor-id="background">Background</h2>
 <p>This was Luis’ original example code, but it downloads data. The examples above access it in the cloud. <em>From <a href="https://nasa-openscapes.github.io/earthdata-cloud-cookbook/examples/earthdata-access-demo.html" class="uri">https://nasa-openscapes.github.io/earthdata-cloud-cookbook/examples/earthdata-access-demo.html</a></em></p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> earthdata <span class="im">import</span> Auth, DataGranules, Store</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># first we authenticate with NASA EDL</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>auth <span class="op">=</span> Auth().login(strategy<span class="op">=</span><span class="st">"netrc"</span>)</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Then we build a Query with spatiotemporal parameters</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>GranuleQuery <span class="op">=</span> DataGranules().concept_id(<span class="st">"C1575731655-LPDAAC_ECS"</span>).bounding_box(<span class="op">-</span><span class="fl">134.7</span>,<span class="fl">58.9</span>,<span class="op">-</span><span class="fl">133.9</span>,<span class="fl">59.2</span>)</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co"># We get the metadata records from CMR</span></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>granules <span class="op">=</span> GranuleQuery.get()</span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Now it{s time to download (or open) our data granules list with get()</span></span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>files <span class="op">=</span> Store(auth).get(granules, local_path<span class="op">=</span><span class="st">'./data'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> earthdata <span class="im">import</span> Auth, DataGranules, Store</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co"># first we authenticate with NASA EDL</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>auth <span class="op">=</span> Auth().login(strategy<span class="op">=</span><span class="st">"netrc"</span>)</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Then we build a Query with spatiotemporal parameters</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>GranuleQuery <span class="op">=</span> DataGranules().concept_id(<span class="st">"C1575731655-LPDAAC_ECS"</span>).bounding_box(<span class="op">-</span><span class="fl">134.7</span>,<span class="fl">58.9</span>,<span class="op">-</span><span class="fl">133.9</span>,<span class="fl">59.2</span>)</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="co"># We get the metadata records from CMR</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>granules <span class="op">=</span> GranuleQuery.get()</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Now it{s time to download (or open) our data granules list with get()</span></span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>files <span class="op">=</span> Store(auth).get(granules, local_path<span class="op">=</span><span class="st">'./data'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 </section>

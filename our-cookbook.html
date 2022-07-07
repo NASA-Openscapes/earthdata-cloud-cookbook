@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-0.9.449">
+<meta name="generator" content="quarto-0.9.653">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -17,12 +17,13 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 </style>
 
+
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
-<meta name="quarto:offset" content="./">
 <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
 <link href="./cheatsheet.html" rel="next">
 <link href="./index.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
@@ -30,12 +31,12 @@ ul.task-list{list-style: none;}
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link class="quarto-color-scheme" id="quarto-text-highlighting-styles" href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet">
-<link class="quarto-color-scheme quarto-color-alternate" rel="prefetch" id="quarto-text-highlighting-styles" href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link class="quarto-color-scheme" href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet">
-<link class="quarto-color-scheme quarto-color-alternate" rel="prefetch" href="site_libs/bootstrap/bootstrap-dark.min.css">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme">
+<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -77,15 +78,18 @@ ul.task-list{list-style: none;}
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
-    <div class="pt-lg-2 mt-2 text-center sidebar-header">
+    <div class="pt-lg-2 mt-2 text-center sidebar-header sidebar-header-stacked">
       <a href="./" class="sidebar-logo-link">
       <img src="./images/nasa-openscapes.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
-      <div class="sidebar-tools-main tools-wide">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">NASA Earthdata Cloud Cookbook</a> 
+        <div class="sidebar-tools-main tools-wide">
     <a href="https://nasa-openscapes.github.io" title="NASA-Openscapes website" class="sidebar-tool px-1"><i class="bi bi-globe"></i></a>
     <a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook" title="Earthdata Cloud Cookbook repo" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle sidebar-tool" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
+    </div>
       </div>
       <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
@@ -367,9 +371,9 @@ ul.task-list{list-style: none;}
 <section id="how-to-use-the-earthdata-cloud-cookbook" class="level2">
 <h2 class="anchored" data-anchor-id="how-to-use-the-earthdata-cloud-cookbook">How to use the Earthdata Cloud Cookbook</h2>
 <p>Our Cookbook is a place to learn, share, and experiment with NASA Earthdata on the Cloud. We know this has a lot of moving parts, and we are iterating as we go, and welcome feedback and contributions.</p>
-<p>The Cookbook has <strong>How To</strong> building blocks and <strong>Tutorials</strong> that connect these building blocks through an example research question and specific data. How To guides and Tutorials are stable approaches we’ve developed and used to teach; they have been iterated and improved through feedback from researchers during <a href="https://nasa-openscapes.github.io/tutorials.html">events we’ve led</a>. We also have a <strong>Sandbox</strong> with lessons that are works-in-progress that we’re developing.</p>
-<p>Working with NASA Earthdata in the Cloud means using a combination of software, tools, many of which require coding and are unfamiliar when we first get started. This is true for us all; we’re all coming with different skills and backgrounds and you’re not alone as we all learn these new technologies and workflows. We have found it helpful to have a growth mindset - these approaches are new and we don’t know how to do them <strong><em>yet</em></strong>. Please, don’t struggle alone - know that we’re all in this together as part of the open source community learning and co-creating together as we migrate our research to the Cloud.</p>
-<p>You’re able to reuse any code in this book, adapting it for your own purposes. All chapters in the book are a combination of narrative, links, code, and outputs — and underlying each chapter is a Markdown (<code>.md</code>), Jupyter (<code>.ipynb</code>), or Quarto (<code>.qmd</code>) notebooks that you can access on <a href="https://github.com/NASA-Openscapes/earthdata-cloud-cookbook">NASA-Openscapes GitHub</a> (also linked on the left navbar and right margin of each page).</p>
+<p>The Cookbook has <strong>How To</strong> building blocks and <strong>Tutorials</strong> that connect these building blocks through an example research question and specific data. How To guides and Tutorials are stable approaches we’ve developed and used to teach; they have been iterated and improved through feedback from researchers during <a href="https://nasa-openscapes.github.io/tutorials.html">events we’ve led</a>. We also share work <strong>In Development</strong>: primarily lessons and other works-in-progress that we’re developing.</p>
+<p>Working with NASA Earthdata in the Cloud means using a combination of software, tools, many of which require coding and are unfamiliar when we first get started. This is true for us all; we’re all coming with different skills and backgrounds and you’re not alone as we all learn these new technologies and workflows. We have found it helpful to have a <a href="https://www.youtube.com/watch?v=_X0mgOOSpLU&amp;t=11s&amp;ab_channel=TED">growth mindset</a> - these approaches are new and we don’t know how to do them <strong><em>yet</em></strong>. Please, don’t struggle alone - know that we’re all in this together as part of the open source community learning and co-creating together as we migrate our research to the Cloud.</p>
+<p>You’re able to reuse any code in this book, adapting it for your own purposes. All chapters in the book are a combination of narrative, links, code, and outputs — and underlying each chapter is a file type that you can access on <a href="https://github.com/NASA-Openscapes/earthdata-cloud-cookbook">NASA-Openscapes GitHub</a> (linked on the left navbar and right margin of each page): Markdown (<code>.md</code>), Jupyter (<code>.ipynb</code>), RMarkdown (<code>.rmd</code>) or Quarto (<code>.qmd</code>) files.</p>
 <p>We will also be adding citations throughout so that you can easily credit the NASA Openscapes Mentors who created them.</p>
 </section>
 <section id="learning-to-code" class="level2">
@@ -398,6 +402,14 @@ ul.task-list{list-style: none;}
 <li><p><a href="https://the-environmental-ds-book.netlify.app/welcome.html">The Environmental Data Science Book</a></p></li>
 <li><p><a href="https://www.earthdatascience.org/">CU EarthLab’s Earth Data Science</a></p></li>
 <li><p><a href="https://pangeo.io/">Pangeo</a></p></li>
+</ul></li>
+<li><p><strong>Python environments with Conda useful for scientific Python:</strong> (recommended by Luis Lopez):</p>
+<ul>
+<li><a href="https://pythonspeed.com/articles/conda-dependency-management/">Reproducible and upgradable Conda environments with conda-lock</a></li>
+<li><a href="https://towardsdatascience.com/managing-virtual-environment-with-pyenv-ae6f3fb835f8">Managing virtual environments with pyenv</a></li>
+<li><a href="https://www.anaconda.com/blog/understanding-and-improving-condas-performance">Understanding and Improving Conda’s performance</a></li>
+<li><a href="https://whiteboxml.com/blog/the-definitive-guide-to-python-virtual-environments-with-conda">The definitive guide to Python virtual environments with conda</a></li>
+<li><a href="https://wolfv.medium.com/making-conda-fast-again-4da4debfb3b7">Making conda fast again</a></li>
 </ul></li>
 </ul>
 <!---TODO https://fabienmaussion.info/scientific_programming/welcome.html 
