@@ -26,19 +26,19 @@ jobs:
         pytest
         python quarto_import.py -f assets.json
 
-    - name: "Install Quarto"
-      uses: quarto-dev/quarto-actions/install-quarto@v1
-      # with:
-      #   version: 0.9.449
-      
-    - name: "Quarto render"
-      shell: bash
-      run: |
-        quarto render --execute-debug      
+    - name: Set up Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+        with:
+          # To install LaTeX to build PDF book 
+          tinytex: true 
+          # uncomment below and fill to pin a version
+          # version: 0.9.600
 
-    - name: "Deploy to gh-pages"
-      uses: peaceiris/actions-gh-pages@v3
-      if: github.ref == 'refs/heads/main'
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./_site
+     - name: Publish to GitHub Pages (and render)
+       uses: quarto-dev/quarto-actions/publish@v2
+       with:
+         target: gh-pages
+       env:
+         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # this secret is always available for github actions
+      
+Footer
