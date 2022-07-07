@@ -1,12 +1,12 @@
 ---
 title: "`earthdata`: Python-R Handoff"
-execute:
-  freeze: true  # never re-render during project render
 ---
 
 ## The dream
 
 Create once, use often: using `earthdata` python package for NASA Earthdata authorization and identifying the s3 links (i.e. the locations where the data are stored on Amazon Web Services), then passing those python objects to R through Quarto for analysis by R folks. These notes are a work-in-progress by Julie and Luis and we'll tidy them up as we develop them further.
+
+[Note: this dream is currently not working but we are sharing our progress.]{style="color: red"}
 
 ## Python: `earthdata` package for auth & s3 links
 
