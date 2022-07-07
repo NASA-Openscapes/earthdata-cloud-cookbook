@@ -4,20 +4,21 @@ title: Contributing
 
 ## How we work
 
-The [Openscapes Approach Guide](https://openscapes.github.io/approach-guide/approach/) describes how we work, including creating space and place, having a growth mindset, psychological safety, and continual learning, practice, and iteration. It also has our [code of conduct](https://openscapes.github.io/approach-guide/approach/code-of-conduct.html) and an overview of some of the workflows and tooling we use. 
+The [Openscapes Approach Guide](https://openscapes.github.io/approach-guide/approach/) describes how we work, including creating space and place, having a growth mindset, psychological safety, and continual learning, practice, and iteration. It also has our [code of conduct](https://openscapes.github.io/approach-guide/approach/code-of-conduct.html) and an overview of some of the workflows and tooling we use.
 
-We believe open practices can accelerate data-driven solutions and increase diversity, equity, inclusion, and belonging in science. These are critical to uncovering enduring science-based solutions faster, as well as for the well-being and resilience of research communities. We work towards kinder science. 
+We believe open practices can accelerate data-driven solutions and increase diversity, equity, inclusion, and belonging in science. These are critical to uncovering enduring science-based solutions faster, as well as for the well-being and resilience of research communities. We work towards kinder science.
 
-Our NASA Openscapes team is collaborating to create this Cookbook, with an eye towards how others could collaborate with us in the future. 
+Our NASA Openscapes team is collaborating to create this Cookbook, with an eye towards how others could collaborate with us in the future.
 
-Our style of working is greatly influenced by: 
+Our style of working is greatly influenced by:
 
-- [The Turing Way Community Handbook](https://the-turing-way.netlify.app/community-handbook/community-handbook.html)
-- [The Carpentries Curriculum Development Handbook](https://carpentries.github.io/curriculum-development)
-- [The Documentation System](https://documentation.divio.com/)
+-   [Mozilla Open Leaders](https://foundation.mozilla.org/en/initiatives/mozilla-open-leaders/)
+-   [The Turing Way Community Handbook](https://the-turing-way.netlify.app/community-handbook/community-handbook.html)
+-   [The Carpentries Curriculum Development Handbook](https://carpentries.github.io/curriculum-development)
+-   [The Documentation System](https://documentation.divio.com/)
 
-## Quarto
+## Our Cookbook is made with Quarto
 
-We're making the EarthData Cloud Cookbook with **Quarto**: [quarto.org](https://quarto.org/). Quarto makes collaborating to create technical documentation streamlined because we work in plain text documents that can have executable code (Python, R) and are rendered using Jupyter and Knitr engines.
+We're making the Earthdata Cloud Cookbook with [**Quarto**](https://quarto.org/), a new open-source scientific and technical publishing system. We have been early external users and testers as it has been developed; learn more about this in our [Hello Quarto Community Call](https://www.openscapes.org/blog/2022/06/22/hello-quarto/) and in our RStudio::conf keynote (upcoming).
 
-What is Quarto? Quarto builds from what RStudio learned from RMarkdown but enables different engines (Jupyter and knitr). It is both a Command Line Tool and R package. `.qmd` is a new filetype like `.Rmd` --- meaning it's a text file but when coupled with an engine that executes code it can be rendered as html, pdf, word, and beyond. Collaborators can develop text and notebooks in wherever they are most comfortable. Then Quarto builds them together as a book or website, even converting between file types like `.ipynb`, `.md` and `.qmd` it's a streamlined was to develop and publish with collaborators that have different workflows. Once the book is "served" locally, `.md` files auto-update as you edit, and files with executable code can be rendered individually, and the behavior of different code chunks can be controlled and cached.
+See more about how to use Quarto to contribute to the Cookbook in the following [setup](setup.qmd) and [workflow](workflows.qmd) chapters.
