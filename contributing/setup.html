@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-0.9.653">
+<meta name="generator" content="quarto-0.9.654">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>EarthData Cloud Cookbook - Initial Setup</title>
+<title>EarthData Cloud Cookbook - Cookbook Setup</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -130,7 +130,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Initial Setup</h1>
+      <h1 class="quarto-secondary-nav-title">Cookbook Setup</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -371,7 +371,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../contributing/setup.html" class="sidebar-item-text sidebar-link active">Initial Setup</a>
+  <a href="../contributing/setup.html" class="sidebar-item-text sidebar-link active">Cookbook Setup</a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -406,13 +406,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
    
   <ul>
   <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
-  <li><a href="#install-quarto" id="toc-install-quarto" class="nav-link" data-scroll-target="#install-quarto">Install Quarto</a>
-  <ul class="collapse">
-  <li><a href="#option-1-install-quarto-locally-on-your-machine" id="toc-option-1-install-quarto-locally-on-your-machine" class="nav-link" data-scroll-target="#option-1-install-quarto-locally-on-your-machine">Option 1: Install Quarto locally on your machine</a></li>
-  <li><a href="#check-install" id="toc-check-install" class="nav-link" data-scroll-target="#check-install">Check install</a></li>
-  <li><a href="#option-2-install-quarto-in-a-docker-container" id="toc-option-2-install-quarto-in-a-docker-container" class="nav-link" data-scroll-target="#option-2-install-quarto-in-a-docker-container">Option 2: Install Quarto in a docker container</a></li>
-  </ul></li>
+  <li><a href="#access-jupyterhub" id="toc-access-jupyterhub" class="nav-link" data-scroll-target="#access-jupyterhub">Access JupyterHub</a></li>
   <li><a href="#clone-cookbook-from-github" id="toc-clone-cookbook-from-github" class="nav-link" data-scroll-target="#clone-cookbook-from-github">Clone Cookbook from GitHub</a></li>
+  <li><a href="#meet-quarto" id="toc-meet-quarto" class="nav-link" data-scroll-target="#meet-quarto">Meet Quarto</a></li>
   <li><a href="#build-cookbook" id="toc-build-cookbook" class="nav-link" data-scroll-target="#build-cookbook">Build Cookbook!</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/edit/main/contributing/setup.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
@@ -422,7 +418,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Initial Setup</h1>
+<h1 class="title d-none d-lg-block">Cookbook Setup</h1>
 </div>
 
 
@@ -436,137 +432,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<p><a href="https://docs.google.com/forms/d/e/1FAIpQLSdcKar-yNnofiAVKlks79AgmQeM1beLCQM5TW_0__x_JU4B3g/viewform?usp=sf_link">JupyterHub request</a></p>
 <section id="overview" class="level2">
 <h2 class="anchored" data-anchor-id="overview">Overview</h2>
-<p>This is the setup required to contribute to our Cookbook. Instructions are for the command line; see <a href="https://quarto.org">quarto.org</a> for equivalents in R and for the most up-to-date and more detailed information.</p>
+<p>This is the setup required to contribute to our Cookbook. These are not in order, because there are different ways you can start working and contributing. You will need a GitHub account, which is described in the tutorials (link upcoming as that is tidied).</p>
+<p>This chapter describes initial setup, with workflows described in more detail in the next chapter.</p>
 </section>
-<section id="install-quarto" class="level2">
-<h2 class="anchored" data-anchor-id="install-quarto">Install Quarto</h2>
-<section id="option-1-install-quarto-locally-on-your-machine" class="level3">
-<h3 class="anchored" data-anchor-id="option-1-install-quarto-locally-on-your-machine">Option 1: Install Quarto locally on your machine</h3>
-<p>First, in your internet browser, go to the very latest version of the Quarto command line interface (CLI):</p>
-<p><a href="https://github.com/quarto-dev/quarto-cli/releases/latest" class="uri">https://github.com/quarto-dev/quarto-cli/releases/latest</a></p>
-<p>Download Quarto by clicking on the file appropriate for your operating system:</p>
-<ul>
-<li><p><strong>Linux</strong>: amd64.deb</p></li>
-<li><p><strong>Mac</strong>: macos.pkg</p></li>
-<li><p><strong>Windows</strong>: win.msi</p></li>
-</ul>
-<p>Once download is complete, follow the installation prompts on your computer like you do for other software.</p>
-<p><em>Note for Mac users: If you do not have administrative privileges, please select “Install for me only” during the Destination Selection installation step (you will first click on “Change Install Location” at the Installation Type step).</em></p>
-</section>
-<section id="check-install" class="level3">
-<h3 class="anchored" data-anchor-id="check-install">Check install</h3>
-<p>Finally, check to make sure Quarto installed properly. Open a command line terminal and type:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> check install</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="callout-note callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Additional checks
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>You can also run:</p>
-<ul>
-<li><code>quarto check knitr</code> to locate R, verify we have the rmarkdown package, and do a basic render</li>
-<li><code>quarto check jupyter</code> to locate Python, verify we have Jupyter, and do a basic render</li>
-<li><code>quarto check</code> to run all of these checks together</li>
-</ul>
-</div>
-</div>
-</div>
-</section>
-<section id="option-2-install-quarto-in-a-docker-container" class="level3">
-<h3 class="anchored" data-anchor-id="option-2-install-quarto-in-a-docker-container">Option 2: Install Quarto in a docker container</h3>
-<p>If installing quarto locally is not an option, you can install it inside a container using the following <code>Dockerfile</code>:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| fold: true</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| summary: "Show the Dockerfile"</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">##############################</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># This Dockerfile installs quarto and then runs quarto serve against the</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co"># internal /home/quarto/to_serve.</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co"># BUILD</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co"># -----</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co"># To build this container, run</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co">#     docker build -t quarto_serve .</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Add the --no-cache option to force docker to build fresh and get the most</span></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="co"># recent version of quarto.</span></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="co"># RUN</span></span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="co"># ---</span></span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Find the directory you want quarto to serve. Let's call this /PATH/TO/earthdata-cloud-cookbook.</span></span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Run docker:</span></span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="co">#     docker run --rm -it -p 4848:4848 -v /PATH/TO/earthdata-cloud-cookbook:/home/quarto/to_serve quarto_serve</span></span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Open your browser and go to http://127.0.0.1:4848/</span></span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a><span class="co">##############################</span></span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a><span class="ex">FROM</span> ubuntu:hirsute</span>
-<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a><span class="co">######</span></span>
-<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a><span class="co"># Install some command line tools we'll need</span></span>
-<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a><span class="co">######</span></span>
-<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a><span class="ex">RUN</span> apt-get update</span>
-<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a><span class="ex">RUN</span> apt-get <span class="at">-y</span> install wget</span>
-<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a><span class="ex">RUN</span> apt-get <span class="at">-y</span> install gdebi-core</span>
-<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a><span class="ex">RUN</span> apt-get <span class="at">-y</span> install git</span>
-<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a><span class="co">######</span></span>
-<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a><span class="co"># Install quarto (https://quarto.org/)</span></span>
-<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a><span class="co">######</span></span>
-<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a><span class="co"># This is a quick and dirty way of getting the newest version number from</span></span>
-<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a><span class="co"># https://github.com/quarto-dev/quarto-cli/releases/latest. What's happening is</span></span>
-<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a><span class="co"># we're pulling the version number out of the redirect URL. This will end up</span></span>
-<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a><span class="co"># with QVER set to something like 0.2.11.</span></span>
-<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a><span class="ex">RUN</span> QVER=<span class="kw">`</span><span class="fu">wget</span> <span class="at">--max-redirect</span> 0 https://github.com/quarto-dev/quarto-cli/releases/latest <span class="dv">2</span><span class="op">&gt;&amp;</span><span class="dv">1</span> <span class="kw">|</span> <span class="fu">grep</span> <span class="st">"Location"</span> <span class="kw">|</span> <span class="fu">sed</span> <span class="st">'s/L.*tag\/v//'</span> <span class="kw">|</span> <span class="fu">sed</span> <span class="st">'s/ .*//'</span><span class="kw">`</span> <span class="dt">\</span></span>
-<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&amp;&amp;</span> <span class="fu">wget</span> <span class="at">-O</span> quarto.deb <span class="st">"https://github.com/quarto-dev/quarto-cli/releases/download/v</span><span class="va">$QVER</span><span class="st">/quarto-</span><span class="va">$QVER</span><span class="st">-amd64.deb"</span></span>
-<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a><span class="ex">RUN</span> gdebi <span class="at">-n</span> quarto.deb</span>
-<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a><span class="co"># Run this to make sure quarto installed correctly</span></span>
-<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a><span class="ex">RUN</span> quarto check install</span>
-<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a><span class="co">######</span></span>
-<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a non-root user called quarto</span></span>
-<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a><span class="co">######</span></span>
-<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a><span class="ex">RUN</span> useradd <span class="at">-ms</span> /bin/bash quarto</span>
-<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a><span class="ex">USER</span> quarto</span>
-<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a><span class="ex">RUN</span> mkdir /home/quarto/to_serve</span>
-<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a><span class="ex">WORKDIR</span> /home/quarto/to_serve</span>
-<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a><span class="co">######</span></span>
-<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a><span class="co"># Start quarto serve</span></span>
-<span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a><span class="co">######</span></span>
-<span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a><span class="ex">CMD</span> quarto serve <span class="at">--no-browse</span> <span class="at">--host</span> 0.0.0.0 <span class="at">--port</span> 4848</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
+<section id="access-jupyterhub" class="level2">
+<h2 class="anchored" data-anchor-id="access-jupyterhub">Access JupyterHub</h2>
+<p>Our <a href="https://openscapes.2i2c.cloud/hub/">Openscapes 2i2c JupyterHub</a> is available for Mentors and their colleagues to develop, test, and teach. Using the JupyterHub is described in the tutorials (link upcoming as that is tidied).</p>
+<p>To request access, you’ll need a GitHub username and to fill out this <a href="https://docs.google.com/forms/d/e/1FAIpQLSdcKar-yNnofiAVKlks79AgmQeM1beLCQM5TW_0__x_JU4B3g/viewform?usp=sf_link">JupyterHub request form</a>.</p>
 </section>
 <section id="clone-cookbook-from-github" class="level2">
 <h2 class="anchored" data-anchor-id="clone-cookbook-from-github">Clone Cookbook from GitHub</h2>
 <p>Now clone our Cookbook and make it your current directory.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/NASA-Openscapes/earthdata-cloud-cookbook</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> earthdata-cloud-cookbook</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/NASA-Openscapes/earthdata-cloud-cookbook</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> earthdata-cloud-cookbook</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <!---TODO: Offer GitHub setup instructions: writeup GitHub Clinic --->
+</section>
+<section id="meet-quarto" class="level2">
+<h2 class="anchored" data-anchor-id="meet-quarto">Meet Quarto</h2>
+<p>Explore <a href="https://quarto.org">Quarto</a> and use it hands-on in our separate <a href="https://openscapes.github.io/quarto-website-tutorial/">Quarto Website Tutorial</a>. Quarto is already installed in our JupyterHub.</p>
+<p>Background: Quarto is a new open-source scientific and technical publishing system. It makes collaborating to create technical documentation streamlined because we work in plain text documents that can have executable code (Python, R) and are rendered using Jupyter and Knitr engines.</p>
 </section>
 <section id="build-cookbook" class="level2">
 <h2 class="anchored" data-anchor-id="build-cookbook">Build Cookbook!</h2>
 <p>You should now be able to serve our Cookbook from the <code>earthdata-cloud-cookbook</code> directory.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> serve</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> serve</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This will open the Cookbook as a new tab in your browser. Now you’re all set to contribute to the Cookbook! Read about how in the next chapter.</p>
 
 

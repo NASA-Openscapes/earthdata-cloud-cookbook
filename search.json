@@ -263,7 +263,7 @@
     "href": "contributing/index.html#our-cookbook-is-made-with-quarto",
     "title": "Contributing",
     "section": "Our Cookbook is made with Quarto",
-    "text": "Our Cookbook is made with Quarto\nWe’re making the Earthdata Cloud Cookbook with Quarto, a new open-source scientific and technical publishing system. We have been early external users and testers as it has been developed; learn more about this in our Hello Quarto Community Call and in our RStudio::conf keynote (upcoming).\nSee more about how to use Quarto to contribute to the Cookbook in the following setup and workflow chapters."
+    "text": "Our Cookbook is made with Quarto\nWe’re making the Earthdata Cloud Cookbook with Quarto, a new open-source scientific and technical publishing system. We have been early external users and testers as Quarto has been developed; learn more about this in our Hello Quarto Community Call and in our RStudio::conf keynote (upcoming).\nSee more about how to use Quarto to contribute to the Cookbook in the following setup and workflow chapters."
   },
   {
     "objectID": "contributing/onboarding.html",
@@ -324,35 +324,35 @@
   {
     "objectID": "contributing/setup.html",
     "href": "contributing/setup.html",
-    "title": "Initial Setup",
+    "title": "Cookbook Setup",
     "section": "",
-    "text": "JupyterHub request"
+    "text": "This is the setup required to contribute to our Cookbook. These are not in order, because there are different ways you can start working and contributing. You will need a GitHub account, which is described in the tutorials (link upcoming as that is tidied).\nThis chapter describes initial setup, with workflows described in more detail in the next chapter."
   },
   {
-    "objectID": "contributing/setup.html#overview",
-    "href": "contributing/setup.html#overview",
-    "title": "Initial Setup",
-    "section": "Overview",
-    "text": "Overview\nThis is the setup required to contribute to our Cookbook. Instructions are for the command line; see quarto.org for equivalents in R and for the most up-to-date and more detailed information."
-  },
-  {
-    "objectID": "contributing/setup.html#install-quarto",
-    "href": "contributing/setup.html#install-quarto",
-    "title": "Initial Setup",
-    "section": "Install Quarto",
-    "text": "Install Quarto\n\nOption 1: Install Quarto locally on your machine\nFirst, in your internet browser, go to the very latest version of the Quarto command line interface (CLI):\nhttps://github.com/quarto-dev/quarto-cli/releases/latest\nDownload Quarto by clicking on the file appropriate for your operating system:\n\nLinux: amd64.deb\nMac: macos.pkg\nWindows: win.msi\n\nOnce download is complete, follow the installation prompts on your computer like you do for other software.\nNote for Mac users: If you do not have administrative privileges, please select “Install for me only” during the Destination Selection installation step (you will first click on “Change Install Location” at the Installation Type step).\n\n\nCheck install\nFinally, check to make sure Quarto installed properly. Open a command line terminal and type:\nquarto check install\n\n\n\n\n\n\nAdditional checks\n\n\n\n\n\nYou can also run:\n\nquarto check knitr to locate R, verify we have the rmarkdown package, and do a basic render\nquarto check jupyter to locate Python, verify we have Jupyter, and do a basic render\nquarto check to run all of these checks together\n\n\n\n\n\n\nOption 2: Install Quarto in a docker container\nIf installing quarto locally is not an option, you can install it inside a container using the following Dockerfile:\n#| fold: true\n#| summary: \"Show the Dockerfile\"\n\n##############################\n# This Dockerfile installs quarto and then runs quarto serve against the\n# internal /home/quarto/to_serve.\n#\n# BUILD\n# -----\n# To build this container, run\n#\n#     docker build -t quarto_serve .\n#\n# Add the --no-cache option to force docker to build fresh and get the most\n# recent version of quarto.\n#\n#\n# RUN\n# ---\n# 1. Find the directory you want quarto to serve. Let's call this /PATH/TO/earthdata-cloud-cookbook.\n# 2. Run docker:\n#\n#     docker run --rm -it -p 4848:4848 -v /PATH/TO/earthdata-cloud-cookbook:/home/quarto/to_serve quarto_serve\n#\n# 3. Open your browser and go to http://127.0.0.1:4848/\n#\n##############################\n\nFROM ubuntu:hirsute\n\n######\n# Install some command line tools we'll need\n######\nRUN apt-get update\nRUN apt-get -y install wget\nRUN apt-get -y install gdebi-core\nRUN apt-get -y install git\n\n\n######\n# Install quarto (https://quarto.org/)\n######\n\n# This is a quick and dirty way of getting the newest version number from\n# https://github.com/quarto-dev/quarto-cli/releases/latest. What's happening is\n# we're pulling the version number out of the redirect URL. This will end up\n# with QVER set to something like 0.2.11.\nRUN QVER=`wget --max-redirect 0 https://github.com/quarto-dev/quarto-cli/releases/latest 2>&1 | grep \"Location\" | sed 's/L.*tag\\/v//' | sed 's/ .*//'` \\\n    && wget -O quarto.deb \"https://github.com/quarto-dev/quarto-cli/releases/download/v$QVER/quarto-$QVER-amd64.deb\"\nRUN gdebi -n quarto.deb\n\n# Run this to make sure quarto installed correctly\nRUN quarto check install\n\n\n######\n# Create a non-root user called quarto\n######\nRUN useradd -ms /bin/bash quarto\nUSER quarto\nRUN mkdir /home/quarto/to_serve\nWORKDIR /home/quarto/to_serve\n\n\n######\n# Start quarto serve\n######\n\nCMD quarto serve --no-browse --host 0.0.0.0 --port 4848"
+    "objectID": "contributing/setup.html#access-jupyterhub",
+    "href": "contributing/setup.html#access-jupyterhub",
+    "title": "Cookbook Setup",
+    "section": "Access JupyterHub",
+    "text": "Access JupyterHub\nOur Openscapes 2i2c JupyterHub is available for Mentors and their colleagues to develop, test, and teach. Using the JupyterHub is described in the tutorials (link upcoming as that is tidied).\nTo request access, you’ll need a GitHub username and to fill out this JupyterHub request form."
   },
   {
     "objectID": "contributing/setup.html#clone-cookbook-from-github",
     "href": "contributing/setup.html#clone-cookbook-from-github",
-    "title": "Initial Setup",
+    "title": "Cookbook Setup",
     "section": "Clone Cookbook from GitHub",
     "text": "Clone Cookbook from GitHub\nNow clone our Cookbook and make it your current directory.\ngit clone https://github.com/NASA-Openscapes/earthdata-cloud-cookbook\ncd earthdata-cloud-cookbook"
   },
   {
+    "objectID": "contributing/setup.html#meet-quarto",
+    "href": "contributing/setup.html#meet-quarto",
+    "title": "Cookbook Setup",
+    "section": "Meet Quarto",
+    "text": "Meet Quarto\nExplore Quarto and use it hands-on in our separate Quarto Website Tutorial. Quarto is already installed in our JupyterHub.\nBackground: Quarto is a new open-source scientific and technical publishing system. It makes collaborating to create technical documentation streamlined because we work in plain text documents that can have executable code (Python, R) and are rendered using Jupyter and Knitr engines."
+  },
+  {
     "objectID": "contributing/setup.html#build-cookbook",
     "href": "contributing/setup.html#build-cookbook",
-    "title": "Initial Setup",
+    "title": "Cookbook Setup",
     "section": "Build Cookbook!",
     "text": "Build Cookbook!\nYou should now be able to serve our Cookbook from the earthdata-cloud-cookbook directory.\nquarto serve\nThis will open the Cookbook as a new tab in your browser. Now you’re all set to contribute to the Cookbook! Read about how in the next chapter."
   },
@@ -781,7 +781,7 @@
     "href": "external/cof-zarr-reformat.html",
     "title": "EarthData Cloud Cookbook",
     "section": "",
-    "text": "imported on: 2022-07-07\n\nThis notebook is from NASA’s PO.DAAC, Access ECCO data via Harmony and the Zarr reformatter service example\n\n\nThe original source for this document is https://github.com/podaac/ECCO"
+    "text": "imported on: 2022-07-08\n\nThis notebook is from NASA’s PO.DAAC, Access ECCO data via Harmony and the Zarr reformatter service example\n\n\nThe original source for this document is https://github.com/podaac/ECCO"
   },
   {
     "objectID": "external/cof-zarr-reformat.html#getting-started",
