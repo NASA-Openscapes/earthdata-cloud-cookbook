@@ -940,7 +940,7 @@
   {
     "objectID": "how-tos/Multi-File_Direct_S3_Access_COG_Example.html",
     "href": "how-tos/Multi-File_Direct_S3_Access_COG_Example.html",
-    "title": "EarthData Cloud Cookbook",
+    "title": "Accessing Multiple COG Files",
     "section": "",
     "text": "STAC_URL = 'https://cmr.earthdata.nasa.gov/stac'\ncatalog = Client.open(f\"{STAC_URL}/LPCLOUD\")\nsearch = catalog.search(\n    collections = ['HLSL30.v2.0', 'HLSS30.v2.0'],\n    intersects = {'type': 'Polygon',\n                  'coordinates': [[[-101.67271614074707, 41.04754380304359],\n                                   [-101.65344715118408, 41.04754380304359],\n                                   [-101.65344715118408, 41.06213891056728],\n                                   [-101.67271614074707, 41.06213891056728],\n                                   [-101.67271614074707, 41.04754380304359]]]},\n    datetime = '2021-05/2021-08'\n)               \nsearch.matched()\nic = search.get_all_items()\nil = list(search.get_items())\ntic = [x for x in ic if 'T13TGF' in x.id]\nimport pystac\nitem_collection = pystac.ItemCollection(items=tic)\nitem_collection\nil\ndata = stackstac.stack(item_collection, assets=['B04', 'B02'], epsg=32613, resolution=30)\ndata.sel(band='B04').isel(time=[0])\nimport stackstac\nimport pystac_client\n\nURL = \"https://earth-search.aws.element84.com/v0\"\ncatalog = pystac_client.Client.open(URL)\ncatalog\nstac_items = catalog.search(\n    intersects=dict(type=\"Point\", coordinates=[-105.78, 35.79]),\n    collections=[\"sentinel-s2-l2a-cogs\"],\n    datetime=\"2020-04-01/2020-05-01\"\n).get_all_items()\nstac_items\nstack = stackstac.stack(stac_items)\nstack"
   },
