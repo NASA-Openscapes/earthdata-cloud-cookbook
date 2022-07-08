@@ -12,13 +12,12 @@ Our NASA Openscapes team is collaborating to create this Cookbook, with an eye t
 
 Our style of working is greatly influenced by:
 
--   [Mozilla Open Leaders](https://foundation.mozilla.org/en/initiatives/mozilla-open-leaders/)
 -   [The Turing Way Community Handbook](https://the-turing-way.netlify.app/community-handbook/community-handbook.html)
 -   [The Carpentries Curriculum Development Handbook](https://carpentries.github.io/curriculum-development)
 -   [The Documentation System](https://documentation.divio.com/)
 
-## Our Cookbook is made with Quarto
+## Quarto
 
-We're making the Earthdata Cloud Cookbook with [**Quarto**](https://quarto.org/), a new open-source scientific and technical publishing system. We have been early external users and testers as Quarto has been developed; learn more about this in our [Hello Quarto Community Call](https://www.openscapes.org/blog/2022/06/22/hello-quarto/) and in our RStudio::conf keynote (upcoming).
+We're making the EarthData Cloud Cookbook with **Quarto**: [quarto.org](https://quarto.org/). Quarto makes collaborating to create technical documentation streamlined because we work in plain text documents that can have executable code (Python, R) and are rendered using Jupyter and Knitr engines.
 
-See more about how to use Quarto to contribute to the Cookbook in the following [setup](setup.qmd) and [workflow](workflows.qmd) chapters.
+What is Quarto? Quarto builds from what RStudio learned from RMarkdown but enables different engines (Jupyter and knitr). It is both a Command Line Tool and R package. `.qmd` is a new filetype like `.Rmd` --- meaning it's a text file but when coupled with an engine that executes code it can be rendered as html, pdf, word, and beyond. Collaborators can develop text and notebooks in wherever they are most comfortable. Then Quarto builds them together as a book or website, even converting between file types like `.ipynb`, `.md` and `.qmd` it's a streamlined was to develop and publish with collaborators that have different workflows. Once the book is "served" locally, `.md` files auto-update as you edit, and files with executable code can be rendered individually, and the behavior of different code chunks can be controlled and cached.
