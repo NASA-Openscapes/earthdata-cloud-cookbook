@@ -1,8 +1,5 @@
 ---
 title: Workflow
-editor_options: 
-  markdown: 
-    wrap: 72
 ---
 
 ## Workflow for contributing to our Cookbook

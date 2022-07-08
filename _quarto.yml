@@ -38,22 +38,25 @@ website:
       - cheatsheet.qmd      
       - section: how-tos/index.qmd
         contents: 
-          - section: "Find data"
+          - section: how-tos/find-data/index.md
             contents:
-              - find-data/index.md
-              - text: "Earthdata Search"        
-                href: how-tos/01_Earthdata_Search.md
-          - text: "Authentication"
-            href: how-tos/authentication.md
-          - section: "Transform"
+              - how-tos/earthdata_search.md
+          - how-tos/authentication.md
+          - how-tos/transform.md
+          - section: how-tos/access/index.md
             contents:
-              - transform/index.md
-          - section: "Access - Cloud Workflow"
-            contents:
-              - how-tos/Earthdata_Cloud__Single_File__HTTPS_Access_COG_Example.ipynb
-              - how-tos/Earthdata_Cloud__Single_File__Direct_S3_Access_COG_Example.ipynb
-              - how-tos/Earthdata_Cloud__Single_File__Direct_S3_Access_NetCDF4_Example.ipynb
-              - how-tos/Multi-File_Direct_S3_Access_NetCDF_Example.ipynb
+              - text: "OPeNDAP" 
+                href: how-tos/access/Earthdata_Cloud__Data_Access_OPeNDAP_Example.ipynb
+              - text: "COG HTTPS" 
+                href: how-tos/access/Earthdata_Cloud__Single_File__HTTPS_Access_COG_Example.ipynb
+              - text: "COG Direct S3" 
+                href: how-tos/access/Earthdata_Cloud__Single_File__Direct_S3_Access_COG_Example.ipynb
+              - text: "COG Direct S3 - Multi-file"
+                href: how-tos/access/Multi-File_Direct_S3_Access_COG_Example.ipynb
+              - text: "NetCDF4/HDF5 Direct S3"
+                href: how-tos/access/Earthdata_Cloud__Single_File__Direct_S3_Access_NetCDF4_Example.ipynb
+              - text: "NetCDF4/HDF5 Direct S3 - Multi-file"
+                href: how-tos/access/Multi-File_Direct_S3_Access_NetCDF_Example.ipynb
           - how-tos/download.qmd
           - how-tos/tech-setup.qmd
       - section: tutorials/index.qmd
