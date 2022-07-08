@@ -1,147 +1,42 @@
 ---
-title: Initial Setup
+title: Cookbook Setup
 execute:
   eval: false
 ---
-[JupyterHub request](https://docs.google.com/forms/d/e/1FAIpQLSdcKar-yNnofiAVKlks79AgmQeM1beLCQM5TW_0__x_JU4B3g/viewform?usp=sf_link)
 
 ## Overview
 
-This is the setup required to contribute to our Cookbook. Instructions are for the command line; see [quarto.org](https://quarto.org) for equivalents in R and for the most up-to-date and more detailed information.
+This is the setup required to contribute to our Cookbook. These are not in order, because there are different ways you can start working and contributing. You will need a GitHub account, which is described in the tutorials (link upcoming as that is tidied).
 
-## Install Quarto
+This chapter describes initial setup, with workflows described in more detail in the next chapter.
 
-### Option 1: Install Quarto locally on your machine
+## Access JupyterHub
 
-First, in your internet browser, go to the very latest version of the Quarto command line interface (CLI):
+Our [Openscapes 2i2c JupyterHub](https://openscapes.2i2c.cloud/hub/) is available for Mentors and their colleagues to develop, test, and teach. Using the JupyterHub is described in the tutorials (link upcoming as that is tidied).
 
-<https://github.com/quarto-dev/quarto-cli/releases/latest>
-
-Download Quarto by clicking on the file appropriate for your operating system:
-
--   **Linux**: amd64.deb
-
--   **Mac**: macos.pkg
-
--   **Windows**: win.msi
-
-Once download is complete, follow the installation prompts on your computer like you do for other software.
-
-*Note for Mac users: If you do not have administrative privileges, please select "Install for me only" during the Destination Selection installation step (you will first click on "Change Install Location" at the Installation Type step).*
-
-
-### Check install
-
-Finally, check to make sure Quarto installed properly. Open a command line terminal and type:
-
-``` {.bash}
-quarto check install
-```
-
-::: {.callout-note collapse="true"}
-## Additional checks
-
-You can also run:
-
--   `quarto check knitr` to locate R, verify we have the rmarkdown package, and do a basic render
--   `quarto check jupyter` to locate Python, verify we have Jupyter, and do a basic render
--   `quarto check` to run all of these checks together
-:::
-
-### Option 2: Install Quarto in a docker container
-
-If installing quarto locally is not an option, you can install it inside a container using the
-following `Dockerfile`:
-
-```{.bash}
-#| fold: true
-#| summary: "Show the Dockerfile"
-
-##############################
-# This Dockerfile installs quarto and then runs quarto serve against the
-# internal /home/quarto/to_serve.
-#
-# BUILD
-# -----
-# To build this container, run
-#
-#     docker build -t quarto_serve .
-#
-# Add the --no-cache option to force docker to build fresh and get the most
-# recent version of quarto.
-#
-#
-# RUN
-# ---
-# 1. Find the directory you want quarto to serve. Let's call this /PATH/TO/earthdata-cloud-cookbook.
-# 2. Run docker:
-#
-#     docker run --rm -it -p 4848:4848 -v /PATH/TO/earthdata-cloud-cookbook:/home/quarto/to_serve quarto_serve
-#
-# 3. Open your browser and go to http://127.0.0.1:4848/
-#
-##############################
-
-FROM ubuntu:hirsute
-
-######
-# Install some command line tools we'll need
-######
-RUN apt-get update
-RUN apt-get -y install wget
-RUN apt-get -y install gdebi-core
-RUN apt-get -y install git
-
-
-######
-# Install quarto (https://quarto.org/)
-######
-
-# This is a quick and dirty way of getting the newest version number from
-# https://github.com/quarto-dev/quarto-cli/releases/latest. What's happening is
-# we're pulling the version number out of the redirect URL. This will end up
-# with QVER set to something like 0.2.11.
-RUN QVER=`wget --max-redirect 0 https://github.com/quarto-dev/quarto-cli/releases/latest 2>&1 | grep "Location" | sed 's/L.*tag\/v//' | sed 's/ .*//'` \
-    && wget -O quarto.deb "https://github.com/quarto-dev/quarto-cli/releases/download/v$QVER/quarto-$QVER-amd64.deb"
-RUN gdebi -n quarto.deb
-
-# Run this to make sure quarto installed correctly
-RUN quarto check install
-
-
-######
-# Create a non-root user called quarto
-######
-RUN useradd -ms /bin/bash quarto
-USER quarto
-RUN mkdir /home/quarto/to_serve
-WORKDIR /home/quarto/to_serve
-
-
-######
-# Start quarto serve
-######
-
-CMD quarto serve --no-browse --host 0.0.0.0 --port 4848
-```
-
+To request access, you'll need a GitHub username and to fill out this [JupyterHub request form](https://docs.google.com/forms/d/e/1FAIpQLSdcKar-yNnofiAVKlks79AgmQeM1beLCQM5TW_0__x_JU4B3g/viewform?usp=sf_link).
 
 ## Clone Cookbook from GitHub
 
 Now clone our Cookbook and make it your current directory.
 
-``` {.bash}
+``` bash
 git clone https://github.com/NASA-Openscapes/earthdata-cloud-cookbook
 cd earthdata-cloud-cookbook
 ```
-
 <!---TODO: Offer GitHub setup instructions: writeup GitHub Clinic --->
+
+## Meet Quarto
+
+Explore [Quarto](https://quarto.org) and use it hands-on in our separate [Quarto Website Tutorial](https://openscapes.github.io/quarto-website-tutorial/). Quarto is already installed in our JupyterHub. 
+
+Background: Quarto is a new open-source scientific and technical publishing system. It makes collaborating to create technical documentation streamlined because we work in plain text documents that can have executable code (Python, R) and are rendered using Jupyter and Knitr engines.
 
 ## Build Cookbook!
 
 You should now be able to serve our Cookbook from the `earthdata-cloud-cookbook` directory.
 
-``` {.bash}
+``` bash
 quarto serve
 ```
 
