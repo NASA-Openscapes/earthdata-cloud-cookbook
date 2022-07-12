@@ -1,12 +1,33 @@
 ---
-title: "Workflow Cheatsheets"
+title: "Workflow Cheatsheets & Slides"
 ---
 
 Here are some cheatsheets and slides helping visualize what working with NASA Earthdata Cloud data, and how to get started.
 
+All slides and cheatsheets are available for re-use and remix! 
+
+Slides are credited for each deck; Cheatsheets development have been led by Catalina Oaida Taglialatela and Cassie Nickles (PO.DAAC) in Spring 2022.
+
 ## What does working with NASA Earthdata Cloud data look like?
 
-[Slides: NSIDC DAAC User Working Group: NASA Earthdata Cloud Intro and Demonstration](https://docs.google.com/presentation/d/1Wtlgt-wUx8HgeWjoxvvz4BwknLlKDmGP2F-pSuI5utQ/edit?usp=sharing) by Andrew Barrett, Amy Steiker, Walt Meier, Jennie Roebuck, Mikala Beig, Luis Lopez, May 20, 2022.
+### [Slides: NSIDC DAAC User Working Group](https://docs.google.com/presentation/d/1Wtlgt-wUx8HgeWjoxvvz4BwknLlKDmGP2F-pSuI5utQ/edit?usp=sharing)
+
+by Andrew Barrett, Amy Steiker, Walt Meier, Jennie Roebuck, Mikala Beig, Luis Lopez, May 20, 2022.
+
+## What is the NASA Earthdata Cloud?
+
+NASA Earthdata Cloud is the NASA archive of Earth observations and is hosted in Amazon Web Services (AWS) cloud with DAAC tools and services built for use “next to the data.” The NASA DAACs (data centers) are currently transitioning to this cloud-based environment. The cloud offers a scalable and effective way to address storage, network, and data movement concerns while offering a tremendous amount of flexibility to the user. Particularly if working with large data volumes, data access and processing would be more efficient if workflows are taking place in the cloud, avoiding having to download large data volumes. Data download will continue to be freely available to users, from the Earthdata Cloud archive.
+
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vTu9_vyCmwXf0ekrIyITOvcvTBCdT9sRCXfHuHpr2RDi-K4uZGD9LaW-UWfbTcd2602c7DLetJWGT-v/embed?start=false&loop=false&delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+
+
+## Cloud Access Pathways
+
+Three pathway examples, to interact and access data (and services) from and within the NASA Earthdata Cloud, are illustrated in the diagram. Green arrows and icons indicate working locally, after downloading data to your local machine, servers, or compute/storage space. Orange arrows and icons highlight a workflow within the cloud, setting up your own AWS EC2 cloud instance, or virtual machine, in the cloud next to the data. Blue arrows and icons also indicate a within the cloud workflow, through shareable cloud environments such as Binder or JupyterHub set up in an AWS cloud region.
+
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vRDnkZBG2B-jTWZZLU_aZZVADuIl1dCQ-MORCvgXKmikcCSd6y1N-3V5GB49CK9G3h0giZClnK7ICrI/embed?start=false&loop=false&delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+
+
 
 ## Tools & Services Roadmap
 
