@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.0.14">
+<meta name="generator" content="quarto-1.0.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -387,7 +387,7 @@ ul.task-list{list-style: none;}
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="./images/search_ecco.png" class="img-fluid figure-img"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"><em>Figure caption: Search for ECCO data available in AWS cloud in Earthdata Search portal</em></figcaption><p></p>
+<p></p><figcaption class="figure-caption"><em>Figure caption: Search for ECCO data available in AWS cloud in Earthdata Search portal</em></figcaption><p></p>
 </figure>
 </div>
 <p>Let’s refine our search further. Let’s search for <code>ECCO monthly SSH</code> in the search box (which will produce 39 matching collections), and for the <strong>time period</strong> for year 2015. The latter can be done using the <em>calendar</em> icon on the left under the search box.</p>
@@ -396,7 +396,7 @@ ul.task-list{list-style: none;}
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="./images/refine_ecco.png" class="img-fluid figure-img"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"><em>Figure caption: Refine search, set temporal bounds, get more information</em></figcaption><p></p>
+<p></p><figcaption class="figure-caption"><em>Figure caption: Refine search, set temporal bounds, get more information</em></figcaption><p></p>
 </figure>
 </div>
 </section>
@@ -413,13 +413,13 @@ ul.task-list{list-style: none;}
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="./images/cloud_access_info.png" class="img-fluid figure-img"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"><em>Figure caption: Cloud access info in EDS</em></figcaption><p></p>
+<p></p><figcaption class="figure-caption"><em>Figure caption: Cloud access info in EDS</em></figcaption><p></p>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="./images/cloud_access_documentation.png" class="img-fluid figure-img"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"><em>Figure caption: Documentation describing the In-region Direct S3 Access to Buckets</em></figcaption><p></p>
+<p></p><figcaption class="figure-caption"><em>Figure caption: Documentation describing the In-region Direct S3 Access to Buckets</em></figcaption><p></p>
 </figure>
 </div>
 <p><strong>Pro Tip</strong>: Clicking on “For Developers” to exapnd will provide programmatic endpoints such as those for the CMR API, and more. CMR API and CMR STAC API tutorials can be found on the <a href="https://nasa-openscapes.github.io/2021-Cloud-Hackathon/tutorials/">2021 Cloud Hackathon website</a>.</p>
@@ -432,7 +432,7 @@ ul.task-list{list-style: none;}
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="./images/select_granules_download.png" class="img-fluid figure-img"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"><em>Figure caption: Select granules and click download</em></figcaption><p></p>
+<p></p><figcaption class="figure-caption"><em>Figure caption: Select granules and click download</em></figcaption><p></p>
 </figure>
 </div>
 <section id="a.-entire-file-content" class="level4">
@@ -441,7 +441,7 @@ ul.task-list{list-style: none;}
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="./images/custom_download.png" class="img-fluid figure-img"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"><em>Figure caption: Customize your download or access</em></figcaption><p></p>
+<p></p><figcaption class="figure-caption"><em>Figure caption: Customize your download or access</em></figcaption><p></p>
 </figure>
 </div>
 <p>Clicking the green Download Data button again, will take us to the final page for instructions to download and links for data access in the cloud. You should see three tabs: <code>Download Files</code>, <code>AWS S3 Access</code>, <code>Download Script</code>:</p>
@@ -459,14 +459,14 @@ ul.task-list{list-style: none;}
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="./images/eds_harmony.png" class="img-fluid figure-img"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"><em>Figure caption: Leverage Harmony cloud-based data transformation services</em></figcaption><p></p>
+<p></p><figcaption class="figure-caption"><em>Figure caption: Leverage Harmony cloud-based data transformation services</em></figcaption><p></p>
 </figure>
 </div>
 <p>When you click the final green <em>Download</em> button, the links provided are to data that had been transformed based on our selections on the previous screen (here chosing to use the Harmony service to reformat the data to Zarr). These data are staged for us in an S3 bucket in AWS, and we can use the <code>s3://</code> links to access those specific data. This service also provides <code>STAC</code> access links. This particular example is applicable if your workflow is in the AWS us-west-2 region.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="./images/eds_harmony_links.png" class="img-fluid figure-img"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"><em>Figure caption: Harmony-staged data in S3</em></figcaption><p></p>
+<p></p><figcaption class="figure-caption"><em>Figure caption: Harmony-staged data in S3</em></figcaption><p></p>
 </figure>
 </div>
 </section>
