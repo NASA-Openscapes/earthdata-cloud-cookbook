@@ -39,9 +39,10 @@ website:
         href: cheatsheet.qmd      
       - section: how-tos/index.qmd
         contents: 
-          - section: how-tos/find-data/index.md
-            contents:
-              - how-tos/earthdata_search.md
+      #    - section: how-tos/find-data/index.md
+      #      contents:
+          - text: "Find Data"
+            href: how-tos/find-data/earthdata_search.md
           - how-tos/authentication.md
           - how-tos/transform.md
           - section: how-tos/access/index.md
@@ -95,7 +96,7 @@ website:
         contents: 
           - contributing/onboarding.qmd
           - contributing/setup.qmd
-          - contributing/workflow.md
+          - contributing/workflow.qmd
           - contributing/resources.md
           - contributing/quarto-website-tutorial.md
       - troubleshooting.md

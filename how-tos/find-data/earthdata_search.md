@@ -1,5 +1,5 @@
 ---
-title: Earthdata Search
+title: "Find Data: Earthdata Search"
 ---
 
 *The original source for this document is <https://nasa-openscapes.github.io/2021-Cloud-Workshop-AGU/tutorials/01_Earthdata_Search.html>*
