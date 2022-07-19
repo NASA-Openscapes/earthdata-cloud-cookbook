@@ -1,45 +1,31 @@
 ---
 title: Workflow
+editor: 
+  markdown: 
+    wrap: 72
 ---
 
 ## Workflow for contributing to our Cookbook
 
-Your workflow can be from wherever you are most comfortable. You can
-develop chapters working in a text editor, integrated development
-environment (IDE), or notebook interface. And you can serve Quarto from
-the Command Line or R. Quarto will combine files of different types (
-`.md` , `.ipynb`, `.Rmd`, and `.qmd`) to make the Cookbook. This
-workflow can streamline collaboration for scientific & technical writing
-across programming languages.
+Your workflow can be from whatever software you are most comfortable
+with: you can develop chapters working in an integrated development
+environment (IDE) like RStudio or VS Code, notebook interface like
+JupyterLab, or a text editor. You'll develop content like you normally
+would, executing all code like you normally would as you develop your
+`.ipynb` , `.md` , `.Rmd`, and `.qmd` files. By default, when we build
+the Cookbook it will not execute code in Jupyter notebooks.
 
-By default, rendering the Cookbook will only act on markdown text and
-will not execute any code. This way, rendering the whole Cookbook will
-not become overly cumbersome as it grows, and there is not one single
-virtual environment with all the libraries required. Instead, our
-workflow is that as you develop a single chapter (or section), you
-control when you render, and can create a `requirements.txt` file for
-that chapter (or section). This will also make it much easier to port
-lessons that work standalone and are ready for a Cloud instance or a
-workshop.
+Then, when you're ready to update your contribution in the Cookbook,
+Quarto will combine all the files to make the Cookbook (or other books
+like it!). Below is a full workflow but depending on how you're
+contributing, you may have more focus on different parts of it.
 
 ## Quickstart reference
 
 ### **Daily setup: get the latest!**
 
-Quarto (and the RStudio IDE if you're using it) are under active
-development; currently it's important to get the daily versions before
-you start working.
-
--   Quarto: <https://github.com/quarto-dev/quarto-cli/releases/latest>
-
--   (RStudio IDE: <https://dailies.rstudio.com/>)
-
--   Pull from GitHub
-
-    ``` bash
-    git checkout main
-    git pull
-    ```
+Make sure you have a recent version of
+[Quarto](https://quarto.org/docs/get-started/).
 
 ::: {.callout-tip collapse="true"}
 ## Summary of GitHub and Quarto commands detailed below
@@ -98,8 +84,8 @@ R](https://happygitwithr.com/), which includes fantastic background
 philosophy as well as bash commands for setup, workflows, and
 collaboration.
 
-The following assumes you've completed the [initial setup](/contributing/setup.qmd) from the
-previous chapter.
+The following assumes you've completed the [initial
+setup](/contributing/setup.qmd) from the previous chapter.
 
 ### Branch setup
 
@@ -161,25 +147,6 @@ Wickham:
 
 Here are more of Hadley's suggested [best
 practices](https://r-pkgs.org/git.html#commit-best-practices).
-
-::: callout-tip
-## You must re-render all files that aren't plain `.md`s to view your edits
-
-If you added or made changes to any text or code (including changing the
-dataset upon which existing code relies) within `.ipynb`, `.qmd`, or
-`.Rmd` files, you must re-render those files individually before
-pushing. See the [Quarto render](#quarto-render) section for more
-details. Afterwards, `git add` and `git commit` any changes to the
-updated `_freeze` directory before continuing on to the next step.
-
-Local re-rendering is necessary in cases where code is changed because
-the [workflow used to make this
-site](https://github.com/NASA-Openscapes/earthdata-cloud-cookbook/blob/main/.github/workflows/quarto-render.yml)
-assumes that all code has been pre-executed. Read more about this at
-[freeze
-section](https://quarto.org/docs/books/book-authoring.html?q=freeze#freezing)
-at the Quarto docs.
-:::
 
 ### Push changes
 
@@ -297,19 +264,20 @@ development, and then convert back to `.ipynb` files for our workshops.
 See `quarto convert help` for details.
 
 As you work, you'll follow our GitHub workflow above, committing
-regularly. Remember to `quarto render` individual notebooks you're
-working on so that your changes will be be included in the whole
-Cookbook before pushing to github.com.
+regularly. Remember to execute code in your Jupyter notebook (
+`.ipynb file)`as you're working so that your changes will be be included
+in the Cookbook before pushing to github.com.
 
-The following is to run Quarto from the command line; see
+The following is to run Quarto from the command line in our JupyterHub;
+see
 [quarto.org](https://quarto.org/docs/getting-started/quarto-basics.html)
-to see equivalents in R.
+to see equivalents in RStudio. See also this video (TODO link)
+demonstrating this workflow.
 
 ### Quarto serve
 
 The thing to do first is to "serve" the Cookbook so that we can see what
-it looks like as we develop the chapters (it's called "serve" because
-it's really a website that looks like a book).
+it looks like as we develop the chapters.
 
 Run the following from your branch in your `earthdata-cloud-cookbook`
 directory from the command line:
@@ -318,8 +286,8 @@ directory from the command line:
 quarto serve
 ```
 
-And after it's is served, you can click from the console (or paste the
-url into your browser) to see the development version of the Cookbook.
+And after it is served, paste the url into your browser to see the
+development version of the Cookbook.
 
 ::: callout-tip
 ## This command line instance is now being used to serve Quarto
@@ -419,10 +387,12 @@ is saved in a separate file:
 
 This is then called within a book chapter, with a relative filepath:
 
-    The Clinic will occur in 2 halves, with a 5 minute break in-between:
+``` markdown
+The Clinic will occur in 2 halves, with a 5 minute break in-between:
 
-    {.include}
-    ../logistics/_schedule-clinic.md
+{.include}
+../logistics/_schedule-clinic.md
+```
 
 ...to finally look like so:
 
@@ -443,9 +413,8 @@ We use [2i2c](https://2i2c.org/) to run notebooks.
 
 ### Log into 2i2c
 
-1.  Go to the openscapes
-    2i2c. *You
-    should see the openscapes 2i2c instance.*
+1.  Go to the openscapes 2i2c. *You should see the openscapes 2i2c
+    instance.*
 2.  Click on the orange "Log in to continue" button. *You should see the
     Openscapes-Prod page.*
 3.  Click the "Sign in with Github" button and log in. *If you aren't
@@ -499,30 +468,8 @@ To use this new kernel,
 
 ### Dockerfile
 
-Julie can merge PR
-
-It takes 10 mins to rebuild. In the beginning our image was 10 mb. After
-Hackathon 1 GB now
-
-Once it builds the image it should build to Dockerhub but it doesn't
-rebuild the Hub.
-
-Once the GA finishes it never updates the 2i2c Hub despite code to do
-so - something to follow up on
-
-\<https://github.com/NASA-Openscapes/corn>
-
-Rebuilding image takes about 10-13 minutes
-
-In GitHub \> Actions, click on the successful build to DockerHub, copy
-the tag from "Push new image to Hub"
-
-Then in 2i2c \> Services \> Configuration \> Click Authorize \> "User
-Docker Image": paste the tag from GitHub Actions. Click Submit, then
-navigate away
-
-Every once in a while, delete tags from the DockerHub:
-https://hub.docker.com/repository/docker/openscapes/corn/tags?page=1&ordering=last_updated
+To update the Dockerfile, see [corn's
+README](https://github.com/nasa-openscapes/corn#corn-).
 
 ## Virtual Environments
 
