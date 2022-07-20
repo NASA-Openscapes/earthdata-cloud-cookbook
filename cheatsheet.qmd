@@ -33,7 +33,8 @@ Three pathway examples, to interact and access data (and services) from and with
 
 [Published Google Slide](https://docs.google.com/presentation/d/e/2PACX-1vRDnkZBG2B-jTWZZLU_aZZVADuIl1dCQ-MORCvgXKmikcCSd6y1N-3V5GB49CK9G3h0giZClnK7ICrI/pub?start=false&loop=false&delayms=3000){target="_blank"}
 
-A note on costing: What is free and what do I have to budget for, now that data is archived in the cloud?
+A note on *costing*: What is free and what do I have to budget for, now that data is archived in the cloud?
+
 - Downloading data from the Earthdata Cloud archive in AWS, to your local computer environment or local storage (e.g. servers) is and will continue to be free for the user. 
 - Accessing the data directly in the cloud (from _us-west-2_ S3 region) is free. Users will need a NASA Earthdata Login account and AWS credentials to access, but there is no cost associated with these authentication steps, which are in place for security reasons.
 - Accessing data in the cloud via EOSDIS or DAAC cloud-based tools and services such as the CMR API, Harmony API, OPenDAP API (from _us-west-2_ S3 region) is free to the user. Having the tools and services “next to the data” in the cloud enables DAACs to support data reduction and transformation, more efficiently, on behalf of the user, so users only access the data they need.
