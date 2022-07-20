@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.0.32">
+<meta name="generator" content="quarto-1.0.35">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -1078,7 +1078,9 @@ C1972955240-PODAAC</code></pre>
 <pre><code>Object `temporal` not found.</code></pre>
 </div>
 </div>
+<div class="cell">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>DataGranules().temporal</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <div class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>DataGranules().temporal</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
@@ -1274,6 +1276,7 @@ Wall time: 8.95 s</code></pre>
 <section id="cloud-access-part-ii-opening-files-with-s3fs" class="level3">
 <h3 class="anchored" data-anchor-id="cloud-access-part-ii-opening-files-with-s3fs">☁️ <strong>Cloud Access Part II: Opening files with S3FS</strong></h3>
 <p>Being in the cloud allows us to stream data as if we were using it locally. Pairing gridded datasets on S3 and xarray isa very useful patter when we deal with a lot of data.</p>
+<div class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># data_links = cloud_granules[0].data_links(s3_only=True)</span></span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>https_links <span class="op">=</span> []</span>
 <span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>s3_links <span class="op">=</span> []</span>
@@ -1287,6 +1290,7 @@ Wall time: 8.95 s</code></pre>
 <span id="cb44-11"><a href="#cb44-11" aria-hidden="true" tabindex="-1"></a>    s3_links.append(granule.data_links(s3_only<span class="op">=</span><span class="va">True</span>)[<span class="dv">0</span>])</span>
 <span id="cb44-12"><a href="#cb44-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb44-13"><a href="#cb44-13" aria-hidden="true" tabindex="-1"></a>fileset <span class="op">=</span> [fs.<span class="bu">open</span>(s3_granule)<span class="cf">for</span> s3_granule <span class="kw">in</span> s3_links[<span class="dv">0</span>:<span class="dv">5</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <div class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>time</span>
 <span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a></span>

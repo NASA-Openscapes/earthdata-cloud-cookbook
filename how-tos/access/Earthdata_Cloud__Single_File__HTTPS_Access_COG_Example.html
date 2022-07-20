@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.0.32">
+<meta name="generator" content="quarto-1.0.35">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -461,37 +461,51 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Using Harmonized Landsat Sentinel-2 (HLS) version 2.0</p>
 <section id="import-packages" class="level3">
 <h3 class="anchored" data-anchor-id="import-packages">Import Packages</h3>
+<div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> osgeo <span class="im">import</span> gdal</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> rasterio <span class="im">as</span> rio</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> rioxarray</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> hvplot.xarray</span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> holoviews <span class="im">as</span> hv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 </section>
 <section id="workspace-environment-setup" class="level2">
 <h2 class="anchored" data-anchor-id="workspace-environment-setup">Workspace Environment Setup</h2>
 <p>For this exercise, we are going to open up a context manager for the notebook using the rasterio.env module to store the required GDAL configurations we need to access the data from Earthdata Cloud. While the context manager is open (rio_env.__enter__()) we will be able to run the open or get data commands that would typically be executed within a with statement, thus allowing us to more freely interact with the data. We’ll close the context (rio_env.__exit__()) at the end of the notebook.</p>
 <p>GDAL environment variables must be configured to access COGs from Earthdata Cloud. Geospatial data access Python packages like rasterio and rioxarray depend on GDAL, leveraging GDAL’s “Virtual File Systems” to read remote files. GDAL has a lot of environment variables that control it’s behavior. Changing these settings can mean the difference being able to access a file or not. They can also have an impact on the performance.</p>
+<div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>rio_env <span class="op">=</span> rio.Env(GDAL_DISABLE_READDIR_ON_OPEN<span class="op">=</span><span class="st">'TRUE'</span>,</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>                  GDAL_HTTP_COOKIEFILE<span class="op">=</span>os.path.expanduser(<span class="st">'~/cookies.txt'</span>),</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>                  GDAL_HTTP_COOKIEJAR<span class="op">=</span>os.path.expanduser(<span class="st">'~/cookies.txt'</span>))</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>rio_env.<span class="fu">__enter__</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>In this example we’re interested in the HLS L30 data collection from NASA’s LP DAAC in Earthdata Cloud. Below we specify the s3 URL to the data asset in Earthdata Cloud. This URL can be found via Earthdata Search or programmatically through the CMR and CMR-STAC APIs.</p>
+<div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>https_url <span class="op">=</span> <span class="st">'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.020/HLS.L30.T11SQA.2021333T181532.v2.0/HLS.L30.T11SQA.2021333T181532.v2.0.B04.tif'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="https-data-access" class="level2">
 <h2 class="anchored" data-anchor-id="https-data-access">HTTPS Data Access</h2>
 <p>Read in the HLS s3 URL for the L30 red band (0.64 – 0.67 μm) into our workspace using <code>rioxarray</code>, an extension of <code>xarray</code> used to read geospatial data.</p>
+<div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>da <span class="op">=</span> rioxarray.open_rasterio(https_url)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>da</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>The file is read into Python as an <code>xarray</code> <code>dataarray</code> with a <strong>band</strong>, <strong>x</strong>, and <strong>y</strong> dimension. In this example the <strong>band</strong> dimension is meaningless, so we’ll use the <code>squeeze()</code> function to remove <strong>band</strong> as a dimension.</p>
+<div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>da_red <span class="op">=</span> da.squeeze(<span class="st">'band'</span>, drop<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>da_red</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>Plot the <code>dataarray</code>, representing the L30 red band, using <code>hvplot</code>.</p>
+<div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>da_red.hvplot.image(x<span class="op">=</span><span class="st">'x'</span>, y<span class="op">=</span><span class="st">'y'</span>, cmap<span class="op">=</span><span class="st">'gray'</span>, aspect<span class="op">=</span><span class="st">'equal'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>Exit the context manager.</p>
+<div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>rio_env.<span class="fu">__exit__</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 
 
 </section>
