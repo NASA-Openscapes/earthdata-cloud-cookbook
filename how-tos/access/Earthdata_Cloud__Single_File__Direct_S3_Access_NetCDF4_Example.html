@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.0.35">
+<meta name="generator" content="quarto-1.0.38">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -522,7 +522,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>Plot the <code>SSH</code> <code>dataarray</code> for time <strong>2015-01-16T12:00:00</strong> using <code>hvplot</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>ssh_da.hvplot.image(x<span class="op">=</span><span class="st">'longitude'</span>, y<span class="op">=</span><span class="st">'latitude'</span>, cmap<span class="op">=</span><span class="st">'Spectral_r'</span>, aspect<span class="op">=</span><span class="st">'equal'</span>).opts(clim<span class="op">=</span>(ssh_da.attrs[<span class="st">'valid_min'</span>][<span class="dv">0</span>],ssh_da.attrs[<span class="st">'valid_max'</span>][<span class="dv">0</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>ssh_da.hvplot.image(x<span class="op">=</span><span class="st">'longitude'</span>, y<span class="op">=</span><span class="st">'latitude'</span>, cmap<span class="op">=</span><span class="st">'Spectral_r'</span>, geo<span class="op">=</span><span class="va">True</span>, tiles<span class="op">=</span><span class="st">'ESRI'</span>, global_extent<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <hr>
 </section>
