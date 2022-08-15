@@ -16,7 +16,7 @@ Use the search box in the upper left to type key words. In this example we are i
 
 Click on the _**"Available from AWS Cloud"**_ filter option on the left. Here, 104 matching collections were found with the basic `ECCO` search.
 
-![*Figure caption: Search for ECCO data available in AWS cloud in Earthdata Search portal*](./images/search_ecco.png)
+![*Figure caption: Search for ECCO data available in AWS cloud in Earthdata Search portal*](../images/search_ecco.png)
 
 Let's refine our search further. Let's search for `ECCO monthly SSH` in the search box (which will produce 39 matching collections), and for the **time period** for year 2015. The latter can be done using the *calendar* icon on the left under the search box. 
 
@@ -24,7 +24,7 @@ Scroll down the list of returned matches until we see the dataset of interest, i
 
 We can click on the (i) icon for the dataset to read more details, including the **dataset shortname** (helpful for programmatic workflows) just below the dataset name; here `ECCO_L4_SSH_05DEG_MONTHLY_V4R4`.
 
-![*Figure caption: Refine search, set temporal bounds, get more information*](./images/refine_ecco.png)
+![*Figure caption: Refine search, set temporal bounds, get more information*](../images/refine_ecco.png)
 
 ### Step 3. Explore the dataset details, including Cloud Access information
 
@@ -36,9 +36,9 @@ Once we clicked the (i), scrolling down the info page for the dataset we will se
 - link that generates **AWS S3 Credentials** for in-cloud data access (we will cover this in the Direct Data Access Tutorials)
 - link to **documentation** describing the In-region Direct S3 Access to Buckets. *Note*: these will be unique depending on the DAAC where the data is archived. (We will show examples of direct in-region access in Tutorial 3.)
 
-![*Figure caption: Cloud access info in EDS*](./images/cloud_access_info.png)
+![*Figure caption: Cloud access info in EDS*](../images/cloud_access_info.png)
 
-![*Figure caption: Documentation describing the In-region Direct S3 Access to Buckets*](./images/cloud_access_documentation.png)
+![*Figure caption: Documentation describing the In-region Direct S3 Access to Buckets*](../images/cloud_access_documentation.png)
 
 **Pro Tip**: Clicking on "For Developers" to exapnd will provide programmatic endpoints such as those for the CMR API, and more. CMR API and CMR STAC API tutorials can be found on the [2021 Cloud Hackathon website](https://nasa-openscapes.github.io/2021-Cloud-Hackathon/tutorials/).
 
@@ -50,19 +50,19 @@ At the top of the dataset info section, click on *Search Results*, which will ta
 
 Click on the green **+** symbol to add a few files to our project. Here we added the first 3 listed for 2015. Then click on the green button towards the bottom that says "Download". This will take us to another page with options to customize our download or access link(s).
 
-![*Figure caption: Select granules and click download*](./images/select_granules_download.png)
+![*Figure caption: Select granules and click download*](../images/select_granules_download.png)
 
 #### 4.a. Entire file content
 
 Let's stay we are interested in the entire file content, so we select the **"Direct Download"** option (as opposed to other options to subset or transform the data):
 
-![*Figure caption: Customize your download or access*](./images/custom_download.png)
+![*Figure caption: Customize your download or access*](../images/custom_download.png)
 
 Clicking the green Download Data button again, will take us to the final page for instructions to download and links for data access in the cloud. You should see three tabs: `Download Files`, `AWS S3 Access`, `Download Script`:
 
-![*Figure caption: Download to local*](./images/download.png)
-![*Figure caption: Direct S3 access*](./images/AWS_s3_access.png)
-![*Figure caption: Downloading scrip*](./images/download_script.png)
+![*Figure caption: Download to local*](../images/download.png)
+![*Figure caption: Direct S3 access*](../images/AWS_s3_access.png)
+![*Figure caption: Downloading scrip*](../images/download_script.png)
 
 The *Download Files* tab provides the `https://` links for downloading the files locally. E.g.:
 `https://archive.podaac.earthdata.nasa.gov/podaac-ops-cumulus-protected/ECCO_L4_SSH_05DEG_MONTHLY_V4R4/SEA_SURFACE_HEIGHT_mon_mean_2015-09_ECCO_V4r4_latlon_0p50deg.nc`
@@ -83,11 +83,11 @@ We can leverage these cloud-based services on cloud-archived data to reduce or t
 
 [Harmony](https://harmony.earthdata.nasa.gov/) allows you to seamlessly analyze Earth observation data from different NASA data centers. These services (API endpoints) provide data reduction (e.g. subsetting) and transfromation services (e.g. convert netCDF data to Zarr cloud optimized format). 
 
-![*Figure caption: Leverage Harmony cloud-based data transformation services*](./images/eds_harmony.png)
+![*Figure caption: Leverage Harmony cloud-based data transformation services*](../images/eds_harmony.png)
 
 When you click the final green *Download* button, the links provided are to data that had been transformed based on our selections on the previous screen (here chosing to use the Harmony service to reformat the data to Zarr). These data are staged for us in an S3 bucket in AWS, and we can use the `s3://` links to access those specific data. This service also provides `STAC` access links. This particular example is applicable if your workflow is in the AWS us-west-2 region.
 
-![*Figure caption: Harmony-staged data in S3*](./images/eds_harmony_links.png)
+![*Figure caption: Harmony-staged data in S3*](../images/eds_harmony_links.png)
 
 
 ### Step 5. Integrate file links into programmatic workflow, locally or in the AWS cloud. 
