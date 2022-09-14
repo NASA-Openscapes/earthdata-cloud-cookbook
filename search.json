@@ -210,6 +210,13 @@
     "text": "This is the setup required to contribute to our Cookbook. These are not in order, because there are different ways you can start working and contributing. You will need a GitHub account, which is described in the tutorials (link upcoming as that is tidied).\nThis chapter describes initial setup, with workflows described in more detail in the next chapter."
   },
   {
+    "objectID": "contributing/setup.html#create-a-github-account",
+    "href": "contributing/setup.html#create-a-github-account",
+    "title": "Cookbook Setup",
+    "section": "Create a GitHub Account",
+    "text": "Create a GitHub Account\n\nGitHub: https://github.com\nFollow optional advice on choosing your username"
+  },
+  {
     "objectID": "contributing/setup.html#access-jupyterhub",
     "href": "contributing/setup.html#access-jupyterhub",
     "title": "Cookbook Setup",
@@ -224,18 +231,25 @@
     "text": "Clone Cookbook from GitHub\nNow clone our Cookbook and make it your current directory.\ngit clone https://github.com/NASA-Openscapes/earthdata-cloud-cookbook\ncd earthdata-cloud-cookbook"
   },
   {
-    "objectID": "contributing/setup.html#meet-quarto",
-    "href": "contributing/setup.html#meet-quarto",
+    "objectID": "contributing/setup.html#configure-github-with-pat",
+    "href": "contributing/setup.html#configure-github-with-pat",
     "title": "Cookbook Setup",
-    "section": "Meet Quarto",
-    "text": "Meet Quarto\nExplore Quarto and use it hands-on in our separate Quarto Website Tutorial. Quarto is already installed in our JupyterHub.\nBackground: Quarto is a new open-source scientific and technical publishing system. It makes collaborating to create technical documentation streamlined because we work in plain text documents that can have executable code (Python, R) and are rendered using Jupyter and Knitr engines."
+    "section": "Configure GitHub, with PAT",
+    "text": "Configure GitHub, with PAT\nTo configure your GitHub account in the 2i2c JupyterHub, follow these 2021 Cloud Hackathon instructions. These instructions are for Jupyter and will also set up credentials for RStudio users; however for RStudio-specific instructions (not specific to our 2i2c Hub) please also see Happy Git with R."
+  },
+  {
+    "objectID": "contributing/setup.html#sync-from-2i2c-local-to-github-remote",
+    "href": "contributing/setup.html#sync-from-2i2c-local-to-github-remote",
+    "title": "Cookbook Setup",
+    "section": "Sync from 2i2c (local) to GitHub (remote)",
+    "text": "Sync from 2i2c (local) to GitHub (remote)\nEnsure you can sync and practice the GitHub workflow. Here, “local” means the 2i2c Hub, but could also mean your local desktop software for Jupyter, VS Code, RStudio, etc.\nSyncing to GitHub.com means 4 steps:\n\nPull\nStage\nCommit\nPush\n\n\n\n\n\n\nReview the 2021 Cloud Hackathon instructions for step-by-step screenshots for syncing. RStudio users can follow R for Excel Users instructions."
   },
   {
     "objectID": "contributing/setup.html#build-cookbook",
     "href": "contributing/setup.html#build-cookbook",
     "title": "Cookbook Setup",
     "section": "Build Cookbook!",
-    "text": "Build Cookbook!\nYou should now be able to serve our Cookbook from the earthdata-cloud-cookbook directory.\nquarto serve\nThis will open the Cookbook as a new tab in your browser. Now you’re all set to contribute to the Cookbook! Read about how in the next chapter."
+    "text": "Build Cookbook!\nWe use Quarto to build (“serve”) our Cookbook and publish it via GitHub. In the Terminal, your current directory should already be the cookbook (cd earthdata-cloud-cookbook). Type the following, which will open the Cookbook as a new tab in your browser:\nquarto serve\nBackground: Quarto is a new open-source scientific and technical publishing system. It makes collaborating to create technical documentation streamlined because we work in plain text documents that can have executable code (Python, R) and are rendered using Jupyter and Knitr engines. Explore Quarto and use it hands-on in our separate Quarto Website Tutorial. Quarto is already installed in our JupyterHub.\nNow you’re all set to contribute to the Cookbook! Read about how in the next chapter."
   },
   {
     "objectID": "contributing/workflow.html",
