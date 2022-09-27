@@ -407,8 +407,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <ul>
   <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
   <li><a href="#create-a-github-account" id="toc-create-a-github-account" class="nav-link" data-scroll-target="#create-a-github-account">Create a GitHub Account</a></li>
-  <li><a href="#access-jupyterhub" id="toc-access-jupyterhub" class="nav-link" data-scroll-target="#access-jupyterhub">Access JupyterHub</a></li>
   <li><a href="#github-clinic" id="toc-github-clinic" class="nav-link" data-scroll-target="#github-clinic">GitHub Clinic</a></li>
+  <li><a href="#access-jupyterhub" id="toc-access-jupyterhub" class="nav-link" data-scroll-target="#access-jupyterhub">Access JupyterHub</a></li>
   <li><a href="#clone-cookbook-from-github" id="toc-clone-cookbook-from-github" class="nav-link" data-scroll-target="#clone-cookbook-from-github">Clone Cookbook from GitHub</a></li>
   <li><a href="#configure-github-with-pat" id="toc-configure-github-with-pat" class="nav-link" data-scroll-target="#configure-github-with-pat">Configure GitHub, with PAT</a></li>
   <li><a href="#sync-from-2i2c-local-to-github-remote" id="toc-sync-from-2i2c-local-to-github-remote" class="nav-link" data-scroll-target="#sync-from-2i2c-local-to-github-remote">Sync from 2i2c (local) to GitHub (remote)</a></li>
@@ -437,7 +437,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <section id="overview" class="level2">
 <h2 class="anchored" data-anchor-id="overview">Overview</h2>
-<p>This is the setup required to contribute to our Cookbook. These are not in order, because there are different ways you can start working and contributing. You will need a GitHub account, which is described in the tutorials (link upcoming as that is tidied).</p>
+<p>This is the setup required to contribute to our Cookbook. It is presented in a recommended order, although the setup will depend on what workflow you already have, because there are different ways you can start working and contributing. You will need a GitHub account. You will be able to incorporate this setup into a local workflow (with Jupyter Lab, VS Code, RStudio, etc), and as you develop tutorials on the Cloud, you will need to get setup with our 2i2c JupyterHub.</p>
 <p>This chapter describes initial setup, with workflows described in more detail in the next chapter.</p>
 </section>
 <section id="create-a-github-account" class="level2">
@@ -446,11 +446,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>GitHub: <a href="https://github.com" class="uri">https://github.com</a></li>
 <li>Follow optional <a href="https://happygitwithr.com/github-acct.html">advice on choosing your username</a></li>
 </ul>
-</section>
-<section id="access-jupyterhub" class="level2">
-<h2 class="anchored" data-anchor-id="access-jupyterhub">Access JupyterHub</h2>
-<p>Our <a href="https://openscapes.2i2c.cloud/hub/">Openscapes 2i2c JupyterHub</a> is available for Mentors and their colleagues to develop, test, and teach. Using the JupyterHub is described in the tutorials (link upcoming as that is tidied).</p>
-<p>To request access, you’ll need a GitHub username and to fill out this <a href="https://docs.google.com/forms/d/e/1FAIpQLSdcKar-yNnofiAVKlks79AgmQeM1beLCQM5TW_0__x_JU4B3g/viewform?usp=sf_link">JupyterHub request form</a>.</p>
 </section>
 <section id="github-clinic" class="level2">
 <h2 class="anchored" data-anchor-id="github-clinic">GitHub Clinic</h2>
@@ -465,16 +460,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p><a href="https://youtu.be/Lum7irkP6k8"><strong>Part 3: 2i2c JupyterHub</strong></a> <strong>(video)</strong> introduces a beginning GitHub workflow from our 2i2c JupyterHub. It is recorded as 9 minutes of lesson.</p></li>
 </ul>
 </section>
+<section id="access-jupyterhub" class="level2">
+<h2 class="anchored" data-anchor-id="access-jupyterhub">Access JupyterHub</h2>
+<p>Our <a href="https://openscapes.2i2c.cloud/hub/"><strong>Openscapes 2i2c JupyterHub</strong></a> is available for Mentors and their colleagues to develop, test, and teach. Using the JupyterHub is described in the tutorials (link upcoming as that is tidied).</p>
+<p>To request access, fill out this <a href="https://docs.google.com/forms/d/e/1FAIpQLSdcKar-yNnofiAVKlks79AgmQeM1beLCQM5TW_0__x_JU4B3g/viewform?usp=sf_link"><strong>JupyterHub request form</strong></a>. You’ll need a GitHub username (<a href="https://docs.google.com/spreadsheets/d/10Qg8YtUegXs9bepJzvK4UN54bX8BLXTrhxsjb2uV_6k/edit#gid=1824163684">internal</a>).</p>
+</section>
 <section id="clone-cookbook-from-github" class="level2">
 <h2 class="anchored" data-anchor-id="clone-cookbook-from-github">Clone Cookbook from GitHub</h2>
-<p>Now clone our Cookbook and make it your current directory.</p>
+<p>Now clone our Cookbook and set the cloned repository as your current directory.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/NASA-Openscapes/earthdata-cloud-cookbook</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> earthdata-cloud-cookbook</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<!---TODO: Offer GitHub setup instructions: writeup GitHub Clinic --->
+<pre class="{bash}"><code>#| eval: false
+git clone https://github.com/NASA-Openscapes/earthdata-cloud-cookbook
+cd earthdata-cloud-cookbook</code></pre>
 </section>
 <section id="configure-github-with-pat" class="level2">
 <h2 class="anchored" data-anchor-id="configure-github-with-pat">Configure GitHub, with PAT</h2>
-<p>To configure your GitHub account in the 2i2c JupyterHub, follow these <a href="https://nasa-openscapes.github.io/2021-Cloud-Hackathon/tutorials/00_Setup.html#step-5.-tracking-changes-optional">2021 Cloud Hackathon instructions</a>. These instructions are for Jupyter and will also set up credentials for RStudio users; however for RStudio-specific instructions (not specific to our 2i2c Hub) please also see <a href="https://happygitwithr.com/https-pat.html">Happy Git with R</a>.</p>
+<p>To configure your GitHub account in the 2i2c JupyterHub, follow these <a href="https://nasa-openscapes.github.io/2021-Cloud-Hackathon/tutorials/00_Setup.html#step-5.6.-setup-pat">2021 Cloud Hackathon instructions: setup PAT</a>. These instructions are to setup your Hub’s PAT through Jupyter and will also set up credentials for RStudio users. However for RStudio-specific instructions (not specific to our 2i2c Hub) please also see <a href="https://happygitwithr.com/https-pat.html">Happy Git with R</a>.</p>
 </section>
 <section id="sync-from-2i2c-local-to-github-remote" class="level2">
 <h2 class="anchored" data-anchor-id="sync-from-2i2c-local-to-github-remote">Sync from 2i2c (local) to GitHub (remote)</h2>
@@ -496,7 +498,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="build-cookbook" class="level2">
 <h2 class="anchored" data-anchor-id="build-cookbook">Build Cookbook!</h2>
 <p>We use <a href="https://quarto.org">Quarto</a> to build (“serve”) our Cookbook and publish it via GitHub. In the Terminal, your current directory should already be the cookbook (<code>cd earthdata-cloud-cookbook</code>). Type the following, which will open the Cookbook as a new tab in your browser:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> serve</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> serve</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Background: Quarto is a new open-source scientific and technical publishing system. It makes collaborating to create technical documentation streamlined because we work in plain text documents that can have executable code (Python, R) and are rendered using Jupyter and Knitr engines. Explore <a href="https://quarto.org">Quarto</a> and use it hands-on in our separate <a href="https://openscapes.github.io/quarto-website-tutorial/">Quarto Website Tutorial</a>. Quarto is already installed in our JupyterHub.</p>
 <p>Now you’re all set to contribute to the Cookbook! Read about how in the next chapter.</p>
 
