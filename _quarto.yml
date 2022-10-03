@@ -39,10 +39,12 @@ website:
         href: cheatsheet.qmd      
       - section: how-tos/index.qmd
         contents: 
-      #    - section: how-tos/find-data/index.md
-      #      contents:
-          - text: "Find Data"
-            href: how-tos/find-data/earthdata_search.md
+          - section: how-tos/find-data/index.md
+            contents:
+              - text: "Earthdata Search"
+                href: how-tos/find-data/earthdata_search.md
+              - text: "Programmatic Search" 
+                href: how-tos/find-data/programmatic.md                
           - how-tos/authentication.md
           - how-tos/transform.md
           - section: how-tos/access/index.md
