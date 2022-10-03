@@ -44,7 +44,12 @@ website:
           - text: "Find Data"
             href: how-tos/find-data/earthdata_search.md
           - how-tos/authentication.md
-          - how-tos/transform.md
+          - section: how-tos/transform/index.md
+            contents: 
+              - how-tos/transform/subset.md
+              - how-tos/transform/reformat.md
+              - how-tos/transform/reproject.md
+              - how-tos/transform/aggregate.md
           - section: how-tos/access/index.md
             contents:
               - text: "COG HTTPS" 
