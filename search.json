@@ -18,7 +18,7 @@
     "href": "how-tos/find-data/programmatic.html#code",
     "title": "Find Data: Programmatic Search",
     "section": "Code",
-    "text": "Code\nHere are our recommended approaches for finding data with code.\n\nPythonRMatlabCommand Line\n\n\nIn Python we can use the earthdata library (to be renamed earthaccess very soon!)\nTo install the package we’ll run this code from the command line. Note: you can run shell code directly from a Jupyter Notebook cell by adding a !: !conda install.\n\n# Install earthdata\nconda install -c conda-forge earthdata\n\nThis example searches for data from the LPDAAC with a spatial bounding box.\n\n## Import earthdata\nfrom earthdata import DataGranules\n\n# Then we build a Query with spatiotemporal parameters\nGranuleQuery = DataGranules().concept_id(\"C1575731655-LPDAAC_ECS\").bounding_box(-134.7,58.9,-133.9,59.2)\n\n# We get the metadata records from CMR\ngranules = GranuleQuery.get()\n\n\n\nR code coming soon!\n\n# Coming soon!\n\n\n\nMatlab code coming soon!\n\n# Coming soon!\n\n\n\nWith wget and curl:\n\n# Coming soon!"
+    "text": "Code\nHere are our recommended approaches for finding data with code.\n\nPythonRMatlabCommand Line\n\n\nIn Python we can use the earthdata library (to be renamed earthaccess very soon!)\nTo install the package we’ll run this code from the command line. Note: you can run shell code directly from a Jupyter Notebook cell by adding a !: !conda install.\n\n```{bash}\n# Install earthdata\nconda install -c conda-forge earthdata\n```\n\nThis example searches for data from the Land Processes DAAC with a spatial bounding box.\n\n```{python}\n## Import earthdata\nfrom earthdata import DataGranules\n\n# Then we build a Query with spatiotemporal parameters\nGranuleQuery = DataGranules().concept_id(\"C1575731655-LPDAAC_ECS\").bounding_box(-134.7,58.9,-133.9,59.2)\n\n# We get the metadata records from CMR\ngranules = GranuleQuery.get()\n```\n\n\n\nR code coming soon!\n\n```{r}\n# Coming soon!\n```\n\n\n\nMatlab code coming soon!\n\n# Coming soon!\n\n\n\nWith wget and curl:\n\n```{bash}\n# Coming soon!\n```"
   },
   {
     "objectID": "how-tos/find-data/earthdata_search.html",
@@ -648,7 +648,7 @@
     "href": "external/cof-zarr-reformat.html",
     "title": "EarthData Cloud Cookbook",
     "section": "",
-    "text": "imported on: 2022-10-07\n\nThis notebook is from NASA’s PO.DAAC, Access ECCO data via Harmony and the Zarr reformatter service example\n\n\nThe original source for this document is https://github.com/podaac/ECCO"
+    "text": "imported on: 2022-10-09\n\nThis notebook is from NASA’s PO.DAAC, Access ECCO data via Harmony and the Zarr reformatter service example\n\n\nThe original source for this document is https://github.com/podaac/ECCO"
   },
   {
     "objectID": "external/cof-zarr-reformat.html#getting-started",
