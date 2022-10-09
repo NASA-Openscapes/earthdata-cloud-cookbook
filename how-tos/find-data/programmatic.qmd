@@ -1,5 +1,8 @@
 ---
 title: "Find Data: Programmatic Search"
+execute:
+  eval: false
+  echo: fenced
 ---
 
 ## Introduction
@@ -18,16 +21,13 @@ In Python we can use the [`earthdata`](https://earthdata.readthedocs.io/en/lates
 To install the package we'll run this code from the command line. Note: you can run shell code directly from a Jupyter Notebook cell by adding a `!`: `!conda install`.
 
 ```{bash}
-#| eval: false
 # Install earthdata
 conda install -c conda-forge earthdata
 ```
 
-This example searches for data from the LPDAAC with a spatial bounding box. 
+This example searches for data from the [Land Processes DAAC](https://lpdaac.usgs.gov/) with a spatial bounding box. 
 
 ```{python}
-#| eval: false
-
 ## Import earthdata
 from earthdata import DataGranules
 
@@ -37,8 +37,6 @@ GranuleQuery = DataGranules().concept_id("C1575731655-LPDAAC_ECS").bounding_box(
 # We get the metadata records from CMR
 granules = GranuleQuery.get()
 ```
-
-
 
 
 ## R
@@ -53,7 +51,8 @@ R code coming soon!
 
 Matlab code coming soon!
 
-```{r}
+```{bash}
+#| echo: true
 # Coming soon!
 ```
 
@@ -61,7 +60,7 @@ Matlab code coming soon!
 
 With `wget` and `curl`:
 
-```{r}
+```{bash}
 # Coming soon!
 ```
 
