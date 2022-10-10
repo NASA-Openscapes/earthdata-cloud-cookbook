@@ -2,7 +2,6 @@
 title: "Find Data: Programmatic Search"
 execute:
   eval: false
-  echo: fenced
 ---
 
 ## Introduction
@@ -20,14 +19,14 @@ In Python we can use the [`earthdata`](https://earthdata.readthedocs.io/en/lates
 
 To install the package we'll run this code from the command line. Note: you can run shell code directly from a Jupyter Notebook cell by adding a `!`, so it would be `!conda install`.
 
-```{bash}
+```{bash, filename="[command line code]"}
 # Install earthdata
 conda install -c conda-forge earthdata
 ```
 
 This example searches for data from the [Land Processes DAAC](https://lpdaac.usgs.gov/) with a spatial bounding box. 
 
-```{python}
+```{python, import-earthdata, filename="[python code]"}
 ## Import earthdata
 from earthdata import DataGranules
 
@@ -44,8 +43,12 @@ granules
 
 To find data in R, we'll briefly make use of the `earthdata` python package - which we can do from R using the [`reticulate`](https://rstudio.github.io/reticulate/) package and [cheatsheet](https://www.rstudio.com/resources/cheatsheets/). You'll copy these code chunks into your RMarkdown or Quarto document: note that the second code chunk is in Python, but when you run them in sequence you'll be all set.
 
-```{r}
+```{r, filename="[R code]"}
 #| message: false
+
+## load wrangling libraries
+library(tidyverse) # install.packages("tidyverse") 
+
 ## load reticulate and set up a python environment
 library(reticulate) # install.packages("reticulate")
 virtualenv_create("earthdata-proj")
@@ -53,23 +56,26 @@ py_install("earthdata", envname = "earthdata-proj")
 use_virtualenv("earthdata-proj")
 ```
 
-Now, we'll use the `earthdata` python package
+Now, we'll use the `earthdata` python package. 
 
-```{python}
+<!---note: would like to reuse the python chunk here with the same name, but currently can't with the language labeled
+https://bookdown.org/yihui/rmarkdown-cookbook/reuse-chunks.html
+--->
+
+```{python, import-earthdata-copy, filename="[python code]"}
 ## Import earthdata
 from earthdata import DataGranules
 
 # Then we build a Query with spatiotemporal parameters
 GranuleQuery = DataGranules().concept_id("C1575731655-LPDAAC_ECS").bounding_box(-134.7,58.9,-133.9,59.2)
 
-# We get the metadata records from CMR
+# We get the metadata records from CMR, then view the output
 granules = GranuleQuery.get()
 granules
 ```
-
 Now we can access the `granules` python object in R using `reticulate`; note the `py$` syntax. We'll create an R object named `granules_r` and view it using `str`. 
 
-```{r}
+```{r, filename="[R code]"}
 granules_r <- py$granules
 str(granules_r) %>% jsonlite::fromJSON()
 ```
@@ -78,7 +84,7 @@ str(granules_r) %>% jsonlite::fromJSON()
 
 Matlab code coming soon!
 
-```{bash}
+```{bash, filename="[Matlab code]"}
 #| echo: true
 # Coming soon!
 ```
@@ -87,7 +93,7 @@ Matlab code coming soon!
 
 With `wget` and `curl`:
 
-```{bash}
+```{bash, filename="[command line code]"}
 # Coming soon!
 ```
 
