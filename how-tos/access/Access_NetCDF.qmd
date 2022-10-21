@@ -1,0 +1,61 @@
+---
+title: "Access NetCDF-4 Data "
+execute:
+  eval: false
+  echo: fenced
+---
+
+## Introduction
+
+We can access NetCDF-4 data directly from NASA Earthdata Cloud using the following code.
+
+## Code
+
+Here are our recommended approaches for accessing NetCDF-4 data in NASA Earthdata Cloud with code.
+
+::: {.panel-tabset group="language"}
+## Python
+
+In Python we can use the [`earthdata`](https://earthdata.readthedocs.io/en/latest/) library (to be renamed `earthaccess` very soon!)
+
+To install the package we'll run this code from the command line. Note: you can run shell code directly from a Jupyter Notebook cell by adding a `!`: `!conda install`.
+
+```{bash}
+# Install earthdata
+conda install -c conda-forge earthdata
+```
+
+
+```{python}
+## Import earthdata
+from earthdata import DataGranules
+```
+
+
+## R
+
+R code coming soon!
+
+```{r}
+# Coming soon!
+```
+
+## Matlab
+
+Matlab code coming soon!
+
+```{bash}
+#| echo: true
+# Coming soon!
+```
+
+## Command Line
+
+With `wget` and `curl`:
+
+```{bash}
+# Coming soon!
+```
+
+
+:::

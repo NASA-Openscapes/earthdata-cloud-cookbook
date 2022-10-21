@@ -54,6 +54,12 @@ website:
               - how-tos/transform/aggregate.ipynb
           - section: how-tos/access/index.md
             contents:
+              - text: "Access Cloud-Optimized GeoTIFF"
+                href: how-tos/access/Access_COG.qmd
+              - text: "Access NetCDF-4/HDF5"
+                href: how-tos/access/Access_NetCDF.qmd  
+              - text: "Programmatic Access"
+                href: how-tos/access/programmatic_access.qmd  
               - text: "COG HTTPS" 
                 href: how-tos/access/Earthdata_Cloud__Single_File__HTTPS_Access_COG_Example.ipynb
               - text: "COG Direct S3" 
@@ -63,7 +69,7 @@ website:
               - text: "NetCDF4/HDF5 Direct S3"
                 href: how-tos/access/Earthdata_Cloud__Single_File__Direct_S3_Access_NetCDF4_Example.ipynb
               - text: "NetCDF4/HDF5 Direct S3 - Multi-file"
-                href: how-tos/access/Multi-File_Direct_S3_Access_NetCDF_Example.ipynb
+                href: how-tos/access/Multi-File_Direct_S3_Access_NetCDF_Example.ipynb 
           - how-tos/download.qmd
           - how-tos/tech-setup.qmd
       - section: tutorials/index.qmd
