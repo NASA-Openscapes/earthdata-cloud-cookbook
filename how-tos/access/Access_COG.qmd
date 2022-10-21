@@ -74,7 +74,9 @@ granules[0].data_links(access="direct")
 ```
 ### Get Temporary AWS Credentials
 
-Direct S3 access is achieved by passing NASA supplied temporary credentials to AWS so we can interact with S3 objects from applicable Earthdata Cloud buckets. For now, each NASA DAAC has different AWS credentials endpoints. Below are some of the credential endpoints to various DAACs:
+Direct S3 access is achieved by passing NASA supplied temporary credentials to AWS so we can interact with S3 objects from applicable Earthdata Cloud buckets. For now, each NASA DAAC has different AWS credentials endpoints. Below are some of the credential endpoints to various DAACs.
+
+COMING SOON: We can use the `earthaccess` `store` class to pass these credentials directly to Boto3 without the need to set up this function.
 
 ```{python}
 s3_cred_endpoint = {

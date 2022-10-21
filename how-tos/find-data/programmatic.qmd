@@ -25,14 +25,24 @@ To install the package we'll run this code from the command line. Note: you can 
 conda install -c conda-forge earthdata
 ```
 
-This example searches for data from the [Land Processes DAAC](https://lpdaac.usgs.gov/) with a spatial bounding box. 
+This example searches for data from the [Land Processes DAAC](https://lpdaac.usgs.gov/) with a spatial bounding box and temporal range. 
 
 ```{python}
-## Import earthdata
-from earthdata import DataGranules
+## Import packages
+from earthdata import DataGranules, DataCollections
+from pprint import pprint 
 
-# Then we build a Query with spatiotemporal parameters
-GranuleQuery = DataGranules().concept_id("C1575731655-LPDAAC_ECS").bounding_box(-134.7,58.9,-133.9,59.2)
+
+# We'll get 4 collections that match with our keyword of interest
+collections = DataCollections(auth).keyword("REFLECTANCE").cloud_hosted(True).get(4)
+
+# Let's print 2 collections
+for collection in collections[0:2]:
+    print(pprint(collection.summary()) , collection.abstract(), "\n")
+    
+#Search for files from the second dataset result over a small plot in Nebraska, USA for two weeks in September 2022
+granules = DataGranules().concept_id("C2021957657-LPCLOUD").temporal("2022-09-10","2022-09-24").bounding_box(-101.67271,41.04754,-101.65344,41.06213)
+print(len(granules))
 
 # We get the metadata records from CMR
 granules = GranuleQuery.get()
