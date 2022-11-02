@@ -34,7 +34,7 @@ from pprint import pprint
 
 
 # We'll get 4 collections that match with our keyword of interest
-collections = DataCollections(auth).keyword("REFLECTANCE").cloud_hosted(True).get(4)
+collections = DataCollections().keyword("REFLECTANCE").cloud_hosted(True).get(4)
 
 # Let's print 2 collections
 for collection in collections[0:2]:

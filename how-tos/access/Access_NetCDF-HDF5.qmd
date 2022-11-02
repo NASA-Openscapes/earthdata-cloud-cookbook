@@ -1,0 +1,96 @@
+---
+title: "Access NetCDF-4/HDF5 Data "
+execute:
+  eval: false
+  echo: fenced
+---
+
+## Introduction
+
+We can access HDF5 or NetCDF-4 data directly from NASA Earthdata Cloud using the following code.
+
+## Code
+
+Here are our recommended approaches for accessing NetCDF-4/HDF5 data in NASA Earthdata Cloud with code.
+
+::: {.panel-tabset group="language"}
+## Python
+
+We will access land ice height from ATLAS/ICESat-2 V005 (10.5067/ATLAS/ATL06.005). The data are provided as HDF5 granules (files) that span about 1/14th of an orbit.
+
+We will access a single HDF5 file from inside the AWS cloud (us-west-2 region, specifically) and load it into Python as an `xarray` `dataset`. This approach leverages S3 native protocols for efficient access to the data.
+
+In Python we can use the [`earthdata`](https://earthdata.readthedocs.io/en/latest/) library (to be renamed `earthaccess` very soon!)
+
+To install the package we'll run this code from the command line. Note: you can run shell code directly from a Jupyter Notebook cell by adding a `!`: `!conda install`.
+
+```{bash}
+# Install earthdata
+conda install -c conda-forge earthdata
+```
+
+
+```{python}
+## Import earthdata
+from earthdata import Auth, Store, DataGranules, DataCollections
+import xarray as xr
+```
+
+### Earthdata Login Authentication
+
+An Earthdata Login account is required to access data from the NASA Earthdata system. Thus, to access NASA data, you need Earthdata Login. Please visit https://urs.earthdata.nasa.gov to register and manage your Earthdata Login account. This account is free to create and only takes a moment to set up.
+
+We will authenticate below using a netrc file. See the (TBD) appendix for more information on netrc setup.
+
+```{python}
+auth = Auth().login(strategy="netrc")
+# are we authenticated?
+if not auth.authenticated:
+    # ask for credentials and persist them in a .netrc file
+    auth.login(strategy="interactive", persist=True)
+
+# The Store class will let us download data from NASA directly
+store = Store(auth)
+```
+
+### Working with the URLs directly
+If we choose, we can use `earthaccess` to grab the file's URLs and then access them with another library. Getting the links to our data is quiet simple with the `data_links()` method on each of the results. See the previous Find Data How-To for more information on how to discover datasets of interest. 
+
+
+```{python}
+# Searching over western Greenland coast over two weeks in July 2022
+granules = DataGranules().concept_id("C2153572614-NSIDC_CPRD").temporal("2022-07-17","2022-07-31").bounding_box(-51.96423,68.10554,-48.71969,70.70529).get()
+print(len(granules))
+s3_url = granules[0].data_links(access="direct")
+ds = xr.open_dataset(store.open(s3_url))
+ds
+```
+### TODO: This produces the following error: "Credentials for the cloud provider None are not available" - need to fix this!
+
+## R
+
+R code coming soon!
+
+```{r}
+# Coming soon!
+```
+
+## Matlab
+
+Matlab code coming soon!
+
+```{bash}
+#| echo: true
+# Coming soon!
+```
+
+## Command Line
+
+With `wget` and `curl`:
+
+```{bash}
+# Coming soon!
+```
+
+
+:::
