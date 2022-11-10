@@ -161,27 +161,6 @@
     "text": "The following are example notebooks (.ipynb)…"
   },
   {
-    "objectID": "appendix/index.html",
-    "href": "appendix/index.html",
-    "title": "Appendix",
-    "section": "",
-    "text": "Extra resources for Earthdata Cloud."
-  },
-  {
-    "objectID": "appendix/authentication.html",
-    "href": "appendix/authentication.html",
-    "title": "Authentication",
-    "section": "",
-    "text": "This page will change soon - past guidance was https://nasa-openscapes.github.io/2021-Cloud-Workshop-AGU/tutorials/02_NASA_Earthdata_Authentication.html but we’ll be instead using https://nasa-openscapes.github.io/earthdata-cloud-cookbook/examples/earthdata-access-demo.html going forward."
-  },
-  {
-    "objectID": "appendix/authentication.html#aws-credentials",
-    "href": "appendix/authentication.html#aws-credentials",
-    "title": "Authentication",
-    "section": "AWS Credentials",
-    "text": "AWS Credentials"
-  },
-  {
     "objectID": "tutorials/index.html",
     "href": "tutorials/index.html",
     "title": "Tutorials",
@@ -917,18 +896,46 @@
     "text": "This chapter is for research teams currently working in Matlab with NASA EarthData and wanting to take advantage of doing analysis in the Cloud. Our initial focus is on Amazon Web Services (AWS). For general, background on the Cloud and NASA Earthdata’s migration to the Cloud, checkout earlier chapters of the cookbook [TO DO: Add a link and specific reference].\n\n\n\nMatlab License - You must have access to a Matlab license that allows for access to the cloud. To check your license, in the matlab command line enter:\nver -support\nAWS Account - For the current experiments, we will access the AWS console, so you need an AWS account. It is free to set up, but will require a credit card linked to the account. https://aws.amazon.com/\nAWS Region: We are working in AWS US-West-2 because NASA Earthdata is hosted in US-West-2. If there is an option to pick an AWS region, pick US-West-2.\nGithub Account - If you want to use Github as part of your workflow and don’t already have an account, create a Github account: https://github.com/\nNASA Earthdata login - Create an account here: https://urs.earthdata.nasa.gov/users/new\nMicrosoft Remote Desktop - When we spin up the AWS virtual machine with Matlab, we will need to have a remote desktop option. These how-to’s were done on a mac and we tested the free Microsoft Remote Desktop. Download for macs\n\n\n\n\nThis isn’t included in the numbered prereq list above because it is a bit more involved than creating an account or knowing what region we work in. You need to create an SSH Key Pair in the region you want to work in. This is a one-time step that you won’t need to do each time you launch the stack.\n\nLog in to AWS\nIn the search box enter, ‘Create AWS Key Pair.’ Under features choose ‘Key Pairs’ (AWS help)\n\nCheck that the top bar says, ‘Oregon’ (AKA - US-West-2) and if not, click that down arrow to choose US-West-2. Then click the orange ‘Create key pair’ button.\n\nTroubleshooting tip: If you create the key outside of the region you want to work in, it will not show up when you launch the stack below.\nOn the form - give your key a name, choose the RSA and PEM options (these should be the defaults.)\n\nOk - now we are ready to start!\n\n\n\nNote: The first time I launched the AWS Stack it seemed to take for-ever. I thought “how could I possibly need to do this every time I want to use Matlab in the cloud?” It does speed up, eventually it get’s a bit faster. I also have learned to plan a bit better - if I know I want to do some work, I get the launched, have coffee, and when I come back it’s ready to roll.\n\nFrom this Matlab Github page click the release for 2022a under deployment steps.\nThis brings up a list of Matlab on Amazon Web Services (Linux VM). Choose & click the ‘launch stack’ link for US-West-2.\n\nThis opens the ‘Quick create stack’ form based on the Matlab template. That means that when you launch this stack it will come with Matlab on the desktop. Fill out the form to create the AWS stack:\n\nGive the stack a name like ‘matlab-test’\nKeep the pre-filled options the same for now.\nRemote Access:\n\n“Allow Connections From:” You will need to know your IP address. You can google, “what’s my IP address?”\nEnter your IP address followed by a /32 like this -> [my.IP.address/32]\nIn the SSH Key Pair - the key pair you created above should show up in the drop down. If it doesn’t show up, see the troubleshooting tip.\nPick a remote password. This is not your AWS password or your Github password, this is the password that you will use to login with the microsoft remote desktop (username: ubuntu)\n\nNetwork configuration\n\nThere is one VPC option - choose that\nFor subnet - I pick the first one and it works. So pick the first option.\n\nAutoshutdown hasn’t worked for me so far, so for now I leave this set as never and delete the stack when I am finished.\nCheck the box that “I acknowledge that AWS CloudFormation might create IAM resources.”\nClick ‘Create stack’\nWait…. [~ 10 minutes]\n\nYou can check the status by clicking the refresh button on the right corner\n\n\n\n\n\n\nOnce the stack is created it will say ‘Create_complete’ on the left side.\n\nClick the outputs tab and copy the value text. It will start with ‘ec2-…’\nOpen Microsoft Remote Desktop\n\nClick the + to add a PC\nPaste the value text as the PC Name\nClick on the grey box of your new computer in the remote desktop window\nA login will pop up\n\n\nUsername is ubuntu\nPassword is the password you set in 3.3.3 above in the section on ‘Creating AWS Stack’\n\nA certificate message will pop up - say ok\nThe desktop will launch\n\nWait … [~2 mins]\n\n\n\n\n\nClick the Matlab icon on the remote desktop\n\nWait … [~4 mins]\nLogin with your Matlab credentials\nYou are in!\n\n\n\n\nThe general approach to access NASA Earthdata follows the Python tutorials. Direct S3 access is achieved by passing NASA supplied temporary credentials to AWS so we can interact with S3 objects from applicable Earthdata Cloud buckets. For now, each NASA DAAC has different AWS credentials endpoints. Below are some of the credential endpoints to various DAACs:\n\npodaac: https://archive.podaac.earthdata.nasa.gov/s3credentials\ngesdisc: https://data.gesdisc.earthdata.nasa.gov/s3credentials\nlpdaac: https://data.lpdaac.earthdatacloud.nasa.gov/s3credentials\nornldaac: https://data.ornldaac.earthdata.nasa.gov/s3credentials\nghrcdaac: https://data.ghrc.earthdata.nasa.gov/s3credentials\n\nYou will need your EarthData login to access these links.\n\nSearch NASA Earthdata and find the S3 link you want to access [LINK TO TUTORIAL]\nSet AWS Environment Variables - Go to the link above for the Access key, secret access key and token.\nCopy and past those variables into the code below\nsetenv('AWS_ACCESS_KEY_ID', 'REPLACE WITH PODAAC ACCESS KEY');\nsetenv('AWS_SECRET_ACCESS_KEY', 'REPLACE WITH PODAAC SECRET KEY');\nsetenv('AWS_SESSION_TOKEN',  'REPLACE WITH PODAAC SESSION TOKEN');\nsetenv('AWS_DEFAULT_REGION', 'us-west-2');\nNOTE: These expire ever 30 mins or so and this step needs to be done. We are searching for a better method.\nIn Matlab on AWS only the HDF commands work\nFILE_NAME = 's3://podaac-ops-cumulus-protected/MODIS_A-JPL-L2P-v2019.0/20100619062008-JPL-L2P_GHRSST-SSTskin-MODIS_A-N-v02.0-fv01.0.nc';\nfile_id = H5F.open(FILE_NAME, 'H5F_ACC_RDONLY', 'H5P_DEFAULT');\nThis code works to read the file - Copy each section into the Matlab command\nNOTE: We need a way to find all variables in a given netcdf file. I used the python code to find variables and then brought it here.\nDATAFIELD_NAME='sea_surface_temperature_4um';\ndata_id = H5D.open(file_id, DATAFIELD_NAME);\ndata=H5D.read(data_id,'H5T_NATIVE_DOUBLE', 'H5S_ALL', 'H5S_ALL', 'H5P_DEFAULT');\n% Read units.\nATTRIBUTE = 'units';\nattr_id = H5A.open_name(data_id, ATTRIBUTE);\nunits = H5A.read(attr_id, 'H5ML_DEFAULT');\nH5A.close(attr_id);\n% Read long_name.\nATTRIBUTE = 'long_name';\nattr_id = H5A.open_name (data_id, ATTRIBUTE);\nlong_name=H5A.read (attr_id, 'H5ML_DEFAULT');\nH5A.close(attr_id);\n% Read the fill value.\nATTRIBUTE = '_FillValue';\nattr_id = H5A.open_name(data_id, ATTRIBUTE);\nfillvalue=H5A.read(attr_id, 'H5T_NATIVE_DOUBLE');\nH5A.close(attr_id);\n% Read latitude data.\nLAT_NAME='lat';\nlat_id=H5D.open(file_id, LAT_NAME);\nlat=H5D.read(lat_id, 'H5T_NATIVE_DOUBLE', 'H5S_ALL', 'H5S_ALL', 'H5P_DEFAULT');\n% Read longitude data.\nLON_NAME='lon';\nlon_id=H5D.open(file_id, LON_NAME);\nlon=H5D.read(lon_id, 'H5T_NATIVE_DOUBLE', 'H5S_ALL', 'H5S_ALL', 'H5P_DEFAULT');\n% Close and release resources.\nH5D.close(data_id);\nH5D.close(lat_id);\nH5D.close(lon_id);\nH5F.close(file_id);\n% Replace the fill value with NaN.\ndata(data==fillvalue) = NaN;\nCreate an image\ncontour(data);\n\n\n\n\n\nAfter each session you need to turn off the AWS Stack. If you forget this step and leave it running it is like keeping a computer on for the month. For the large instance it costs $0.5/day so it’s a few dollars a month.\n\nGo back to AWS\nSearch for stack\nClick on the name of your stack\nClick ‘Delete’\n\nConfirm the delete\n\n\nTo do:\n\nAdd Github & Matlab project instructions\nAlternative experiments to this stack - Octave in the 2i2c Jupyter hub or Matlab in the 2i2c Jupyter hub."
   },
   {
+    "objectID": "how-tos/transform/index.html",
+    "href": "how-tos/transform/index.html",
+    "title": "Transform",
+    "section": "",
+    "text": "Details about Harmony, OPeNDAP, and more!"
+  },
+  {
+    "objectID": "how-tos/transform/reformat.html",
+    "href": "how-tos/transform/reformat.html",
+    "title": "Reformat",
+    "section": "",
+    "text": "Upcoming!"
+  },
+  {
+    "objectID": "how-tos/transform/subset.html",
+    "href": "how-tos/transform/subset.html",
+    "title": "Subset",
+    "section": "",
+    "text": "Upcoming!"
+  },
+  {
+    "objectID": "how-tos/transform/aggregate.html",
+    "href": "how-tos/transform/aggregate.html",
+    "title": "Aggregate",
+    "section": "",
+    "text": "This is upcoming!"
+  },
+  {
+    "objectID": "how-tos/transform/reproject.html",
+    "href": "how-tos/transform/reproject.html",
+    "title": "Reproject",
+    "section": "",
+    "text": "Reprojecting upcoming"
+  },
+  {
     "objectID": "how-tos/download.html",
     "href": "how-tos/download.html",
     "title": "Download",
     "section": "",
     "text": "coming soon"
-  },
-  {
-    "objectID": "how-tos/transform.html",
-    "href": "how-tos/transform.html",
-    "title": "Transform",
-    "section": "",
-    "text": "Details about Harmony, OPeNDAP, and more!"
   },
   {
     "objectID": "how-tos/index.html",
@@ -963,7 +970,21 @@
     "href": "how-tos/find-data/index.html",
     "title": "Find Data",
     "section": "",
-    "text": "More details coming soon."
+    "text": "There are several ways to find data; here we’ll show with Earthdata Search and also programmatically."
+  },
+  {
+    "objectID": "how-tos/find-data/programmatic.html",
+    "href": "how-tos/find-data/programmatic.html",
+    "title": "Find Data: Programmatic Search",
+    "section": "",
+    "text": "We can find data programmatically using the following code."
+  },
+  {
+    "objectID": "how-tos/find-data/programmatic.html#code",
+    "href": "how-tos/find-data/programmatic.html#code",
+    "title": "Find Data: Programmatic Search",
+    "section": "Code",
+    "text": "Code\nHere are our recommended approaches for finding data with code.\n\nPythonRMatlabCommand Line\n\n\nIn Python we can use the earthdata library (in development and to be renamed earthaccess very soon!)\nTo install the package we’ll run this code from the command line. Note: you can run shell code directly from a Jupyter Notebook cell by adding a !, so it would be !conda install.\n\n\n\n[command line code]\n\n# Install earthdata\nconda install -c conda-forge earthdata\n\n\nThis example searches for data from the Land Processes DAAC with a spatial bounding box.\n\n\n\n[python code]\n\n## Import earthdata\nfrom earthdata import DataGranules\n\n# Then we build a Query with spatiotemporal parameters\nGranuleQuery = DataGranules().concept_id(\"C1575731655-LPDAAC_ECS\").bounding_box(-134.7,58.9,-133.9,59.2)\n\n# We get the metadata records from CMR, then view the output\ngranules = GranuleQuery.get()\ngranules\n\n\n\n\nTo find data in R, we’ll briefly make use of the earthdata python package - which we can do from R using the reticulate package and cheatsheet. You’ll copy these code chunks into your RMarkdown or Quarto document: note that the second code chunk is in Python, but when you run them in sequence you’ll be all set.\n\n\n\n[R code]\n\n## load wrangling libraries\nlibrary(tidyverse) # install.packages(\"tidyverse\") \n\n## load reticulate and set up a python environment\nlibrary(reticulate) # install.packages(\"reticulate\")\nvirtualenv_create(\"earthdata-proj\")\npy_install(\"earthdata\", envname = \"earthdata-proj\")\nuse_virtualenv(\"earthdata-proj\")\n\n\nNow, we’ll use the earthdata python package.\n\n\n\n\n[python code]\n\n## Import earthdata\nfrom earthdata import DataGranules\n\n# Then we build a Query with spatiotemporal parameters\nGranuleQuery = DataGranules().concept_id(\"C1575731655-LPDAAC_ECS\").bounding_box(-134.7,58.9,-133.9,59.2)\n\n# We get the metadata records from CMR, then view the output\ngranules = GranuleQuery.get()\ngranules\n\n\nNow we can access the granules python object in R using reticulate; note the py$ syntax. We’ll create an R object named granules_r and view it using str.\n\n\n\n[R code]\n\ngranules_r <- py$granules\nstr(granules_r) %>% jsonlite::fromJSON()\n\n\n\n\nMatlab code coming soon!\n\n\n\n[Matlab code]\n\n# Coming soon!\n\n\n\n\nWith wget and curl:\n\n\n\n[command line code]\n\n# Coming soon!"
   },
   {
     "objectID": "how-tos/find-data/earthdata_search.html",
@@ -971,6 +992,27 @@
     "title": "Find Data: Earthdata Search",
     "section": "",
     "text": "This tutorial guides you through how to use Earthdata Search for NASA Earth observations search and discovery, and how to connect the search output (e.g. download or access links) to a programmatic workflow (locally or from within the cloud).\n\nStep 1. Go to Earthdata Search and Login\nGo to Earthdata Search https://search.earthdata.nasa.gov and use your Earthdata login credentials to log in. If you do not have an Earthdata account, please see the Workshop Prerequisites for guidance.\n\n\nStep 2. Search for dataset of interest\nUse the search box in the upper left to type key words. In this example we are interested in the ECCO dataset, hosted by the PO.DAAC. This dataset is available from the NASA Earthdata Cloud archive hosted in AWS cloud.\nClick on the “Available from AWS Cloud” filter option on the left. Here, 104 matching collections were found with the basic ECCO search.\n\n\n\nFigure caption: Search for ECCO data available in AWS cloud in Earthdata Search portal\n\n\nLet’s refine our search further. Let’s search for ECCO monthly SSH in the search box (which will produce 39 matching collections), and for the time period for year 2015. The latter can be done using the calendar icon on the left under the search box.\nScroll down the list of returned matches until we see the dataset of interest, in this case ECCO Sea Surface Height - Monthly Mean 0.5 Degree (Version 4 Release 4).\nWe can click on the (i) icon for the dataset to read more details, including the dataset shortname (helpful for programmatic workflows) just below the dataset name; here ECCO_L4_SSH_05DEG_MONTHLY_V4R4.\n\n\n\nFigure caption: Refine search, set temporal bounds, get more information\n\n\n\n\nStep 3. Explore the dataset details, including Cloud Access information\nOnce we clicked the (i), scrolling down the info page for the dataset we will see Cloud Access information, such as:\n\nwhether the dataset is available in the cloud\nthe cloud Region (all NASA Earthdata Cloud data is/will be in us-west-2 region)\nthe S3 storage bucket and object prefix where this data is located\nlink that generates AWS S3 Credentials for in-cloud data access (we will cover this in the Direct Data Access Tutorials)\nlink to documentation describing the In-region Direct S3 Access to Buckets. Note: these will be unique depending on the DAAC where the data is archived. (We will show examples of direct in-region access in Tutorial 3.)\n\n\n\n\nFigure caption: Cloud access info in EDS\n\n\n\n\n\nFigure caption: Documentation describing the In-region Direct S3 Access to Buckets\n\n\nPro Tip: Clicking on “For Developers” to exapnd will provide programmatic endpoints such as those for the CMR API, and more. CMR API and CMR STAC API tutorials can be found on the 2021 Cloud Hackathon website.\nFor now, let’s say we are intersted in getting download link(s) or access link(s) for specific data files (granules) within this collection.\nAt the top of the dataset info section, click on Search Results, which will take us back to the list of datasets matching our search parameters. Clicking on the dataset (here again it’s the same ECCO Sea Surface Height - Monthly Mean 0.5 Degree (Version 4 Release 4)) we now see a list of files (granules) that are part of the dataset (collection).\n\n\nStep 4. Customize the download or data access\nClick on the green + symbol to add a few files to our project. Here we added the first 3 listed for 2015. Then click on the green button towards the bottom that says “Download”. This will take us to another page with options to customize our download or access link(s).\n\n\n\nFigure caption: Select granules and click download\n\n\n\n4.a. Entire file content\nLet’s stay we are interested in the entire file content, so we select the “Direct Download” option (as opposed to other options to subset or transform the data):\n\n\n\nFigure caption: Customize your download or access\n\n\nClicking the green Download Data button again, will take us to the final page for instructions to download and links for data access in the cloud. You should see three tabs: Download Files, AWS S3 Access, Download Script:\n  \nThe Download Files tab provides the https:// links for downloading the files locally. E.g.: https://archive.podaac.earthdata.nasa.gov/podaac-ops-cumulus-protected/ECCO_L4_SSH_05DEG_MONTHLY_V4R4/SEA_SURFACE_HEIGHT_mon_mean_2015-09_ECCO_V4r4_latlon_0p50deg.nc\nThe AWS S3 Access tab provides the S3:// links, which is what we would use to access the data directly in-region (us-west-2) within the AWS cloud (an example will be shown in Tutorial 3). E.g.: s3://podaac-ops-cumulus-protected/ECCO_L4_SSH_05DEG_MONTHLY_V4R4/SEA_SURFACE_HEIGHT_mon_mean_2015-09_ECCO_V4r4_latlon_0p50deg.nc where s3 indicates data is stored in AWS S3 storage, podaac-ops-cumulus-protected is the bucket, and ECCO_L4_SSH_05DEG_MONTHLY_V4R4 is the object prefix (the latter two are also listed in the dataset collection information under Cloud Access (step 3 above)).\nTip: Another quicker way to find the bucket and object prefix is from the list of data files the search returns. Next to the + green button is a grey donwload symbol. Click on that to see the Download Files https:// links or on the AWS S3 Access to get the direct S3:// access links, which contain the bucket and object prefix where data is stored.\n\n\n4.b. Subset or transform before download or access\nDAAC tools and services are also being migrated or developed in the cloud, next to that data. These include the Harmony API and OPeNDAP in the cloud, as a few examples.\nWe can leverage these cloud-based services on cloud-archived data to reduce or transform the data (depending on need) before getting the access links regardless of whether we prefer to download the data and work on a local machine or whether we want to access the data in the cloud (from a cloud workspace). These can be useful data reduction services that support a faster time to science.\nHarmony\nHarmony allows you to seamlessly analyze Earth observation data from different NASA data centers. These services (API endpoints) provide data reduction (e.g. subsetting) and transfromation services (e.g. convert netCDF data to Zarr cloud optimized format).\n\n\n\nFigure caption: Leverage Harmony cloud-based data transformation services\n\n\nWhen you click the final green Download button, the links provided are to data that had been transformed based on our selections on the previous screen (here chosing to use the Harmony service to reformat the data to Zarr). These data are staged for us in an S3 bucket in AWS, and we can use the s3:// links to access those specific data. This service also provides STAC access links. This particular example is applicable if your workflow is in the AWS us-west-2 region.\n\n\n\nFigure caption: Harmony-staged data in S3\n\n\n\n\n\nStep 5. Integrate file links into programmatic workflow, locally or in the AWS cloud.\nIn tutorial 3 Direct Data Access, we will work programmatically in the cloud to access datasets of interest, to get us set up for further scientific analysis of choice. There are several ways to do this. One way to connect the search part of the workflow we just did in Earthdata Search to our next steps working in the cloud is to simply copy/paste the s3:// links provides in Step 4 above into a JupyterHub notebook or script in our cloud workspace, and continue the data analysis from there.\nOne could also copy/paste the s3:// links and save them in a text file, then open and read the text file in the notebook or script in the JupyterHub in the cloud.\nTutorial 3 will pick up from here and cover these next steps in more detail."
+  },
+  {
+    "objectID": "how-tos/authentication.html",
+    "href": "how-tos/authentication.html",
+    "title": "Authentication",
+    "section": "",
+    "text": "This page will change soon - past guidance was https://nasa-openscapes.github.io/2021-Cloud-Workshop-AGU/tutorials/02_NASA_Earthdata_Authentication.html but we’ll be instead using https://nasa-openscapes.github.io/earthdata-cloud-cookbook/examples/earthdata-access-demo.html going forward."
+  },
+  {
+    "objectID": "how-tos/authentication.html#aws-credentials",
+    "href": "how-tos/authentication.html#aws-credentials",
+    "title": "Authentication",
+    "section": "AWS Credentials",
+    "text": "AWS Credentials"
+  },
+  {
+    "objectID": "how-tos/access/index.html",
+    "href": "how-tos/access/index.html",
+    "title": "Access - Cloud Workflow",
+    "section": "",
+    "text": "Direct Access and Cloud Optimized Data access are in the following How Tos’s."
   },
   {
     "objectID": "how-tos/access/Earthdata_Cloud__Single_File__Direct_S3_Access_COG_Example.html",
@@ -1008,13 +1050,6 @@
     "text": "STAC_URL = 'https://cmr.earthdata.nasa.gov/stac'\n\n\ncatalog = Client.open(f\"{STAC_URL}/LPCLOUD\")\n\n\nsearch = catalog.search(\n    collections = ['HLSL30.v2.0', 'HLSS30.v2.0'],\n    intersects = {'type': 'Polygon',\n                  'coordinates': [[[-101.67271614074707, 41.04754380304359],\n                                   [-101.65344715118408, 41.04754380304359],\n                                   [-101.65344715118408, 41.06213891056728],\n                                   [-101.67271614074707, 41.06213891056728],\n                                   [-101.67271614074707, 41.04754380304359]]]},\n    datetime = '2021-05/2021-08'\n)               \n\n\nsearch.matched()\n\n\nic = search.get_all_items()\n\n\nil = list(search.get_items())\n\n\ntic = [x for x in ic if 'T13TGF' in x.id]\n\n\nimport pystac\n\n\nitem_collection = pystac.ItemCollection(items=tic)\n\n\nitem_collection\n\n\nil\n\n\ndata = stackstac.stack(item_collection, assets=['B04', 'B02'], epsg=32613, resolution=30)\n\n\ndata.sel(band='B04').isel(time=[0])\n\n\nimport stackstac\nimport pystac_client\n\nURL = \"https://earth-search.aws.element84.com/v0\"\ncatalog = pystac_client.Client.open(URL)\n\n\ncatalog\n\n\nstac_items = catalog.search(\n    intersects=dict(type=\"Point\", coordinates=[-105.78, 35.79]),\n    collections=[\"sentinel-s2-l2a-cogs\"],\n    datetime=\"2020-04-01/2020-05-01\"\n).get_all_items()\n\n\nstac_items\n\n\nstack = stackstac.stack(stac_items)\n\n\nstack"
   },
   {
-    "objectID": "how-tos/access/index.html",
-    "href": "how-tos/access/index.html",
-    "title": "Access - Cloud Workflow",
-    "section": "",
-    "text": "auth = Auth().login(strategy=\"netrc\")"
-  },
-  {
     "objectID": "how-tos/access/Earthdata_Cloud__Data_Access_OPeNDAP_Example.html",
     "href": "how-tos/access/Earthdata_Cloud__Data_Access_OPeNDAP_Example.html",
     "title": "EarthData Cloud Cookbook",
@@ -1026,7 +1061,7 @@
     "href": "external/cof-zarr-reformat.html",
     "title": "EarthData Cloud Cookbook",
     "section": "",
-    "text": "imported on: 2022-11-08\n\nThis notebook is from NASA’s PO.DAAC, Access ECCO data via Harmony and the Zarr reformatter service example\n\n\nThe original source for this document is https://github.com/podaac/ECCO"
+    "text": "imported on: 2022-11-10\n\nThis notebook is from NASA’s PO.DAAC, Access ECCO data via Harmony and the Zarr reformatter service example\n\n\nThe original source for this document is https://github.com/podaac/ECCO"
   },
   {
     "objectID": "external/cof-zarr-reformat.html#getting-started",
