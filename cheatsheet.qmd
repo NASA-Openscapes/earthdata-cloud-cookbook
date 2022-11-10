@@ -24,8 +24,7 @@ NASA Earthdata Cloud is the NASA archive of Earth observations and is hosted in 
 
 ### Cloud Access Pathways
 
-Three pathway examples, to interact and access data (and services) from and within the NASA Earthdata Cloud, are illustrated in the diagram. Green arrows and icons indicate working locally, after downloading data to your local machine, servers, or compute/storage space. Orange arrows and icons highlight a workflow within the cloud, setting up your own AWS EC2 cloud instance, or virtual machine, in the cloud next to the data. Blue arrows and icons also indicate a within the cloud workflow, through shareable cloud environments such as Binder or JupyterHub set up in an AWS cloud region. Note that each of these may have a range of cost models. EOSDIS data are being stored in the _us-west-2_ region of AWS cloud; we recommend setting up your cloud computing environment in the same region as the data for free and easy in-cloud access.
-
+Three pathway examples, to interact and access data (and services) from and within the NASA Earthdata Cloud, are illustrated in the diagram. Green arrows and icons indicate working locally, after downloading data to your local machine, servers, or compute/storage space. Orange arrows and icons highlight a workflow within the cloud, setting up your own AWS EC2 cloud instance, or virtual machine, in the cloud next to the data. Blue arrows and icons also indicate a within the cloud workflow, through shareable cloud environments such as Binder or JupyterHub set up in an AWS cloud region. Note that each of these may have a range of cost models. EOSDIS data are being stored in the *us-west-2* region of AWS cloud; we recommend setting up your cloud computing environment in the same region as the data for free and easy in-cloud access.
 
 <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vRDnkZBG2B-jTWZZLU_aZZVADuIl1dCQ-MORCvgXKmikcCSd6y1N-3V5GB49CK9G3h0giZClnK7ICrI/embed?start=false&amp;loop=false&amp;delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true">
 
@@ -35,12 +34,12 @@ Three pathway examples, to interact and access data (and services) from and with
 
 A note on *costing*: What is free and what do I have to budget for, now that data is archived in the cloud?
 
-- Downloading data from the Earthdata Cloud archive in AWS, to your local computer environment or local storage (e.g. servers) is and will continue to be free for the user. 
-- Accessing the data directly in the cloud (from _us-west-2_ S3 region) is free. Users will need a NASA Earthdata Login account and AWS credentials to access, but there is no cost associated with these authentication steps, which are in place for security reasons.
-- Accessing data in the cloud via EOSDIS or DAAC cloud-based tools and services such as the CMR API, Harmony API, OPenDAP API (from _us-west-2_ S3 region) is free to the user. Having the tools and services “next to the data” in the cloud enables DAACs to support data reduction and transformation, more efficiently, on behalf of the user, so users only access the data they need.
-- Cloud computing environments (i.e. virtual machines in the cloud) for working with data in the cloud (beyond direct or via services provided access) such as data analysis or running models with the data, is user responsibility, and should be considered in budgeting. I.e. User would need to set up a cloud compute environment (such as an EC2 instance or JupyterLab) and are responsible for any storage and computing costs. 
-  - This means that even though direct data access in the cloud is free to the user, they would first need to have a cloud computing environment/machine to execute the data access step from, and then continue their analysis. 
-  - Depending on whether that cloud environment is provided by the user themselves, user’s institution, community hubs like Pangeo or NASA Openscapes JupyterLab sandbox, this element of the workflow may require user accountability, budgeting and user financial maintenance.
+-   Downloading data from the Earthdata Cloud archive in AWS, to your local computer environment or local storage (e.g. servers) is and will continue to be free for the user.
+-   Accessing the data directly in the cloud (from *us-west-2* S3 region) is free. Users will need a NASA Earthdata Login account and AWS credentials to access, but there is no cost associated with these authentication steps, which are in place for security reasons.
+-   Accessing data in the cloud via EOSDIS or DAAC cloud-based tools and services such as the CMR API, Harmony API, OPenDAP API (from *us-west-2* S3 region) is free to the user. Having the tools and services "next to the data" in the cloud enables DAACs to support data reduction and transformation, more efficiently, on behalf of the user, so users only access the data they need.
+-   Cloud computing environments (i.e. virtual machines in the cloud) for working with data in the cloud (beyond direct or via services provided access) such as data analysis or running models with the data, is user responsibility, and should be considered in budgeting. I.e. User would need to set up a cloud compute environment (such as an EC2 instance or JupyterLab) and are responsible for any storage and computing costs.
+    -   This means that even though direct data access in the cloud is free to the user, they would first need to have a cloud computing environment/machine to execute the data access step from, and then continue their analysis.
+    -   Depending on whether that cloud environment is provided by the user themselves, user's institution, community hubs like Pangeo or NASA Openscapes JupyterLab sandbox, this element of the workflow may require user accountability, budgeting and user financial maintenance.
 
 ### Getting Started Roadmap
 
@@ -105,6 +104,10 @@ Terminology cheatsheet to explain terms commonly used in cloud computing and tho
 [Published Google Slide](https://docs.google.com/presentation/d/e/2PACX-1vSekMsRRaREYOA81prJvcGfj1-qqm3VZxNDtaJDNIcohk2364cH-f_R07lDrljjd5fOjyakiXK12K5p/pub?start=false&loop=false&delayms=3000){target="_blank"}
 
 ## Slides
+
+### [**NASA Earthdata Cloud: Myths, Truths, Questions**](https://docs.google.com/presentation/d/1rmzodGujlOQxy4ocl7g2BEqVxMOQoIS_Fw48rifvh0M/edit?usp=sharing)
+
+by Amy Steiker, Kate Heightley (NSIDC) September 7, 2022
 
 ### [NSIDC DAAC User Working Group](https://docs.google.com/presentation/d/1Wtlgt-wUx8HgeWjoxvvz4BwknLlKDmGP2F-pSuI5utQ/edit?usp=sharing){target="_blank"}
 
