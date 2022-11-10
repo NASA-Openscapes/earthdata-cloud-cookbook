@@ -178,7 +178,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../cheatsheet.html" class="sidebar-item-text sidebar-link">Cheatsheets &amp; Guides</a>
+  <a href="../cheatsheet.html" class="sidebar-item-text sidebar-link">Cheatsheets &amp; Slides</a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -463,7 +463,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </ul></li>
   <li><a href="#quarto-workflow" id="toc-quarto-workflow" class="nav-link" data-scroll-target="#quarto-workflow">Quarto Workflow</a>
   <ul class="collapse">
-  <li><a href="#quarto-serve" id="toc-quarto-serve" class="nav-link" data-scroll-target="#quarto-serve">Quarto serve</a></li>
+  <li><a href="#quarto-preview" id="toc-quarto-preview" class="nav-link" data-scroll-target="#quarto-preview">Quarto preview</a></li>
   <li><a href="#develop-cookbook-content" id="toc-develop-cookbook-content" class="nav-link" data-scroll-target="#develop-cookbook-content">Develop Cookbook Content</a></li>
   <li><a href="#quarto-render" id="toc-quarto-render" class="nav-link" data-scroll-target="#quarto-render">Quarto render</a></li>
   <li><a href="#includes-re-use-markdown" id="toc-includes-re-use-markdown" class="nav-link" data-scroll-target="#includes-re-use-markdown">Includes (re-use markdown)</a></li>
@@ -668,11 +668,11 @@ Summary of GitHub and Quarto commands detailed below
 <p>Quarto lets us easily convert between file types, so depending on how you prefer to work and how you’d like to interact with different audiences, we can go between formats as we wish. For example, we can converting an existing <code>.ipynb</code> to <code>.qmd</code> to collaborate during development, and then convert back to <code>.ipynb</code> files for our workshops. See <code>quarto convert help</code> for details.</p>
 <p>As you work, you’ll follow our GitHub workflow above, committing regularly. Remember to execute code in your Jupyter notebook ( <code>.ipynb file)</code>as you’re working so that your changes will be be included in the Cookbook before pushing to github.com.</p>
 <p>The following is to run Quarto from the command line in our JupyterHub; see <a href="https://quarto.org/docs/getting-started/quarto-basics.html">quarto.org</a> to see equivalents in RStudio. See also this video (TODO link) demonstrating this workflow.</p>
-<section id="quarto-serve" class="level3">
-<h3 class="anchored" data-anchor-id="quarto-serve">Quarto serve</h3>
-<p>The thing to do first is to “serve” the Cookbook so that we can see what it looks like as we develop the chapters.</p>
+<section id="quarto-preview" class="level3">
+<h3 class="anchored" data-anchor-id="quarto-preview">Quarto preview</h3>
+<p>The thing to do first is to “preview” the Cookbook so that we can see what it looks like as we develop the chapters.</p>
 <p>Run the following from your branch in your <code>earthdata-cloud-cookbook</code> directory from the command line:</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> serve</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> preview</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>And after it is served, paste the url into your browser to see the development version of the Cookbook.</p>
 <div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
@@ -680,7 +680,7 @@ Summary of GitHub and Quarto commands detailed below
 <i class="callout-icon"></i>
 </div>
 <div class="callout-caption-container flex-fill">
-This command line instance is now being used to serve Quarto
+This command line instance is now being used to preview Quarto
 </div>
 </div>
 <div class="callout-body-container callout-body">
