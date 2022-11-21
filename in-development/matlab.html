@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.1.251">
+<meta name="generator" content="quarto-1.2.269">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -84,7 +84,7 @@ ul.task-list li input[type="checkbox"] {
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-center sidebar-header sidebar-header-stacked">
-      <a href="../" class="sidebar-logo-link">
+      <a href="../index.html" class="sidebar-logo-link">
       <img src="../images/nasa-openscapes.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
     <div class="sidebar-title mb-0 py-0">
@@ -408,6 +408,7 @@ ul.task-list li input[type="checkbox"] {
 <div class="quarto-title-meta">
 
     
+  
     
   </div>
   
@@ -435,9 +436,9 @@ ul.task-list li input[type="checkbox"] {
 <ol type="1">
 <li><p>Log in to AWS</p></li>
 <li><p>In the search box enter, ‘Create AWS Key Pair.’ Under features choose ‘Key Pairs’ (<a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/create-key-pairs.html">AWS help</a>)<br>
-<img src="images/Screen%20Shot%202022-05-30%20at%2011.30.57%20AM.png" class="img-fluid" alt="AWS search for key pair"></p></li>
+<img src="images/Screen Shot 2022-05-30 at 11.30.57 AM.png" class="img-fluid" alt="AWS search for key pair"></p></li>
 <li><p>Check that the top bar says, ‘Oregon’ (AKA - US-West-2) and if not, click that down arrow to choose US-West-2. Then click the orange ‘Create key pair’ button.</p>
-<p><img src="images/Screen%20Shot%202022-05-30%20at%2011.32.52%20AM.png" class="img-fluid"><br>
+<p><img src="images/Screen Shot 2022-05-30 at 11.32.52 AM.png" class="img-fluid"><br>
 <em>Troubleshooting tip: If you create the key outside of the region you want to work in, it will not show up when you launch the stack below.</em></p></li>
 <li><p>On the form - give your key a name, choose the RSA and PEM options (these should be the defaults.)</p></li>
 </ol>
@@ -449,7 +450,7 @@ ul.task-list li input[type="checkbox"] {
 <ol type="1">
 <li><p>From this <a href="https://github.com/mathworks-ref-arch/matlab-on-aws">Matlab Github page</a> click the release for 2022a under deployment steps.</p></li>
 <li><p>This brings up a list of Matlab on Amazon Web Services (Linux VM). Choose &amp; click the ‘launch stack’ link for US-West-2.<br>
-<img src="images/Screen%20Shot%202022-05-30%20at%2011.42.47%20AM.png" class="img-fluid"></p></li>
+<img src="images/Screen Shot 2022-05-30 at 11.42.47 AM.png" class="img-fluid"></p></li>
 <li><p>This opens the ‘Quick create stack’ form based on the Matlab template. That means that when you launch this stack it will come with Matlab on the desktop. Fill out the form to create the AWS stack:</p>
 <ol type="1">
 <li><p>Give the stack a name like ‘matlab-test’</p></li>
@@ -472,14 +473,14 @@ ul.task-list li input[type="checkbox"] {
 <li><p>Wait…. [~ 10 minutes]</p></li>
 </ol></li>
 <li><p>You can check the status by clicking the refresh button on the right corner<br>
-<img src="images/Screen%20Shot%202022-05-30%20at%2011.52.53%20AM.png" class="img-fluid"></p></li>
+<img src="images/Screen Shot 2022-05-30 at 11.52.53 AM.png" class="img-fluid"></p></li>
 </ol>
 </section>
 <section id="launch-the-aws-stack-with-microsoft-remote-desktop" class="level2">
 <h2 class="anchored" data-anchor-id="launch-the-aws-stack-with-microsoft-remote-desktop">Launch the AWS Stack with Microsoft Remote Desktop</h2>
 <ol type="1">
 <li><p>Once the stack is created it will say ‘Create_complete’ on the left side.<br>
-<img src="images/Screen%20Shot%202022-05-30%20at%2011.58.22%20AM.png" class="img-fluid"></p></li>
+<img src="images/Screen Shot 2022-05-30 at 11.58.22 AM.png" class="img-fluid"></p></li>
 <li><p>Click the outputs tab and copy the value text. It will start with ‘ec2-…’</p></li>
 <li><p>Open Microsoft Remote Desktop</p>
 <ol type="1">
@@ -487,7 +488,7 @@ ul.task-list li input[type="checkbox"] {
 <li><p>Paste the value text as the PC Name</p></li>
 <li><p>Click on the grey box of your new computer in the remote desktop window</p></li>
 <li><p>A login will pop up<br>
-<img src="images/Screen%20Shot%202022-05-30%20at%2012.02.04%20PM.png" class="img-fluid"></p>
+<img src="images/Screen Shot 2022-05-30 at 12.02.04 PM.png" class="img-fluid"></p>
 <ol type="1">
 <li><p>Username is ubuntu</p></li>
 <li><p>Password is the password you set in 3.3.3 above in the section on ‘Creating AWS Stack’</p></li>
@@ -502,7 +503,7 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="open-matlab-on-remote-desktop">Open Matlab on Remote Desktop</h2>
 <ol type="1">
 <li>Click the Matlab icon on the remote desktop<br>
-<img src="images/Screen%20Shot%202022-05-30%20at%2012.07.18%20PM.png" class="img-fluid"></li>
+<img src="images/Screen Shot 2022-05-30 at 12.07.18 PM.png" class="img-fluid"></li>
 <li>Wait … [~4 mins]</li>
 <li>Login with your Matlab credentials</li>
 <li>You are in!</li>
@@ -568,7 +569,7 @@ NOTE: We need a way to find all variables in a given netcdf file. I used the pyt
 <p><code>data(data==fillvalue) = NaN;</code></p></li>
 <li><p>Create an image</p>
 <p><code>contour(data);</code></p>
-<p><img src="images/Screen%20Shot%202022-05-30%20at%207.00.01%20PM.png" class="img-fluid"></p></li>
+<p><img src="images/Screen Shot 2022-05-30 at 7.00.01 PM.png" class="img-fluid"></p></li>
 </ol>
 </section>
 <section id="shutdown-your-aws-stack" class="level2">
@@ -579,9 +580,9 @@ NOTE: We need a way to find all variables in a given netcdf file. I used the pyt
 <li><p>Search for stack</p></li>
 <li><p>Click on the name of your stack</p></li>
 <li><p>Click ‘Delete’</p>
-<p><img src="images/Screen%20Shot%202022-05-30%20at%206.41.02%20PM.png" class="img-fluid"></p></li>
+<p><img src="images/Screen Shot 2022-05-30 at 6.41.02 PM.png" class="img-fluid"></p></li>
 <li><p>Confirm the delete</p>
-<p><img src="images/Screen%20Shot%202022-05-30%20at%203.06.40%20PM.png" class="img-fluid"></p></li>
+<p><img src="images/Screen Shot 2022-05-30 at 3.06.40 PM.png" class="img-fluid"></p></li>
 </ol>
 <p><strong>To do:</strong></p>
 <ul>
@@ -726,7 +727,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   // Switch to dark mode if need be
   if (hasAlternateSentinel()) {
     toggleColorMode(true);
-  } 
+  } else {
+    toggleColorMode(false);
+  }
   const icon = "";
   const anchorJS = new window.AnchorJS();
   anchorJS.options = {
@@ -748,7 +751,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
     setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -784,24 +804,42 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-    tippyHover(ref, function() {
-      var popup = window.document.createElement('div');
-      cites.forEach(function(cite) {
-        var citeDiv = window.document.createElement('div');
-        citeDiv.classList.add('hanging-indent');
-        citeDiv.classList.add('csl-entry');
-        var biblioDiv = window.document.getElementById('ref-' + cite);
-        if (biblioDiv) {
-          citeDiv.innerHTML = biblioDiv.innerHTML;
-        }
-        popup.appendChild(citeDiv);
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
       });
-      return popup.innerHTML;
-    });
+    }
   }
 });
 </script>
