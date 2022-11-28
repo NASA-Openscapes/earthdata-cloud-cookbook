@@ -35,16 +35,24 @@ website:
       - text: "Welcome"
         href: index.qmd
       - our-cookbook.qmd  
-      - text: "Cheatsheets & Guides" 
-        href: cheatsheet.qmd      
+      - text: "Cheatsheets & Slides" 
+        href: cheatsheets.qmd      
       - section: how-tos/index.qmd
         contents: 
-      #    - section: how-tos/find-data/index.md
-      #      contents:
-          - text: "Find Data"
-            href: how-tos/find-data/earthdata_search.md
-          - how-tos/transform.md
-          - section: how-tos/access/index.ipynb
+          - section: how-tos/find-data/index.md
+            contents:
+              - text: "Earthdata Search"
+                href: how-tos/find-data/earthdata_search.md
+              - text: "Programmatic Search" 
+                href: how-tos/find-data/programmatic.qmd                
+          - how-tos/authentication.md
+          - section: how-tos/transform/index.md
+            contents: 
+              - how-tos/transform/subset.md
+              - how-tos/transform/reformat.md
+              - how-tos/transform/reproject.md
+              - how-tos/transform/aggregate.ipynb
+          - section: how-tos/access/index.md
             contents:
               - text: "COG HTTPS" 
                 href: how-tos/access/Earthdata_Cloud__Single_File__HTTPS_Access_COG_Example.ipynb

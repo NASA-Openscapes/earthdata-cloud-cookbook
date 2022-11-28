@@ -274,23 +274,23 @@ see
 to see equivalents in RStudio. See also this video (TODO link)
 demonstrating this workflow.
 
-### Quarto serve
+### Quarto preview
 
-The thing to do first is to "serve" the Cookbook so that we can see what
-it looks like as we develop the chapters.
+The thing to do first is to "preview" the Cookbook so that we can see
+what it looks like as we develop the chapters.
 
 Run the following from your branch in your `earthdata-cloud-cookbook`
 directory from the command line:
 
 ``` bash
-quarto serve
+quarto preview
 ```
 
 And after it is served, paste the url into your browser to see the
 development version of the Cookbook.
 
 ::: callout-tip
-## This command line instance is now being used to serve Quarto
+## This command line instance is now being used to preview Quarto
 
 You can open another instance to continue working from the command line,
 including running other shell commands and rendering (see next).
