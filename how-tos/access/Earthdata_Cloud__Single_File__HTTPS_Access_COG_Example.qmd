@@ -1,0 +1,215 @@
+---
+title: "Earthdata_Cloud__Single_File__HTTPS_Access_COG_Example"
+format: html
+editor: visual
+---
+
+# Accessing Cloud Optimized GeoTIFF (COG) - HTTPS Example
+
+## Summary
+
+In this notebook, we will access data for the Harmonized Landsat Sentinel-2 (HLS) Operational Land Imager Surface Reflectance and TOA Brightness Daily Global 30m v2.0 (L30) (\[10.5067/HLS/HLSL30.002\](https://doi.org/10.5067/HLS/HLSL30.002)) data product. These data are archived and distributed as Cloud Optimized GeoTIFF (COG) files, one file for each spectral band.
+
+We will access a single COG file, L30 red band (0.64 -- 0.67 μm), from inside the AWS cloud (us-west-2 region, specifically) and load it into Python as an \`xarray\` \`dataarray\`. This approach leverages S3 native protocols for efficient access to the data.
+
+## Requirements
+
+### 1. AWS instance running in us-west-2
+
+NASA Earthdata Cloud data in S3 can be directly accessed via temporary credentials; this access is limited to requests made within the US West (Oregon) (code: us-west-2) AWS region.
+
+### 2. Earthdata Login
+
+An Earthdata Login account is required to access data, as well as discover restricted data, from the NASA Earthdata system. Thus, to access NASA data, you need Earthdata Login. Please visit https://urs.earthdata.nasa.gov to register and manage your Earthdata Login account. This account is free to create and only takes a moment to set up.
+
+### 3. netrc File
+
+You will need a netrc file containing your NASA Earthdata Login credentials in order to execute the notebooks. A netrc file can be created manually within text editor and saved to your home directory. For additional information see: \[Authentication for NASA Earthdata\](https://nasa-openscapes.github.io/2021-Cloud-Hackathon/tutorials/04_NASA_Earthdata_Authentication.html#authentication-via-netrc-file).
+
+## Learning Objectives
+
+\- how to configure your Python an R work environment to access Cloud Optimized geoTIFF (COG) files
+
+\- how to access HLS COG files
+
+\- how to plot the data
+
+------------------------------------------------------------------------
+
+## Cloud Optimized GeoTIFF (COG)
+
+Using Harmonized Landsat Sentinel-2 (HLS) version 2.0
+
+#### Import Packages
+
+::: {.panel-tabset group="language"}
+## Python
+
+```{python,filename="[python code]" }
+import os
+from osgeo import gdal
+import rasterio as rio
+import rioxarray
+import hvplot.xarray
+import holoviews as hv
+```
+
+## R
+
+```{r, filename="[R code]"}
+library(rgdal)
+library(raster)
+```
+:::
+
+## Workspace Environment Setup
+
+::: {.panel-tabset group="language"}
+## Python
+
+For this exercise, we are going to open up a context manager for the notebook using the rasterio.env module to store the required GDAL configurations we need to access the data from Earthdata Cloud. While the context manager is open (rio_env.\_\_enter\_\_()) we will be able to run the open or get data commands that would typically be executed within a with statement, thus allowing us to more freely interact with the data. We'll close the context (rio_env.\_\_exit\_\_()) at the end of the notebook.
+
+GDAL environment variables must be configured to access COGs from Earthdata Cloud. Geospatial data access Python packages like rasterio and rioxarray depend on GDAL, leveraging GDAL's "Virtual File Systems" to read remote files. GDAL has a lot of environment variables that control it's behavior. Changing these settings can mean the difference being able to access a file or not. They can also have an impact on the performance.
+
+```{python,filename="[python code]" }
+rio_env = rio.Env(GDAL_DISABLE_READDIR_ON_OPEN='TRUE',
+                  GDAL_HTTP_COOKIEFILE=os.path.expanduser('~/cookies.txt'),
+                  GDAL_HTTP_COOKIEJAR=os.path.expanduser('~/cookies.txt'))
+rio_env.__enter__()
+```
+
+## R
+
+Set up rgdal configurations to access the cloud assets that we are interested in. You can learn more about these configuration options here.
+
+```{r, filename="[R code]"}
+rgdal::setCPLConfigOption(ConfigOption = "GDAL_HTTP_UNSAFESSL", value = "YES")
+rgdal::setCPLConfigOption(ConfigOption = "GDAL_HTTP_COOKIEFILE", value = ".rcookies")
+rgdal::setCPLConfigOption(ConfigOption = "GDAL_HTTP_COOKIEJAR", value = ".rcookies")
+rgdal::setCPLConfigOption(ConfigOption = "GDAL_DISABLE_READDIR_ON_OPEN", value = "YES")
+rgdal::setCPLConfigOption(ConfigOption = "CPL_VSIL_CURL_ALLOWED_EXTENSIONS", value = "TIF")
+```
+:::
+
+In this example we're interested in the HLS L30 data collection from NASA's LP DAAC in Earthdata Cloud. Below we specify the HTTPS URL to the data asset in Earthdata Cloud. This URL can be found via Earthdata Search or programmatically through the CMR and CMR-STAC APIs.
+
+::: {.panel-tabset group="language"}
+## Python
+
+```{python,filename="[python code]" }
+https_url = 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.020/HLS.L30.T11SQA.2021333T181532.v2.0/HLS.L30.T11SQA.2021333T181532.v2.0.B04.tif'
+```
+
+## R
+
+```{r, filename="[R code]"}
+https_url <- 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.020/HLS.L30.T11SQA.2021333T181532.v2.0/HLS.L30.T11SQA.2021333T181532.v2.0.B04.tif'
+```
+:::
+
+## HTTPS Data Access
+
+Read in the HLS HTTPS URL for the L30 red band (0.64 -- 0.67 μm) into our workspace. Note that, accessing files in the cloud requires you to authenticate using your NASA Earthdata Login account meaning a proper netrc file needs to be set up.
+
+::: {.panel-tabset group="language"}
+## Python
+
+we are using `rioxarray`, an extension of `xarray` used to read geospatial data.
+
+```{python,filename="[python code]" }
+da = rioxarray.open_rasterio(https_url)
+da
+```
+
+The file is read into Python as an `xarray` `dataarray` with a **band**, **x**, and **y** dimension. In this example the **band** dimension is meaningless, so we'll use the `squeeze()` function to remove **band** as a dimension.
+
+```{python,filename="[python code]" }
+da_red = da.squeeze('band', drop=True)
+da_red
+```
+
+Plot the `dataarray`, representing the L30 red band, using `hvplot`.
+
+```{python,filename="[python code]" }
+da_red.hvplot.image(x='x', y='y', cmap='gray', aspect='equal')
+```
+
+Exit the context manager.
+
+```{python,filename="[python code]" }
+rio_env.__exit__()
+```
+
+## R
+
+For authentication in R, please run the code below:
+
+```{r, filename="[R code]"}
+# Required packages for this script
+packages = c('sys', 'getPass')
+
+# Identify missing (not installed) packages
+new.packages = packages[!(packages %in% installed.packages()[,"Package"])]
+
+# Install missing packages
+if(length(new.packages)) install.packages(new.packages, repos='http://cran.rstudio.com/')
+
+# Load packages into R
+library(sys)
+library(getPass)
+
+# Determine OS and associated netrc file 
+netrc_type <- if(.Platform$OS.type == "windows") "_netrc" else ".netrc"    # Windows OS uses _netrc file
+
+# Specify path to user profile 
+up <- file.path(Sys.getenv("USERPROFILE"))                            # Retrieve user directory (for netrc file)
+
+# Below, HOME and Userprofile directories are set.  
+
+if (up == "") {
+    up <- Sys.getenv("HOME") 
+    Sys.setenv("userprofile" = up)
+    if (up == "") {
+        cat('USERPROFILE/HOME directories need to be set up. Please type sys.setenv("HOME" = "YOURDIRECTORY") or  sys.setenv("USERPROFILE" = "YOURDIRECTORY") in your console and type your USERPROFILE/HOME direcory instead of "YOURDIRECTORY". Next, run the code chunk again.')
+    }
+} else {Sys.setenv("HOME" = up)}        
+
+netrc_path <- file.path(up, netrc_type, fsep = .Platform$file.sep)    # Path to netrc file
+
+# Create a netrc file if one does not exist already
+if (file.exists(netrc_path) == FALSE || grepl("urs.earthdata.nasa.gov", readLines(netrc_path)) == FALSE) {
+    netrc_conn <- file(netrc_path)
+    
+    # User will be prompted for NASA Earthdata Login Username and Password below
+    writeLines(c("machine urs.earthdata.nasa.gov",
+                 sprintf("login %s", getPass(msg = "Enter NASA Earthdata Login Username \n (An account can be Created at urs.earthdata.nasa.gov):")),
+                 sprintf("password %s", getPass(msg = "Enter NASA Earthdata Login Password:"))), netrc_conn)
+    close(netrc_conn)
+}else{
+    i <- 0 
+    for (f in readLines(netrc_path)){
+        i <- i + 1
+        if (f =="machine urs.earthdata.nasa.gov"){
+            username <- strsplit(readLines(netrc_path)[i+1], " ")[[1]][2]
+            un <- getPass(msg = paste0("Is your NASA Earthdata Login Username: ", username, "\n\n Type yes or no."))
+            if (tolower(un) == 'yes'){
+                tx <- gsub(readLines(netrc_path)[i+2], sprintf("password %s", getPass(msg = "Enter NASA Earthdata Login Password:")), readLines(netrc_path))
+                writeLines(tx, netrc_path)
+                rm(username, un, tx, f, i)
+            }else{
+                user <- gsub(readLines(netrc_path)[i+1], sprintf("login %s", getPass(msg = "Enter NASA Earthdata Login Username:")), readLines(netrc_path))
+                tx <- gsub(readLines(netrc_path)[i+2], sprintf("password %s", getPass(msg = "Enter NASA Earthdata Login Password:")), readLines(netrc_path))
+                writeLines(tx, netrc_path)
+                rm(username, un, user, tx, f, i)
+            
+            }
+            break
+        }
+    }
+}
+```
+
+```{r, filename="[R code]"}
+da_red <- raster(https_url)
+```
+:::
