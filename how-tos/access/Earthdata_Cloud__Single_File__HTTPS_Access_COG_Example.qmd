@@ -2,6 +2,8 @@
 title: "Earthdata_Cloud__Single_File__HTTPS_Access_COG_Example"
 format: html
 editor: visual
+execute: 
+  eval: false
 ---
 
 # Accessing Cloud Optimized GeoTIFF (COG) - HTTPS Example
@@ -28,11 +30,11 @@ You will need a netrc file containing your NASA Earthdata Login credentials in o
 
 ## Learning Objectives
 
-- how to configure your Python and R work environment to access Cloud Optimized geoTIFF (COG) files
+-   how to configure your Python and R work environment to access Cloud Optimized geoTIFF (COG) files
 
-- how to access HLS COG files
+-   how to access HLS COG files
 
-- how to plot the data
+-   how to plot the data
 
 ------------------------------------------------------------------------
 
@@ -103,7 +105,8 @@ https_url = 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL3
 ```
 
 ## R
-Please note that in R, we need to add `/vsicurl/` manually to the COG file URL. 
+
+Please note that in R, we need to add `/vsicurl/` manually to the COG file URL.
 
 ```{r, filename="[R code]"}
 https_url <- '/vsicurl/https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.020/HLS.L30.T11SQA.2021333T181532.v2.0/HLS.L30.T11SQA.2021333T181532.v2.0.B04.tif'
@@ -150,17 +153,16 @@ da_red <- rast(https_url)
 da_red
 ```
 
-The Convert a `SpatRaster` object to a `Raster` object using raster() to be able to use `leaflet` to plot our data. 
+The Convert a `SpatRaster` object to a `Raster` object using raster() to be able to use `leaflet` to plot our data.
 
 ```{r, filename="[R code]"}
 red_raster <- da_red %>% raster()
 red_raster
 ```
 
-
 Then plot the `red band` using `plot` function.
+
 ```{r, filename="[R code]"}
 plot(red_raster)
 ```
-
 :::
