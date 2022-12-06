@@ -10,7 +10,7 @@ editor: visual
 
 In this notebook, we will access data for the Harmonized Landsat Sentinel-2 (HLS) Operational Land Imager Surface Reflectance and TOA Brightness Daily Global 30m v2.0 (L30) (\[10.5067/HLS/HLSL30.002\](https://doi.org/10.5067/HLS/HLSL30.002)) data product. These data are archived and distributed as Cloud Optimized GeoTIFF (COG) files, one file for each spectral band.
 
-We will access a single COG file, L30 red band (0.64 -- 0.67 μm), from inside the AWS cloud (us-west-2 region, specifically) and load it into Python as an \`xarray\` \`dataarray\`. This approach leverages S3 native protocols for efficient access to the data.
+We will access a single COG file, L30 red band (0.64 -- 0.67 μm), from inside the AWS cloud (us-west-2 region, specifically) and load it into Python as an `xarray` `dataarray`. This approach leverages S3 native protocols for efficient access to the data.
 
 ## Requirements
 
@@ -28,11 +28,11 @@ You will need a netrc file containing your NASA Earthdata Login credentials in o
 
 ## Learning Objectives
 
-\- how to configure your Python an R work environment to access Cloud Optimized geoTIFF (COG) files
+- how to configure your Python and R work environment to access Cloud Optimized geoTIFF (COG) files
 
-\- how to access HLS COG files
+- how to access HLS COG files
 
-\- how to plot the data
+- how to plot the data
 
 ------------------------------------------------------------------------
 
@@ -59,6 +59,7 @@ import holoviews as hv
 ```{r, filename="[R code]"}
 library(rgdal)
 library(raster)
+library(terra)
 ```
 :::
 
@@ -83,11 +84,12 @@ rio_env.__enter__()
 Set up rgdal configurations to access the cloud assets that we are interested in. You can learn more about these configuration options here.
 
 ```{r, filename="[R code]"}
-rgdal::setCPLConfigOption(ConfigOption = "GDAL_HTTP_UNSAFESSL", value = "YES")
-rgdal::setCPLConfigOption(ConfigOption = "GDAL_HTTP_COOKIEFILE", value = ".rcookies")
-rgdal::setCPLConfigOption(ConfigOption = "GDAL_HTTP_COOKIEJAR", value = ".rcookies")
-rgdal::setCPLConfigOption(ConfigOption = "GDAL_DISABLE_READDIR_ON_OPEN", value = "YES")
-rgdal::setCPLConfigOption(ConfigOption = "CPL_VSIL_CURL_ALLOWED_EXTENSIONS", value = "TIF")
+setGDALconfig(c("GDAL_HTTP_UNSAFESSL=YES",
+                "GDAL_HTTP_COOKIEFILE=.rcookies",
+                "GDAL_HTTP_COOKIEJAR=.rcookies",
+                "GDAL_DISABLE_READDIR_ON_OPEN=EMPTY_DIR",
+                "CPL_VSIL_CURL_ALLOWED_EXTENSIONS=TIF"))
+
 ```
 :::
 
@@ -101,9 +103,10 @@ https_url = 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL3
 ```
 
 ## R
+Please note that in R, we need to add `/vsicurl/` manually to the COG file URL. 
 
 ```{r, filename="[R code]"}
-https_url <- 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.020/HLS.L30.T11SQA.2021333T181532.v2.0/HLS.L30.T11SQA.2021333T181532.v2.0.B04.tif'
+https_url <- '/vsicurl/https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.020/HLS.L30.T11SQA.2021333T181532.v2.0/HLS.L30.T11SQA.2021333T181532.v2.0.B04.tif'
 ```
 :::
 
@@ -142,74 +145,22 @@ rio_env.__exit__()
 
 ## R
 
-For authentication in R, please run the code below:
-
 ```{r, filename="[R code]"}
-# Required packages for this script
-packages = c('sys', 'getPass')
-
-# Identify missing (not installed) packages
-new.packages = packages[!(packages %in% installed.packages()[,"Package"])]
-
-# Install missing packages
-if(length(new.packages)) install.packages(new.packages, repos='http://cran.rstudio.com/')
-
-# Load packages into R
-library(sys)
-library(getPass)
-
-# Determine OS and associated netrc file 
-netrc_type <- if(.Platform$OS.type == "windows") "_netrc" else ".netrc"    # Windows OS uses _netrc file
-
-# Specify path to user profile 
-up <- file.path(Sys.getenv("USERPROFILE"))                            # Retrieve user directory (for netrc file)
-
-# Below, HOME and Userprofile directories are set.  
-
-if (up == "") {
-    up <- Sys.getenv("HOME") 
-    Sys.setenv("userprofile" = up)
-    if (up == "") {
-        cat('USERPROFILE/HOME directories need to be set up. Please type sys.setenv("HOME" = "YOURDIRECTORY") or  sys.setenv("USERPROFILE" = "YOURDIRECTORY") in your console and type your USERPROFILE/HOME direcory instead of "YOURDIRECTORY". Next, run the code chunk again.')
-    }
-} else {Sys.setenv("HOME" = up)}        
-
-netrc_path <- file.path(up, netrc_type, fsep = .Platform$file.sep)    # Path to netrc file
-
-# Create a netrc file if one does not exist already
-if (file.exists(netrc_path) == FALSE || grepl("urs.earthdata.nasa.gov", readLines(netrc_path)) == FALSE) {
-    netrc_conn <- file(netrc_path)
-    
-    # User will be prompted for NASA Earthdata Login Username and Password below
-    writeLines(c("machine urs.earthdata.nasa.gov",
-                 sprintf("login %s", getPass(msg = "Enter NASA Earthdata Login Username \n (An account can be Created at urs.earthdata.nasa.gov):")),
-                 sprintf("password %s", getPass(msg = "Enter NASA Earthdata Login Password:"))), netrc_conn)
-    close(netrc_conn)
-}else{
-    i <- 0 
-    for (f in readLines(netrc_path)){
-        i <- i + 1
-        if (f =="machine urs.earthdata.nasa.gov"){
-            username <- strsplit(readLines(netrc_path)[i+1], " ")[[1]][2]
-            un <- getPass(msg = paste0("Is your NASA Earthdata Login Username: ", username, "\n\n Type yes or no."))
-            if (tolower(un) == 'yes'){
-                tx <- gsub(readLines(netrc_path)[i+2], sprintf("password %s", getPass(msg = "Enter NASA Earthdata Login Password:")), readLines(netrc_path))
-                writeLines(tx, netrc_path)
-                rm(username, un, tx, f, i)
-            }else{
-                user <- gsub(readLines(netrc_path)[i+1], sprintf("login %s", getPass(msg = "Enter NASA Earthdata Login Username:")), readLines(netrc_path))
-                tx <- gsub(readLines(netrc_path)[i+2], sprintf("password %s", getPass(msg = "Enter NASA Earthdata Login Password:")), readLines(netrc_path))
-                writeLines(tx, netrc_path)
-                rm(username, un, user, tx, f, i)
-            
-            }
-            break
-        }
-    }
-}
+da_red <- rast(https_url)
+da_red
 ```
 
+The Convert a `SpatRaster` object to a `Raster` object using raster() to be able to use `leaflet` to plot our data. 
+
 ```{r, filename="[R code]"}
-da_red <- raster(https_url)
+red_raster <- da_red %>% raster()
+red_raster
 ```
+
+
+Then plot the `red band` using `plot` function.
+```{r, filename="[R code]"}
+plot(red_raster)
+```
+
 :::
