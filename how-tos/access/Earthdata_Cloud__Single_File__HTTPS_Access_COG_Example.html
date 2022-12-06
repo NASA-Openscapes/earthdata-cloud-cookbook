@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>EarthData Cloud Cookbook – earthdata_cloud__single_file__https_access_cog_example</title>
+<title>EarthData Cloud Cookbook - Earthdata_Cloud__Single_File__HTTPS_Access_COG_Example</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -93,7 +93,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
 <link href="../../how-tos/access/Earthdata_Cloud__Single_File__Direct_S3_Access_COG_Example.html" rel="next">
-<link href="../../how-tos/transform/aggregate.html" rel="prev">
+<link href="../../how-tos/access/index.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -135,7 +135,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">NASA Earthdata Cloud Cookbook</h1>
+      <h1 class="quarto-secondary-nav-title">Earthdata_Cloud__Single_File__HTTPS_Access_COG_Example</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -241,7 +241,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">how-tos/access/index.md</a>
+            <a href="../../how-tos/access/index.html" class="sidebar-item-text sidebar-link">How To's</a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -470,26 +470,38 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#netrc-file" id="toc-netrc-file" class="nav-link" data-scroll-target="#netrc-file">3. netrc File</a></li>
   </ul></li>
   <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives">Learning Objectives</a></li>
-  <li><a href="#cloud-optimized-geotiff-cog" id="toc-cloud-optimized-geotiff-cog" class="nav-link" data-scroll-target="#cloud-optimized-geotiff-cog">Cloud Optimized GeoTIFF (COG)</a>
-  <ul class="collapse">
-  <li><a href="#import-packages" id="toc-import-packages" class="nav-link" data-scroll-target="#import-packages">Import Packages</a></li>
-  </ul></li>
+  <li><a href="#cloud-optimized-geotiff-cog" id="toc-cloud-optimized-geotiff-cog" class="nav-link" data-scroll-target="#cloud-optimized-geotiff-cog">Cloud Optimized GeoTIFF (COG)</a></li>
   <li><a href="#workspace-environment-setup" id="toc-workspace-environment-setup" class="nav-link" data-scroll-target="#workspace-environment-setup">Workspace Environment Setup</a></li>
   <li><a href="#https-data-access" id="toc-https-data-access" class="nav-link" data-scroll-target="#https-data-access">HTTPS Data Access</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.dev/nasa-openscapes/earthdata-cloud-cookbook/blob/main/how-tos/access/Earthdata_Cloud__Single_File__HTTPS_Access_COG_Example.ipynb" class="toc-action">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/blob/main/how-tos/access/Earthdata_Cloud__Single_File__HTTPS_Access_COG_Example.ipynb" class="toc-action">View source</a></p><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/edit/main/how-tos/access/Earthdata_Cloud__Single_File__HTTPS_Access_COG_Example.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/blob/main/how-tos/access/Earthdata_Cloud__Single_File__HTTPS_Access_COG_Example.qmd" class="toc-action">View source</a></p><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block">Earthdata_Cloud__Single_File__HTTPS_Access_COG_Example</h1>
+</div>
 
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
 
 <section id="accessing-cloud-optimized-geotiff-cog---https-example" class="level1">
 <h1>Accessing Cloud Optimized GeoTIFF (COG) - HTTPS Example</h1>
 <section id="summary" class="level2">
 <h2 class="anchored" data-anchor-id="summary">Summary</h2>
-<p>In this notebook, we will access data for the Harmonized Landsat Sentinel-2 (HLS) Operational Land Imager Surface Reflectance and TOA Brightness Daily Global 30m v2.0 (L30) (<a href="https://doi.org/10.5067/HLS/HLSL30.002">10.5067/HLS/HLSL30.002</a>) data product. These data are archived and distributed as Cloud Optimized GeoTIFF (COG) files, one file for each spectral band.</p>
+<p>In this notebook, we will access data for the Harmonized Landsat Sentinel-2 (HLS) Operational Land Imager Surface Reflectance and TOA Brightness Daily Global 30m v2.0 (L30) ([10.5067/HLS/HLSL30.002](https://doi.org/10.5067/HLS/HLSL30.002)) data product. These data are archived and distributed as Cloud Optimized GeoTIFF (COG) files, one file for each spectral band.</p>
 <p>We will access a single COG file, L30 red band (0.64 – 0.67 μm), from inside the AWS cloud (us-west-2 region, specifically) and load it into Python as an <code>xarray</code> <code>dataarray</code>. This approach leverages S3 native protocols for efficient access to the data.</p>
 </section>
 <section id="requirements" class="level2">
@@ -504,24 +516,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="netrc-file" class="level3">
 <h3 class="anchored" data-anchor-id="netrc-file">3. netrc File</h3>
-<p>You will need a netrc file containing your NASA Earthdata Login credentials in order to execute the notebooks. A netrc file can be created manually within text editor and saved to your home directory. For additional information see: <a href="https://nasa-openscapes.github.io/2021-Cloud-Hackathon/tutorials/04_NASA_Earthdata_Authentication.html#authentication-via-netrc-file">Authentication for NASA Earthdata</a>.</p>
+<p>You will need a netrc file containing your NASA Earthdata Login credentials in order to execute the notebooks. A netrc file can be created manually within text editor and saved to your home directory. For additional information see: [Authentication for NASA Earthdata](https://nasa-openscapes.github.io/2021-Cloud-Hackathon/tutorials/04_NASA_Earthdata_Authentication.html#authentication-via-netrc-file).</p>
 </section>
 </section>
 <section id="learning-objectives" class="level2">
 <h2 class="anchored" data-anchor-id="learning-objectives">Learning Objectives</h2>
 <ul>
-<li>how to configure you Python work environment to access Cloud Optimized geoTIFF (COG) files</li>
-<li>how to access HLS COG files</li>
-<li>how to plot the data</li>
+<li><p>how to configure your Python and R work environment to access Cloud Optimized geoTIFF (COG) files</p></li>
+<li><p>how to access HLS COG files</p></li>
+<li><p>how to plot the data</p></li>
 </ul>
 <hr>
 </section>
 <section id="cloud-optimized-geotiff-cog" class="level2">
 <h2 class="anchored" data-anchor-id="cloud-optimized-geotiff-cog">Cloud Optimized GeoTIFF (COG)</h2>
 <p>Using Harmonized Landsat Sentinel-2 (HLS) version 2.0</p>
-<section id="import-packages" class="level3">
-<h3 class="anchored" data-anchor-id="import-packages">Import Packages</h3>
+<section id="import-packages" class="level4">
+<h4 class="anchored" data-anchor-id="import-packages">Import Packages</h4>
+<div class="panel-tabset" data-group="language">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" aria-current="page">Python</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">R</a></li></ul>
+<div class="tab-content" data-group="language">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 <div class="cell">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>[python code]</strong></pre>
+</div>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> osgeo <span class="im">import</span> gdal</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> rasterio <span class="im">as</span> rio</span>
@@ -529,42 +549,166 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> hvplot.xarray</span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> holoviews <span class="im">as</span> hv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</div>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<div class="cell">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>[R code]</strong></pre>
+</div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rgdal)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(raster)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(terra)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="workspace-environment-setup" class="level2">
 <h2 class="anchored" data-anchor-id="workspace-environment-setup">Workspace Environment Setup</h2>
+<div class="panel-tabset" data-group="language">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">Python</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">R</a></li></ul>
+<div class="tab-content" data-group="language">
+<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
 <p>For this exercise, we are going to open up a context manager for the notebook using the rasterio.env module to store the required GDAL configurations we need to access the data from Earthdata Cloud. While the context manager is open (rio_env.__enter__()) we will be able to run the open or get data commands that would typically be executed within a with statement, thus allowing us to more freely interact with the data. We’ll close the context (rio_env.__exit__()) at the end of the notebook.</p>
 <p>GDAL environment variables must be configured to access COGs from Earthdata Cloud. Geospatial data access Python packages like rasterio and rioxarray depend on GDAL, leveraging GDAL’s “Virtual File Systems” to read remote files. GDAL has a lot of environment variables that control it’s behavior. Changing these settings can mean the difference being able to access a file or not. They can also have an impact on the performance.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>rio_env <span class="op">=</span> rio.Env(GDAL_DISABLE_READDIR_ON_OPEN<span class="op">=</span><span class="st">'TRUE'</span>,</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>                  GDAL_HTTP_COOKIEFILE<span class="op">=</span>os.path.expanduser(<span class="st">'~/cookies.txt'</span>),</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>                  GDAL_HTTP_COOKIEJAR<span class="op">=</span>os.path.expanduser(<span class="st">'~/cookies.txt'</span>))</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>rio_env.<span class="fu">__enter__</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>[python code]</strong></pre>
 </div>
-<p>In this example we’re interested in the HLS L30 data collection from NASA’s LP DAAC in Earthdata Cloud. Below we specify the s3 URL to the data asset in Earthdata Cloud. This URL can be found via Earthdata Search or programmatically through the CMR and CMR-STAC APIs.</p>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>rio_env <span class="op">=</span> rio.Env(GDAL_DISABLE_READDIR_ON_OPEN<span class="op">=</span><span class="st">'TRUE'</span>,</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>                  GDAL_HTTP_COOKIEFILE<span class="op">=</span>os.path.expanduser(<span class="st">'~/cookies.txt'</span>),</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>                  GDAL_HTTP_COOKIEJAR<span class="op">=</span>os.path.expanduser(<span class="st">'~/cookies.txt'</span>))</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>rio_env.<span class="fu">__enter__</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
+<p>Set up rgdal configurations to access the cloud assets that we are interested in. You can learn more about these configuration options here.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>https_url <span class="op">=</span> <span class="st">'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.020/HLS.L30.T11SQA.2021333T181532.v2.0/HLS.L30.T11SQA.2021333T181532.v2.0.B04.tif'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>[R code]</strong></pre>
+</div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setGDALconfig</span>(<span class="fu">c</span>(<span class="st">"GDAL_HTTP_UNSAFESSL=YES"</span>,</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>                <span class="st">"GDAL_HTTP_COOKIEFILE=.rcookies"</span>,</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>                <span class="st">"GDAL_HTTP_COOKIEJAR=.rcookies"</span>,</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>                <span class="st">"GDAL_DISABLE_READDIR_ON_OPEN=EMPTY_DIR"</span>,</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>                <span class="st">"CPL_VSIL_CURL_ALLOWED_EXTENSIONS=TIF"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>In this example we’re interested in the HLS L30 data collection from NASA’s LP DAAC in Earthdata Cloud. Below we specify the HTTPS URL to the data asset in Earthdata Cloud. This URL can be found via Earthdata Search or programmatically through the CMR and CMR-STAC APIs.</p>
+<div class="panel-tabset" data-group="language">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true">Python</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false">R</a></li></ul>
+<div class="tab-content" data-group="language">
+<div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
+<div class="cell">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>[python code]</strong></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>https_url <span class="op">=</span> <span class="st">'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.020/HLS.L30.T11SQA.2021333T181532.v2.0/HLS.L30.T11SQA.2021333T181532.v2.0.B04.tif'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
+<p>Please note that in R, we need to add <code>/vsicurl/</code> manually to the COG file URL.</p>
+<div class="cell">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>[R code]</strong></pre>
+</div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>https_url <span class="ot">&lt;-</span> <span class="st">'/vsicurl/https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.020/HLS.L30.T11SQA.2021333T181532.v2.0/HLS.L30.T11SQA.2021333T181532.v2.0.B04.tif'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
 </div>
 </section>
 <section id="https-data-access" class="level2">
 <h2 class="anchored" data-anchor-id="https-data-access">HTTPS Data Access</h2>
-<p>Read in the HLS s3 URL for the L30 red band (0.64 – 0.67 μm) into our workspace using <code>rioxarray</code>, an extension of <code>xarray</code> used to read geospatial data.</p>
+<p>Read in the HLS HTTPS URL for the L30 red band (0.64 – 0.67 μm) into our workspace. Note that, accessing files in the cloud requires you to authenticate using your NASA Earthdata Login account meaning a proper netrc file needs to be set up.</p>
+<div class="panel-tabset" data-group="language">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true">Python</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false">R</a></li></ul>
+<div class="tab-content" data-group="language">
+<div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
+<p>we are using <code>rioxarray</code>, an extension of <code>xarray</code> used to read geospatial data.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>da <span class="op">=</span> rioxarray.open_rasterio(https_url)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>da</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>[python code]</strong></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>da <span class="op">=</span> rioxarray.open_rasterio(https_url)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>da</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </div>
 <p>The file is read into Python as an <code>xarray</code> <code>dataarray</code> with a <strong>band</strong>, <strong>x</strong>, and <strong>y</strong> dimension. In this example the <strong>band</strong> dimension is meaningless, so we’ll use the <code>squeeze()</code> function to remove <strong>band</strong> as a dimension.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>da_red <span class="op">=</span> da.squeeze(<span class="st">'band'</span>, drop<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>da_red</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>[python code]</strong></pre>
+</div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>da_red <span class="op">=</span> da.squeeze(<span class="st">'band'</span>, drop<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>da_red</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </div>
 <p>Plot the <code>dataarray</code>, representing the L30 red band, using <code>hvplot</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>da_red.hvplot.image(x<span class="op">=</span><span class="st">'x'</span>, y<span class="op">=</span><span class="st">'y'</span>, cmap<span class="op">=</span><span class="st">'gray'</span>, aspect<span class="op">=</span><span class="st">'equal'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>[python code]</strong></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>da_red.hvplot.image(x<span class="op">=</span><span class="st">'x'</span>, y<span class="op">=</span><span class="st">'y'</span>, cmap<span class="op">=</span><span class="st">'gray'</span>, aspect<span class="op">=</span><span class="st">'equal'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </div>
 <p>Exit the context manager.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>rio_env.<span class="fu">__exit__</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>[python code]</strong></pre>
+</div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>rio_env.<span class="fu">__exit__</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
+<div class="cell">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>[R code]</strong></pre>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>da_red <span class="ot">&lt;-</span> <span class="fu">rast</span>(https_url)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>da_red</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<p>The Convert a <code>SpatRaster</code> object to a <code>Raster</code> object using raster() to be able to use <code>leaflet</code> to plot our data.</p>
+<div class="cell">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>[R code]</strong></pre>
+</div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>red_raster <span class="ot">&lt;-</span> da_red <span class="sc">%&gt;%</span> <span class="fu">raster</span>()</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>red_raster</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<p>Then plot the <code>red band</code> using <code>plot</code> function.</p>
+<div class="cell">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>[R code]</strong></pre>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(red_raster)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
 </div>
 
 
@@ -822,8 +966,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../how-tos/transform/aggregate.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Aggregate</span>
+      <a href="../../how-tos/access/index.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">How To’s</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
