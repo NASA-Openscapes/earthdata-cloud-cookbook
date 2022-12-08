@@ -15,20 +15,20 @@ Here are our recommended approaches for finding data with code.
 ::: {.panel-tabset group="language"}
 ## Python
 
-In Python we can use the [`earthdata`](https://earthdata.readthedocs.io/en/latest/) library (in development and to be renamed `earthaccess` very soon!)
+In Python we can use the [`earthaccess`](https://earthaccess.readthedocs.io/en/latest/) library (renamed, previously `earthdata`)
 
 To install the package we'll run this code from the command line. Note: you can run shell code directly from a Jupyter Notebook cell by adding a `!`, so it would be `!conda install`.
 
 ```{bash, filename="[command line code]"}
-# Install earthdata
-conda install -c conda-forge earthdata
+# Install earthaccess
+conda install -c conda-forge earthaccess
 ```
 
 This example searches for data from the [Land Processes DAAC](https://lpdaac.usgs.gov/) with a spatial bounding box. 
 
-```{python, import-earthdata, filename="[python code]"}
-## Import earthdata
-from earthdata import DataGranules
+```{python, import-earthaccess, filename="[python code]"}
+## Import earthaccess
+from earthaccess import DataGranules
 
 # Then we build a Query with spatiotemporal parameters
 GranuleQuery = DataGranules().concept_id("C1575731655-LPDAAC_ECS").bounding_box(-134.7,58.9,-133.9,59.2)
@@ -41,7 +41,7 @@ granules
 
 ## R
 
-To find data in R, we'll briefly make use of the `earthdata` python package - which we can do from R using the [`reticulate`](https://rstudio.github.io/reticulate/) package and [cheatsheet](https://www.rstudio.com/resources/cheatsheets/). You'll copy these code chunks into your RMarkdown or Quarto document: note that the second code chunk is in Python, but when you run them in sequence you'll be all set.
+To find data in R, we'll briefly make use of the `earthaccess` python package - which we can do from R using the [`reticulate`](https://rstudio.github.io/reticulate/) package and [cheatsheet](https://www.rstudio.com/resources/cheatsheets/). You'll copy these code chunks into your RMarkdown or Quarto document: note that the second code chunk is in Python, but when you run them in sequence you'll be all set.
 
 ```{r, filename="[R code]"}
 #| message: false
@@ -51,20 +51,20 @@ library(tidyverse) # install.packages("tidyverse")
 
 ## load reticulate and set up a python environment
 library(reticulate) # install.packages("reticulate")
-virtualenv_create("earthdata-proj")
-py_install("earthdata", envname = "earthdata-proj")
-use_virtualenv("earthdata-proj")
+virtualenv_create("earthaccess-proj")
+py_install("earthaccess", envname = "earthaccess-proj")
+use_virtualenv("earthaccess-proj")
 ```
 
-Now, we'll use the `earthdata` python package. 
+Now, we'll use the `earthaccess` python package. 
 
 <!---note: would like to reuse the python chunk here with the same name, but currently can't with the language labeled
 https://bookdown.org/yihui/rmarkdown-cookbook/reuse-chunks.html
 --->
 
-```{python, import-earthdata-copy, filename="[python code]"}
-## Import earthdata
-from earthdata import DataGranules
+```{python, import-earthaccess-copy, filename="[python code]"}
+## Import earthaccess
+from earthaccess import DataGranules
 
 # Then we build a Query with spatiotemporal parameters
 GranuleQuery = DataGranules().concept_id("C1575731655-LPDAAC_ECS").bounding_box(-134.7,58.9,-133.9,59.2)
