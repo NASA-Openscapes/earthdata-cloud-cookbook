@@ -496,15 +496,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" aria-current="page">Python</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">Matlab</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-4" role="tab" aria-controls="tabset-1-4" aria-selected="false">Command Line</a></li></ul>
 <div class="tab-content" data-group="language">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
-<p>In Python we can use the <a href="https://earthdata.readthedocs.io/en/latest/"><code>earthdata</code></a> library (in development and to be renamed <code>earthaccess</code> very soon!)</p>
+<p>In Python we can use the <a href="https://earthaccess.readthedocs.io/en/latest/"><code>earthaccess</code></a> library (renamed, previously <code>earthdata</code>)</p>
 <p>To install the package we’ll run this code from the command line. Note: you can run shell code directly from a Jupyter Notebook cell by adding a <code>!</code>, so it would be <code>!conda install</code>.</p>
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>[command line code]</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install earthdata</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> install <span class="at">-c</span> conda-forge earthdata</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install earthaccess</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> install <span class="at">-c</span> conda-forge earthaccess</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <p>This example searches for data from the <a href="https://lpdaac.usgs.gov/">Land Processes DAAC</a> with a spatial bounding box.</p>
@@ -513,8 +513,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="code-with-filename-file">
 <pre><strong>[python code]</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Import earthdata</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> earthdata <span class="im">import</span> DataGranules</span>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Import earthaccess</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> earthaccess <span class="im">import</span> DataGranules</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Then we build a Query with spatiotemporal parameters</span></span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>GranuleQuery <span class="op">=</span> DataGranules().concept_id(<span class="st">"C1575731655-LPDAAC_ECS"</span>).bounding_box(<span class="op">-</span><span class="fl">134.7</span>,<span class="fl">58.9</span>,<span class="op">-</span><span class="fl">133.9</span>,<span class="fl">59.2</span>)</span>
@@ -526,7 +526,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
-<p>To find data in R, we’ll briefly make use of the <code>earthdata</code> python package - which we can do from R using the <a href="https://rstudio.github.io/reticulate/"><code>reticulate</code></a> package and <a href="https://www.rstudio.com/resources/cheatsheets/">cheatsheet</a>. You’ll copy these code chunks into your RMarkdown or Quarto document: note that the second code chunk is in Python, but when you run them in sequence you’ll be all set.</p>
+<p>To find data in R, we’ll briefly make use of the <code>earthaccess</code> python package - which we can do from R using the <a href="https://rstudio.github.io/reticulate/"><code>reticulate</code></a> package and <a href="https://www.rstudio.com/resources/cheatsheets/">cheatsheet</a>. You’ll copy these code chunks into your RMarkdown or Quarto document: note that the second code chunk is in Python, but when you run them in sequence you’ll be all set.</p>
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
@@ -537,12 +537,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="do">## load reticulate and set up a python environment</span></span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reticulate) <span class="co"># install.packages("reticulate")</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">virtualenv_create</span>(<span class="st">"earthdata-proj"</span>)</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">py_install</span>(<span class="st">"earthdata"</span>, <span class="at">envname =</span> <span class="st">"earthdata-proj"</span>)</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="fu">use_virtualenv</span>(<span class="st">"earthdata-proj"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">virtualenv_create</span>(<span class="st">"earthaccess-proj"</span>)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">py_install</span>(<span class="st">"earthaccess"</span>, <span class="at">envname =</span> <span class="st">"earthaccess-proj"</span>)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="fu">use_virtualenv</span>(<span class="st">"earthaccess-proj"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
-<p>Now, we’ll use the <code>earthdata</code> python package.</p>
+<p>Now, we’ll use the <code>earthaccess</code> python package.</p>
 <!---note: would like to reuse the python chunk here with the same name, but currently can't with the language labeled
 https://bookdown.org/yihui/rmarkdown-cookbook/reuse-chunks.html
 --->
@@ -551,8 +551,8 @@ https://bookdown.org/yihui/rmarkdown-cookbook/reuse-chunks.html
 <div class="code-with-filename-file">
 <pre><strong>[python code]</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Import earthdata</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> earthdata <span class="im">import</span> DataGranules</span>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Import earthaccess</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> earthaccess <span class="im">import</span> DataGranules</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Then we build a Query with spatiotemporal parameters</span></span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>GranuleQuery <span class="op">=</span> DataGranules().concept_id(<span class="st">"C1575731655-LPDAAC_ECS"</span>).bounding_box(<span class="op">-</span><span class="fl">134.7</span>,<span class="fl">58.9</span>,<span class="op">-</span><span class="fl">133.9</span>,<span class="fl">59.2</span>)</span>
