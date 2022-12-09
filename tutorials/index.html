@@ -29,7 +29,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../tutorials/04_On-Prem_Cloud.html" rel="next">
+<link href="../tutorials/earthaccess-demo.html" rel="next">
 <link href="../how-tos/tech-setup.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -233,7 +233,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../tutorials/04_On-Prem_Cloud.html" class="sidebar-item-text sidebar-link">Pairing Cloud and non-Cloud Data</a>
+  <a href="../tutorials/earthaccess-demo.html" class="sidebar-item-text sidebar-link"><code>earthaccess</code> Python library</a>
   </div>
 </li>
       </ul>
@@ -246,11 +246,6 @@ ul.task-list li input[type="checkbox"] {
           </a> 
       </div>
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../examples/earthdata-access-demo.html" class="sidebar-item-text sidebar-link">Earthdata Access (Python Library)</a>
-  </div>
-</li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../examples/NSIDC/ICESat2-CMR-OnPrem-vs-Cloud.html" class="sidebar-item-text sidebar-link">Search &amp; Download NSIDC Cloud</a>
@@ -401,6 +396,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#swot-ocean-cloud-workshop" id="toc-swot-ocean-cloud-workshop" class="nav-link" data-scroll-target="#swot-ocean-cloud-workshop">2022 SWOT Ocean Cloud Workshop</a></li>
   <li><a href="#cloud-agu-workshop" id="toc-cloud-agu-workshop" class="nav-link" data-scroll-target="#cloud-agu-workshop">2021 Cloud AGU Workshop</a></li>
   <li><a href="#cloud-hackathon" id="toc-cloud-hackathon" class="nav-link" data-scroll-target="#cloud-hackathon">2021 Cloud Hackathon</a></li>
+  <li><a href="#pairing-cloud-and-non-cloud-data" id="toc-pairing-cloud-and-non-cloud-data" class="nav-link" data-scroll-target="#pairing-cloud-and-non-cloud-data">Pairing Cloud and non-Cloud Data</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/edit/main/tutorials/index.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/blob/main/tutorials/index.qmd" class="toc-action">View source</a></p><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
@@ -449,6 +445,12 @@ ul.task-list li input[type="checkbox"] {
 <li><p><strong>Enable</strong> science and applications workflows in the cloud that leverage NASA Earth Observations and capabilities (services) from within the NASA Earthdata Cloud, hosted in Amazon Web Services (AWS) cloud, thus increasing NASA Earthdata data utility and meaningfulness for science and applications use cases.</p></li>
 <li><p><strong>Foster community engagement</strong> utilizing Earthdata cloud tools and services in support of open science and open data.</p></li>
 </ol>
+</section>
+<section id="pairing-cloud-and-non-cloud-data" class="level2">
+<h2 class="anchored" data-anchor-id="pairing-cloud-and-non-cloud-data">Pairing Cloud and non-Cloud Data</h2>
+<p><a href="https://nasa-openscapes.github.io/earthdata-cloud-cookbook/tutorials/04_On-Prem_Cloud.qmd"><strong>Pairing Cloud and non-Cloud Data</strong></a></p>
+<p><strong>Accessing and harmonizing data located within and outside of the NASA Earthdata Cloud</strong></p>
+<p>This tutorial will combine several workflow steps and components from the previous days, demonstrating the process of using the geolocation of data available outside of the Earthdata Cloud to then access coincident variables of cloud-accessible data. This may be a common use case as NASA Earthdata continues to migrate to the cloud, producing a “hybrid” data archive across Amazon Web Services (AWS) and original on-premise data storage systems. Additionally, you may also want to combine field measurements with remote sensing data available on the Earthdata Cloud.</p>
 
 
 </section>
@@ -709,8 +711,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../tutorials/04_On-Prem_Cloud.html" class="pagination-link">
-        <span class="nav-page-text">Pairing Cloud and non-Cloud Data</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../tutorials/earthaccess-demo.html" class="pagination-link">
+        <span class="nav-page-text"><code>earthaccess</code> Python library</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
