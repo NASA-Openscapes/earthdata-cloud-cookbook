@@ -2,6 +2,8 @@
 title: "Find Data: Programmatic Search"
 execute:
   eval: false
+editor_options: 
+  chunk_output_type: console
 ---
 
 ## Introduction
@@ -24,60 +26,47 @@ To install the package we'll run this code from the command line. Note: you can 
 conda install -c conda-forge earthaccess
 ```
 
-This example searches for data from the [Land Processes DAAC](https://lpdaac.usgs.gov/) with a spatial bounding box. 
+This example searches for data from POCLOUD
 
 ```{python, import-earthaccess, filename="[python code]"}
 ## Import earthaccess
-from earthaccess import DataGranules
+import earthaccess
 
-# Then we build a Query with spatiotemporal parameters
-GranuleQuery = DataGranules().concept_id("C1575731655-LPDAAC_ECS").bounding_box(-134.7,58.9,-133.9,59.2)
+## Access data 
+granules = earthaccess.search_data(
+  concept_id = "C2036880672-POCLOUD",
+  temporal = ("2017-01", "2018-01")
+)
 
-# We get the metadata records from CMR, then view the output
-granules = GranuleQuery.get()
 granules
+# Granules found: 71! 
 ```
 
 
 ## R
 
-To find data in R, we'll briefly make use of the `earthaccess` python package - which we can do from R using the [`reticulate`](https://rstudio.github.io/reticulate/) package and [cheatsheet](https://www.rstudio.com/resources/cheatsheets/). You'll copy these code chunks into your RMarkdown or Quarto document: note that the second code chunk is in Python, but when you run them in sequence you'll be all set.
+To find data in R, we'll also use the `earthaccess` python package - we can do so from R using the [`reticulate`](https://rstudio.github.io/reticulate/) package ([cheatsheet](https://www.rstudio.com/resources/cheatsheets/)). Note below that we import the python library as an R object we name `earthaccess`, as well as the `earthaccess$` syntax for accessing functions from the `earthaccess` library.
 
 ```{r, filename="[R code]"}
 #| message: false
 
-## load wrangling libraries
+## load R libraries
 library(tidyverse) # install.packages("tidyverse") 
-
-## load reticulate and set up a python environment
 library(reticulate) # install.packages("reticulate")
-virtualenv_create("earthaccess-proj")
-py_install("earthaccess", envname = "earthaccess-proj")
-use_virtualenv("earthaccess-proj")
-```
 
-Now, we'll use the `earthaccess` python package. 
+## load python library
+earthaccess <- reticulate::import("earthaccess") 
 
-<!---note: would like to reuse the python chunk here with the same name, but currently can't with the language labeled
-https://bookdown.org/yihui/rmarkdown-cookbook/reuse-chunks.html
---->
+# Then we use earthaccess to build a Query with spatiotemporal parameters # https://nsidc.github.io/earthaccess/tutorials/search-granules/
+granules <- earthaccess$search_data(
+  concept_id = "C2036880672-POCLOUD"
+#  temporal = c("2017-01", "2018-01")
+)
 
-```{python, import-earthaccess-copy, filename="[python code]"}
-## Import earthaccess
-from earthaccess import DataGranules
+head(granules) # temporary, while there is > 71 returned!
 
-# Then we build a Query with spatiotemporal parameters
-GranuleQuery = DataGranules().concept_id("C1575731655-LPDAAC_ECS").bounding_box(-134.7,58.9,-133.9,59.2)
-
-# We get the metadata records from CMR, then view the output
-granules = GranuleQuery.get()
-granules
-```
-Now we can access the `granules` python object in R using `reticulate`; note the `py$` syntax. We'll create an R object named `granules_r` and view it using `str`. 
-
-```{r, filename="[R code]"}
-granules_r <- py$granules
-str(granules_r) %>% jsonlite::fromJSON()
+## Next steps - 
+## str(granules) %>% jsonlite::fromJSON() ## revisit, talk to Bri et al
 ```
 
 ## Matlab
