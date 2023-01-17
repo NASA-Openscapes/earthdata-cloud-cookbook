@@ -35,11 +35,11 @@ import earthaccess
 ## Access data 
 granules = earthaccess.search_data(
   concept_id = "C2036880672-POCLOUD",
-  temporal = ("2017-01", "2018-01")
+  temporal = ("2017-01", "2018-01") # this () syntax means it's a tuple
 )
+## Granules found: 72 
 
 granules
-# Granules found: 71! 
 ```
 
 
@@ -59,11 +59,16 @@ earthaccess <- reticulate::import("earthaccess")
 
 # Then we use earthaccess to build a Query with spatiotemporal parameters # https://nsidc.github.io/earthaccess/tutorials/search-granules/
 granules <- earthaccess$search_data(
-  concept_id = "C2036880672-POCLOUD"
-#  temporal = c("2017-01", "2018-01")
+  concept_id = "C2036880672-POCLOUD",
+  temporal = reticulate::tuple("2017-01", "2018-01") # with an earthaccess update, this can be simply c() or list()
 )
 
-head(granules) # temporary, while there is > 71 returned!
+## Granules found: 72
+
+## exploring
+granules 
+class(granules) # "list"
+granules <- py_to_r(granules) # Object to convert is not a Python object
 
 ## Next steps - 
 ## str(granules) %>% jsonlite::fromJSON() ## revisit, talk to Bri et al
