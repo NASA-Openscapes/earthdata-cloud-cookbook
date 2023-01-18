@@ -11,14 +11,11 @@ jobs:
         shell: bash -l {0}
     steps:
     - uses: actions/checkout@v2
-    - uses: conda-incubator/setup-miniconda@v2
+    - uses: mamba-org/provision-with-micromamba@v14
       with:
-        python-version: 3.8
-        channels: conda-forge
-        mamba-version: "*"
-        activate-environment: quarto-import
-        environment-file: _import/environment.yml
-
+        extra-specs: |
+          python=3.10
+            
     - name: "Import external notebooks"
       working-directory: ./_import
       run: |
