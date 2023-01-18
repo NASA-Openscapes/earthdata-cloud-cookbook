@@ -15,8 +15,8 @@ jobs:
       with:
         miniforge-variant: Mambaforge
         python-version: "3.10"
-         activate-environment: <NAME IN ENVIRONMENT.YML>
-         environment-file: environment.yml
+        activate-environment: <NAME IN ENVIRONMENT.YML>
+        environment-file: environment.yml
             
     - name: "Import external notebooks"
       working-directory: ./_import
