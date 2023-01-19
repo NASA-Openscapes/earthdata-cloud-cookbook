@@ -45,7 +45,7 @@ granules
 
 ## R
 
-To find data in R, we'll also use the `earthaccess` python package - we can do so from R using the [`reticulate`](https://rstudio.github.io/reticulate/) package ([cheatsheet](https://www.rstudio.com/resources/cheatsheets/)). Note below that we import the python library as an R object we name `earthaccess`, as well as the `earthaccess$` syntax for accessing functions from the `earthaccess` library.
+To find data in R, we'll also use the `earthaccess` python package - we can do so from R using the [`reticulate`](https://rstudio.github.io/reticulate/) package ([cheatsheet](https://www.rstudio.com/resources/cheatsheets/)). Note below that we import the python library as an R object we name `earthaccess`, as well as the `earthaccess$` syntax for accessing functions from the `earthaccess` library. The `granules` object has a list of JSON dictionaries with some extra dictionaries. 
 
 ```{r, filename="[R code]"}
 #| message: false
@@ -57,21 +57,20 @@ library(reticulate) # install.packages("reticulate")
 ## load python library
 earthaccess <- reticulate::import("earthaccess") 
 
-# Then we use earthaccess to build a Query with spatiotemporal parameters # https://nsidc.github.io/earthaccess/tutorials/search-granules/
+# use earthaccess to access data # https://nsidc.github.io/earthaccess/tutorials/search-granules/
 granules <- earthaccess$search_data(
   concept_id = "C2036880672-POCLOUD",
-  temporal = reticulate::tuple("2017-01", "2018-01") # with an earthaccess update, this can be simply c() or list()
+  temporal = reticulate::tuple("2017-01", "2017-02") # with an earthaccess update, this can be simply c() or list()
 )
 
 ## Granules found: 72
 
 ## exploring
-granules 
-class(granules) # "list"
-granules <- py_to_r(granules) # Object to convert is not a Python object
+granules # this is the result of the get request. 
 
-## Next steps - 
-## str(granules) %>% jsonlite::fromJSON() ## revisit, talk to Bri et al
+class(granules) # "list"
+## granules <- reticulate::py_to_r(granules) # Object to convert is not a Python object
+
 ```
 
 ## Matlab
