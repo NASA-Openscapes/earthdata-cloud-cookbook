@@ -2,7 +2,6 @@
 title: "Access NetCDF-4/HDF5 Data "
 execute:
   eval: false
-  echo: fenced
 ---
 
 ## Introduction
@@ -20,17 +19,17 @@ We will access land ice height from ATLAS/ICESat-2 V005 (10.5067/ATLAS/ATL06.005
 
 We will access a single HDF5 file from inside the AWS cloud (us-west-2 region, specifically) and load it into Python as an `xarray` `dataset`. This approach leverages S3 native protocols for efficient access to the data.
 
-In Python we can use the [`earthdata`](https://earthdata.readthedocs.io/en/latest/) library (to be renamed `earthaccess` very soon!)
+In Python we can use the [`earthaccess`](https://nsidc.github.io/earthaccess/) library.
 
 To install the package we'll run this code from the command line. Note: you can run shell code directly from a Jupyter Notebook cell by adding a `!`: `!conda install`.
 
-```{bash}
+```{bash, filename="[command line code]"}
 # Install earthdata
 conda install -c conda-forge earthdata
 ```
 
 
-```{python}
+```{python, filename="[python]"}
 ## Import earthdata
 from earthdata import Auth, Store, DataGranules, DataCollections
 import xarray as xr
