@@ -60,7 +60,7 @@ results = earthaccess.search_data(short_name="ATL06",
 s3_url = results[0].data_links(access="direct")
 print(s3_url)
 
-#Use xarray to load the data for a single group in the HDF5 file, in this case land ice segments:
+#Use xarray to load the data as a multifile dataset for a single group in the HDF5 file, in this case land ice segments:
 ds = xr.open_mfdataset(earthaccess.open(results), group='/gt1l/land_ice_segments')
 ds
 ```
