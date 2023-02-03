@@ -1,70 +1,70 @@
 ---
-title: "Access NetCDF-4/HDF5 Data "
+title: "Direct Cloud Access"
 execute:
   eval: false
 ---
 
 ## Introduction
 
-We can access HDF5 or NetCDF-4 data directly from NASA Earthdata Cloud using the following code.
+We can access data directly from NASA Earthdata Cloud using the following code. 
+
+Note that NASA cloud-hosted data is in Amazon Web Services (AWS) Region `us-west-2`. Your compute instance must also be in `us-west-2` in order for the following code to run successfully.
 
 ## Code
 
-Here are our recommended approaches for accessing NetCDF-4/HDF5 data in NASA Earthdata Cloud with code.
+Here are our recommended approaches for accessing data in NASA Earthdata Cloud with code.
 
 ::: {.panel-tabset group="language"}
 ## Python
 
-We will access land ice height from ATLAS/ICESat-2 V005 (10.5067/ATLAS/ATL06.005). The data are provided as HDF5 granules (files) that span about 1/14th of an orbit.
+Install the [earthaccess]("https://github.com/nsidc/earthaccess") package:
 
-We will access a single HDF5 file from inside the AWS cloud (us-west-2 region, specifically) and load it into Python as an `xarray` `dataset`. This approach leverages S3 native protocols for efficient access to the data.
-
-In Python we can use the [`earthaccess`](https://nsidc.github.io/earthaccess/) library.
-
-To install the package we'll run this code from the command line. Note: you can run shell code directly from a Jupyter Notebook cell by adding a `!`: `!conda install`.
-
-```{bash, filename="[command line code]"}
-# Install earthdata
-conda install -c conda-forge earthdata
+```{python}
+# Install earthaccess
+conda install -c conda-forge earthaccess
 ```
 
+Import packages: 
 
-```{python, filename="[python]"}
-## Import earthdata
-from earthdata import Auth, Store, DataGranules, DataCollections
+```{python}
+## Import earthaccess
+import earthaccess
 import xarray as xr
 ```
 
 ### Earthdata Login Authentication
 
-An Earthdata Login account is required to access data from the NASA Earthdata system. Thus, to access NASA data, you need Earthdata Login. Please visit https://urs.earthdata.nasa.gov to register and manage your Earthdata Login account. This account is free to create and only takes a moment to set up.
-
-We will authenticate below using a netrc file. See the (TBD) appendix for more information on netrc setup.
+We will authenticate below using a netrc file. See the [appendix]("https://nasa-openscapes.github.io/earthdata-cloud-cookbook/appendix/authentication.html") for more information on [Earthdata Login]("https://urs.earthdata.nasa.gov/") and netrc setup.
 
 ```{python}
-auth = Auth().login(strategy="netrc")
+auth = earthaccess.login(strategy="netrc")
 # are we authenticated?
 if not auth.authenticated:
     # ask for credentials and persist them in a .netrc file
     auth.login(strategy="interactive", persist=True)
-
-# The Store class will let us download data from NASA directly
-store = Store(auth)
 ```
 
 ### Working with the URLs directly
-If we choose, we can use `earthaccess` to grab the file's URLs and then access them with another library. Getting the links to our data is quiet simple with the `data_links()` method on each of the results. See the previous Find Data How-To for more information on how to discover datasets of interest. 
+We can use `earthaccess` to grab the file URLs and then access them with the `xarray` library. See the previous [Find Data]("https://nasa-openscapes.github.io/earthdata-cloud-cookbook/how-tos/find-data/") How-To guide for more information on how to discover datasets of interest. 
 
 
 ```{python}
-# Searching over western Greenland coast over two weeks in July 2022
-granules = DataGranules().concept_id("C2153572614-NSIDC_CPRD").temporal("2022-07-17","2022-07-31").bounding_box(-51.96423,68.10554,-48.71969,70.70529).get()
-print(len(granules))
-s3_url = granules[0].data_links(access="direct")
-ds = xr.open_dataset(store.open(s3_url))
+#Access land ice height from ATLAS/ICESat-2 V005 (10.5067/ATLAS/ATL06.005), searching for data over western Greenland coast over two weeks in July 2022. The data are provided as HDF5 granules (files) that span about 1/14th of an orbit.
+
+results = earthaccess.search_data(short_name="ATL06",
+                                  version="005",
+                                  cloud_hosted=True,
+                                  temporal = ("2022-07-17","2022-07-31"),
+                                  bounding_box = (-51.96423,68.10554,-48.71969,70.70529))
+
+s3_url = results[0].data_links(access="direct")
+print(s3_url)
+
+#Use xarray to load the data for a single group in the HDF5 file, in this case land ice segments:
+ds = xr.open_mfdataset(earthaccess.open(results), group='/gt1l/land_ice_segments')
 ds
 ```
-### TODO: This produces the following error: "Credentials for the cloud provider None are not available" - need to fix this!
+
 
 ## R
 
