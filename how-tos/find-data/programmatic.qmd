@@ -26,19 +26,24 @@ To install the package we'll run this code from the command line. Note: you can 
 conda install -c conda-forge earthaccess
 ```
 
-This example searches for data from POCLOUD
+This example searches for data from the [Land Processes DAAC](https://lpdaac.usgs.gov/) with a spatial bounding box and temporal range. 
 
-```{python, import-earthaccess, filename="[python code]"}
-## Import earthaccess
-import earthaccess
+```{python}
+## Import packages
+from earthdata import DataGranules, DataCollections
+from pprint import pprint 
 
-## Access data 
-granules = earthaccess.search_data(
-  concept_id = "C2036880672-POCLOUD",
-  temporal = ("2017-01", "2018-01") # this () syntax means it's a tuple
-)
-## Granules found: 72 
 
+# We'll get 4 collections that match with our keyword of interest
+collections = DataCollections().keyword("REFLECTANCE").cloud_hosted(True).get(4)
+
+# Let's print 2 collections
+for collection in collections[0:2]:
+    print(pprint(collection.summary()) , collection.abstract(), "\n")
+    
+#Search for files from the second dataset result over a small plot in Nebraska, USA for two weeks in September 2022
+granules = DataGranules().concept_id("C2021957657-LPCLOUD").temporal("2022-09-10","2022-09-24").bounding_box(-101.67271,41.04754,-101.65344,41.06213)
+print(len(granules))
 granules
 ```
 

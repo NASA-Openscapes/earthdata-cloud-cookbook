@@ -45,25 +45,25 @@ website:
                 href: how-tos/find-data/earthdata_search.md
               - text: "Programmatic Search" 
                 href: how-tos/find-data/programmatic.qmd                
+          - section: how-tos/working-with-data-in-cloud/index.md
+            contents:
+              - text: "Direct Cloud Access"
+                href: how-tos/working-with-data-in-cloud/Direct-Cloud-Access.qmd
+              - text: "Access Data behind a EULA" 
+                href: how-tos/working-with-data-in-cloud/Access-EULA-Data.qmd
+          - section: how-tos/working-locally/index.md
+            contents:
+              - text: "Download Data"
+                href: how-tos/working-locally/download.qmd
           - section: how-tos/transform/index.md
             contents: 
-              - how-tos/transform/subset.md
-              - how-tos/transform/reformat.md
+              - text: "How do I download a subset of NetCDF-4?" 
+                href: how-tos/transform/subset.md
+              - text: "How do I convert to Zarr to work with Cloud Optimized Data?"  
+                href: how-tos/transform/reformat.md
               - how-tos/transform/reproject.md
               - how-tos/transform/aggregate.ipynb
-          - section: how-tos/access/index.md
-            contents:
-              - text: "COG HTTPS" 
-                href: how-tos/access/Earthdata_Cloud__Single_File__HTTPS_Access_COG_Example.qmd
-              - text: "COG Direct S3" 
-                href: how-tos/access/Earthdata_Cloud__Single_File__Direct_S3_Access_COG_Example.ipynb
-              - text: "COG Direct S3 - Multi-file"
-                href: how-tos/access/Multi-File_Direct_S3_Access_COG_Example.ipynb
-              - text: "NetCDF4/HDF5 Direct S3"
-                href: how-tos/access/Earthdata_Cloud__Single_File__Direct_S3_Access_NetCDF4_Example.ipynb
-              - text: "NetCDF4/HDF5 Direct S3 - Multi-file"
-                href: how-tos/access/Multi-File_Direct_S3_Access_NetCDF_Example.ipynb
-          - how-tos/download.qmd
+          - section: how-tos/plot/index.md
           - how-tos/tech-setup.qmd
       - section: tutorials/index.qmd
         contents:
@@ -85,7 +85,7 @@ website:
           - href: examples/USGS_Landsat/Landsat_C2_Search_Access.ipynb
             text: "Search & Access USGS Landsat Cloud"  
           - text: "OPeNDAP" 
-            href: how-tos/access/Earthdata_Cloud__Data_Access_OPeNDAP_Example.ipynb
+            href: how-tos/working-with-data-in-cloud/Earthdata_Cloud__Data_Access_OPeNDAP_Example.ipynb
           - examples/ORNL/Data_Access__Direct_S3_Access__ORNL_DAYMET.ipynb
           - external/cof-zarr-reformat.ipynb
           - external/zarr-eosdis-store.ipynb

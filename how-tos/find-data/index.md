@@ -2,4 +2,7 @@
 title: Find Data
 ---
 
-There are several ways to find data; here we'll show with Earthdata Search and also programmatically. 
+The following How-to's are included in this section:
+
+* How to find data using Earthdata Search
+* How to find data programatically
