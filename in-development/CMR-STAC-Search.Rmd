@@ -1,0 +1,461 @@
+---
+title: "Getting Started with NASA's CMR-STAC API in R"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(comment = NA)
+```
+
+------------------------------------------------------------------------
+
+**This tutorial demonstrates how to interact with CMR-STAC in R.**
+
+This tutorial will teach you how to navigate and explore NASA's Common Metadata 
+Repository (CMR) SpatioTemporal Asset Catalog (STAC) to learn about the datasets 
+available through LP DAAC Cumulus cloud archive.
+
+------------------------------------------------------------------------
+
+### Topics Covered in this Tutorial
+
+1.  **Introduction to STAC and the CMR-STAC API**  
+  1a. What is STAC?  
+  1b. What is the CMR-STAC API?  
+2.  **Get started with CMR-STAC**  
+  2a. CMR-STAC API  
+  2b. STAC Catalog  
+  2c. STAC Collection  
+  2d. STAC Item  
+  2e. Assets  
+3.  **CMR-STAC Search**  
+  3a. Define Search Parameters  
+  3b. Search for Items
+
+------------------------------------------------------------------------
+
+### Prerequisites:
+
+-  R and RStudio are required to execute this tutorial. Installation details can
+   be found [here](https://www.rstudio.com/products/rstudio/download/#download).   
+
+-  This tutorial has been tested on Windows using R Version 4.1.0 and RStudio 
+   version 1.4.1717. 
+
+------------------------------------------------------------------------
+
+### Procedures:
+
+#### Getting Started:
+
+  - [Clone](ssh://git@git.earthdata.nasa.gov:7999/lpdur/hls_tutorial_r.git) or [download](https://git.earthdata.nasa.gov/rest/api/latest/projects/LPDUR/repos/hls_tutorial_r/archive?format=zip) 
+HLS_Tutorial_R Repository from the LP DAAC Data User Resources Repository.
+
+  - When you open this Rmarkdown notebook in RStudio, you can click the little green "Play" button in each grey code chunk to execute the code. The result can be printed either in the R Console or inline in the RMarkdown notebook, depending on your RStudio preferences. 
+
+#### Environment Setup:
+
+#### 1. Check the version of R by typing `version` into the console and RStudio by typing `RStudio.Version()` into the console and update them if needed.
+
+-   Windows
+
+    -   Install and load installr:
+
+        -   `install.packages("installr");library(installr)`
+
+    -   Copy/Update the existing packages to the new R installation:
+
+        -   `updateR()`
+
+    -   Open RStudio, go to Help \> Check for Updates to install newer version of RStudio (if available).
+
+-   Mac
+
+    -   Go to <https://cloud.r-project.org/bin/macosx/>.
+    -   Download the latest release (R-4.0.1.pkg) and finish the installation.
+    -   Open RStudio, go to Help \> Check for Updates to install newer version of RStudio (if available).
+    -   To update packages, go to Tools \> Check for Package Updates. If updates are available, select All, and click Install Updates.
+
+#### 2. Required packages
+
+-   **Required packages:**
+
+    -   `httr`
+    -   `jsonlite`
+    -   `purrr`
+    -   `DT`
+    -   `dplyr`
+    -   `magrittr`
+    -   `xml2`
+
+Run the cell below to identify any missing packages to install, and then load 
+all of the required packages.
+
+```{r, warning = FALSE, message = FALSE}
+packages <- c('httr','purrr','jsonlite','DT','magrittr', 'xml2', 'dplyr')
+new.packages <- packages[!(packages %in% installed.packages()[,"Package"])]
+if(length(new.packages)) install.packages(new.packages, repos='http://cran.rstudio.com/') else print('All required packages are installed.')
+invisible(lapply(packages, library, character.only = TRUE))
+```
+
+------------------------------------------------------------------------
+
+# 1. Introduction to STAC and the CMR-STAC API
+
+## 1a. What is STAC?
+
+STAC is short for [Spatiotemporal Asset Catalog](http://stacspec.org/), a series
+of specifications that provide a common language for interpreting geospatial 
+information in order to standardize indexing and discovery of `spatiotemporal assets` 
+(files containing information about the Earth across space and time).
+
+There are four specifications that work both independently and together:
+
+1)  [STAC Catalog](https://github.com/radiantearth/stac-spec/blob/master/catalog-spec/catalog-spec.md)
+2)  [STAC Collection](https://github.com/radiantearth/stac-spec/blob/master/collection-spec/collection-spec.md)
+3)  [STAC Item](https://github.com/radiantearth/stac-spec/blob/master/item-spec/item-spec.md)  
+4)  [STAC API](https://github.com/radiantearth/stac-api-spec) specification 
+builds on top of the three core specifications mentioned above. All these 
+specifications are intended to be used together, yet are designed in a way that
+each piece is small, self-contained, and reusable in other contexts.
+
+------------------------------------------------------------------------
+
+## 1b. What is the CMR-STAC API?
+
+The Common Metadata Repository (CMR) is a metadata system that catalogs Earth 
+Science data and associated metadata records. NASA's CMR-STAC Application 
+Programming Interface (API) is a translation API for STAC users who want to 
+access and search through CMR's vast metadata holdings using STAC keywords.
+
+------------------------------------------------------------------------
+
+# 2. Get started with CMR-STAC
+
+## 2a. CMR-STAC API
+
+The CMR-STAC API contains endpoints that enable the querying of STAC items.
+
+Assign the CMR-STAC URL to a static variable.
+
+```{r}
+CMR_STAC_URL <- 'https://cmr.earthdata.nasa.gov/stac/'
+```
+
+Connect to the CMR-STAC landing page which contains all the available data 
+providers and their STAC endpoint. In this tutorial, the `httr` package is used 
+to navigate CMR-STAC API.
+
+```{r}
+cmr_cat <- httr::GET(CMR_STAC_URL) %>%          # Request and retrieve the info from CMR-STAC URL
+  httr::content()         
+cat('You are using',cmr_cat$title,'version',cmr_cat$stac_version,".", cmr_cat$description,sep=" ")
+```
+
+Here, `jsonlite` is used to change the format of the content returned from our 
+request and the `DT` package is used to make the returned information more readable. 
+The providers' names and URL links are found in the `title` and 'href' fields respectively.
+
+```{r}
+cmr_cat_links <- cmr_cat$links %>% 
+  jsonlite::toJSON(auto_unbox = TRUE) %>% 
+  jsonlite::fromJSON() %>% 
+  as.data.frame()
+DT::datatable(cmr_cat_links)
+```
+
+The data frame above shows all the data providers with their associated STAC 
+catalog endpoints. You will notice above that the CMR-STAC API contains many 
+different endpoints--not just from NASA LP DAAC, but also contains endpoints 
+for other NASA ESDIS DAACs. Use the `title` field to identify the data provider 
+you are interested in. The data product used in this tutorial is hosted in the 
+LP DAAC Cumulus Cloud space (LPCLOUD).
+
+Assign `LPCLOUD` to the `provider` variable and get this provider's endpoint 
+from the CMR catalog using the URL in `Link` field.
+
+```{r}
+provider <- 'LPCLOUD'
+lpcloud_cat_link <- cmr_cat_links[which(cmr_cat_links$title == provider), 'href']
+lpcloud_cat_link
+```
+
+------------------------------------------------------------------------
+
+## 2b. STAC Catalog
+
+STAC Catalog Contains a JSON file of links that organize all the available 
+collections. Below, connect to the LPCLOUD STAC Catalog endpoint using `httr` 
+package and print the information contained in the Catalog. 
+
+```{r}
+lpcloud_cat <- httr::GET(lpcloud_cat_link) %>% 
+  httr::content()
+
+lpcloud_cat <- lpcloud_cat %>% 
+  jsonlite::toJSON(auto_unbox = TRUE) %>% 
+  jsonlite::fromJSON() 
+
+DT::datatable(lpcloud_cat$links)
+```
+
+LPCLOUD STAC catalog includes URL links to the root, collections, search, and 
+child STAC Catalogs. The data frame above also shows the available collections 
+in the LPCLOUD catalog.
+
+------------------------------------------------------------------------
+
+## 2c. STAC Collection
+
+STAC Collection is extension of STAC Catalog containing additional information 
+that describe the STAC Items in that Collection.
+
+Get the URL link to the STAC Collections. 
+
+```{r}
+lpcloud_col_link <- lpcloud_cat$links[which(lpcloud_cat$links$rel == 'collections'),'href']
+lpcloud_col_link
+```
+
+Next, get the content describing the collections within LPCLOUD Catalog. 
+Important information such as data collection ID, title, description, and 
+links to collection endpoints are provided here. 
+
+```{r, attr.output='style="max-height: 300px;"'}
+lpcloud_collection <- httr::GET(lpcloud_col_link) %>% 
+  httr::content() 
+
+lpcloud_collection <- lpcloud_collection %>% 
+  jsonlite::toJSON(auto_unbox = TRUE, pretty = TRUE)
+```
+
+Print the collections within LPCLOUD STAC catalog. 
+
+```{r}
+lpcloud_collection_df <- jsonlite::fromJSON(lpcloud_collection)$collections
+lpcloud_collection_df$id
+```
+
+In CMR, Collection ID is used to query by a specific product, so be sure to 
+save the ID for a collection you are interested in. For instance, the Collection 
+ID for ASTER Global Digital Elevation Model V003 is `ASTGTM.v003`. Note that the 
+"id" shortname is in the format: productshortname.vVVV (where VVV = product version).
+
+Here, get the URL link to the `ASTGTM.v003` STAC Collection. If you are 
+interested in querying a different LPCLOUD product, swap out the shortname to 
+assign to the `collection` variable below.
+
+```{r}
+collection <- 'ASTGTM.v003'    # USER INPUT
+col_links <- lpcloud_collection_df$links[which(lpcloud_collection_df$id == collection)] %>% 
+  as.data.frame()
+
+astgtm_URL <- col_links[which(col_links$rel == 'self'), 'href']
+astgtm_URL
+```
+
+The STAC Collection metadata for any collection contains metadata and information 
+that is applicable to every STAC Item and asset(s) that it contains. Get the content 
+of the ASTGTM.v003 collection URL and print the collection description.
+
+```{r, attr.output='style="max-height: 200px;"'}
+astgtm_collection <- httr::GET(astgtm_URL) %>% 
+  httr::content()
+
+astgtm_collection <- astgtm_collection %>% 
+  jsonlite::toJSON(auto_unbox = TRUE) %>% 
+  jsonlite::fromJSON()
+
+cat(astgtm_collection$description)
+```
+
+We can also get the spatial and temporal extent information. Below, we can see 
+this collection has a global spatial extent. ASTER GDEM is a single, static 
+dataset that incorporates observation from March 2000 to November 2013.
+
+```{r}
+astgtm_collection$extent %>% 
+  jsonlite::toJSON(auto_unbox = TRUE)
+```
+
+STAC collection also includes useful links. You can visit all the items within 
+this collection using the `Items` URL.
+
+```{r}
+DT::datatable(astgtm_collection$links)
+```
+
+Get the URL to the ASTGTM.v003 Items.
+
+```{r}
+items_url <- astgtm_collection$links [which(astgtm_collection$links$rel == 'items'), 'href']
+items_url
+```
+
+------------------------------------------------------------------------
+
+## 2d. STAC Item
+
+STAC Item represents data and metadata assets that are spatiotemporally coincident. 
+Below, query the STAC Items within the `ASTGTM.v003` STAC Collection and print the 
+first item in the collection.
+
+```{r, attr.output='style="max-height: 300px;"'}
+astgtm_items <- httr::GET(items_url) %>% 
+  httr::content(as = "text") %>%  
+  jsonlite::fromJSON()
+
+F1 <- astgtm_items$features[1,] %>% 
+  jsonlite::toJSON(auto_unbox = TRUE, pretty = TRUE)
+F1
+```
+
+Notice that the number of items matching our request is far more than what is returned.
+
+```{r}
+cat(astgtm_items$context$matched, 'items matched your request but', astgtm_items$context$returned, 'items are returned.')
+```
+
+This is because the return is paginated. The STAC API, by default, returns the 
+first 10 records. To explore more items, you can add `?page=n` (in which `n` is 
+the page number (i.e. ?page=2)) to the URL link and submit another request.
+Below, request a query to return records on the second page. 
+
+```{r, attr.output='style="max-height: 300px;"'}
+page_2_url <- paste0(items_url, '?page=2')
+
+astgtm_page2_items <- httr::GET(page_2_url) %>% 
+  httr::content(as = "text") %>%  
+  jsonlite::fromJSON()
+
+astgtm_page2_items$features[1,] %>% 
+  jsonlite::toJSON(auto_unbox = TRUE, pretty = TRUE)
+```
+
+------------------------------------------------------------------------
+
+## 2e. Assets
+
+The STAC Item ID (CMR Granule ID) is the unique identifier assigned to each granule 
+within a data collection. Within each STAC Item are assets, which include the 
+downloadable and streamable URL to data files along with other asset objects. Below, the first Granule 
+ID is used to get the downloadable data file.
+
+```{r, attr.output='style="max-height: 200px;"'}
+items_df <- jsonlite::fromJSON(F1) 
+item <- items_df$assets            # Get the assets for the first Item
+assets <- purrr::map_df(items_df$assets, data.frame, .id = 'asset')
+assets
+```
+
+The links found in the `href` field can be used to download each specific asset.
+
+------------------------------------------------------------------------
+
+# 3. CMR-STAC Search
+
+In the previous section, we learned how to navigate and explore the STAC Catalog.
+In this section, we are utilizing CMR-STAC Search endpoint to query items and 
+associated assets faster and in a more precise way. With the CMR-STAC Search endpoint, 
+we can specify the collection(s), the area of interest, the time period of interest, 
+as well as other parameters to identify the STAC Items that meet our criteria. Visit [here](https://github.com/radiantearth/stac-api-spec/tree/master/item-search#query-parameters-and-fields) 
+for more information on search query parameters.
+
+Use the following code to find the link from within the LPCLOUD catalog.
+
+```{r}
+lpcloud_search_URL <- lpcloud_cat$links[which(lpcloud_cat$links$rel == 'search'),'href']
+lpcloud_search_URL
+```
+
+------------------------------------------------------------------------
+
+## 3a. Define Search Parameters
+
+Next, define the search parameters.
+- Query by collection: Collection IDs should be defined as a list.
+- Spatial Querying via Bounding Box: A bounding box including the coordinates 
+of LL (lower left) and UR (upper right) respectively.
+- Temporal Querying: Time period of interest should be specified as 
+`YYYY-MM-DDTHH:MM:SSZ/YYYY-MM-DDTHH:MM:SSZ`.
+
+```{r}
+collections <- list('ASTGTM.v003')
+datetime <- '2000-01-01T00:00:00Z/2001-01-31T23:59:59Z'   #YYYY-MM-DDTHH:MM:SSZ/YYYY-MM-DDTHH:MM:SSZ
+bbox <- '-122.0622682571411,39.897234301806,-122.04918980598451,39.91309383703065' # LL and UR Coordinates
+```
+
+Create search body object from our search parameters.
+
+```{r}
+body <- list(limit=100,
+             datetime=datetime,
+             bbox= bbox,
+             collections= collections)
+```
+
+Notice the `limit` parameter in the `body` object. This parameter allows us to 
+adjust the number of records returned during a request (default = 10).
+
+------------------------------------------------------------------------
+
+## 3b. Search for Items
+
+Next, submit a query to STAC Search endpoint using a POST request.
+
+```{r}
+search_req <- httr::POST(lpcloud_search_URL[1], body = body, encode = "json") %>% 
+  httr::content(as = "text") %>%  
+  jsonlite::fromJSON()
+
+names(search_req)
+```
+
+Let's see how many STAC Items, or granules, intersect with our search parameters.
+
+```{r}
+cat("The number of STAC Items matched your query is ", search_req$numberMatched, 'and ',  search_req$numberReturned, 'Items are returned.')
+```
+
+Next, create a data frame with the returned information, including granule ID, 
+datetime properties, and the downloadable URL links to the assets.  
+
+```{r, attr.output='style="max-height: 200px;"'}
+granule_list <- list()
+
+n <- 1
+for(row in row.names(search_req$features)){
+  f <- search_req$features[row,]
+  for (b in f$assets){
+    df <- data.frame(Collection = f$collection,
+                     Granule_ID = f$id,
+                     Datetime = f$properties$datetime,
+                     Asset_Link = b$href, stringsAsFactors=FALSE)
+    granule_list[[n]] <- df
+    n <- n + 1
+  }
+}
+
+search_df <- do.call(rbind, granule_list)
+DT::datatable(search_df)
+```
+
+The CMR-STAC Search endpoint allows user to quickly search for STAC Items that 
+meet their specific spatial, temporal, and data product requirements. Now that 
+you learned how to navigate and explore the CMR-STAC catalog, check out the [`HLS_tutorial`](https://git.earthdata.nasa.gov/projects/LPDUR/repos/hls_tutorial_r/raw/HLS_Tutorial.html?at=refs%2Fheads%2Fmain) to learn how to interact with HLS data specifically. 
+
+------------------------------------------------------------------------
+
+### Contact Information
+
+  **Material written by Mahsa Jami^1^ and Aaron Friesz^1^**  
+  Contact: [LPDAAC\@usgs.gov](mailto:LPDAAC@usgs.gov){.email}  
+  Voice: +1-866-573-3222  
+  Organization: Land Processes Distributed Active Archive Center (LP DAAC)  
+  Website: <https://lpdaac.usgs.gov/>\                   
+  Date last modified: 09-13-2021                
+  
+  ^1^ KBR, Inc., contractor to the U.S. Geological Survey, Earth Resources Observation and Science (EROS) Center, 
+  Sioux Falls, South Dakota, USA. Work performed under USGS contract G0121D0001 for LP DAAC^2^.
+  
+  ^2^ LP DAAC Work performed under NASA contract NNG14HH33I.

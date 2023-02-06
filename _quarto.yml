@@ -35,8 +35,8 @@ website:
       - text: "Welcome"
         href: index.qmd
       - our-cookbook.qmd  
-      - text: "Cheatsheets & Guides" 
-        href: cheatsheet.qmd      
+      - text: "Cheatsheets & Slides" 
+        href: cheatsheets.qmd      
       - section: how-tos/index.qmd
         contents: 
           - section: how-tos/find-data/index.md
@@ -67,7 +67,8 @@ website:
           - how-tos/tech-setup.qmd
       - section: tutorials/index.qmd
         contents:
-          - tutorials/04_On-Prem_Cloud.ipynb
+          - href: tutorials/earthaccess-demo.ipynb
+            text: "`earthaccess` Python library"
       # - section: "Getting Started"
       #   contents:
        #   - get-started/index.md
@@ -75,8 +76,6 @@ website:
          # - get-started/api-primer.qmd
       - section: in-development/index.qmd
         contents:
-          - href: examples/earthdata-access-demo.ipynb
-            text: "Earthdata Access (Python Library)"
           - href: examples/NSIDC/ICESat2-CMR-OnPrem-vs-Cloud.ipynb
             text: "Search & Download NSIDC Cloud"
           - href: examples/NSIDC/ICESat2-CMR-AWS-S3.ipynb
@@ -97,6 +96,8 @@ website:
               - examples/PODAAC/PODAAC_ECCO_SSH__Kerchunk.ipynb
           - href: in-development/matlab.qmd
             text: "Matlab & AWS"
+          - href: in-development/CMR-STAC-Search.Rmd
+            text: "CMR STAC in R"  
           - href: in-development/earthdata-python-r-handoff.qmd  
       - section: contributing/index.qmd
         contents: 
@@ -105,6 +106,9 @@ website:
           - contributing/workflow.qmd
           - contributing/resources.md
           - contributing/quarto-website-tutorial.md
+      - section: appendix/index.md
+        contents:
+          - appendix/authentication.qmd
       - troubleshooting.md
 
 format:

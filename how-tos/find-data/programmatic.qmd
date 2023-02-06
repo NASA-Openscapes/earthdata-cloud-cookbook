@@ -2,7 +2,8 @@
 title: "Find Data: Programmatic Search"
 execute:
   eval: false
-  echo: fenced
+editor_options: 
+  chunk_output_type: console
 ---
 
 ## Introduction
@@ -16,13 +17,13 @@ Here are our recommended approaches for finding data with code.
 ::: {.panel-tabset group="language"}
 ## Python
 
-In Python we can use the [`earthdata`](https://earthdata.readthedocs.io/en/latest/) library (to be renamed `earthaccess` very soon!)
+In Python we can use the [`earthaccess`](https://nsidc.github.io/earthaccess/) library (renamed, previously `earthdata`)
 
-To install the package we'll run this code from the command line. Note: you can run shell code directly from a Jupyter Notebook cell by adding a `!`: `!conda install`.
+To install the package we'll run this code from the command line. Note: you can run shell code directly from a Jupyter Notebook cell by adding a `!`, so it would be `!conda install`.
 
-```{bash}
-# Install earthdata
-conda install -c conda-forge earthdata
+```{bash, filename="[command line code]"}
+# Install earthaccess
+conda install -c conda-forge earthaccess
 ```
 
 This example searches for data from the [Land Processes DAAC](https://lpdaac.usgs.gov/) with a spatial bounding box and temporal range. 
@@ -43,25 +44,45 @@ for collection in collections[0:2]:
 #Search for files from the second dataset result over a small plot in Nebraska, USA for two weeks in September 2022
 granules = DataGranules().concept_id("C2021957657-LPCLOUD").temporal("2022-09-10","2022-09-24").bounding_box(-101.67271,41.04754,-101.65344,41.06213)
 print(len(granules))
-
-# We get the metadata records from CMR
-granules = GranuleQuery.get()
+granules
 ```
 
 
 ## R
 
-R code coming soon!
+To find data in R, we'll also use the `earthaccess` python package - we can do so from R using the [`reticulate`](https://rstudio.github.io/reticulate/) package ([cheatsheet](https://www.rstudio.com/resources/cheatsheets/)). Note below that we import the python library as an R object we name `earthaccess`, as well as the `earthaccess$` syntax for accessing functions from the `earthaccess` library. The `granules` object has a list of JSON dictionaries with some extra dictionaries. 
 
-```{r}
-# Coming soon!
+```{r, filename="[R code]"}
+#| message: false
+
+## load R libraries
+library(tidyverse) # install.packages("tidyverse") 
+library(reticulate) # install.packages("reticulate")
+
+## load python library
+earthaccess <- reticulate::import("earthaccess") 
+
+# use earthaccess to access data # https://nsidc.github.io/earthaccess/tutorials/search-granules/
+granules <- earthaccess$search_data(
+  concept_id = "C2036880672-POCLOUD",
+  temporal = reticulate::tuple("2017-01", "2017-02") # with an earthaccess update, this can be simply c() or list()
+)
+
+## Granules found: 72
+
+## exploring
+granules # this is the result of the get request. 
+
+class(granules) # "list"
+## granules <- reticulate::py_to_r(granules) # Object to convert is not a Python object
+
 ```
 
 ## Matlab
 
 Matlab code coming soon!
 
-```{bash}
+```{bash, filename="[Matlab code]"}
 #| echo: true
 # Coming soon!
 ```
@@ -70,7 +91,7 @@ Matlab code coming soon!
 
 With `wget` and `curl`:
 
-```{bash}
+```{bash, filename="[command line code]"}
 # Coming soon!
 ```
 

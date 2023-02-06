@@ -71,10 +71,10 @@ Review the [2021 Cloud Hackathon instructions](https://nasa-openscapes.github.io
 
 ## Build Cookbook!
 
-We use [Quarto](https://quarto.org) to build ("serve") our Cookbook and publish it via GitHub. In the Terminal, your current directory should already be the cookbook (`cd earthdata-cloud-cookbook`). Type the following, which will open the Cookbook as a new tab in your browser:
+We use [Quarto](https://quarto.org) to build ("preview") our Cookbook and publish it via GitHub. In the Terminal, your current directory should already be the cookbook (`cd earthdata-cloud-cookbook`). Type the following, which will open the Cookbook as a new tab in your browser:
 
 ``` bash
-quarto serve
+quarto preview
 ```
 
 Background: Quarto is a new open-source scientific and technical publishing system. It makes collaborating to create technical documentation streamlined because we work in plain text documents that can have executable code (Python, R) and are rendered using Jupyter and Knitr engines. Explore [Quarto](https://quarto.org) and use it hands-on in our separate [Quarto Website Tutorial](https://openscapes.github.io/quarto-website-tutorial/). Quarto is already installed in our JupyterHub.
