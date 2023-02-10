@@ -13,7 +13,6 @@ that start "How do I... ?".
 
 _We need a page to explain terminology; collections, granules, ..._
 
-How do I use Harmony to subset a data granule?
 How do I use Harmony to reproject a data granule?
 
 How do I search the USGS Landsat Cloud?
@@ -21,7 +20,7 @@ How do I access data in the USGS Landsat Cloud?
 
 How do I find OpenDAP datasets?  
 How do I open an OpenDAP granule in the cloud?  Include Authentication?  
-How do I subset an OpenDAP granule in the cloud?  
+
 How do I open/access an OpenDap granule from my local machine?  
 
 How do I open a Zarr granule in the cloud?
