@@ -59,7 +59,7 @@ website:
             contents: 
               - text: "How do I download a subset of NetCDF-4?" 
                 href: how-tos/subset/subset.md
-          - section: how-tos/reformat/index.md
+          - section: "How do I reformat data granules?"
             contents:
               - text: "How do I convert a NetCDF file to Zarr"
                 href: how-tos/reformat/reformat.md
@@ -76,6 +76,7 @@ website:
               - text: "How do I plot a NetCDF variable?"
                 href: how-tos/plot/index.md
           - section: "How do I setup an AWS instance?"
+            contents:
               - text: "Place holder for AWS setup"
                 href: how-tos/tech-setup.qmd
           - how-tos/how_to_guide_parking_lot.md
