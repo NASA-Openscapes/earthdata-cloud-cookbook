@@ -1,4 +1,4 @@
-# How do I reproject and resample a data granule?
+# How do I reproject and resample a data file?
 
 - How do I reproject a data granule using Harmony?  
 - How do I reproject a netcdf4 file?  
