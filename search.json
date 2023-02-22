@@ -161,13 +161,6 @@
     "text": "How do I reproject and resample a data file?\n\nHow do I reproject a data granule using Harmony?\n\nHow do I reproject a netcdf4 file?\n\nHow do I reproject a GeoTIFF file?\nHow do I resample a data granule using Harmony?\nHow do I resample a netcdf4 file?\nHow do I resample a GeoTIFF file?"
   },
   {
-    "objectID": "how-tos/access/index.html",
-    "href": "how-tos/access/index.html",
-    "title": "Access",
-    "section": "",
-    "text": "Accessing NASA Earthdata in different formats.\nThis might be unnecessary"
-  },
-  {
     "objectID": "how-tos/tech-setup.html",
     "href": "how-tos/tech-setup.html",
     "title": "Tech Setup (AWS)",
@@ -179,7 +172,7 @@
     "href": "how-tos/working-locally/index.html",
     "title": "How do I access Cloud Data from my Local Machine?",
     "section": "",
-    "text": "The How-to guides in this section describe how to download data granules from Earthdata Cloud to your local machine.\nMay be just a single how to guide\n\nHow do I download data using the earthaccess library?\n\nComing soon: Introduction to the cloud data access landscape including data access options (HTTPS, S3) and data format considerations."
+    "text": "The How-to guides in this section describe how to download data granules from Earthdata Cloud to your local machine.\n\nHow do I download data using the earthaccess library?\nHow do I download data from an OPeNDAP server?\n\nComing soon: Introduction to the cloud data access landscape including data access options (HTTPS, S3) and data format considerations."
   },
   {
     "objectID": "how-tos/working-locally/download.html",
@@ -229,13 +222,6 @@
     "title": "Reformat",
     "section": "",
     "text": "Upcoming!"
-  },
-  {
-    "objectID": "how-tos/access.html",
-    "href": "how-tos/access.html",
-    "title": "Access",
-    "section": "",
-    "text": "coming soon\n\nearthdata python package authenticates with NASA Earthdata Login, enables you to query your preferred data granule (link to: what is a granule?), get metadata records, and stream or download your data!"
   },
   {
     "objectID": "how-tos/working-with-data-in-cloud/Direct-Cloud-Access.html",
@@ -382,7 +368,7 @@
     "href": "how-tos/how_to_guide_parking_lot.html",
     "title": "EarthData Cloud Cookbook",
     "section": "",
-    "text": "How-To Guides Parking Lot\nThis is a document to capture and organize How-To Guides that do not, yet, have a place in the Cookbook. I’ve pulled examples from the Hackday Google Doc\nNot all of these how-tos may be required. Some may be redundant. Some may be too complicated and could be broken into several How-Tos. Feel free to add comments, links, notes, etc under each suggested How-To. Also suggest changes to the wording. Following the Divio documentation guide, I’ve tried to name how-tos with descriptive names that start “How do I… ?”.\nWe need a page to explain terminology; collections, granules, …\nHow do I use Harmony to reproject a data granule?\nHow do I search the USGS Landsat Cloud? How do I access data in the USGS Landsat Cloud?\nHow do I find OpenDAP datasets?\nHow do I open an OpenDAP granule in the cloud? Include Authentication?\nHow do I open/access an OpenDap granule from my local machine?\nHow do I open a Zarr granule in the cloud? How do I open a COG (Cloud-Optimized-GeoTIFF) in the cloud?\nHow do I use Kerchunk to reformat granules? needs refining\nHow do I use CMR STAC to access data in the cloud?\nHow do I use Matlab in the cloud?\nHow do I add a python package to a 2i2c environment?"
+    "text": "How-To Guides Parking Lot\nThis is a document to capture and organize How-To Guides that do not, yet, have a place in the Cookbook. I’ve pulled examples from the Hackday Google Doc\nNot all of these how-tos may be required. Some may be redundant. Some may be too complicated and could be broken into several How-Tos. Feel free to add comments, links, notes, etc under each suggested How-To. Also suggest changes to the wording. Following the Divio documentation guide, I’ve tried to name how-tos with descriptive names that start “How do I… ?”.\nWe need a page to explain terminology; collections, granules, …\nHow do I use Harmony to reproject a data file?\nHow do I search the USGS Landsat Cloud? How do I access data in the USGS Landsat Cloud?\nHow do I find OpenDAP datasets?\nHow do I open an OpenDAP file in the cloud? Include Authentication?\nHow do I open/access an OpenDap file from my local machine?\nHow do I open a Zarr file in the cloud? How do I open a COG (Cloud-Optimized-GeoTIFF) in the cloud?\nHow do I use Kerchunk to reformat files? needs refining\nHow do I use CMR STAC to access data in the cloud?\nHow do I use Matlab in the cloud?\nHow do I add a python package to a 2i2c environment?\nHow do I reproduce a shared cloud environment on my local machines"
   },
   {
     "objectID": "how-tos/plot/index.html",
@@ -898,9 +884,9 @@
   {
     "objectID": "examples/index.html",
     "href": "examples/index.html",
-    "title": "Kerchunk Examples",
+    "title": "Example Workflows",
     "section": "",
-    "text": "Here are some examples for Kerchunk!"
+    "text": "This section contains end-to-end example workflows for processing and analyzing data in the cloud.\nE.g. Here are some examples for Kerchunk!"
   },
   {
     "objectID": "examples/PODAAC/PODAAC_ECCO_SSH__Kerchunk.html",
