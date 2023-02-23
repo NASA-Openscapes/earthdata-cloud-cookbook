@@ -41,9 +41,9 @@ website:
         contents: 
           - section: how-tos/find-data/index.md
             contents:
-              - text: "Earthdata Search"
+              - text: "How do I find data using Earthdata Search"
                 href: how-tos/find-data/earthdata_search.md
-              - text: "Programmatic Search" 
+              - text: "How do I find data using the command line or a notebook" 
                 href: how-tos/find-data/programmatic.qmd                
           - section: how-tos/working-with-data-in-cloud/index.md
             contents:
@@ -55,20 +55,39 @@ website:
             contents:
               - text: "Download Data"
                 href: how-tos/working-locally/download.qmd
-          - section: how-tos/transform/index.md
+          - section: how-tos/subset/index.md
             contents: 
               - text: "How do I download a subset of NetCDF-4?" 
-                href: how-tos/transform/subset.md
-              - text: "How do I convert to Zarr to work with Cloud Optimized Data?"  
-                href: how-tos/transform/reformat.md
-              - how-tos/transform/reproject.md
-              - how-tos/transform/aggregate.ipynb
-          - section: how-tos/plot/index.md
-          - how-tos/tech-setup.qmd
+                href: how-tos/subset/subset.md
+          - section: "How do I reformat data files?"
+            contents:
+              - text: "How do I convert a NetCDF file to Zarr"
+                href: how-tos/reformat/reformat.md
+          - section: how-tos/reproject_and_regrid/index.md
+            contents:
+              - text: "How do I reproject a data file using Harmony?"
+                href: how-tos/reproject_and_regrid/reproject.md
+          - section: "How do I aggregate data?"
+            contents:
+              - text: "How do I calculate a climatology?"
+                href: how-tos/aggregate/aggregate.ipynb
+          - section: "How do I plot data?"
+            contents:
+              - text: "How do I plot a NetCDF variable?"
+                href: how-tos/plot/index.md
+          - section: "How do I setup an AWS instance?"
+            contents:
+              - text: "Place holder for AWS setup"
+                href: how-tos/tech-setup.qmd
+          - how-tos/how_to_guide_parking_lot.md
       - section: tutorials/index.qmd
         contents:
           - href: tutorials/earthaccess-demo.ipynb
             text: "`earthaccess` Python library"
+      - section: examples/index.qmd
+        contents:
+          - text: "NSIDC examples"
+          - text: "PODAAC examples"
       # - section: "Getting Started"
       #   contents:
        #   - get-started/index.md
