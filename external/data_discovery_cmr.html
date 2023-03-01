@@ -1,0 +1,1383 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.335">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>EarthData Cloud Cookbook – data_discovery_cmr</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">NASA Earthdata Cloud Cookbook</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-center sidebar-header sidebar-header-stacked">
+      <a href="../index.html" class="sidebar-logo-link">
+      <img src="../images/nasa-openscapes.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">NASA Earthdata Cloud Cookbook</a> 
+        <div class="sidebar-tools-main tools-wide">
+    <a href="https://nasa-openscapes.github.io" title="NASA-Openscapes website" class="sidebar-tool px-1"><i class="bi bi-globe"></i></a>
+    <a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook" title="Earthdata Cloud Cookbook repo" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
+  <a href="" class="quarto-color-scheme-toggle sidebar-tool" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">Welcome</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../our-cookbook.html" class="sidebar-item-text sidebar-link">Our Cookbook</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../cheatsheets.html" class="sidebar-item-text sidebar-link">Cheatsheets &amp; Slides</a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../how-tos/index.html" class="sidebar-item-text sidebar-link">How To's</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../how-tos/find-data/index.html" class="sidebar-item-text sidebar-link">Find Data</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../how-tos/find-data/earthdata_search.html" class="sidebar-item-text sidebar-link">Earthdata Search</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../how-tos/find-data/programmatic.html" class="sidebar-item-text sidebar-link">Programmatic Search</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../how-tos/transform/index.html" class="sidebar-item-text sidebar-link">Transform</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../how-tos/transform/subset.html" class="sidebar-item-text sidebar-link">Subset</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../how-tos/transform/reformat.html" class="sidebar-item-text sidebar-link">Reformat</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../how-tos/transform/reproject.html" class="sidebar-item-text sidebar-link">Reproject</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../how-tos/transform/aggregate.html" class="sidebar-item-text sidebar-link">Aggregate</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../how-tos/access/index.html" class="sidebar-item-text sidebar-link">Access</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../how-tos/access/Earthdata_Cloud__Single_File__HTTPS_Access_COG_Example.html" class="sidebar-item-text sidebar-link">COG HTTPS</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../how-tos/access/Earthdata_Cloud__Single_File__Direct_S3_Access_COG_Example.html" class="sidebar-item-text sidebar-link">COG Direct S3</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../how-tos/access/Multi-File_Direct_S3_Access_COG_Example.html" class="sidebar-item-text sidebar-link">COG Direct S3 - Multi-file</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../how-tos/access/Earthdata_Cloud__Single_File__Direct_S3_Access_NetCDF4_Example.html" class="sidebar-item-text sidebar-link">NetCDF4/HDF5 Direct S3</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../how-tos/access/Multi-File_Direct_S3_Access_NetCDF_Example.html" class="sidebar-item-text sidebar-link">NetCDF4/HDF5 Direct S3 - Multi-file</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../how-tos/download.html" class="sidebar-item-text sidebar-link">Download</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../how-tos/tech-setup.html" class="sidebar-item-text sidebar-link">Tech Setup (AWS)</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../tutorials/index.html" class="sidebar-item-text sidebar-link">Tutorials</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tutorials/earthaccess-demo.html" class="sidebar-item-text sidebar-link"><code>earthaccess</code> Python library</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../in-development/index.html" class="sidebar-item-text sidebar-link">In Development</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../external/opensarlab-test.ipynb" class="sidebar-item-text sidebar-link">OpenSARLab test!</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../examples/NSIDC/ICESat2-CMR-OnPrem-vs-Cloud.html" class="sidebar-item-text sidebar-link">Search &amp; Download NSIDC Cloud</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../examples/NSIDC/ICESat2-CMR-AWS-S3.html" class="sidebar-item-text sidebar-link">Access NSIDC Cloud w/ CMR</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../examples/Transform-workflow.html" class="sidebar-item-text sidebar-link">Direct Access &amp; Harmony Workflow</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../examples/USGS_Landsat/Landsat_C2_Search_Access.html" class="sidebar-item-text sidebar-link">Search &amp; Access USGS Landsat Cloud</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../how-tos/access/Earthdata_Cloud__Data_Access_OPeNDAP_Example.html" class="sidebar-item-text sidebar-link">OPeNDAP</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../examples/ORNL/Data_Access__Direct_S3_Access__ORNL_DAYMET.html" class="sidebar-item-text sidebar-link">Direct S3 Data Access: NetCDF - Daymet v4 Daily TMAX Example</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../external/cof-zarr-reformat.html" class="sidebar-item-text sidebar-link">COF Zarr Access via Reformat</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../external/zarr-eosdis-store.html" class="sidebar-item-text sidebar-link">Zarr Example</a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../examples/index.html" class="sidebar-item-text sidebar-link">Kerchunk Examples</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../examples/GESDISC/GESDISC_MERRA2_tavg1_2d_flx_Nx__Kerchunk.html" class="sidebar-item-text sidebar-link">GES DISC - MERRA2</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../examples/LPDAAC/LPDAAC_ECOSTRESS_LSTE__Kerchunk.html" class="sidebar-item-text sidebar-link">LP DAAC ECOSTRESS</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../examples/PODAAC/PODAAC_ECCO_SSH__Kerchunk.html" class="sidebar-item-text sidebar-link">PO.DAAC ECCO SSH</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../in-development/matlab.html" class="sidebar-item-text sidebar-link">Matlab &amp; AWS</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../in-development/CMR-STAC-Search.html" class="sidebar-item-text sidebar-link">CMR STAC in R</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../in-development/earthdata-python-r-handoff.html" class="sidebar-item-text sidebar-link"><code>earthdata</code>: Python-R Handoff</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../contributing/index.html" class="sidebar-item-text sidebar-link">Contributing</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../contributing/onboarding.html" class="sidebar-item-text sidebar-link">Onboarding Mentors</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../contributing/setup.html" class="sidebar-item-text sidebar-link">Cookbook Setup</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../contributing/workflow.html" class="sidebar-item-text sidebar-link">Workflow</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../contributing/resources.html" class="sidebar-item-text sidebar-link">Resources</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../contributing/quarto-website-tutorial.html" class="sidebar-item-text sidebar-link">Quarto Tutorial</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../appendix/index.html" class="sidebar-item-text sidebar-link">Appendix</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../appendix/authentication.html" class="sidebar-item-text sidebar-link">Authentication</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../troubleshooting.html" class="sidebar-item-text sidebar-link">Troubleshooting</a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#data-discovery-with-cmr" id="toc-data-discovery-with-cmr" class="nav-link active" data-scroll-target="#data-discovery-with-cmr">Data discovery with CMR</a></li>
+  <li><a href="#data-discovery-with-cmr-1" id="toc-data-discovery-with-cmr-1" class="nav-link" data-scroll-target="#data-discovery-with-cmr-1">01. Data discovery with CMR</a>
+  <ul class="collapse">
+  <li><a href="#what-is-cmr" id="toc-what-is-cmr" class="nav-link" data-scroll-target="#what-is-cmr">What is CMR</a></li>
+  <li><a href="#what-is-the-cmr-api" id="toc-what-is-the-cmr-api" class="nav-link" data-scroll-target="#what-is-the-cmr-api">What is the CMR API</a></li>
+  <li><a href="#how-to-search-cmr-from-python" id="toc-how-to-search-cmr-from-python" class="nav-link" data-scroll-target="#how-to-search-cmr-from-python">How to search CMR from Python</a></li>
+  <li><a href="#granule-search" id="toc-granule-search" class="nav-link" data-scroll-target="#granule-search">Granule Search</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.dev/nasa-openscapes/earthdata-cloud-cookbook/blob/main/external/data_discovery_cmr.ipynb" class="toc-action">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/blob/main/external/data_discovery_cmr.ipynb" class="toc-action">View source</a></p><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+
+<section id="data-discovery-with-cmr" class="level1">
+<h1>Data discovery with CMR</h1>
+<p>imported on: <strong>2023-03-01</strong></p>
+<p>
+This notebook was originally developed for the 2021 Cloud Hackathon, and has been updated with most current approaches.
+</p>
+<blockquote class="blockquote">
+<p>The original source for this document is <a href="https://nasa-openscapes.github.io/2021-Cloud-Hackathon/tutorials/01_Data_Discovery_CMR.html">https://nasa-openscapes.github.io/2021-Cloud-Hackathon/tutorials/01_Data_Discovery_CMR.html</a></p>
+</blockquote>
+</section>
+<section id="data-discovery-with-cmr-1" class="level1">
+<h1>01. Data discovery with CMR</h1>
+<p>In this tutorial you will learn: - what CMR is;<br>
+- how to use the <code>requests</code> package to search data collections and granules;<br>
+- how to parse the results of these searches.</p>
+<p>We will focus on datasets in the cloud. Currently, DAACs with data in the cloud are ‘ASF’, ‘GES_DISC’, ‘GHRC_DAAC’, ‘LPCLOUD’, ‘ORNL_CLOUD’, ‘POCLOUD’</p>
+<section id="what-is-cmr" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-cmr">What is CMR</h2>
+<p>CMR is the Common Metadata Repository. It catalogs all data for NASA’s Earth Observing System Data and Information System (EOSDIS). It is the backend of <a href="https://search.earthdata.nasa.gov/search">Earthdata Search</a>, the GUI search interface you are probably familiar with. More information about CMR can be found <a href="https://earthdata.nasa.gov/eosdis/science-system-description/eosdis-components/cmr">here</a>.</p>
+<p>Unfortunately, the GUI for Earthdata Search is not accessible from a cloud instance - at least not without some work. Earthdata Search is also not immediately reproducible. What I mean by that is if you create a search using the GUI you would have to note the search criteria (date range, search area, collection name, etc), take a screenshot, copy the search url, or save the list of data granules returned by the search, in order to recreate the search. This information would have to be re-entered each time you or someone else wanted to do the search. You could make typos or other mistakes. A cleaner, reproducible solution is to search CMR programmatically using the CMR API.</p>
+</section>
+<section id="what-is-the-cmr-api" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-the-cmr-api">What is the CMR API</h2>
+<p>API stands for Application Programming Interface. It allows applications (software, services, etc) to send information to each other. A helpful analogy is a waiter in a restaurant. The waiter takes your drink or food order that you select from the menu, often translated into short-hand, to the bar or kitchen, and then returns (hopefully) with what you ordered when it is ready.</p>
+<p>The CMR API accepts search terms such as collection name, keywords, datetime range, and location, queries the CMR database and returns the results.</p>
+</section>
+<section id="how-to-search-cmr-from-python" class="level2">
+<h2 class="anchored" data-anchor-id="how-to-search-cmr-from-python">How to search CMR from Python</h2>
+<p>The first step is to import python packages. We will use:<br>
+- <code>requests</code> This package does most of the work for us accessing the CMR API using HTTP methods. - <code>pprint</code> to <em>pretty print</em> the results of the search.</p>
+<p>A more in depth tutorial on <code>requests</code> is <a href="https://realpython.com/python-requests/">here</a></p>
+<div class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pprint <span class="im">import</span> pprint</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Then we need to authenticate with EarthData Login. Since we’ve already set this up in the previous lesson, here you need to enter your username before executing the cell.</p>
+<p>To conduct a search using the CMR API, <code>requests</code> needs the url for the root CMR search endpoint. We’ll build this url as a python variable.</p>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>CMR_OPS <span class="op">=</span> <span class="st">'https://cmr.earthdata.nasa.gov/search'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>CMR allows search by <strong>collections</strong>, which are datasets, and <strong>granules</strong>, which are files that contain data. Many of the same search parameters can be used for colections and granules but the type of results returned differ. Search parameters can be found in the <a href="https://cmr.earthdata.nasa.gov/search/site/docs/search/api.html">API Documentation</a>.</p>
+<p>Whether we search <strong>collections</strong> or <strong>granules</strong> is distinguished by adding <code>"collections"</code> or <code>"granules"</code> to the url for the root CMR endpoint.</p>
+<p>We are going to search collections first, so we add collections to the url. I’m using a <code>python</code> format string here.</p>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="ss">f'</span><span class="sc">{</span>CMR_OPS<span class="sc">}</span><span class="ss">/</span><span class="sc">{</span><span class="st">"collections"</span><span class="sc">}</span><span class="ss">'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>In this first example, I want to retrieve a list of collections that are hosted in the cloud. Each collection has a <code>cloud_hosted</code> parameter that is either True if that collection is in the cloud and False if it is not. The migration of NASA data to the cloud is a work in progress. Not all collections tagged as <code>cloud_hosted</code> have granules. To search for only <code>cloud_hosted</code> datasets with granules, I also set <code>has_granules</code> to <code>True</code>.</p>
+<p>I also want to get the content in <code>json</code> (pronounced “jason”) format, so I pass a dictionary to the header keyword argument to say that I want results returned as <code>json</code>.</p>
+<p>The <code>.get()</code> method is used to send this information to the CMR API. <code>get()</code> calls the HTTP method <strong>GET</strong>.</p>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.get(url,</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>                        params<span class="op">=</span>{</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>                            <span class="st">'cloud_hosted'</span>: <span class="st">'True'</span>,</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>                            <span class="st">'has_granules'</span>: <span class="st">'True'</span>,</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>                        },</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>                        headers<span class="op">=</span>{</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>                            <span class="st">'Accept'</span>: <span class="st">'application/json'</span>,</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>                        }</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>                       )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><code>requests</code> returns a <code>Response</code> object.</p>
+<p>Often, we want to check that our request was successful. In a notebook or someother interactive environment, we can just type the name of the variable we have saved our <code>requests</code> Response to, in this case the <code>response</code> variable.</p>
+<div class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>response</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<pre><code>&lt;Response [200]&gt;</code></pre>
+</div>
+</div>
+<p>A cleaner and more understandable method is to check the <code>status_code</code> attribute. Both methods return a HTTP status code. You’ve probably seen a 404 error when you have tried to access a website that doesn’t exist.</p>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>response.status_code</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<pre><code>200</code></pre>
+</div>
+</div>
+<p>Try changing <code>CMR_OPS</code> to <code>https://cmr.earthdata.nasa.gov/searches</code> and run <code>requests.get</code> again. <strong>Don’t forget to rerun the cell that assigns the <code>url</code> variable</strong></p>
+<p>The response from <code>requests.get</code> returns the results of the search and metadata about those results in the <code>headers</code>.</p>
+<p>More information about the <code>response</code> object can be found by typing <code>help(response)</code>.</p>
+<p><code>headers</code> contains useful information in a case-insensitive dictionary. This information is printed below. <em>TODO: maybe some context for where the 2 elements k, v, come from?</em></p>
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k, v <span class="kw">in</span> response.headers.items():</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f'</span><span class="sc">{</span>k<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>v<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Content-Type: application/json;charset=utf-8
+Content-Length: 3820
+Connection: keep-alive
+Date: Tue, 02 Nov 2021 22:07:37 GMT
+X-Frame-Options: SAMEORIGIN
+Access-Control-Allow-Origin: *
+X-XSS-Protection: 1; mode=block
+CMR-Request-Id: 510cf611-d65b-4b46-981b-f4719405676a
+Strict-Transport-Security: max-age=31536000
+CMR-Search-After: [0.0,14000.0,"SENTINEL-1A_RAW","1",1214470561,1320]
+CMR-Hits: 917
+Access-Control-Expose-Headers: CMR-Hits, CMR-Request-Id, X-Request-Id, CMR-Scroll-Id, CMR-Search-After, CMR-Timed-Out, CMR-Shapefile-Original-Point-Count, CMR-Shapefile-Simplified-Point-Count
+X-Content-Type-Options: nosniff
+CMR-Took: 435
+X-Request-Id: 510cf611-d65b-4b46-981b-f4719405676a
+Vary: Accept-Encoding, User-Agent
+Content-Encoding: gzip
+Server: ServerTokens ProductOnly
+X-Cache: Miss from cloudfront
+Via: 1.1 3f7e5e686bf8f19b9c786efbe99c7589.cloudfront.net (CloudFront)
+X-Amz-Cf-Pop: DEN52-C1
+X-Amz-Cf-Id: BXEUlb5ygB9nj9ygUbSZvIc3BE4k0d1Mn1qDd66IkkuX1rC_Z-mN6Q==</code></pre>
+</div>
+</div>
+<p>We can see that the content returned is in <code>json</code> format in the UTF-8 character set. We can also see from <code>CMR-Hits</code> that 919 collections were found.</p>
+<p>Each item in the dictionary can be accessed in the normal way you access a <code>python</code> dictionary but because it is case-insensitive, both</p>
+<div class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>response.headers[<span class="st">'CMR-Hits'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="9">
+<pre><code>'917'</code></pre>
+</div>
+</div>
+<p>and</p>
+<div class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>response.headers[<span class="st">'cmr-hits'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="10">
+<pre><code>'917'</code></pre>
+</div>
+</div>
+<p>work.</p>
+<p>This is a large number of data sets. I’m going to restrict the search to cloud-hosted datasets from ASF (Alaska SAR Facility) because I’m interested in SAR images of sea ice. To do this, I set the <code>provider</code> parameter to <code>ASF</code>.</p>
+<p>You can modify the code below to explore all of the cloud-hosted datasets or cloud-hosted datasets from other providers. A partial list of providers is given below.</p>
+<table class="table">
+<colgroup>
+<col style="width: 11%">
+<col style="width: 46%">
+<col style="width: 17%">
+<col style="width: 24%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>DAAC</th>
+<th>Short Name</th>
+<th>Cloud Provider</th>
+<th>On-Premises Provider</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>NSIDC</td>
+<td>National Snow and Ice Data Center</td>
+<td>NSIDC_CPRD</td>
+<td>NSIDC_ECS</td>
+</tr>
+<tr class="even">
+<td>GHRC DAAC</td>
+<td>Global Hydrometeorology Resource Center</td>
+<td>GHRC_DAAC</td>
+<td>GHRC_DAAC</td>
+</tr>
+<tr class="odd">
+<td>PO DAAC</td>
+<td>Physical Oceanography Distributed Active Archive Center</td>
+<td>POCLOUD</td>
+<td>PODAAC</td>
+</tr>
+<tr class="even">
+<td>ASF</td>
+<td>Alaska Satellite Facility</td>
+<td>ASF</td>
+<td>ASF</td>
+</tr>
+<tr class="odd">
+<td>ORNL DAAC</td>
+<td>Oak Ridge National Laboratory</td>
+<td>ORNL_CLOUD</td>
+<td>ORNL_DAAC</td>
+</tr>
+<tr class="even">
+<td>LP DAAC</td>
+<td>Land Processes Distributed Active Archive Center</td>
+<td>LPCLOUD</td>
+<td>LPDAAC_ECS</td>
+</tr>
+<tr class="odd">
+<td>GES DISC</td>
+<td>NASA Goddard Earth Sciences (GES) Data and Information Services Center (DISC)</td>
+<td>GES_DISC</td>
+<td>GES_DISC</td>
+</tr>
+<tr class="even">
+<td>OB DAAC</td>
+<td>NASA’s Ocean Biology Distributed Active Archive Center</td>
+<td></td>
+<td>OB_DAAC</td>
+</tr>
+<tr class="odd">
+<td>SEDAC</td>
+<td>NASA’s Socioeconomic Data and Applications Center</td>
+<td></td>
+<td>SEDAC</td>
+</tr>
+</tbody>
+</table>
+<p>When search by provider, use <em>Cloud Provider</em> to search for cloud-hosted datasets and <em>On-Premises Provider</em> to search for datasets archived at the DAACs.</p>
+<div class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>provider <span class="op">=</span> <span class="st">'ASF'</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.get(url,</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>                        params<span class="op">=</span>{</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>                            <span class="st">'cloud_hosted'</span>: <span class="st">'True'</span>,</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>                            <span class="st">'has_granules'</span>: <span class="st">'True'</span>,</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>                            <span class="st">'provider'</span>: provider,</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>                        },</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>                        headers<span class="op">=</span>{</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>                            <span class="st">'Accept'</span>: <span class="st">'application/json'</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>                        }</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>                       )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>response.headers[<span class="st">'cmr-hits'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="27">
+<pre><code>'45'</code></pre>
+</div>
+</div>
+<p>Search results are contained in the content part of the Response object. However, <code>response.content</code> returns information in bytes.</p>
+<div class="cell" data-jupyter="{&quot;outputs_hidden&quot;:true}" data-tags="[]" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>response.content</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="28">
+<pre><code>b'{"feed":{"updated":"2021-11-02T22:41:34.322Z","id":"https://cmr.earthdata.nasa.gov:443/search/collections.json?cloud_hosted=True&amp;has_granules=True&amp;provider=ASF","title":"ECHO dataset metadata","entry":[{"boxes":["-90 -180 90 180"],"time_start":"2014-04-03T00:00:00.000Z","version_id":"1","updated":"2021-07-15T19:16:39.000Z","dataset_id":"SENTINEL-1A_SLC","has_spatial_subsetting":false,"has_transforms":false,"has_variables":false,"data_center":"ASF","short_name":"SENTINEL-1A_SLC","organizations":["ASF","ESA/CS1CGS"],"title":"SENTINEL-1A_SLC","coordinate_system":"CARTESIAN","summary":"Sentinel-1A slant-range product","service_features":{"opendap":{"has_formats":false,"has_variables":false,"has_transforms":false,"has_spatial_subsetting":false,"has_temporal_subsetting":false},"esi":{"has_formats":false,"has_variables":false,"has_transforms":false,"has_spatial_subsetting":false,"has_temporal_subsetting":false},"harmony":{"has_formats":false,"has_variables":false,"has_transforms":false,"has_spatial_subsetting":false,"has_temporal_subsetting":false}},"orbit_parameters":{},"id":"C1214470488-ASF","has_formats":false,"original_format":"ECHO10","archive_center":"ASF","has_temporal_subsetting":false,"browse_flag":false,"platforms":["Sentinel-1A"],"online_access_flag":true,"links":[{"rel":"http://esipfed.org/ns/fedsearch/1.1/data#","hreflang":"en-US","href":"https://vertex.daac.asf.alaska.edu/"}]},{"boxes":["-90 -180 90 180"],"time_start":"2016-04-25T00:00:00.000Z","version_id":"1","updated":"2021-07-15T19:17:22.000Z","dataset_id":"SENTINEL-1B_SLC","has_spatial_subsetting":false,"has_transforms":false,"has_variables":false,"data_center":"ASF","short_name":"SENTINEL-1B_SLC","organizations":["ASF","ESA/CS1CGS"],"title":"SENTINEL-1B_SLC","coordinate_system":"CARTESIAN","summary":"Sentinel-1B slant-range product","service_features":{"opendap":{"has_formats":false,"has_variables":false,"has_transforms":false,"has_spatial_subsetting":false,"has_temporal_subsetting":false},"esi":{"has_formats":false,"has_variables":false,"has_transforms":false,"has_spatial_subsetting":false,"has_temporal_subsetting":false},"harmony":{"has_formats":false,"has_variables":false,"has_transforms":false,"has_spatial_subsetting":false,"has_temporal_subsetting":false}},"orbit_parameters":{},"id":"C1327985661-ASF","has_formats":false,"original_format":"ECHO10","archive_center":"ASF","has_temporal_subsetting":false,"browse_flag":false,"platforms":["Sentinel-1B"],"online_access_flag":true,"links":[{"rel":"http://esipfed.org/ns/fedsearch/1.1/data#","hreflang":"en-US","href":"https://vertex.daac.asf.alaska.edu/"}]},{"boxes":["-90 -180 90 180"],"time_start":"2014-04-03T00:00:00.000Z","version_id":"1","updated":"2021-07-15T19:15:56.000Z","dataset_id":"SENTINEL-1A_DUAL_POL_GRD_HIGH_RES","has_spatial_subsetting":false,"has_transforms":false,"has_variables":false,"data_center":"ASF","short_name":"SENTINEL-1A_DP_GRD_HIGH","organizations":["ASF","ESA/CS1CGS"],"title":"SENTINEL-1A_DUAL_POL_GRD_HIGH_RES","coordinate_system":"CARTESIAN","summary":"Sentinel-1A Dual-pol ground projected high and full resolution images","service_features":{"opendap":{"has_formats":false,"has_variables":false,"has_transforms":false,"has_spatial_subsetting":false,"has_temporal_subsetting":false},"esi":{"has_formats":false,"has_variables":false,"has_transforms":false,"has_spatial_subsetting":false,"has_temporal_subsetting":false},"harmony":{"has_formats":false,"has_variables":false,"has_transforms":false,"has_spatial_subsetting":false,"has_temporal_subsetting":false}},"orbit_parameters":{},"id":"C1214470533-ASF","has_formats":false,"original_format":"ECHO10","archive_center":"ASF","has_temporal_subsetting":false,"browse_flag":false,"platforms":["Sentinel-1A"],"online_access_flag":true,"links":[{"rel":"http://esipfed.org/ns/fedsearch/1.1/data#","hreflang":"en-US","href":"https://vertex.daac.asf.alaska.edu/"}]},{"boxes":["-90 -180 90 180"],"time_start":"2016-04-25T00:00:00.000Z","version_id":"1","updated":"2021-07-15T19:16:47.000Z","dataset_id":"SENTINEL-1B_DUAL_POL_GRD_HIGH_RES","has_spatial_subsetting":false,"has_transforms":false,"has_variables":false,"data_center":"ASF","short_name":"SENTINEL-1B_DP_GRD_HIGH","organizations":["ASF","ESA/CS1CGS"],"title":"SENTINEL-1B_DUAL_POL_GRD_HIGH_RES","coordinate_system":"CARTESIAN","summary":"Sentinel-1B Dual-pol ground projected high and full resolution images","service_features":{"opendap":{"has_formats":false,"has_variables":false,"has_transforms":false,"has_spatial_subsetting":false,"has_temporal_subsetting":false},"esi":{"has_formats":false,"has_variables":false,"has_transforms":false,"has_spatial_subsetting":false,"has_temporal_subsetting":false},"harmony":{"has_formats":false,"has_variables":false,"has_transforms":false,"has_spatial_subsetting":false,"has_temporal_subsetting":false}},"orbit_parameters":{},"id":"C1327985645-ASF","has_formats":false,"original_format":"ECHO10","archive_center":"ASF","has_temporal_subsetting":false,"browse_flag":false,"platforms":["Sentinel-1B"],"online_access_flag":true,"links":[{"rel":"http://esipfed.org/ns/fedsearch/1.1/data#","hreflang":"en-US","href":"https://vertex.daac.asf.alaska.edu/"}]},{"boxes":["-90 -180 90 180"],"time_start":"2016-04-25T00:00:00.000Z","version_id":"1","updated":"2021-07-15T19:16:49.000Z","dataset_id":"SENTINEL-1B_DUAL_POL_GRD_MEDIUM_RES","has_spatial_subsetting":false,"has_transforms":false,"has_variables":false,"data_center":"ASF","short_name":"SENTINEL-1B_DP_GRD_MEDIUM","organizations":["ASF","ESA/CS1CGS"],"title":"SENTINEL-1B_DUAL_POL_GRD_MEDIUM_RES","coordinate_system":"CARTESIAN","summary":"Sentinel-1B Dual-pol ground projected medium resolution images","service_features":{"opendap":{"has_formats":false,"has_variables":false,"has_transforms":false,"has_spatial_subsetting":false,"has_temporal_subsetting":false},"esi":{"has_formats":false,"has_variables":false,"has_transforms":false,"has_spatial_subsetting":false,"has_temporal_subsetting":false},"harmony":{"has_formats":false,"has_variables":false,"has_transforms":false,"has_spatial_subsetting":false,"has_temporal_subsetting":false}},"orbit_parameters":{},"id":"C1327985660-ASF","has_formats":false,"original_format":"ECHO10","archive_center":"ASF","has_temporal_subsetting":false,"browse_flag":false,"platforms":["Sentinel-1B"],"online_access_flag":true,"links":[{"rel":"http://esipfed.org/ns/fedsearch/1.1/data#","hreflang":"en-US","href":"https://vertex.daac.asf.alaska.edu/"}]},{"boxes":["-90 -180 90 180"],"time_start":"2014-04-03T00:00:00.000Z","version_id":"1","updated":"2021-07-15T19:15:58.000Z","dataset_id":"SENTINEL-1A_DUAL_POL_GRD_MEDIUM_RES","has_spatial_subsetting":false,"has_transforms":false,"has_variables":false,"data_center":"ASF","short_name":"SENTINEL-1A_DP_GRD_MEDIUM","organizations":["ASF","ESA/CS1CGS"],"title":"SENTINEL-1A_DUAL_POL_GRD_MEDIUM_RES","coordinate_system":"CARTESIAN","summary":"Sentinel-1A Dual-pol ground projected medium resolution images","service_features":{"opendap":{"has_formats":false,"has_variables":false,"has_transforms":false,"has_spatial_subsetting":false,"has_temporal_subsetting":false},"esi":{"has_formats":false,"has_variables":false,"has_transforms":false,"has_spatial_subsetting":false,"has_temporal_subsetting":false},"harmony":{"has_formats":false,"has_variables":false,"has_transforms":false,"has_spatial_subsetting":false,"has_temporal_subsetting":false}},"orbit_parameters":{},"id":"C1214471521-ASF","has_formats":false,"original_format":"ECHO10","archive_center":"ASF","has_temporal_subsetting":false,"browse_flag":false,"platforms":["Sentinel-1A"],"online_access_flag":true,"links":[{"rel":"http://esipfed.org/ns/fedsearch/1.1/data#","hreflang":"en-US","href":"https://vertex.daac.asf.alaska.edu/"}]},{"boxes":["-90 -180 90 180"],"time_start":"2014-04-03T00:00:00.000Z","version_id":"1","updated":"2021-07-15T19:16:20.000Z","dataset_id":"SENTINEL-1A_RAW","has_spatial_subsetting":false,"has_transforms":false,"has_variables":false,"data_center":"ASF","short_name":"SENTINEL-1A_RAW","organizations":["ASF","ESA/CS1CGS"],"title":"SENTINEL-1A_RAW","coordinate_system":"CARTESIAN","summary":"Sentinel-1A level zero product","service_features":{"opendap":{"has_formats":false,"has_variables":false,"has_transforms":false,"has_spatial_subsetting":false,"has_temporal_subsetting":false},"esi":{"has_formats":false,"has_variables":false,"has_transforms":false,"has_spatial_subsetting":false,"has_temporal_subsetting":false},"harmony":{"has_formats":false,"has_variables":false,"has_transforms":false,"has_spatial_subsetting":false,"has_temporal_subsetting":false}},"orbit_parameters":{},"id":"C1214470561-ASF","has_formats":false,"original_format":"ECHO10","archive_center":"ASF","has_temporal_subsetting":false,"browse_flag":false,"platforms":["Sentinel-1A"],"online_access_flag":true,"links":[{"rel":"http://esipfed.org/ns/fedsearch/1.1/data#","hreflang":"en-US","href":"https://vertex.daac.asf.alaska.edu/"}]},{"boxes":["-90 -180 90 180"],"time_start":"2014-04-03T00:00:00.000Z","version_id":"1","updated":"2021-07-15T19:16:15.000Z","dataset_id":"SENTINEL-1A_METADATA_SLC","has_spatial_subsetting":false,"has_transforms":false,"has_variables":false,"data_center":"ASF","short_name":"SENTINEL-1A_META_SLC","organizations":["ASF"],"title":"SENTINEL-1A_METADATA_SLC","coordinate_system":"CARTESIAN","summary":"Metadata for Sentinel-1A slant-range product","service_features":{"opendap":{"has_formats":false,"has_variables":false,"has_transforms":false,"has_spatial_subsetting":false,"has_temporal_subsetting":false},"esi":{"has_formats":false,"has_variables":false,"has_transforms":false,"has_spatial_subsetting":false,"has_temporal_subsetting":false},"harmony":{"has_formats":false,"has_variables":false,"has_transforms":false,"has_spatial_subsetting":false,"has_temporal_subsetting":false}},"orbit_parameters":{},"id":"C1214470496-ASF","has_formats":false,"original_format":"ECHO10","archive_center":"ASF","has_temporal_subsetting":false,"browse_flag":false,"platforms":["Sentinel-1A"],"online_access_flag":true,"links":[{"rel":"http://esipfed.org/ns/fedsearch/1.1/data#","hreflang":"en-US","href":"https://vertex.daac.asf.alaska.edu/"}]},{"boxes":["-90 -180 90 180"],"time_start":"2016-04-25T00:00:00.000Z","version_id":"1","updated":"2021-07-15T19:17:02.000Z","dataset_id":"SENTINEL-1B_METADATA_SLC","has_spatial_subsetting":false,"has_transforms":false,"has_variables":false,"data_center":"ASF","short_name":"SENTINEL-1B_META_SLC","organizations":["ASF"],"title":"SENTINEL-1B_METADATA_SLC","coordinate_system":"CARTESIAN","summary":"Metadata for Sentinel-1B slant-range product","service_features":{"opendap":{"has_formats":false,"has_variables":false,"has_transforms":false,"has_spatial_subsetting":false,"has_temporal_subsetting":false},"esi":{"has_formats":false,"has_variables":false,"has_transforms":false,"has_spatial_subsetting":false,"has_temporal_subsetting":false},"harmony":{"has_formats":false,"has_variables":false,"has_transforms":false,"has_spatial_subsetting":false,"has_temporal_subsetting":false}},"orbit_parameters":{},"id":"C1327985617-ASF","has_formats":false,"original_format":"ECHO10","archive_center":"ASF","has_temporal_subsetting":false,"browse_flag":false,"platforms":["Sentinel-1B"],"online_access_flag":true,"links":[{"rel":"http://esipfed.org/ns/fedsearch/1.1/data#","hreflang":"en-US","href":"https://vertex.daac.asf.alaska.edu/"}]},{"boxes":["-90 -180 90 180"],"time_start":"2014-04-03T00:00:00.000Z","version_id":"1","updated":"2021-07-15T19:16:26.000Z","dataset_id":"SENTINEL-1A_SINGLE_POL_GRD_HIGH_RES","has_spatial_subsetting":false,"has_transforms":false,"has_variables":false,"data_center":"ASF","short_name":"SENTINEL-1A_SP_GRD_HIGH","organizations":["ASF","ESA/CS1CGS"],"title":"SENTINEL-1A_SINGLE_POL_GRD_HIGH_RES","coordinate_system":"CARTESIAN","summary":"Sentinel-1A Single-pol ground projected high and full resolution images","service_features":{"opendap":{"has_formats":false,"has_variables":false,"has_transforms":false,"has_spatial_subsetting":false,"has_temporal_subsetting":false},"esi":{"has_formats":false,"has_variables":false,"has_transforms":false,"has_spatial_subsetting":false,"has_temporal_subsetting":false},"harmony":{"has_formats":false,"has_variables":false,"has_transforms":false,"has_spatial_subsetting":false,"has_temporal_subsetting":false}},"orbit_parameters":{},"id":"C1214470682-ASF","has_formats":false,"original_format":"ECHO10","archive_center":"ASF","has_temporal_subsetting":false,"browse_flag":false,"platforms":["Sentinel-1A"],"online_access_flag":true,"links":[{"rel":"http://esipfed.org/ns/fedsearch/1.1/data#","hreflang":"en-US","href":"https://vertex.daac.asf.alaska.edu/"}]}]}}'</code></pre>
+</div>
+</div>
+<p>It is more convenient to work with <code>json</code> formatted data. I’m using pretty print <code>pprint</code> to print the data in an easy to read way.</p>
+<p><strong>Step through <code>response.json()</code>, then to <code>response.json()['feed']['entry'][0]</code></strong>. A reminder that python starts indexing at 0, not 1!</p>
+<div class="cell" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>pprint(response.json()[<span class="st">'feed'</span>][<span class="st">'entry'</span>][<span class="dv">0</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>{'archive_center': 'ASF',
+ 'boxes': ['-90 -180 90 180'],
+ 'browse_flag': False,
+ 'coordinate_system': 'CARTESIAN',
+ 'data_center': 'ASF',
+ 'dataset_id': 'SENTINEL-1A_SLC',
+ 'has_formats': False,
+ 'has_spatial_subsetting': False,
+ 'has_temporal_subsetting': False,
+ 'has_transforms': False,
+ 'has_variables': False,
+ 'id': 'C1214470488-ASF',
+ 'links': [{'href': 'https://vertex.daac.asf.alaska.edu/',
+            'hreflang': 'en-US',
+            'rel': 'http://esipfed.org/ns/fedsearch/1.1/data#'}],
+ 'online_access_flag': True,
+ 'orbit_parameters': {},
+ 'organizations': ['ASF', 'ESA/CS1CGS'],
+ 'original_format': 'ECHO10',
+ 'platforms': ['Sentinel-1A'],
+ 'service_features': {'esi': {'has_formats': False,
+                              'has_spatial_subsetting': False,
+                              'has_temporal_subsetting': False,
+                              'has_transforms': False,
+                              'has_variables': False},
+                      'harmony': {'has_formats': False,
+                                  'has_spatial_subsetting': False,
+                                  'has_temporal_subsetting': False,
+                                  'has_transforms': False,
+                                  'has_variables': False},
+                      'opendap': {'has_formats': False,
+                                  'has_spatial_subsetting': False,
+                                  'has_temporal_subsetting': False,
+                                  'has_transforms': False,
+                                  'has_variables': False}},
+ 'short_name': 'SENTINEL-1A_SLC',
+ 'summary': 'Sentinel-1A slant-range product',
+ 'time_start': '2014-04-03T00:00:00.000Z',
+ 'title': 'SENTINEL-1A_SLC',
+ 'updated': '2021-07-15T19:16:39.000Z',
+ 'version_id': '1'}</code></pre>
+</div>
+</div>
+<p>The first response is not the result I am looking for <em>TODO: because xyz…but it does show a few variables that we can use to further refine the search</em>. So I want to print the name of the dataset (<code>dataset_id</code>) and the concept id (<code>id</code>). We can build this variable and print statement like we did above with the <code>url</code> variable. <em>TODO: is it worth saying something about what “feed” and “entry” are?</em></p>
+<div class="cell" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>collections <span class="op">=</span> response.json()[<span class="st">'feed'</span>][<span class="st">'entry'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> collection <span class="kw">in</span> collections:</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f'</span><span class="sc">{</span>collection[<span class="st">"archive_center"</span>]<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>collection[<span class="st">"dataset_id"</span>]<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>collection[<span class="st">"id"</span>]<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>ASF SENTINEL-1A_SLC C1214470488-ASF
+ASF SENTINEL-1B_SLC C1327985661-ASF
+ASF SENTINEL-1A_DUAL_POL_GRD_HIGH_RES C1214470533-ASF
+ASF SENTINEL-1B_DUAL_POL_GRD_HIGH_RES C1327985645-ASF
+ASF SENTINEL-1B_DUAL_POL_GRD_MEDIUM_RES C1327985660-ASF
+ASF SENTINEL-1A_DUAL_POL_GRD_MEDIUM_RES C1214471521-ASF
+ASF SENTINEL-1A_RAW C1214470561-ASF
+ASF SENTINEL-1A_METADATA_SLC C1214470496-ASF
+ASF SENTINEL-1B_METADATA_SLC C1327985617-ASF
+ASF SENTINEL-1A_SINGLE_POL_GRD_HIGH_RES C1214470682-ASF</code></pre>
+</div>
+</div>
+<p>But there is a problem. We know from <code>CMR-Hits</code> that there are 49 datasets but only 10 are printed. This is because CMR restricts the number of results returned by a query. The default is 10 but it can be set to a maximum of 2000. Knowing that there were 49 ‘hits’, I’ll set <code>page_size</code> to 49. Then, we can re-run our for loop for the collections.</p>
+<div class="cell" data-execution_count="32">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.get(url,</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>                        params<span class="op">=</span>{</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>                            <span class="st">'cloud_hosted'</span>: <span class="st">'True'</span>,</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>                            <span class="st">'provider'</span>: provider,</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>                            <span class="st">'page_size'</span>: <span class="dv">49</span>,</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>                        },</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>                        headers<span class="op">=</span>{</span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>                            <span class="st">'Accept'</span>: <span class="st">'application/json'</span></span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>                        }</span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>                       )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="33">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>collections <span class="op">=</span> response.json()[<span class="st">'feed'</span>][<span class="st">'entry'</span>]</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> collection <span class="kw">in</span> collections:</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f'</span><span class="sc">{</span>collection[<span class="st">"archive_center"</span>]<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>collection[<span class="st">"dataset_id"</span>]<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>collection[<span class="st">"id"</span>]<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>ASF SENTINEL-1A_SLC C1214470488-ASF
+ASF SENTINEL-1B_SLC C1327985661-ASF
+ASF SENTINEL-1A_DUAL_POL_GRD_HIGH_RES C1214470533-ASF
+ASF SENTINEL-1B_DUAL_POL_GRD_HIGH_RES C1327985645-ASF
+ASF SENTINEL-1B_DUAL_POL_GRD_MEDIUM_RES C1327985660-ASF
+ASF SENTINEL-1A_DUAL_POL_GRD_MEDIUM_RES C1214471521-ASF
+ASF SENTINEL-1A_RAW C1214470561-ASF
+ASF SENTINEL-1A_METADATA_SLC C1214470496-ASF
+ASF SENTINEL-1B_METADATA_SLC C1327985617-ASF
+ASF SENTINEL-1A_SINGLE_POL_GRD_HIGH_RES C1214470682-ASF
+ASF SENTINEL-1A_OCN C1214472977-ASF
+ASF SENTINEL-1B_RAW C1327985647-ASF
+ASF SENTINEL-1A_DUAL_POL_METADATA_GRD_HIGH_RES C1214470576-ASF
+ASF SENTINEL-1B_OCN C1327985579-ASF
+ASF SENTINEL-1A_METADATA_RAW C1214470532-ASF
+ASF SENTINEL-1B_DUAL_POL_METADATA_GRD_HIGH_RES C1327985741-ASF
+Alaska Satellite Facility Sentinel-1 Interferograms (BETA) C1595422627-ASF
+ASF ALOS_AVNIR_OBS_ORI C1808440897-ASF
+ASF SENTINEL-1A_SINGLE_POL_GRD_MEDIUM_RES C1214472994-ASF
+ASF SENTINEL-1B_METADATA_RAW C1327985650-ASF
+ASF SENTINEL-1B_SINGLE_POL_GRD_HIGH_RES C1327985571-ASF
+ASF SENTINEL-1B_SINGLE_POL_GRD_MEDIUM_RES C1327985740-ASF
+ASF SENTINEL-1A_METADATA_OCN C1266376001-ASF
+ASF SENTINEL-1B_METADATA_OCN C1327985646-ASF
+ASF SENTINEL-1A_DUAL_POL_METADATA_GRD_MEDIUM_RES C1214472336-ASF
+ASF SENTINEL-1A_SINGLE_POL_METADATA_GRD_HIGH_RES C1214470732-ASF
+ASF SENTINEL-1A_SINGLE_POL_METADATA_GRD_MEDIUM_RES C1214473170-ASF
+ASF SENTINEL-1B_DUAL_POL_METADATA_GRD_MEDIUM_RES C1327985578-ASF
+ASF SENTINEL-1B_SINGLE_POL_METADATA_GRD_HIGH_RES C1327985619-ASF
+ASF SENTINEL-1B_SINGLE_POL_METADATA_GRD_MEDIUM_RES C1327985739-ASF
+ASF STS-68_BROWSE_GRD C1661710593-ASF
+ASF STS-68_BROWSE_SLC C1661710596-ASF
+ASF STS-59_BROWSE_GRD C1661710578-ASF
+ASF STS-59_BROWSE_SLC C1661710581-ASF
+ASF SENTINEL-1A_DUAL_POL_GRD_FULL_RES C1214471197-ASF
+ASF SENTINEL-1A_DUAL_POL_METADATA_GRD_FULL_RES C1214471960-ASF
+ASF SENTINEL-1A_SINGLE_POL_GRD_FULL_RES C1214472978-ASF
+ASF SENTINEL-1A_SINGLE_POL_METADATA_GRD_FULL_RES C1214473165-ASF
+ASF SENTINEL-1B_DUAL_POL_GRD_FULL_RES C1327985697-ASF
+ASF SENTINEL-1B_DUAL_POL_METADATA_GRD_FULL_RES C1327985651-ASF
+ASF SENTINEL-1B_SINGLE_POL_GRD_FULL_RES C1327985644-ASF
+ASF SENTINEL-1B_SINGLE_POL_METADATA_GRD_FULL_RES C1327985674-ASF
+Alaska Satellite Facility Sentinel-1 Unwrapped Interferogram and Coherence Map (BETA) C1379535600-ASF
+Alaska Satellite Facility Sentinel-1 Interferograms - Amplitude (BETA) C1596065640-ASF
+Alaska Satellite Facility Sentinel-1 Interferograms - Coherence (BETA) C1596065639-ASF
+Alaska Satellite Facility Sentinel-1 Interferograms - Connected Components (BETA) C1596065641-ASF
+Alaska Satellite Facility Sentinel-1 Interferograms - Unwrapped Phase (BETA) C1595765183-ASF
+ASF STS-59_GRD C1661710583-ASF
+ASF STS-59_METADATA_GRD C1661710586-ASF</code></pre>
+</div>
+</div>
+</section>
+<section id="granule-search" class="level2">
+<h2 class="anchored" data-anchor-id="granule-search">Granule Search</h2>
+<p>In NASA speak, Granules are files. In this example, we will search for recent Sentinel-1 Ground Range Detected (GRD) Medium Resolution Synthetic Aperture Radar images over the east coast of Greenland. The data in these files are most useful for sea ice mapping.</p>
+<p>I’ll use the data range 2021-10-17 00:00 to 2021-10-18 23:59:59.</p>
+<p>I’ll use a simple bounding box to search. - SW: 76.08166,-67.1746 - NW: 88.19689,21.04862</p>
+<p>From the collections search, I know the concept ids for Sentinel-1A and Sentinel-1B GRD medium resolution are - C1214472336-ASF - C1327985578-ASF</p>
+<p>We need to change the resource url to look for granules instead of collections</p>
+<div class="cell" data-execution_count="34">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="ss">f'</span><span class="sc">{</span>CMR_OPS<span class="sc">}</span><span class="ss">/</span><span class="sc">{</span><span class="st">"granules"</span><span class="sc">}</span><span class="ss">'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We will search by <code>concept_id</code>, <code>temporal</code>, and <code>bounding_box</code>. Details about these search parameters can be found in the CMR API Documentation.</p>
+<p>The formatting of the values for each parameter is quite specific.<br>
+Temporal parameters are in ISO 8061 format <code>yyyy-MM-ddTHH:mm:ssZ</code>.<br>
+Bounding box coordinates are lower left longitude, lower left latitude, upper right longitude, upper right latitude.</p>
+<div class="cell" data-execution_count="36">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.get(url, </span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>                        params<span class="op">=</span>{</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>                            <span class="st">'concept_id'</span>: <span class="st">'C1214472336-ASF'</span>,</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>                            <span class="st">'temporal'</span>: <span class="st">'2020-10-17T00:00:00Z,2020-10-18T23:59:59Z'</span>,</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>                            <span class="st">'bounding_box'</span>: <span class="st">'76.08166,-67.1746,88.19689,21.04862'</span>,</span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>                            <span class="st">'page_size'</span>: <span class="dv">200</span>,</span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>                            },</span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>                        headers<span class="op">=</span>{</span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>                            <span class="st">'Accept'</span>: <span class="st">'application/json'</span></span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a>                            }</span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a>                       )</span>
+<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(response.status_code)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>200</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="37">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(response.headers[<span class="st">'CMR-Hits'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>6</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="38">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>granules <span class="op">=</span> response.json()[<span class="st">'feed'</span>][<span class="st">'entry'</span>]</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="co">#for granule in granules:</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="co">#    print(f'{granule["archive_center"]} {granule["dataset_id"]} {granule["id"]}')</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="39">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>pprint(granules)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[{'browse_flag': True,
+  'collection_concept_id': 'C1214472336-ASF',
+  'coordinate_system': 'GEODETIC',
+  'data_center': 'ASF',
+  'dataset_id': 'SENTINEL-1A_DUAL_POL_METADATA_GRD_MEDIUM_RES',
+  'day_night_flag': 'UNSPECIFIED',
+  'granule_size': '0.05633258819580078',
+  'id': 'G1954601581-ASF',
+  'links': [{'href': 'https://datapool.asf.alaska.edu/METADATA_GRD_MD/SA/S1A_EW_GRDM_1SDH_20201017T132009_20201017T132039_034836_040F98_404E.iso.xml',
+             'hreflang': 'en-US',
+             'rel': 'http://esipfed.org/ns/fedsearch/1.1/data#',
+             'title': 'This link provides direct download access to the '
+                      'granule.'},
+            {'href': 'www.asf.alaska.edu/sar-data-sets/sentinel-1',
+             'hreflang': 'en-US',
+             'rel': 'http://esipfed.org/ns/fedsearch/1.1/metadata#',
+             'title': 'ASF DAAC Sentinel-1 data set landing page (VIEW RELATED '
+                      'INFORMATION)'},
+            {'href': 'www.asf.alaska.edu/sar-information/sentinel-1-documents-tools',
+             'hreflang': 'en-US',
+             'rel': 'http://esipfed.org/ns/fedsearch/1.1/metadata#',
+             'title': 'ASF DAAC Sentinel-1 User Guide and Technical '
+                      'Documentation (VIEW RELATED INFORMATION)'},
+            {'href': 'https://datapool.asf.alaska.edu/BROWSE/SA/S1A_EW_GRDM_1SDH_20201017T132009_20201017T132039_034836_040F98_404E.jpg',
+             'hreflang': 'en-US',
+             'rel': 'http://esipfed.org/ns/fedsearch/1.1/browse#'},
+            {'href': 'https://vertex.daac.asf.alaska.edu/',
+             'hreflang': 'en-US',
+             'inherited': True,
+             'rel': 'http://esipfed.org/ns/fedsearch/1.1/data#'}],
+  'online_access_flag': True,
+  'orbit_calculated_spatial_domains': [{'orbit_number': '34836'}],
+  'original_format': 'ECHO10',
+  'polygons': [['-59.163563 87.942726 -60.893669 89.293564 -59.279579 '
+                '96.119583 -57.619923 94.49958 -59.163563 87.942726']],
+  'producer_granule_id': 'S1A_EW_GRDM_1SDH_20201017T132009_20201017T132039_034836_040F98_404E',
+  'time_end': '2020-10-17T13:20:39.000Z',
+  'time_start': '2020-10-17T13:20:09.000Z',
+  'title': 'S1A_EW_GRDM_1SDH_20201017T132009_20201017T132039_034836_040F98_404E-METADATA_GRD_MD',
+  'updated': '2020-10-19T17:13:39.000Z'},
+ {'browse_flag': False,
+  'collection_concept_id': 'C1214472336-ASF',
+  'coordinate_system': 'GEODETIC',
+  'data_center': 'ASF',
+  'dataset_id': 'SENTINEL-1A_DUAL_POL_METADATA_GRD_MEDIUM_RES',
+  'day_night_flag': 'UNSPECIFIED',
+  'granule_size': '0.05633354187011719',
+  'id': 'G1954616816-ASF',
+  'links': [{'href': 'https://datapool.asf.alaska.edu/METADATA_GRD_MD/SA/S1A_EW_GRDM_1SDH_20201017T145616_20201017T145720_034837_040FA0_0B4B.iso.xml',
+             'hreflang': 'en-US',
+             'rel': 'http://esipfed.org/ns/fedsearch/1.1/data#',
+             'title': 'This link provides direct download access to the '
+                      'granule.'},
+            {'href': 'www.asf.alaska.edu/sar-data-sets/sentinel-1',
+             'hreflang': 'en-US',
+             'rel': 'http://esipfed.org/ns/fedsearch/1.1/metadata#',
+             'title': 'ASF DAAC Sentinel-1 data set landing page (VIEW RELATED '
+                      'INFORMATION)'},
+            {'href': 'www.asf.alaska.edu/sar-information/sentinel-1-documents-tools',
+             'hreflang': 'en-US',
+             'rel': 'http://esipfed.org/ns/fedsearch/1.1/metadata#',
+             'title': 'ASF DAAC Sentinel-1 User Guide and Technical '
+                      'Documentation (VIEW RELATED INFORMATION)'},
+            {'href': 'https://vertex.daac.asf.alaska.edu/',
+             'hreflang': 'en-US',
+             'inherited': True,
+             'rel': 'http://esipfed.org/ns/fedsearch/1.1/data#'}],
+  'online_access_flag': True,
+  'orbit_calculated_spatial_domains': [{'orbit_number': '34837'}],
+  'original_format': 'ECHO10',
+  'polygons': [['-66.104271 69.819366 -69.571243 74.741966 -67.42112 83.209152 '
+                '-64.210938 77.59269 -66.104271 69.819366']],
+  'producer_granule_id': 'S1A_EW_GRDM_1SDH_20201017T145616_20201017T145720_034837_040FA0_0B4B',
+  'time_end': '2020-10-17T14:57:20.000Z',
+  'time_start': '2020-10-17T14:56:16.000Z',
+  'title': 'S1A_EW_GRDM_1SDH_20201017T145616_20201017T145720_034837_040FA0_0B4B-METADATA_GRD_MD',
+  'updated': '2020-10-19T18:35:34.000Z'},
+ {'browse_flag': True,
+  'collection_concept_id': 'C1214472336-ASF',
+  'coordinate_system': 'GEODETIC',
+  'data_center': 'ASF',
+  'dataset_id': 'SENTINEL-1A_DUAL_POL_METADATA_GRD_MEDIUM_RES',
+  'day_night_flag': 'UNSPECIFIED',
+  'granule_size': '0.05633354187011719',
+  'id': 'G1954616638-ASF',
+  'links': [{'href': 'https://datapool.asf.alaska.edu/METADATA_GRD_MD/SA/S1A_EW_GRDM_1SDH_20201017T145720_20201017T145820_034837_040FA0_72CE.iso.xml',
+             'hreflang': 'en-US',
+             'rel': 'http://esipfed.org/ns/fedsearch/1.1/data#',
+             'title': 'This link provides direct download access to the '
+                      'granule.'},
+            {'href': 'www.asf.alaska.edu/sar-data-sets/sentinel-1',
+             'hreflang': 'en-US',
+             'rel': 'http://esipfed.org/ns/fedsearch/1.1/metadata#',
+             'title': 'ASF DAAC Sentinel-1 data set landing page (VIEW RELATED '
+                      'INFORMATION)'},
+            {'href': 'www.asf.alaska.edu/sar-information/sentinel-1-documents-tools',
+             'hreflang': 'en-US',
+             'rel': 'http://esipfed.org/ns/fedsearch/1.1/metadata#',
+             'title': 'ASF DAAC Sentinel-1 User Guide and Technical '
+                      'Documentation (VIEW RELATED INFORMATION)'},
+            {'href': 'https://datapool.asf.alaska.edu/BROWSE/SA/S1A_EW_GRDM_1SDH_20201017T145720_20201017T145820_034837_040FA0_72CE.jpg',
+             'hreflang': 'en-US',
+             'rel': 'http://esipfed.org/ns/fedsearch/1.1/browse#'},
+            {'href': 'https://vertex.daac.asf.alaska.edu/',
+             'hreflang': 'en-US',
+             'inherited': True,
+             'rel': 'http://esipfed.org/ns/fedsearch/1.1/data#'}],
+  'online_access_flag': True,
+  'orbit_calculated_spatial_domains': [{'orbit_number': '34837'}],
+  'original_format': 'ECHO10',
+  'polygons': [['-62.765087 66.277176 -66.103951 69.81897 -64.211227 77.590164 '
+                '-61.060097 73.427185 -62.765087 66.277176']],
+  'producer_granule_id': 'S1A_EW_GRDM_1SDH_20201017T145720_20201017T145820_034837_040FA0_72CE',
+  'time_end': '2020-10-17T14:58:20.000Z',
+  'time_start': '2020-10-17T14:57:20.000Z',
+  'title': 'S1A_EW_GRDM_1SDH_20201017T145720_20201017T145820_034837_040FA0_72CE-METADATA_GRD_MD',
+  'updated': '2020-10-19T18:33:31.000Z'},
+ {'browse_flag': True,
+  'collection_concept_id': 'C1214472336-ASF',
+  'coordinate_system': 'GEODETIC',
+  'data_center': 'ASF',
+  'dataset_id': 'SENTINEL-1A_DUAL_POL_METADATA_GRD_MEDIUM_RES',
+  'day_night_flag': 'UNSPECIFIED',
+  'granule_size': '0.05633354187011719',
+  'id': 'G1954805829-ASF',
+  'links': [{'href': 'https://datapool.asf.alaska.edu/METADATA_GRD_MD/SA/S1A_EW_GRDM_1SDH_20201018T135856_20201018T140000_034851_041027_2659.iso.xml',
+             'hreflang': 'en-US',
+             'rel': 'http://esipfed.org/ns/fedsearch/1.1/data#',
+             'title': 'This link provides direct download access to the '
+                      'granule.'},
+            {'href': 'www.asf.alaska.edu/sar-data-sets/sentinel-1',
+             'hreflang': 'en-US',
+             'rel': 'http://esipfed.org/ns/fedsearch/1.1/metadata#',
+             'title': 'ASF DAAC Sentinel-1 data set landing page (VIEW RELATED '
+                      'INFORMATION)'},
+            {'href': 'www.asf.alaska.edu/sar-information/sentinel-1-documents-tools',
+             'hreflang': 'en-US',
+             'rel': 'http://esipfed.org/ns/fedsearch/1.1/metadata#',
+             'title': 'ASF DAAC Sentinel-1 User Guide and Technical '
+                      'Documentation (VIEW RELATED INFORMATION)'},
+            {'href': 'https://datapool.asf.alaska.edu/BROWSE/SA/S1A_EW_GRDM_1SDH_20201018T135856_20201018T140000_034851_041027_2659.jpg',
+             'hreflang': 'en-US',
+             'rel': 'http://esipfed.org/ns/fedsearch/1.1/browse#'},
+            {'href': 'https://vertex.daac.asf.alaska.edu/',
+             'hreflang': 'en-US',
+             'inherited': True,
+             'rel': 'http://esipfed.org/ns/fedsearch/1.1/data#'}],
+  'online_access_flag': True,
+  'orbit_calculated_spatial_domains': [{'orbit_number': '34851'}],
+  'original_format': 'ECHO10',
+  'polygons': [['-65.236397 83.18071 -68.712318 87.887711 -66.630493 96.161102 '
+                '-63.400326 90.779785 -65.236397 83.18071']],
+  'producer_granule_id': 'S1A_EW_GRDM_1SDH_20201018T135856_20201018T140000_034851_041027_2659',
+  'time_end': '2020-10-18T14:00:00.000Z',
+  'time_start': '2020-10-18T13:58:56.000Z',
+  'title': 'S1A_EW_GRDM_1SDH_20201018T135856_20201018T140000_034851_041027_2659-METADATA_GRD_MD',
+  'updated': '2020-10-20T07:16:54.000Z'},
+ {'browse_flag': True,
+  'collection_concept_id': 'C1214472336-ASF',
+  'coordinate_system': 'GEODETIC',
+  'data_center': 'ASF',
+  'dataset_id': 'SENTINEL-1A_DUAL_POL_METADATA_GRD_MEDIUM_RES',
+  'day_night_flag': 'UNSPECIFIED',
+  'granule_size': '0.05633354187011719',
+  'id': 'G1954799806-ASF',
+  'links': [{'href': 'https://datapool.asf.alaska.edu/METADATA_GRD_MD/SA/S1A_EW_GRDM_1SDH_20201018T140000_20201018T140100_034851_041027_2777.iso.xml',
+             'hreflang': 'en-US',
+             'rel': 'http://esipfed.org/ns/fedsearch/1.1/data#',
+             'title': 'This link provides direct download access to the '
+                      'granule.'},
+            {'href': 'www.asf.alaska.edu/sar-data-sets/sentinel-1',
+             'hreflang': 'en-US',
+             'rel': 'http://esipfed.org/ns/fedsearch/1.1/metadata#',
+             'title': 'ASF DAAC Sentinel-1 data set landing page (VIEW RELATED '
+                      'INFORMATION)'},
+            {'href': 'www.asf.alaska.edu/sar-information/sentinel-1-documents-tools',
+             'hreflang': 'en-US',
+             'rel': 'http://esipfed.org/ns/fedsearch/1.1/metadata#',
+             'title': 'ASF DAAC Sentinel-1 User Guide and Technical '
+                      'Documentation (VIEW RELATED INFORMATION)'},
+            {'href': 'https://datapool.asf.alaska.edu/BROWSE/SA/S1A_EW_GRDM_1SDH_20201018T140000_20201018T140100_034851_041027_2777.jpg',
+             'hreflang': 'en-US',
+             'rel': 'http://esipfed.org/ns/fedsearch/1.1/browse#'},
+            {'href': 'https://vertex.daac.asf.alaska.edu/',
+             'hreflang': 'en-US',
+             'inherited': True,
+             'rel': 'http://esipfed.org/ns/fedsearch/1.1/data#'}],
+  'online_access_flag': True,
+  'orbit_calculated_spatial_domains': [{'orbit_number': '34851'}],
+  'original_format': 'ECHO10',
+  'polygons': [['-61.876564 79.848251 -65.236069 83.180344 -63.400402 90.778 '
+                '-60.217258 86.840034 -61.876564 79.848251']],
+  'producer_granule_id': 'S1A_EW_GRDM_1SDH_20201018T140000_20201018T140100_034851_041027_2777',
+  'time_end': '2020-10-18T14:01:00.000Z',
+  'time_start': '2020-10-18T14:00:00.000Z',
+  'title': 'S1A_EW_GRDM_1SDH_20201018T140000_20201018T140100_034851_041027_2777-METADATA_GRD_MD',
+  'updated': '2020-10-20T06:51:16.000Z'},
+ {'browse_flag': False,
+  'collection_concept_id': 'C1214472336-ASF',
+  'coordinate_system': 'GEODETIC',
+  'data_center': 'ASF',
+  'dataset_id': 'SENTINEL-1A_DUAL_POL_METADATA_GRD_MEDIUM_RES',
+  'day_night_flag': 'UNSPECIFIED',
+  'granule_size': '0.05633258819580078',
+  'id': 'G1954798927-ASF',
+  'links': [{'href': 'https://datapool.asf.alaska.edu/METADATA_GRD_MD/SA/S1A_EW_GRDM_1SDH_20201018T140100_20201018T140148_034851_041027_C95D.iso.xml',
+             'hreflang': 'en-US',
+             'rel': 'http://esipfed.org/ns/fedsearch/1.1/data#',
+             'title': 'This link provides direct download access to the '
+                      'granule.'},
+            {'href': 'www.asf.alaska.edu/sar-data-sets/sentinel-1',
+             'hreflang': 'en-US',
+             'rel': 'http://esipfed.org/ns/fedsearch/1.1/metadata#',
+             'title': 'ASF DAAC Sentinel-1 data set landing page (VIEW RELATED '
+                      'INFORMATION)'},
+            {'href': 'www.asf.alaska.edu/sar-information/sentinel-1-documents-tools',
+             'hreflang': 'en-US',
+             'rel': 'http://esipfed.org/ns/fedsearch/1.1/metadata#',
+             'title': 'ASF DAAC Sentinel-1 User Guide and Technical '
+                      'Documentation (VIEW RELATED INFORMATION)'},
+            {'href': 'https://vertex.daac.asf.alaska.edu/',
+             'hreflang': 'en-US',
+             'inherited': True,
+             'rel': 'http://esipfed.org/ns/fedsearch/1.1/data#'}],
+  'online_access_flag': True,
+  'orbit_calculated_spatial_domains': [{'orbit_number': '34851'}],
+  'original_format': 'ECHO10',
+  'polygons': [['-59.113174 77.623962 -61.876228 79.847961 -60.217464 '
+                '86.837784 -57.570774 84.174744 -59.113174 77.623962']],
+  'producer_granule_id': 'S1A_EW_GRDM_1SDH_20201018T140100_20201018T140148_034851_041027_C95D',
+  'time_end': '2020-10-18T14:01:48.000Z',
+  'time_start': '2020-10-18T14:01:00.000Z',
+  'title': 'S1A_EW_GRDM_1SDH_20201018T140100_20201018T140148_034851_041027_C95D-METADATA_GRD_MD',
+  'updated': '2020-10-20T06:46:01.000Z'}]</code></pre>
+</div>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+      <div class="nav-footer-center">NASA Openscapes Team (2021). Earthdata Cloud Cookbook (Version v0.0.1).</div>
+  </div>
+</footer>
+
+
+
+</body></html>
