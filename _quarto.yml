@@ -52,38 +52,46 @@ website:
             href: how-tos/access_data.qmd 
             contents:
               - text: "if I'm in the cloud"
-                href: how-tos/working-with-data-in-cloud/index.md
+                href: how-tos/working-with-data-in-cloud/index.md  # make if-im-in-cloud..qmd
+# Move below into if-im-in-cloud.qmd
+#              - text: "Direct Cloud Access"
+#                href: how-tos/working-with-data-in-cloud/Direct-Cloud-Access.qmd
+#              - text: "Access Data behind a EULA" 
+#                href: how-tos/working-with-data-in-cloud/Access-EULA-Data.qmd
               - text: "if I'm on my local machine"
-              
-              - text: "Direct Cloud Access"
-                href: how-tos/working-with-data-in-cloud/Direct-Cloud-Access.qmd
-              - text: "Access Data behind a EULA" 
-                href: how-tos/working-with-data-in-cloud/Access-EULA-Data.qmd
-          - section: how-tos/working-locally/index.md
-            contents:
-              - text: "Download Data"
-                href: how-tos/working-locally/download.qmd
-          - section: how-tos/subset/index.md
+              # add if-im-local.qmd
+# Move into if-im-local.qmd
+#          - section: how-tos/working-locally/index.md
+#            contents:
+#              - text: "Download Data"
+#                href: how-tos/working-locally/download.qmd
+          - section: "subset data"
+            href: how-tos/subset/index.md    # change to subset.qmd
             contents: 
               - text: "How do I download a subset of NetCDF-4?" 
                 href: how-tos/subset/subset.md
-          - section: "How do I reformat data files?"
+          - section: "reformat data files"
+          # add page for reformat-data.qmd
             contents:
-              - text: "How do I convert a NetCDF file to Zarr"
+              - text: "NetCDF to Zarr"
                 href: how-tos/reformat/reformat.md
-          - section: how-tos/reproject_and_regrid/index.md
+              - text: "GeoTIFF to COG"
+          - section: "reproject and regrid"
+            href: how-tos/reproject_and_regrid/index.md
             contents:
               - text: "How do I reproject a data file using Harmony?"
                 href: how-tos/reproject_and_regrid/reproject.md
-          - section: "How do I aggregate data?"
+          - section: "aggregate data"
+          # add aggregate.qmd
             contents:
               - text: "How do I calculate a climatology?"
                 href: how-tos/aggregate/aggregate.ipynb
-          - section: "How do I plot data?"
+          - section: "plot data"
             contents:
               - text: "How do I plot a NetCDF variable?"
                 href: how-tos/plot/index.md
-          - section: "How do I use services to work with data?"
+          - section: "use APIs"   # ...or "how do I get my work done for me?"
+          # add instruction page with explicit description
             contents:
               - text: "How do I know what services are available for a dataset"
                 href: how-tos/find_services.qmd
@@ -91,10 +99,10 @@ website:
                 href: how-tos/use_harmony.qmd
               - text: "How do I use OPenDap to subset data files?"
                 href: how-tos/use_opendap.qmd
-          - section: "How do I setup an AWS instance?"
-            contents:
-              - text: "Place holder for AWS setup"
-                href: how-tos/tech-setup.qmd
+          #- section: "setup AWS"  # Park for now  
+          #  contents:
+          #    - text: "Place holder for AWS setup"
+          #      href: how-tos/tech-setup.qmd
           - how-tos/how_to_guide_parking_lot.md
       - section: tutorials/index.qmd
         contents:
