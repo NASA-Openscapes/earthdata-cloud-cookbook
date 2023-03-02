@@ -37,16 +37,24 @@ website:
       - our-cookbook.qmd  
       - text: "Cheatsheets & Slides" 
         href: cheatsheets.qmd      
-      - section: how-tos/index.qmd
+      - section: "How do I..."
+      #how-tos/index.qmd
         contents: 
-          - section: how-tos/find-data/index.md
+          - section: "find data"
+          #how-tos/find-data/index.md
             contents:
-              - text: "How do I find data using Earthdata Search"
+              - text: "using Earthdata Search"
                 href: how-tos/find-data/earthdata_search.md
-              - text: "How do I find data using the command line or a notebook" 
+              - text: "using the command line"
+              - text: "using a notebook" 
                 href: how-tos/find-data/programmatic.qmd                
-          - section: how-tos/working-with-data-in-cloud/index.md
+          - section: "access data"
+            href: how-tos/access_data.qmd 
             contents:
+              - text: "if I'm in the cloud"
+                href: how-tos/working-with-data-in-cloud/index.md
+              - text: "if I'm on my local machine"
+              
               - text: "Direct Cloud Access"
                 href: how-tos/working-with-data-in-cloud/Direct-Cloud-Access.qmd
               - text: "Access Data behind a EULA" 
