@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>EarthData Cloud Cookbook - PO DAAC Authentication Example</title>
+<title>EarthData Cloud Cookbook - 00. Setup for tutorials</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -92,6 +92,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../contributing/index.html" rel="next">
+<link href="../in-development/earthdata-python-r-handoff.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -133,7 +135,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">PO DAAC Authentication Example</h1>
+      <h1 class="quarto-secondary-nav-title">00. Setup for tutorials</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -373,11 +375,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="../in-development/index.html" class="sidebar-item-text sidebar-link">In Development</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" aria-expanded="false">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" aria-expanded="true">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../external/opensarlab-test.ipynb" class="sidebar-item-text sidebar-link">OpenSARLab test!</a>
@@ -465,7 +467,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../external/setup.html" class="sidebar-item-text sidebar-link">Hackathon Set Up</a>
+  <a href="../external/setup.html" class="sidebar-item-text sidebar-link active">Hackathon Set Up</a>
   </div>
 </li>
       </ul>
@@ -534,16 +536,41 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#configure-your-.netrc-file" id="toc-configure-your-.netrc-file" class="nav-link active" data-scroll-target="#configure-your-.netrc-file">Configure your <em>.netrc</em> file</a></li>
+  <li><a href="#step-1.-login-to-the-hub" id="toc-step-1.-login-to-the-hub" class="nav-link active" data-scroll-target="#step-1.-login-to-the-hub">Step 1. Login to the Hub</a></li>
+  <li><a href="#discussion-cloud-environment" id="toc-discussion-cloud-environment" class="nav-link" data-scroll-target="#discussion-cloud-environment">Discussion: Cloud environment</a></li>
+  <li><a href="#discussion-my-desktop-setup" id="toc-discussion-my-desktop-setup" class="nav-link" data-scroll-target="#discussion-my-desktop-setup">Discussion: My desktop setup</a></li>
+  <li><a href="#step-2.-fork-the-hackathon-github-repository" id="toc-step-2.-fork-the-hackathon-github-repository" class="nav-link" data-scroll-target="#step-2.-fork-the-hackathon-github-repository">Step 2. Fork the Hackathon GitHub repository</a></li>
+  <li><a href="#discussion-python-and-conda-environments" id="toc-discussion-python-and-conda-environments" class="nav-link" data-scroll-target="#discussion-python-and-conda-environments">Discussion: Python and Conda environments</a>
+  <ul class="collapse">
+  <li><a href="#bash-terminal-and-installed-software" id="toc-bash-terminal-and-installed-software" class="nav-link" data-scroll-target="#bash-terminal-and-installed-software">Bash terminal and installed software</a></li>
+  <li><a href="#updating-the-environment" id="toc-updating-the-environment" class="nav-link" data-scroll-target="#updating-the-environment">Updating the environment</a></li>
+  <li><a href="#corn" id="toc-corn" class="nav-link" data-scroll-target="#corn">corn 🌽</a></li>
+  </ul></li>
+  <li><a href="#step-3.-jupyterhub-orientation" id="toc-step-3.-jupyterhub-orientation" class="nav-link" data-scroll-target="#step-3.-jupyterhub-orientation">Step 3. JupyterHub orientation</a>
+  <ul class="collapse">
+  <li><a href="#first-impressions" id="toc-first-impressions" class="nav-link" data-scroll-target="#first-impressions">First impressions</a></li>
+  </ul></li>
+  <li><a href="#step-4.-clone-the-hackathon-github-repository" id="toc-step-4.-clone-the-hackathon-github-repository" class="nav-link" data-scroll-target="#step-4.-clone-the-hackathon-github-repository">Step 4. Clone the Hackathon GitHub repository</a></li>
+  <li><a href="#jupyter-notebooks" id="toc-jupyter-notebooks" class="nav-link" data-scroll-target="#jupyter-notebooks">Jupyter notebooks</a></li>
+  <li><a href="#how-do-i-end-my-session" id="toc-how-do-i-end-my-session" class="nav-link" data-scroll-target="#how-do-i-end-my-session">How do I end my session?</a></li>
+  <li><a href="#step-5.-tracking-changes-optional" id="toc-step-5.-tracking-changes-optional" class="nav-link" data-scroll-target="#step-5.-tracking-changes-optional">Step 5. Tracking changes (Optional)</a>
+  <ul class="collapse">
+  <li><a href="#step-5.1.-configure-git-git-config" id="toc-step-5.1.-configure-git-git-config" class="nav-link" data-scroll-target="#step-5.1.-configure-git-git-config">Step 5.1. Configure Git (<code>git config</code>)</a></li>
+  <li><a href="#step-5.2.-create-a-new-file" id="toc-step-5.2.-create-a-new-file" class="nav-link" data-scroll-target="#step-5.2.-create-a-new-file">Step 5.2. Create a new file</a></li>
+  <li><a href="#step-5.3.-track-the-changes-to-the-new-file-git-add" id="toc-step-5.3.-track-the-changes-to-the-new-file-git-add" class="nav-link" data-scroll-target="#step-5.3.-track-the-changes-to-the-new-file-git-add">Step 5.3. Track the changes to the new file (<code>git add</code>)</a></li>
+  <li><a href="#step-5.4.-commit-the-changes-to-the-new-file-git-commit" id="toc-step-5.4.-commit-the-changes-to-the-new-file-git-commit" class="nav-link" data-scroll-target="#step-5.4.-commit-the-changes-to-the-new-file-git-commit">Step 5.4. Commit the changes to the new file (<code>git commit</code>)</a></li>
+  <li><a href="#step-5.5.-transmit-committed-changes-to-your-github-git-push" id="toc-step-5.5.-transmit-committed-changes-to-your-github-git-push" class="nav-link" data-scroll-target="#step-5.5.-transmit-committed-changes-to-your-github-git-push">Step 5.5. Transmit committed changes to your github (<code>git push</code>)</a></li>
+  <li><a href="#step-5.6.-setup-pat" id="toc-step-5.6.-setup-pat" class="nav-link" data-scroll-target="#step-5.6.-setup-pat">Step 5.6. Setup your Personal Access Token (PAT)</a></li>
+  </ul></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.dev/nasa-openscapes/earthdata-cloud-cookbook/blob/main/get-started/podaac-ecco-netrc.ipynb" class="toc-action">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/blob/main/get-started/podaac-ecco-netrc.ipynb" class="toc-action">View source</a></p><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/edit/main/external/setup.md" class="toc-action">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/blob/main/external/setup.md" class="toc-action">View source</a></p><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">PO DAAC Authentication Example</h1>
+<h1 class="title d-none d-lg-block">00. Setup for tutorials</h1>
 </div>
 
 
@@ -558,317 +585,266 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<p><strong>Note this is currently copied from <a href="https://github.com/podaac/ECCO/blob/main/Data_Access/local_bulk_download_and_open_in_py3.ipynb" class="uri">https://github.com/podaac/ECCO/blob/main/Data_Access/local_bulk_download_and_open_in_py3.ipynb</a> as a starting point and will be refined</strong></p>
-<center>
-<img src="https://podaac.jpl.nasa.gov/sites/default/files/mission_themes/featured_image/%20Estimating-the-Circulation-and-Climate-of-the-Ocean-ECCO-opt2.jpg" width="600px">
-</center>
-<section id="configure-your-.netrc-file" class="level3">
-<h3 class="anchored" data-anchor-id="configure-your-.netrc-file">Configure your <em>.netrc</em> file</h3>
-<p>Good idea to back up your existing netrc file, if you have one. And while youre at it check for these entries because they might exist in there already:</p>
-<div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2021-05-27T10:39:46.711996Z&quot;,&quot;start_time&quot;:&quot;2021-05-27T10:39:46.584071Z&quot;}" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>cp <span class="op">~/</span>.netrc <span class="op">~/</span>bak.netrc</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>cat <span class="op">~/</span>.netrc <span class="op">|</span> grep <span class="st">'.earthdata.nasa.gov'</span> <span class="op">|</span> cut <span class="op">-</span>f<span class="op">-</span><span class="dv">5</span> <span class="op">-</span>d<span class="st">" "</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password</code></pre>
-</div>
-</div>
+<p>This tutorial will help you set up your JupyterHub (or Hub) with tutorials and other materials from our Cloud Hackathon github repository and connect your github account.</p>
+<section id="step-1.-login-to-the-hub" class="level2">
+<h2 class="anchored" data-anchor-id="step-1.-login-to-the-hub">Step 1. Login to the Hub</h2>
+<p>Please go to the Openscapes Jupyter Hub. Log in with your GitHub Account, and select “Small”.</p>
+<!-- Alternatively, you can also click this badge to launch the Hub:
+
+![](https://img.shields.io/static/v1.svg?logo=Jupyter&label=Openscapes&message=AWS+us-west-2&color=orange){fig-align="center"}
+
+![](img/JupyterHub-2i2c.png){width="500"}
+
+![](img/JupyterHub-Login.png){width="500"}
+
+![](img/JupyterHub-SelectSmall.png){width="500"}
+
+![](img/JupyterHub-Loading.png){width="500"} -->
 <blockquote class="blockquote">
-<p>Add entries to your netrc for these two <em>earthdata.nasa.gov</em> sub domains, at a minimum:</p>
-<pre><code>machine urs.earthdata.nasa.gov login jmcnelis password ***
-machine opendap.earthdata.nasa.gov login jmcnelis password ***</code></pre>
-<p>and replace <code>jmcnelis</code> and <code>***</code> with your Earthdata Login <em>username</em> and <em>password</em>, respectively…</p>
+<p><strong>Note:</strong> It takes a few minutes for the Hub to load. Please be patient!</p>
 </blockquote>
-<p>Replace <code>jmcnelis</code> and <code>***</code> with your Earthdata <em>username</em> and <em>password</em>, and then run the cell to <em>append</em> these two lines to your netrc file, if one exists. Otherwise write them to a new one. (all set up by <code>-a</code>)</p>
-<div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2021-05-27T10:39:47.549656Z&quot;,&quot;start_time&quot;:&quot;2021-05-27T10:39:47.545449Z&quot;}" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span><span class="bu">file</span> <span class="op">-</span>a <span class="op">~/</span>.netrc</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>machine urs.earthdata.nasa.gov login jmcnelis password <span class="op">***</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>machine opendap.earthdata.nasa.gov login jmcnelis password <span class="op">***</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Appending to /Users/lowndes/.netrc</code></pre>
+<p>While the Hub loads, we’ll:</p>
+<ul>
+<li>Discuss cloud environments</li>
+<li>See how my Desktop is setup</li>
+<li>Fork the Hackathon repository at github.com</li>
+<li>Discuss python and conda environments</li>
+</ul>
+<p>Then, when the Hub is loaded, we’ll get oriented in the Hub and clone the forked repository into our cloud environment.</p>
+</section>
+<section id="discussion-cloud-environment" class="level2">
+<h2 class="anchored" data-anchor-id="discussion-cloud-environment">Discussion: Cloud environment</h2>
+<p>A brief overview about the <a href="https://nasa-openscapes.github.io/2021-Cloud-Hackathon/clinic/jupyterhub.html">NASA Openscapes Cloud Environment</a> (following lessons from the Clinic).</p>
+<section id="cloud-infrastructure" class="level4">
+<h4 class="anchored" data-anchor-id="cloud-infrastructure">Cloud infrastructure</h4>
+<ul>
+<li>Cloud: AWS <a href="https://goo.gl/maps/BYqGYxahpwJgzKwR8"><code>us-west-2</code></a>
+<ul>
+<li>Data: AWS S3 (cloud) and <a href="https://earthdata.nasa.gov/eosdis/daacs">NASA DAAC</a> data centers (on-prem).</li>
+<li>Cloud compute environment: <a href="https://docs.2i2c.org/en/latest/">2i2c Jupyterhub deployment</a>
+<ul>
+<li>IDE: <a href="https://jupyterlab.readthedocs.io/en/stable/getting_started/overview.html"><strong>JupyterLab</strong></a></li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="discussion-my-desktop-setup" class="level2">
+<h2 class="anchored" data-anchor-id="discussion-my-desktop-setup">Discussion: My desktop setup</h2>
+<p>I’ll screenshare to show and/or talk through how I have oriented the following software we’re using:</p>
+<ul>
+<li>2i2c Jupyterhub (our main workspace)</li>
+<li><a href="https://github.com/nasa-openscapes/2021-Cloud-Hackathon/">Hackathon Repo</a> &lt;&gt; <a href="https://nasa-openscapes.github.io/2021-Cloud-Hackathon/">Hackathon Book</a> (my teaching notes, your reference material)</li>
+<li>Zoom Chat</li>
+<li>Slack</li>
+</ul>
+</section>
+<section id="step-2.-fork-the-hackathon-github-repository" class="level2">
+<h2 class="anchored" data-anchor-id="step-2.-fork-the-hackathon-github-repository">Step 2. Fork the Hackathon GitHub repository</h2>
+<p>“How do I get the tutorial repository into the Hub?”. There are 2 steps. The first is from GitHub.com to fork the tutorial repository so that there is a connected copy in your user account that you can edit and push changes that won’t affect the nasa-openscapes copy.</p>
+<p>Go to <a href="https://github.com/nasa-openscapes/2021-Cloud-Hackathon" class="uri">https://github.com/nasa-openscapes/2021-Cloud-Hackathon</a> and fork the repository.</p>
+<p><img src="../clinic/img/fork-tutorials.png" class="img-fluid"></p>
+<p><strong>Note:</strong> if you’ve already done this in the Pre-Hackathon Clinic, you’ll need to make sure you have the latest, following the <a href="https://nasa-openscapes.github.io/2021-Cloud-Hackathon/logistics/github-workflows.html#daily-setup">daily setup</a> instructions.</p>
+</section>
+<section id="discussion-python-and-conda-environments" class="level2">
+<h2 class="anchored" data-anchor-id="discussion-python-and-conda-environments">Discussion: Python and Conda environments</h2>
+<p><a href="https://foundations.projectpythia.org/foundations/why-python.html"><strong>Why Python?</strong></a></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://pangeo-data.github.io/img/scientific-python-28-638.jpg" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Python Data Stack. Source: Jake VanderPlas, “The State of the Stack,” SciPy Keynote (SciPy 2015).</figcaption><p></p>
+</figure>
+</div>
+<p><strong>Default Python Environment:</strong></p>
+<p>We’ve set up the Python environment with conda.</p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Conda environment
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="sourceCode" id="cb1"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">name</span><span class="kw">:</span><span class="at"> openscapes</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">channels</span><span class="kw">:</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> conda-forge</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">dependencies</span><span class="kw">:</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> python=3.9</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> pangeo-notebook</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> awscli~=1.20</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> boto3~=1.19</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> gdal~=3.3</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> rioxarray~=0.8</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> xarray~=0.19</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> h5netcdf~=0.11</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> netcdf4~=1.5</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> h5py~=2.10</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> geoviews~=1.9</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> matplotlib-base~=3.4</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> hvplot~=0.7</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> pyproj~=3.2</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> bqplot~=0.12</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> geopandas~=0.10</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> zarr~=2.10</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> cartopy~=0.20</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> shapely==1.7.1</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> pyresample~=1.22</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> joblib~=1.1</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> pystac-client~=0.3</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> s3fs~=2021.7</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> ipyleaflet~=0.14</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> sidecar~=0.5</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> jupyterlab-geojson~=3.1</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> jupyterlab-git</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> jupyter-resource-usage</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> ipympl~=0.6</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> conda-lock~=0.12</span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> pooch~=1.5</span></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> pip</span></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">pip</span><span class="kw">:</span></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> tqdm</span></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> harmony-py</span></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> earthdata</span></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> zarr-eosdis-store</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
-<p>Dump the netrc again sans passwords to confirm that it worked:</p>
-<div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2021-05-27T10:39:48.488604Z&quot;,&quot;start_time&quot;:&quot;2021-05-27T10:39:48.365081Z&quot;}" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>cat <span class="op">~/</span>.netrc <span class="op">|</span> grep <span class="st">'.earthdata.nasa.gov'</span> <span class="op">|</span> cut <span class="op">-</span>f<span class="op">-</span><span class="dv">5</span> <span class="op">-</span>d<span class="st">" "</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password
-machine urs.earthdata.nasa.gov login jmcnelis password
-machine opendap.earthdata.nasa.gov login jmcnelis password</code></pre>
 </div>
+<section id="bash-terminal-and-installed-software" class="level3">
+<h3 class="anchored" data-anchor-id="bash-terminal-and-installed-software">Bash terminal and installed software</h3>
+<p>Libraries that are available from the terminal</p>
+<ul>
+<li>gdal 3.3 commands ( gdalinfo, gdaltransform…)</li>
+<li>hdf5 commands ( h5dump, h5ls..)</li>
+<li>netcdf4 commands (ncdump, ncinfo …)</li>
+<li>jq (parsing json files or streams from curl)</li>
+<li>curl (fetch resources from the web)</li>
+<li>awscli (AWS API client, to interact with AWS cloud services)</li>
+<li>vim (editor)</li>
+<li>tree ( directory tree)</li>
+<li>more …</li>
+</ul>
+</section>
+<section id="updating-the-environment" class="level3">
+<h3 class="anchored" data-anchor-id="updating-the-environment">Updating the environment</h3>
+<p>Scientific Python is a vast space and we only included libraries that are needed in our tutorials. Our default environment can be updated to include any Python library that’s available on pip or conda.</p>
+<p>The project used to create our default environment is called <strong>corn</strong> (as it can include many Python kernels).</p>
+<p>If we want to update a library or install a whole new environment we need to open an issue on this repository. We can help your teams do this during project hacktime.</p>
+</section>
+<section id="corn" class="level3">
+<h3 class="anchored" data-anchor-id="corn"><a href="https://github.com/NASA-Openscapes/corn">corn 🌽</a></h3>
+</section>
+</section>
+<section id="step-3.-jupyterhub-orientation" class="level2">
+<h2 class="anchored" data-anchor-id="step-3.-jupyterhub-orientation">Step 3. JupyterHub orientation</h2>
+<p>Now that the Hub is loaded, let’s get oriented.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="img/JupyterHub-View.png"><img src="img/JupyterHub-View.png" class="img-fluid figure-img" width="500"></a></p>
+</figure>
 </div>
-<p>Finally, you need to make sure to limit access to the netrc file because it stores your plain text password. Simple on MacOS and Linux:</p>
-<div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2021-05-27T10:39:48.969549Z&quot;,&quot;start_time&quot;:&quot;2021-05-27T10:39:48.843529Z&quot;}" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>chmod <span class="dv">0</span><span class="er">600</span> <span class="op">~/</span>.netrc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<section id="first-impressions" class="level3">
+<h3 class="anchored" data-anchor-id="first-impressions">First impressions</h3>
+<ul>
+<li>Launcher &amp; the big blue button</li>
+<li>“home directory”</li>
+</ul>
+</section>
+</section>
+<section id="step-4.-clone-the-hackathon-github-repository" class="level2">
+<h2 class="anchored" data-anchor-id="step-4.-clone-the-hackathon-github-repository">Step 4. Clone the Hackathon GitHub repository</h2>
+<p>Now we’ll clone the GitHub repository, using a git extension for the JupyterHub. Go to your github account, and navigate to the repository that you just created by forking from the Openscapes repository.</p>
+<p>Click to copy the url for cloning the repository.</p>
+<p><img src="img/Github-forked-repo.png" class="img-fluid" width="2224"></p>
+<p>Now, go to JupyterHub and click on the git extension in the left panel and then click the blue button “Clone a Repository”.</p>
+<p><img src="img/JupyterHub-GitExtension.png" class="img-fluid"></p>
+<p>Then, paste the repository link to the forked repository that you copied from your github account into the “Clone a repo” pop up window. Then click the blue “CLONE” button. It will take a few moments to clone the repository into your Hub.</p>
+<p>Your link should look like <code>https://github.com/YOUR-USERNAME/2021-Cloud-Hackathon</code>. For example, the link is https://github.com/<strong>virdi</strong>/2021-Cloud-Hackathon. Note that it include your github username in the repo link.</p>
+<p><img src="img/JupyterHub-Clone-Extension.png" class="img-fluid"></p>
+<p>Alternatively, you can use the terminal (command line) as per <a href="https://nasa-openscapes.github.io/2021-Cloud-Hackathon/logistics/github-workflows.html">github workflows: first-time setup</a>.</p>
+<p>Once the repository is cloned, you will see a new directory in the “File Browser” panel on the left named “2021-Cloud-Hackathon”. In this directory, you have all hackathon material including the tutorials and this book to follow along during other Tutorials. You are all set.</p>
+<p><img src="img/JupyterHub-Cloned-Repo-FileBrowser.png" class="img-fluid"></p>
+<blockquote class="blockquote">
+<p><strong>REMEMBER:</strong> This is your copy (or fork) of the hackathon materials and jupyter notebooks. So feel free to make any changes to the content of this repository.</p>
+</blockquote>
+</section>
+<section id="jupyter-notebooks" class="level2">
+<h2 class="anchored" data-anchor-id="jupyter-notebooks">Jupyter notebooks</h2>
+<p>Let’s get oriented to Jupyter notebooks, which we’ll use in all the tutorials.</p>
+</section>
+<section id="how-do-i-end-my-session" class="level2">
+<h2 class="anchored" data-anchor-id="how-do-i-end-my-session">How do I end my session?</h2>
+<p><em>(Also see <a href="https://nasa-openscapes.github.io/2021-Cloud-Hackathon/clinic/jupyterhub.html#how-do-i-end-my-openscapes-session">How do I end my Openscapes session? Will I lose all of my work?</a>)</em></p>
+<p>When you are finished working for the day it is important to explicitly log out of your Openscapes session. The reason for this is it will save us a bit of money! When you keep a session active it uses up AWS resources and keeps a series of virtual machines deployed.</p>
+<p>Stopping the server happens automatically when you log out, so navigate to “File -&gt; Log Out” and just click “Log Out”!</p>
+<p>!!! NOTE “logging out” - Logging out will <strong>NOT</strong> cause any of your work to be lost or deleted. It simply shuts down some resources. It would be equivalent to turning off your desktop computer at the end of the day.</p>
+</section>
+<section id="step-5.-tracking-changes-optional" class="level2">
+<h2 class="anchored" data-anchor-id="step-5.-tracking-changes-optional">Step 5. Tracking changes (Optional)</h2>
+<p>Now that you have forked and cloned the repository in your Hub, you can make changes (edit, add, and/or delete content) and track these files using git. In this step, we will provide an overview of how to use git using the graphical interface (the JupyterLab git extension).</p>
+<section id="step-5.1.-configure-git-git-config" class="level3">
+<h3 class="anchored" data-anchor-id="step-5.1.-configure-git-git-config">Step 5.1. Configure Git (<code>git config</code>)</h3>
+<p>Configure git with your name and email address as shown here.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.name <span class="st">"Makhan Virdi"</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.email <span class="st">"Makhan.Virdi@gmail.com"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Open a new terminal: <code>File &gt;&gt; New &gt;&gt; Terminal</code></p>
+<p><img src="img/JupyterHub-Tracking-GitConfig.png" class="img-fluid"></p>
+<p>Configure <code>git</code> to store your github credentials to avoid having to enter your github username and token each time you push changes to your repository(in <a href="#step-5.5.-transmit-committed-changes-to-your-github-(git-push),%20we%20will%20describe%20how%20to%20use%20github%20token%20instead%20of%20a%20password">Step 5.5</a>, we will describe how to use github token instead of a password)</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> credential.helper store</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="step-5.2.-create-a-new-file" class="level3">
+<h3 class="anchored" data-anchor-id="step-5.2.-create-a-new-file">Step 5.2. Create a new file</h3>
+<p>Let’s create a new file: In the left panel on your Hub, click on the “directory” icon and then double click on “2021-Cloud-Hackathon” directory. Then, create a new file using the text editor in your 2i2c JupyterHub (<code>File &gt;&gt; New &gt;&gt; Text File</code>). Add some text to this file, for example: <code>A test file</code>. Save this file and rename it to <code>test.txt</code>.</p>
+<p><img src="img/JupyterHub-Tracking-NewFile.png" class="img-fluid"></p>
+</section>
+<section id="step-5.3.-track-the-changes-to-the-new-file-git-add" class="level3">
+<h3 class="anchored" data-anchor-id="step-5.3.-track-the-changes-to-the-new-file-git-add">Step 5.3. Track the changes to the new file (<code>git add</code>)</h3>
+<p>Click the git icon in the left panel. You can see that the newly added file is in the “Untracked” section. You can click the <code>+</code> icon next to the file name to let <code>git</code> track this file for changes.</p>
+<p><img src="img/JupyterHub-Tracking-GitAdd.png" class="img-fluid"></p>
+</section>
+<section id="step-5.4.-commit-the-changes-to-the-new-file-git-commit" class="level3">
+<h3 class="anchored" data-anchor-id="step-5.4.-commit-the-changes-to-the-new-file-git-commit">Step 5.4. Commit the changes to the new file (<code>git commit</code>)</h3>
+<p>Now, you will see that the file is <strong>Staged</strong>, which means that <code>git</code> is ready to take a snapshot of this file (and the repository) with the changes that you made. This snapshot is called a <code>commit</code>. To commit the changes, add a note (called a <em>commit message</em>) by typing in the text box that say “Summary”.</p>
+<p>Now, click the blue “COMMIT” button to commit this change.</p>
+<blockquote class="blockquote">
+<p>Note: A short message indicating the type of change to this file is a good practice. Optionally, a longer description may be added to the “Description” field.</p>
+</blockquote>
+<p><img src="img/JupyterHub-Tracking-GitCommit.png" class="img-fluid"></p>
+</section>
+<section id="step-5.5.-transmit-committed-changes-to-your-github-git-push" class="level3">
+<h3 class="anchored" data-anchor-id="step-5.5.-transmit-committed-changes-to-your-github-git-push">Step 5.5. Transmit committed changes to your github (<code>git push</code>)</h3>
+<p>At this stage, you have committed the changes to your git repository on your Hub. However, these changes are still on your Hub and needs to be transmitted to your repository on github (so that both the <code>local</code> copy on the JupyterHub and the <code>remote</code> copy on github are in sync).</p>
+<p>As seen in the picture below, the git extension indicates (with an orange dot on the cloud icon) that it is ready to <code>push</code> your changes to the <code>remote</code> (remote = your repository on github.com). To push to github, click the cloud button with an up arrow (circled in red in the picture).</p>
+<p><img src="img/JupyterHub-Tracking-GitPush.png" class="img-fluid"></p>
+<p>When you push for the first time, it will ask that you input your credentials. You will need to set this up with your Personal Access Token (PAT), explained next.</p>
+</section>
+<section id="step-5.6.-setup-pat" class="level3">
+<h3 class="anchored" data-anchor-id="step-5.6.-setup-pat">Step 5.6. Setup your Personal Access Token (PAT)</h3>
+<p>When you see the following screenshot, GitHub is asking for you to input your credentials. (Note: you see this screenshot when you have committed work to push to GitHub.com, as detailed above).</p>
+<p><img src="img/JupyterHub-Tracking-Credentials-Prompt.png" class="img-fluid"></p>
+<p>The git extension in the Hub is prompting you to enter your github.com credentials. Enter you github.com username and a Personal Access Token (PAT); <strong>DO NOT</strong> use your password.</p>
+<p>To create a PAT, visit <strong><a href="https://github.com/settings/tokens/new" class="uri">https://github.com/settings/tokens/new</a></strong> and create a new token with the permission as per the image below and specify its validity for 90 days.</p>
+<p><img src="../clinic/img/github-token.png" class="img-fluid"></p>
+<p><strong>IMPORTANT:</strong> You will see this token only once, so be sure to copy this. If you do not copy your token at this stage, you will need to generate a new token.</p>
+<p><img src="../clinic/img/github-token-generated.png" class="img-fluid"></p>
+<p>Once you generate the token, copy it and paste in the Hub window that prompted you to enter the “Personal Access Token”.</p>
+<p><img src="img/JupyterHub-Tracking-GitPush-With-Credentials.png" class="img-fluid"></p>
+<p>Git will show a message at the bottom right telling that the changes were “Successfully pushed”. Also, you will see that the “cloud icon with an up arrow” no longer has an orange dot, indicating that there are no more committed changes to push to the remote (github.com).</p>
+<blockquote class="blockquote">
+<p>Note: You have configured git extension to store your credentials. You will not be prompted for your login/token again!</p>
+</blockquote>
+<p><img src="img/JupyterHub-Tracking-GitPush-Success.png" class="img-fluid"></p>
+<p>That’s all. You can use the same workflow (<code>add &gt; commit &gt; push</code>) for any other new or modified files!</p>
+<hr>
+<blockquote class="blockquote">
+<p>Note: If you are comfortable with the command line, you can use the Terminal (In Hub, New &gt; Terminal) and follow the steps outlined in <a href="https://nasa-openscapes.github.io/2021-Cloud-Hackathon/clinic/notebooks.html#introduction-version-control-git-and-github">the Clinic section</a>.</p>
+</blockquote>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -1120,6 +1096,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../in-development/earthdata-python-r-handoff.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><code>earthdata</code>: Python-R Handoff</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../contributing/index.html" class="pagination-link">
+        <span class="nav-page-text">Contributing</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">

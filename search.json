@@ -1071,6 +1071,83 @@
     "text": "Git: update, revert, etc\nThese are some useful commands to revert/delete your local changes and update your fork with the most recent information from the main branch.\n\nDelete your local changes\nThere are several ways to delete your local changes if you were playing around and want to reset. Here are a few:\n\nUndo changes you’ve maybe saved or committed, but not pushed\nThis is less time and internet intensive (no new clone/download).\nIf you’ve got changes saved, but not yet staged, committed, or pushed, you’ll delete unstaged changes in the working directory with clean:\nYou’ll need to make sure you’re in the github repository (use pwd to check your present working directory and cd to change directory)\ngit clean -df\ngit checkout -- .\n\n\nBurn it all down\nYou’ll delete the whole repo that you have locally, and then reclone.\nYou’ll need to make sure you’re in the github repository (use pwd to check your present working directory and cd to change directory)\nrm -rf YOUR-REPO\nHere is a whole blog on how to go back in time (walk back changes), with conceptual diagrams, command line code, and screenshots from RStudio. https://ohi-science.org/news/github-going-back-in-time\n\n\n\nUpdate local branch with remote main branch\nIf while you’re working you would like to update your local your-branch with the most recent updates on the main branch on GitHub.com, there are several ways to do this. Here’s one.\ngit checkout your-branch\ngit fetch\ngit merge origin/main\n\n\nUpdate from main"
   },
   {
+    "objectID": "external/setup.html",
+    "href": "external/setup.html",
+    "title": "00. Setup for tutorials",
+    "section": "",
+    "text": "This tutorial will help you set up your JupyterHub (or Hub) with tutorials and other materials from our Cloud Hackathon github repository and connect your github account."
+  },
+  {
+    "objectID": "external/setup.html#step-1.-login-to-the-hub",
+    "href": "external/setup.html#step-1.-login-to-the-hub",
+    "title": "00. Setup for tutorials",
+    "section": "Step 1. Login to the Hub",
+    "text": "Step 1. Login to the Hub\nPlease go to the Openscapes Jupyter Hub. Log in with your GitHub Account, and select “Small”.\n\n\nNote: It takes a few minutes for the Hub to load. Please be patient!\n\nWhile the Hub loads, we’ll:\n\nDiscuss cloud environments\nSee how my Desktop is setup\nFork the Hackathon repository at github.com\nDiscuss python and conda environments\n\nThen, when the Hub is loaded, we’ll get oriented in the Hub and clone the forked repository into our cloud environment."
+  },
+  {
+    "objectID": "external/setup.html#discussion-cloud-environment",
+    "href": "external/setup.html#discussion-cloud-environment",
+    "title": "00. Setup for tutorials",
+    "section": "Discussion: Cloud environment",
+    "text": "Discussion: Cloud environment\nA brief overview about the NASA Openscapes Cloud Environment (following lessons from the Clinic).\n\nCloud infrastructure\n\nCloud: AWS us-west-2\n\nData: AWS S3 (cloud) and NASA DAAC data centers (on-prem).\nCloud compute environment: 2i2c Jupyterhub deployment\n\nIDE: JupyterLab"
+  },
+  {
+    "objectID": "external/setup.html#discussion-my-desktop-setup",
+    "href": "external/setup.html#discussion-my-desktop-setup",
+    "title": "00. Setup for tutorials",
+    "section": "Discussion: My desktop setup",
+    "text": "Discussion: My desktop setup\nI’ll screenshare to show and/or talk through how I have oriented the following software we’re using:\n\n2i2c Jupyterhub (our main workspace)\nHackathon Repo <> Hackathon Book (my teaching notes, your reference material)\nZoom Chat\nSlack"
+  },
+  {
+    "objectID": "external/setup.html#step-2.-fork-the-hackathon-github-repository",
+    "href": "external/setup.html#step-2.-fork-the-hackathon-github-repository",
+    "title": "00. Setup for tutorials",
+    "section": "Step 2. Fork the Hackathon GitHub repository",
+    "text": "Step 2. Fork the Hackathon GitHub repository\n“How do I get the tutorial repository into the Hub?”. There are 2 steps. The first is from GitHub.com to fork the tutorial repository so that there is a connected copy in your user account that you can edit and push changes that won’t affect the nasa-openscapes copy.\nGo to https://github.com/nasa-openscapes/2021-Cloud-Hackathon and fork the repository.\n\nNote: if you’ve already done this in the Pre-Hackathon Clinic, you’ll need to make sure you have the latest, following the daily setup instructions."
+  },
+  {
+    "objectID": "external/setup.html#discussion-python-and-conda-environments",
+    "href": "external/setup.html#discussion-python-and-conda-environments",
+    "title": "00. Setup for tutorials",
+    "section": "Discussion: Python and Conda environments",
+    "text": "Discussion: Python and Conda environments\nWhy Python?\n\n\n\nPython Data Stack. Source: Jake VanderPlas, “The State of the Stack,” SciPy Keynote (SciPy 2015).\n\n\nDefault Python Environment:\nWe’ve set up the Python environment with conda.\n\n\n\n\n\n\nConda environment\n\n\n\n\n\nname: openscapes\nchannels:\n  - conda-forge\ndependencies:\n  - python=3.9\n  - pangeo-notebook\n  - awscli~=1.20\n  - boto3~=1.19\n  - gdal~=3.3\n  - rioxarray~=0.8\n  - xarray~=0.19\n  - h5netcdf~=0.11\n  - netcdf4~=1.5\n  - h5py~=2.10\n  - geoviews~=1.9\n  - matplotlib-base~=3.4\n  - hvplot~=0.7\n  - pyproj~=3.2\n  - bqplot~=0.12\n  - geopandas~=0.10\n  - zarr~=2.10\n  - cartopy~=0.20\n  - shapely==1.7.1\n  - pyresample~=1.22\n  - joblib~=1.1\n  - pystac-client~=0.3\n  - s3fs~=2021.7\n  - ipyleaflet~=0.14\n  - sidecar~=0.5\n  - jupyterlab-geojson~=3.1\n  - jupyterlab-git\n  - jupyter-resource-usage\n  - ipympl~=0.6\n  - conda-lock~=0.12\n  - pooch~=1.5\n  - pip\n  - pip:\n    - tqdm\n    - harmony-py\n    - earthdata\n    - zarr-eosdis-store\n\n\n\n\nBash terminal and installed software\nLibraries that are available from the terminal\n\ngdal 3.3 commands ( gdalinfo, gdaltransform…)\nhdf5 commands ( h5dump, h5ls..)\nnetcdf4 commands (ncdump, ncinfo …)\njq (parsing json files or streams from curl)\ncurl (fetch resources from the web)\nawscli (AWS API client, to interact with AWS cloud services)\nvim (editor)\ntree ( directory tree)\nmore …\n\n\n\nUpdating the environment\nScientific Python is a vast space and we only included libraries that are needed in our tutorials. Our default environment can be updated to include any Python library that’s available on pip or conda.\nThe project used to create our default environment is called corn (as it can include many Python kernels).\nIf we want to update a library or install a whole new environment we need to open an issue on this repository. We can help your teams do this during project hacktime.\n\n\ncorn 🌽"
+  },
+  {
+    "objectID": "external/setup.html#step-3.-jupyterhub-orientation",
+    "href": "external/setup.html#step-3.-jupyterhub-orientation",
+    "title": "00. Setup for tutorials",
+    "section": "Step 3. JupyterHub orientation",
+    "text": "Step 3. JupyterHub orientation\nNow that the Hub is loaded, let’s get oriented.\n\n\n\n\n\n\nFirst impressions\n\nLauncher & the big blue button\n“home directory”"
+  },
+  {
+    "objectID": "external/setup.html#step-4.-clone-the-hackathon-github-repository",
+    "href": "external/setup.html#step-4.-clone-the-hackathon-github-repository",
+    "title": "00. Setup for tutorials",
+    "section": "Step 4. Clone the Hackathon GitHub repository",
+    "text": "Step 4. Clone the Hackathon GitHub repository\nNow we’ll clone the GitHub repository, using a git extension for the JupyterHub. Go to your github account, and navigate to the repository that you just created by forking from the Openscapes repository.\nClick to copy the url for cloning the repository.\n\nNow, go to JupyterHub and click on the git extension in the left panel and then click the blue button “Clone a Repository”.\n\nThen, paste the repository link to the forked repository that you copied from your github account into the “Clone a repo” pop up window. Then click the blue “CLONE” button. It will take a few moments to clone the repository into your Hub.\nYour link should look like https://github.com/YOUR-USERNAME/2021-Cloud-Hackathon. For example, the link is https://github.com/virdi/2021-Cloud-Hackathon. Note that it include your github username in the repo link.\n\nAlternatively, you can use the terminal (command line) as per github workflows: first-time setup.\nOnce the repository is cloned, you will see a new directory in the “File Browser” panel on the left named “2021-Cloud-Hackathon”. In this directory, you have all hackathon material including the tutorials and this book to follow along during other Tutorials. You are all set.\n\n\nREMEMBER: This is your copy (or fork) of the hackathon materials and jupyter notebooks. So feel free to make any changes to the content of this repository."
+  },
+  {
+    "objectID": "external/setup.html#jupyter-notebooks",
+    "href": "external/setup.html#jupyter-notebooks",
+    "title": "00. Setup for tutorials",
+    "section": "Jupyter notebooks",
+    "text": "Jupyter notebooks\nLet’s get oriented to Jupyter notebooks, which we’ll use in all the tutorials."
+  },
+  {
+    "objectID": "external/setup.html#how-do-i-end-my-session",
+    "href": "external/setup.html#how-do-i-end-my-session",
+    "title": "00. Setup for tutorials",
+    "section": "How do I end my session?",
+    "text": "How do I end my session?\n(Also see How do I end my Openscapes session? Will I lose all of my work?)\nWhen you are finished working for the day it is important to explicitly log out of your Openscapes session. The reason for this is it will save us a bit of money! When you keep a session active it uses up AWS resources and keeps a series of virtual machines deployed.\nStopping the server happens automatically when you log out, so navigate to “File -> Log Out” and just click “Log Out”!\n!!! NOTE “logging out” - Logging out will NOT cause any of your work to be lost or deleted. It simply shuts down some resources. It would be equivalent to turning off your desktop computer at the end of the day."
+  },
+  {
+    "objectID": "external/setup.html#step-5.-tracking-changes-optional",
+    "href": "external/setup.html#step-5.-tracking-changes-optional",
+    "title": "00. Setup for tutorials",
+    "section": "Step 5. Tracking changes (Optional)",
+    "text": "Step 5. Tracking changes (Optional)\nNow that you have forked and cloned the repository in your Hub, you can make changes (edit, add, and/or delete content) and track these files using git. In this step, we will provide an overview of how to use git using the graphical interface (the JupyterLab git extension).\n\nStep 5.1. Configure Git (git config)\nConfigure git with your name and email address as shown here.\ngit config --global user.name \"Makhan Virdi\"\ngit config --global user.email \"Makhan.Virdi@gmail.com\"\nOpen a new terminal: File >> New >> Terminal\n\nConfigure git to store your github credentials to avoid having to enter your github username and token each time you push changes to your repository(in Step 5.5, we will describe how to use github token instead of a password)\ngit config --global credential.helper store\n\n\nStep 5.2. Create a new file\nLet’s create a new file: In the left panel on your Hub, click on the “directory” icon and then double click on “2021-Cloud-Hackathon” directory. Then, create a new file using the text editor in your 2i2c JupyterHub (File >> New >> Text File). Add some text to this file, for example: A test file. Save this file and rename it to test.txt.\n\n\n\nStep 5.3. Track the changes to the new file (git add)\nClick the git icon in the left panel. You can see that the newly added file is in the “Untracked” section. You can click the + icon next to the file name to let git track this file for changes.\n\n\n\nStep 5.4. Commit the changes to the new file (git commit)\nNow, you will see that the file is Staged, which means that git is ready to take a snapshot of this file (and the repository) with the changes that you made. This snapshot is called a commit. To commit the changes, add a note (called a commit message) by typing in the text box that say “Summary”.\nNow, click the blue “COMMIT” button to commit this change.\n\nNote: A short message indicating the type of change to this file is a good practice. Optionally, a longer description may be added to the “Description” field.\n\n\n\n\nStep 5.5. Transmit committed changes to your github (git push)\nAt this stage, you have committed the changes to your git repository on your Hub. However, these changes are still on your Hub and needs to be transmitted to your repository on github (so that both the local copy on the JupyterHub and the remote copy on github are in sync).\nAs seen in the picture below, the git extension indicates (with an orange dot on the cloud icon) that it is ready to push your changes to the remote (remote = your repository on github.com). To push to github, click the cloud button with an up arrow (circled in red in the picture).\n\nWhen you push for the first time, it will ask that you input your credentials. You will need to set this up with your Personal Access Token (PAT), explained next.\n\n\nStep 5.6. Setup your Personal Access Token (PAT)\nWhen you see the following screenshot, GitHub is asking for you to input your credentials. (Note: you see this screenshot when you have committed work to push to GitHub.com, as detailed above).\n\nThe git extension in the Hub is prompting you to enter your github.com credentials. Enter you github.com username and a Personal Access Token (PAT); DO NOT use your password.\nTo create a PAT, visit https://github.com/settings/tokens/new and create a new token with the permission as per the image below and specify its validity for 90 days.\n\nIMPORTANT: You will see this token only once, so be sure to copy this. If you do not copy your token at this stage, you will need to generate a new token.\n\nOnce you generate the token, copy it and paste in the Hub window that prompted you to enter the “Personal Access Token”.\n\nGit will show a message at the bottom right telling that the changes were “Successfully pushed”. Also, you will see that the “cloud icon with an up arrow” no longer has an orange dot, indicating that there are no more committed changes to push to the remote (github.com).\n\nNote: You have configured git extension to store your credentials. You will not be prompted for your login/token again!\n\n\nThat’s all. You can use the same workflow (add > commit > push) for any other new or modified files!\n\n\nNote: If you are comfortable with the command line, you can use the Terminal (In Hub, New > Terminal) and follow the steps outlined in the Clinic section."
+  },
+  {
     "objectID": "external/data_access_direct_S3.html",
     "href": "external/data_access_direct_S3.html",
     "title": "EarthData Cloud Cookbook",
