@@ -2,6 +2,12 @@
 
 This Earthdata Cloud Cookbook is being developed by the [NASA Openscapes team](https://nasa-openscapes.github.io/).
 
+## How to contribute to our book
+
+Information for our team [to contribute to the Cookbook](https://nasa-openscapes.github.io/earthdata-cloud-cookbook/contributing/). This includes setup and workflow instructions.
+
+## Hackdays
+
 In 2023 we are iterating and improving on our original cookbook structure, incorporating current technical approaches and what we've learned teaching NASA colleagues and Earth science researchers. We will increasingly track our tasks and progress using [issues](https://github.com/nasa-openscapes/earthdata-cloud-cookbook) in this repository. We are having ongoing virtual Hackdays ([ongoing notes](https://docs.google.com/document/d/1fzT-iSFlWZLS38eoPmFseljyMKDQIAc-24qH6QpnRCc/edit) and [spreadsheet](https://docs.google.com/spreadsheets/d/10WC19Rrkq7YM1P3cc6qjI8rm8yi7yiYo/edit#gid=877539921)) to focus progress together.
 
 Hackdays:
@@ -9,7 +15,7 @@ Hackdays:
 -   February 2, 2023
 -   March 2, 2023
 
-**Hackday 2 Summary:**
+### **Hackday 2 Summary** 
 
 At our 2nd hackday we had a brief overview of cookbook progress since we\'d last met before working in breakout groups together. In this session: 
 
@@ -23,7 +29,7 @@ At our 2nd hackday we had a brief overview of cookbook progress since we\'d last
 
 -   Reviewing earthaccess tutorial in cookbook to parse and point to the docs; also [how to sync a forked repo](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/syncing-a-fork#syncing-a-fork-branch-from-the-command-line) via cmd line (Jess)
 
-**Progress following Hackday 1:**
+### **Progress following Hackday 1**
 
 -   [\_CookbookTutorialsInventory_Feb_2023.xlsx](https://docs.google.com/spreadsheets/d/10WC19Rrkq7YM1P3cc6qjI8rm8yi7yiYo/edit#gid=877539921) that Catalina made to identify Tutorials in the Cookbook and track decisions and progress for updating; and [Imported Cloud Hackathon Tutorials](https://github.com/NASA-Openscapes/earthdata-cloud-cookbook/pull/176) so this content is available to modernize in the cookbook
 
@@ -31,6 +37,4 @@ At our 2nd hackday we had a brief overview of cookbook progress since we\'d last
 
 -   [Cookbook GitHub Issues](https://github.com/NASA-Openscapes/earthdata-cloud-cookbook/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc) - began organizing ideas in Issues
 
-## How to contribute to our book
-
-Information for our team [to contribute to the Cookbook](https://nasa-openscapes.github.io/earthdata-cloud-cookbook/contributing/). This includes setup and workflow instructions.
+## 
