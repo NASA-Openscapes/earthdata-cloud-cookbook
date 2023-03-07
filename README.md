@@ -7,6 +7,7 @@ In 2023 we are iterating and improving on our original cookbook structure, incor
 Hackdays: 
 
 - February 2, 2023
+- March 2, 2023
 
 
 ## How to contribute to our book
