@@ -66,22 +66,12 @@ website:
                 href: how-tos/reproject_and_regrid/reproject.md
           - text: "aggregate data"
             href: how-tos/aggregate.qmd
-            contents:
-              - text: "How do I calculate a climatology?"
-                href: how-tos/aggregate/aggregate.ipynb
           - section: "plot data"
             contents:
               - text: "How do I plot a NetCDF variable?"
                 href: how-tos/plot/index.md
-          - section: "use APIs"   # ...or "how do I get my work done for me?"
-          # add instruction page with explicit description
-            contents:
-              - text: "How do I know what services are available for a dataset"
-                href: how-tos/find_services.qmd
-              - text: "How do I use Harmony to reformat data files?"
-                href: how-tos/use_harmony.qmd
-              - text: "How do I use OPenDap to subset data files?"
-                href: how-tos/use_opendap.qmd
+          - text: "use APIs"
+            href: how-tos/use_apis.qmd
           #- section: "setup AWS"  # Park for now  
           #  contents:
           #    - text: "Place holder for AWS setup"
