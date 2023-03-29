@@ -1,16 +1,151 @@
 ---
 title: How do I access data stored in Earthdata Cloud?
+execute:
+  eval: false
+aliases:
+  - working-with-data-in-cloud/Direct-Cloud-Access.html
+  - working-with-data-in-cloud/Access-EULA-Data.html
 ---
 
-When you have found the datasets and data granules you want to use,
-you have two options.  You can download that data or, if you are
-working in the cloud, you can access the data directly.  This second
-way of working is called "_Direct Access_".
+## Direct Access
 
-* How do I directly access data on Amazon S3?
-* How do I access cloud-hosted data that has an End-User License Agreement (EULA)?
+When you have found the data you want to use, you have two options.  You can download the data to work locally, or access the data directly to work in the cloud. This second way of working is called "_Direct Cloud Access_" or simply, "_Direct Access_". This page covers two situations of Direct Access: 
 
-Coming soon: Introduction to the cloud data access landscape including
-data access options (HTTPS, S3) and data format considerations. -
-_Maybe move this to a "Discussion or Background" section.
+* Direct Access with Amazon S3
+* Direct Access with a End-User License Agreement (EULA)?
+
+::: {.callout-caution}
+## Coming soon
+Introduction to the cloud data access landscape including
+data access options (HTTPS, S3) and data format considerations.
+
+_Maybe move this to a "Discussion or Background" section._
+:::
+
+## Amazon S3
+
+How do I directly access data on Amazon S3? We can access data directly from NASA Earthdata Cloud using the following code. 
+
+Note that NASA cloud-hosted data is in Amazon Web Services (AWS) Region `us-west-2`. Your compute instance must also be in `us-west-2` in order for the following code to run successfully.
+
+::: {.panel-tabset group="language"}
+## Python
+
+Install the [earthaccess]("https://github.com/nsidc/earthaccess") package:
+
+```{python}
+# Install earthaccess
+conda install -c conda-forge earthaccess
+```
+
+Import packages: 
+
+```{python}
+## Import earthaccess
+import earthaccess
+import xarray as xr
+```
+
+### Earthdata Login Authentication
+
+We will authenticate below using a netrc file. See the [appendix]("https://nasa-openscapes.github.io/earthdata-cloud-cookbook/appendix/authentication.html") for more information on [Earthdata Login]("https://urs.earthdata.nasa.gov/") and netrc setup.
+
+```{python}
+auth = earthaccess.login(strategy="netrc")
+# are we authenticated?
+if not auth.authenticated:
+    # ask for credentials and persist them in a .netrc file
+    auth.login(strategy="interactive", persist=True)
+```
+
+### Working with the URLs directly
+We can use `earthaccess` to grab the file URLs and then access them with the `xarray` library. See the previous [Find Data]("https://nasa-openscapes.github.io/earthdata-cloud-cookbook/how-tos/find-data/") How-To guide for more information on how to discover datasets of interest. 
+
+
+```{python}
+#Access land ice height from ATLAS/ICESat-2 V005 (10.5067/ATLAS/ATL06.005), searching for data over western Greenland coast over two weeks in July 2022. The data are provided as HDF5 granules (files) that span about 1/14th of an orbit.
+
+results = earthaccess.search_data(short_name="ATL06",
+                                  version="005",
+                                  cloud_hosted=True,
+                                  temporal = ("2022-07-17","2022-07-31"),
+                                  bounding_box = (-51.96423,68.10554,-48.71969,70.70529))
+
+s3_url = results[0].data_links(access="direct")
+print(s3_url)
+
+#Use xarray to load the data as a multifile dataset for a single group in the HDF5 file, in this case land ice segments:
+ds = xr.open_mfdataset(earthaccess.open(results), group='/gt1l/land_ice_segments')
+ds
+```
+
+
+## R
+
+R code coming soon!
+
+```{r}
+# Coming soon!
+```
+
+## Matlab
+
+Matlab code coming soon!
+
+```{bash}
+#| echo: true
+# Coming soon!
+```
+
+## Command Line
+
+With `wget` and `curl`:
+
+```{bash}
+# Coming soon!
+```
+
+
+:::
+
+## End User License Agreement (EULA)
+
+Here are our recommended approaches for accessing data in NASA Earthdata Cloud requiringan End-User License Agreement (EULA).
+
+::: {.panel-tabset group="language"}
+## Python
+
+Python code coming soon!
+
+```{python}
+# Coming soon!
+```
+
+## R
+
+R code coming soon!
+
+```{r}
+# Coming soon!
+```
+
+## Matlab
+
+Matlab code coming soon!
+
+```{bash}
+#| echo: true
+# Coming soon!
+```
+
+## Command Line
+
+With `wget` and `curl`:
+
+```{bash}
+# Coming soon!
+```
+
+
+:::
 
