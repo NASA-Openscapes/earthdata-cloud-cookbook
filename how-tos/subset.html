@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>EarthData Cloud Cookbook - JupyterHub environment</title>
+<title>EarthData Cloud Cookbook - How do I subset data granules?</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -29,6 +29,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../how-tos/reformat.html" rel="next">
+<link href="../how-tos/if-im-local.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -70,7 +72,7 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">JupyterHub environment</h1>
+      <h1 class="quarto-secondary-nav-title">How do I subset data granules?</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -118,12 +120,12 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">How do I…</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">How do I…</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">find data</a>
@@ -169,7 +171,7 @@ ul.task-list li input[type="checkbox"] {
   </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../how-tos/subset.html" class="sidebar-item-text sidebar-link">subset data</a>
+  <a href="../how-tos/subset.html" class="sidebar-item-text sidebar-link active">subset data</a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -399,17 +401,16 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#more-background" id="toc-more-background" class="nav-link" data-scroll-target="#more-background">More background</a></li>
+  <li><a href="#how-do-i-download-a-subset-of-netcdf-4" id="toc-how-do-i-download-a-subset-of-netcdf-4" class="nav-link active" data-scroll-target="#how-do-i-download-a-subset-of-netcdf-4">How do I download a subset of NetCDF-4?</a></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/edit/main/contributing/environment.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/blob/main/contributing/environment.qmd" class="toc-action">View source</a></p><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/edit/main/how-tos/subset.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/blob/main/how-tos/subset.qmd" class="toc-action">View source</a></p><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">JupyterHub environment</h1>
+<h1 class="title d-none d-lg-block">How do I subset data granules?</h1>
 </div>
 
 
@@ -424,23 +425,12 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="introduction" class="level2">
-<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
-<p>Our JupyterHub is managed by 2i2c; see background from the 2021 Cloud Hackathon [JupyterHub intro]](https://nasa-openscapes.github.io/2021-Cloud-Hackathon/clinic/jupyterhub.html).</p>
-<p>We create the environment with software packages for everyone to use - this includes python packages and quarto. Our environment is called <a href="https://github.com/NASA-Openscapes/corn"><strong>corn</strong></a>, developed by NSIDC software engineer Luis Lopez. Here are some notes about corn; please refer to the GitHub README for details about installation.</p>
-<p>When looking at <code>environment.yml</code>: - Main dependency is <code>python</code>. Python 3.9 has some stability “pinned” the version - Next thing: <code>pangeo-notebook</code>. This is not pinned to a version, whatever their latest is best. This is what makes environment run in 2i2c - The rest are optional, they’ve been added as different groups want them - It runs on linux-64 and mac-OS - side note: <code>~</code> means “don’t update past breaking versions”.</p>
-<p>Now getting to a point where they are conflicting and can get into problems with deprecation and failing the environment. Next strategy: trim down “core” corn environment. Then have a process &amp; writeup for teams to copy that environment and add their additional packages, and make sure it’s the one running in 2i2c. Point to existing resources as much as possible (i.e.&nbsp;Turing Way, Pangeo, Pythia); link to them from here and provide our-case-specific details here.</p>
-</section>
-<section id="more-background" class="level2">
-<h2 class="anchored" data-anchor-id="more-background">More background</h2>
-<p>Some articles about Python environments with Conda that are interesting and related to our 2i2c workflow:</p>
-<ul>
-<li>https://www.anaconda.com/blog/understanding-and-improving-condas-performance</li>
-<li>https://medium.com/<span class="citation" data-cites="marius.v.niekerk/conda-metachannel-f962241c9437">@marius.v.niekerk/conda-metachannel-f962241c9437</span></li>
-<li>https://wolfv.medium.com/making-conda-fast-again-4da4debfb3b7</li>
-<li>https://pythonspeed.com/articles/conda-dependency-management/</li>
-</ul>
-<p>We are doing what article the fourth article describes. We are using conda-lock with versioned dependencies. Since corn was designed to run in 2i2c I never bothered to test it for windows or OSx but I think we should offer that possibility. I added OSX and will need some volunteers to test it on Windows.</p>
+<p>How do I subset a data granule using Harmony?<br>
+How do I subset an OPeNDAP granule in the cloud?<br>
+How do I subset a data granule using xarray?</p>
+<section id="how-do-i-download-a-subset-of-netcdf-4" class="level2">
+<h2 class="anchored" data-anchor-id="how-do-i-download-a-subset-of-netcdf-4">How do I download a subset of NetCDF-4?</h2>
+<p><em>this might be a deprecated idea</em></p>
 
 
 </section>
@@ -694,6 +684,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../how-tos/if-im-local.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">if I’m on my local machine</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../how-tos/reformat.html" class="pagination-link">
+        <span class="nav-page-text">reformat data files</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
