@@ -1,18 +1,26 @@
 ---
-title: "Direct Cloud Access"
+title: How do I access data stored in Earthdata Cloud?
 execute:
   eval: false
+aliases:
+  - working-with-data-in-cloud/Direct-Cloud-Access.html
+  - working-with-data-in-cloud/Access-EULA-Data.html
 ---
 
-## Introduction
+## Direct Access
 
-We can access data directly from NASA Earthdata Cloud using the following code. 
+When you have found the data you want to use, you have two options.  You can download the data to work locally, or access the data directly to work in the cloud. This second way of working is called "_Direct Cloud Access_" or simply, "_Direct Access_". 
+
+This page covers two situations of Direct Access: 
+
+* Direct Access with Amazon S3
+* Direct Access with a End-User License Agreement (EULA)?
+
+## Amazon S3
+
+How do I directly access data on Amazon S3? We can access data directly from NASA Earthdata Cloud using the following code. 
 
 Note that NASA cloud-hosted data is in Amazon Web Services (AWS) Region `us-west-2`. Your compute instance must also be in `us-west-2` in order for the following code to run successfully.
-
-## Code
-
-Here are our recommended approaches for accessing data in NASA Earthdata Cloud with code.
 
 ::: {.panel-tabset group="language"}
 ## Python
@@ -93,3 +101,45 @@ With `wget` and `curl`:
 
 
 :::
+
+## End User License Agreement (EULA)
+
+Here are our recommended approaches for accessing data in NASA Earthdata Cloud requiringan End-User License Agreement (EULA).
+
+::: {.panel-tabset group="language"}
+## Python
+
+Python code coming soon!
+
+```{python}
+# Coming soon!
+```
+
+## R
+
+R code coming soon!
+
+```{r}
+# Coming soon!
+```
+
+## Matlab
+
+Matlab code coming soon!
+
+```{bash}
+#| echo: true
+# Coming soon!
+```
+
+## Command Line
+
+With `wget` and `curl`:
+
+```{bash}
+# Coming soon!
+```
+
+
+:::
+
