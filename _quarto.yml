@@ -57,12 +57,8 @@ website:
                 href: how-tos/if-im-local.qmd
           - text: "subset data"
             href: how-tos/subset.qmd
-          - section: "reformat data files"
-          # add page for reformat-data.qmd
-            contents:
-              - text: "NetCDF to Zarr"
-                href: how-tos/reformat/reformat.md
-              - text: "GeoTIFF to COG"
+          - text: "reformat data files"
+            href: how-tos/reformat.qmd
           - section: "reproject and regrid"
             href: how-tos/reproject_and_regrid/index.md
             contents:
