@@ -59,17 +59,12 @@ website:
             href: how-tos/subset.qmd
           - text: "reformat data files"
             href: how-tos/reformat.qmd
-          - section: "reproject and regrid"
-            href: how-tos/reproject_and_regrid/index.md
-            contents:
-              - text: "How do I reproject a data file using Harmony?"
-                href: how-tos/reproject_and_regrid/reproject.md
+          - text: "reproject and regrid"
+            href: how-tos/reproject_regrid.qmd
           - text: "aggregate data"
             href: how-tos/aggregate.qmd
-          - section: "plot data"
-            contents:
-              - text: "How do I plot a NetCDF variable?"
-                href: how-tos/plot/index.md
+          - text: "plot data"
+            href: how-tos/plot.qmd
           - text: "use APIs"
             href: how-tos/use_apis.qmd
           #- section: "setup AWS"  # Park for now  
@@ -88,8 +83,8 @@ website:
       # - section: "Getting Started"
       #   contents:
        #   - get-started/index.md
-         # - get-started/earthdata-login.qmd
-         # - get-started/api-primer.qmd
+         # - get-started/earthdata-login.qmd ## review, paste in appendix, delete
+         # - get-started/api-primer.qmd    ## move to how-tos/use_apis?
       - section: in-development/index.qmd
         contents:
           - href: /external/opensarlab-test.ipynb
