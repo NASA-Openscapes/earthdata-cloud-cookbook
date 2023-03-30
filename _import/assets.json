@@ -96,11 +96,19 @@
         "process": false
     },
     {
-        "title": "How to work with AppEEARS Cloud Optimized GeoTIFF (COG) outputs",
-        "preamble": "This notebook was originally developed by LP DAAC for using AppEEARS COG outputs in the cloud.",
+        "title": "How to work with AppEEARS Cloud Optimized GeoTIFF (COG) outputs in the cloud.",
+        "preamble": "This notebook was originally developed by LP DAAC to show how to work with AppEEARS COG outputs directly in the cloud.",
         "source": "https://github.com/nasa/AppEEARS-Data-Resources",
         "url": "https://raw.githubusercontent.com/nasa/AppEEARS-Data-Resources/main/scripts/COG_AppEEARS_S3_Direct_Access.ipynb",
         "target": "appeears_cog_cloud_access.ipynb",
-        "process": false
-    }                     
+        "process": true
+    },
+	{
+        "title": "How to work with AppEEARS CSV outputs in the cloud.",
+        "preamble": "This notebook was originally developed by LP DAAC to show how to work with AppEEARS CSV outputs directly in the cloud.",
+        "source": "https://github.com/nasa/AppEEARS-Data-Resources",
+        "url": "https://raw.githubusercontent.com/nasa/AppEEARS-Data-Resources/main/scripts/Point_Sample_AppEEARS_S3_Direct_Access.ipynb",
+        "target": "appeears_csv_cloud_access.ipynb",
+        "process": true
+    }	
 ]
