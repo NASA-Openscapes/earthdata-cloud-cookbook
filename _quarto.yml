@@ -15,10 +15,7 @@ website:
 
   # page-footer: "NASA Openscapes Team (2021). Earthdata Cloud Cookbook (Version v0.0.1)."
   page-footer: 
-    left: "NASA Earthdata Cloud Cookbook, &copy; NASA Openscapes Team (2023) [License](LICENSE.md)."
-    # center:
-      # - text: "License"
-      #   href: LICENSE.md
+    left: "NASA Earthdata Cloud Cookbook, &copy; NASA Openscapes Team (2023)."
   
   sidebar:
     title: "NASA Earthdata Cloud Cookbook"
@@ -94,8 +91,6 @@ website:
          # - get-started/api-primer.qmd    ## move to how-tos/use_apis?
       - section: in-development/index.qmd
         contents:
-          #- href: /external/opensarlab-test.ipynb
-          #  text: "OpenSARLab test!"
           - href: examples/NSIDC/ICESat2-CMR-OnPrem-vs-Cloud.ipynb
             text: "Search & Download NSIDC Cloud"
           - href: examples/NSIDC/ICESat2-CMR-AWS-S3.ipynb
@@ -119,8 +114,6 @@ website:
           - href: in-development/CMR-STAC-Search.Rmd
             text: "CMR STAC in R"  
           - href: in-development/earthdata-python-r-handoff.qmd  
-          - href: external/setup.md
-            text: "Hackathon Set Up"
       - section: contributing/index.qmd
         contents: 
           - contributing/onboarding.qmd

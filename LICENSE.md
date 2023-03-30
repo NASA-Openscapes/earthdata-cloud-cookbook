@@ -3,7 +3,7 @@ Adapted from [The Turing Way](https://github.com/alan-turing-institute/the-turin
 
 Openscapes makes all of their materials publicly available under open source licenses.
 
-The process documents and data are made available under a CC-BY license.
+The process documents and data are made available under a CC-BY license. 
 Software are made available under an MIT license.
 
 The  license text listed below (describing both CC-BY and MIT licenses as well as their usage in Openscapes) is re-used under a CC-BY license from The Carpentries community materials.
