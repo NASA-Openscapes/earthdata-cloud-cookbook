@@ -14,10 +14,11 @@ Hackdays:
 
 -   February 2, 2023
 -   March 2, 2023
+-   March 30, 2023
 
-### **Hackday 2 Summary** 
+### **Hackday 2 Summary**
 
-At our 2nd hackday we had a brief overview of cookbook progress since we\'d last met before working in breakout groups together. In this session: 
+At our 2nd hackday we had a brief overview of cookbook progress since we'd last met before working in breakout groups together. In this session: 
 
 -   Updated the importer function by adding .md capability and rethinking storing copies of notebooks bc will get out of sync ([commit](https://github.com/NASA-Openscapes/earthdata-cloud-cookbook/commit/540e30545062dc6528f57aa9e1a83a9b66a46fe2)) (Cassie+Luis)
 
@@ -33,7 +34,7 @@ At our 2nd hackday we had a brief overview of cookbook progress since we\'d last
 
 -   [\_CookbookTutorialsInventory_Feb_2023.xlsx](https://docs.google.com/spreadsheets/d/10WC19Rrkq7YM1P3cc6qjI8rm8yi7yiYo/edit#gid=877539921) that Catalina made to identify Tutorials in the Cookbook and track decisions and progress for updating; and [Imported Cloud Hackathon Tutorials](https://github.com/NASA-Openscapes/earthdata-cloud-cookbook/pull/176) so this content is available to modernize in the cookbook
 
--   [Reorg How-Tos structure as \"How Do I...\"](https://nasa-openscapes.github.io/earthdata-cloud-cookbook/how-tos/) - the work that Andy led to restructure the How-Tos structure to be more goal-oriented
+-   [Reorg How-Tos structure as "How Do I..."](https://nasa-openscapes.github.io/earthdata-cloud-cookbook/how-tos/) - the work that Andy led to restructure the How-Tos structure to be more goal-oriented
 
 -   [Cookbook GitHub Issues](https://github.com/NASA-Openscapes/earthdata-cloud-cookbook/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc) - began organizing ideas in Issues
 
