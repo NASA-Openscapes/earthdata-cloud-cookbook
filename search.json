@@ -1047,7 +1047,7 @@
     "href": "how-tos/if-im-local.html#earthaccess",
     "title": "How do I access Cloud Data from my Local Machine?",
     "section": "earthaccess",
-    "text": "earthaccess"
+    "text": "earthaccess\n\nPythonRMatlabCommand Line\n\n\nWe can use earthaccess to grab the file URLs and then access them with the xarray library. See the previous Find Data How-To guide for more information on how to discover datasets of interest.\n\n#Import packages\nimport earthaccess\nimport xarray as xr\n\n#Authentication with Earthdata Login\nauth = earthaccess.login(strategy=\"netrc\")\n\n#Access land ice height from ATLAS/ICESat-2 V005 (10.5067/ATLAS/ATL06.005), searching for data over western Greenland coast over two weeks in July 2022. The data are provided as HDF5 granules (files) that span about 1/14th of an orbit.\n\nresults = earthaccess.search_data(short_name=\"ATL06\",\n                                  version=\"005\",\n                                  cloud_hosted=True,\n                                  temporal = (\"2022-07-17\",\"2022-07-31\"),\n                                  bounding_box = (-51.96423,68.10554,-48.71969,70.70529))\n\nfiles = earthaccess.download(results, \"./local_folder\")\n\n#Use xarray to load the data as a multifile dataset for a single group in the HDF5 file, in this case land ice segments:\nds = xr.open_mfdataset(files, group='/gt1l/land_ice_segments')\nds\n\n\n\nR code coming soon!\n\n# Coming soon!\n\n\n\nMatlab code coming soon!\n\n# Coming soon!\n\n\n\nWith wget and curl:\n\n# Coming soon!"
   },
   {
     "objectID": "how-tos/if-im-local.html#opendap",
@@ -1090,6 +1090,62 @@
     "title": "How do I access data stored in Earthdata Cloud?",
     "section": "End User License Agreement (EULA)",
     "text": "End User License Agreement (EULA)\nHere are our recommended approaches for accessing data in NASA Earthdata Cloud requiringan End-User License Agreement (EULA).\n\nPythonRMatlabCommand Line\n\n\nPython code coming soon!\n\n# Coming soon!\n\n\n\nR code coming soon!\n\n# Coming soon!\n\n\n\nMatlab code coming soon!\n\n# Coming soon!\n\n\n\nWith wget and curl:\n\n# Coming soon!"
+  },
+  {
+    "objectID": "how-tos/read_data.html",
+    "href": "how-tos/read_data.html",
+    "title": "Read Data",
+    "section": "",
+    "text": "PythonRMatlab\n\n\nWe recommend using xarray’s open_dataset\n\n\n\nimport xarray as xr\nds = xr.open_dataset(filename)\n\n\n\n\n\nimport xarray as xr\nds = xr.open_mfdataset(list_of_filenames)\n\n\n\n\nR code coming soon!\n\n# Coming soon!\n\n\n\nMatlab code coming soon!\n\n# Coming soon!"
+  },
+  {
+    "objectID": "how-tos/read_data.html#hdf5",
+    "href": "how-tos/read_data.html#hdf5",
+    "title": "Read Data",
+    "section": "HDF5",
+    "text": "HDF5\n\nPythonRMatlab\n\n\nFor HDF5 files, there are two methods we can use: xarray’s open_dataset and h5py\n\nimport xarray as xr\nds = xr.open_dataset(filename,\n                     group=path_to_H5netCDF_group)\n\n\n# add in directions for h5py\n\n\n\nR code coming soon!\n\n# Coming soon!\n\n\n\nMatlab code coming soon!\n\n# Coming soon!"
+  },
+  {
+    "objectID": "how-tos/read_data.html#geotiff",
+    "href": "how-tos/read_data.html#geotiff",
+    "title": "Read Data",
+    "section": "GeoTIFF",
+    "text": "GeoTIFF\n\nPythonRMatlab\n\n\nFor GeoTIFF files, we recommend using rioxarray’s open_rasterio\n\nimport rioxarray\nxds = rioxarray.open_rasterio(\"my.tif\")\n\n\n\nR code coming soon!\n\n# Coming soon!\n\n\n\nMatlab code coming soon!\n\n# Coming soon!"
+  },
+  {
+    "objectID": "how-tos/read_data.html#shapefiles-geojson",
+    "href": "how-tos/read_data.html#shapefiles-geojson",
+    "title": "Read Data",
+    "section": "Shapefiles & GeoJSON",
+    "text": "Shapefiles & GeoJSON\n\nPythonRMatlab\n\n\nTo open shapefiles or GeoJSON, we recommend using geopandas’s read_file.\n\nimport geopandas as gpd\ngdf = gpd.read_file(filename)\n\n\n\nR code coming soon!\n\n# Coming soon!\n\n\n\nMatlab code coming soon!\n\n# Coming soon!"
+  },
+  {
+    "objectID": "how-tos/read_data.html#csv",
+    "href": "how-tos/read_data.html#csv",
+    "title": "Read Data",
+    "section": "CSV",
+    "text": "CSV\n\nPythonRMatlab\n\n\nTo open CSV files, we recommend using pandas’s read_csv.\n\nimport pandas as pd\ndf = pd.read_csv(filename)\n\n\n\nR code coming soon!\n\n# Coming soon!\n\n\n\nMatlab code coming soon!\n\n# Coming soon!"
+  },
+  {
+    "objectID": "how-tos/read_data.html#excel",
+    "href": "how-tos/read_data.html#excel",
+    "title": "Read Data",
+    "section": "Excel",
+    "text": "Excel\n\nPythonRMatlab\n\n\nTo open Excel files, we recommend using pandas’s read_excel\n\nimport pandas as pd\ndf = pd.read_excel(filename)\n\n\n\nR code coming soon!\n\n# Coming soon!\n\n\n\nMatlab code coming soon!\n\n# Coming soon!"
+  },
+  {
+    "objectID": "how-tos/read_data.html#mat-files",
+    "href": "how-tos/read_data.html#mat-files",
+    "title": "Read Data",
+    "section": ".mat Files",
+    "text": ".mat Files\n\nPythonRMatlab\n\n\n\n#coming soon! scipy & .mat\n\n\n\nR code coming soon!\n\n# Coming soon!\n\n\n\nMatlab code coming soon!\n\n# Coming soon!"
+  },
+  {
+    "objectID": "how-tos/read_data.html#binary-files",
+    "href": "how-tos/read_data.html#binary-files",
+    "title": "Read Data",
+    "section": "Binary Files",
+    "text": "Binary Files\n\nPythonRMatlab\n\n\nTo open binary files, we recommend using numpy’s from_file. You will need to know the dimensions and data type of the binary file and if there is an offset or header information in the binary file.\n\nimport numpy as np\narr = np.from_file(filepath, dtype=data_type).reshape(nrows, ncols)\n\n\n\nR code coming soon!\n\n# Coming soon!\n\n\n\nMatlab code coming soon!\n\n# Coming soon!"
   },
   {
     "objectID": "how-tos/Earthdata_Cloud__Open-Science-Tutorial.html",
