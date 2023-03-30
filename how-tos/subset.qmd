@@ -1,10 +1,63 @@
 ---
 title: How do I subset data granules?
+execute:
+  eval: false
 ---
 
-How do I subset a data granule using Harmony?  
-How do I subset an OPeNDAP granule in the cloud?  
-How do I subset a data granule using xarray?  
+## How do I subset a data granule using Harmony?
+
+::: {.panel-tabset group="language"}
+
+### Python
+
+Install the [harmony-py]("https://github.com/nasa/harmony-py") package:
+
+```{python}
+# Install harmony-py
+pip install -U harmony-py
+```
+
+Import packages: 
+
+```{python}
+import datetime as dt
+
+from harmony import BBox, Client, Collection, Request
+from harmony.config import Environment
+
+#collection example: #MUR-JPL-L4-GLOB-v4.1 
+#2021-03-10T00:46:02Z 
+#2022-03-10T00:46:02Z 
+#"-125.469,15.820,-99.453,35.859" 
+```
+
+### Set up Harmony client and authentication
+
+We will authenticate the following Harmony request using a netrc file. See the [appendix]("https://nasa-openscapes.github.io/earthdata-cloud-cookbook/appendix/authentication.html") for more information on [Earthdata Login]("https://urs.earthdata.nasa.gov/") and netrc setup.
+
+```{python}
+harmony_client = Client()
+
+request = Request(
+  collection=Collection(id=dataset_short_name),
+  spatial=BBox(w, s, e, n),
+  temporal={
+    'start': dt.datetime(yyyy, mm, dd),
+    'stop': dt.datetime(yyyy, mm, dd)
+    }
+)
+
+job_id = harmony_client.submit(request)
+
+results = harmony_client.download_all(job_id, directory='/tmp', overwrite=True)
+
+```
+
+## How do I subset an OPeNDAP granule in the cloud?
+
+
+## How do I subset a data granule using xarray?
+
 
 ## How do I download a subset of NetCDF-4?
 *this might be a deprecated idea*
