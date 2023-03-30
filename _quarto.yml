@@ -48,7 +48,7 @@ website:
               - text: "using Earthdata Search"
                 href: how-tos/find-data/earthdata_search.md
               - text: "using the command line"
-              - text: "using a notebook" 
+              - text: "using a script" 
                 href: how-tos/find-data/programmatic.qmd                
           - section: "access data"
             href: how-tos/access_data.qmd 
@@ -57,6 +57,8 @@ website:
                 href: how-tos/if-im-in-the-cloud.qmd
               - text: "if I'm on my local machine"
                 href: how-tos/if-im-local.qmd
+          - text: "read data"    
+            href: how-tos/read_data.qmd
           - text: "subset data"
             href: how-tos/subset.qmd
           - text: "reformat data files"
