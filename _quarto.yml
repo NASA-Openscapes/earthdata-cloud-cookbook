@@ -51,7 +51,7 @@ website:
               - text: "using Earthdata Search"
                 href: how-tos/find-data/earthdata_search.md
               - text: "using the command line"
-              - text: "using a notebook" 
+              - text: "using a script" 
                 href: how-tos/find-data/programmatic.qmd                
           - section: "access data"
             href: how-tos/access_data.qmd 
@@ -60,6 +60,8 @@ website:
                 href: how-tos/if-im-in-the-cloud.qmd
               - text: "if I'm on my local machine"
                 href: how-tos/if-im-local.qmd
+          - text: "read data"    
+            href: how-tos/read_data.qmd
           - text: "subset data"
             href: how-tos/subset.qmd
           - text: "reformat data files"
@@ -92,8 +94,8 @@ website:
          # - get-started/api-primer.qmd    ## move to how-tos/use_apis?
       - section: in-development/index.qmd
         contents:
-          - href: /external/opensarlab-test.ipynb
-            text: "OpenSARLab test!"
+          #- href: /external/opensarlab-test.ipynb
+          #  text: "OpenSARLab test!"
           - href: examples/NSIDC/ICESat2-CMR-OnPrem-vs-Cloud.ipynb
             text: "Search & Download NSIDC Cloud"
           - href: examples/NSIDC/ICESat2-CMR-AWS-S3.ipynb
