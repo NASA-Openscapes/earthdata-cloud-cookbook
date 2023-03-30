@@ -13,14 +13,16 @@ execute:
 ## Python
 
 We recommend using `xarray`'s [open_dataset](https://docs.xarray.dev/en/stable/generated/xarray.open_dataset.html)
+
+### For a single file
 ```{python}
 import xarray as xr
-#for a single file
 ds = xr.open_dataset(filename)
 ```
+
+### For multiple files
 ```{python}
 import xarray as xr
-#for multiple files
 ds = xr.open_mfdataset(list_of_filenames)
 ```
 
@@ -49,9 +51,6 @@ Matlab code coming soon!
 
 ## HDF5
 
-- using xarray to access groups
-- using h5py
-
 ::: {.panel-tabset group="language"}
 
 ## Python
@@ -60,7 +59,8 @@ For HDF5 files, there are two methods we can use: `xarray`'s [open_dataset](http
 
 ```{python}
 import xarray as xr
-ds = xr.open_dataset(filename, group=path_to_H5netCDF_group)
+ds = xr.open_dataset(filename,
+                     group=path_to_H5netCDF_group)
 ```
 ```{python}
 # add in directions for h5py
@@ -91,8 +91,6 @@ Matlab code coming soon!
 
 
 ## GeoTIFF
-
-- rioxarray
 
 ::: {.panel-tabset group="language"}
 
@@ -269,8 +267,6 @@ Matlab code coming soon!
 
 
 ## Binary Files
-
-- numpy
 
 ::: {.panel-tabset group="language"}
 
