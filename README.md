@@ -1,3 +1,7 @@
+[![DOI](https://zenodo.org/badge/doi/10.5281/zenodo.7786710.svg)](https://zenodo.org/record/7786710) 
+
+
+
 # Hello!
 
 This Earthdata Cloud Cookbook is being developed by the [NASA Openscapes team](https://nasa-openscapes.github.io/).
