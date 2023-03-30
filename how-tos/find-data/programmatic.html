@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>EarthData Cloud Cookbook - Find Data: Programmatic Search</title>
+<title>EarthData Cloud Cookbook - How do I Find Data from the command line or a notebook?</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -92,7 +92,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../how-tos/transform/index.html" rel="next">
+<link href="../../how-tos/access_data.html" rel="next">
 <link href="../../how-tos/find-data/earthdata_search.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
@@ -135,7 +135,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Find Data: Programmatic Search</h1>
+      <h1 class="quarto-secondary-nav-title">How do I Find Data from the command line or a notebook?</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -183,7 +183,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../how-tos/index.html" class="sidebar-item-text sidebar-link">How To's</a>
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">How do I…</a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -191,7 +191,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../how-tos/find-data/index.html" class="sidebar-item-text sidebar-link">Find Data</a>
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">find data</a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -199,19 +199,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../how-tos/find-data/earthdata_search.html" class="sidebar-item-text sidebar-link">Earthdata Search</a>
+  <a href="../../how-tos/find-data/earthdata_search.html" class="sidebar-item-text sidebar-link">using Earthdata Search</a>
   </div>
 </li>
           <li class="sidebar-item">
+  using the command line
+  </li>
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../how-tos/find-data/programmatic.html" class="sidebar-item-text sidebar-link active">Programmatic Search</a>
+  <a href="../../how-tos/find-data/programmatic.html" class="sidebar-item-text sidebar-link active">using a notebook</a>
   </div>
 </li>
       </ul>
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../how-tos/transform/index.html" class="sidebar-item-text sidebar-link">Transform</a>
+            <a href="../../how-tos/access_data.html" class="sidebar-item-text sidebar-link">access data</a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -219,69 +222,49 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../how-tos/transform/subset.html" class="sidebar-item-text sidebar-link">Subset</a>
+  <a href="../../how-tos/if-im-in-the-cloud.html" class="sidebar-item-text sidebar-link">if I’m in the cloud</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../how-tos/transform/reformat.html" class="sidebar-item-text sidebar-link">Reformat</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../how-tos/transform/reproject.html" class="sidebar-item-text sidebar-link">Reproject</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../how-tos/transform/aggregate.html" class="sidebar-item-text sidebar-link">Aggregate</a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="../../how-tos/access/index.html" class="sidebar-item-text sidebar-link">Access</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../how-tos/access/Earthdata_Cloud__Single_File__HTTPS_Access_COG_Example.html" class="sidebar-item-text sidebar-link">COG HTTPS</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../how-tos/access/Earthdata_Cloud__Single_File__Direct_S3_Access_COG_Example.html" class="sidebar-item-text sidebar-link">COG Direct S3</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../how-tos/access/Multi-File_Direct_S3_Access_COG_Example.html" class="sidebar-item-text sidebar-link">COG Direct S3 - Multi-file</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../how-tos/access/Earthdata_Cloud__Single_File__Direct_S3_Access_NetCDF4_Example.html" class="sidebar-item-text sidebar-link">NetCDF4/HDF5 Direct S3</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../how-tos/access/Multi-File_Direct_S3_Access_NetCDF_Example.html" class="sidebar-item-text sidebar-link">NetCDF4/HDF5 Direct S3 - Multi-file</a>
+  <a href="../../how-tos/if-im-local.html" class="sidebar-item-text sidebar-link">if I’m on my local machine</a>
   </div>
 </li>
       </ul>
   </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../how-tos/download.html" class="sidebar-item-text sidebar-link">Download</a>
+  <a href="../../how-tos/subset.html" class="sidebar-item-text sidebar-link">subset data</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../how-tos/tech-setup.html" class="sidebar-item-text sidebar-link">Tech Setup (AWS)</a>
+  <a href="../../how-tos/reformat.html" class="sidebar-item-text sidebar-link">reformat data files</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../how-tos/reproject_regrid.html" class="sidebar-item-text sidebar-link">reproject and regrid</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../how-tos/aggregate.html" class="sidebar-item-text sidebar-link">aggregate data</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../how-tos/plot.html" class="sidebar-item-text sidebar-link">plot data</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../how-tos/use_apis.html" class="sidebar-item-text sidebar-link">use APIs</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../how-tos/how_to_guide_parking_lot.html" class="sidebar-item-text sidebar-link">How-To Guides Parking Lot</a>
   </div>
 </li>
       </ul>
@@ -289,16 +272,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="../../tutorials/index.html" class="sidebar-item-text sidebar-link">Tutorials</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../tutorials/earthaccess-demo.html" class="sidebar-item-text sidebar-link"><code>earthaccess</code> Python library</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../examples/index.html" class="sidebar-item-text sidebar-link">Example Workflows</a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../tutorials/earthaccess-demo.html" class="sidebar-item-text sidebar-link"><code>earthaccess</code> Python library</a>
-  </div>
-</li>
+  NSIDC examples
+  </li>
+          <li class="sidebar-item">
+  PODAAC examples
+  </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -309,6 +308,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </a> 
       </div>
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../external/opensarlab-test.ipynb" class="sidebar-item-text sidebar-link">OpenSARLab test!</a>
+  </div>
+</li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../examples/NSIDC/ICESat2-CMR-OnPrem-vs-Cloud.html" class="sidebar-item-text sidebar-link">Search &amp; Download NSIDC Cloud</a>
@@ -331,7 +335,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../how-tos/access/Earthdata_Cloud__Data_Access_OPeNDAP_Example.html" class="sidebar-item-text sidebar-link">OPeNDAP</a>
+  <a href="../../how-tos/working-with-data-in-cloud/Earthdata_Cloud__Data_Access_OPeNDAP_Example.html" class="sidebar-item-text sidebar-link">OPeNDAP</a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -351,7 +355,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../examples/index.html" class="sidebar-item-text sidebar-link">Kerchunk Examples</a>
+            <a href="../../examples/index.html" class="sidebar-item-text sidebar-link">Example Workflows</a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -387,6 +391,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../in-development/earthdata-python-r-handoff.html" class="sidebar-item-text sidebar-link"><code>earthdata</code>: Python-R Handoff</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../external/setup.html" class="sidebar-item-text sidebar-link">Hackathon Set Up</a>
   </div>
 </li>
       </ul>
@@ -465,7 +474,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Find Data: Programmatic Search</h1>
+<h1 class="title d-none d-lg-block">How do I Find Data from the command line or a notebook?</h1>
 </div>
 
 
@@ -491,7 +500,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" aria-current="page">Python</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">Matlab</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-4" role="tab" aria-controls="tabset-1-4" aria-selected="false">Command Line</a></li></ul>
 <div class="tab-content" data-group="language">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
-<p>In Python we can use the <a href="https://earthaccess.readthedocs.io/en/latest/"><code>earthaccess</code></a> library (renamed, previously <code>earthdata</code>)</p>
+<p>In Python we can use the <a href="https://nsidc.github.io/earthaccess/"><code>earthaccess</code></a> library (renamed, previously <code>earthdata</code>)</p>
 <p>To install the package we’ll run this code from the command line. Note: you can run shell code directly from a Jupyter Notebook cell by adding a <code>!</code>, so it would be <code>!conda install</code>.</p>
 <div class="cell">
 <div class="code-with-filename">
@@ -502,69 +511,53 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> install <span class="at">-c</span> conda-forge earthaccess</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
-<p>This example searches for data from the <a href="https://lpdaac.usgs.gov/">Land Processes DAAC</a> with a spatial bounding box.</p>
+<p>This example searches for data from the <a href="https://lpdaac.usgs.gov/">Land Processes DAAC</a> with a spatial bounding box and temporal range.</p>
 <div class="cell">
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>[python code]</strong></pre>
-</div>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Import earthaccess</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> earthaccess <span class="im">import</span> DataGranules</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Then we build a Query with spatiotemporal parameters</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>GranuleQuery <span class="op">=</span> DataGranules().concept_id(<span class="st">"C1575731655-LPDAAC_ECS"</span>).bounding_box(<span class="op">-</span><span class="fl">134.7</span>,<span class="fl">58.9</span>,<span class="op">-</span><span class="fl">133.9</span>,<span class="fl">59.2</span>)</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># We get the metadata records from CMR, then view the output</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>granules <span class="op">=</span> GranuleQuery.get()</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>granules</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Import packages</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> earthdata <span class="im">import</span> DataGranules, DataCollections</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pprint <span class="im">import</span> pprint </span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co"># We'll get 4 collections that match with our keyword of interest</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>collections <span class="op">=</span> DataCollections().keyword(<span class="st">"REFLECTANCE"</span>).cloud_hosted(<span class="va">True</span>).get(<span class="dv">4</span>)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Let's print 2 collections</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> collection <span class="kw">in</span> collections[<span class="dv">0</span>:<span class="dv">2</span>]:</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(pprint(collection.summary()) , collection.abstract(), <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co">#Search for files from the second dataset result over a small plot in Nebraska, USA for two weeks in September 2022</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>granules <span class="op">=</span> DataGranules().concept_id(<span class="st">"C2021957657-LPCLOUD"</span>).temporal(<span class="st">"2022-09-10"</span>,<span class="st">"2022-09-24"</span>).bounding_box(<span class="op">-</span><span class="fl">101.67271</span>,<span class="fl">41.04754</span>,<span class="op">-</span><span class="fl">101.65344</span>,<span class="fl">41.06213</span>)</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">len</span>(granules))</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>granules</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
-<p>To find data in R, we’ll briefly make use of the <code>earthaccess</code> python package - which we can do from R using the <a href="https://rstudio.github.io/reticulate/"><code>reticulate</code></a> package and <a href="https://www.rstudio.com/resources/cheatsheets/">cheatsheet</a>. You’ll copy these code chunks into your RMarkdown or Quarto document: note that the second code chunk is in Python, but when you run them in sequence you’ll be all set.</p>
+<p>To find data in R, we’ll also use the <code>earthaccess</code> python package - we can do so from R using the <a href="https://rstudio.github.io/reticulate/"><code>reticulate</code></a> package (<a href="https://www.rstudio.com/resources/cheatsheets/">cheatsheet</a>). Note below that we import the python library as an R object we name <code>earthaccess</code>, as well as the <code>earthaccess$</code> syntax for accessing functions from the <code>earthaccess</code> library. The <code>granules</code> object has a list of JSON dictionaries with some extra dictionaries.</p>
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>[R code]</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="do">## load wrangling libraries</span></span>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="do">## load R libraries</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) <span class="co"># install.packages("tidyverse") </span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="do">## load reticulate and set up a python environment</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reticulate) <span class="co"># install.packages("reticulate")</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">virtualenv_create</span>(<span class="st">"earthaccess-proj"</span>)</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">py_install</span>(<span class="st">"earthaccess"</span>, <span class="at">envname =</span> <span class="st">"earthaccess-proj"</span>)</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="fu">use_virtualenv</span>(<span class="st">"earthaccess-proj"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
-<p>Now, we’ll use the <code>earthaccess</code> python package.</p>
-<!---note: would like to reuse the python chunk here with the same name, but currently can't with the language labeled
-https://bookdown.org/yihui/rmarkdown-cookbook/reuse-chunks.html
---->
-<div class="cell">
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>[python code]</strong></pre>
-</div>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Import earthaccess</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> earthaccess <span class="im">import</span> DataGranules</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Then we build a Query with spatiotemporal parameters</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>GranuleQuery <span class="op">=</span> DataGranules().concept_id(<span class="st">"C1575731655-LPDAAC_ECS"</span>).bounding_box(<span class="op">-</span><span class="fl">134.7</span>,<span class="fl">58.9</span>,<span class="op">-</span><span class="fl">133.9</span>,<span class="fl">59.2</span>)</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># We get the metadata records from CMR, then view the output</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>granules <span class="op">=</span> GranuleQuery.get()</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>granules</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
-<p>Now we can access the <code>granules</code> python object in R using <code>reticulate</code>; note the <code>py$</code> syntax. We’ll create an R object named <code>granules_r</code> and view it using <code>str</code>.</p>
-<div class="cell">
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>[R code]</strong></pre>
-</div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>granules_r <span class="ot">&lt;-</span> py<span class="sc">$</span>granules</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(granules_r) <span class="sc">%&gt;%</span> jsonlite<span class="sc">::</span><span class="fu">fromJSON</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reticulate) <span class="co"># install.packages("reticulate")</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="do">## load python library</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>earthaccess <span class="ot">&lt;-</span> reticulate<span class="sc">::</span><span class="fu">import</span>(<span class="st">"earthaccess"</span>) </span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co"># use earthaccess to access data # https://nsidc.github.io/earthaccess/tutorials/search-granules/</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>granules <span class="ot">&lt;-</span> earthaccess<span class="sc">$</span><span class="fu">search_data</span>(</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">concept_id =</span> <span class="st">"C2036880672-POCLOUD"</span>,</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">temporal =</span> reticulate<span class="sc">::</span><span class="fu">tuple</span>(<span class="st">"2017-01"</span>, <span class="st">"2017-02"</span>) <span class="co"># with an earthaccess update, this can be simply c() or list()</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="do">## Granules found: 72</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="do">## exploring</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>granules <span class="co"># this is the result of the get request. </span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(granules) <span class="co"># "list"</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="do">## granules &lt;- reticulate::py_to_r(granules) # Object to convert is not a Python object</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -575,7 +568,7 @@ https://bookdown.org/yihui/rmarkdown-cookbook/reuse-chunks.html
 <div class="code-with-filename-file">
 <pre><strong>[Matlab code]</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Coming soon!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Coming soon!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -586,7 +579,7 @@ https://bookdown.org/yihui/rmarkdown-cookbook/reuse-chunks.html
 <div class="code-with-filename-file">
 <pre><strong>[command line code]</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Coming soon!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Coming soon!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -848,19 +841,19 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="../../how-tos/find-data/earthdata_search.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Earthdata Search</span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">using Earthdata Search</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../how-tos/transform/index.html" class="pagination-link">
-        <span class="nav-page-text">Transform</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../how-tos/access_data.html" class="pagination-link">
+        <span class="nav-page-text">access data</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
-      <div class="nav-footer-center">NASA Openscapes Team (2021). Earthdata Cloud Cookbook (Version v0.0.1).</div>
+    <div class="nav-footer-left">NASA Earthdata Cloud Cookbook, © NASA Openscapes Team (2023) <a href="LICENSE.md">License</a>.</div>   
   </div>
 </footer>
 
