@@ -7,7 +7,7 @@ citation_url: <https://nasa-openscapes.github.io/earthdata-cloud-cookbook/get-st
 slug: index
 ---
 
-**Proposed Sources of Information**
+<!-- **Proposed Sources of Information**
 
 * Understanding the Cloud
   * Selected content from “Cheatsheets, Guides, & Slides” page
@@ -19,4 +19,24 @@ slug: index
 * How to Code
   * Selected content from “Our Cookbook” page
   * Python installation/environment setup
-  * R installation/environment setup
+  * R installation/environment setup -->
+
+---
+
+!!!!! INTRODUCTION
+
+## About the Cloud
+
+## Coding Languages & Environments
+
+### Python
+
+### R
+
+## Authentication
+
+### Earthdata Login
+
+### earthaccess
+
+### .netrc File
