@@ -1,3 +1,4 @@
+---
 title: “Get Started”
 subtitle: “Get Started Working with Data in the Cloud”
 date: last-modified
