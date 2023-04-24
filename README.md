@@ -19,6 +19,50 @@ Hackdays:
 -   February 2, 2023
 -   March 2, 2023
 -   March 30, 2023
+-   May 10, 2023
+
+### **Hackday 3 Summary**
+
+Brief planning check-in and then mostly worked in breakouts the whole time - 
+
+-   OPeNDAP tutorial (Chris) - goal to not use pyDAP, instead earthaccess/Xarray and Zarr.
+
+    -   Progress: Added auth steps and CMR query. [Notebook](https://github.com/NASA-Openscapes/earthdata-cloud-cookbook/blob/177-opendap-tutorials/how-tos/working-with-data-in-cloud/Earthdata_Cloud__Data_Access_OPeNDAP_Example.ipynb); [issue #177](https://github.com/NASA-Openscapes/earthdata-cloud-cookbook/issues/177)
+
+-   How-Tos: Harmony-py subset example with PO.DAAC data (Amy) 
+
+    -   Progress: Pushed work-in-progress to branch, [draft PR](https://github.com/NASA-Openscapes/earthdata-cloud-cookbook/pull/187) 
+
+-   How-Tos: Populated \"access data\"; created \"read data\" for python. (Cassie & Andy) 
+
+    -   Progress: [merged PR](https://github.com/NASA-Openscapes/earthdata-cloud-cookbook/pull/190)
+
+    -   Next steps: Tagging R people fill in their wisdom - please go through and populate some of the R parts
+
+-   Tutorials: Import AppEEARS tutorial (Mahsa & Julie)
+
+    -   Progress: successful import and [draft PR](https://github.com/NASA-Openscapes/earthdata-cloud-cookbook/pull/189)
+
+    -   Question: not re-import all notebooks each time (see draft PR)	
+
+-   Tutorials: earthaccess walk-through (Jess). Shared workflow with Luis (conversation below). Focus: how to use earthaccess outside the JupyterHub
+
+-   Get-Started section (Jess) -  reviewed [old chapters commented out in quarto_yml](https://github.com/NASA-Openscapes/earthdata-cloud-cookbook/blob/188cfd30dfff6573c65af371cda171a46adb5841/_quarto.yml#L87-L91) to see how to incorporate/delete. 
+
+    -   Progress: notes/suggestions below
+
+    -   Next steps: review & do!
+
+-   Environments chapter (Erin) started, notes here: [#186](https://github.com/NASA-Openscapes/earthdata-cloud-cookbook/pull/186) 
+
+-   DOI, Zenodo, Citation, Documentation (Stef) - Deposit in Zenodo & get DOI for cookbook [#178](https://github.com/NASA-Openscapes/earthdata-cloud-cookbook/issues/178). Added DOI badge to README: [commit](https://github.com/NASA-Openscapes/earthdata-cloud-cookbook/commit/4a825bf8b7fe1dd476019704f107449cc3e76177)
+
+    -   woohoo <https://zenodo.org/record/7786711>
+
+    -   Next steps: review pull request for citation text:[ #191](https://github.com/NASA-Openscapes/earthdata-cloud-cookbook/pull/191) 
+
+    - Next steps: create Openscapes Zenodo Community (a là [NASA TOPS](https://zenodo.org/communities/tops/) & add Cookbook et al there)
+
 
 ### **Hackday 2 Summary**
 
