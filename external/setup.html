@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.475">
+<meta name="generator" content="quarto-1.3.340">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -17,9 +17,10 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -46,43 +47,13 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
-    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -131,11 +102,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-    <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">00. Setup for tutorials</h1>
-      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
-        <i class="bi bi-chevron-right"></i>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
+      NASA Earthdata Cloud Cookbook
+      </li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
       </button>
     </div>
   </nav>
@@ -143,7 +121,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-center sidebar-header sidebar-header-stacked">
       <a href="../index.html" class="sidebar-logo-link">
       <img src="../images/nasa-openscapes.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
@@ -151,306 +129,359 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <div class="sidebar-title mb-0 py-0">
       <a href="../">NASA Earthdata Cloud Cookbook</a> 
         <div class="sidebar-tools-main tools-wide">
-    <a href="https://nasa-openscapes.github.io" title="NASA-Openscapes website" class="sidebar-tool px-1"><i class="bi bi-globe"></i></a>
-    <a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook" title="Earthdata Cloud Cookbook repo" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
-  <a href="" class="quarto-color-scheme-toggle sidebar-tool" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+    <a href="https://nasa-openscapes.github.io" title="NASA-Openscapes website" class="quarto-navigation-tool px-1" aria-label="NASA-Openscapes website"><i class="bi bi-globe"></i></a>
+    <a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook" title="Earthdata Cloud Cookbook repo" class="quarto-navigation-tool px-1" aria-label="Earthdata Cloud Cookbook repo"><i class="bi bi-github"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
     </div>
       </div>
-      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
         </div>
-      </div>
+        </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../index.html" class="sidebar-item-text sidebar-link">Welcome</a>
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Welcome</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../our-cookbook.html" class="sidebar-item-text sidebar-link">Our Cookbook</a>
+  <a href="../our-cookbook.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Our Cookbook</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../cheatsheets.html" class="sidebar-item-text sidebar-link">Cheatsheets &amp; Slides</a>
+  <a href="../cheatsheets.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Cheatsheets &amp; Slides</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">How do I…</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">
+ <span class="menu-text">How do I…</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">find data</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
+ <span class="menu-text">find data</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../how-tos/find-data/earthdata_search.html" class="sidebar-item-text sidebar-link">using Earthdata Search</a>
+  <a href="../how-tos/find-data/earthdata_search.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">using Earthdata Search</span></a>
   </div>
 </li>
           <li class="sidebar-item">
-  using the command line
+ <span class="menu-text">using the command line</span>
   </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../how-tos/find-data/programmatic.html" class="sidebar-item-text sidebar-link">using a script</a>
+  <a href="../how-tos/find-data/programmatic.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">using a script</span></a>
   </div>
 </li>
       </ul>
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../how-tos/access_data.html" class="sidebar-item-text sidebar-link">access data</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
+            <a href="../how-tos/access_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">access data</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../how-tos/if-im-in-the-cloud.html" class="sidebar-item-text sidebar-link">if I’m in the cloud</a>
+  <a href="../how-tos/if-im-in-the-cloud.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">if I’m in the cloud</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../how-tos/if-im-local.html" class="sidebar-item-text sidebar-link">if I’m on my local machine</a>
+  <a href="../how-tos/if-im-local.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">if I’m on my local machine</span></a>
   </div>
 </li>
       </ul>
   </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../how-tos/read_data.html" class="sidebar-item-text sidebar-link">read data</a>
+  <a href="../how-tos/read_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">read data</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../how-tos/subset.html" class="sidebar-item-text sidebar-link">subset data</a>
+  <a href="../how-tos/subset.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">subset data</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../how-tos/reformat.html" class="sidebar-item-text sidebar-link">reformat data files</a>
+  <a href="../how-tos/reformat.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">reformat data files</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../how-tos/reproject_regrid.html" class="sidebar-item-text sidebar-link">reproject and regrid</a>
+  <a href="../how-tos/reproject_regrid.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">reproject and regrid</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../how-tos/aggregate.html" class="sidebar-item-text sidebar-link">aggregate data</a>
+  <a href="../how-tos/aggregate.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">aggregate data</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../how-tos/plot.html" class="sidebar-item-text sidebar-link">plot data</a>
+  <a href="../how-tos/plot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">plot data</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../how-tos/use_apis.html" class="sidebar-item-text sidebar-link">use APIs</a>
+  <a href="../how-tos/use_apis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">use APIs</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../how-tos/how_to_guide_parking_lot.html" class="sidebar-item-text sidebar-link">How-To Guides Parking Lot</a>
+  <a href="../how-tos/how_to_guide_parking_lot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">How-To Guides Parking Lot</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../tutorials/index.html" class="sidebar-item-text sidebar-link">Tutorials</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
+            <a href="../tutorials/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tutorials</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../tutorials/earthaccess-demo.html" class="sidebar-item-text sidebar-link"><code>earthaccess</code> Python library</a>
+  <a href="../tutorials/setup.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><code>earthaccess</code> Python library</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tutorials/earthaccess-demo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><code>earthaccess</code> Python library</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../examples/index.html" class="sidebar-item-text sidebar-link">Example Workflows</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
+            <a href="../examples/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Example Workflows</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
-  NSIDC examples
+ <span class="menu-text">NSIDC examples</span>
   </li>
           <li class="sidebar-item">
-  PODAAC examples
+ <span class="menu-text">PODAAC examples</span>
   </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../in-development/index.html" class="sidebar-item-text sidebar-link">In Development</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
+            <a href="../in-development/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">In Development</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../examples/NSIDC/ICESat2-CMR-OnPrem-vs-Cloud.html" class="sidebar-item-text sidebar-link">Search &amp; Download NSIDC Cloud</a>
+  <a href="../examples/NSIDC/ICESat2-CMR-OnPrem-vs-Cloud.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Search &amp; Download NSIDC Cloud</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../examples/NSIDC/ICESat2-CMR-AWS-S3.html" class="sidebar-item-text sidebar-link">Access NSIDC Cloud w/ CMR</a>
+  <a href="../examples/NSIDC/ICESat2-CMR-AWS-S3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Access NSIDC Cloud w/ CMR</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../examples/Transform-workflow.html" class="sidebar-item-text sidebar-link">Direct Access &amp; Harmony Workflow</a>
+  <a href="../examples/Transform-workflow.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Direct Access &amp; Harmony Workflow</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../examples/USGS_Landsat/Landsat_C2_Search_Access.html" class="sidebar-item-text sidebar-link">Search &amp; Access USGS Landsat Cloud</a>
+  <a href="../examples/USGS_Landsat/Landsat_C2_Search_Access.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Search &amp; Access USGS Landsat Cloud</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../how-tos/working-with-data-in-cloud/Earthdata_Cloud__Data_Access_OPeNDAP_Example.html" class="sidebar-item-text sidebar-link">OPeNDAP</a>
+  <a href="../how-tos/working-with-data-in-cloud/Earthdata_Cloud__Data_Access_OPeNDAP_Example.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">OPeNDAP</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../examples/ORNL/Data_Access__Direct_S3_Access__ORNL_DAYMET.html" class="sidebar-item-text sidebar-link">Direct S3 Data Access: NetCDF - Daymet v4 Daily TMAX Example</a>
+  <a href="../examples/ORNL/Data_Access__Direct_S3_Access__ORNL_DAYMET.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Direct S3 Data Access: NetCDF - Daymet v4 Daily TMAX Example</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../external/cof-zarr-reformat.html" class="sidebar-item-text sidebar-link">COF Zarr Access via Reformat</a>
+  <a href="../external/cof-zarr-reformat.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">COF Zarr Access via Reformat</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../external/zarr-eosdis-store.html" class="sidebar-item-text sidebar-link">Zarr Example</a>
+  <a href="../external/zarr-eosdis-store.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Zarr Example</span></a>
   </div>
 </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../examples/index.html" class="sidebar-item-text sidebar-link">Example Workflows</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false">
+            <a href="../examples/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Example Workflows</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../examples/GESDISC/GESDISC_MERRA2_tavg1_2d_flx_Nx__Kerchunk.html" class="sidebar-item-text sidebar-link">GES DISC - MERRA2</a>
+  <a href="../examples/GESDISC/GESDISC_MERRA2_tavg1_2d_flx_Nx__Kerchunk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">GES DISC - MERRA2</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../examples/LPDAAC/LPDAAC_ECOSTRESS_LSTE__Kerchunk.html" class="sidebar-item-text sidebar-link">LP DAAC ECOSTRESS</a>
+  <a href="../examples/LPDAAC/LPDAAC_ECOSTRESS_LSTE__Kerchunk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">LP DAAC ECOSTRESS</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../examples/PODAAC/PODAAC_ECCO_SSH__Kerchunk.html" class="sidebar-item-text sidebar-link">PO.DAAC ECCO SSH</a>
+  <a href="../examples/PODAAC/PODAAC_ECCO_SSH__Kerchunk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">PO.DAAC ECCO SSH</span></a>
   </div>
 </li>
       </ul>
   </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../in-development/matlab.html" class="sidebar-item-text sidebar-link">Matlab &amp; AWS</a>
+  <a href="../in-development/matlab.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Matlab &amp; AWS</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../in-development/CMR-STAC-Search.html" class="sidebar-item-text sidebar-link">CMR STAC in R</a>
+  <a href="../in-development/CMR-STAC-Search.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">CMR STAC in R</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../in-development/earthdata-python-r-handoff.html" class="sidebar-item-text sidebar-link"><code>earthdata</code>: Python-R Handoff</a>
+  <a href="../in-development/earthdata-python-r-handoff.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><code>earthdata</code>: Python-R Handoff</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../contributing/index.html" class="sidebar-item-text sidebar-link">Contributing</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false">
+            <a href="../contributing/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Contributing</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../contributing/onboarding.html" class="sidebar-item-text sidebar-link">Onboarding Mentors</a>
+  <a href="../contributing/onboarding.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Onboarding Mentors</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../contributing/setup.html" class="sidebar-item-text sidebar-link">Cookbook Setup</a>
+  <a href="../contributing/setup.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Cookbook Setup</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../contributing/workflow.html" class="sidebar-item-text sidebar-link">Workflow</a>
+  <a href="../contributing/workflow.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Workflow</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../contributing/resources.html" class="sidebar-item-text sidebar-link">Resources</a>
+  <a href="../contributing/resources.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Resources</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../contributing/quarto-website-tutorial.html" class="sidebar-item-text sidebar-link">Quarto Tutorial</a>
+  <a href="../contributing/quarto-website-tutorial.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Quarto Tutorial</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../appendix/index.html" class="sidebar-item-text sidebar-link">Appendix</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false">
+            <a href="../appendix/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Appendix</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../appendix/authentication.html" class="sidebar-item-text sidebar-link">Authentication</a>
+  <a href="../appendix/authentication.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Authentication</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../troubleshooting.html" class="sidebar-item-text sidebar-link">Troubleshooting</a>
+  <a href="../troubleshooting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Troubleshooting</span></a>
   </div>
 </li>
     </ul>
     </div>
 </nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -491,7 +522,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">00. Setup for tutorials</h1>
+<h1 class="title">00. Setup for tutorials</h1>
 </div>
 
 
@@ -573,17 +604,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://pangeo-data.github.io/img/scientific-python-28-638.jpg" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Python Data Stack. Source: Jake VanderPlas, “The State of the Stack,” SciPy Keynote (SciPy 2015).</figcaption><p></p>
+<figcaption class="figure-caption">Python Data Stack. Source: Jake VanderPlas, “The State of the Stack,” SciPy Keynote (SciPy 2015).</figcaption>
 </figure>
 </div>
 <p><strong>Default Python Environment:</strong></p>
 <p>We’ve set up the Python environment with conda.</p>
-<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Conda environment
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
@@ -911,9 +942,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -978,6 +1023,92 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -1021,6 +1152,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">NASA Earthdata Cloud Cookbook, © NASA Openscapes Team (2023).</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
   </div>
 </footer>
 
