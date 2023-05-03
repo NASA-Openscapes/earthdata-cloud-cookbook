@@ -34,6 +34,7 @@ Maybe you've heard that NASA Earthdata is "moving to the cloud" but you want to 
 NASA’s Office of the Chief Information Officer chose Amazon Web Services (AWS) as the source of general-purpose cloud services (but some areas within NASA are working with Google Earth Engine (GEE) to make NASA data accessible in the GEE cloud-based analysis platform). The following resources provide a background on AWS, but much of the information is relevant to folks who want to develop in the cloud rather than simply access data. Remember, all [NASA's science information](https://science.nasa.gov/researchers/science-data/science-information-policy) (including the algorithms, metadata, and documentation associated with science mission data) must be freely available to the public. This means that anyone, anywhere in the world, can access NASA Earth science data without restriction. However, advanced cloud operations could require a user to set-up their own cloud account through AWS or another cloud provider.
 
 * [**NASA AWS Cloud Primer**](https://earthdata.nasa.gov/learn/user-resources/webinars-and-tutorials/cloud-primer) This primer provides step-by-step tutorials on how to get started in the AWS cloud.  
+
 * [**What is AWS**](https://aws.amazon.com/what-is-aws/) Amazon Web Services (AWS) is the world’s most comprehensive and broadly adopted cloud, offering over 200 fully featured services from data centers globally.  
 
 ### Cloud Optimized Data Formats
@@ -62,10 +63,9 @@ Bash is a command-line interface and language you’ll see called the terminal, 
 
 Python is ...
 
-* [Duke STA-663 - Colin Rundel](https://sta663-sp22.github.io/). Lecture slides & recordings, code & notebooks. Features Jupyter, git, numpy, scipy, pandas, scikit-learn...
-* [Intro to Geospatial Raster and Vector Data with Python - Carpentries](https://carpentries-incubator.github.io/geospatial-python/). Follow-along tutorials & code. Features NEON data, intro to rasters & geostats rioxarray, geopandas...
-* [Intro to Earth and Environmental Data Science- Ryan Abernathy](https://earth-env-data-science.github.io/intro.html). Intro to Python, JupyterLab, Unix, Git, some packages & workflows
-* [Scalable and Computationally Reproducible Approaches to Arctic Research - NCEAS](https://learning.nceas.ucsb.edu/2023-03-arctic/). Advanced topics in computationally reproducible research in python, including environments, docker containers, and parallel processing using tools like parsl and dask, responsible research and data management practices including data sovereignty and the CARE principles, and ethical concerns with data-intensive modeling and analysis.
+* [**Intro to Geospatial Raster and Vector Data with Python | Carpentries Incubator**](https://carpentries-incubator.github.io/geospatial-python/) This tutorial provides an introduction to raster data, and describes how to plot, program, and access satellite imagery using Python.
+
+* [**An Introduction to Earth and Environmental Data Science**](https://earth-env-data-science.github.io/intro.html) This book is intended to introduce new graduate students to modern computing software, programming tools and best practices that are broadly applicable to the analysis and visualization of Earth and Environmental data. This includes an introduction to Unix, version control, and basic programming in the open-source Python language. The bulk of the content is devoted to in-depth exploration of the numerical analysis and visualization packages which comprise the modern Scientific Python ecosystem, including Numpy, Scipy, Matplotlib, Pandas, Xarray, using real Earth and Environmental datasets.
 
 #### Scientific Python Ecosystem, Earth science and Cloud Computing together
 
@@ -82,9 +82,11 @@ Python is ...
 * [Understanding and Improving Conda's performance](https://www.anaconda.com/blog/understanding-and-improving-condas-performance)
 * [The definitive guide to Python virtual environments with conda](https://whiteboxml.com/blog/the-definitive-guide-to-python-virtual-environments-with-conda)
 * [Making conda fast again](https://wolfv.medium.com/making-conda-fast-again-4da4debfb3b7)
-<!---TODO https://fabienmaussion.info/scientific_programming/welcome.html
-review Tiffany Timbers eg https://ubc-mds.github.io/DSCI_524_collab-sw-dev/README.html
-https://gridsst-hackathon.github.io/gridsst/jupyter.html
+<!---TODO  
+https://fabienmaussion.info/scientific_programming/welcome.html  
+review Tiffany Timbers eg https://ubc-mds.github.io/DSCI_524_collab-sw-dev/README.html  
+https://gridsst-hackathon.github.io/gridsst/jupyter.html  
+https://learning.nceas.ucsb.edu/2023-03-arctic/#about  
 --->
 ### R
 
@@ -96,6 +98,8 @@ R is ...
 * Online learning community/book club: [rfordatasci.com](https://www.rfordatasci.com/)
 
 ## Authentication
+
+To access NASA Earthdata, you must ...
 
 ### Earthdata Login
 
