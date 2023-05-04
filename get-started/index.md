@@ -7,22 +7,6 @@ citation_url: <https://nasa-openscapes.github.io/earthdata-cloud-cookbook/get-st
 slug: index
 ---
 
-<!-- **Proposed Sources of Information**
-
-* Understanding the Cloud
-  * Selected content from “Cheatsheets, Guides, & Slides” page
-  * API primer
-* Authentication
-  * Earthdata Login
-  * earthaccess EDL programmatic login
-  * .netrc creation? (what contexts will this be necessary?)
-* How to Code
-  * Selected content from “Our Cookbook” page
-  * Python installation/environment setup
-  * R installation/environment setup -->
-
----
-
 So, you wanna get started working with NASA Earthdata in the cloud? You've come to the right place. This page provides resources that can be considered precursors to the how to's, tutorials, and other guidance you will find across our cookbook.
 
 ## About the Cloud
@@ -41,7 +25,7 @@ NASA’s Office of the Chief Information Officer chose Amazon Web Services (AWS)
 
 NASA’s commitment to the Open-Source Science Initiative (OSSI) requires data facilities to consider optimizing file formats and file structures that are suited to analysis ready cloud optimized (ARCO) strategies. Traditional file formats can easily be migrated to the cloud, but serving or processing the data from the cloud is inefficient and often requires that the data be downloaded and then translated to another format and stored in memory. Cloud optimized formats are being developed to better serve analysis-in-place workflows that make the cloud so beneficial to science users.  
 
-* [**Task 51 - Cloud-Optimized Format Study**](https://ntrs.nasa.gov/citations/20200001178) The cloud infrastructure provides a number of capabilities that can dramatically improve access and use of Earth Observation data. However, in many cases, data may need to be reorganized and/or reformatted in order to make them tractable to support cloud-native analysis/access patterns. The purpose of this study is to examine the pros and cons of different formats for storing data on the cloud. The evaluation will focus on both enabling high-performance data access and usage as well as to meet the existing scientific data stewardship needs of EOSDIS.
+* [**Task 51 - Cloud-Optimized Format Study**](https://ntrs.nasa.gov/citations/20200001178) The cloud infrastructure provides a number of capabilities that can dramatically improve access and use of Earth Observation data. However, in many cases, data may need to be reorganized and/or reformatted in order to make them tractable to support cloud-native analysis and access patterns. The purpose of this study is to examine the pros and cons of different formats for storing data on the cloud. The evaluation will focus on both enabling high-performance data access and usage as well as to meet the existing scientific data stewardship needs of EOSDIS.
 
 * [**Cloud Optimized GeoTIFF**](https://www.cogeo.org/) A Cloud Optimized GeoTIFF (COG) is a regular GeoTIFF file, aimed at being hosted on a HTTP file server, with an internal organization that enables more efficient workflows on the cloud. It does this by leveraging the ability of clients issuing ​HTTP GET range requests to ask for just the parts of a file they need.
 
