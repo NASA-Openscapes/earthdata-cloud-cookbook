@@ -455,9 +455,6 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#how-to-use-the-earthdata-cloud-cookbook" id="toc-how-to-use-the-earthdata-cloud-cookbook" class="nav-link active" data-scroll-target="#how-to-use-the-earthdata-cloud-cookbook">How to use the Earthdata Cloud Cookbook</a></li>
-  <li><a href="#learning-to-code" id="toc-learning-to-code" class="nav-link" data-scroll-target="#learning-to-code">Learning to code</a></li>
-  <li><a href="#cloud-optimized-data-formats" id="toc-cloud-optimized-data-formats" class="nav-link" data-scroll-target="#cloud-optimized-data-formats">Cloud Optimized Data Formats</a></li>
-  <li><a href="#s3-buckets-etc" id="toc-s3-buckets-etc" class="nav-link" data-scroll-target="#s3-buckets-etc">S3 Buckets, etc</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/edit/main/our-cookbook.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/blob/main/our-cookbook.qmd" class="toc-action">View source</a></p><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
@@ -488,61 +485,6 @@ ul.task-list li input[type="checkbox"] {
 <p>Working with NASA Earthdata in the Cloud means using a combination of software, tools, many of which require coding and are unfamiliar when we first get started. This is true for us all; we’re all coming with different skills and backgrounds and you’re not alone as we all learn these new technologies and workflows. We have found it helpful to have a <a href="https://www.youtube.com/watch?v=_X0mgOOSpLU&amp;t=11s&amp;ab_channel=TED">growth mindset</a> - these approaches are new and we don’t know how to do them <strong><em>yet</em></strong>. Please, don’t struggle alone - know that we’re all in this together as part of the open source community learning and co-creating together as we migrate our research to the Cloud.</p>
 <p>You’re able to reuse any code in this book, adapting it for your own purposes. All chapters in the book are a combination of narrative, links, code, and outputs — and underlying each chapter is a file type that you can access on <a href="https://github.com/NASA-Openscapes/earthdata-cloud-cookbook">NASA-Openscapes GitHub</a> (linked on the left navbar and right margin of each page): Markdown (<code>.md</code>), Jupyter (<code>.ipynb</code>), RMarkdown (<code>.rmd</code>) or Quarto (<code>.qmd</code>) files.</p>
 <p>We will also be adding citations throughout so that you can easily credit the NASA Openscapes Mentors who created them.</p>
-</section>
-<section id="learning-to-code" class="level2">
-<h2 class="anchored" data-anchor-id="learning-to-code">Learning to code</h2>
-<p>Here are resources we recommend to help strengthen your coding skills for programmatic access to NASA data on the cloud. As a starting point, <a href="https://carpentries.org/">the Carpentries</a> offer many <a href="https://carpentries.org/workshops/">workshops</a> both remotely and in person around the world. They also offer workshops in R and Python. All curriculum is online, so it’s possible to use this as a self-taught course too.</p>
-<ul>
-<li><p><strong>Intro Python</strong></p>
-<ul>
-<li><p><a href="https://sta663-sp22.github.io/">Duke STA-663 - Colin Rundel</a>. Lecture slides &amp; recordings, code &amp; notebooks. Features Jupyter, git, numpy, scipy, pandas, scikit-learn…</p></li>
-<li><p><a href="https://carpentries-incubator.github.io/geospatial-python/">Intro to Geospatial Raster and Vector Data with Python - Carpentries</a>. Follow-along tutorials &amp; code. Features NEON data, intro to rasters &amp; geostats rioxarray, geopandas…</p></li>
-<li><p><a href="https://earth-env-data-science.github.io/intro.html">Intro to Earth and Environmental Data Science- Ryan Abernathy</a>. Intro to Python, JupyterLab, Unix, Git, some packages &amp; workflows</p></li>
-<li><p><a href="https://learning.nceas.ucsb.edu/2023-03-arctic/">Scalable and Computationally Reproducible Approaches to Arctic Research - NCEAS</a>. Advanced topics in computationally reproducible research in python, including environments, docker containers, and parallel processing using tools like parsl and dask, responsible research and data management practices including data sovereignty and the CARE principles, and ethical concerns with data-intensive modeling and analysis.</p></li>
-</ul></li>
-<li><p><strong>Intro R</strong></p>
-<ul>
-<li><p><a href="https://rstudio-conf-2020.github.io/r-for-excel/">Intro to Open Data Science with R - Lowndes &amp; Horst</a>. Follow-along tutorials &amp; code. Features workflows with RMarkdown, tidyverse, RStudio, GitHub…</p></li>
-<li><p><a href="https://rstats.wtf/">What they forgot to teach you about R - Bryan &amp; Hester</a>. Reinforcing lessons for moderately experienced R users</p></li>
-<li><p><a href="https://r4ds.had.co.nz/">R for Data Science - Wickham &amp; Grolemund.</a> - All things tidyverse, including dates, plots, modeling, programming, RMarkdown</p>
-<ul>
-<li>Online learning community/book club: <a href="https://www.rfordatasci.com/">rfordatasci.com</a></li>
-</ul></li>
-</ul></li>
-<li><p><strong>Scientific Python Ecosystem, Earth science and Cloud Computing together:</strong></p>
-<ul>
-<li><p><a href="https://foundations.projectpythia.org/landing-page.html">Project Pythia Foundations Book</a></p></li>
-<li><p><a href="https://jupytearth.org/">Jupyter meets Earth</a></p></li>
-<li><p><a href="https://the-environmental-ds-book.netlify.app/welcome.html">The Environmental Data Science Book</a></p></li>
-<li><p><a href="https://www.earthdatascience.org/">CU EarthLab’s Earth Data Science</a></p></li>
-<li><p><a href="https://pangeo.io/">Pangeo</a></p></li>
-</ul></li>
-<li><p><strong>Python environments with Conda useful for scientific Python:</strong> (recommended by Luis Lopez):</p>
-<ul>
-<li><a href="https://pythonspeed.com/articles/conda-dependency-management/">Reproducible and upgradable Conda environments with conda-lock</a></li>
-<li><a href="https://towardsdatascience.com/managing-virtual-environment-with-pyenv-ae6f3fb835f8">Managing virtual environments with pyenv</a></li>
-<li><a href="https://www.anaconda.com/blog/understanding-and-improving-condas-performance">Understanding and Improving Conda’s performance</a></li>
-<li><a href="https://whiteboxml.com/blog/the-definitive-guide-to-python-virtual-environments-with-conda">The definitive guide to Python virtual environments with conda</a></li>
-<li><a href="https://wolfv.medium.com/making-conda-fast-again-4da4debfb3b7">Making conda fast again</a></li>
-</ul></li>
-</ul>
-<!---TODO https://fabienmaussion.info/scientific_programming/welcome.html 
-review Tiffany Timbers eg https://ubc-mds.github.io/DSCI_524_collab-sw-dev/README.html
-https://gridsst-hackathon.github.io/gridsst/jupyter.html
---->
-</section>
-<section id="cloud-optimized-data-formats" class="level2">
-<h2 class="anchored" data-anchor-id="cloud-optimized-data-formats">Cloud Optimized Data Formats</h2>
-<p>Some nice info here from Pangeo about Cloud Optimized Data Formats.</p>
-<ul>
-<li><a href="https://medium.com/pangeo/cloud-performant-reading-of-netcdf4-hdf5-data-using-the-zarr-library-1a95c5c92314"><strong>Cloud-Performant NetCDF4/HDF5 Reading with the Zarr Library</strong></a></li>
-</ul>
-</section>
-<section id="s3-buckets-etc" class="level2">
-<h2 class="anchored" data-anchor-id="s3-buckets-etc">S3 Buckets, etc</h2>
-<ul>
-<li><a href="https://earthdata.nasa.gov/learn/user-resources/webinars-and-tutorials/cloud-primer"><strong>NASA AWS Cloud Primer</strong></a></li>
-</ul>
 
 
 </section>
