@@ -8,7 +8,7 @@ execute:
 
 ::: {.panel-tabset group="language"}
 
-### Python
+## Python
 
 Install the [harmony-py]("https://github.com/nasa/harmony-py") package:
 
@@ -26,7 +26,7 @@ from harmony import BBox, Client, Collection, Request
 from harmony.config import Environment
 ```
 
-**Set up Harmony client and authentication**
+### Set up Harmony client and authentication
 
 We will authenticate the following Harmony request using a netrc file. See the [appendix]("https://nasa-openscapes.github.io/earthdata-cloud-cookbook/appendix/authentication.html") for more information on [Earthdata Login]("https://urs.earthdata.nasa.gov/") and netrc setup. This basic line below to create a Harmony Client assumes that we have a .netrc available.
 
@@ -55,6 +55,33 @@ job_id = harmony_client.submit(request)
 
 harmony_client.wait_for_processing(job_id)
 ```
+
+## R
+
+R code coming soon!
+
+```{r}
+# Coming soon!
+```
+
+## Matlab
+
+Matlab code coming soon!
+
+```{bash}
+#| echo: true
+# Coming soon!
+```
+
+## Command Line
+
+With `wget` and `curl`:
+
+```{bash}
+# Coming soon!
+```
+
+
 
 :::
 
