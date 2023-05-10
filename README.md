@@ -37,4 +37,3 @@ At our 2nd hackday we had a brief overview of cookbook progress since we\'d last
 
 -   [Cookbook GitHub Issues](https://github.com/NASA-Openscapes/earthdata-cloud-cookbook/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc) - began organizing ideas in Issues
 
-## 
