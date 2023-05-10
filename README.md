@@ -21,6 +21,14 @@ Hackdays:
 -   March 30, 2023
 -   May 10, 2023
 
+### Hackday 4 Summary
+
+- OPeNDAP: Cassie & Chris added OPeNDAP access to how-do-i > access data > if I’m local
+Merged branch into cookbook main! https://github.com/NASA-Openscapes/earthdata-cloud-cookbook/pull/202#pullrequestreview-1421457010 
+
+- harmony-py: Amy and Owen added Harmony to how-do-i > subset data https://github.com/NASA-Openscapes/earthdata-cloud-cookbook/pull/187/commit s . Nearly ready to merge but zoom screensharing stopped
+
+
 ### **Hackday 3 Summary**
 
 Brief planning check-in and then mostly worked in breakouts the whole time - 
