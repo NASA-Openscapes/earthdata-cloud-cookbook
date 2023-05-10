@@ -13,7 +13,9 @@ website:
   repo-url: https://github.com/nasa-openscapes/earthdata-cloud-cookbook
   repo-actions: [edit, source, issue]
 
-  page-footer: "NASA Openscapes Team (2021). Earthdata Cloud Cookbook (Version v0.0.1)."
+  # page-footer: "NASA Openscapes Team (2021). Earthdata Cloud Cookbook (Version v0.0.1)."
+  page-footer: 
+    left: "NASA Earthdata Cloud Cookbook, &copy; NASA Openscapes Team (2023)."
   
   sidebar:
     title: "NASA Earthdata Cloud Cookbook"
@@ -37,66 +39,57 @@ website:
       - our-cookbook.qmd  
       - text: "Cheatsheets & Slides" 
         href: cheatsheets.qmd      
-      - section: how-tos/index.qmd
+      - section: "How do I..."
+        # href: how-tos/index.qmd
         contents: 
-          - section: how-tos/find-data/index.md
+          - section: "find data"
+          #how-tos/find-data/index.md
             contents:
-              - text: "How do I find data using Earthdata Search"
+              - text: "using Earthdata Search"
                 href: how-tos/find-data/earthdata_search.md
-              - text: "How do I find data using the command line or a notebook" 
+              - text: "using the command line"
+              - text: "using a script" 
                 href: how-tos/find-data/programmatic.qmd                
-          - section: how-tos/working-with-data-in-cloud/index.md
+          - section: "access data"
+            href: how-tos/access_data.qmd 
             contents:
-              - text: "Direct Cloud Access"
-                href: how-tos/working-with-data-in-cloud/Direct-Cloud-Access.qmd
-              - text: "Access Data behind a EULA" 
-                href: how-tos/working-with-data-in-cloud/Access-EULA-Data.qmd
-          - section: how-tos/working-locally/index.md
-            contents:
-              - text: "Download Data"
-                href: how-tos/working-locally/download.qmd
-          - section: how-tos/subset/index.md
-            contents: 
-              - text: "How do I download a subset of NetCDF-4?" 
-                href: how-tos/subset/subset.md
-          - section: "How do I reformat data files?"
-            contents:
-              - text: "How do I convert a NetCDF file to Zarr"
-                href: how-tos/reformat/reformat.md
-          - section: how-tos/reproject_and_regrid/index.md
-            contents:
-              - text: "How do I reproject a data file using Harmony?"
-                href: how-tos/reproject_and_regrid/reproject.md
-          - section: "How do I aggregate data?"
-            contents:
-              - text: "How do I calculate a climatology?"
-                href: how-tos/aggregate/aggregate.ipynb
-          - section: "How do I plot data?"
-            contents:
-              - text: "How do I plot a NetCDF variable?"
-                href: how-tos/plot/index.md
-          - section: "How do I setup an AWS instance?"
-            contents:
-              - text: "Place holder for AWS setup"
-                href: how-tos/tech-setup.qmd
+              - text: "if I'm in the cloud"
+                href: how-tos/if-im-in-the-cloud.qmd
+              - text: "if I'm on my local machine"
+                href: how-tos/if-im-local.qmd
+          - text: "read data"    
+            href: how-tos/read_data.qmd
+          - text: "subset data"
+            href: how-tos/subset.qmd
+          - text: "reformat data files"
+            href: how-tos/reformat.qmd
+          - text: "reproject and regrid"
+            href: how-tos/reproject_regrid.qmd
+          - text: "aggregate data"
+            href: how-tos/aggregate.qmd
+          - text: "plot data"
+            href: how-tos/plot.qmd
+          - text: "use APIs"
+            href: how-tos/use_apis.qmd
+          #- section: "setup AWS"  # Park for now  
+          #  contents:
+          #    - text: "Place holder for AWS setup"
+          #      href: how-tos/tech-setup.qmd
           - how-tos/how_to_guide_parking_lot.md
       - section: tutorials/index.qmd
         contents:
+          - href: tutorials/setup.md
+            text: "Tutorials setup"
           - href: tutorials/earthaccess-demo.ipynb
             text: "`earthaccess` Python library"
-      - section: examples/index.qmd
-        contents:
-          - text: "NSIDC examples"
-          - text: "PODAAC examples"
-      # - section: "Getting Started"
-      #   contents:
-       #   - get-started/index.md
-         # - get-started/earthdata-login.qmd
-         # - get-started/api-primer.qmd
+          - href: how-tos/working-locally/Earthdata_Cloud__Data_Access_OPeNDAP_Example.ipynb
+            text: "Cloud-OPeNDAP Access"
+ #     - section: examples/index.qmd
+ #       contents:
+ #        - text: "NSIDC examples"
+ #        - text: "PODAAC examples"
       - section: in-development/index.qmd
         contents:
-          - href: /external/opensarlab-test.ipynb
-            text: "OpenSARLab test!"
           - href: examples/NSIDC/ICESat2-CMR-OnPrem-vs-Cloud.ipynb
             text: "Search & Download NSIDC Cloud"
           - href: examples/NSIDC/ICESat2-CMR-AWS-S3.ipynb
