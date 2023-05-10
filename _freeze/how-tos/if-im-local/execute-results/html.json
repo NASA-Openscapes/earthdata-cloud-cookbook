@@ -1,0 +1,14 @@
+{
+  "hash": "0e9068781f50718964e3830c78e4e5f7",
+  "result": {
+    "markdown": "---\ntitle: How do I access Cloud Data from my Local Machine?\nexecute:\n    eval: false\n---\n\n\n## Downloading data\n\nWhen you have found the data you want to use, you have two options.  You can download the data to work locally, or access the data directly to work in the cloud. This second way of working is called \"_Direct Cloud Access_\" or simply, \"_Direct Access_\". \n\nThis page covers two situations of downloading data from Earthdata Cloud to your local machine:\n\n* Downloading data using the `earthaccess` library\n* Downloading data from an OPeNDAP server\n\n## earthaccess\n\n::: {.panel-tabset group=\"language\"}\n\n## Python\n\nWe can use `earthaccess` to grab the file URLs and then access them with the `xarray` library. See the previous [Find Data](\"https://nasa-openscapes.github.io/earthdata-cloud-cookbook/how-tos/find-data/\") How-To guide for more information on how to discover datasets of interest. \n\n\n\n::: {.cell}\n\n```{.python .cell-code}\n#Import packages\nimport earthaccess\nimport xarray as xr\n\n#Authentication with Earthdata Login\nauth = earthaccess.login(strategy=\"netrc\")\n\n#Access land ice height from ATLAS/ICESat-2 V005 (10.5067/ATLAS/ATL06.005), searching for data over western Greenland coast over two weeks in July 2022. The data are provided as HDF5 granules (files) that span about 1/14th of an orbit.\n\nresults = earthaccess.search_data(short_name=\"ATL06\",\n                                  version=\"005\",\n                                  cloud_hosted=True,\n                                  temporal = (\"2022-07-17\",\"2022-07-31\"),\n                                  bounding_box = (-51.96423,68.10554,-48.71969,70.70529))\n\nfiles = earthaccess.download(results, \"./local_folder\")\n\n#Use xarray to load the data as a multifile dataset for a single group in the HDF5 file, in this case land ice segments:\nds = xr.open_mfdataset(files, group='/gt1l/land_ice_segments')\nds\n```\n:::\n\n\n\n## R\n\nR code coming soon!\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# Coming soon!\n```\n:::\n\n\n## Matlab\n\nMatlab code coming soon!\n\n\n::: {.cell}\n\n```{.bash .cell-code}\n# Coming soon!\n```\n:::\n\n\n## Command Line\n\nWith `wget` and `curl`:\n\n\n::: {.cell}\n\n```{.bash .cell-code}\n# Coming soon!\n```\n:::\n\n\n\n:::\n\n\n\n\n\n## OPeNDAP",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

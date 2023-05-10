@@ -2,7 +2,7 @@
 title: "Our Cookbook"
 ---
 
-## How to use the Earthdata Cloud Cookbook
+## How to use this Earthdata Cloud Cookbook
 
 Our Cookbook is a place to learn, share, and experiment with NASA Earthdata on the Cloud. We know this has a lot of moving parts, and we are iterating as we go, and welcome feedback and contributions.
 
@@ -14,60 +14,36 @@ You're able to reuse any code in this book, adapting it for your own purposes. A
 
 We will also be adding citations throughout so that you can easily credit the NASA Openscapes Mentors who created them.
 
-## Learning to code
+## Get Started
 
-Here are resources we recommend to help strengthen your coding skills for programmatic access to NASA data on the cloud. As a starting point, [the Carpentries](https://carpentries.org/) offer many [workshops](https://carpentries.org/workshops/) both remotely and in person around the world. They also offer workshops in R and Python. All curriculum is online, so it's possible to use this as a self-taught course too.
+So, you want to get started working with NASA Earthdata in the cloud? You've come to the right place. Here you'll find resources that can be considered precursors to the how to's, tutorials, and other guidance you will find across our Cookbook.
 
--   **Intro Python**
+### Earthdata Login
 
-    -   [Duke STA-663 - Colin Rundel](https://sta663-sp22.github.io/). Lecture slides & recordings, code & notebooks. Features Jupyter, git, numpy, scipy, pandas, scikit-learn...
+To access NASA Earthdata, whether through your web browser or the cloud, you must first register for an Earthdata Login (EDL) user profile. Once registered, you can use your login credentials to get data through multiple access points. Read about EDL and get registered by following the directions on the [Welcome to Earthdata Login](https://urs.earthdata.nasa.gov/documentation/for_users/welcome) page.
 
-    -   [Intro to Geospatial Raster and Vector Data with Python - Carpentries](https://carpentries-incubator.github.io/geospatial-python/). Follow-along tutorials & code. Features NEON data, intro to rasters & geostats rioxarray, geopandas...
+### Coding Essentials
 
-    -   [Intro to Earth and Environmental Data Science- Ryan Abernathy](https://earth-env-data-science.github.io/intro.html). Intro to Python, JupyterLab, Unix, Git, some packages & workflows
+To access the cloud programmatically we must have a basic understanding of how to code using common, cloud-relevant languages. Most scientists who work with Earth data use either Python or R already, so we focus on those languages. Python and R are both open-source programming languages widely used in web applications, software development, data science, and machine learning. They are popular because they are free, efficient, have online resources to learn, and can run on most platforms. If you are new to coding, we recommend you participate in a [Carpentries Workshop](https://carpentries.org/workshops/) or use open-source resources to teach yourself.
 
--   **Intro R**
+### Bash & Git
 
-    -   [Intro to Open Data Science with R - Lowndes & Horst](https://rstudio-conf-2020.github.io/r-for-excel/). Follow-along tutorials & code. Features workflows with RMarkdown, tidyverse, RStudio, GitHub...
+Cloud services often are connected to and operated through Bash, a command-line interface and language you'll see called the terminal, the command line, or the shell. Git is a commonly used version control system that is accessible through Bash. Version control is important for data collaboration because it allows changes by multiple people to be tracked and merged into one source.
 
-    -   [What they forgot to teach you about R - Bryan & Hester](https://rstats.wtf/). Reinforcing lessons for moderately experienced R users
+-   [**The Unix Shell**](https://swcarpentry.github.io/shell-novice/) These lessons will introduce you the shell, a fundamental tool for performing a wide range of computing tasks.
 
-    -   [R for Data Science - Wickham & Grolemund.](https://r4ds.had.co.nz/) - All things tidyverse, including dates, plots, modeling, programming, RMarkdown
+-   [**Version Control with Git**](https://swcarpentry.github.io/git-novice/) This tutorial will introduce you to Git, a popular open source distributed version control system.
 
-        -   Online learning community/book club: [rfordatasci.com](https://www.rfordatasci.com/)
+### Python
 
--   **Scientific Python Ecosystem, Earth science and Cloud Computing together:**
+-   [**The Python Tutorial**](https://docs.python.org/3/tutorial/) This tutorial introduces the reader informally to the basic concepts and features of the Python language and system.
 
-    -   [Project Pythia Foundations Book](https://foundations.projectpythia.org/landing-page.html)
+-   [**Pythia Foundations**](https://foundations.projectpythia.org/landing-page.html) This book is intended to educate the reader on the essentials for using the Scientific Python Ecosystem (SPE): a collection of open source Python packages that support analysis, manipulation, and visualization of scientific data.
 
-    -   [Jupyter meets Earth](https://jupytearth.org/)
+### R
 
-    -   [The Environmental Data Science Book](https://the-environmental-ds-book.netlify.app/welcome.html)
+-   [**R for Excel Users**](https://rstudio-conf-2020.github.io/r-for-excel/) This course is a friendly intro to becoming a modern R user, full of tidyverse, RMarkdown, GitHub, collaboration, and reproducibility.
 
-    -   [CU EarthLab's Earth Data Science](https://www.earthdatascience.org/)
+-   [**R for Data Science**](https://r4ds.hadley.nz/) This book will teach you how to do data science with R, including how to get your data into R, get it into the most useful structure, transform it, and visualize.
 
-    -   [Pangeo](https://pangeo.io/)
-
--   **Python environments with Conda useful for scientific Python:** (recommended by Luis Lopez):
-
-    -   [Reproducible and upgradable Conda environments with conda-lock](https://pythonspeed.com/articles/conda-dependency-management/)
-    -   [Managing virtual environments with pyenv](https://towardsdatascience.com/managing-virtual-environment-with-pyenv-ae6f3fb835f8)
-    -   [Understanding and Improving Conda's performance](https://www.anaconda.com/blog/understanding-and-improving-condas-performance)
-    -   [The definitive guide to Python virtual environments with conda](https://whiteboxml.com/blog/the-definitive-guide-to-python-virtual-environments-with-conda)
-    -   [Making conda fast again](https://wolfv.medium.com/making-conda-fast-again-4da4debfb3b7)
-
-```{=html}
-<!---TODO https://fabienmaussion.info/scientific_programming/welcome.html 
-review Tiffany Timbers eg https://ubc-mds.github.io/DSCI_524_collab-sw-dev/README.html
-https://gridsst-hackathon.github.io/gridsst/jupyter.html
---->
-```
-## Cloud Optimized Data Formats
-
-Some nice info here from Pangeo about Cloud Optimized Data Formats.
-
--   [**Cloud-Performant NetCDF4/HDF5 Reading with the Zarr Library**](https://medium.com/pangeo/cloud-performant-reading-of-netcdf4-hdf5-data-using-the-zarr-library-1a95c5c92314)
-
-## S3 Buckets, etc
-
--   [**NASA AWS Cloud Primer**](https://earthdata.nasa.gov/learn/user-resources/webinars-and-tutorials/cloud-primer)
+*For advanced coding guidance, see our How To's, Tutorials, and Appendix.*
