@@ -23,6 +23,8 @@ Hackdays:
 
 ### Hackday 4 Summary
 
+This was our first Hackday "opening up" to folks beyond the NASA Mentors. Thanks Owen Littlejohns for joining and contributing! 
+
 - OPeNDAP: Cassie & Chris added OPeNDAP access to how-do-i > access data > if I’m local
 Merged branch into cookbook main! https://github.com/NASA-Openscapes/earthdata-cloud-cookbook/pull/202#pullrequestreview-1421457010 
 
