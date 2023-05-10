@@ -12,7 +12,7 @@ execute:
 
 Install the [harmony-py]("https://github.com/nasa/harmony-py") package:
 
-```{python}
+```{bash}
 # Install harmony-py
 pip install -U harmony-py
 ```
@@ -26,7 +26,7 @@ from harmony import BBox, Client, Collection, Request
 from harmony.config import Environment
 ```
 
-### Set up Harmony client and authentication
+**Set up Harmony client and authentication**
 
 We will authenticate the following Harmony request using a netrc file. See the [appendix]("https://nasa-openscapes.github.io/earthdata-cloud-cookbook/appendix/authentication.html") for more information on [Earthdata Login]("https://urs.earthdata.nasa.gov/") and netrc setup.
 
@@ -39,16 +39,17 @@ request = Request(
   collection=Collection(id=dataset_short_name),
   spatial=BBox(-125.469,15.820,-99.453,35.859),
   temporal={
-    'start': dt.datetime(2021, 3, 10),
-    'stop': dt.datetime(2022, 3, 10)
-    }
+    'start': dt.datetime(2021, 3, 10, 1),
+    'stop': dt.datetime(2021, 3, 10, 2)
+  }
 )
 
 job_id = harmony_client.submit(request)
 
-harmony_client.wait_for_processing(job_id, show_progress=True)
-harmony_client.resume(job_id)
+harmony_client.wait_for_processing(job_id)
 ```
+
+:::
 
 ## How do I subset an OPeNDAP granule in the cloud?
 
