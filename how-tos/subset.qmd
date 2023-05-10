@@ -22,8 +22,10 @@ Import packages:
 ```{python}
 import datetime as dt
 
-from harmony import BBox, Client, Collection, Request
+from harmony import BBox, Client, Collection, Request, LinkType
 from harmony.config import Environment
+
+import s3fs
 ```
 
 ### Set up Harmony client and authentication
@@ -33,14 +35,12 @@ We will authenticate the following Harmony request using a netrc file. See the [
 ```{python}
 harmony_client = Client()
 ```
-**Create Harmony request**
+### Create and submit Harmony request
 
-We are interested in the GHRSST Level 4 MUR Global Foundation Sea Surface Temperature Analysis dataset https://doi.org/10.5067/GHGMR-4FJ04
+We are interested in the [GHRSST Level 4 MUR Global Foundation Sea Surface Temperature Analysis dataset](https://doi.org/10.5067/GHGMR-4FJ04). We are subsetting over the Pacific Ocean to the west of Mexico during 1:00 - 2:00 on 10 March 2021. The dataset is organized into daily files, so while we are specifying a single hour in our request, this will return that full day's worth of data. 
 
 ```{python}
 dataset_short_name = 'MUR-JPL-L4-GLOB-v4.1'
-
-
 
 request = Request(
   collection=Collection(id=dataset_short_name),
@@ -53,7 +53,29 @@ request = Request(
 
 job_id = harmony_client.submit(request)
 
-harmony_client.wait_for_processing(job_id)
+harmony_client.wait_for_processing(job_id, link_type=LinkType.s3)
+```
+### Open and read the subsetted file
+
+```{python}
+results = harmony_client.result_urls(job_id)
+urls = list(results)
+
+creds = harmony_client.aws_credentials()
+
+s3_fs = s3fs.S3FileSystem(
+    key=creds['aws_access_key_id'],
+    secret=creds['aws_secret_access_key'],
+    token=creds['aws_session_token'],
+    client_kwargs={'region_name':'us-west-2'},
+)
+```
+### Access error here: 
+
+```{python}
+f = s3_fs.open(url, mode='rb')
+ds = xr.open_dataset(f)
+ds
 ```
 
 ## R
