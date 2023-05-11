@@ -23,9 +23,9 @@ Import packages:
 import datetime as dt
 
 from harmony import BBox, Client, Collection, Request, LinkType
-from harmony.config import Environment
 
 import s3fs
+import xarray as xr
 ```
 
 ### Set up Harmony client and authentication
@@ -55,7 +55,9 @@ job_id = harmony_client.submit(request)
 
 harmony_client.wait_for_processing(job_id)
 ```
-### Open and read the subsetted file
+### Open and read the subsetted file in `xarray`
+
+Harmony data outputs can be accessed within the cloud using the s3 URLs and AWS credentials provided in the Harmony job response. Using `aws_credentials` we can retrieve the credentials needed to access the Harmony s3 staging bucket and its contents. We then use the AWS `s3fs` package to create a file system that can then be read by xarray.
 
 ```{python}
 results = harmony_client.result_urls(job_id, link_type=LinkType.s3)
@@ -70,13 +72,17 @@ s3_fs = s3fs.S3FileSystem(
     token=creds['aws_session_token'],
     client_kwargs={'region_name':'us-west-2'},
 )
-```
-### Access error here: 
 
-```{python}
 f = s3_fs.open(url, mode='rb')
 ds = xr.open_dataset(f)
 ds
+```
+### Plot data
+
+Use the xarray built in plotting function to create a simple plot along the x and y dimensions of the dataset:
+
+```{python}
+ds.analysed_sst.plot() ;
 ```
 
 ## R
