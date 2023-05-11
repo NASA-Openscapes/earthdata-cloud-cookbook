@@ -565,6 +565,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="opendap" class="level2">
 <h2 class="anchored" data-anchor-id="opendap">OPeNDAP</h2>
+<p>OPeNDAP, or the <a href="https://www.earthdata.nasa.gov/engage/open-data-services-and-software/api/opendap">Open-source Project for a Network Data Access Protocol</a>, is a data server that allows for accessing scientific datasets through the public internet. OPeNDAP links can be acquired through dataset landing pages or the <a href="https://cmr.earthdata.nasa.gov/search/site/collections/directory/eosdis">common metadata repository</a>. Once you have the desired link(s), you can open them as follows:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Import packages</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> xarray <span class="im">as</span> xr</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>ds_https <span class="op">=</span> xr.open_dataset(https:<span class="op">//</span>opendap.earthdata.nasa.gov<span class="op">/</span>collections<span class="op">/</span>C2532426483<span class="op">-</span>ORNL_CLOUD<span class="op">/</span>granules<span class="op">/</span>Daymet_Daily_V4R1.daymet_v4_daily_hi_tmax_2010.nc)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co"># For datasets that contain dap4 specific datatypes, such as `int64`, replace `https` with `dap4` at the beginning to open with xarray. For example:</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> https:<span class="op">//</span>opendap.earthdata.nasa.gov<span class="op">/</span>collections<span class="op">/</span>C2036881966<span class="op">-</span>POCLOUD<span class="op">/</span>granules<span class="op">/</span>AQUA_MODIS<span class="fl">.20220109_20220116</span>.L3m<span class="fl">.8</span><span class="er">D</span>.SST4.sst4<span class="fl">.4</span><span class="er">km</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>dap4_url <span class="op">=</span> url.replace(<span class="st">"https://"</span>, <span class="st">"dap4://"</span>)</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co"># dap4_url output: dap4://opendap.earthdata.nasa.gov/collections/C2036881966-POCLOUD/granules/AQUA_MODIS.20220109_20220116.L3m.8D.SST4.sst4.4km</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>ds_dap4 <span class="op">=</span> xr.open_dataset(dap4_url)</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Note: Some datasets have their variables organized in groups, so within the open_dataset function, you may need to specify 'group=' to access the dataset.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>For more information, see the <a href="https://opendap.github.io/documentation/tutorials/DataAccessTutorials.html">OPeNDAP Data Access Client Tutorials</a>.</p>
 
 
 </section>
