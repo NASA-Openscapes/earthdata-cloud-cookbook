@@ -60,6 +60,7 @@ harmony_client.wait_for_processing(job_id)
 ```{python}
 results = harmony_client.result_urls(job_id, link_type=LinkType.s3)
 urls = list(results)
+url = urls[0]
 
 creds = harmony_client.aws_credentials()
 
