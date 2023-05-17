@@ -18,7 +18,11 @@ Alternatively, you can also click this badge to launch the Hub:
 
 ![](images/JupyterHub-Login.png){width="500"}
 
-![](images/JupyterHub-SelectSmall.png){width="500"}
+<br>
+
+Select Small for your server. The default language is Python, and you also have the option to select R and Matlab. Matlab is "bring your own licence" and you'll be prompted to give your details.
+
+![](images/JupyterHub-SelectSmall-Python.png){width="500"}
 
 ![](images/JupyterHub-Loading.png){width="500"}
 
