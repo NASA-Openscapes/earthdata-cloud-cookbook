@@ -19,7 +19,7 @@ This page covers two situations of downloading data from Earthdata Cloud to your
 
 ## Python
 
-We can use the [`earthaccess`](https://nsidc.github.io/earthaccess/) python library to grab the file URLs and then access them with the `xarray` library. See the previous [Find Data]("https://nasa-openscapes.github.io/earthdata-cloud-cookbook/how-tos/find-data/") How-To guide for more information on how to discover datasets of interest. 
+We can use the [`earthaccess`](https://nsidc.github.io/earthaccess/) python library to grab the file URLs and then access them with the `xarray` library. 
 
 
 ```{python}
