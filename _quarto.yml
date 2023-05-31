@@ -77,16 +77,22 @@ website:
           - how-tos/how_to_guide_parking_lot.md
       - section: tutorials/index.qmd
         contents:
-          - href: tutorials/setup.md
-            text: "Tutorials setup"
+          - href: external/How_to_Perform_Cross-DAAC_S3_Bucket_Access_Using_Python.ipynb
+            text: "Multi-datasets 1"
+          - href: external/IS2_cloud_Landsat_integration.ipynb
+            text: "Multi-datasets 2"
+          - href: external/Sea_level_rise_notebook.ipynb
+            text: "Sea Level Rise: `earthaccess`"
+          - href: tutorials/04_On-Prem_Cloud.ipynb
+            text: "Cloud & Non-cloud"
           - href: tutorials/earthaccess-demo.ipynb
             text: "`earthaccess` Python library"
           - href: how-tos/working-locally/Earthdata_Cloud__Data_Access_OPeNDAP_Example.ipynb
             text: "Cloud-OPeNDAP Access"
- #     - section: examples/index.qmd
- #       contents:
- #        - text: "NSIDC examples"
- #        - text: "PODAAC examples"
+      - section: workshops/index.qmd
+        contents:
+          - href: workshops/setup.md
+            text: "Workshop Setup"
       - section: in-development/index.qmd
         contents:
           - href: examples/NSIDC/ICESat2-CMR-OnPrem-vs-Cloud.ipynb

@@ -2,44 +2,24 @@
 title: Tutorials
 ---
 
-We develop tutorials for teaching events that each has its own e-book. Tutorials are developed to teach open science and Cloud workflows for specific audiences. They are a snapshot in time as workflows with NASA Earthdata Cloud emerge and evolve. We will be updating [How-To Guides](../how-tos/index.qmd) as more stable ("source") instruction as we develop and learn from teaching the tutorials below.
+The following tutorials are meant to present example workflows with NASA Earthdata in the cloud from a variety of use cases. The tutorials exemplify the advantages of working with NASA Earthdata in the cloud and aim to provide a starting point for exploring what your workflows could look like in the cloud. 
 
-We are also in the process of updating specific tutorials from these teaching events and having them directly here in the Tutorial section of the Cookbook.
+*We are in the process of updating the specific tutorials on this page and revising them for cohesion. At the moment, they have been gathered from different GitHub repositories that the NASA Openscapes Mentors have worked with or contributed to.*
 
-## 2022 ECOSTRESS Cloud Workshop
+### **Sea Surface Temperature and Wind Speeds during a Hurricane** - [Tutorial](../external/How_to_Perform_Cross-DAAC_S3_Bucket_Access_Using_Python.ipynb)
+*Obtaining NASA Earthdata from different disciplines and data centers*
 
-[**https://nasa-openscapes.github.io/2022-ECOSTRESS-Cloud-Workshop/**](https://nasa-openscapes.github.io/2022-ECOSTRESS-Cloud-Workshop/){.uri}
+### **ICESat-2 and Landsat cloud access and data integration** - [Tutorial](../external/IS2_cloud_Landsat_integration.ipynb)
+*Accessing multiple large datasets in the cloud*
 
-The goal of the workshop is expose ECOSTRESS data users to ECOSTRESS version 2 (v2) data products in the cloud. Learning objectives focus on how to find and access ECOSTRESS v2 data from Earthdata Cloud either by downloading or accessing the data on the cloud. The LP DAAC is the NASA archive for ECOSTRESS data products. ECOSTRESS v2 data products will hosted in the NASA Earthdata Cloud, hosted in AWS.
+### **Sea Level Rise** - [Tutorial](../external/Sea_level_rise_notebook.ipynb)
+*Using the earthaccess Python package for quick sea level rise analysis in the cloud*
 
-## 2022 SWOT Ocean Cloud Workshop
+### **Pairing Cloud and non-Cloud Data** - [Tutorial](04_On-Prem_Cloud.ipynb)
+*Accessing and harmonizing data located within and outside of the NASA Earthdata Cloud*
 
-[**https://podaac.github.io/2022-SWOT-Ocean-Cloud-Workshop/**](https://podaac.github.io/2022-SWOT-Ocean-Cloud-Workshop/){.uri}
+### **`earthaccess` Python Library Demo** - [Tutorial](earthaccess-demo.ipynb)
 
-The goal of the workshop is to get ready for Surface Water and Ocean Topography ([SWOT](https://swot.jpl.nasa.gov/)) and enable the (oceanography) science team to be ready for processing and handling the large volumes of SWOT SSH data in the cloud. Learning objectives focus on how to access the [simulated SWOT L2 SSH data](https://podaac.jpl.nasa.gov/announcements/2022-01-31-Release-simulated-SWOT-SSH-version1-datasets) from Earthdata Cloud either by downloading or accessing the data on the cloud. PO.DAAC is the NASA archive for the SWOT mission, and once launched will be making data available via the NASA Earthdata Cloud, hosted in AWS.
+### **Cloud-OPeNDAP Access** - [Tutorial](../how-tos/working-locally/Earthdata_Cloud__Data_Access_OPeNDAP_Example.ipynb)
 
-## 2021 Cloud AGU Workshop
-
-[**https://nasa-openscapes.github.io/2021-Cloud-Workshop-AGU**](https://nasa-openscapes.github.io/2021-Cloud-Workshop-AGU){.uri}
-
-The **2021 Cloud Workshop at AGU: Enabling Analysis in the Cloud Using NASA Earth Science Data** is a virtual half-day collaborative open science learning experience aimed at exploring, learning, and promoting effective cloud-based science and applications workflows using NASA Earthdata Cloud data, tools, and services (among others), in support of Earth science data processing and analysis in the era of big data.
-
-## 2021 Cloud Hackathon
-
-[**https://nasa-openscapes.github.io/2021-Cloud-Hackathon**](https://nasa-openscapes.github.io/2021-Cloud-Hackathon){.uri}
-
-The **Cloud Hackathon: Transitioning Earthdata Workflows to the Cloud** is a virtual 5-day (4 hours per day) collaborative open science learning experience aimed at exploring, creating, and promoting effective cloud-based science and applications workflows using NASA Earthdata Cloud data, tools, and services (among others), in support of Earth science data processing and analysis in the era of big data. Its goals are to:
-
-1.  **Introduce** Earth science data users to NASA Earthdata cloud-based data products, tools and services in order to increase awareness and support transition to cloud-based science and applications workflows.
-
-2.  **Enable** science and applications workflows in the cloud that leverage NASA Earth Observations and capabilities (services) from within the NASA Earthdata Cloud, hosted in Amazon Web Services (AWS) cloud, thus increasing NASA Earthdata data utility and meaningfulness for science and applications use cases.
-
-3.  **Foster community engagement** utilizing Earthdata cloud tools and services in support of open science and open data.
-
-## Pairing Cloud and non-Cloud Data
-
-[**Pairing Cloud and non-Cloud Data**](https://nasa-openscapes.github.io/earthdata-cloud-cookbook/tutorials/04_On-Prem_Cloud.qmd)
-
-**Accessing and harmonizing data located within and outside of the NASA Earthdata Cloud**
-
-This tutorial will combine several workflow steps and components from the previous days, demonstrating the process of using the geolocation of data available outside of the Earthdata Cloud to then access coincident variables of cloud-accessible data. This may be a common use case as NASA Earthdata continues to migrate to the cloud, producing a "hybrid" data archive across Amazon Web Services (AWS) and original on-premise data storage systems. Additionally, you may also want to combine field measurements with remote sensing data available on the Earthdata Cloud.
+We also have links to past [workshops](../workshops/index.qmd). Tutorials in these past workshops are developed to teach open science and Cloud workflows for specific audiences. They are a snapshot in time as workflows with NASA Earthdata Cloud emerge and evolve.
