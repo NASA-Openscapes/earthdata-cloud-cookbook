@@ -79,6 +79,8 @@ website:
         contents:
           - href: tutorials/setup.md
             text: "Tutorials setup"
+          - href: examples/Earthdata-cloud-clinic.ipynb
+            text: "Earthdata Cloud Clinic"
           - href: tutorials/earthaccess-demo.ipynb
             text: "`earthaccess` Python library"
           - href: how-tos/working-locally/Earthdata_Cloud__Data_Access_OPeNDAP_Example.ipynb
@@ -104,8 +106,6 @@ website:
           - external/zarr-eosdis-store.ipynb
           - section: examples/index.qmd
             contents: 
-              - href: examples/Earthdata-cloud-clinic.ipynb
-                text: "Earthdata Cloud Clinic"
               - examples/GESDISC/GESDISC_MERRA2_tavg1_2d_flx_Nx__Kerchunk.ipynb
               - examples/LPDAAC/LPDAAC_ECOSTRESS_LSTE__Kerchunk.ipynb
               - examples/PODAAC/PODAAC_ECCO_SSH__Kerchunk.ipynb
