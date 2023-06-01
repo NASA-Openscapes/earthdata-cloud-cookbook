@@ -30,7 +30,7 @@ import xarray as xr
 
 ### Set up Harmony client and authentication
 
-We will authenticate the following Harmony request using a netrc file. See the [appendix]("https://nasa-openscapes.github.io/earthdata-cloud-cookbook/appendix/authentication.html") for more information on [Earthdata Login]("https://urs.earthdata.nasa.gov/") and netrc setup. This basic line below to create a Harmony Client assumes that we have a .netrc available.
+We will authenticate the following Harmony request using a netrc file. See the [appendix](../appendix/authentication.qmd) for more information on [Earthdata Login](https://urs.earthdata.nasa.gov/) and netrc setup. This basic line below to create a Harmony Client assumes that we have a .netrc available.
 
 ```{python}
 harmony_client = Client()
@@ -89,7 +89,7 @@ ds.analysed_sst.plot() ;
 
 R code coming soon!
 
-```{r}
+```{bash}
 # Coming soon!
 ```
 

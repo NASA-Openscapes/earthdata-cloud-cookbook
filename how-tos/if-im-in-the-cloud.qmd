@@ -9,13 +9,13 @@ aliases:
 
 ## Direct Access
 
-When you have found the data you want to use, you have two options.  You can download the data to work locally, or access the data directly to work in the cloud. This second way of working is called "_Direct Cloud Access_" or simply, "_Direct Access_". Your compute instance needs to be in Amazon Web Services (AWS) Region `us-west-2` in order for the code to run successfully. We authenticate using a netrc file and an Earthdata Login, see the [appendix]("https://nasa-openscapes.github.io/earthdata-cloud-cookbook/appendix/authentication.html") for more information on [Earthdata Login]("https://urs.earthdata.nasa.gov/") and netrc setup.
+When you have found the data you want to use, you have two options.  You can download the data to work locally, or access the data directly to work in the cloud. This second way of working is called "_Direct Cloud Access_" or simply, "_Direct Access_". Your compute instance needs to be in Amazon Web Services (AWS) Region `us-west-2` in order for the code to run successfully. We authenticate using a netrc file and an Earthdata Login, see the [appendix](../appendix/authentication.qmd) for more information on [Earthdata Login](https://urs.earthdata.nasa.gov/) and netrc setup.
 
 ::: {.panel-tabset group="language"}
 
 ## Python
 
-We can use the [`earthaccess`](https://nsidc.github.io/earthaccess/) python library to grab the file URLs and then access them with the `xarray` library. See the previous [Find Data]("https://nasa-openscapes.github.io/earthdata-cloud-cookbook/how-tos/find-data/") How-To guide for more information on how to discover datasets of interest. 
+We can use the [`earthaccess`](https://nsidc.github.io/earthaccess/) python library to grab the file URLs and then access them with the `xarray` library. 
 
 
 ```{python}
@@ -44,7 +44,7 @@ ds
 
 R code coming soon!
 
-```{r}
+```{bash}
 # Coming soon!
 ```
 

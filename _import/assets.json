@@ -5,7 +5,7 @@
         "source": "https://github.com/nasa/zarr-eosdis-store",
         "url": "https://raw.githubusercontent.com/nasa/zarr-eosdis-store/main/presentation/example.ipynb",
         "target": "zarr-eosdis-store.ipynb",
-        "process": true
+        "process": false
     },
     {
         "title": "COF Zarr Access via Reformat",
@@ -13,7 +13,7 @@
         "source": "https://github.com/podaac/ECCO",
         "url": "https://raw.githubusercontent.com/podaac/ECCO/main/Data_Access/cloud_harmony_zarr_reformat.ipynb",
         "target": "cof-zarr-reformat.ipynb",
-        "process": true
+        "process": false
     },
     {
         "title": "Data discovery with CMR",
@@ -21,7 +21,7 @@
         "source": "https://nasa-openscapes.github.io/2021-Cloud-Hackathon/tutorials/01_Data_Discovery_CMR.html",
         "url": "https://raw.githubusercontent.com/NASA-Openscapes/2021-Cloud-Hackathon/main/tutorials/01_Data_Discovery_CMR.ipynb",
         "target": "data_discovery_cmr.ipynb",
-        "process": true
+        "process": false
     },
     {
         "title": "Data Discovery with CMR-STAC API",
@@ -29,7 +29,7 @@
         "source": "https://nasa-openscapes.github.io/2021-Cloud-Hackathon/tutorials/02_Data_Discovery_CMR-STAC_API.html",
         "url": "https://raw.githubusercontent.com/NASA-Openscapes/2021-Cloud-Hackathon/main/tutorials/02_Data_Discovery_CMR-STAC_API.ipynb",
         "target": "data_discovery_cmr-stac_api.ipynb",
-        "process": true
+        "process": false
     },
     {
         "title": "Introduction to `xarray`",
@@ -37,7 +37,7 @@
         "source": "https://nasa-openscapes.github.io/2021-Cloud-Hackathon/tutorials/03_Xarray.html",
         "url": "https://raw.githubusercontent.com/NASA-Openscapes/2021-Cloud-Hackathon/main/tutorials/03_Xarray.ipynb",
         "target": "xarray.ipynb",
-        "process": true
+        "process": false
     },
     {
         "title": "Authentication for NASA Earthdata",
@@ -45,7 +45,7 @@
         "source": "https://nasa-openscapes.github.io/2021-Cloud-Hackathon/tutorials/04_NASA_Earthdata_Authentication.html",
         "url": "https://raw.githubusercontent.com/NASA-Openscapes/2021-Cloud-Hackathon/main/tutorials/04_NASA_Earthdata_Authentication.ipynb",
         "target": "nasa_earthdata_authentication.ipynb",
-        "process": true
+        "process": false
     },
     {
         "title": "Direct S3 Data Access with rioxarray",
@@ -53,7 +53,7 @@
         "source": "https://nasa-openscapes.github.io/2021-Cloud-Hackathon/tutorials/05_Data_Access_Direct_S3.html",
         "url": "https://raw.githubusercontent.com/NASA-Openscapes/2021-Cloud-Hackathon/main/tutorials/05_Data_Access_Direct_S3.ipynb",
         "target": "data_access_direct_S3.ipynb",
-        "process": true
+        "process": false
     },
     {
         "title": "Sentinel-6 MF L2 Altimetry Data Access (OPeNDAP) & Gridding",
@@ -61,7 +61,7 @@
         "source": "https://nasa-openscapes.github.io/2021-Cloud-Hackathon/tutorials/06_S6_OPeNDAP_Access_Gridding.html",
         "url": "https://raw.githubusercontent.com/NASA-Openscapes/2021-Cloud-Hackathon/main/tutorials/06_S6_OPeNDAP_Access_Gridding.ipynb",
         "target": "sentinel-6_opendap_access_gridding.ipynb",
-        "process": true
+        "process": false
     },
     {
         "title": "Data Subsetting and Transformation Services in the Cloud",
@@ -69,7 +69,7 @@
         "source": "https://nasa-openscapes.github.io/2021-Cloud-Hackathon/tutorials/07_Harmony_Subsetting.html",
         "url": "https://raw.githubusercontent.com/NASA-Openscapes/2021-Cloud-Hackathon/main/tutorials/07_Harmony_Subsetting.ipynb",
         "target": "harmony_subsetting.ipynb",
-        "process": true
+        "process": false
     },
     {
         "title": "Pairing Cloud and non-Cloud Data",
@@ -77,7 +77,7 @@
         "source": "https://nasa-openscapes.github.io/2021-Cloud-Hackathon/tutorials/08_On-Prem_Cloud.html",
         "url": "https://raw.githubusercontent.com/NASA-Openscapes/2021-Cloud-Hackathon/main/tutorials/08_On-Prem_Cloud.ipynb",
         "target": "on-prem_cloud.ipynb",
-        "process": true
+        "process": false
     },
     {
         "title": "Zarr Access for NetCDF4 files",
@@ -85,7 +85,7 @@
         "source": "https://nasa-openscapes.github.io/2021-Cloud-Hackathon/tutorials/09_Zarr_Access.html",
         "url": "https://raw.githubusercontent.com/NASA-Openscapes/2021-Cloud-Hackathon/main/tutorials/09_Zarr_Access.ipynb",
         "target": "zarr_access.ipynb",
-        "process": true
+        "process": false
     },
     {
         "title": "Setup",
@@ -94,5 +94,29 @@
         "url": "https://raw.githubusercontent.com/NASA-Openscapes/2021-Cloud-Hackathon/main/tutorials/00_Setup.md",
         "target": "setup.md",
         "process": false
-    }                     
+    },
+    {
+        "title": "Obtaining NASA Earthdata from Different Disciplines and Data Centers",
+        "preamble": "This notebook was originally developed at GES DISC.",
+        "source": "https://github.com/nasa/gesdisc-tutorials",
+        "url": "https://raw.githubusercontent.com/nasa/gesdisc-tutorials/main/cloud-tutorials/notebooks/How_to_Perform_Cross-DAAC_S3_Bucket_Access_Using_Python.ipynb",
+        "target": "How_to_Perform_Cross-DAAC_S3_Bucket_Access_Using_Python.ipynb",
+        "process": true
+    },
+    {
+        "title": "Sea Level Rise",
+        "preamble": "This notebook was originally developed by Luis Lopez.",
+        "source": "https://github.com/betolink/earthaccess-gallery",
+        "url": "https://raw.githubusercontent.com/betolink/earthaccess-gallery/main/notebooks/Sea_Level_Rise/SSL.ipynb",
+        "target": "Sea_level_rise_notebook.ipynb",
+        "process": true
+    },
+    {
+        "title": "ICESat-2 and Landsat in the cloud",
+        "preamble": "This notebook was originally developed by CryoCloud and NSIDC.",
+        "source": "https://github.com/CryoInTheCloud/CryoCloudWebsite",
+        "url": "https://raw.githubusercontent.com/CryoInTheCloud/CryoCloudWebsite/main/book/tutorials/IS2_cloud_Landsat_integration.ipynb",
+        "target": "IS2_cloud_Landsat_integration.ipynb",
+        "process": true
+    }  
 ]
