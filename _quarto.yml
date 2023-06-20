@@ -77,6 +77,8 @@ website:
           - how-tos/how_to_guide_parking_lot.md
       - section: tutorials/index.qmd
         contents:
+          - href: examples/Earthdata-cloud-clinic.ipynb
+            text: "Earthdata Cloud Clinic"
           - href: external/How_to_Perform_Cross-DAAC_S3_Bucket_Access_Using_Python.ipynb
             text: "Multi-datasets 1"
           - href: external/IS2_cloud_Landsat_integration.ipynb
@@ -85,8 +87,6 @@ website:
             text: "Sea Level Rise: `earthaccess`"
           - href: tutorials/04_On-Prem_Cloud.ipynb
             text: "Cloud & Non-cloud"
-          - href: examples/Earthdata-cloud-clinic.ipynb
-            text: "Earthdata Cloud Clinic"
           - href: tutorials/earthaccess-demo.ipynb
             text: "`earthaccess` Python library"
       - section: workshops/index.qmd
