@@ -1,39 +1,45 @@
 ---
-title: Environment Setup
+title: Cloud Environment Setup
 ---
 
-## How environments work 
+This is primarily for Cloud environments, not locally.
+
+## How environments work
 
 *Coming soon*.
 
 ## Corn
 
-We use Corn and you can too. 
+[**Corn**](https://github.com/nasa-openscapes/corn) is a base image that allows the provisioning of a multi-kernel Docker base image for Jupyterhub deployments. **corn** uses the amazing [Pangeo's base image](https://github.com/pangeo-data/pangeo-docker-images), installs all the environments it finds under ci/environments and makes them available as kernels in the base image so users can select which kernel to use depending on their needs. We're able to update this environment leveraging GitHub Actions and deployment. Corn has streamlined a lot of environment settings and has been a big leap forward for our work in the Cloud --- and you can use it too.
 
-Corn intro *coming soon*
+Corn full information *coming soon*. In the meantime, see:
 
-https://github.com/NASA-Openscapes/corn/blob/main/ci/environment.yml
+-   [The why, what, and how of our NASA Openscapes cloud infrastructure: 2i2c JupyterHub and corn environment](https://openscapes.org/blog/2022-11-17-nasa-earthdata-cloud-infrastructure/) - an awesome blog post by Corn creator Luis Lopez, November 2022
+-   [NASA Openscapes Cloud Infrastructure](https://docs.google.com/presentation/d/100aazshfYJfIe5pjQ6w3hswjA9zuuhEd2sZ3P4LhxJc/edit#slide=id.g6c52a2e8d8_0_177) - awesome slides and ([video](https://youtu.be/Payju0KDScg)) by Luis Lopez in October 2022
+-   [Corn GitHub Repository README](https://github.com/NASA-Openscapes/corn) and [Issues](https://github.com/NASA-Openscapes/corn/issues)
+
+![Integration between Openscapes and 2i2c. We update the environment via GitHub action and Docker deployment.](images/cloud-infrastructure-lopez-screenshot.png){fig-alt="slide with 3 headers: Update environment, GitHub action, and Deploy. Text description says “We use a CI pipeline that can build multiple Jupyter kernels for our Pangeo deployment. If a team needs a particular Python version or library not included in our base environment they can simple add theirs with an easy “bring your own environment” approach. A Github action will be trigger for any change to the Dockerfile or environment.yml. A new conda-lock environment will be created and a new base image build based on this environment (only for linux-64). The updated Docker image can be deployed to the Jupyterhub using its configuration API. A team can be in control of their environment and deploy it in a matter of minutes." fig-align="center"}
+
+
+<br>
 
 ## Setting up corn yourself
 
-### Download corn environment.yml 
+### Download corn environment.yml
 
-- Navigate to the corn GitHub repository page that contains the `environment.yml` file:
-<https://github.com/NASA-Openscapes/corn/blob/main/ci/environment.yml>
+-   Navigate to the corn GitHub repository page that contains the `environment.yml` file: <https://github.com/NASA-Openscapes/corn/blob/main/ci/environment.yml>
 
-- To download, on the file page, click the Raw button.
-- Save as environment.yml 
+-   To download, on the file page, click the Raw button.
+
+-   Save as environment.yml
 
 ### Using Anaconda Navigator
 
-- Open Anaconda Navigator 
-- Import environment.yml file 
-- Name your environment something like nasaopenscapes_env [your unique name for this environment] 
-- Validating 
+-   Open Anaconda Navigator
+-   Import environment.yml file
+-   Name your environment something like nasaopenscapes_env \[your unique name for this environment\]
+-   Validating
 
 *more coming soon*
 
-TODO - from local machine how will you connect to AWS? 
-
-
-
+TODO - from local machine how will you connect to AWS?
