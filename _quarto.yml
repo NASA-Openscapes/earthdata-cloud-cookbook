@@ -120,16 +120,17 @@ website:
             text: "CMR STAC in R"  
           - href: in-development/earthdata-python-r-handoff.qmd  
       - section: contributing/index.qmd
-        contents: 
-          - contributing/onboarding.qmd
+        contents:
           - contributing/setup.qmd
           - contributing/workflow.qmd
-          - contributing/resources.md
           - contributing/quarto-website-tutorial.md
+          - href: contributing/troubleshooting.md
+            text: "Troubleshooting"
+          - contributing/onboarding.qmd
       - section: appendix/index.md
         contents:
           - appendix/authentication.qmd
-      - troubleshooting.md
+    
 
 format:
   html:

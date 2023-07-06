@@ -1,12 +1,12 @@
 ---
-title: Cookbook Setup
+title: Setup
 execute:
   eval: false
 ---
 
 ## Overview
 
-This is the setup required to contribute to our Cookbook. It is presented in a recommended order, although the setup will depend on what workflow you already have, because there are different ways you can start working and contributing. You will need a GitHub account. You will be able to incorporate this setup into a local workflow (with Jupyter Lab, VS Code, RStudio, etc), and as you develop tutorials on the Cloud, you will need to get setup with our 2i2c JupyterHub.
+This is the setup required to contribute to our Cookbook. It is presented in a recommended order, although the setup will depend on what workflow you already have, because there are different ways you can start working and contributing. You will need a GitHub account. You will be able to incorporate this setup into a local workflow (with JupyterLab, VS Code, RStudio, etc), and as you develop tutorials on the Cloud, you will need to get setup with our 2i2c JupyterHub.
 
 This chapter describes initial setup, with workflows described in more detail in the next chapter.
 
@@ -17,7 +17,7 @@ This chapter describes initial setup, with workflows described in more detail in
 
 ## GitHub Clinic
 
-Our GitHub Clinic introduces GitHub with the motivation of collaboration and open science. It is designed for both new and seasoned learners, focused on how develop workflows with diverse teams. It provides a foundation of skills for how we work, learn, and teach together.
+Our GitHub Clinic introduces GitHub with the motivation of collaboration and open science. It is designed for both new and seasoned learners, focused on how to develop workflows with diverse teams. It provides a foundation of skills for how we work, learn, and teach together.
 
 -   [**GitHub Clinic**](https://docs.google.com/presentation/d/1PzGAbEpNhT6CDPe1DCHf5-eVAjy-2R2D3VMHz7dY774/edit#slide=id.p) **(slides)**
 
@@ -31,7 +31,7 @@ Our GitHub Clinic introduces GitHub with the motivation of collaboration and ope
 
 ## Access JupyterHub
 
-Our [**Openscapes 2i2c JupyterHub**](https://openscapes.2i2c.cloud/hub/) is available for Mentors and their colleagues to develop, test, and teach. Using the JupyterHub is described in the tutorials (link upcoming as that is tidied).
+Our [**Openscapes 2i2c JupyterHub**](https://openscapes.2i2c.cloud/hub/) is available for Mentors and their colleagues to develop, test, and teach. Screenshots of logging in and starting a session are in [Workshop Setup](../workshops/setup.md). Using the JupyterHub is described in the tutorials (link upcoming as that is tidied).
 
 To request access, fill out this [**JupyterHub request form**](https://docs.google.com/forms/d/e/1FAIpQLSdcKar-yNnofiAVKlks79AgmQeM1beLCQM5TW_0__x_JU4B3g/viewform?usp=sf_link). You'll need a GitHub username ([internal](https://docs.google.com/spreadsheets/d/10Qg8YtUegXs9bepJzvK4UN54bX8BLXTrhxsjb2uV_6k/edit#gid=1824163684)).
 
@@ -66,6 +66,8 @@ Syncing to GitHub.com means 4 steps:
 4.  Push
 
 ![](images/commit_steps.png){fig-align="center"}
+
+This 9-minute video lesson, [GitHub Clinic Part 3: 2i2c JupyterHub](https://youtu.be/Lum7irkP6k8) walks us through a GitHub workflow from our 2i2c JupyterHub including the 4 steps illustrated above.
 
 Review the [2021 Cloud Hackathon instructions](https://nasa-openscapes.github.io/2021-Cloud-Hackathon/tutorials/00_Setup.html#step-5.-tracking-changes-optional) for step-by-step screenshots for syncing. RStudio users can follow [R for Excel Users instructions](https://rstudio-conf-2020.github.io/r-for-excel/github.html#sync-from-rstudio-local-to-github-remote).
 
