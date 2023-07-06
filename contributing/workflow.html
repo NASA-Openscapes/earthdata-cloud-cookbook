@@ -63,7 +63,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../contributing/resources.html" rel="next">
+<link href="../contributing/quarto-website-tutorial.html" rel="next">
 <link href="../contributing/setup.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -453,14 +453,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../contributing/onboarding.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Onboarding Mentors</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="../contributing/setup.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Cookbook Setup</span></a>
+ <span class="menu-text">Setup</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -471,14 +465,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../contributing/resources.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Resources</span></a>
+  <a href="../contributing/quarto-website-tutorial.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Quarto Tutorial</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../contributing/quarto-website-tutorial.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Quarto Tutorial</span></a>
+  <a href="../contributing/troubleshooting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Troubleshooting</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../contributing/onboarding.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Onboarding Mentors</span></a>
   </div>
 </li>
       </ul>
@@ -500,12 +500,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
       </ul>
   </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../troubleshooting.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Troubleshooting</span></a>
-  </div>
-</li>
     </ul>
     </div>
 </nav>
@@ -555,6 +549,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#importing-remote-notebooks" id="toc-importing-remote-notebooks" class="nav-link" data-scroll-target="#importing-remote-notebooks">Importing remote notebooks</a></li>
   <li><a href="#create-a-.qmd-from-external-.ipynb" id="toc-create-a-.qmd-from-external-.ipynb" class="nav-link" data-scroll-target="#create-a-.qmd-from-external-.ipynb">Create a .qmd from external .ipynb</a></li>
   <li><a href="#reorganizing-creating-aliases-and-redirects" id="toc-reorganizing-creating-aliases-and-redirects" class="nav-link" data-scroll-target="#reorganizing-creating-aliases-and-redirects">Reorganizing: creating aliases and redirects</a></li>
+  </ul></li>
+  <li><a href="#cookbook-editing" id="toc-cookbook-editing" class="nav-link" data-scroll-target="#cookbook-editing">Cookbook Editing</a>
+  <ul class="collapse">
+  <li><a href="#fix-a-typo" id="toc-fix-a-typo" class="nav-link" data-scroll-target="#fix-a-typo">Fix a typo</a></li>
+  <li><a href="#edit-a-chapter" id="toc-edit-a-chapter" class="nav-link" data-scroll-target="#edit-a-chapter">Edit a chapter</a></li>
+  <li><a href="#add-a-chapter" id="toc-add-a-chapter" class="nav-link" data-scroll-target="#add-a-chapter">Add a chapter</a></li>
   </ul></li>
   <li><a href="#notebook-review" id="toc-notebook-review" class="nav-link" data-scroll-target="#notebook-review">Notebook Review</a>
   <ul class="collapse">
@@ -820,6 +820,7 @@ This command line instance is now being used to preview Quarto
 <p>We use <a href="https://2i2c.org/">2i2c</a> to run notebooks.</p>
 <section id="log-into-2i2c" class="level3">
 <h3 class="anchored" data-anchor-id="log-into-2i2c">Log into 2i2c</h3>
+<p>Screenshots of logging in and starting a session are in <a href="../workshops/setup.html">Workshop Setup</a>.</p>
 <ol type="1">
 <li>Go to the openscapes 2i2c. <em>You should see the openscapes 2i2c instance.</em></li>
 <li>Click on the orange “Log in to continue” button. <em>You should see the Openscapes-Prod page.</em></li>
@@ -914,7 +915,7 @@ This command line instance is now being used to preview Quarto
 <li><p>process: true or false: whether or not to include the entire entry when running the <code>quarto_import.py</code> script</p></li>
 </ol></li>
 </ol>
-<p>After these updates to <code>_import/assets.json</code>, to the following in the terminal:</p>
+<p>After these updates to <code>_import/assets.json</code>, do the following in the terminal:</p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> _import</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env update <span class="at">-f</span> environment.yml</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate quarto-import</span>
@@ -953,6 +954,19 @@ aliases:
 <p>As you work and render the Cookbook, notice the feedback Quarto gives you. When you see yellow text that says the following, this is a nice flag to you to include this as an alias.</p>
 <pre><code>WARNING: Unable to resolve link target: working-with-data-in-cloud/Direct-Cloud-Access.qmd</code></pre>
 <p>This warning is also a good indication for you to update any links within the Cookbook that point to this old page. In the RStudio IDE, you can go to Edit &gt; Find in Files… to identify all the files in the Cookbook that have that link, and then you can do a search-replace to update them all at once.</p>
+</section>
+</section>
+<section id="cookbook-editing" class="level2">
+<h2 class="anchored" data-anchor-id="cookbook-editing">Cookbook Editing</h2>
+<p>TODO Add these 3 sections</p>
+<section id="fix-a-typo" class="level3">
+<h3 class="anchored" data-anchor-id="fix-a-typo">Fix a typo</h3>
+</section>
+<section id="edit-a-chapter" class="level3">
+<h3 class="anchored" data-anchor-id="edit-a-chapter">Edit a chapter</h3>
+</section>
+<section id="add-a-chapter" class="level3">
+<h3 class="anchored" data-anchor-id="add-a-chapter">Add a chapter</h3>
 </section>
 </section>
 <section id="notebook-review" class="level2">
@@ -1367,12 +1381,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="../contributing/setup.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Cookbook Setup</span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Setup</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../contributing/resources.html" class="pagination-link">
-        <span class="nav-page-text">Resources</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../contributing/quarto-website-tutorial.html" class="pagination-link">
+        <span class="nav-page-text">Quarto Tutorial</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
