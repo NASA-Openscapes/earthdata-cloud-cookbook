@@ -69,8 +69,14 @@ website:
             href: how-tos/aggregate.qmd
           - text: "plot data"
             href: how-tos/plot.qmd
-          - text: "use APIs"
+          - sections: "use APIs"
             href: how-tos/use_apis.qmd
+            contents:
+              - text: "AppEEARS Cloud COG Access"
+                href: external/appeears_cog_cloud_access.ipynb
+              - text: "AppEEARS Cloud CSV Access "
+                href: external/appeears_csv_cloud_access.ipynb
+            
           #- section: "setup AWS"  # Park for now  
           #  contents:
           #    - text: "Place holder for AWS setup"
