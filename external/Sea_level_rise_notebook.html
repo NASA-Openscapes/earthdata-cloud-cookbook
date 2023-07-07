@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>EarthData Cloud Cookbook - Sea Level Rise</title>
+<title>EarthData Cloud Cookbook - 🌍 Analyzing Sea Level Rise Using Earth Data in the Cloud</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -262,12 +262,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">plot data</span></a>
   </div>
 </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../how-tos/use_apis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">How do I access data using APIs?</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../how-tos/use_apis.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">use APIs</span></a>
+  <a href="../external/appeears_csv_cloud_access.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">AppEEARS Cloud CSV Access</span></a>
   </div>
 </li>
+      </ul>
+  </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../how-tos/how_to_guide_parking_lot.html" class="sidebar-item-text sidebar-link">
@@ -520,11 +531,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#analyzing-sea-level-rise-using-earth-data-in-the-cloud" id="toc-analyzing-sea-level-rise-using-earth-data-in-the-cloud" class="nav-link active" data-scroll-target="#analyzing-sea-level-rise-using-earth-data-in-the-cloud">🌍 Analyzing Sea Level Rise Using Earth Data in the Cloud</a>
-  <ul class="collapse">
-  <li><a href="#this-notebook-is-entirely-based-on-jinbo-wangs-tutorial" id="toc-this-notebook-is-entirely-based-on-jinbo-wangs-tutorial" class="nav-link" data-scroll-target="#this-notebook-is-entirely-based-on-jinbo-wangs-tutorial">This notebook is entirely based on Jinbo Wang’s tutorial</a></li>
+  <li><a href="#this-notebook-is-entirely-based-on-jinbo-wangs-tutorial" id="toc-this-notebook-is-entirely-based-on-jinbo-wangs-tutorial" class="nav-link active" data-scroll-target="#this-notebook-is-entirely-based-on-jinbo-wangs-tutorial">This notebook is entirely based on Jinbo Wang’s tutorial</a></li>
   <li><a href="#why-earthaccess" id="toc-why-earthaccess" class="nav-link" data-scroll-target="#why-earthaccess">Why earthaccess?</a></li>
-  </ul></li>
   <li><a href="#authentication-in-the-cloud" id="toc-authentication-in-the-cloud" class="nav-link" data-scroll-target="#authentication-in-the-cloud">Authentication in the cloud</a>
   <ul class="collapse">
   <li><a href="#if-the-collection-is-a-cloud-hosted-collection-we-can-print-the-summary-and-get-the-s3-credential-endpoint.-these-s3-credentials-are-temporary-and-we-can-use-them-with-third-party-libraries-such-as-s3fs-boto3-or-awscli." id="toc-if-the-collection-is-a-cloud-hosted-collection-we-can-print-the-summary-and-get-the-s3-credential-endpoint.-these-s3-credentials-are-temporary-and-we-can-use-them-with-third-party-libraries-such-as-s3fs-boto3-or-awscli." class="nav-link" data-scroll-target="#if-the-collection-is-a-cloud-hosted-collection-we-can-print-the-summary-and-get-the-s3-credential-endpoint.-these-s3-credentials-are-temporary-and-we-can-use-them-with-third-party-libraries-such-as-s3fs-boto3-or-awscli.">If the collection is a cloud-hosted collection we can print the <code>summary()</code> and get the S3 credential endpoint. These S3 credentials are temporary and we can use them with third party libraries such as s3fs, boto3 or awscli.</a></li>
@@ -544,7 +552,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Sea Level Rise</h1>
+<h1 class="title">🌍 Analyzing Sea Level Rise Using Earth Data in the Cloud</h1>
 </div>
 
 
@@ -559,15 +567,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<p>imported on: <strong>2023-07-07</strong></p>
-<p>
-This notebook was originally developed by Luis Lopez.
-</p>
-<blockquote class="blockquote">
-<p>The original source for this document is <a href="https://github.com/betolink/earthaccess-gallery">https://github.com/betolink/earthaccess-gallery</a></p>
-</blockquote>
-<section id="analyzing-sea-level-rise-using-earth-data-in-the-cloud" class="level1">
-<h1>🌍 Analyzing Sea Level Rise Using Earth Data in the Cloud</h1>
 <section id="this-notebook-is-entirely-based-on-jinbo-wangs-tutorial" class="level3">
 <h3 class="anchored" data-anchor-id="this-notebook-is-entirely-based-on-jinbo-wangs-tutorial">This notebook is entirely based on Jinbo Wang’s <a href="https://github.com/betolink/the-coding-club/blob/main/notebooks/Earthdata_webinar_20220727.ipynb">tutorial</a></h3>
 <p><img src="https://www.nasa.gov/sites/default/files/styles/full_width/public/thumbnails/image/sealevel_main-causes3-16.jpg?itok=XAqGqps1" width="800px"></p>
@@ -591,7 +590,6 @@ Using token with expiration date: 05/13/2023
 Using .netrc file for EDL</code></pre>
 </div>
 </div>
-</section>
 </section>
 <section id="authentication-in-the-cloud" class="level1">
 <h1>Authentication in the cloud</h1>

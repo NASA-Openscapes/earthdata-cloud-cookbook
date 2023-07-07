@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>EarthData Cloud Cookbook - Obtaining NASA Earthdata from Different Disciplines and Data Centers</title>
+<title>EarthData Cloud Cookbook - How to Perform Cross-DAAC S3 Bucket Access Using Python</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -261,12 +261,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">plot data</span></a>
   </div>
 </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../how-tos/use_apis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">How do I access data using APIs?</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../how-tos/use_apis.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">use APIs</span></a>
+  <a href="../external/appeears_csv_cloud_access.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">AppEEARS Cloud CSV Access</span></a>
   </div>
 </li>
+      </ul>
+  </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../how-tos/how_to_guide_parking_lot.html" class="sidebar-item-text sidebar-link">
@@ -519,9 +530,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#how-to-perform-cross-daac-s3-bucket-access-using-python" id="toc-how-to-perform-cross-daac-s3-bucket-access-using-python" class="nav-link active" data-scroll-target="#how-to-perform-cross-daac-s3-bucket-access-using-python">How to Perform Cross-DAAC S3 Bucket Access Using Python</a>
-  <ul class="collapse">
-  <li><a href="#author-chris-battisto" id="toc-author-chris-battisto" class="nav-link" data-scroll-target="#author-chris-battisto">Author: Chris Battisto</a></li>
+  <li><a href="#author-chris-battisto" id="toc-author-chris-battisto" class="nav-link active" data-scroll-target="#author-chris-battisto">Author: Chris Battisto</a></li>
   <li><a href="#date-authored-10-02-22" id="toc-date-authored-10-02-22" class="nav-link" data-scroll-target="#date-authored-10-02-22">Date Authored: 10-02-22</a></li>
   <li><a href="#timing" id="toc-timing" class="nav-link" data-scroll-target="#timing">Timing</a></li>
   <li><a href="#overview" id="toc-overview" class="nav-link" data-scroll-target="#overview">Overview</a></li>
@@ -533,7 +542,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#open-granules-in-xarray" id="toc-open-granules-in-xarray" class="nav-link" data-scroll-target="#open-granules-in-xarray">Open Granules in Xarray</a></li>
   <li><a href="#convert-dataset-grids" id="toc-convert-dataset-grids" class="nav-link" data-scroll-target="#convert-dataset-grids">Convert Dataset Grids</a></li>
   <li><a href="#plot-variables-using-matplotlib-and-cartopy" id="toc-plot-variables-using-matplotlib-and-cartopy" class="nav-link" data-scroll-target="#plot-variables-using-matplotlib-and-cartopy">Plot Variables using Matplotlib and Cartopy</a></li>
-  </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.dev/nasa-openscapes/earthdata-cloud-cookbook/blob/main/external/How_to_Perform_Cross-DAAC_S3_Bucket_Access_Using_Python.ipynb" class="toc-action">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/blob/main/external/How_to_Perform_Cross-DAAC_S3_Bucket_Access_Using_Python.ipynb" class="toc-action">View source</a></p><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
@@ -542,7 +550,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Obtaining NASA Earthdata from Different Disciplines and Data Centers</h1>
+<h1 class="title">How to Perform Cross-DAAC S3 Bucket Access Using Python</h1>
 </div>
 
 
@@ -557,15 +565,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<p>imported on: <strong>2023-07-07</strong></p>
-<p>
-This notebook was originally developed at GES DISC.
-</p>
-<blockquote class="blockquote">
-<p>The original source for this document is <a href="https://github.com/nasa/gesdisc-tutorials">https://github.com/nasa/gesdisc-tutorials</a></p>
-</blockquote>
-<section id="how-to-perform-cross-daac-s3-bucket-access-using-python" class="level1">
-<h1>How to Perform Cross-DAAC S3 Bucket Access Using Python</h1>
 <section id="author-chris-battisto" class="level3">
 <h3 class="anchored" data-anchor-id="author-chris-battisto">Author: Chris Battisto</h3>
 </section>
@@ -1257,7 +1256,6 @@ Attributes: (12/47)
 </div>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

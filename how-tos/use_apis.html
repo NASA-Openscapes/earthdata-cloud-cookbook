@@ -29,7 +29,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../how-tos/how_to_guide_parking_lot.html" rel="next">
+<link href="../external/appeears_csv_cloud_access.html" rel="next">
 <link href="../how-tos/plot.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -76,7 +76,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">How do I...</li><li class="breadcrumb-item"><a href="../how-tos/use_apis.html">use APIs</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">How do I...</li><li class="breadcrumb-item"><a href="../how-tos/use_apis.html">How do I access data using APIs?</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -224,12 +224,23 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">plot data</span></a>
   </div>
 </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../how-tos/use_apis.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">How do I access data using APIs?</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../how-tos/use_apis.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">use APIs</span></a>
+  <a href="../external/appeears_csv_cloud_access.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">AppEEARS Cloud CSV Access</span></a>
   </div>
 </li>
+      </ul>
+  </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../how-tos/how_to_guide_parking_lot.html" class="sidebar-item-text sidebar-link">
@@ -491,6 +502,7 @@ ul.task-list li input[type="checkbox"] {
   </ul></li>
   <li><a href="#harmony" id="toc-harmony" class="nav-link" data-scroll-target="#harmony">Harmony</a></li>
   <li><a href="#opendap" id="toc-opendap" class="nav-link" data-scroll-target="#opendap">OPeNDAP</a></li>
+  <li><a href="#appeears" id="toc-appeears" class="nav-link" data-scroll-target="#appeears">AppEEARS</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/edit/main/how-tos/use_apis.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/blob/main/how-tos/use_apis.qmd" class="toc-action">View source</a></p><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
@@ -542,6 +554,10 @@ ul.task-list li input[type="checkbox"] {
 <section id="opendap" class="level2">
 <h2 class="anchored" data-anchor-id="opendap">OPeNDAP</h2>
 <p>short description, when to use it</p>
+</section>
+<section id="appeears" class="level2">
+<h2 class="anchored" data-anchor-id="appeears">AppEEARS</h2>
+<p>The <a href="https://appeears.earthdatacloud.nasa.gov/">Application for Extracting and Exploring Analysis Ready Samples (AρρEEARS)</a> offers users a simple and efficient way to perform data access and transformation processes. By enabling users to subset data spatially, temporally, and by layer, the volume of data downloaded for analysis is greatly reduced. AppEEARS requests can be submitted in website and via API. In a same way, outputs generated can also be accessed from AppEEARS website and through API. View <a href="https://appeears.earthdatacloud.nasa.gov/help">AppEEARS documentation</a> and <a href="https://appeears.earthdatacloud.nasa.gov/api/">API documentation</a> for more information. Additionally, you can work with the data in the cloud using provided S3 links. Visit <a href="https://github.com/nasa/AppEEARS-Data-Resources">AppEEARS Data Resources Repository</a> for more tutorials on how to work with AppEEARS programaticaly.</p>
 
 
 </section>
@@ -902,8 +918,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../how-tos/how_to_guide_parking_lot.html" class="pagination-link">
-        <span class="nav-page-text">How-To Guides Parking Lot</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../external/appeears_csv_cloud_access.html" class="pagination-link">
+        <span class="nav-page-text">AppEEARS Cloud CSV Access</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
