@@ -39,6 +39,7 @@ website:
       - our-cookbook.qmd  
       - text: "Cheatsheets & Slides" 
         href: cheatsheets.qmd      
+      - environment-setup/index.qmd
       - section: "How do I..."
         # href: how-tos/index.qmd
         contents: 
@@ -77,6 +78,8 @@ website:
           - how-tos/how_to_guide_parking_lot.md
       - section: tutorials/index.qmd
         contents:
+          - href: examples/Earthdata-cloud-clinic.ipynb
+            text: "Earthdata Cloud Clinic"
           - href: external/How_to_Perform_Cross-DAAC_S3_Bucket_Access_Using_Python.ipynb
             text: "Multi-datasets 1"
           - href: external/IS2_cloud_Landsat_integration.ipynb
@@ -85,8 +88,6 @@ website:
             text: "Sea Level Rise: `earthaccess`"
           - href: tutorials/04_On-Prem_Cloud.ipynb
             text: "Cloud & Non-cloud"
-          - href: examples/Earthdata-cloud-clinic.ipynb
-            text: "Earthdata Cloud Clinic"
           - href: tutorials/earthaccess-demo.ipynb
             text: "`earthaccess` Python library"
       - section: workshops/index.qmd
@@ -119,16 +120,17 @@ website:
             text: "CMR STAC in R"  
           - href: in-development/earthdata-python-r-handoff.qmd  
       - section: contributing/index.qmd
-        contents: 
-          - contributing/onboarding.qmd
+        contents:
           - contributing/setup.qmd
           - contributing/workflow.qmd
-          - contributing/resources.md
           - contributing/quarto-website-tutorial.md
+          - href: contributing/troubleshooting.md
+            text: "Troubleshooting"
+          - contributing/onboarding.qmd
       - section: appendix/index.md
         contents:
           - appendix/authentication.qmd
-      - troubleshooting.md
+    
 
 format:
   html:

@@ -13,6 +13,13 @@ fatal: not a git repository (or any parent up to mount point /home)
 Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
 ```
 
+## Git Flight Rules
+
+"A guide for astronauts (now, programmers using Git) about what to do when things go wrong." This is quite a comprehensive and well-maintained list of git commands, using the command line.
+
+<https://github.com/k88hudson/git-flight-rules> 
+
+
 ## Git: update, revert, etc
 
 These are some useful commands to revert/delete your local changes and update your fork with the most recent information from the main branch.
