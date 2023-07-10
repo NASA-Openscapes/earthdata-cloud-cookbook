@@ -665,19 +665,24 @@ TODO Add these 3 sections
 
 ### Review a pull request
 
-Any pull request, or PR, must be reviewed before it can be merged into
-the Cookbook. If you know someone who is familiar with the content
-you're proposing to add, request their review (TODO: add screenshot to
-request reviewer).
+Any pull request (PR) must be reviewed before it can be merged into the
+Cookbook. If you know someone who is familiar with the content you're
+proposing to add, request their review (TODO: add screenshot to request
+reviewer).
 
-The following notes come from a coworking session in which Amy Steiker
-and Julie Lowndes reviewed [a pull
+The following notes are adapted from a coworking session in which Amy
+Steiker and Julie Lowndes reviewed [a pull
 request](https://github.com/NASA-Openscapes/earthdata-cloud-cookbook/pull/171)
 from Andy Barrett.
 ([Video](https://drive.google.com/file/d/1LG82x2csIKqNx7KewkkLlMfFFKl1ioRW/),
 33 min)
 
-Generic tips on reviewing a pull request (video w Stef & Julie)
+*TODO: add video w Stef & Julie on mechanics of reviewing a pull
+request.*
+
+In reviewing a pull request with lots of changes, it can be helpful to
+have windows open to view both the GitHub browser and the Hub showing
+the Cookbook preview.
 
 From the pull request page in GitHub browser, look at the elements of
 the pull request.
@@ -703,11 +708,12 @@ the pull request.
         deployed
     -   This means two checks have passed
 
-Now, switching to the Hub:
+Now, switch to the Hub to view the Cookbook preview as it would appear
+if the pull request was merged:
 
 -   Terminal:
-    -   Switch over to the Main branch and pull so that we have the most
-        recent changes from remote.
+    -   Go to the Main branch and pull so that we have the most recent
+        changes from remote.
     -   Git checkout to the branch that has the PR: reorg_how_to_guides
         (note, this PR has been merged and the branch deleted so you
         won't see this one; apply this example to your own)
@@ -717,7 +723,8 @@ Now, switching to the Hub:
             https://openscapes.2i2c.cloud..." **The Browse URL actually
             points to the production Hub!** We need it to point to
             staging since that's where we're working, so we use the URL
-            staging.openscapes.2i2c.cloud...
+            staging.openscapes.2i2c.cloud.... (See \~minute 10:06 in the
+            [video](https://drive.google.com/file/d/1LG82x2csIKqNx7KewkkLlMfFFKl1ioRW/).)
 
 We can now view the changes in the built Quarto book and concurrently
 look at the files changed in GitHub.
@@ -725,9 +732,12 @@ look at the files changed in GitHub.
 -   Now we see a minor issue with capitalization in the
     `how-tos/subset/index.md` file:
     -   In GitHub, we can add a suggested edit by clicking the "plus"
-        button below the line in question
-        -   TODO: add some mechanics of making suggested commits rather
-            than comments to speed the workflow.
+        button below the line in question. See (See \~minute 17:24 in
+        the
+        [video](https://drive.google.com/file/d/1LG82x2csIKqNx7KewkkLlMfFFKl1ioRW/)
+        for the mechanics of this. Suggesting specific commits can speed
+        the contributor's workflow compared with trying to describe what
+        we'd like them to change.)
     -   We can click "Start a review" button so that Andy gets a single
         email when we're done reviewing, rather than getting one
         notification for every edit we suggest.
@@ -736,8 +746,8 @@ look at the files changed in GitHub.
         progress by minimizing the changes visible, but does not affect
         the review.
 
-We will review each individual `.md` file and can come back to the
-main`_quarto.yml` if we see an issue with the main navigation.
+We will review each individual `.md` file and can come back to the main
+`_quarto.yml` if we see an issue with the main navigation.
 
 Once our review is complete, we add a note in the GitHub review and
 click "Approve", "Comment" or "Request changes". In the note it can be
