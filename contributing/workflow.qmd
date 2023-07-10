@@ -655,7 +655,7 @@ update them all at once.
 
 ## Cookbook Editing
 
-TODO Add these 3 sections
+*TODO Add these 3 sections*
 
 ### Fix a typo
 
@@ -667,16 +667,14 @@ TODO Add these 3 sections
 
 Any pull request (PR) must be reviewed before it can be merged into the
 Cookbook. If you know someone who is familiar with the content you're
-proposing to add, request their review (TODO: add screenshot to request
-reviewer).
+proposing to add, request their review.
 
 The following notes are adapted from a coworking session in which Amy
-Steiker and Julie Lowndes reviewed [a pull
+Steiker and Julie Lowndes reviewed a Cookbook [pull
 request](https://github.com/NASA-Openscapes/earthdata-cloud-cookbook/pull/171)
-from Andy Barrett. ([Video](https://youtu.be/2_F5Kr6gM1I), 19 min)
-
-*TODO: add video w Stef & Julie on mechanics of reviewing a pull
-request.*
+from Andy Barrett. ([video](https://youtu.be/2_F5Kr6gM1I), 19 min). Some
+generic mechanics of reviewing a pull request in GitHub are demonstrated
+in a screenshare ([video](https://youtu.be/ZiG4-d5vT30), 7 min 41 sec).
 
 In reviewing a pull request with lots of changes, it can be helpful to
 have windows open to view both the GitHub browser and the Hub showing
@@ -700,7 +698,7 @@ the pull request.
     -   In Nav bar: Orange dot box signifies modified; Green plus box
         means something's been added; Red minus box means deleted; Grey
         arrow box means renamed.
--   Checks tab (usually we skip over it!):
+-   Checks tab:
     -   Shows status of the Github Action that renders and deploys the
         Cookbook. We can know whether this PR has the ability to be
         deployed
@@ -718,8 +716,8 @@ if the pull request was merged:
     -   Quarto preview - this will build the book with Andy's suggested
         edits.
         -   At the end of the preview log, it says "Browse at
-            https://openscapes.2i2c.cloud..." **The Browse URL actually
-            points to the production Hub!** We need it to point to
+            https://openscapes.2i2c.cloud..." The Browse URL actually
+            points to the production Hub!! We need it to point to
             staging since that's where we're working, so we use the URL
             staging.openscapes.2i2c.cloud.... (See minute 10:06 in the
             [video](https://youtu.be/2_F5Kr6gM1I?t=606).)
