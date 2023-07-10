@@ -413,7 +413,8 @@ We use [2i2c](https://2i2c.org/) to run notebooks.
 
 ### Log into 2i2c
 
-Screenshots of logging in and starting a session are in [Workshop Setup](../workshops/setup.md).
+Screenshots of logging in and starting a session are in [Workshop
+Setup](../workshops/setup.md).
 
 1.  Go to the openscapes 2i2c. *You should see the openscapes 2i2c
     instance.*
@@ -627,20 +628,24 @@ The Quarto documentation is here:
 
 What this looks like:
 
-    ---
-    title: How do I access data stored in Earthdata Cloud?
-    execute:
-      eval: false
-    aliases:
-      - working-with-data-in-cloud/Direct-Cloud-Access.html
-      - working-with-data-in-cloud/Access-EULA-Data.html
-    ---
+```         
+---
+title: How do I access data stored in Earthdata Cloud?
+execute:
+  eval: false
+aliases:
+  - working-with-data-in-cloud/Direct-Cloud-Access.html
+  - working-with-data-in-cloud/Access-EULA-Data.html
+---
+```
 
 As you work and render the Cookbook, notice the feedback Quarto gives
 you. When you see yellow text that says the following, this is a nice
 flag to you to include this as an alias.
 
-    WARNING: Unable to resolve link target: working-with-data-in-cloud/Direct-Cloud-Access.qmd
+```         
+WARNING: Unable to resolve link target: working-with-data-in-cloud/Direct-Cloud-Access.qmd
+```
 
 This warning is also a good indication for you to update any links
 within the Cookbook that point to this old page. In the RStudio IDE, you
@@ -649,6 +654,7 @@ Cookbook that have that link, and then you can do a search-replace to
 update them all at once.
 
 ## Cookbook Editing
+
 TODO Add these 3 sections
 
 ### Fix a typo
@@ -657,6 +663,90 @@ TODO Add these 3 sections
 
 ### Add a chapter
 
+### Review a pull request
+
+Any pull request, or PR, must be reviewed before it can be merged into
+the Cookbook. If you know someone who is familiar with the content
+you're proposing to add, request their review (TODO: add screenshot to
+request reviewer).
+
+The following notes come from a coworking session in which Amy Steiker
+and Julie Lowndes reviewed [a pull
+request](https://github.com/NASA-Openscapes/earthdata-cloud-cookbook/pull/171)
+from Andy Barrett.
+([Video](https://drive.google.com/file/d/1LG82x2csIKqNx7KewkkLlMfFFKl1ioRW/),
+33 min)
+
+Generic tips on reviewing a pull request (video w Stef & Julie)
+
+From the pull request page in GitHub browser, look at the elements of
+the pull request.
+
+![](images/Screenshot%202023-07-10%20at%2012.55.55%20PM.png)
+
+-   Start with Conversation tab:
+    -   We can see all commits and comments on what Andy has worked on
+-   Commit tab:
+    -   More details on the commits that we saw under Conversation. When
+        we click on one of the commits, we can see line by line what has
+        changed under that commit (green lines are added, red lines have
+        been removed)
+-   Files Changed tab:
+    -   Often easier here to assess all the files that changed across
+        the commits
+    -   In Nav bar: Orange dot box signifies modified; Green plus box
+        means something's been added; Red minus box means deleted; Grey
+        arrow box means renamed.
+-   Checks tab (usually we skip over it!):
+    -   Shows status of the Github Action that renders and deploys the
+        Cookbook. We can know whether this PR has the ability to be
+        deployed
+    -   This means two checks have passed
+
+Now, switching to the Hub:
+
+-   Terminal:
+    -   Switch over to the Main branch and pull so that we have the most
+        recent changes from remote.
+    -   Git checkout to the branch that has the PR: reorg_how_to_guides
+        (note, this PR has been merged and the branch deleted so you
+        won't see this one; apply this example to your own)
+    -   Quarto preview - this will build the book with Andy's suggested
+        edits.
+        -   At the end of the preview log, it says "Browse at
+            https://openscapes.2i2c.cloud..." **The Browse URL actually
+            points to the production Hub!** We need it to point to
+            staging since that's where we're working, so we use the URL
+            staging.openscapes.2i2c.cloud...
+
+We can now view the changes in the built Quarto book and concurrently
+look at the files changed in GitHub.
+
+-   Now we see a minor issue with capitalization in the
+    `how-tos/subset/index.md` file:
+    -   In GitHub, we can add a suggested edit by clicking the "plus"
+        button below the line in question
+        -   TODO: add some mechanics of making suggested commits rather
+            than comments to speed the workflow.
+    -   We can click "Start a review" button so that Andy gets a single
+        email when we're done reviewing, rather than getting one
+        notification for every edit we suggest.
+    -   We can check the "Viewed" box on each file as we go through them
+        in the Hub. Marking files as viewed can help track our review
+        progress by minimizing the changes visible, but does not affect
+        the review.
+
+We will review each individual `.md` file and can come back to the
+main`_quarto.yml` if we see an issue with the main navigation.
+
+Once our review is complete, we add a note in the GitHub review and
+click "Approve", "Comment" or "Request changes". In the note it can be
+really helpful to add a note of appreciation for some aspect of the
+contribution, tagging the submitter, saying they can merge the PR after
+making changes, and possibly add a summary of our requested edits
+including the number of changes requested. Some in the middle of a long
+list of edits can be marked as hidden conversations, so this can be
+helpful to the submitter to know they've seen everything.
 
 ## Notebook Review
 
