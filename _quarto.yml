@@ -98,6 +98,8 @@ website:
             text: "`earthaccess` Python library"
           - href: tutorials/fair-workflow-geoweaver-demo.ipynb
             text: "Pygeoweaver Workflow Demo"
+          - text: "OPeNDAP Access" 
+            href: how-tos/working-locally/Earthdata_Cloud__Data_Access_OPeNDAP_Example.ipynb
       - section: workshops/index.qmd
         contents:
           - href: workshops/setup.md
@@ -112,8 +114,6 @@ website:
             text: "Direct Access & Harmony Workflow"
           - href: examples/USGS_Landsat/Landsat_C2_Search_Access.ipynb
             text: "Search & Access USGS Landsat Cloud"  
-          - text: "OPeNDAP Access" 
-            href: how-tos/working-locally/Earthdata_Cloud__Data_Access_OPeNDAP_Example.ipynb
           - examples/ORNL/Data_Access__Direct_S3_Access__ORNL_DAYMET.ipynb
           - external/cof-zarr-reformat.ipynb
           - external/zarr-eosdis-store.ipynb
