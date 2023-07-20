@@ -20,7 +20,7 @@ To install the package we'll run this code from the command line. Note: you can 
 conda install -c conda-forge earthaccess
 ```
 
-This example searches for data from the [Land Processes DAAC](https://lpdaac.usgs.gov/) with a spatial bounding box and temporal range. 
+This example searches for data from the [Land Processes DAAC](https://lpdaac.usgs.gov/) with a spatial bounding box and temporal range.
 
 ```{python}
 ## Import packages
@@ -41,10 +41,9 @@ print(len(granules))
 granules
 ```
 
-
 ## R
 
-To find data in R, we'll also use the `earthaccess` python package - we can do so from R using the [`reticulate`](https://rstudio.github.io/reticulate/) package ([cheatsheet](https://www.rstudio.com/resources/cheatsheets/)). Note below that we import the python library as an R object we name `earthaccess`, as well as the `earthaccess$` syntax for accessing functions from the `earthaccess` library. The `granules` object has a list of JSON dictionaries with some extra dictionaries. 
+To find data in R, we'll also use the `earthaccess` python package - we can do so from R using the [`reticulate`](https://rstudio.github.io/reticulate/) package ([cheatsheet](https://www.rstudio.com/resources/cheatsheets/)). Note below that we import the python library as an R object we name `earthaccess`, as well as the `earthaccess$` syntax for accessing functions from the `earthaccess` library. The `granules` object has a list of JSON dictionaries with some extra dictionaries.
 
 ```{r, filename="[R code]"}
 #| message: false
@@ -58,7 +57,7 @@ earthaccess <- reticulate::import("earthaccess")
 
 # use earthaccess to access data # https://nsidc.github.io/earthaccess/tutorials/search-granules/
 granules <- earthaccess$search_data(
-  concept_id = "C2036880672-POCLOUD",
+  doi = "10.5067/SLREF-CDRV3",
   temporal = reticulate::tuple("2017-01", "2017-02") # with an earthaccess update, this can be simply c() or list()
 )
 
@@ -88,6 +87,4 @@ With `wget` and `curl`:
 ```{bash, filename="[command line code]"}
 # Coming soon!
 ```
-
-
 :::
