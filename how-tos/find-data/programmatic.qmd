@@ -45,7 +45,7 @@ granules
 
 To find data in R, we'll also use the `earthaccess` python package - we can do so from R using the [`reticulate`](https://rstudio.github.io/reticulate/) package ([cheatsheet](https://www.rstudio.com/resources/cheatsheets/)). Note below that we import the python library as an R object we name `earthaccess`, as well as the `earthaccess$` syntax for accessing functions from the `earthaccess` library. The `granules` object has a list of JSON dictionaries with some extra dictionaries.
 
-```{r, filename="[R code]"}
+```
 #| message: false
 
 ## load R libraries
