@@ -15,27 +15,29 @@ In Python we can use the [`earthaccess`](https://nsidc.github.io/earthaccess/) l
 
 To install the package we'll run this code from the command line. Note: you can run shell code directly from a Jupyter Notebook cell by adding a `!`, so it would be `!conda install`.
 
-```{bash, filename="[command line code]"}
-# Install earthaccess
+```.bash
+## From command line
+## Install earthaccess
 conda install -c conda-forge earthaccess
 ```
 
 This example searches for data from the [Land Processes DAAC](https://lpdaac.usgs.gov/) with a spatial bounding box and temporal range.
 
-```{python}
+```.python
+## In Python
 ## Import packages
 from earthaccess import DataGranules, DataCollections
 from pprint import pprint 
 
 
-# We'll get 4 collections that match with our keyword of interest
+## We'll get 4 collections that match with our keyword of interest
 collections = DataCollections().keyword("REFLECTANCE").cloud_hosted(True).get(4)
 
-# Let's print 2 collections
+## Let's print 2 collections
 for collection in collections[0:2]:
     print(pprint(collection.summary()) , collection.abstract(), "\n")
     
-#Search for files from the second dataset result over a small plot in Nebraska, USA for two weeks in September 2022
+## Search for files from the second dataset result over a small plot in Nebraska, USA for two weeks in September 2022
 granules = DataGranules().concept_id("C2021957657-LPCLOUD").temporal("2022-09-10","2022-09-24").bounding_box(-101.67271,41.04754,-101.65344,41.06213)
 print(len(granules))
 granules
@@ -45,9 +47,8 @@ granules
 
 To find data in R, we'll also use the `earthaccess` python package - we can do so from R using the [`reticulate`](https://rstudio.github.io/reticulate/) package ([cheatsheet](https://www.rstudio.com/resources/cheatsheets/)). Note below that we import the python library as an R object we name `earthaccess`, as well as the `earthaccess$` syntax for accessing functions from the `earthaccess` library. The `granules` object has a list of JSON dictionaries with some extra dictionaries.
 
-```
-#| message: false
-
+```.r
+## In R
 ## load R libraries
 library(tidyverse) # install.packages("tidyverse") 
 library(reticulate) # install.packages("reticulate")
@@ -55,7 +56,7 @@ library(reticulate) # install.packages("reticulate")
 ## load python library
 earthaccess <- reticulate::import("earthaccess") 
 
-# use earthaccess to access data # https://nsidc.github.io/earthaccess/tutorials/search-granules/
+## use earthaccess to access data # https://nsidc.github.io/earthaccess/tutorials/search-granules/
 granules <- earthaccess$search_data(
   doi = "10.5067/SLREF-CDRV3",
   temporal = reticulate::tuple("2017-01", "2017-02") # with an earthaccess update, this can be simply c() or list()
@@ -75,16 +76,17 @@ class(granules) # "list"
 
 Matlab code coming soon!
 
-```{bash, filename="[Matlab code]"}
-#| echo: true
-# Coming soon!
+```.bash
+## In Matlab
+## Coming soon!
 ```
 
 ## Command Line
 
 With `wget` and `curl`:
 
-```{bash, filename="[command line code]"}
-# Coming soon!
+```.bash
+## From command line
+## Coming soon!
 ```
 :::
