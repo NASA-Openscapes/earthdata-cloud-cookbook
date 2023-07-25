@@ -560,31 +560,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 <p>In Python we can use the <a href="https://nsidc.github.io/earthaccess/"><code>earthaccess</code></a> library (renamed, previously <code>earthdata</code>)</p>
 <p>To install the package we’ll run this code from the command line. Note: you can run shell code directly from a Jupyter Notebook cell by adding a <code>!</code>, so it would be <code>!conda install</code>.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode .bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">## From command line</span></span>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">## In the command line</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">## Install earthaccess</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> install <span class="at">-c</span> conda-forge earthaccess</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This example searches for data from the <a href="https://lpdaac.usgs.gov/">Land Processes DAAC</a> with a spatial bounding box and temporal range.</p>
-<pre class=".python"><code>## In Python
-## Import packages
-from earthaccess import DataGranules, DataCollections
-from pprint import pprint 
-
-
-## We'll get 4 collections that match with our keyword of interest
-collections = DataCollections().keyword("REFLECTANCE").cloud_hosted(True).get(4)
-
-## Let's print 2 collections
-for collection in collections[0:2]:
-    print(pprint(collection.summary()) , collection.abstract(), "\n")
-    
-## Search for files from the second dataset result over a small plot in Nebraska, USA for two weeks in September 2022
-granules = DataGranules().concept_id("C2021957657-LPCLOUD").temporal("2022-09-10","2022-09-24").bounding_box(-101.67271,41.04754,-101.65344,41.06213)
-print(len(granules))
-granules</code></pre>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">## In Python</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co">## Import packages</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> earthaccess <span class="im">import</span> DataGranules, DataCollections</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pprint <span class="im">import</span> pprint </span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">## We'll get 4 collections that match with our keyword of interest</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>collections <span class="op">=</span> DataCollections().keyword(<span class="st">"REFLECTANCE"</span>).cloud_hosted(<span class="va">True</span>).get(<span class="dv">4</span>)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co">## Let's print 2 collections</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> collection <span class="kw">in</span> collections[<span class="dv">0</span>:<span class="dv">2</span>]:</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(pprint(collection.summary()) , collection.abstract(), <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="co">## Search for files from the second dataset result over a small plot in Nebraska, USA for two weeks in September 2022</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>granules <span class="op">=</span> DataGranules().concept_id(<span class="st">"C2021957657-LPCLOUD"</span>).temporal(<span class="st">"2022-09-10"</span>,<span class="st">"2022-09-24"</span>).bounding_box(<span class="op">-</span><span class="fl">101.67271</span>,<span class="fl">41.04754</span>,<span class="op">-</span><span class="fl">101.65344</span>,<span class="fl">41.06213</span>)</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">len</span>(granules))</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>granules</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
 <p>To find data in R, we’ll also use the <code>earthaccess</code> python package - we can do so from R using the <a href="https://rstudio.github.io/reticulate/"><code>reticulate</code></a> package (<a href="https://www.rstudio.com/resources/cheatsheets/">cheatsheet</a>). Note below that we import the python library as an R object we name <code>earthaccess</code>, as well as the <code>earthaccess$</code> syntax for accessing functions from the <code>earthaccess</code> library. The <code>granules</code> object has a list of JSON dictionaries with some extra dictionaries.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode .r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="do">## In R</span></span>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="do">## In R</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="do">## load R libraries</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) <span class="co"># install.packages("tidyverse") </span></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reticulate) <span class="co"># install.packages("reticulate")</span></span>
@@ -608,12 +608,12 @@ granules</code></pre>
 </div>
 <div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
 <p>Matlab code coming soon!</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode .bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">## In Matlab</span></span>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">## In Matlab</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co">## Coming soon!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="tabset-1-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-4-tab">
 <p>With <code>wget</code> and <code>curl</code>:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode .bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">## From command line</span></span>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">## In the command line</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co">## Coming soon!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
