@@ -497,8 +497,8 @@ TODO: info about conda...
 ## Cookbook Structure
 
 Each chapter in our Cookbook is a separate file (`.md`/
-`.ipynb`/`.qmd`/`.Rmd`). These are stored in our `files` directory,
-organized by sub-directory.
+`.ipynb`/`.qmd`/`.Rmd`). 
+<!-- These are stored in our `files` directory, organized by sub-directory. -->
 
 The Cookbook structure (i.e. the order of sections and chapters) is
 determined in the `_quarto.yml` file in the root directory. We can
@@ -513,10 +513,28 @@ Please experiment, add new chapters and sections; we can shuffle chapter
 order and subsections as we continue to develop the Cookbook, nothing is
 set in stone.
 
-## Cookbook Practices
+## Cookbook Practices and Conventions
 
-These are shared practices that we have for co-developing the Cookbook.
-This will be developed further as we go!
+These are shared practices and conventions that we have for co-developing the Cookbook. With so many contributors, consistency can give us an implicit understanding of where to put something or how to name it, and save us time searching documentation. This will be developed further as we go!
+
+### Naming things and organizing them
+
+These conventions aim to help us more quickly find files we want to edit or find where a notebook or new chapter fits best. 
+
+- Each navbar item should have its own folder. Example: use `cheatsheets/index.qmd` not `cheatsheets.qmd`.
+
+- Names of folders, files, and filepaths should match what we call them in the nav bar. What we call them in the nav bar is defined in the `_quarto.yml` file. 
+
+
+### No TOC on a chapter landing page
+
+*We're thinking through this convention*
+
+We prefer not to have a table of contents (TOC) on every chapter page. Each chapter page should have short paragraph saying what chapter includes and "look at the navbar to see what’s here". 
+
+Why? When someone contributes a new Tutorial by adding their notebook and pointing to it in the `_quarto.yml` file, it is immediately discoverable in the navbar. Having to add a link to that tutorial to a list on the [Tutorials chapter page](https://nasa-openscapes.github.io/earthdata-cloud-cookbook/tutorials/) is an extra step that a contributor might not do so it'll be less discoverable than if it only appeared in navbar.
+
+Caveat: On the Tutorials page (2023-08-08) the brief text under each tutorial heading says what you'll find in that tutorial and this can't be conveyed in navbar headings. 
 
 ### Markdown formatting with Quarto
 
