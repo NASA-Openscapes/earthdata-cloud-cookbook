@@ -563,6 +563,26 @@ can go to Edit \> Find in Files... to identify all the files in the
 Cookbook that have that link, and then you can do a search-replace to
 update them all at once.
 
+### _quarto.yml style
+
+We use a 2-line style in our `_quarto.yml` file to define how a Cookbook page is named in the navbar (`text`) and to point to its source file (`href`) like this:
+
+```
+  	- text: "Cheatsheets & Slides"
+      href: cheatsheets/index.qmd
+```
+ 
+Note: What is defined in `text` as the navbar title will take precedence over the title that is written in the target file. This doesn't change how the title appears on the Cookbook page itself.
+
+The alternative style is 1 line: 
+
+```
+    - cheatsheets/index.qmd
+```
+
+This is perfectly functional, but we think that the more explicit 2-line style helps us all see what needs to be edited to make our contributions most visible.
+
+
 ### No TOC on a chapter landing page
 
 *We're thinking through this convention*
