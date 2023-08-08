@@ -9,11 +9,9 @@ website:
   page-navigation: true
   title: "EarthData Cloud Cookbook"
   site-url: https://nasa-openscapes.github.io/earthdata-cloud-cookbook
-  
   repo-url: https://github.com/nasa-openscapes/earthdata-cloud-cookbook
   repo-actions: [edit, source, issue]
 
-  # page-footer: "NASA Openscapes Team (2021). Earthdata Cloud Cookbook (Version v0.0.1)."
   page-footer: 
     left: "NASA Earthdata Cloud Cookbook, &copy; NASA Openscapes Team (2023)."
   
@@ -45,10 +43,8 @@ website:
       - text: "Cloud Environment Setup"
         href: environment-setup/index.qmd
       - section: "How do I..."
-        # href: how-tos/index.qmd
         contents: 
           - section: "find data"
-          # href: how-tos/find-data/index.md
             contents:
               - text: "using Earthdata Search"
                 href: how-tos/find-data/earthdata_search.md
@@ -78,12 +74,8 @@ website:
             contents:
               - text: "AppEEARS Cloud CSV Access "
                 href: external/appeears_csv_cloud_access.ipynb
-          #- section: "setup AWS"  # Park for now  
-          #  contents:
-          #    - text: "Place holder for AWS setup"
-          #      href: how-tos/tech-setup.qmd
-          - text: "How-To Guides Parking Lot"
-          - href: how-tos/how_to_guide_parking_lot.md
+          - text: "parking lot"
+            href: how-tos/how_to_guide_parking_lot.qmd
       - section: "Tutorials"
         href: tutorials/index.qmd
         contents:
