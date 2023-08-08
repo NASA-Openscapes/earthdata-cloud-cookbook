@@ -526,6 +526,43 @@ These conventions aim to help us more quickly find files we want to edit or find
 - Names of folders, files, and filepaths should match what we call them in the nav bar. What we call them in the nav bar is defined in the `_quarto.yml` file. 
 
 
+### Reorganizing: creating aliases and redirects
+
+As we reorganize different chapters/pages in our Cookbook, inevitably
+we'll break URLs that someone (maybe a researcher, maybe you!) has
+bookmarked. To prevent these broken links, we can use aliases. These are
+also sometimes called redirects.
+
+The Quarto documentation is here:
+<https://quarto.org/docs/websites/website-navigation.html#redirects>
+
+What this looks like:
+
+```         
+---
+title: How do I access data stored in Earthdata Cloud?
+execute:
+  eval: false
+aliases:
+  - working-with-data-in-cloud/Direct-Cloud-Access.html
+  - working-with-data-in-cloud/Access-EULA-Data.html
+---
+```
+
+As you work and render the Cookbook, notice the feedback Quarto gives
+you. When you see yellow text that says the following, this is a nice
+flag to you to include this as an alias.
+
+```         
+WARNING: Unable to resolve link target: working-with-data-in-cloud/Direct-Cloud-Access.qmd
+```
+
+This warning is also a good indication for you to update any links
+within the Cookbook that point to this old page. In the RStudio IDE, you
+can go to Edit \> Find in Files... to identify all the files in the
+Cookbook that have that link, and then you can do a search-replace to
+update them all at once.
+
 ### No TOC on a chapter landing page
 
 *We're thinking through this convention*
@@ -634,42 +671,6 @@ quarto convert discovery/search-by-shapefile.ipynb # convert to .qmd
 rm discovery/search-by-shapefile.ipynb # delete .ipynb
 ```
 
-### Reorganizing: creating aliases and redirects
-
-As we reorganize different chapters/pages in our Cookbook, inevitably
-we'll break URLs that someone (maybe a researcher, maybe you!) has
-bookmarked. To prevent these broken links, we can use aliases. These are
-also sometimes called redirects.
-
-The Quarto documentation is here:
-<https://quarto.org/docs/websites/website-navigation.html#redirects>
-
-What this looks like:
-
-```         
----
-title: How do I access data stored in Earthdata Cloud?
-execute:
-  eval: false
-aliases:
-  - working-with-data-in-cloud/Direct-Cloud-Access.html
-  - working-with-data-in-cloud/Access-EULA-Data.html
----
-```
-
-As you work and render the Cookbook, notice the feedback Quarto gives
-you. When you see yellow text that says the following, this is a nice
-flag to you to include this as an alias.
-
-```         
-WARNING: Unable to resolve link target: working-with-data-in-cloud/Direct-Cloud-Access.qmd
-```
-
-This warning is also a good indication for you to update any links
-within the Cookbook that point to this old page. In the RStudio IDE, you
-can go to Edit \> Find in Files... to identify all the files in the
-Cookbook that have that link, and then you can do a search-replace to
-update them all at once.
 
 ## Cookbook Editing
 
