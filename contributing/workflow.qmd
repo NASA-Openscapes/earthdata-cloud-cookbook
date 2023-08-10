@@ -583,15 +583,13 @@ The alternative style is 1 line:
 This is perfectly functional, but we think that the more explicit 2-line style helps us all see what needs to be edited to make our contributions most visible.
 
 
-### No TOC on a chapter landing page
+### Content for section landing pages
 
-*We're thinking through this convention*
+Each landing page for a section can be empty, or can have short paragraph saying what the section includes and "look at the navbar to see what’s here". A full table of contents on the landing page is not necessary, but in some cases we might want to highlight key sections or provide extra explanation for what a user will find.
 
-We prefer not to have a table of contents (TOC) on every chapter page. Each chapter page should have short paragraph saying what chapter includes and "look at the navbar to see what’s here". 
+Example for Tutorials page: "Below are some specific tutorials spotlighted, with additional information. Please also see the navbar on the left for a full list".
 
-Why? When someone contributes a new Tutorial by adding their notebook and pointing to it in the `_quarto.yml` file, it is immediately discoverable in the navbar. Having to add a link to that tutorial to a list on the [Tutorials chapter page](https://nasa-openscapes.github.io/earthdata-cloud-cookbook/tutorials/) is an extra step that a contributor might not do so it'll be less discoverable than if it only appeared in navbar.
-
-Caveat: On the Tutorials page (2023-08-08) the brief text under each tutorial heading says what you'll find in that tutorial and this can't be conveyed in navbar headings. 
+Why don't we want / need full table of contents?: When someone contributes a new Tutorial by adding their notebook and pointing to it in the `_quarto.yml` file, it is immediately discoverable in the navbar. Having to add it to a list on the [Tutorials landing page](https://nasa-openscapes.github.io/earthdata-cloud-cookbook/tutorials/) is an extra step that a contributor might not do so it'll be less discoverable than if it only appeared in navbar.
 
 ### Markdown formatting with Quarto
 
