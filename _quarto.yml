@@ -9,11 +9,9 @@ website:
   page-navigation: true
   title: "EarthData Cloud Cookbook"
   site-url: https://nasa-openscapes.github.io/earthdata-cloud-cookbook
-  
   repo-url: https://github.com/nasa-openscapes/earthdata-cloud-cookbook
   repo-actions: [edit, source, issue]
 
-  # page-footer: "NASA Openscapes Team (2021). Earthdata Cloud Cookbook (Version v0.0.1)."
   page-footer: 
     left: "NASA Earthdata Cloud Cookbook, &copy; NASA Openscapes Team (2023)."
   
@@ -42,12 +40,11 @@ website:
         href: our-cookbook.qmd
       - text: "Cheatsheets & Slides" 
         href: cheatsheets.qmd      
-      - environment-setup/index.qmd
+      - text: "Cloud Environment Setup"
+        href: environment-setup/index.qmd
       - section: "How do I..."
-        # href: how-tos/index.qmd
         contents: 
           - section: "find data"
-          #how-tos/find-data/index.md
             contents:
               - text: "using Earthdata Search"
                 href: how-tos/find-data/earthdata_search.md
@@ -72,75 +69,87 @@ website:
             href: how-tos/aggregate.qmd
           - text: "plot data"
             href: how-tos/plot.qmd
-          - sections: "use APIs"
+          - section: "use APIs"
             href: how-tos/use_apis.qmd
             contents:
-              # - text: "AppEEARS Cloud COG Access"
-              #   href: external/appeears_cog_cloud_access.ipynb
               - text: "AppEEARS Cloud CSV Access "
                 href: external/appeears_csv_cloud_access.ipynb
-            
-          #- section: "setup AWS"  # Park for now  
-          #  contents:
-          #    - text: "Place holder for AWS setup"
-          #      href: how-tos/tech-setup.qmd
-          - how-tos/how_to_guide_parking_lot.md
-      - section: tutorials/index.qmd
+          - text: "parking lot"
+            href: how-tos/how_to_guide_parking_lot.qmd
+      - section: "Tutorials"
+        href: tutorials/index.qmd
         contents:
-          - href: examples/Earthdata-cloud-clinic.ipynb
-            text: "Earthdata Cloud Clinic"
-          - href: external/How_to_Perform_Cross-DAAC_S3_Bucket_Access_Using_Python.ipynb
-            text: "Multi-datasets 1"
-          - href: external/IS2_cloud_Landsat_integration.ipynb
-            text: "Multi-datasets 2"
-          - href: external/Sea_level_rise_notebook.ipynb
-            text: "Sea Level Rise: `earthaccess`"
-          - href: tutorials/04_On-Prem_Cloud.ipynb
-            text: "Cloud & Non-cloud"
-          - href: tutorials/earthaccess-demo.ipynb
-            text: "`earthaccess` Python library"
-          - href: tutorials/fair-workflow-geoweaver-demo.ipynb
-            text: "Pygeoweaver Workflow Demo"
+          - text: "Earthdata Cloud Clinic"
+            href: examples/Earthdata-cloud-clinic.ipynb
+          - text: "Multi-datasets 1"
+            href: external/How_to_Perform_Cross-DAAC_S3_Bucket_Access_Using_Python.ipynb
+          - text: "Multi-datasets 2"
+            href: external/IS2_cloud_Landsat_integration.ipynb
+          - text: "Sea Level Rise: `earthaccess`"
+            href: external/Sea_level_rise_notebook.ipynb
+          - text: "Cloud & Non-cloud"
+            href: tutorials/04_On-Prem_Cloud.ipynb
+          - text: "`earthaccess` Python library"
+            href: tutorials/earthaccess-demo.ipynb
+          - text: "Pygeoweaver Workflow Demo"
+            href: tutorials/fair-workflow-geoweaver-demo.ipynb
           - text: "OPeNDAP Access" 
             href: how-tos/working-locally/Earthdata_Cloud__Data_Access_OPeNDAP_Example.ipynb
-      - section: workshops/index.qmd
+      - section: "Workshops & Hackathons"
+        href: workshops/index.qmd
         contents:
-          - href: workshops/setup.md
-            text: "Workshop Setup"
-      - section: in-development/index.qmd
+          - text: "Workshop Setup"
+            href: workshops/setup.md
+      - section: "In Development"
+        href: in-development/index.qmd
         contents:
-          - href: examples/NSIDC/ICESat2-CMR-OnPrem-vs-Cloud.ipynb
-            text: "Search & Download NSIDC Cloud"
-          - href: examples/NSIDC/ICESat2-CMR-AWS-S3.ipynb
-            text: "Access NSIDC Cloud w/ CMR"          
-          - href: examples/Transform-workflow.ipynb
-            text: "Direct Access & Harmony Workflow"
-          - href: examples/USGS_Landsat/Landsat_C2_Search_Access.ipynb
-            text: "Search & Access USGS Landsat Cloud"  
-          - examples/ORNL/Data_Access__Direct_S3_Access__ORNL_DAYMET.ipynb
-          - external/cof-zarr-reformat.ipynb
-          - external/zarr-eosdis-store.ipynb
-          - section: examples/index.qmd
+          - text: "Search & Download NSIDC Cloud"
+            href: examples/NSIDC/ICESat2-CMR-OnPrem-vs-Cloud.ipynb
+          - text: "Access NSIDC Cloud w/ CMR"
+            href: examples/NSIDC/ICESat2-CMR-AWS-S3.ipynb
+          - text: "Direct Access & Harmony Workflow"
+            href: examples/Transform-workflow.ipynb
+          - text: "Search & Access USGS Landsat Cloud" 
+            href: examples/USGS_Landsat/Landsat_C2_Search_Access.ipynb
+          - text: "Direct S3 Data Access: NetCDF - Daymet v4 Daily TMAX Example"
+            href: examples/ORNL/Data_Access__Direct_S3_Access__ORNL_DAYMET.ipynb
+          - text: "Access ECCO data via Harmony & the Zarr reformatter service"
+            href: external/cof-zarr-reformat.ipynb
+          - text: "zarr-eosdis-store example"
+            href: external/zarr-eosdis-store.ipynb
+          - section: "Example Workflows"
+            href: examples/index.qmd
             contents: 
-              - examples/GESDISC/GESDISC_MERRA2_tavg1_2d_flx_Nx__Kerchunk.ipynb
-              - examples/LPDAAC/LPDAAC_ECOSTRESS_LSTE__Kerchunk.ipynb
-              - examples/PODAAC/PODAAC_ECCO_SSH__Kerchunk.ipynb
-          - href: in-development/matlab.qmd
-            text: "Matlab & AWS"
-          - href: in-development/CMR-STAC-Search.Rmd
-            text: "CMR STAC in R"  
-          - href: in-development/earthdata-python-r-handoff.qmd  
-      - section: contributing/index.qmd
+              - text: "GES DISC - MERRA2"
+                href: examples/GESDISC/GESDISC_MERRA2_tavg1_2d_flx_Nx__Kerchunk.ipynb
+              - text: "LP DAAC ECOSTRESS"
+                href: examples/LPDAAC/LPDAAC_ECOSTRESS_LSTE__Kerchunk.ipynb
+              - text: "PO.DAAC ECCO SSH"
+                href: examples/PODAAC/PODAAC_ECCO_SSH__Kerchunk.ipynb
+          - text: "MATLAB & AWS"
+            href: in-development/matlab.qmd
+          - text: "CMR STAC in R"
+            href: in-development/CMR-STAC-Search.Rmd
+          - text: "`earthdata`: Python-R Handoff"
+            href: in-development/earthdata-python-r-handoff.qmd  
+      - section: "Contributing"
+        href: contributing/index.qmd
         contents:
-          - contributing/setup.qmd
-          - contributing/workflow.qmd
-          - contributing/quarto-website-tutorial.md
-          - href: contributing/troubleshooting.md
-            text: "Troubleshooting"
-          - contributing/onboarding.qmd
-      - section: appendix/index.md
+          - text: "Setup"
+            href: contributing/setup.qmd
+          - text: "Workflows"
+            href: contributing/workflow.qmd
+          - text: "Quarto Tutorial"
+            href: contributing/quarto-website-tutorial.md
+          - text: "Troubleshooting"
+            href: contributing/troubleshooting.md
+          - text: "Onboarding Mentors"
+            href: contributing/onboarding.qmd
+      - section: "Appendix"
+        href: appendix/index.md
         contents:
-          - appendix/authentication.qmd
+          - text: "Authentication"
+            href: appendix/authentication.qmd
     
 
 format:
