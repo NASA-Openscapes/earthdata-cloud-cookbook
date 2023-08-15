@@ -22,7 +22,7 @@ This page covers two situations of downloading data from Earthdata Cloud to your
 We can use the [`earthaccess`](https://nsidc.github.io/earthaccess/) python library to grab the file URLs and then access them with the `xarray` library. 
 
 
-```{python}
+```python
 #Import packages
 import earthaccess
 import xarray as xr
@@ -50,7 +50,7 @@ ds
 
 R code coming soon!
 
-```{bash}
+```bash
 # Coming soon!
 ```
 
@@ -58,7 +58,7 @@ R code coming soon!
 
 Matlab code coming soon!
 
-```{bash}
+```bash
 #| echo: true
 # Coming soon!
 ```
@@ -67,7 +67,7 @@ Matlab code coming soon!
 
 With `wget` and `curl`:
 
-```{bash}
+```bash
 # Coming soon!
 ```
 
@@ -82,7 +82,7 @@ With `wget` and `curl`:
 
 OPeNDAP, or the [Open-source Project for a Network Data Access Protocol](https://www.earthdata.nasa.gov/engage/open-data-services-and-software/api/opendap), is a data server that allows for accessing scientific datasets through the public internet. OPeNDAP links can be acquired through dataset landing pages or the [common metadata repository](https://cmr.earthdata.nasa.gov/search/site/collections/directory/eosdis). Once you have the desired link(s), you can open them as follows:
 
-```{python}
+```python
 #Import packages
 import xarray as xr
 
