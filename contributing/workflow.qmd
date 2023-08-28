@@ -624,11 +624,36 @@ Using `.qmd` there are also ways to control execution cell-by-cell via
 
 Code chunks are executed if they are within curly brackets like `{python}`. If we don't want code in a `.qmd` or `.Rmd` file to be executed, we use the syntax:
 
-```
+```python
 ```python
 ```
 
 This is required even if the YAML at the top of the file has `execute: false`.
+
+
+::: {.callout-note collapse="true"}
+
+There are actually two ways for computational code to be ignored. There are merits for each -
+
+```python
+```{.python}
+```
+
+This `{.python}` syntax has the consistency of the `{ }` notation. 
+
+```python
+```python
+```
+
+This `python` syntax is cleaner and follows these rules: 
+
+- Brackets = computation
+- No brackets = static code
+(Thus no dot notation)
+
+We've chosen to go with this second option, where brackets = computation.
+:::
+
 
 ### Importing remote notebooks
 
