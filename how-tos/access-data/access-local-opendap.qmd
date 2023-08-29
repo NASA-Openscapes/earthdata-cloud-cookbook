@@ -1,0 +1,27 @@
+---
+title: How do I access Cloud Data from my Local Machine with OPeNDAP?
+execute:
+    eval: false
+---
+
+## OPeNDAP
+
+OPeNDAP, or the [Open-source Project for a Network Data Access Protocol](https://www.earthdata.nasa.gov/engage/open-data-services-and-software/api/opendap), is a data server that allows for accessing scientific datasets through the public internet. OPeNDAP links can be acquired through dataset landing pages or the [common metadata repository](https://cmr.earthdata.nasa.gov/search/site/collections/directory/eosdis). Once you have the desired link(s), you can open them as follows:
+
+```python
+#Import packages
+import xarray as xr
+
+ds_https = xr.open_dataset(https://opendap.earthdata.nasa.gov/collections/C2532426483-ORNL_CLOUD/granules/Daymet_Daily_V4R1.daymet_v4_daily_hi_tmax_2010.nc)
+
+# For datasets that contain dap4 specific datatypes, such as `int64`, replace `https` with `dap4` at the beginning to open with xarray. For example:
+url = https://opendap.earthdata.nasa.gov/collections/C2036881966-POCLOUD/granules/AQUA_MODIS.20220109_20220116.L3m.8D.SST4.sst4.4km
+dap4_url = url.replace("https://", "dap4://")
+# dap4_url output: dap4://opendap.earthdata.nasa.gov/collections/C2036881966-POCLOUD/granules/AQUA_MODIS.20220109_20220116.L3m.8D.SST4.sst4.4km
+ds_dap4 = xr.open_dataset(dap4_url)
+
+# Note: Some datasets have their variables organized in groups, so within the open_dataset function, you may need to specify 'group=' to access the dataset.
+
+```
+
+For more information, see the [OPeNDAP Data Access Client Tutorials](https://opendap.github.io/documentation/tutorials/DataAccessTutorials.html).

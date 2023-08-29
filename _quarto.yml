@@ -53,16 +53,17 @@ website:
               - text: "with R" 
                 href: how-tos/find-data/find-r.qmd
           - section: "access in the cloud"
-            contents:
+            contents: how-tos/access-data/index.md
               - text: "with Python"
                 href: how-tos/access-data/access-cloud-python.qmd
               - text: "with R"
-                href: how-tos/access-data/access-cloud-r.qmd
-          - section: "access locally" 
-              # - text: "with Python"
-              #   href: how-tos/access-data/access-local-python.ipynb
-              # - text: "with R"
-              #   href: how-tos/access-data/access-local-r.qmd
+                href: how-tos/access-data/access-cloud-r.qmd 
+          - section: "access locally"  
+            contents:
+              - text: "with Python"
+                href: how-tos/access-data/access-local-python.qmd
+              - text: "with OPeNDAP"
+                href: how-tos/access-data/access-local-opendap.qmd
             contents:
               - text: "if I'm in the cloud"
                 href: how-tos/if-im-in-the-cloud.qmd

@@ -1,0 +1,43 @@
+---
+title: How do I access Cloud Data from my Local Machine in Python?
+execute:
+    eval: false
+---
+
+## Downloading data
+
+When you have found the data you want to use, you have two options.  You can download the data to work locally, or access the data directly to work in the cloud. This second way of working is called "_Direct Cloud Access_" or simply, "_Direct Access_". 
+
+This page covers two situations of downloading data from Earthdata Cloud to your local machine:
+
+* Downloading data using the `earthaccess` library
+* Downloading data from an OPeNDAP server
+
+## earthaccess
+
+We can use the [`earthaccess`](https://nsidc.github.io/earthaccess/) python library to grab the file URLs and then access them with the `xarray` library. 
+
+
+```python
+#Import packages
+import earthaccess
+import xarray as xr
+
+#Authentication with Earthdata Login
+auth = earthaccess.login(strategy="netrc")
+
+#Access land ice height from ATLAS/ICESat-2 V005 (10.5067/ATLAS/ATL06.005), searching for data over western Greenland coast over two weeks in July 2022. The data are provided as HDF5 granules (files) that span about 1/14th of an orbit.
+
+results = earthaccess.search_data(short_name="ATL06",
+                                  version="005",
+                                  cloud_hosted=True,
+                                  temporal = ("2022-07-17","2022-07-31"),
+                                  bounding_box = (-51.96423,68.10554,-48.71969,70.70529))
+
+files = earthaccess.download(results, "./local_folder")
+
+#Use xarray to load the data as a multifile dataset for a single group in the HDF5 file, in this case land ice segments:
+ds = xr.open_mfdataset(files, group='/gt1l/land_ice_segments')
+ds
+```
+
