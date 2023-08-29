@@ -341,7 +341,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../how-tos/working-locally/Earthdata_Cloud__Data_Access_OPeNDAP_Example.html" class="sidebar-item-text sidebar-link">
+  <a href="../tutorials/Earthdata_Cloud__Data_Access_OPeNDAP_Example.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">OPeNDAP Access</span></a>
   </div>
 </li>
@@ -560,13 +560,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="earthdata-login" class="level2">
 <h2 class="anchored" data-anchor-id="earthdata-login">Earthdata Login</h2>
 <p>An Earthdata Login account is required to access data, as well as discover restricted data, from the NASA Earthdata system. Thus, to access NASA data, you need Earthdata Login. Please visit <a href="https://urs.earthdata.nasa.gov" class="uri">https://urs.earthdata.nasa.gov</a> to register and manage your Earthdata Login account. This account is free to create and only takes a moment to set up.</p>
-<p>You will need a netrc file containing your NASA Earthdata Login credentials in order to execute the notebooks. A netrc file can be created manually within text editor and saved to your home directory. The following code creates a hidden <code>.netrc</code> file (<code>_netrc</code> for Windows OS) with Earthdata login credentials in your home directory. This file is needed to access NASA Earthdata assets from scripting environments like Python and R.</p>
+<p><strong>We recommend authentication using <code>earthaccess</code> Python package, which you can also call from R</strong>. Please check the <a href="#how-tos/find-data/programmatic.qmd">how do I find data using code</a> on how to utilize the <code>earthaccess</code> package.</p>
+<p>Authentication is also possible without the <code>earthaccess</code> package. You will need a netrc file containing your NASA Earthdata Login credentials in order to execute the notebooks. A netrc file can be created manually within text editor and saved to your home directory. The following code creates a hidden <code>.netrc</code> file (<code>_netrc</code> for Windows OS) with Earthdata login credentials in your home directory. This file is needed to access NASA Earthdata assets from scripting environments like Python and R. Below is code describing this process.</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" aria-current="page">Python</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">R</a></li></ul>
 <div class="tab-content" data-group="language">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
-<p>We recommend authentication with a few lines of code using <code>earthdata</code> Python package. Please check the <a href="#examples/earthdata-access-demo.html">tutorial</a> on how to utilize <code>earthdata</code> package.</p>
-<p>Authentication is also possible without the <code>earthdata</code> package; please review <a href="https://nasa-openscapes.github.io/2021-Cloud-Workshop-AGU/tutorials/02_NASA_Earthdata_Authentication.html">this 2021 Cloud Hackathon tutorial</a> for more details.</p>
+<p>Please see <a href="https://nasa-openscapes.github.io/2021-Cloud-Workshop-AGU/tutorials/02_NASA_Earthdata_Authentication.html">this 2021 Cloud Hackathon tutorial</a> for Python code.</p>
 </div>
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
 <p>For authentication in R, please run the code below:</p>

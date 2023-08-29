@@ -342,7 +342,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../how-tos/working-locally/Earthdata_Cloud__Data_Access_OPeNDAP_Example.html" class="sidebar-item-text sidebar-link">
+  <a href="../tutorials/Earthdata_Cloud__Data_Access_OPeNDAP_Example.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">OPeNDAP Access</span></a>
   </div>
 </li>
@@ -573,6 +573,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#content-for-section-landing-pages" id="toc-content-for-section-landing-pages" class="nav-link" data-scroll-target="#content-for-section-landing-pages">Content for section landing pages</a></li>
   <li><a href="#markdown-formatting-with-quarto" id="toc-markdown-formatting-with-quarto" class="nav-link" data-scroll-target="#markdown-formatting-with-quarto">Markdown formatting with Quarto</a></li>
   <li><a href="#executing-notebooks" id="toc-executing-notebooks" class="nav-link" data-scroll-target="#executing-notebooks">Executing notebooks</a></li>
+  <li><a href="#quarto-nonexecutable-syntax" id="toc-quarto-nonexecutable-syntax" class="nav-link" data-scroll-target="#quarto-nonexecutable-syntax">Quarto (non)executable syntax</a></li>
   <li><a href="#importing-remote-notebooks" id="toc-importing-remote-notebooks" class="nav-link" data-scroll-target="#importing-remote-notebooks">Importing remote notebooks</a></li>
   <li><a href="#create-a-.qmd-from-external-.ipynb" id="toc-create-a-.qmd-from-external-.ipynb" class="nav-link" data-scroll-target="#create-a-.qmd-from-external-.ipynb">Create a .qmd from external .ipynb</a></li>
   </ul></li>
@@ -968,6 +969,37 @@ aliases:
 <p>As you develop files with executable code ( <code>.qmd</code>, <code>.Rmd</code>, and <code>.ipynb</code>), you can decide if you don’t want the notebook to execute. By adding YAML as a raw text cell at the top of an <code>.ipynb</code> file, you can control whether it is executed or not. Adding <code>execute: false</code> to the YAML at the top of the file basically means that Quarto never runs the code, but the user of course still can interactively in Jupyter.</p>
 <p>Using <code>.qmd</code> there are also ways to control execution cell-by-cell via <code># |</code> syntax within a code chunk; see <a href="https://quarto.org/docs/computations/execution-options.html" class="uri">https://quarto.org/docs/computations/execution-options.html</a></p>
 </section>
+<section id="quarto-nonexecutable-syntax" class="level3">
+<h3 class="anchored" data-anchor-id="quarto-nonexecutable-syntax">Quarto (non)executable syntax</h3>
+<p>Code chunks are executed if they are within curly brackets like <code>{python}</code>. If we don’t want code in a <code>.qmd</code> or <code>.Rmd</code> file to be executed, we use the syntax:</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>```python</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This is required even if the YAML at the top of the file has <code>execute: false</code>.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>There are actually two ways for computational code to be ignored. There are merits for each -</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>```{.python}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This <code>{.python}</code> syntax has the consistency of the <code>{ }</code> notation.</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>```python</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This <code>python</code> syntax is cleaner and follows these rules:</p>
+<ul>
+<li>Brackets = computation</li>
+<li>No brackets = static code (Thus no dot notation)</li>
+</ul>
+<p>We’ve chosen to go with this second option, where brackets = computation.</p>
+</div>
+</div>
+</div>
+</section>
 <section id="importing-remote-notebooks" class="level3">
 <h3 class="anchored" data-anchor-id="importing-remote-notebooks">Importing remote notebooks</h3>
 <p>We can include remote notebooks in the Cookbook by explicitly importing them with the following steps. This will create a local copy of them that have additional preamble inserted that includes the original urls and attribution for the notebook.</p>
@@ -984,10 +1016,10 @@ aliases:
 </ol></li>
 </ol>
 <p>After these updates to <code>_import/assets.json</code>, do the following in the terminal:</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> _import</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env update <span class="at">-f</span> environment.yml</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate quarto-import</span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> quarto_import.py <span class="at">-f</span> assets.json</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> _import</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env update <span class="at">-f</span> environment.yml</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate quarto-import</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> quarto_import.py <span class="at">-f</span> assets.json</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This will return a confirmation of the file that has been processed.</p>
 <p>Then update <code>_quarto.yml</code> by adding your file (<code>external/&lt;target</code>) to the appropriate location in the Cookbook.</p>
 </section>
@@ -1001,10 +1033,10 @@ aliases:
 <li>In your local setup (e.g.&nbsp;RStudio IDE): New File &gt; Text File &gt; Paste &gt; Save (with the same name if appropriate) and <code>.ipynb</code> extension, e.g.: <code>discovery/search-by-shapefile.ipynb</code></li>
 <li>In the command line:</li>
 </ol>
-<div class="sourceCode" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> convert help <span class="co"># reminder of commands!</span></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> convert discovery/search-by-shapefile.ipynb <span class="co"># convert to .qmd</span></span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> discovery/search-by-shapefile.ipynb <span class="co"># delete .ipynb</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> convert help <span class="co"># reminder of commands!</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> convert discovery/search-by-shapefile.ipynb <span class="co"># convert to .qmd</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> discovery/search-by-shapefile.ipynb <span class="co"># delete .ipynb</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 <section id="cookbook-editing" class="level2">
@@ -1086,20 +1118,20 @@ aliases:
 <ol type="1">
 <li>Clone/pull the repo, create a branch following our <a href="#github-workflow">GitHub Workflow</a> above</li>
 </ol>
-<div class="sourceCode" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co">## git clone and branch</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/NASA-Openscapes/2021-Cloud-Hackathon/</span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout <span class="at">-b</span> my-new-branch</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co">## git clone and branch</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/NASA-Openscapes/2021-Cloud-Hackathon/</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout <span class="at">-b</span> my-new-branch</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ol start="2" type="1">
 <li>In the terminal, use <code>quarto convert</code> to convert a notebook from <code>.ipynb</code> to <code>.qmd</code>. You’ll have to either <code>cd</code> into the folder or you can convert by specifying the filepath. Typing <code>quarto convert help</code> will describe more options. The following will create <code>tutorials/Data_Discovery__CMR-STAC_API.qmd</code>.</li>
 </ol>
-<div class="sourceCode" id="cb24"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co">## quarto convert</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> convert tutorials/Data_Discovery__CMR-STAC_API.ipynb</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co">## quarto convert</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> convert tutorials/Data_Discovery__CMR-STAC_API.ipynb</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ol start="3" type="1">
 <li><p>Commit this file now so that the whole file is tracked and any changes you make will be viewed as diffs.</p></li>
 <li><p>Now, make edits/review the <code>.qmd</code> in your editor of choice, which will likely also have spell-check and markdown support. At the moment, this is best with making edits to the <code>.qmd</code> locally while ALSO running the <code>.ipynb</code> notebook in 2i2c. This will iterate as we get quarto set up in 2i2c (and as we work more with <code>.qmd</code>s).</p></li>
 <li><p>When you’re done with your review, you’ll want to copy all your edits from the <code>.qmd</code> back to the <code>.ipynb</code>. This way, the notebook author can both easily see the diffs made to the <code>.qmd</code>, and run the <code>.ipynb</code> as they normally would in 2i2c. The following code creates <code>tutorials/Data_Discovery__CMR-STAC_API.ipynb</code>, and over-write the original <code>.ipynb</code> with your changes.</p></li>
 </ol>
-<div class="sourceCode" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> convert tutorials/Data_Discovery__CMR-STAC_API.qmd </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> convert tutorials/Data_Discovery__CMR-STAC_API.qmd </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ol start="6" type="1">
 <li><p>Quarto will consider the <code>.qmd</code> book chapter and try to render it. To avoid this, by hand you can prefix the filename with an underscore: before you push: <code>_Data_Discovery__CMR-STAC_API.qmd</code> (do this by hand for now, we’ll iterate further)</p></li>
 <li><p>Finally, commit and push your review!</p></li>
@@ -1120,10 +1152,10 @@ aliases:
 <section id="leaveexit-a-virtual-environment" class="level3">
 <h3 class="anchored" data-anchor-id="leaveexit-a-virtual-environment">Leave/exit a virtual environment</h3>
 <p>In your Command Line Shell, if you want to leave your virtual environment, the command is:</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="ex">deactivate</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="ex">deactivate</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The way you tell that you are in a virtual environment: it’s named in parentheses at the beginning of your prompt:</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">.venv</span><span class="kw">)</span> <span class="kw">(</span><span class="ex">base</span><span class="kw">)</span> <span class="ex">JLos-Macbook-Pro:earthdata-cloud-cookbook</span> lowndes$ deactivate</span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">base</span><span class="kw">)</span> <span class="ex">JLos-Macbook-Pro:earthdata-cloud-cookbook</span> lowndes$</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">.venv</span><span class="kw">)</span> <span class="kw">(</span><span class="ex">base</span><span class="kw">)</span> <span class="ex">JLos-Macbook-Pro:earthdata-cloud-cookbook</span> lowndes$ deactivate</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">base</span><span class="kw">)</span> <span class="ex">JLos-Macbook-Pro:earthdata-cloud-cookbook</span> lowndes$</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 </section>
