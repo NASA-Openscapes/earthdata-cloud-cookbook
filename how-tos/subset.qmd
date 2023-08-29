@@ -12,14 +12,14 @@ execute:
 
 Install the [harmony-py]("https://github.com/nasa/harmony-py") package:
 
-```{bash}
+```bash
 # Install harmony-py
 pip install -U harmony-py
 ```
 
 Import packages: 
 
-```{python}
+```python
 import datetime as dt
 
 from harmony import BBox, Client, Collection, Request, LinkType
@@ -32,14 +32,14 @@ import xarray as xr
 
 We will authenticate the following Harmony request using a netrc file. See the [appendix](../appendix/authentication.qmd) for more information on [Earthdata Login](https://urs.earthdata.nasa.gov/) and netrc setup. This basic line below to create a Harmony Client assumes that we have a .netrc available.
 
-```{python}
+```python
 harmony_client = Client()
 ```
 ### Create and submit Harmony request
 
 We are interested in the [GHRSST Level 4 MUR Global Foundation Sea Surface Temperature Analysis dataset](https://doi.org/10.5067/GHGMR-4FJ04). We are subsetting over the Pacific Ocean to the west of Mexico during 1:00 - 2:00 on 10 March 2021. The dataset is organized into daily files, so while we are specifying a single hour in our request, this will return that full day's worth of data. 
 
-```{python}
+```python
 dataset_short_name = 'MUR-JPL-L4-GLOB-v4.1'
 
 request = Request(
@@ -59,7 +59,7 @@ harmony_client.wait_for_processing(job_id)
 
 Harmony data outputs can be accessed within the cloud using the s3 URLs and AWS credentials provided in the Harmony job response. Using `aws_credentials` we can retrieve the credentials needed to access the Harmony s3 staging bucket and its contents. We then use the AWS `s3fs` package to create a file system that can then be read by xarray.
 
-```{python}
+```python
 results = harmony_client.result_urls(job_id, link_type=LinkType.s3)
 urls = list(results)
 url = urls[0]
@@ -81,7 +81,7 @@ ds
 
 Use the xarray built in plotting function to create a simple plot along the x and y dimensions of the dataset:
 
-```{python}
+```python
 ds.analysed_sst.plot() ;
 ```
 
@@ -89,7 +89,7 @@ ds.analysed_sst.plot() ;
 
 R code coming soon!
 
-```{bash}
+```bash
 # Coming soon!
 ```
 
@@ -97,7 +97,7 @@ R code coming soon!
 
 Matlab code coming soon!
 
-```{bash}
+```bash
 #| echo: true
 # Coming soon!
 ```
@@ -106,7 +106,7 @@ Matlab code coming soon!
 
 With `wget` and `curl`:
 
-```{bash}
+```bash
 # Coming soon!
 ```
 

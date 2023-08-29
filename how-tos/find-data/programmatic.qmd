@@ -15,7 +15,7 @@ In Python we can use the [`earthaccess`](https://nsidc.github.io/earthaccess/) l
 
 To install the package we'll run this code from the command line. Note: you can run shell code directly from a Jupyter Notebook cell by adding a `!`, so it would be `!conda install`.
 
-```{.bash}
+```bash
 ## In the command line
 ## Install earthaccess
 conda install -c conda-forge earthaccess
@@ -23,7 +23,7 @@ conda install -c conda-forge earthaccess
 
 This example searches for data from the [Land Processes DAAC](https://lpdaac.usgs.gov/) with a spatial bounding box and temporal range.
 
-```{.python}
+```python
 ## In Python
 ## Import packages
 from earthaccess import DataGranules, DataCollections
@@ -47,7 +47,7 @@ granules
 
 To find data in R, we'll also use the `earthaccess` python package - we can do so from R using the [`reticulate`](https://rstudio.github.io/reticulate/) package ([cheatsheet](https://www.rstudio.com/resources/cheatsheets/)). Note below that we import the python library as an R object we name `earthaccess`, as well as the `earthaccess$` syntax for accessing functions from the `earthaccess` library. The `granules` object has a list of JSON dictionaries with some extra dictionaries.
 
-```{.r}
+```r
 ## In R
 ## load R libraries
 library(tidyverse) # install.packages("tidyverse") 
@@ -76,7 +76,7 @@ class(granules) # "list"
 
 Matlab code coming soon!
 
-```{.bash}
+```bash
 ## In Matlab
 ## Coming soon!
 ```
@@ -85,7 +85,7 @@ Matlab code coming soon!
 
 With `wget` and `curl`:
 
-```{.bash}
+```bash
 ## In the command line
 ## Coming soon!
 ```

@@ -15,13 +15,13 @@ execute:
 We recommend using `xarray`'s [open_dataset](https://docs.xarray.dev/en/stable/generated/xarray.open_dataset.html)
 
 ### For a single file
-```{python}
+```python
 import xarray as xr
 ds = xr.open_dataset(filename)
 ```
 
 ### For multiple files
-```{python}
+```python
 import xarray as xr
 ds = xr.open_mfdataset(list_of_filenames)
 ```
@@ -31,7 +31,7 @@ ds = xr.open_mfdataset(list_of_filenames)
 
 R code coming soon!
 
-```{r}
+```r
 # Coming soon!
 ```
 
@@ -39,7 +39,7 @@ R code coming soon!
 
 Matlab code coming soon!
 
-```{bash}
+```bash
 #| echo: true
 # Coming soon!
 ```
@@ -57,12 +57,12 @@ Matlab code coming soon!
 
 For HDF5 files, there are two methods we can use: `xarray`'s [open_dataset](https://docs.xarray.dev/en/stable/generated/xarray.open_dataset.html) and [`h5py`](https://docs.h5py.org/en/stable/quick.html)
 
-```{python}
+```python
 import xarray as xr
 ds = xr.open_dataset(filename,
                      group=path_to_H5netCDF_group)
 ```
-```{python}
+```python
 # add in directions for h5py
 
 ```
@@ -72,7 +72,7 @@ ds = xr.open_dataset(filename,
 
 R code coming soon!
 
-```{r}
+```r
 # Coming soon!
 ```
 
@@ -80,7 +80,7 @@ R code coming soon!
 
 Matlab code coming soon!
 
-```{bash}
+```bash
 #| echo: true
 # Coming soon!
 ```
@@ -97,7 +97,7 @@ Matlab code coming soon!
 ## Python
 For GeoTIFF files, we recommend using `rioxarray`'s [`open_rasterio`](https://corteva.github.io/rioxarray/html/rioxarray.html#rioxarray.open_rasterio)
 
-```{python}
+```python
 import rioxarray
 xds = rioxarray.open_rasterio("my.tif")
 ```
@@ -107,7 +107,7 @@ xds = rioxarray.open_rasterio("my.tif")
 
 R code coming soon!
 
-```{r}
+```r
 # Coming soon!
 ```
 
@@ -115,7 +115,7 @@ R code coming soon!
 
 Matlab code coming soon!
 
-```{bash}
+```bash
 #| echo: true
 # Coming soon!
 ```
@@ -133,7 +133,7 @@ Matlab code coming soon!
 ## Python
 To open shapefiles or GeoJSON, we recommend using `geopandas`'s [`read_file`](https://geopandas.org/en/stable/docs/reference/api/geopandas.read_file.html#geopandas.read_file).
 
-```{python}
+```python
 import geopandas as gpd
 gdf = gpd.read_file(filename)
 ```
@@ -143,7 +143,7 @@ gdf = gpd.read_file(filename)
 
 R code coming soon!
 
-```{r}
+```r
 # Coming soon!
 ```
 
@@ -151,7 +151,7 @@ R code coming soon!
 
 Matlab code coming soon!
 
-```{bash}
+```bash
 #| echo: true
 # Coming soon!
 ```
@@ -168,7 +168,7 @@ Matlab code coming soon!
 ## Python
 To open CSV files, we recommend using `pandas`'s [`read_csv`](https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html).
 
-```{python}
+```python
 import pandas as pd
 df = pd.read_csv(filename)
 ```
@@ -178,7 +178,7 @@ df = pd.read_csv(filename)
 
 R code coming soon!
 
-```{r}
+```r
 # Coming soon!
 ```
 
@@ -186,7 +186,7 @@ R code coming soon!
 
 Matlab code coming soon!
 
-```{bash}
+```bash
 #| echo: true
 # Coming soon!
 ```
@@ -204,7 +204,7 @@ Matlab code coming soon!
 ## Python
 
 To open Excel files, we recommend using `pandas`'s [`read_excel`](https://pandas.pydata.org/docs/reference/api/pandas.read_excel.html)
-```{python}
+```python
 import pandas as pd
 df = pd.read_excel(filename)
 ```
@@ -214,7 +214,7 @@ df = pd.read_excel(filename)
 
 R code coming soon!
 
-```{r}
+```r
 # Coming soon!
 ```
 
@@ -222,7 +222,7 @@ R code coming soon!
 
 Matlab code coming soon!
 
-```{bash}
+```bash
 #| echo: true
 # Coming soon!
 ```
@@ -239,7 +239,7 @@ Matlab code coming soon!
 ## Python
 
 
-```{python}
+```python
 #coming soon! scipy & .mat
 ```
 
@@ -248,7 +248,7 @@ Matlab code coming soon!
 
 R code coming soon!
 
-```{r}
+```r
 # Coming soon!
 ```
 
@@ -256,7 +256,7 @@ R code coming soon!
 
 Matlab code coming soon!
 
-```{bash}
+```bash
 #| echo: true
 # Coming soon!
 ```
@@ -273,7 +273,7 @@ Matlab code coming soon!
 ## Python
 To open binary files, we recommend using `numpy`'s [`from_file`](https://numpy.org/doc/stable/reference/generated/numpy.fromfile.html). You will need to know the dimensions and data type of the binary file and if there is an offset or header information in the binary file.
 
-```{python}
+```python
 import numpy as np
 arr = np.from_file(filepath, dtype=data_type).reshape(nrows, ncols)
 ```
@@ -283,7 +283,7 @@ arr = np.from_file(filepath, dtype=data_type).reshape(nrows, ncols)
 
 R code coming soon!
 
-```{r}
+```r
 # Coming soon!
 ```
 
@@ -291,7 +291,7 @@ R code coming soon!
 
 Matlab code coming soon!
 
-```{bash}
+```bash
 #| echo: true
 # Coming soon!
 ```

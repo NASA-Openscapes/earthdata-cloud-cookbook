@@ -8,7 +8,7 @@ title: Troubleshooting
 
 **Not a git repository** - in your terminal if you see the following, you likely need to `cd` change directory into your GitHub folder.
 
-```{.bash}
+```bash
 fatal: not a git repository (or any parent up to mount point /home)
 Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
 ```
@@ -36,7 +36,7 @@ If you've got changes saved, but not yet staged, committed, or pushed, you'll de
 
 You'll need to make sure you're in the github repository (use `pwd` to check your present working directory and `cd` to change directory)
 
-```{.bash}
+```bash
 git clean -df
 git checkout -- .
 ```
@@ -48,7 +48,7 @@ You'll delete the whole repo that you have locally, and then reclone.
 
 You'll need to make sure you're in the github repository (use `pwd` to check your present working directory and `cd` to change directory)
 
-```{.bash}
+```bash
 rm -rf YOUR-REPO
 ```
 
@@ -60,7 +60,7 @@ If while you're working you would like to update your local
 `your-branch` with the most recent updates on the `main` branch on
 GitHub.com, there are several ways to do this. Here's one.
 
-```{.bash}
+```bash
 git checkout your-branch
 git fetch
 git merge origin/main
