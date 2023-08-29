@@ -1,5 +1,5 @@
 ---
-title: How do I access data stored in Earthdata Cloud?
+title: How do I access data stored in Earthdata Cloud in Python?
 execute:
   eval: false
 aliases:
@@ -11,7 +11,6 @@ aliases:
 
 When you have found the data you want to use, you have two options.  You can download the data to work locally, or access the data directly to work in the cloud. This second way of working is called "_Direct Cloud Access_" or simply, "_Direct Access_". Your compute instance needs to be in Amazon Web Services (AWS) Region `us-west-2` in order for the code to run successfully. We authenticate using a netrc file and an Earthdata Login, see the [appendix](../appendix/authentication.qmd) for more information on [Earthdata Login](https://urs.earthdata.nasa.gov/) and netrc setup.
 
-::: {.panel-tabset group="language"}
 
 ## Python
 
@@ -38,35 +37,6 @@ results = earthaccess.search_data(short_name="ATL06",
 ds = xr.open_mfdataset(earthaccess.open(results), group='/gt1l/land_ice_segments')
 ds
 ```
-
-
-## R
-
-R code coming soon!
-
-```bash
-# Coming soon!
-```
-
-## Matlab
-
-Matlab code coming soon!
-
-```bash
-#| echo: true
-# Coming soon!
-```
-
-## Command Line
-
-With `wget` and `curl`:
-
-```bash
-# Coming soon!
-```
-
-
-:::
 
 ## End User License Agreement (EULA)
 

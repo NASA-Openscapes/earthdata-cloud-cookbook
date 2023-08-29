@@ -46,16 +46,23 @@ website:
         contents: 
           - section: "find data"
             contents:
-              - text: "using Earthdata Search"
+              - text: "with Earthdata Search"
                 href: how-tos/find-data/earthdata_search.md
-              - text: "using Python" 
+              - text: "with Python" 
                 href: how-tos/find-data/find-python.ipynb
-              - text: "using R" 
+              - text: "with R" 
                 href: how-tos/find-data/find-r.qmd
           - section: "access in the cloud"
-            href: how-tos/access_data.qmd 
-          - section: "access from local machine"
-            href: how-tos/access_data.qmd             
+            contents:
+              - text: "with Python"
+                href: how-tos/access-data/access-cloud-python.qmd
+              - text: "with R"
+                href: how-tos/access-data/access-cloud-r.qmd
+          - section: "access locally" 
+              # - text: "with Python"
+              #   href: how-tos/access-data/access-local-python.ipynb
+              # - text: "with R"
+              #   href: how-tos/access-data/access-local-r.qmd
             contents:
               - text: "if I'm in the cloud"
                 href: how-tos/if-im-in-the-cloud.qmd
