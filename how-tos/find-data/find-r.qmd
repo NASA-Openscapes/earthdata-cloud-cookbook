@@ -1,0 +1,34 @@
+---
+title: "How do I find data using R?"
+execute:
+  eval: false
+---
+
+Here are our recommended approaches for finding data with R, from the command line or a notebook.
+
+To find data in R, we'll also use the `earthaccess` python package - we can do so from R using the [`reticulate`](https://rstudio.github.io/reticulate/) package ([cheatsheet](https://www.rstudio.com/resources/cheatsheets/)). Note below that we import the python library as an R object we name `earthaccess`, as well as the `earthaccess$` syntax for accessing functions from the `earthaccess` library. The `granules` object has a list of JSON dictionaries with some extra dictionaries.
+
+```r
+## In R
+## load R libraries
+library(tidyverse) # install.packages("tidyverse") 
+library(reticulate) # install.packages("reticulate")
+
+## load python library
+earthaccess <- reticulate::import("earthaccess") 
+
+## use earthaccess to access data # https://nsidc.github.io/earthaccess/tutorials/search-granules/
+granules <- earthaccess$search_data(
+  doi = "10.5067/SLREF-CDRV3",
+  temporal = reticulate::tuple("2017-01", "2017-02") # with an earthaccess update, this can be simply c() or list()
+)
+
+## Granules found: 72
+
+## exploring
+granules # this is the result of the get request. 
+
+class(granules) # "list"
+## granules <- reticulate::py_to_r(granules) # Object to convert is not a Python object
+
+```
