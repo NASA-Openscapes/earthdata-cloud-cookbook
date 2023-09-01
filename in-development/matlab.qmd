@@ -1,11 +1,201 @@
 ---
-title: "NASA EarthData and the AWS Cloud for MATLAB Users"
+title: "MATLAB Access Single NASA EarthData L2 NetCDF"
 editor: visual
 ---
 
-This chapter is for research teams currently working in MATLAB with NASA EarthData and wanting to take advantage of doing analysis in the Cloud. Our initial focus is on Amazon Web Services (AWS). For general, background on the Cloud and NASA Earthdata's migration to the Cloud, checkout earlier chapters of the cookbook \[TO DO: Add a link and specific reference\].
+This tutorial was written by Erin Robinson, Luis Lopez (NASA Openscapes) and Cedric Wannaz, Lisa Kempler (Mathworks).
+
+## Launch MATLAB in 2i2c JupyerHub
+
+You're able to use MATLAB in the 2i2c JupyterHub; you are able to bring your own license. If you'd like to access MATLAB from the Amazon Web Services Console, see details at the bottom of this page. 
+
+![Select MATLAB from the Server Options and press Start](images/matlab-server.png){fig-alt="screenshot of the JupyterHub launch page that has Python, R, and MATLAB as selections, and MATLAB is selected." fig-align="center" width="60%"}
+
+![Launch MATLAB from the JupyterHub interface by double-clicking](images/matlab-launch.png){fig-alt="screenshot of JupyterHub interface launch page, with MATLAB kernel options" fig-align="center" width="60%"}
+
+![Enter your MATLAB login information](images/matlab-login.png){fig-alt="screenshot of MATLAB login page prompting your email address" fig-align="center" width="60%"}
+
+## Credentials
+
+Direct S3 access is achieved by passing NASA supplied temporary credentials to AWS so we can interact with S3 objects from applicable EarthData Cloud buckets. For now, each NASA DAAC has different AWS credentials endpoints. Below are some of the credential endpoints to various DAACs:
+
+-   PODAAC: <https://archive.podaac.earthdata.nasa.gov/s3credentials>
+
+-   GESDISC: <https://data.gesdisc.earthdata.nasa.gov/s3credentials>
+
+-   LPDAAC: <https://data.lpdaac.earthdatacloud.nasa.gov/s3credentials>
+
+-   ORNLDAAC: <https://data.ornldaac.earthdata.nasa.gov/s3credentials>
+
+-   GHRCDAAC: <https://data.ghrc.earthdata.nasa.gov/s3credentials>
+
+You will need your EarthData login to access these links. Create an account here: <https://urs.earthdata.nasa.gov/users/new>.
 
 ## Prerequisites
+
+1. Save the following function in a text file called `loadAWSCredentials.txt` to your MATLAB working folder or to any folder that is on [MATLAB search path](https://www.mathworks.com/help/matlab/search-path.html).
+
+```bash
+function s3Credentials = loadAWSCredentials(daacCredentialsEndpoint, login, password)
+    if nargin < 2 || isempty(login)
+        login = getenv('EARTHDATA_LOGIN') ;
+    end
+    if nargin < 3 || isempty(password)
+        password = getenv('EARTHDATA_PASSWORD') ;
+    end
+
+    % Get S3 credentials from EarthData
+    opts = weboptions('ContentType', 'json', 'HeaderFields', ...
+        {'Authorization', ['Basic ',matlab.net.base64encode([login,':',password])]});
+    s3Credentials = webread(daacCredentialsEndpoint, opts) ;
+
+    % Set relevant environment variables with AWS credentials/region
+    setenv('AWS_ACCESS_KEY_ID', s3Credentials.accessKeyId) ;
+    setenv('AWS_SECRET_ACCESS_KEY', s3Credentials.secretAccessKey) ;
+    setenv('AWS_SESSION_TOKEN',  s3Credentials.sessionToken) ;
+    setenv('AWS_DEFAULT_REGION', 'us-west-2') ;
+end
+```
+
+2. Define environment variables that specify your EarthData credentials by executing the following (updated with your credentials):
+
+```bash
+setenv("EARTHDATA_LOGIN","your_earthdata_login");
+setenv("EARTHDATA_PASSWORD","your_earthdata_password");
+```
+
+This can be done manually in the command window, in your [MATLAB startup script](https://www.mathworks.com/help/matlab/ref/startup.html), or in any MATLAB function/script that is executed before calling loadAWSCredentials. We recommend not to do it from your project main script, so you can share it without divulging your credentials.
+
+3. Search NASA EarthData and find the S3 link you want to access.
+
+
+## Accessing data
+
+MATLAB HDF5 interfaces can access netCDF4 files stored in S3/Azure, while the netCDF interfaces cannot. The example below shows how to access a netCDF file using the HDF5 interfaces. SEe also this video: [MATLAB and HDF5: Compression, Cloud, and Community – Ellen Johnson, MathWorks](https://www.youtube.com/watch?v=JrIp-LFpPAI).
+
+MATLAB provides [two interfaces for accessing HDF5 datasets](https://www.mathworks.com/help/matlab/hdf5-files.html): 
+
+- **High-level access functions** make it easy to read and view data in an HDF5 file or write a variable from the MATLAB® workspace into an HDF5 file
+- **Low-level functions** in the HDF5 library packages provide direct access to the more than 300 functions in the HDF5 C library from the HDF Group. 
+
+The latter allows you to access advanced HDF5 functionality and bypasses I/O overhead in the high-level	interface, but has a substantially higher learning curve unless already familiar with the HDF5 C API.
+
+### Example
+
+1. Find the relevant DAAC/endpoint for the dataset that you want to access. For the following dataset:
+
+```bash
+s3://podaac-ops-cumulus-protected/MODIS_A-JPL-L2P-v2019.0/20100619062008-JPL-L2P_GHRSST-SSTskin-MODIS_A-N-v02.0-fv01.0.nc
+```
+
+The relevant DAAC is PODAAC and the relevant endpoint is: 
+
+```bash
+https://archive.podaac.earthdata.nasa.gov/s3credentials
+```
+
+2. Set AWS credentials using the `loadAWSCredentials` function, passing the relevant endpoint:
+
+```bash
+daacCredentialsEndpoint = "https://archive.podaac.earthdata.nasa.gov/s3credentials";
+loadAWSCredentials(daacCredentialsEndpoint);
+```
+
+These credentials are temporary; they expire every 30 minutes or so and must be refreshed periodically.
+
+3. Access data
+Define path of relevant file and dataset:
+
+```bash
+FILE_NAME = "s3://podaac-ops-cumulus-protected/MODIS_A-JPL-L2P-v2019.0/20100619062008-JPL-L2P_GHRSST-SSTskin-MODIS_A-N-v02.0-fv01.0.nc";
+DATASET_NAME = "sea_surface_temperature_4um";
+DATASET_PATH = "/" + DATASET_NAME ;
+```
+
+First, check that you can access the dataset:
+
+```bash
+h5disp(FILE_PATH);
+```
+
+If credentials and paths are correct, h5disp will display the structure of the data file.
+
+## Using MATLAB high-level HDF5 interface
+
+```bash
+units = h5readatt(FILE_NAME,DATASET_PATH,"units");
+fill_value = h5readatt(FILE_NAME,DATASET_PATH,"_FillValue");
+name = h5readatt(FILE_NAME,DATASET_PATH,"long_name");
+data = h5read(FILE_NAME,DATASET_PATH);
+data(data == fill_value) = NaN;
+lat = h5read(FILE_NAME,"/lat");
+lon = h5read(FILE_NAME,"/lon");
+```
+
+Build a map using [contour](https://www.mathworks.com/help/matlab/ref/contour.html):
+
+```bash
+contour(lon,lat,data);
+title(sprintf("%s [%s]",name,units));
+```
+
+![MATLAB example map](images/matlab-map.png){fig-alt="a square map with latitude and longitude and titled sea surface temperature in kelvin." fig-align="center" width="338"}
+## Using MATLAB low-level HDF5 interface
+
+```bash
+% Open file and root group
+file_id = H5F.open(FILE_NAME,"H5F_ACC_RDONLY","H5P_DEFAULT");
+root_id = H5G.open(file_id,"/") ;
+
+% Open/read sea surface temperature (SST) dataset
+data_id = H5D.open(file_id,DATASET_PATH);
+data=H5D.read(data_id,"H5T_NATIVE_DOUBLE","H5S_ALL","H5S_ALL","H5P_DEFAULT");
+
+% Open/read/close SST units attribute
+attr_id = H5A.open_by_name(root_id,DATASET_NAME,"units");
+units = H5A.read(attr_id,"H5ML_DEFAULT");
+H5A.close(attr_id);
+
+% Open/read/close SST long_name attribute
+attr_id = H5A.open_by_name(root_id,DATASET_NAME,"long_name");
+long_name = H5A.read(attr_id,"H5ML_DEFAULT");
+H5A.close(attr_id);
+
+% Open/read/close SST _FillValue attribute
+attr_id = H5A.open_by_name(root_id,DATASET_NAME,"_FillValue");
+fillvalue = H5A.read(attr_id,"H5T_NATIVE_DOUBLE");
+H5A.close(attr_id);
+
+% Close SST dataset and root group
+H5D.close(data_id);
+H5G.close(root_id);
+
+% Open/read/close latitude dataset
+lat_id = H5D.open(file_id,"lat");
+lat = H5D.read(lat_id,"H5T_NATIVE_DOUBLE","H5S_ALL","H5S_ALL","H5P_DEFAULT");
+H5D.close(lat_id);
+
+% Open/read/close longitude dataset
+lon_id = H5D.open(file_id,"lon");
+lon = H5D.read(lon_id,"H5T_NATIVE_DOUBLE","H5S_ALL","H5S_ALL","H5P_DEFAULT");
+H5D.close(lon_id);
+
+% Close file
+H5F.close(file_id);
+
+% Replace fill value with NaN
+data(data==fillvalue) = NaN;
+
+% Plot contour map
+contour(lon,lat,data);
+title(sprintf("%s [%s]",long_name{1},units{1}));
+```
+
+## Launch with AWS Console
+
+An alternative is to launch with the AWS Console. This chapter is for research teams currently working in MATLAB with NASA EarthData and wanting to take advantage of doing analysis in the Cloud. Our initial focus is on Amazon Web Services (AWS). For general, background on the Cloud and NASA Earthdata's migration to the Cloud, checkout earlier chapters of the cookbook \[TO DO: Add a link and specific reference\].
+
+### Prerequisites
 
 1.  MATLAB License - You must have access to a MATLAB license that allows for access to the cloud. To check your license, in the MATLAB command line enter:
 
@@ -23,7 +213,7 @@ This chapter is for research teams currently working in MATLAB with NASA EarthDa
 
 6.  Microsoft Remote Desktop - When we spin up the AWS virtual machine with MATLAB, we will need to have a remote desktop option. These how-to's were done on a mac and we tested the free Microsoft Remote Desktop. [Download for macs](https://apps.apple.com/us/app/microsoft-remote-desktop/id1295203466?mt=12)
 
-## Prerequisite: AWS EC2 Key Pair
+### Prerequisite: AWS EC2 Key Pair
 
 This isn't included in the numbered prereq list above because it is a bit more involved than creating an account or knowing what region we work in. You need to create an SSH Key Pair in the region you want to work in. This is a one-time step that you won't need to do each time you launch the stack.
 
@@ -41,7 +231,7 @@ This isn't included in the numbered prereq list above because it is a bit more i
 
 **Ok - now we are ready to start!**
 
-## Creating the AWS Stack with MATLAB
+### Creating the AWS Stack with MATLAB
 
 *Note: The first time I launched the AWS Stack it seemed to take for-ever. I thought "how could I possibly need to do this every time I want to use MATLAB in the cloud?" It does speed up, eventually it get's a bit faster. I also have learned to plan a bit better - if I know I want to do some work, I get the launched, have coffee, and when I come back it's ready to roll.*
 
@@ -83,7 +273,7 @@ This isn't included in the numbered prereq list above because it is a bit more i
 4.  You can check the status by clicking the refresh button on the right corner\
     ![](images/Screen%20Shot%202022-05-30%20at%2011.52.53%20AM.png)
 
-## Launch the AWS Stack with Microsoft Remote Desktop
+### Launch the AWS Stack with Microsoft Remote Desktop
 
 1.  Once the stack is created it will say 'Create_complete' on the left side.\
     ![](images/Screen%20Shot%202022-05-30%20at%2011.58.22%20AM.png)
@@ -111,7 +301,7 @@ This isn't included in the numbered prereq list above because it is a bit more i
 
 4.  Wait ... \[\~2 mins\]
 
-## Open MATLAB on Remote Desktop
+### Open MATLAB on Remote Desktop
 
 1.  Click the MATLAB icon on the remote desktop\
     ![](images/Screen%20Shot%202022-05-30%20at%2012.07.18%20PM.png)
@@ -119,23 +309,9 @@ This isn't included in the numbered prereq list above because it is a bit more i
 3.  Login with your MATLAB credentials
 4.  You are in!
 
-## Access Single NASA EarthData L2 Netcdf (EXPERIMENTAL)
 
-The general approach to access NASA Earthdata follows the Python tutorials. Direct S3 access is achieved by passing NASA supplied temporary credentials to AWS so we can interact with S3 objects from applicable Earthdata Cloud buckets. For now, each NASA DAAC has different AWS credentials endpoints. Below are some of the credential endpoints to various DAACs:
-
--   podaac: <https://archive.podaac.earthdata.nasa.gov/s3credentials>
-
--   gesdisc: <https://data.gesdisc.earthdata.nasa.gov/s3credentials>
-
--   lpdaac: <https://data.lpdaac.earthdatacloud.nasa.gov/s3credentials>
-
--   ornldaac: <https://data.ornldaac.earthdata.nasa.gov/s3credentials>
-
--   ghrcdaac: <https://data.ghrc.earthdata.nasa.gov/s3credentials>
-
-You will need your EarthData login to access these links.
-
-1.  Search NASA Earthdata and find the S3 link you want to access \[LINK TO TUTORIAL\]
+## 
+1.  Search NASA Earthdata and find the S3 link you want to access 
 
 2.  Set AWS Environment Variables - Go to the link above for the Access key, secret access key and token.
 
@@ -232,7 +408,7 @@ You will need your EarthData login to access these links.
 
     ![](images/Screen%20Shot%202022-05-30%20at%207.00.01%20PM.png)
 
-## Shutdown your AWS Stack
+### Shutdown your AWS Stack
 
 After each session you need to turn off the AWS Stack. If you forget this step and leave it running it is like keeping a computer on for the month. For the large instance it costs \$0.5/day so it's a few dollars a month.
 
@@ -250,8 +426,4 @@ After each session you need to turn off the AWS Stack. If you forget this step a
 
     ![](images/Screen%20Shot%202022-05-30%20at%203.06.40%20PM.png)
 
-**To do:**
 
--   Add GitHub & MATLAB project instructions
-
--   Alternative experiments to this stack - Octave in the 2i2c Jupyter hub or MATLAB in the 2i2c Jupyter hub.
