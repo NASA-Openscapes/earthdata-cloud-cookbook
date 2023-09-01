@@ -110,7 +110,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../in-development/index.html">In Development</a></li><li class="breadcrumb-item"><a href="../in-development/matlab.html">MATLAB &amp; AWS</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../in-development/index.html">In Development</a></li><li class="breadcrumb-item"><a href="../in-development/matlab.html">MATLAB Access NetCDF</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -448,7 +448,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../in-development/matlab.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">MATLAB &amp; AWS</span></a>
+ <span class="menu-text">MATLAB Access NetCDF</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -533,14 +533,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#launch-matlab-in-2i2c-jupyerhub" id="toc-launch-matlab-in-2i2c-jupyerhub" class="nav-link active" data-scroll-target="#launch-matlab-in-2i2c-jupyerhub">Launch MATLAB in 2i2c JupyerHub</a></li>
+  <li><a href="#launch-matlab-in-2i2c-jupyterhub" id="toc-launch-matlab-in-2i2c-jupyterhub" class="nav-link active" data-scroll-target="#launch-matlab-in-2i2c-jupyterhub">Launch MATLAB in 2i2c JupyterHub</a></li>
   <li><a href="#credentials" id="toc-credentials" class="nav-link" data-scroll-target="#credentials">Credentials</a></li>
   <li><a href="#prerequisites" id="toc-prerequisites" class="nav-link" data-scroll-target="#prerequisites">Prerequisites</a></li>
   <li><a href="#accessing-data" id="toc-accessing-data" class="nav-link" data-scroll-target="#accessing-data">Accessing data</a>
   <ul class="collapse">
   <li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example">Example</a></li>
-  </ul></li>
   <li><a href="#using-matlab-high-level-hdf5-interface" id="toc-using-matlab-high-level-hdf5-interface" class="nav-link" data-scroll-target="#using-matlab-high-level-hdf5-interface">Using MATLAB high-level HDF5 interface</a></li>
+  <li><a href="#using-matlab-low-level-hdf5-interface" id="toc-using-matlab-low-level-hdf5-interface" class="nav-link" data-scroll-target="#using-matlab-low-level-hdf5-interface">Using MATLAB low-level HDF5 interface</a></li>
+  </ul></li>
   <li><a href="#launch-with-aws-console" id="toc-launch-with-aws-console" class="nav-link" data-scroll-target="#launch-with-aws-console">Launch with AWS Console</a>
   <ul class="collapse">
   <li><a href="#prerequisites-1" id="toc-prerequisites-1" class="nav-link" data-scroll-target="#prerequisites-1">Prerequisites</a></li>
@@ -577,8 +578,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 <p>This tutorial was written by Erin Robinson, Luis Lopez (NASA Openscapes) and Cedric Wannaz, Lisa Kempler (Mathworks).</p>
-<section id="launch-matlab-in-2i2c-jupyerhub" class="level2">
-<h2 class="anchored" data-anchor-id="launch-matlab-in-2i2c-jupyerhub">Launch MATLAB in 2i2c JupyerHub</h2>
+<section id="launch-matlab-in-2i2c-jupyterhub" class="level2">
+<h2 class="anchored" data-anchor-id="launch-matlab-in-2i2c-jupyterhub">Launch MATLAB in 2i2c JupyterHub</h2>
 <p>You’re able to use MATLAB in the 2i2c JupyterHub; you are able to bring your own license. If you’d like to access MATLAB from the Amazon Web Services Console, see details at the bottom of this page.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -653,7 +654,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>High-level access functions</strong> make it easy to read and view data in an HDF5 file or write a variable from the MATLAB® workspace into an HDF5 file</li>
 <li><strong>Low-level functions</strong> in the HDF5 library packages provide direct access to the more than 300 functions in the HDF5 C library from the HDF Group.</li>
 </ul>
-<p>The latter allows you to access advanced HDF5 functionality and bypasses I/O overhead in the high-level interface, but has a substantially higher learning curve unless already familiar with the HDF5 C API.</p>
+<p>Low-level functions allow you to access advanced HDF5 functionality and bypasses I/O overhead in the high-level interface, but has a substantially higher learning curve unless already familiar with the HDF5 C API.</p>
 <section id="example" class="level3">
 <h3 class="anchored" data-anchor-id="example">Example</h3>
 <ol type="1">
@@ -678,9 +679,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">h5disp</span><span class="er">(</span><span class="ex">FILE_PATH</span><span class="kw">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>If credentials and paths are correct, h5disp will display the structure of the data file.</p>
 </section>
-</section>
-<section id="using-matlab-high-level-hdf5-interface" class="level2">
-<h2 class="anchored" data-anchor-id="using-matlab-high-level-hdf5-interface">Using MATLAB high-level HDF5 interface</h2>
+<section id="using-matlab-high-level-hdf5-interface" class="level3">
+<h3 class="anchored" data-anchor-id="using-matlab-high-level-hdf5-interface">Using MATLAB high-level HDF5 interface</h3>
 <div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">units</span> = h5readatt<span class="er">(</span><span class="ex">FILE_NAME,DATASET_PATH,</span><span class="st">"units"</span><span class="kw">);</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">fill_value</span> = h5readatt<span class="er">(</span><span class="ex">FILE_NAME,DATASET_PATH,</span><span class="st">"_FillValue"</span><span class="kw">);</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="ex">name</span> = h5readatt<span class="er">(</span><span class="ex">FILE_NAME,DATASET_PATH,</span><span class="st">"long_name"</span><span class="kw">);</span></span>
@@ -691,7 +691,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Build a map using <a href="https://www.mathworks.com/help/matlab/ref/contour.html">contour</a>:</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">contour</span><span class="er">(</span><span class="ex">lon,lat,data</span><span class="kw">);</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">title</span><span class="er">(</span><span class="ex">sprintf</span><span class="er">(</span><span class="st">"%s [%s]"</span><span class="ex">,name,units</span><span class="kw">));</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><img src="images/matlab-map.png" class="img-fluid" data-fig-align="center" alt="a square map with latitude and longitude and titled sea surface temperature in kelvin." width="338"> ## Using MATLAB low-level HDF5 interface</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/matlab-map.png" class="img-fluid figure-img" alt="a square map with latitude and longitude and titled sea surface temperature in kelvin." width="338"></p>
+<figcaption class="figure-caption">MATLAB example map</figcaption>
+</figure>
+</div>
+</section>
+<section id="using-matlab-low-level-hdf5-interface" class="level3">
+<h3 class="anchored" data-anchor-id="using-matlab-low-level-hdf5-interface">Using MATLAB low-level HDF5 interface</h3>
 <div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> Open file and root group</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="ex">file_id</span> = H5F.open<span class="er">(</span><span class="ex">FILE_NAME,</span><span class="st">"H5F_ACC_RDONLY"</span><span class="ex">,</span><span class="st">"H5P_DEFAULT"</span><span class="kw">);</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="ex">root_id</span> = H5G.open<span class="er">(</span><span class="ex">file_id,</span><span class="st">"/"</span><span class="kw">)</span> <span class="kw">;</span></span>
@@ -738,6 +746,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb10-44"><a href="#cb10-44" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> Plot contour map</span>
 <span id="cb10-45"><a href="#cb10-45" aria-hidden="true" tabindex="-1"></a><span class="ex">contour</span><span class="er">(</span><span class="ex">lon,lat,data</span><span class="kw">);</span></span>
 <span id="cb10-46"><a href="#cb10-46" aria-hidden="true" tabindex="-1"></a><span class="ex">title</span><span class="er">(</span><span class="ex">sprintf</span><span class="er">(</span><span class="st">"%s [%s]"</span><span class="ex">,long_name{1},units{1}</span><span class="kw">));</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
 </section>
 <section id="launch-with-aws-console" class="level2">
 <h2 class="anchored" data-anchor-id="launch-with-aws-console">Launch with AWS Console</h2>
