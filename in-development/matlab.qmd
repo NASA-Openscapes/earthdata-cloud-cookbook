@@ -5,7 +5,7 @@ editor: visual
 
 This tutorial was written by Erin Robinson, Luis Lopez (NASA Openscapes) and Cedric Wannaz, Lisa Kempler (Mathworks).
 
-## Launch MATLAB in 2i2c JupyerHub
+## Launch MATLAB in 2i2c JupyterHub
 
 You're able to use MATLAB in the 2i2c JupyterHub; you are able to bring your own license. If you'd like to access MATLAB from the Amazon Web Services Console, see details at the bottom of this page. 
 
@@ -78,9 +78,9 @@ MATLAB provides [two interfaces for accessing HDF5 datasets](https://www.mathwor
 - **High-level access functions** make it easy to read and view data in an HDF5 file or write a variable from the MATLAB® workspace into an HDF5 file
 - **Low-level functions** in the HDF5 library packages provide direct access to the more than 300 functions in the HDF5 C library from the HDF Group. 
 
-The latter allows you to access advanced HDF5 functionality and bypasses I/O overhead in the high-level	interface, but has a substantially higher learning curve unless already familiar with the HDF5 C API.
+Low-level functions allow you to access advanced HDF5 functionality and bypasses I/O overhead in the high-level	interface, but has a substantially higher learning curve unless already familiar with the HDF5 C API.
 
-### Example
+### Example 
 
 1. Find the relevant DAAC/endpoint for the dataset that you want to access. For the following dataset:
 
@@ -120,7 +120,7 @@ h5disp(FILE_PATH);
 
 If credentials and paths are correct, h5disp will display the structure of the data file.
 
-## Using MATLAB high-level HDF5 interface
+### Using MATLAB high-level HDF5 interface
 
 ```bash
 units = h5readatt(FILE_NAME,DATASET_PATH,"units");
@@ -140,7 +140,8 @@ title(sprintf("%s [%s]",name,units));
 ```
 
 ![MATLAB example map](images/matlab-map.png){fig-alt="a square map with latitude and longitude and titled sea surface temperature in kelvin." fig-align="center" width="338"}
-## Using MATLAB low-level HDF5 interface
+
+### Using MATLAB low-level HDF5 interface
 
 ```bash
 % Open file and root group
