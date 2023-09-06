@@ -64,7 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
 <link href="../../how-tos/access-data/access-cloud-r.qmd" rel="next">
-<link href="../../how-tos/access-data/index.html" rel="prev">
+<link href="../../how-tos/find-data/find-r.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -114,7 +114,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">How do I...</li><li class="breadcrumb-item"><a href="../../how-tos/access-data/index.html">access data in cloud</a></li><li class="breadcrumb-item"><a href="../../how-tos/access-data/access-cloud-python.html">with Python</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">How do I...</li><li class="breadcrumb-item"><a href="../../how-tos/access-data/access-cloud-python.html">access data in cloud</a></li><li class="breadcrumb-item"><a href="../../how-tos/access-data/access-cloud-python.html">with Python</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -217,7 +217,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../how-tos/access-data/index.html" class="sidebar-item-text sidebar-link">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
  <span class="menu-text">access data in cloud</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -569,6 +569,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#direct-access" id="toc-direct-access" class="nav-link active" data-scroll-target="#direct-access">Direct Access</a></li>
   <li><a href="#python" id="toc-python" class="nav-link" data-scroll-target="#python">Python</a></li>
   <li><a href="#end-user-license-agreement-eula" id="toc-end-user-license-agreement-eula" class="nav-link" data-scroll-target="#end-user-license-agreement-eula">End User License Agreement (EULA)</a></li>
+  <li><a href="#alternative-access-method-without-earthaccess" id="toc-alternative-access-method-without-earthaccess" class="nav-link" data-scroll-target="#alternative-access-method-without-earthaccess">Alternative Access Method without <code>earthaccess</code></a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.dev/nasa-openscapes/earthdata-cloud-cookbook/blob/main/how-tos/access-data/access-cloud-python.ipynb" class="toc-action">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/blob/main/how-tos/access-data/access-cloud-python.ipynb" class="toc-action">View source</a></p><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
@@ -1606,6 +1607,10 @@ meters
 <section id="end-user-license-agreement-eula" class="level2">
 <h2 class="anchored" data-anchor-id="end-user-license-agreement-eula">End User License Agreement (EULA)</h2>
 <p>Sometimes, accessing data in NASA Earthdata Cloud requires an End-User License Agreement (EULA). If you cannot access a dataset, this may be your issue! See <a href="https://urs.earthdata.nasa.gov/documentation/for_users/how_to_preauth_app">these instructions</a> for how to authorize EULAs.</p>
+</section>
+<section id="alternative-access-method-without-earthaccess" class="level2">
+<h2 class="anchored" data-anchor-id="alternative-access-method-without-earthaccess">Alternative Access Method without <code>earthaccess</code></h2>
+<p>An alternative approach to accessing data is outlined in some notebooks in the Appendix! The <code>earthaccess</code> package uses these methods for it’s back end. See <a href="https://github.com/NASA-Openscapes/earthdata-cloud-cookbook/tree/main/appendix/appendix-alternate-in-cloud-access">this GitHub folder</a>.</p>
 
 
 </section>
@@ -1961,8 +1966,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../how-tos/access-data/index.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">access data in cloud</span>
+      <a href="../../how-tos/find-data/find-r.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">with R</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
