@@ -44,7 +44,7 @@ Using Harmonized Landsat Sentinel-2 (HLS) version 2.0
 ::: {.panel-tabset group="language"}
 ## Python
 
-```{python,filename="[python code]" }
+```python
 import os
 from osgeo import gdal
 import rasterio as rio
@@ -55,7 +55,7 @@ import holoviews as hv
 
 ## R
 
-```{r, filename="[R code]"}
+```r
 library(rgdal)
 library(raster)
 library(terra)
@@ -71,7 +71,7 @@ For this exercise, we are going to open up a context manager for the notebook us
 
 GDAL environment variables must be configured to access COGs from Earthdata Cloud. Geospatial data access Python packages like rasterio and rioxarray depend on GDAL, leveraging GDAL's "Virtual File Systems" to read remote files. GDAL has a lot of environment variables that control it's behavior. Changing these settings can mean the difference being able to access a file or not. They can also have an impact on the performance.
 
-```{python,filename="[python code]" }
+```python
 rio_env = rio.Env(GDAL_DISABLE_READDIR_ON_OPEN='TRUE',
                   GDAL_HTTP_COOKIEFILE=os.path.expanduser('~/cookies.txt'),
                   GDAL_HTTP_COOKIEJAR=os.path.expanduser('~/cookies.txt'))
@@ -82,7 +82,7 @@ rio_env.__enter__()
 
 Set up rgdal configurations to access the cloud assets that we are interested in. You can learn more about these configuration options here.
 
-```{r, filename="[R code]"}
+```r
 setGDALconfig(c("GDAL_HTTP_UNSAFESSL=YES",
                 "GDAL_HTTP_COOKIEFILE=.rcookies",
                 "GDAL_HTTP_COOKIEJAR=.rcookies",
@@ -97,7 +97,7 @@ In this example we're interested in the HLS L30 data collection from NASA's LP D
 ::: {.panel-tabset group="language"}
 ## Python
 
-```{python,filename="[python code]" }
+```python
 https_url = 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.020/HLS.L30.T11SQA.2021333T181532.v2.0/HLS.L30.T11SQA.2021333T181532.v2.0.B04.tif'
 ```
 
@@ -105,7 +105,7 @@ https_url = 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL3
 
 Please note that in R, we need to add `/vsicurl/` manually to the COG file URL.
 
-```{r, filename="[R code]"}
+```r
 https_url <- '/vsicurl/https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.020/HLS.L30.T11SQA.2021333T181532.v2.0/HLS.L30.T11SQA.2021333T181532.v2.0.B04.tif'
 ```
 :::
@@ -119,47 +119,47 @@ Read in the HLS HTTPS URL for the L30 red band (0.64 -- 0.67 μm) into our works
 
 we are using `rioxarray`, an extension of `xarray` used to read geospatial data.
 
-```{python,filename="[python code]" }
+```python
 da = rioxarray.open_rasterio(https_url)
 da
 ```
 
 The file is read into Python as an `xarray` `dataarray` with a **band**, **x**, and **y** dimension. In this example the **band** dimension is meaningless, so we'll use the `squeeze()` function to remove **band** as a dimension.
 
-```{python,filename="[python code]" }
+```python
 da_red = da.squeeze('band', drop=True)
 da_red
 ```
 
 Plot the `dataarray`, representing the L30 red band, using `hvplot`.
 
-```{python,filename="[python code]" }
+```python
 da_red.hvplot.image(x='x', y='y', cmap='gray', aspect='equal')
 ```
 
 Exit the context manager.
 
-```{python,filename="[python code]" }
+```python
 rio_env.__exit__()
 ```
 
 ## R
 
-```{r, filename="[R code]"}
+```r
 da_red <- rast(https_url)
 da_red
 ```
 
 The Convert a `SpatRaster` object to a `Raster` object using raster() to be able to use `leaflet` to plot our data.
 
-```{r, filename="[R code]"}
+```r
 red_raster <- da_red %>% raster()
 red_raster
 ```
 
 Then plot the `red band` using `plot` function.
 
-```{r, filename="[R code]"}
+```r
 plot(red_raster)
 ```
 :::

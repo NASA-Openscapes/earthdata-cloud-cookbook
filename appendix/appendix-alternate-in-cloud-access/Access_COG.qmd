@@ -1,7 +1,5 @@
 ---
 title: "Access Cloud-Optimized GeoTIFF"
-format: html
-editor: visual
 execute: 
   eval: false
 ---
@@ -11,7 +9,6 @@ execute:
 We will access data for the Harmonized Landsat Sentinel-2 (HLS) Operational Land Imager Surface Reflectance and TOA Brightness Daily Global 30m v2.0 (L30) (\[10.5067/HLS/HLSL30.002\](https://doi.org/10.5067/HLS/HLSL30.002)) data product. These data are archived and distributed as Cloud Optimized GeoTIFF (COG) files, one file for each spectral band.
 
 We will access a single COG file, L30 red band (0.64 -- 0.67 μm), from inside the AWS cloud (us-west-2 region, specifically) and load it into Python as an `xarray` `dataarray`. This approach leverages S3 native protocols for efficient access to the data.
-
 
 ## Code
 
@@ -26,12 +23,12 @@ In Python we can use the [`earthaccess`](https://nsidc.github.io/earthaccess/) l
 
 To install the package we'll run this code from the command line. Note: you can run shell code directly from a Jupyter Notebook cell by adding a `!`: `!conda install`.
 
-```{bash}
+```bash
 # Install earthaccess
 conda install -c conda-forge earthaccess
 ```
 
-```{python,filename="[python code]" }
+```python
 import earthaccess
 import requests
 import os
@@ -55,7 +52,7 @@ import holoviews as hv
 
 ## R
 
-```{r, filename="[R code]"}
+```r
 library(rgdal)
 library(raster)
 library(terra)
@@ -71,7 +68,7 @@ For this exercise, we are going to open up a context manager for the notebook us
 
 GDAL environment variables must be configured to access COGs from Earthdata Cloud. Geospatial data access Python packages like rasterio and rioxarray depend on GDAL, leveraging GDAL's "Virtual File Systems" to read remote files. GDAL has a lot of environment variables that control it's behavior. Changing these settings can mean the difference being able to access a file or not. They can also have an impact on the performance.
 
-```{python,filename="[python code]" }
+```python
 rio_env = rio.Env(GDAL_DISABLE_READDIR_ON_OPEN='TRUE',
                   GDAL_HTTP_COOKIEFILE=os.path.expanduser('~/cookies.txt'),
                   GDAL_HTTP_COOKIEJAR=os.path.expanduser('~/cookies.txt'))
@@ -82,7 +79,7 @@ rio_env.__enter__()
 
 Set up rgdal configurations to access the cloud assets that we are interested in. You can learn more about these configuration options here.
 
-```{r, filename="[R code]"}
+```r
 setGDALconfig(c("GDAL_HTTP_UNSAFESSL=YES",
                 "GDAL_HTTP_COOKIEFILE=.rcookies",
                 "GDAL_HTTP_COOKIEJAR=.rcookies",
@@ -96,7 +93,7 @@ In this example we're interested in the HLS L30 data collection from NASA's LP D
 ::: {.panel-tabset group="language"}
 ## Python
 
-```{python,filename="[python code]" }
+```python
 https_url = 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.020/HLS.L30.T11SQA.2021333T181532.v2.0/HLS.L30.T11SQA.2021333T181532.v2.0.B04.tif'
 ```
 
@@ -104,25 +101,21 @@ https_url = 'https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL3
 
 Please note that in R, we need to add `/vsicurl/` manually to the COG file URL.
 
-```{r, filename="[R code]"}
+```r
 https_url <- '/vsicurl/https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.020/HLS.L30.T11SQA.2021333T181532.v2.0/HLS.L30.T11SQA.2021333T181532.v2.0.B04.tif'
 ```
 :::
 
-
-
 ## HTTPS Data Access
 
 Read in the HLS HTTPS URL for the L30 red band (0.64 -- 0.67 μm) into our workspace. Note that, accessing files in the cloud requires you to authenticate using your NASA Earthdata Login account meaning a proper netrc file needs to be set up.
-
 
 ::: {.panel-tabset group="language"}
 ## Python
 
 We will authenticate below using a netrc file. See the (TBD) appendix for more information on netrc setup.
 
-
-```{python,filename="[python code]" }
+```python
 auth = Auth().login(strategy="netrc")
 # are we authenticated?
 if not auth.authenticated:
@@ -134,9 +127,10 @@ store = Store(auth)
 ```
 
 ### Working with the URLs directly
-If we choose, we can use `earthaccess` to grab the file's URLs and then access them with another library. Getting the links to our data is quiet simple with the `data_links()` method on each of the results. See the previous Find Data How-To for more information on how to discover datasets of interest. 
 
-```{python,filename="[python code]" }
+If we choose, we can use `earthaccess` to grab the file's URLs and then access them with another library. Getting the links to our data is quiet simple with the `data_links()` method on each of the results. See the previous Find Data How-To for more information on how to discover datasets of interest.
+
+```python
 #Searching over a small plot in Nebraska, USA over two weeks in September 2022
 granules = DataGranules().concept_id("C2021957657-LPCLOUD").temporal("2022-09-10","2022-09-24").bounding_box(-101.67271,41.04754,-101.65344,41.06213).get()
 print(len(granules))
@@ -149,7 +143,7 @@ Direct S3 access is achieved by passing NASA supplied temporary credentials to A
 
 COMING SOON: We can use the `earthaccess` `store` class to pass these credentials directly to Boto3 without the need to set up this function.
 
-```{python,filename="[python code]" }
+```python
 s3_cred_endpoint = {
     'podaac':'https://archive.podaac.earthdata.nasa.gov/s3credentials',
     'gesdisc': 'https://data.gesdisc.earthdata.nasa.gov/s3credentials',
@@ -163,18 +157,19 @@ def get_temp_creds(provider):
 
 temp_creds_req = get_temp_creds('lpdaac')
 ```
+
 Create a boto3 Session object using your temporary credentials. This Session is used to pass credentials and configuration to AWS so we can interact wit S3 objects from applicable buckets.
 
-
-```{python,filename="[python code]" }
+```python
 session = boto3.Session(aws_access_key_id=temp_creds_req['accessKeyId'], 
                         aws_secret_access_key=temp_creds_req['secretAccessKey'],
                         aws_session_token=temp_creds_req['sessionToken'],
                         region_name='us-west-2')
 ```
+
 GDAL environment variables must be configured to access COGs in Earthdata Cloud:
 
-```{python,filename="[python code]" }
+```python
 rio_env = rio.Env(AWSSession(session),
                   GDAL_DISABLE_READDIR_ON_OPEN='TRUE',
                   GDAL_HTTP_COOKIEFILE=os.path.expanduser('~/cookies.txt'),
@@ -184,42 +179,44 @@ rio_env.__enter__()
 
 ### Direct In-region Access
 
-Read in the HLS s3 URL for the L30 red band (0.64 – 0.67 μm) into our workspace using `rioxarray`, an extension of `xarray` used to read geospatial data. The file is read into Python as an xarray dataarray with a band, x, and y dimension. In this example the band dimension is meaningless, so we'll use the squeeze() function to remove band as a dimension.
+Read in the HLS s3 URL for the L30 red band (0.64 -- 0.67 μm) into our workspace using `rioxarray`, an extension of `xarray` used to read geospatial data. The file is read into Python as an xarray dataarray with a band, x, and y dimension. In this example the band dimension is meaningless, so we'll use the squeeze() function to remove band as a dimension.
 
-```{python,filename="[python code]" }
+```python
 s3_url = granules[0].data_links(access="direct")[8]
 da = rioxarray.open_rasterio(s3_url)
 da_red = da.squeeze('band', drop=True)
 da_red
 ```
+
 Plot the `dataarray`, representing the L30 red band, using `hvplot`.
 
-```{python,filename="[python code]" }
+```python
 da_red.hvplot.image(x='x', y='y', cmap='gray', aspect='equal')
 ```
+
 Exit the context manager.
-```{python,filename="[python code]" }
+
+```python
 rio_env.__exit__()
 ```
 
-
 ## R
 
-```{r, filename="[R code]"}
+```r
 da_red <- rast(https_url)
 da_red
 ```
 
 The Convert a `SpatRaster` object to a `Raster` object using raster() to be able to use `leaflet` to plot our data.
 
-```{r, filename="[R code]"}
+```r
 red_raster <- da_red %>% raster()
 red_raster
 ```
 
 Then plot the `red band` using `plot` function.
 
-```{r, filename="[R code]"}
+```r
 plot(red_raster)
 ```
 
@@ -227,7 +224,7 @@ plot(red_raster)
 
 Matlab code coming soon!
 
-```{bash}
+```bash
 #| echo: true
 # Coming soon!
 ```
@@ -236,9 +233,7 @@ Matlab code coming soon!
 
 With `wget` and `curl`:
 
-```{bash}
+```bash
 # Coming soon!
 ```
-
-
 :::
