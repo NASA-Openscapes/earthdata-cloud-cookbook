@@ -497,7 +497,7 @@ TODO: info about conda...
 ## Cookbook Structure
 
 Each chapter in our Cookbook is a separate file (`.md`/
-`.ipynb`/`.qmd`/`.Rmd`). 
+`.ipynb`/`.qmd`/`.Rmd`).
 <!-- These are stored in our `files` directory, organized by sub-directory. -->
 
 The Cookbook structure (i.e. the order of sections and chapters) is
@@ -515,16 +515,23 @@ set in stone.
 
 ## Cookbook Practices and Conventions
 
-These are shared practices and conventions that we have for co-developing the Cookbook. With so many contributors, consistency can give us an implicit understanding of where to put something or how to name it, and save us time searching documentation. This will be developed further as we go!
+These are shared practices and conventions that we have for
+co-developing the Cookbook. With so many contributors, consistency can
+give us an implicit understanding of where to put something or how to
+name it, and save us time searching documentation. This will be
+developed further as we go!
 
 ### Naming things and organizing them
 
-These conventions aim to help us more quickly find files we want to edit or find where a notebook or new chapter fits best. 
+These conventions aim to help us more quickly find files we want to edit
+or find where a notebook or new chapter fits best.
 
-- Each navbar item should have its own folder. Example: use `cheatsheets/index.qmd` not `cheatsheets.qmd`.
+-   Each navbar item should have its own folder. Example: use
+    `cheatsheets/index.qmd` not `cheatsheets.qmd`.
 
-- Names of folders, files, and filepaths should match what we call them in the nav bar. What we call them in the nav bar is defined in the `_quarto.yml` file. 
-
+-   Names of folders, files, and filepaths should match what we call
+    them in the nav bar. What we call them in the nav bar is defined in
+    the `_quarto.yml` file.
 
 ### Reorganizing: creating aliases and redirects
 
@@ -563,33 +570,50 @@ can go to Edit \> Find in Files... to identify all the files in the
 Cookbook that have that link, and then you can do a search-replace to
 update them all at once.
 
-### _quarto.yml style
+### \_quarto.yml style
 
-We use a 2-line style in our `_quarto.yml` file to define how a Cookbook page is named in the navbar (`text`) and to point to its source file (`href`) like this:
+We use a 2-line style in our `_quarto.yml` file to define how a Cookbook
+page is named in the navbar (`text`) and to point to its source file
+(`href`) like this:
 
-```
-  	- text: "Cheatsheets & Slides"
+```         
+    - text: "Cheatsheets & Slides"
       href: cheatsheets/index.qmd
 ```
- 
-Note: What is defined in `text` as the navbar title will take precedence over the title that is written in the target file. This doesn't change how the title appears on the Cookbook page itself.
 
-The alternative style is 1 line: 
+Note: What is defined in `text` as the navbar title will take precedence
+over the title that is written in the target file. This doesn't change
+how the title appears on the Cookbook page itself.
 
-```
+The alternative style is 1 line:
+
+```         
     - cheatsheets/index.qmd
 ```
 
-This is perfectly functional, but we think that the more explicit 2-line style helps us all see what needs to be edited to make our contributions most visible.
-
+This is perfectly functional, but we think that the more explicit 2-line
+style helps us all see what needs to be edited to make our contributions
+most visible.
 
 ### Content for section landing pages
 
-Each landing page for a section can be empty, or can have short paragraph saying what the section includes and "look at the navbar to see what’s here". A full table of contents on the landing page is not necessary, but in some cases we might want to highlight key sections or provide extra explanation for what a user will find.
+Each landing page for a section can be empty, or can have short
+paragraph saying what the section includes and "look at the navbar to
+see what's here". A full table of contents on the landing page is not
+necessary, but in some cases we might want to highlight key sections or
+provide extra explanation for what a user will find.
 
-Example for Tutorials page: "Below are some specific tutorials spotlighted, with additional information. Please also see the navbar on the left for a full list".
+Example for Tutorials page: "Below are some specific tutorials
+spotlighted, with additional information. Please also see the navbar on
+the left for a full list".
 
-Why don't we want / need full table of contents?: When someone contributes a new Tutorial by adding their notebook and pointing to it in the `_quarto.yml` file, it is immediately discoverable in the navbar. Having to add it to a list on the [Tutorials landing page](https://nasa-openscapes.github.io/earthdata-cloud-cookbook/tutorials/) is an extra step that a contributor might not do so it'll be less discoverable than if it only appeared in navbar.
+Why don't we want / need full table of contents?: When someone
+contributes a new Tutorial by adding their notebook and pointing to it
+in the `_quarto.yml` file, it is immediately discoverable in the navbar.
+Having to add it to a list on the [Tutorials landing
+page](https://nasa-openscapes.github.io/earthdata-cloud-cookbook/tutorials/)
+is an extra step that a contributor might not do so it'll be less
+discoverable than if it only appeared in navbar.
 
 ### Markdown formatting with Quarto
 
@@ -622,38 +646,37 @@ Using `.qmd` there are also ways to control execution cell-by-cell via
 
 ### Quarto (non)executable syntax
 
-Code chunks are executed if they are within curly brackets like `{python}`. If we don't want code in a `.qmd` or `.Rmd` file to be executed, we use the syntax:
+Code chunks are executed if they are within curly brackets like
+`{python}`. If we don't want code in a `.qmd` or `.Rmd` file to be
+executed, we use the syntax:
 
-```python
-```python
-```
+![](images/backtick-syntax.png){width="15%"}
 
-This is required even if the YAML at the top of the file has `execute: false`.
-
+This is required even if the YAML at the top of the file has
+`execute: false`.
 
 ::: {.callout-note collapse="true"}
+There are actually two ways for computational code to be ignored. There
+are merits for each -
 
-There are actually two ways for computational code to be ignored. There are merits for each -
-
-```python
+``` python
 ```{.python}
 ```
 
-This `{.python}` syntax has the consistency of the `{ }` notation. 
+This `{.python}` syntax has the consistency of the `{ }` notation.
 
-```python
+``` python
 ```python
 ```
 
-This `python` syntax is cleaner and follows these rules: 
+This `python` syntax is cleaner and follows these rules:
 
-- Brackets = computation
-- No brackets = static code
-(Thus no dot notation)
+-   Brackets = computation
+-   No brackets = static code (Thus no dot notation)
 
-We've chosen to go with this second option, where brackets = computation.
+We've chosen to go with this second option, where brackets =
+computation.
 :::
-
 
 ### Importing remote notebooks
 
@@ -724,7 +747,6 @@ quarto convert discovery/search-by-shapefile.ipynb # convert to .qmd
 rm discovery/search-by-shapefile.ipynb # delete .ipynb
 ```
 
-
 ## Cookbook Editing
 
 *TODO Add these sections*
@@ -790,7 +812,7 @@ appear if the pull request was merged:
     -   `quarto preview` - this will build the book with Andy's
         suggested edits.
         <!-- -   At the end of the preview log, it says "Browse at 
-            <!--     https://openscapes.2i2c.cloud..." The Browse URL actually -->
+                <!--     https://openscapes.2i2c.cloud..." The Browse URL actually -->
         <!--     points to the production Hub!! We need it to point to -->
         <!--     staging since that's where we're working, so we use the URL -->
         <!--     staging.openscapes.2i2c.cloud.... (See minute 10:06 in the -->
