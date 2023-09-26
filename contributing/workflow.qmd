@@ -87,7 +87,7 @@ collaboration.
 The following assumes you've completed the [initial
 setup](/contributing/setup.qmd) from the previous chapter.
 
-### Branch setup
+### Branch setup {#branch-setup}
 
 First off, check what branch you're on and pull the most recent edits
 from the main branch. If you need to switch branches, use
@@ -757,6 +757,53 @@ rm discovery/search-by-shapefile.ipynb # delete .ipynb
 
 ### Add a chapter
 
+Scenario: you've got a notebook you'd like to bring into the Cookbook.
+We'll use GitHub. Screenshots below are from the JupyterHub, though you
+could also do this in RStudio, VSCode or your IDE of choice.
+
+#### Create a branch
+
+In the `earthdata-cloud-cookbook` repository, create a branch. As a
+reminder, you'll need to have [cloned the cookbook
+repo](setup.qmd#clone-cookbook-from-github), and [set up a new
+branch](#branch-setup).
+
+#### Add your notebook into a Cookbook folder
+
+You'll need to choose a place to add your chapter. For now, if it's a
+tutorial, add it to the Tutorials chapter. During review it may be moved
+to a more suitable location in the Cookbook.
+
+You can do this by dragging your notebook into the tutorials folder in
+your branch
+
+![](images/drag-and-drop-file-in-hub.png){fig-alt="Screenshot of drag and drop notebook in JupyterHub"
+width="40%"}
+
+or by clicking the upload button (near the big blue button)
+
+![](images/hub-upload-button.png){fig-alt="Screenshot of JupyterHub upload button"
+width="40%"}
+
+Open the notebook and browse it to confirm that it looks the way you
+expect it to and that images all all present. If images are not showing
+up, you might need to sleuth to find the image names (click in the
+notebook in the hub to view the source). Below is a screenshot exploring
+this.
+
+![](images/sleuthing-missing-images.png){width="80%"}
+
+We noticed when browsing this notebook example, it is missing some of
+its components. Our goal is to be able to import a complete functional
+notebook into the Cookbook with a minimal number of steps.
+
+TODO: complete the import of images, and the following bullets:
+
+-   quarto render notebook
+-   quarto preview notebook
+-   commit and push to your branch
+-   create a PR and ask for a reviewer
+
 ### Review a pull request
 
 Any pull request (PR) must be reviewed before it can be merged into the
@@ -812,7 +859,7 @@ appear if the pull request was merged:
     -   `quarto preview` - this will build the book with Andy's
         suggested edits.
         <!-- -   At the end of the preview log, it says "Browse at 
-                <!--     https://openscapes.2i2c.cloud..." The Browse URL actually -->
+                                <!--     https://openscapes.2i2c.cloud..." The Browse URL actually -->
         <!--     points to the production Hub!! We need it to point to -->
         <!--     staging since that's where we're working, so we use the URL -->
         <!--     staging.openscapes.2i2c.cloud.... (See minute 10:06 in the -->
