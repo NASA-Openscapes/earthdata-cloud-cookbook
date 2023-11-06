@@ -578,9 +578,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#creating-the-aws-stack-with-matlab" id="toc-creating-the-aws-stack-with-matlab" class="nav-link" data-scroll-target="#creating-the-aws-stack-with-matlab">Creating the AWS Stack with MATLAB</a></li>
   <li><a href="#launch-the-aws-stack-with-microsoft-remote-desktop" id="toc-launch-the-aws-stack-with-microsoft-remote-desktop" class="nav-link" data-scroll-target="#launch-the-aws-stack-with-microsoft-remote-desktop">Launch the AWS Stack with Microsoft Remote Desktop</a></li>
   <li><a href="#open-matlab-on-remote-desktop" id="toc-open-matlab-on-remote-desktop" class="nav-link" data-scroll-target="#open-matlab-on-remote-desktop">Open MATLAB on Remote Desktop</a></li>
-  </ul></li>
-  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"></a>
-  <ul class="collapse">
   <li><a href="#shutdown-your-aws-stack" id="toc-shutdown-your-aws-stack" class="nav-link" data-scroll-target="#shutdown-your-aws-stack">Shutdown your AWS Stack</a></li>
   </ul></li>
   </ul>
@@ -871,60 +868,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>You are in!</li>
 </ol>
 </section>
-</section>
-<section id="section" class="level2">
-<h2 class="anchored" data-anchor-id="section"></h2>
-<ol type="1">
-<li><p>Search NASA Earthdata and find the S3 link you want to access</p></li>
-<li><p>Set AWS Environment Variables - Go to the link above for the Access key, secret access key and token.</p></li>
-<li><p>Copy and past those variables into the code below</p>
-<p><code>setenv('AWS_ACCESS_KEY_ID', 'REPLACE WITH PODAAC ACCESS KEY');</code></p>
-<p><code>setenv('AWS_SECRET_ACCESS_KEY', 'REPLACE WITH PODAAC SECRET KEY');</code></p>
-<p><code>setenv('AWS_SESSION_TOKEN',  'REPLACE WITH PODAAC SESSION TOKEN');</code></p>
-<p><code>setenv('AWS_DEFAULT_REGION', 'us-west-2');</code></p>
-<p>NOTE: These expire ever 30 mins or so and this step needs to be done. We are searching for a better method.</p></li>
-<li><p>In MATLAB on AWS only the HDF commands work</p>
-<p><code>FILE_NAME = 's3://podaac-ops-cumulus-protected/MODIS_A-JPL-L2P-v2019.0/20100619062008-JPL-L2P_GHRSST-SSTskin-MODIS_A-N-v02.0-fv01.0.nc';</code></p>
-<p><code>file_id = H5F.open(FILE_NAME, 'H5F_ACC_RDONLY', 'H5P_DEFAULT');</code></p></li>
-<li><p>This code works to read the file - Copy each section into the MATLAB command<br>
-NOTE: We need a way to find all variables in a given netcdf file. I used the python code to find variables and then brought it here.</p>
-<p><code>DATAFIELD_NAME='sea_surface_temperature_4um';</code></p>
-<p><code>data_id = H5D.open(file_id, DATAFIELD_NAME);</code></p>
-<p><code>data=H5D.read(data_id,'H5T_NATIVE_DOUBLE', 'H5S_ALL', 'H5S_ALL', 'H5P_DEFAULT');</code></p>
-<p><code>% Read units.</code></p>
-<p><code>ATTRIBUTE = 'units';</code></p>
-<p><code>attr_id = H5A.open_name(data_id, ATTRIBUTE);</code></p>
-<p><code>units = H5A.read(attr_id, 'H5ML_DEFAULT');</code></p>
-<p><code>H5A.close(attr_id);</code></p>
-<p><code>% Read long_name.</code></p>
-<p><code>ATTRIBUTE = 'long_name';</code></p>
-<p><code>attr_id = H5A.open_name (data_id, ATTRIBUTE);</code></p>
-<p><code>long_name=H5A.read (attr_id, 'H5ML_DEFAULT');</code></p>
-<p><code>H5A.close(attr_id);</code></p>
-<p><code>% Read the fill value.</code></p>
-<p><code>ATTRIBUTE = '_FillValue';</code></p>
-<p><code>attr_id = H5A.open_name(data_id, ATTRIBUTE);</code></p>
-<p><code>fillvalue=H5A.read(attr_id, 'H5T_NATIVE_DOUBLE');</code></p>
-<p><code>H5A.close(attr_id);</code></p>
-<p><code>% Read latitude data.</code></p>
-<p><code>LAT_NAME='lat';</code></p>
-<p><code>lat_id=H5D.open(file_id, LAT_NAME);</code></p>
-<p><code>lat=H5D.read(lat_id, 'H5T_NATIVE_DOUBLE', 'H5S_ALL', 'H5S_ALL', 'H5P_DEFAULT');</code></p>
-<p><code>% Read longitude data.</code></p>
-<p><code>LON_NAME='lon';</code></p>
-<p><code>lon_id=H5D.open(file_id, LON_NAME);</code></p>
-<p><code>lon=H5D.read(lon_id, 'H5T_NATIVE_DOUBLE', 'H5S_ALL', 'H5S_ALL', 'H5P_DEFAULT');</code></p>
-<p><code>% Close and release resources.</code></p>
-<p><code>H5D.close(data_id);</code></p>
-<p><code>H5D.close(lat_id);</code></p>
-<p><code>H5D.close(lon_id);</code></p>
-<p><code>H5F.close(file_id);</code></p>
-<p><code>% Replace the fill value with NaN.</code></p>
-<p><code>data(data==fillvalue) = NaN;</code></p></li>
-<li><p>Create an image</p>
-<p><code>contour(data);</code></p>
-<p><img src="images/Screen Shot 2022-05-30 at 7.00.01 PM.png" class="img-fluid"></p></li>
-</ol>
 <section id="shutdown-your-aws-stack" class="level3">
 <h3 class="anchored" data-anchor-id="shutdown-your-aws-stack">Shutdown your AWS Stack</h3>
 <p>After each session you need to turn off the AWS Stack. If you forget this step and leave it running it is like keeping a computer on for the month. For the large instance it costs $0.5/day so it’s a few dollars a month.</p>
