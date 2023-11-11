@@ -65,5 +65,3 @@ git checkout your-branch
 git fetch
 git merge origin/main
 ```
-
-### Update from main
