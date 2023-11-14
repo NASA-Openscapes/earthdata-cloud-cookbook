@@ -35,16 +35,30 @@ R code coming soon!
 # Coming soon!
 ```
 
-## Matlab
+## MATLAB
 
-Matlab code coming soon!
+MATLAB provides [graphical import tools and two programmatic interfaces](https://www.mathworks.com/help/matlab/network-common-data-form.html) for interacting with netCDF files. 
+
+The high-level interface is made of eight high-level functions for getting information about netCDF files and their content, creating variables, writing and reading variables and attributes, and adding schema definitions to netCDF files.
 
 ```bash
-#| echo: true
-# Coming soon!
+filename = "example.nc";
+ncdisp(filename);  % Display file content
+varname = "peaks";
+peaksData = ncread(filename,varname);
+surf(peaksData);
 ```
 
-
+The low-level interface is a thin wrapper around the underlying netCDF C library.
+```bash
+filename = "example.nc";
+varname = "peaks";
+ncid = netcdf.open(filename,"NC_NOWRITE");
+varid = netcdf.inqVarID(ncid,varname);
+peaksData = netcdf.getVar(ncid,varid);
+netcdf.close(ncid)
+surf(peaksData);
+```
 
 :::
 
