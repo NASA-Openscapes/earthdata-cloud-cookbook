@@ -578,14 +578,14 @@
     "href": "how-tos/read_data.html",
     "title": "Read Data",
     "section": "",
-    "text": "PythonRMatlab\n\n\nWe recommend using xarray’s open_dataset\n\n\nimport xarray as xr\nds = xr.open_dataset(filename)\n\n\n\nimport xarray as xr\nds = xr.open_mfdataset(list_of_filenames)\n\n\n\nR code coming soon!\n# Coming soon!\n\n\nMatlab code coming soon!\n#| echo: true\n# Coming soon!"
+    "text": "PythonRMATLAB\n\n\nWe recommend using xarray’s open_dataset\n\n\nimport xarray as xr\nds = xr.open_dataset(filename)\n\n\n\nimport xarray as xr\nds = xr.open_mfdataset(list_of_filenames)\n\n\n\nR code coming soon!\n# Coming soon!\n\n\nMATLAB provides graphical import tools and two programmatic interfaces for interacting with netCDF files.\nThe high-level interface is made of eight high-level functions for getting information about netCDF files and their content, creating variables, writing and reading variables and attributes, and adding schema definitions to netCDF files.\nfilename = \"example.nc\";\nncdisp(filename);  % Display file content\nvarname = \"peaks\";\npeaksData = ncread(filename,varname);\nsurf(peaksData);\nThe low-level interface is a thin wrapper around the underlying netCDF C library.\nfilename = \"example.nc\";\nvarname = \"peaks\";\nncid = netcdf.open(filename,\"NC_NOWRITE\");\nvarid = netcdf.inqVarID(ncid,varname);\npeaksData = netcdf.getVar(ncid,varid);\nnetcdf.close(ncid)\nsurf(peaksData);"
   },
   {
     "objectID": "how-tos/read_data.html#netcdf",
     "href": "how-tos/read_data.html#netcdf",
     "title": "Read Data",
     "section": "",
-    "text": "PythonRMatlab\n\n\nWe recommend using xarray’s open_dataset\n\n\nimport xarray as xr\nds = xr.open_dataset(filename)\n\n\n\nimport xarray as xr\nds = xr.open_mfdataset(list_of_filenames)\n\n\n\nR code coming soon!\n# Coming soon!\n\n\nMatlab code coming soon!\n#| echo: true\n# Coming soon!"
+    "text": "PythonRMATLAB\n\n\nWe recommend using xarray’s open_dataset\n\n\nimport xarray as xr\nds = xr.open_dataset(filename)\n\n\n\nimport xarray as xr\nds = xr.open_mfdataset(list_of_filenames)\n\n\n\nR code coming soon!\n# Coming soon!\n\n\nMATLAB provides graphical import tools and two programmatic interfaces for interacting with netCDF files.\nThe high-level interface is made of eight high-level functions for getting information about netCDF files and their content, creating variables, writing and reading variables and attributes, and adding schema definitions to netCDF files.\nfilename = \"example.nc\";\nncdisp(filename);  % Display file content\nvarname = \"peaks\";\npeaksData = ncread(filename,varname);\nsurf(peaksData);\nThe low-level interface is a thin wrapper around the underlying netCDF C library.\nfilename = \"example.nc\";\nvarname = \"peaks\";\nncid = netcdf.open(filename,\"NC_NOWRITE\");\nvarid = netcdf.inqVarID(ncid,varname);\npeaksData = netcdf.getVar(ncid,varid);\nnetcdf.close(ncid)\nsurf(peaksData);"
   },
   {
     "objectID": "how-tos/read_data.html#hdf5",
@@ -2818,7 +2818,7 @@
     "href": "external/IS2_cloud_Landsat_integration.html",
     "title": "ICESat-2 and Landsat cloud access and data integration",
     "section": "",
-    "text": "This notebook ({nb-download}download &lt;IS2_cloud_data_integration.ipynb&gt;) builds off of the icepyx IS2_cloud_data_access.ipynb and ICESat-2 Hackweek Data Integration 1 tutorials. It illustrates the use of icepyx for accessing ICESat-2 data currently available through the AWS (Amazon Web Services) us-west2 hub s3 data bucket as well as data integration with Landsat (cloud-optimized geotiff) and ATM (downloaded csv) datasets.\nbmnsbqedybem Learning Objectives **Goals** - Identify and locate ICESat-2 and Landsat data - Acquire data from the cloud - Open data in `pandas` and `xarray` and basic functioning of DataFrames\nbmnsbqedybem Key Takeaway By the end of this tutorial, you will be able to visualize Landsat Cloud Optimized Geotiffs with ICESat-2 and ATM data."
+    "text": "This notebook ({nb-download}download &lt;IS2_cloud_data_integration.ipynb&gt;) builds off of the icepyx IS2_cloud_data_access.ipynb and ICESat-2 Hackweek Data Integration 1 tutorials. It illustrates the use of icepyx for accessing ICESat-2 data currently available through the AWS (Amazon Web Services) us-west2 hub s3 data bucket as well as data integration with Landsat (cloud-optimized geotiff) and ATM (downloaded csv) datasets.\nspiinfwzdgrf Learning Objectives **Goals** - Identify and locate ICESat-2 and Landsat data - Acquire data from the cloud - Open data in `pandas` and `xarray` and basic functioning of DataFrames\nspiinfwzdgrf Key Takeaway By the end of this tutorial, you will be able to visualize Landsat Cloud Optimized Geotiffs with ICESat-2 and ATM data."
   },
   {
     "objectID": "external/IS2_cloud_Landsat_integration.html#notes",
