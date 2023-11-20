@@ -4,23 +4,31 @@ title: Tutorials
 
 The following tutorials are meant to present example workflows with NASA Earthdata in the cloud from a variety of use cases. The tutorials exemplify the advantages of working with NASA Earthdata in the cloud and aim to provide a starting point for exploring what your workflows could look like in the cloud. 
 
-*We are in the process of updating the specific tutorials on this page and revising them for cohesion. At the moment, they have been gathered from different GitHub repositories that the NASA Openscapes Mentors have worked with or contributed to.*
-
 ### **Earthdata Cloud Clinic** - [Tutorial](../examples/Earthdata-cloud-clinic.ipynb)
 *Two different direct cloud access & subsetting options available in the Earthdata Cloud*
 
-### **Sea Surface Temperature and Wind Speeds during a Hurricane** - [Tutorial](../external/How_to_Perform_Cross-DAAC_S3_Bucket_Access_Using_Python.ipynb)
+### **Sea Surface Temperature and Wind Speeds during a Hurricane** - [Tutorial](Hurricanes_Wind_and_Sea_Surface_Temperature.ipynb)
 *Obtaining NASA Earthdata from different disciplines and data centers*
+
+### **Sea Level Rise** - [Tutorial](Sea_Level_Rise.ipynb)
+*Using the earthaccess Python package for quick sea level rise analysis in the cloud*
+
+### **Distribution of Carbon Stocks in a Protected Area** - [Tutorial](Above_Ground_Biomass_Density.ipynb)
+*Using earthaccess Python package and OPeNDAP to access predictions of the aboveground biomass density*
+
+### **Observing Seasonality in Agricultural Areas** - [Tutorial](Observing_Seasonal_Ag_Changes.ipynb)
+*Working with HLS Landsat and Sentinel-2 data products in the cloud*
 
 ### **ICESat-2 and Landsat cloud access and data integration** - [Tutorial](../external/IS2_cloud_Landsat_integration.ipynb)
 *Accessing multiple large datasets in the cloud*
-
-### **Sea Level Rise** - [Tutorial](../external/Sea_level_rise_notebook.ipynb)
-*Using the earthaccess Python package for quick sea level rise analysis in the cloud*
 
 ### **Pairing Cloud and non-Cloud Data** - [Tutorial](04_On-Prem_Cloud.ipynb)
 *Accessing and harmonizing data located within and outside of the NASA Earthdata Cloud*
 
 ### **`earthaccess` Python Library Demo** - [Tutorial](earthaccess-demo.ipynb)
+
+### **Using OPeNDAP in the Cloud** - [Tutorial](Earthdata_Cloud__Data_Access_OPeNDAP_Example.ipynb)
+
+### **Pygeoweaver Workflow Demo** - [Tutorial](fair-workflow-geoweaver-demo.ipynb)
 
 We also have links to past [workshops](../workshops/index.qmd). Tutorials in these past workshops are developed to teach open science and Cloud workflows for specific audiences. They are a snapshot in time as workflows with NASA Earthdata Cloud emerge and evolve.
