@@ -562,7 +562,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#shapefiles-geojson" id="toc-shapefiles-geojson" class="nav-link" data-scroll-target="#shapefiles-geojson">Shapefiles &amp; GeoJSON</a></li>
   <li><a href="#csv" id="toc-csv" class="nav-link" data-scroll-target="#csv">CSV</a></li>
   <li><a href="#excel" id="toc-excel" class="nav-link" data-scroll-target="#excel">Excel</a></li>
-  <li><a href="#mat-files" id="toc-mat-files" class="nav-link" data-scroll-target="#mat-files">.mat Files</a></li>
+  <li><a href="#mat-files-.mat" id="toc-mat-files-.mat" class="nav-link" data-scroll-target="#mat-files-.mat">MAT-Files (.mat)</a></li>
+  <li><a href="#text-data-files" id="toc-text-data-files" class="nav-link" data-scroll-target="#text-data-files">Text Data Files</a></li>
   <li><a href="#binary-files" id="toc-binary-files" class="nav-link" data-scroll-target="#binary-files">Binary Files</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/edit/main/how-tos/read_data.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/blob/main/how-tos/read_data.qmd" class="toc-action">View source</a></p><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
@@ -620,11 +621,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The low-level interface is a thin wrapper around the underlying netCDF C library.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">filename</span> = <span class="st">"example.nc"</span><span class="kw">;</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">varname</span> = <span class="st">"peaks"</span><span class="kw">;</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="ex">ncid</span> = netcdf.open<span class="er">(</span><span class="ex">filename,</span><span class="st">"NC_NOWRITE"</span><span class="kw">);</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="ex">varid</span> = netcdf.inqVarID<span class="er">(</span><span class="ex">ncid,varname</span><span class="kw">);</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="ex">peaksData</span> = netcdf.getVar<span class="er">(</span><span class="ex">ncid,varid</span><span class="kw">);</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="ex">netcdf.close</span><span class="er">(</span><span class="ex">ncid</span><span class="kw">)</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="ex">ncID</span> = netcdf.open<span class="er">(</span><span class="ex">filename,</span><span class="st">"NC_NOWRITE"</span><span class="kw">);</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="ex">varID</span> = netcdf.inqVarID<span class="er">(</span><span class="ex">ncID,varname</span><span class="kw">);</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="ex">peaksData</span> = netcdf.getVar<span class="er">(</span><span class="ex">ncID,varID</span><span class="kw">);</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="ex">netcdf.close</span><span class="er">(</span><span class="ex">ncID</span><span class="kw">);</span></span>
 <span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="ex">surf</span><span class="er">(</span><span class="ex">peaksData</span><span class="kw">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Notes</strong></p>
+<ul>
+<li>Unlike MATLAB HDF5 interfaces, netCDF interfaces are not cloud enabled (yet).</li>
+<li>As HDF5 interfaces support reading netCDF 4 files, users must currently use these interfaces for accessing netCDF 4 files stored on the cloud (see tutorial <em>MATLAB Access Single NASA EarthData L2 NetCDF</em> in this Cookbook).</li>
+<li>MATLAB netCDF interfaces support OPeNDAP and byte-range for reading data.</li>
+</ul>
 </div>
 </div>
 </div>
@@ -632,7 +639,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="hdf5" class="level2">
 <h2 class="anchored" data-anchor-id="hdf5">HDF5</h2>
 <div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">Python</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-3" role="tab" aria-controls="tabset-2-3" aria-selected="false">Matlab</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">Python</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-3" role="tab" aria-controls="tabset-2-3" aria-selected="false">MATLAB</a></li></ul>
 <div class="tab-content" data-group="language">
 <div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
 <p>For HDF5 files, there are two methods we can use: <code>xarray</code>’s <a href="https://docs.xarray.dev/en/stable/generated/xarray.open_dataset.html">open_dataset</a> and <a href="https://docs.h5py.org/en/stable/quick.html"><code>h5py</code></a></p>
@@ -646,9 +653,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Coming soon!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="tabset-2-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-3-tab">
-<p>Matlab code coming soon!</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Coming soon!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>MATLAB provides low- and high-level programmatic interfaces for interacting with <a href="https://www.mathworks.com/help/matlab/hdf5-files.html">HDF5</a> and <a href="https://www.mathworks.com/help/matlab/hdf4.html">HDF4</a> files.</p>
+<p>Focusing on HDF5, which is currently more prevalent, the high-level interface is made of seven high-level functions for getting information about HDF5 files and their content, creating datasets, and reading and writing datasets and attributes.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">filename</span> = <span class="st">"example.h5"</span><span class="kw">;</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">h5disp</span><span class="er">(</span><span class="ex">filename</span><span class="kw">);</span>  <span class="ex">%</span> Display file content</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="ex">ds</span> = <span class="st">"/g4/lat"</span><span class="kw">;</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="ex">lat</span> = h5read<span class="er">(</span><span class="ex">filename,ds</span><span class="kw">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The low-level interface is a thin wrapper around the underlying HDF5 C library. It is made of more than 300 functions organized in packages (H5F for file management, H5D for dataset management, etc.).</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">filename</span> = <span class="st">"example.h5"</span><span class="kw">;</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="ex">ds</span> = <span class="st">"/g4/lat"</span><span class="kw">;</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="ex">fID</span> = H5F.open<span class="er">(</span><span class="ex">filename</span><span class="kw">);</span> </span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="ex">dsID</span> = H5D.open<span class="er">(</span><span class="ex">fID,ds</span><span class="kw">);</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="ex">lat</span> = H5D.read<span class="er">(</span><span class="ex">dsID</span><span class="kw">);</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="ex">H5D.close</span><span class="er">(</span><span class="ex">dsID</span><span class="kw">);</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="ex">H5F.close</span><span class="er">(</span><span class="ex">fID</span><span class="kw">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -656,21 +674,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="geotiff" class="level2">
 <h2 class="anchored" data-anchor-id="geotiff">GeoTIFF</h2>
 <div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true">Python</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-3" role="tab" aria-controls="tabset-3-3" aria-selected="false">Matlab</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true">Python</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-3" role="tab" aria-controls="tabset-3-3" aria-selected="false">MATLAB</a></li></ul>
 <div class="tab-content" data-group="language">
 <div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
 <p>For GeoTIFF files, we recommend using <code>rioxarray</code>’s <a href="https://corteva.github.io/rioxarray/html/rioxarray.html#rioxarray.open_rasterio"><code>open_rasterio</code></a></p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> rioxarray</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>xds <span class="op">=</span> rioxarray.open_rasterio(<span class="st">"my.tif"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> rioxarray</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>xds <span class="op">=</span> rioxarray.open_rasterio(<span class="st">"my.tif"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
 <p>R code coming soon!</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Coming soon!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Coming soon!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="tabset-3-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-3-tab">
-<p>Matlab code coming soon!</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Coming soon!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><a href="https://www.mathworks.com/help/map/index.html">MATLAB Mapping Toolbox</a> supports interacting with GeoTIFF files through a series of <a href="https://www.mathworks.com/help/map/standard-file-formats.html">functions for handling raster data</a> (under Raster Data), and the function <a href="https://www.mathworks.com/help/map/ref/geotiffread.html"><code>geotiffread</code></a> althrough not recommended but for a few edge cases.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[A,R]</span> = readgeoraster<span class="er">(</span><span class="st">"myGeoTiffFile.tif"</span><span class="kw">);</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="ex">mapshow</span><span class="er">(</span><span class="ex">A,R</span><span class="kw">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -678,21 +696,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="shapefiles-geojson" class="level2">
 <h2 class="anchored" data-anchor-id="shapefiles-geojson">Shapefiles &amp; GeoJSON</h2>
 <div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true">Python</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-3" role="tab" aria-controls="tabset-4-3" aria-selected="false">Matlab</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true">Python</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-3" role="tab" aria-controls="tabset-4-3" aria-selected="false">MATLAB</a></li></ul>
 <div class="tab-content" data-group="language">
 <div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
 <p>To open shapefiles or GeoJSON, we recommend using <code>geopandas</code>’s <a href="https://geopandas.org/en/stable/docs/reference/api/geopandas.read_file.html#geopandas.read_file"><code>read_file</code></a>.</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> geopandas <span class="im">as</span> gpd</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>gdf <span class="op">=</span> gpd.read_file(filename)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> geopandas <span class="im">as</span> gpd</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>gdf <span class="op">=</span> gpd.read_file(filename)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
 <p>R code coming soon!</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Coming soon!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Coming soon!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="tabset-4-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-3-tab">
-<p>Matlab code coming soon!</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Coming soon!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><a href="https://www.mathworks.com/help/map/index.html">MATLAB Mapping Toolbox</a> supports interacting with shapefiles and GeoJSON files through a series of <a href="https://www.mathworks.com/help/map/standard-file-formats.html">functions for handling vector data</a> (under Vector Data), in particular <code>readgeotable</code>, <code>shapeinfo</code>, <code>shaperead</code>, and <code>shapewrite</code>.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> Read shapefile of countries specifying the name of the attributes to read.</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="ex">S</span> = shaperead<span class="er">(</span><span class="st">"Countries.shp"</span><span class="ex">,</span><span class="st">"Attributes"</span><span class="ex">,[</span><span class="st">"ISO_2DIGIT"</span><span class="ex">,</span><span class="st">"CNTRY_NAME"</span><span class="ex">]</span><span class="kw">);</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> Read GeoJSON data from a website and save it in the file storms.geojson.</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="ex">websave</span><span class="er">(</span><span class="st">"storms.geojson"</span><span class="ex">,</span><span class="st">"https://www.spc.noaa.gov/products/outlook/day1otlk_cat.lyr.geojson"</span><span class="kw">);</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="ex">GT</span> = readgeotable<span class="er">(</span><span class="st">"storms.geojson"</span><span class="kw">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -700,21 +722,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="csv" class="level2">
 <h2 class="anchored" data-anchor-id="csv">CSV</h2>
 <div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-5-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-1" role="tab" aria-controls="tabset-5-1" aria-selected="true">Python</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-2" role="tab" aria-controls="tabset-5-2" aria-selected="false">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-3" role="tab" aria-controls="tabset-5-3" aria-selected="false">Matlab</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-5-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-1" role="tab" aria-controls="tabset-5-1" aria-selected="true">Python</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-2" role="tab" aria-controls="tabset-5-2" aria-selected="false">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-3" role="tab" aria-controls="tabset-5-3" aria-selected="false">MATLAB</a></li></ul>
 <div class="tab-content" data-group="language">
 <div id="tabset-5-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-5-1-tab">
 <p>To open CSV files, we recommend using <code>pandas</code>’s <a href="https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html"><code>read_csv</code></a>.</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(filename)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(filename)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="tabset-5-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-5-2-tab">
 <p>R code coming soon!</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Coming soon!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Coming soon!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="tabset-5-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-5-3-tab">
-<p>Matlab code coming soon!</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Coming soon!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>MATLAB supports interacting with CSV files and other tabular file formats through functions <a href="https://www.mathworks.com/help/matlab/ref/readtable.html"><code>readtable</code></a>, <a href="https://www.mathworks.com/help/matlab/ref/readtimetable.html"><code>readtimetable</code></a>, <a href="https://www.mathworks.com/help/matlab/ref/readcell.html"><code>readcell</code></a>, and <a href="https://www.mathworks.com/help/matlab/ref/readmatrix.html"><code>readmatrix</code></a>, as well as their counterparts for writing to files.</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> Read time table and display summary</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="ex">TT</span> = readtimetable<span class="er">(</span><span class="st">'myTimeTable.csv'</span><span class="kw">);</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="ex">summary</span><span class="er">(</span><span class="ex">TT</span><span class="kw">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Advanced workflows can be implemented using <a href="https://www.mathworks.com/help/matlab/ref/detectimportoptions.html"><code>detectImportOptions</code></a> and functions referenced in its documentation.</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> Read variables <span class="st">"TaxiIn"</span> and <span class="st">"TaxiOut"</span> from airlines dataset</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="ex">opts.SelectedVariableNames</span> = <span class="pp">[</span><span class="st">"TaxiIn"</span><span class="ss">,</span><span class="st">"TaxiOut"</span><span class="pp">]</span><span class="kw">;</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="ex">T</span> = readtable<span class="er">(</span><span class="st">"myAirlinesDataset.csv"</span><span class="ex">,opts</span><span class="kw">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Notes</strong></p>
+<ul>
+<li>MATLAB provides higher-level mechanisms form importing data files through the function <a href="https://www.mathworks.com/help/matlab/ref/importdata.html"><code>importdata</code></a> and the <a href="https://www.mathworks.com/help/matlab/ref/importtool.html">Import Tool</a>.</li>
+<li>A general list of functions and workflows for interacting with deliimited and formatted text files is provided <a href="https://www.mathworks.com/help/matlab/text-files.html">here</a>.</li>
+</ul>
 </div>
 </div>
 </div>
@@ -722,41 +754,65 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="excel" class="level2">
 <h2 class="anchored" data-anchor-id="excel">Excel</h2>
 <div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-6-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-1" role="tab" aria-controls="tabset-6-1" aria-selected="true">Python</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-2" role="tab" aria-controls="tabset-6-2" aria-selected="false">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-3" role="tab" aria-controls="tabset-6-3" aria-selected="false">Matlab</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-6-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-1" role="tab" aria-controls="tabset-6-1" aria-selected="true">Python</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-2" role="tab" aria-controls="tabset-6-2" aria-selected="false">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-3" role="tab" aria-controls="tabset-6-3" aria-selected="false">MATLAB</a></li></ul>
 <div class="tab-content" data-group="language">
 <div id="tabset-6-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-6-1-tab">
 <p>To open Excel files, we recommend using <code>pandas</code>’s <a href="https://pandas.pydata.org/docs/reference/api/pandas.read_excel.html"><code>read_excel</code></a></p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_excel(filename)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_excel(filename)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="tabset-6-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-6-2-tab">
 <p>R code coming soon!</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Coming soon!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Coming soon!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="tabset-6-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-6-3-tab">
-<p>Matlab code coming soon!</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Coming soon!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>See section about CSV files.</p>
 </div>
 </div>
 </div>
 </section>
-<section id="mat-files" class="level2">
-<h2 class="anchored" data-anchor-id="mat-files">.mat Files</h2>
+<section id="mat-files-.mat" class="level2">
+<h2 class="anchored" data-anchor-id="mat-files-.mat">MAT-Files (.mat)</h2>
 <div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-7-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-1" role="tab" aria-controls="tabset-7-1" aria-selected="true">Python</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-2" role="tab" aria-controls="tabset-7-2" aria-selected="false">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-3" role="tab" aria-controls="tabset-7-3" aria-selected="false">Matlab</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-7-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-1" role="tab" aria-controls="tabset-7-1" aria-selected="true">Python</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-2" role="tab" aria-controls="tabset-7-2" aria-selected="false">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-3" role="tab" aria-controls="tabset-7-3" aria-selected="false">MATLAB</a></li></ul>
 <div class="tab-content" data-group="language">
 <div id="tabset-7-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-7-1-tab">
-<div class="sourceCode" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co">#coming soon! scipy &amp; .mat</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co">#coming soon! scipy &amp; .mat</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="tabset-7-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-7-2-tab">
 <p>R code coming soon!</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Coming soon!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Coming soon!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="tabset-7-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-7-3-tab">
-<p>Matlab code coming soon!</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Coming soon!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>MATLAB can interact with MAT-Files (.mat) using functions <a href="https://www.mathworks.com/help/matlab/ref/load.html"><code>load</code></a>, <a href="https://www.mathworks.com/help/matlab/ref/save.html"><code>save</code></a>, and through <a href="https://www.mathworks.com/help/matlab/ref/matlab.io.matfile.html"><code>matfile</code></a> objects.</p>
+<p><strong>Notes</strong></p>
+<ul>
+<li>MATLAB provides higher-level mechanisms form importing data files through the function <a href="https://www.mathworks.com/help/matlab/ref/importdata.html"><code>importdata</code></a> and the <a href="https://www.mathworks.com/help/matlab/ref/importtool.html">Import Tool</a>.</li>
+<li><a href="https://www.mathworks.com/help/matlab/import_export/mat-file-versions.html">Multiple versions of the MAT-File format</a> have been released. The latest, MAT-File v7.3 is based on the HDF5 file format.</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="text-data-files" class="level2">
+<h2 class="anchored" data-anchor-id="text-data-files">Text Data Files</h2>
+<div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-8-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-1" role="tab" aria-controls="tabset-8-1" aria-selected="true">Python</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-8-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-2" role="tab" aria-controls="tabset-8-2" aria-selected="false">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-8-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-3" role="tab" aria-controls="tabset-8-3" aria-selected="false">MATLAB</a></li></ul>
+<div class="tab-content" data-group="language">
+<div id="tabset-8-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-8-1-tab">
+<div class="sourceCode" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Coming soon!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-8-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-8-2-tab">
+<p>R code coming soon!</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Coming soon!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-8-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-8-3-tab">
+<p>MATLAB provides a series of functions for interacting with text files. In addition to functions listed in sections about CSV and Binary files, MATLAB provides functions <a href="https://www.mathworks.com/help/matlab/ref/fileread.html"><code>fileread</code></a> for reading the content of a whole file as text, and <a href="https://www.mathworks.com/help/matlab/ref/readlines.html"><code>readlines</code></a> and <a href="https://www.mathworks.com/help/matlab/ref/writelines.html"><code>writelines</code></a> for reading/writing lines to text files.</p>
+<p><strong>Notes</strong></p>
+<ul>
+<li>MATLAB provides higher-level mechanisms form importing data files through the function <a href="https://www.mathworks.com/help/matlab/ref/importdata.html"><code>importdata</code></a> and the <a href="https://www.mathworks.com/help/matlab/ref/importtool.html">Import Tool</a>.</li>
+<li>MATLAB <a href="https://www.mathworks.com/help/matlab/ref/pattern.html">patterns</a> and <a href="https://www.mathworks.com/help/matlab/matlab_prog/regular-expressions.html">regular expressions</a> are useful for processing unstructured text data.</li>
+</ul>
 </div>
 </div>
 </div>
@@ -764,21 +820,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="binary-files" class="level2">
 <h2 class="anchored" data-anchor-id="binary-files">Binary Files</h2>
 <div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-8-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-1" role="tab" aria-controls="tabset-8-1" aria-selected="true">Python</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-8-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-2" role="tab" aria-controls="tabset-8-2" aria-selected="false">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-8-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-3" role="tab" aria-controls="tabset-8-3" aria-selected="false">Matlab</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-9-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-1" role="tab" aria-controls="tabset-9-1" aria-selected="true">Python</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-9-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-2" role="tab" aria-controls="tabset-9-2" aria-selected="false">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-9-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-3" role="tab" aria-controls="tabset-9-3" aria-selected="false">MATLAB</a></li></ul>
 <div class="tab-content" data-group="language">
-<div id="tabset-8-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-8-1-tab">
+<div id="tabset-9-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-9-1-tab">
 <p>To open binary files, we recommend using <code>numpy</code>’s <a href="https://numpy.org/doc/stable/reference/generated/numpy.fromfile.html"><code>from_file</code></a>. You will need to know the dimensions and data type of the binary file and if there is an offset or header information in the binary file.</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>arr <span class="op">=</span> np.from_file(filepath, dtype<span class="op">=</span>data_type).reshape(nrows, ncols)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>arr <span class="op">=</span> np.from_file(filepath, dtype<span class="op">=</span>data_type).reshape(nrows, ncols)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="tabset-8-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-8-2-tab">
+<div id="tabset-9-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-9-2-tab">
 <p>R code coming soon!</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Coming soon!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Coming soon!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="tabset-8-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-8-3-tab">
-<p>Matlab code coming soon!</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Coming soon!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="tabset-9-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-9-3-tab">
+<p>MATLAB supports interacting with binary files through low-level IO functions <a href="https://www.mathworks.com/help/matlab/ref/fopen.html"><code>fopen</code></a>, <a href="https://www.mathworks.com/help/matlab/ref/fclose.html"><code>fclose</code></a>, <a href="https://www.mathworks.com/help/matlab/ref/ferror.html"><code>ferror</code></a>, <a href="https://www.mathworks.com/help/matlab/ref/fseek.html"><code>fseek</code></a>, <a href="https://www.mathworks.com/help/matlab/ref/ftell.html"><code>ftell</code></a>, <a href="https://www.mathworks.com/help/matlab/ref/feof.html"><code>feof</code></a>, <a href="https://www.mathworks.com/help/matlab/ref/fscanf.html"><code>fscanf</code></a>, <a href="https://www.mathworks.com/help/matlab/ref/fprintf.html"><code>fprintf</code></a>, <a href="https://www.mathworks.com/help/matlab/ref/fread.html"><code>fread</code></a>, <a href="https://www.mathworks.com/help/matlab/ref/fwrite.html"><code>fwrite</code></a>, and <a href="https://www.mathworks.com/help/matlab/ref/frewind.html"><code>frewind</code></a>.</p>
+<p><strong>Notes</strong></p>
+<ul>
+<li>MATLAB provides higher-level mechanisms form importing data files through the function <a href="https://www.mathworks.com/help/matlab/ref/importdata.html"><code>importdata</code></a> and the <a href="https://www.mathworks.com/help/matlab/ref/importtool.html">Import Tool</a>.</li>
+<li>It is rare that ones must implement custom binary data file readers/writers, because MATLAB and its toolboxes provide functions for reading and writing a large number of data file formats.</li>
+</ul>
 </div>
 </div>
 </div>
