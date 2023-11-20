@@ -15,12 +15,14 @@ execute:
 We recommend using `xarray`'s [open_dataset](https://docs.xarray.dev/en/stable/generated/xarray.open_dataset.html)
 
 ### For a single file
+
 ```python
 import xarray as xr
 ds = xr.open_dataset(filename)
 ```
 
 ### For multiple files
+
 ```python
 import xarray as xr
 ds = xr.open_mfdataset(list_of_filenames)
@@ -61,6 +63,7 @@ surf(peaksData);
 ```
 
 **Notes**
+
 * Unlike MATLAB HDF5 interfaces, netCDF interfaces are not cloud enabled (yet). 
 * As HDF5 interfaces support reading netCDF 4 files, users must currently use these interfaces for accessing netCDF 4 files stored on the cloud (see tutorial _MATLAB Access Single NASA EarthData L2 NetCDF_ in this Cookbook).
 * MATLAB netCDF interfaces support OPeNDAP and byte-range for reading data.
@@ -151,13 +154,10 @@ R code coming soon!
 ```bash
 [A,R] = readgeoraster("myGeoTiffFile.tif");
 mapshow(A,R);
-
+```
 :::
 
-
-
 ## Shapefiles & GeoJSON
-
 
 ::: {.panel-tabset group="language"}
 
@@ -232,7 +232,9 @@ Advanced workflows can be implemented using [`detectImportOptions`](https://www.
 opts.SelectedVariableNames = ["TaxiIn","TaxiOut"];
 T = readtable("myAirlinesDataset.csv",opts);
 ```
+
 **Notes**
+
 * MATLAB provides higher-level mechanisms form importing data files through the function [`importdata`](https://www.mathworks.com/help/matlab/ref/importdata.html) and the [Import Tool](https://www.mathworks.com/help/matlab/ref/importtool.html).
 * A general list of functions and workflows for interacting with deliimited and formatted text files is provided [here](https://www.mathworks.com/help/matlab/text-files.html).
 
@@ -294,6 +296,7 @@ R code coming soon!
 MATLAB can interact with MAT-Files (.mat) using functions [`load`](https://www.mathworks.com/help/matlab/ref/load.html), [`save`](https://www.mathworks.com/help/matlab/ref/save.html), and through [`matfile`](https://www.mathworks.com/help/matlab/ref/matlab.io.matfile.html) objects.
 
 **Notes**
+
 * MATLAB provides higher-level mechanisms form importing data files through the function [`importdata`](https://www.mathworks.com/help/matlab/ref/importdata.html) and the [Import Tool](https://www.mathworks.com/help/matlab/ref/importtool.html).
 * [Multiple versions of the MAT-File format](https://www.mathworks.com/help/matlab/import_export/mat-file-versions.html) have been released. The latest, MAT-File v7.3 is based on the HDF5 file format.
 
@@ -326,6 +329,7 @@ R code coming soon!
 MATLAB provides a series of functions for interacting with text files. In addition to functions listed in sections about CSV and Binary files, MATLAB provides functions [`fileread`](https://www.mathworks.com/help/matlab/ref/fileread.html) for reading the content of a whole file as text, and [`readlines`](https://www.mathworks.com/help/matlab/ref/readlines.html) and [`writelines`](https://www.mathworks.com/help/matlab/ref/writelines.html) for reading/writing lines to text files.
 
 **Notes**
+
 * MATLAB provides higher-level mechanisms form importing data files through the function [`importdata`](https://www.mathworks.com/help/matlab/ref/importdata.html) and the [Import Tool](https://www.mathworks.com/help/matlab/ref/importtool.html).
 * MATLAB [patterns](https://www.mathworks.com/help/matlab/ref/pattern.html) and [regular expressions](https://www.mathworks.com/help/matlab/matlab_prog/regular-expressions.html) are useful for processing unstructured text data.
 
@@ -358,6 +362,7 @@ R code coming soon!
 MATLAB supports interacting with binary files through low-level IO functions [`fopen`](https://www.mathworks.com/help/matlab/ref/fopen.html), [`fclose`](https://www.mathworks.com/help/matlab/ref/fclose.html), [`ferror`](https://www.mathworks.com/help/matlab/ref/ferror.html), [`fseek`](https://www.mathworks.com/help/matlab/ref/fseek.html), [`ftell`](https://www.mathworks.com/help/matlab/ref/ftell.html), [`feof`](https://www.mathworks.com/help/matlab/ref/feof.html), [`fscanf`](https://www.mathworks.com/help/matlab/ref/fscanf.html), [`fprintf`](https://www.mathworks.com/help/matlab/ref/fprintf.html), [`fread`](https://www.mathworks.com/help/matlab/ref/fread.html), [`fwrite`](https://www.mathworks.com/help/matlab/ref/fwrite.html), and [`frewind`](https://www.mathworks.com/help/matlab/ref/frewind.html).
 
 **Notes**
+
 * MATLAB provides higher-level mechanisms form importing data files through the function [`importdata`](https://www.mathworks.com/help/matlab/ref/importdata.html) and the [Import Tool](https://www.mathworks.com/help/matlab/ref/importtool.html).
 * It is rare that ones must implement custom binary data file readers/writers, because MATLAB and its toolboxes provide functions for reading and writing a large number of data file formats.
 
