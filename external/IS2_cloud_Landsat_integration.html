@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>EarthData Cloud Cookbook - ICESat-2 and Landsat cloud access and data integration</title>
+<title>EarthData Cloud Cookbook - ICESat-2 and Landsat in the cloud</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -63,8 +63,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../external/Sea_level_rise_notebook.html" rel="next">
-<link href="../external/How_to_Perform_Cross-DAAC_S3_Bucket_Access_Using_Python.html" rel="prev">
+<link href="../tutorials/04_On-Prem_Cloud.html" rel="next">
+<link href="../tutorials/Observing_Seasonal_Ag_Changes.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -114,7 +114,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../tutorials/index.html">Tutorials</a></li><li class="breadcrumb-item"><a href="../external/IS2_cloud_Landsat_integration.html">Multi-datasets 2</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../tutorials/index.html">Tutorials</a></li><li class="breadcrumb-item"><a href="../external/IS2_cloud_Landsat_integration.html">ICESat-2</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -333,20 +333,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../external/How_to_Perform_Cross-DAAC_S3_Bucket_Access_Using_Python.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Multi-datasets 1</span></a>
+  <a href="../tutorials/Hurricanes_Wind_and_Sea_Surface_Temperature.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Multi-datasets</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tutorials/Sea_Level_Rise.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Sea Level Rise</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tutorials/Above_Ground_Biomass_Density.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Carbon Stocks</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tutorials/Observing_Seasonal_Ag_Changes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Agriculture Observations</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../external/IS2_cloud_Landsat_integration.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Multi-datasets 2</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../external/Sea_level_rise_notebook.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Sea Level Rise: <code>earthaccess</code></span></a>
+ <span class="menu-text">ICESat-2</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -363,14 +375,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../tutorials/fair-workflow-geoweaver-demo.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Pygeoweaver Workflow Demo</span></a>
+  <a href="../tutorials/Earthdata_Cloud__Data_Access_OPeNDAP_Example.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">OPeNDAP Access</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../tutorials/Earthdata_Cloud__Data_Access_OPeNDAP_Example.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">OPeNDAP Access</span></a>
+  <a href="../tutorials/fair-workflow-geoweaver-demo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pygeoweaver Workflow Demo</span></a>
   </div>
 </li>
       </ul>
@@ -560,7 +572,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#notes" id="toc-notes" class="nav-link active" data-scroll-target="#notes">Notes</a></li>
+  <li><a href="#icesat-2-and-landsat-cloud-access-and-data-integration" id="toc-icesat-2-and-landsat-cloud-access-and-data-integration" class="nav-link active" data-scroll-target="#icesat-2-and-landsat-cloud-access-and-data-integration">ICESat-2 and Landsat cloud access and data integration</a>
+  <ul class="collapse">
+  <li><a href="#notes" id="toc-notes" class="nav-link" data-scroll-target="#notes">Notes</a></li>
   <li><a href="#computing-environment" id="toc-computing-environment" class="nav-link" data-scroll-target="#computing-environment">Computing environment</a></li>
   <li><a href="#identify-and-acquire-the-icesat2-products-of-interest" id="toc-identify-and-acquire-the-icesat2-products-of-interest" class="nav-link" data-scroll-target="#identify-and-acquire-the-icesat2-products-of-interest">1. Identify and acquire the ICESat2 product(s) of interest</a>
   <ul class="collapse">
@@ -583,6 +597,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#advanced-multi-dimensional-read-ins-manipulation-and-visualization" id="toc-advanced-multi-dimensional-read-ins-manipulation-and-visualization" class="nav-link" data-scroll-target="#advanced-multi-dimensional-read-ins-manipulation-and-visualization">Advanced multi-dimensional read-ins, manipulation and visualization</a></li>
   </ul></li>
   <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">4. Summary</a></li>
+  </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.dev/nasa-openscapes/earthdata-cloud-cookbook/blob/main/external/IS2_cloud_Landsat_integration.ipynb" class="toc-action">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/blob/main/external/IS2_cloud_Landsat_integration.ipynb" class="toc-action">View source</a></p><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
@@ -591,7 +606,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">ICESat-2 and Landsat cloud access and data integration</h1>
+<h1 class="title">ICESat-2 and Landsat in the cloud</h1>
 </div>
 
 
@@ -606,9 +621,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
+<p>imported on: <strong>2023-11-28</strong></p>
+<p>
+This notebook was originally developed by CryoCloud and NSIDC.
+</p>
+<blockquote class="blockquote">
+<p>The original source for this document is <a href="https://github.com/CryoInTheCloud/CryoCloudWebsite">https://github.com/CryoInTheCloud/CryoCloudWebsite</a></p>
+</blockquote>
+<section id="icesat-2-and-landsat-cloud-access-and-data-integration" class="level1">
+<h1>ICESat-2 and Landsat cloud access and data integration</h1>
 <p>This notebook ({nb-download}<code>download &lt;IS2_cloud_data_integration.ipynb&gt;</code>) builds off of the icepyx <a href="https://icepyx.readthedocs.io/en/latest/example_notebooks/IS2_cloud_data_access.html">IS2_cloud_data_access.ipynb</a> and <a href="https://icesat-2.hackweek.io/tutorials/DataIntegration/dataintegration-1.html">ICESat-2 Hackweek Data Integration 1</a> tutorials. It illustrates the use of icepyx for accessing ICESat-2 data currently available through the AWS (Amazon Web Services) us-west2 hub s3 data bucket as well as data integration with Landsat (cloud-optimized geotiff) and ATM (downloaded csv) datasets.</p>
-<p><code>jgyvjxtzorci Learning Objectives **Goals** - Identify and locate ICESat-2 and Landsat data - Acquire data from the cloud - Open data in `pandas` and `xarray` and basic functioning of DataFrames</code></p>
-<p><code>jgyvjxtzorci Key Takeaway By the end of this tutorial, you will be able to visualize Landsat Cloud Optimized Geotiffs with ICESat-2 and ATM data.</code></p>
+<p><code>jxpnfhfxvecu Learning Objectives **Goals** - Identify and locate ICESat-2 and Landsat data - Acquire data from the cloud - Open data in `pandas` and `xarray` and basic functioning of DataFrames</code></p>
+<p><code>jxpnfhfxvecu Key Takeaway By the end of this tutorial, you will be able to visualize Landsat Cloud Optimized Geotiffs with ICESat-2 and ATM data.</code></p>
 <section id="notes" class="level2">
 <h2 class="anchored" data-anchor-id="notes">Notes</h2>
 <ol type="1">
@@ -5212,7 +5236,7 @@ Wall time: 347 ms</code></pre>
                 
             
         
-    </section></section></main></div>
+    </section></section></section></main></div>
 
 
 
@@ -9791,6 +9815,7 @@ Data variables:
 </section>
 </section>
 
+
  <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -10142,13 +10167,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../external/How_to_Perform_Cross-DAAC_S3_Bucket_Access_Using_Python.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Multi-datasets 1</span>
+      <a href="../tutorials/Observing_Seasonal_Ag_Changes.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Agriculture Observations</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../external/Sea_level_rise_notebook.html" class="pagination-link">
-        <span class="nav-page-text">Sea Level Rise: <code>earthaccess</code></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../tutorials/04_On-Prem_Cloud.html" class="pagination-link">
+        <span class="nav-page-text">Cloud &amp; Non-cloud</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

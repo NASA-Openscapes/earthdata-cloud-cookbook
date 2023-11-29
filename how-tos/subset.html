@@ -329,20 +329,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../external/How_to_Perform_Cross-DAAC_S3_Bucket_Access_Using_Python.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Multi-datasets 1</span></a>
+  <a href="../tutorials/Hurricanes_Wind_and_Sea_Surface_Temperature.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Multi-datasets</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tutorials/Sea_Level_Rise.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Sea Level Rise</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tutorials/Above_Ground_Biomass_Density.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Carbon Stocks</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tutorials/Observing_Seasonal_Ag_Changes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Agriculture Observations</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../external/IS2_cloud_Landsat_integration.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Multi-datasets 2</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../external/Sea_level_rise_notebook.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Sea Level Rise: <code>earthaccess</code></span></a>
+ <span class="menu-text">ICESat-2</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -359,14 +371,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../tutorials/fair-workflow-geoweaver-demo.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Pygeoweaver Workflow Demo</span></a>
+  <a href="../tutorials/Earthdata_Cloud__Data_Access_OPeNDAP_Example.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">OPeNDAP Access</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../tutorials/Earthdata_Cloud__Data_Access_OPeNDAP_Example.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">OPeNDAP Access</span></a>
+  <a href="../tutorials/fair-workflow-geoweaver-demo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pygeoweaver Workflow Demo</span></a>
   </div>
 </li>
       </ul>
@@ -589,7 +601,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" aria-current="page">Python</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">Matlab</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-4" role="tab" aria-controls="tabset-1-4" aria-selected="false">Command Line</a></li></ul>
 <div class="tab-content" data-group="language">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
-<p>Install the <a href="&quot;https://github.com/nasa/harmony-py&quot;">harmony-py</a> package:</p>
+<p>Install the <a href="https://github.com/nasa/harmony-py">harmony-py</a> package:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install harmony-py</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">-U</span> harmony-py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Import packages:</p>
@@ -601,7 +613,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> xarray <span class="im">as</span> xr</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <section id="set-up-harmony-client-and-authentication" class="level3">
 <h3 class="anchored" data-anchor-id="set-up-harmony-client-and-authentication">Set up Harmony client and authentication</h3>
-<p>We will authenticate the following Harmony request using a netrc file. See the <a href="../appendix/authentication.html">appendix</a> for more information on <a href="https://urs.earthdata.nasa.gov/">Earthdata Login</a> and netrc setup. This basic line below to create a Harmony Client assumes that we have a .netrc available.</p>
+<p>We will authenticate the following Harmony request using a netrc file. See the <a href="https://nasa-openscapes.github.io/earthdata-cloud-cookbook/appendix/authentication.html">appendix</a> for more information on <a href="https://urs.earthdata.nasa.gov/">Earthdata Login</a> and netrc setup. This basic line below to create a Harmony Client assumes that we have a .netrc available.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>harmony_client <span class="op">=</span> Client()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="create-and-submit-harmony-request" class="level3">
