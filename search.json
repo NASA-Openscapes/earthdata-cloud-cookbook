@@ -620,7 +620,7 @@
     "href": "in-development/matlab.html#credentials",
     "title": "MATLAB Access Single NASA EarthData L2 NetCDF",
     "section": "Credentials",
-    "text": "Credentials\nDirect S3 access is achieved by passing NASA supplied temporary credentials to AWS so we can interact with S3 objects from applicable EarthData Cloud buckets. For now, each NASA DAAC has different AWS credentials endpoints. Below are some of the credential endpoints to various DAACs:\n\nPODAAC: https://archive.podaac.earthdata.nasa.gov/s3credentials\nGESDISC: https://data.gesdisc.earthdata.nasa.gov/s3credentials\nLPDAAC: https://data.lpdaac.earthdatacloud.nasa.gov/s3credentials\nORNLDAAC: https://data.ornldaac.earthdata.nasa.gov/s3credentials\nGHRCDAAC: https://data.ghrc.earthdata.nasa.gov/s3credentials\n\nYou will need your EarthData login to access these links. Create an account here: https://urs.earthdata.nasa.gov/users/new."
+    "text": "Credentials\nDirect S3 access is achieved by passing NASA supplied temporary credentials to AWS so we can interact with S3 objects from applicable EarthData Cloud buckets. For now, each NASA DAAC has different AWS credentials endpoints. Below are some of the credential endpoints to various DAACs:\n\nPODAAC: https://archive.podaac.earthdata.nasa.gov/s3credentials\nGESDISC: https://data.gesdisc.earthdata.nasa.gov/s3credentials\nLPDAAC: https://data.lpdaac.earthdatacloud.nasa.gov/s3credentials\nORNLDAAC: https://data.ornldaac.earthdata.nasa.gov/s3credentials\nGHRCDAAC: https://data.ghrc.earthdata.nasa.gov/s3credentials\nNSIDC: https://data.nsidc.earthdatacloud.nasa.gov/s3credentials\n\nYou will need your EarthData login to access these links. Create an account here: https://urs.earthdata.nasa.gov/users/new."
   },
   {
     "objectID": "in-development/matlab.html#prerequisites",
@@ -893,7 +893,7 @@
     "href": "external/appeears_csv_cloud_access.html",
     "title": "How to work with AppEEARS CSV outputs in the cloud.",
     "section": "",
-    "text": "imported on: 2023-11-29\nThis notebook was originally developed by LP DAAC to show how to work with AppEEARS CSV outputs directly in the cloud."
+    "text": "imported on: 2023-11-30\nThis notebook was originally developed by LP DAAC to show how to work with AppEEARS CSV outputs directly in the cloud."
   },
   {
     "objectID": "external/appeears_csv_cloud_access.html#setting-up",
@@ -2146,7 +2146,7 @@
     "href": "external/IS2_cloud_Landsat_integration.html",
     "title": "ICESat-2 and Landsat in the cloud",
     "section": "",
-    "text": "imported on: 2023-11-29\nThis notebook was originally developed by CryoCloud and NSIDC."
+    "text": "imported on: 2023-11-30\nThis notebook was originally developed by CryoCloud and NSIDC."
   },
   {
     "objectID": "external/IS2_cloud_Landsat_integration.html#notes",
