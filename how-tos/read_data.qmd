@@ -221,7 +221,7 @@ MATLAB supports interacting with CSV files and other tabular file formats throug
 
 ```bash
 % Read time table and display summary
-TT = readtimetable('myTimeTable.csv');
+TT = readtimetable("myTimeTable.csv");
 summary(TT)
 ```
 
@@ -229,8 +229,10 @@ Advanced workflows can be implemented using [`detectImportOptions`](https://www.
 
 ```bash
 % Read variables "TaxiIn" and "TaxiOut" from airlines dataset
+filename = "airlinesmall.csv";
+opts = detectImportOptions(filename);
 opts.SelectedVariableNames = ["TaxiIn","TaxiOut"];
-T = readtable("myAirlinesDataset.csv",opts);
+T = readtable(filename, opts);
 ```
 
 **Notes**
@@ -298,7 +300,7 @@ MATLAB can interact with MAT-Files (.mat) using functions [`load`](https://www.m
 **Notes**
 
 * MATLAB provides higher-level mechanisms form importing data files through the function [`importdata`](https://www.mathworks.com/help/matlab/ref/importdata.html) and the [Import Tool](https://www.mathworks.com/help/matlab/ref/importtool.html).
-* [Multiple versions of the MAT-File format](https://www.mathworks.com/help/matlab/import_export/mat-file-versions.html) have been released. The latest, MAT-File v7.3 is based on the HDF5 file format.
+* [Multiple versions of the MAT-File format](https://www.mathworks.com/help/matlab/import_export/mat-file-versions.html) have been released. The latest, MAT-File v7.3, is based on the HDF5 file format.
 
 :::
 
