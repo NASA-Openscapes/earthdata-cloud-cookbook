@@ -571,7 +571,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#how-do-i-subset-a-data-granule-using-harmony" id="toc-how-do-i-subset-a-data-granule-using-harmony" class="nav-link active" data-scroll-target="#how-do-i-subset-a-data-granule-using-harmony">How do I subset a data granule using Harmony?</a></li>
   <li><a href="#how-do-i-subset-an-opendap-granule-in-the-cloud" id="toc-how-do-i-subset-an-opendap-granule-in-the-cloud" class="nav-link" data-scroll-target="#how-do-i-subset-an-opendap-granule-in-the-cloud">How do I subset an OPeNDAP granule in the cloud?</a></li>
   <li><a href="#how-do-i-subset-a-data-granule-using-xarray" id="toc-how-do-i-subset-a-data-granule-using-xarray" class="nav-link" data-scroll-target="#how-do-i-subset-a-data-granule-using-xarray">How do I subset a data granule using xarray?</a></li>
-  <li><a href="#how-do-i-download-a-subset-of-netcdf-4" id="toc-how-do-i-download-a-subset-of-netcdf-4" class="nav-link" data-scroll-target="#how-do-i-download-a-subset-of-netcdf-4">How do I download a subset of NetCDF-4?</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/edit/main/how-tos/subset.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/blob/main/how-tos/subset.qmd" class="toc-action">View source</a></p><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
@@ -598,7 +597,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="how-do-i-subset-a-data-granule-using-harmony" class="level2">
 <h2 class="anchored" data-anchor-id="how-do-i-subset-a-data-granule-using-harmony">How do I subset a data granule using Harmony?</h2>
 <div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" aria-current="page">Python</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">Matlab</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-4" role="tab" aria-controls="tabset-1-4" aria-selected="false">Command Line</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" aria-current="page">Python</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">MATLAB</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-4" role="tab" aria-controls="tabset-1-4" aria-selected="false">Command Line</a></li></ul>
 <div class="tab-content" data-group="language">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 <p>Install the <a href="https://github.com/nasa/harmony-py">harmony-py</a> package:</p>
@@ -665,13 +664,104 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Coming soon!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
-<p>Matlab code coming soon!</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Coming soon!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This example assumes that you have experimented with and understood the tutorial <em>MATLAB Access Single NASA EarthData L2 NetCDF</em> presented in this Cookbook.</p>
+<p>To subset a dataset, either read it over its full extent and subset it using MATLAB indexing (<em>a posteriori</em>, client-side), or use the <code>start</code>, <code>count</code>, and <code>stride</code> parameters of function <code>h5read</code> to read only specific regions/samples (<em>hyperslabs</em>) of it (<em>server side</em>). The code snippets that follow present both approaches, for accessing a dataset of sea surface temperature.</p>
+<p>Follow the authentication procedure presented in the tutorial:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">addpath</span><span class="er">(</span><span class="st">"&lt;PATH_TO_FUNCTION_LOADAWSCREDENTIALSENPOINT&gt;"</span><span class="kw">)</span> <span class="kw">;</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">daacCredentialsEndpoint</span> = <span class="st">"https://archive.podaac.earthdata.nasa.gov/s3credentials"</span><span class="kw">;</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="ex">loadAWSCredentials</span><span class="er">(</span><span class="ex">daacCredentialsEndpoint</span><span class="kw">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Define relevant file and dataset:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">filePath</span> = <span class="st">"s3://podaac-ops-cumulus-protected/MODIS_A-JPL-L2P-v2019.0/20100619062008-JPL-L2P_GHRSST-SSTskin-MODIS_A-N-v02.0-fv01.0.nc"</span><span class="kw">;</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">datasetName</span> = <span class="st">"sea_surface_temperature_4um"</span><span class="kw">;</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="ex">datasetPath</span> = <span class="st">"/"</span> + datasetName<span class="kw">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Read full dataset, longitudes, and latitudes. Replace fill values by NaN (so they are not displayed by MALTAB), and build contour plot:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">fill_value</span> = h5readatt<span class="er">(</span><span class="ex">filePath,datasetPath,</span><span class="st">"_FillValue"</span><span class="kw">);</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="ex">name</span> = h5readatt<span class="er">(</span><span class="ex">filePath,datasetPath,</span><span class="st">"long_name"</span><span class="kw">);</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="ex">data</span> = h5read<span class="er">(</span><span class="ex">filePath,datasetPath</span><span class="kw">);</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="ex">data</span><span class="er">(</span><span class="ex">data</span> == fill_value<span class="kw">)</span> <span class="ex">=</span> NaN<span class="kw">;</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="ex">lat</span> = h5read<span class="er">(</span><span class="ex">filePath,</span><span class="st">"/lat"</span><span class="kw">);</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="ex">lon</span> = h5read<span class="er">(</span><span class="ex">filePath,</span><span class="st">"/lon"</span><span class="kw">);</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="ex">contour</span><span class="er">(</span><span class="ex">lon,lat,data</span><span class="kw">);</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="ex">title</span><span class="er">(</span><span class="ex">name</span><span class="kw">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Subset/sub-sample full dataset with a step of 10 (a posteriori) using MATLAB indexing:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">step</span> = 10<span class="kw">;</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="ex">dataSize</span> = size<span class="er">(</span><span class="ex">data</span><span class="kw">);</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="ex">rowIx</span> = 1 : step : dataSize<span class="er">(</span><span class="ex">1</span><span class="kw">);</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="ex">colIx</span> = 1 : step : dataSize<span class="er">(</span><span class="ex">2</span><span class="kw">);</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="ex">contour</span><span class="er">(</span><span class="ex">lon</span><span class="er">(</span><span class="ex">rowIx,colIx</span><span class="kw">)</span><span class="ex">,lat</span><span class="er">(</span><span class="ex">rowIx,colIx</span><span class="kw">)</span><span class="ex">,data</span><span class="er">(</span><span class="ex">rowIx,colIx</span><span class="kw">));</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="ex">title</span><span class="er">(</span><span class="ex">name</span> + <span class="st">" (sub-sampled through MATLAB indexing)"</span><span class="kw">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Use the <code>start</code>, <code>count</code>, and <code>stride</code> parameters of function <code>h5read</code> to read only specific regions/samples (<em>hyperslabs</em>) of it (<em>server side</em>). These parameters must be defined as vectors whose size matches the number of dimensions of the dataset. Here, we want to read data starting at index 1, with a stride/step of 10, and cover the full extent of the dataset (count = Inf). Based on our experiments above, we assume that the dataset is a 2D array:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">dataStride10</span> = h5read<span class="er">(</span><span class="ex">filePath,datasetPath,[1,1],[Inf,Inf],[step,step]</span><span class="kw">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Running this leads to the following error:</p>
+<pre><code>Error using h5readc
+The START, COUNT, and STRIDE parameters must be double precision, positive, and have length equal to the rank of the dataset.</code></pre>
+<p>This error message is too succint to be helpful. Try to get more information about the dataset using the <code>h5disp</code>, which is cloud-enabled unlike <code>ncdisp</code>:</p>
+<pre><code>h5disp(filePath,datasetPath)
+
+OUTPUT:
+HDF5 20100619062008-JPL-L2P_GHRSST-SSTskin-MODIS_A-N-v02.0-fv01.0.nc 
+Dataset 'sea_surface_temperature_4um' 
+    Size:  1354x2030x1                    &lt;--- Shows a 3rd (singleton) dimension
+    MaxSize:  1354x2030x1                     
+    Datatype:   H5T_STD_I16LE (int16)
+    ChunkSize:  677x1015x1
+    Filters:  deflate(5)
+    FillValue:  -32767
+    Attributes:
+        'long_name':  'sea surface temperature'
+        'units':  'kelvin'
+        '_FillValue':  -32767 
+        'valid_min':  -1000 
+        'valid_max':  10000 
+        'comment':  'sea surface temperature from mid-IR (4 um) channels; non L2P core field'
+        'scale_factor':  0.005000 
+        'add_offset':  273.149994 
+        'coordinates':  'lon lat'
+        'coverage_content_type':  'physicalMeasurement'
+        'DIMENSION_LIST':  H5T_VLEN</code></pre>
+<p>This output shows a 3rd (singleton) dimension, but it still does not explain what it is.</p>
+<p>One workaround is to display more of the content of the file through <code>h5disp</code> and/or <code>h5info</code> and try to get relevant information about dimensions. The following shows a simpler approach, however: create a local copy of the file and analyze it using <code>ncdisp</code>. It is possible because MATLAB IO functions, and in particular <code>copyfile</code>, are cloud-enabled:</p>
+<pre><code>copyfile(filePath,"test.nc");
+ncdisp("test.nc",datasetName);
+
+OUTPUT:
+Source:
+           .../test.nc
+Format:
+           netcdf4
+Dimensions:
+           ni   = 1354
+           nj   = 2030
+           time = 1
+Variables:
+    sea_surface_temperature_4um
+           Size:       1354x2030x1
+           Dimensions: ni,nj,time
+           Datatype:   int16
+           Attributes:
+                 ...</code></pre>
+<p>This makes it clear that there is a 3rd dimension that is <em>time</em>, with a size of 1.</p>
+<p>Subset the dataset using <code>h5read</code> and vectors of 3 elements that define <code>start</code>, <code>count</code>, and <code>stride</code> for the 3 dimensions:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">dataStride10</span> = h5read<span class="er">(</span><span class="ex">filePath,datasetPath,[1,1,1],[Inf,Inf,Inf],[step,step,1]</span><span class="kw">);</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="ex">dataStride10</span><span class="er">(</span><span class="ex">dataStride10</span> == fill_value<span class="kw">)</span> <span class="ex">=</span> NaN<span class="kw">;</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="ex">latStride10</span> = h5read<span class="er">(</span><span class="ex">filePath,</span><span class="st">"/lat"</span><span class="ex">,[1,1],[Inf,Inf],[step,step]</span><span class="kw">);</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="ex">lonStride10</span> = h5read<span class="er">(</span><span class="ex">filePath,</span><span class="st">"/lon"</span><span class="ex">,[1,1],[Inf,Inf],[step,step]</span><span class="kw">);</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="ex">contour</span><span class="er">(</span><span class="ex">lonStride10,latStride10,dataStride10</span><span class="kw">);</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="ex">title</span><span class="er">(</span><span class="ex">name+</span> <span class="st">" (sub-sampled through H5READ stride parameter)"</span><span class="kw">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>We can target a specific region using the same two approaches. The following shows how to create an array of logicals that “flags” a region of interest, how to identify relevant rows and columns of the data, latitudes, and longitudes arrays, and how to use logical indexing for plotting the data:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">latBounds</span> = <span class="pp">[</span><span class="ss">31,33.5</span><span class="pp">]</span><span class="kw">;</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="ex">lonBounds</span> = <span class="pp">[-</span><span class="ss">64,</span><span class="pp">-</span><span class="ss">57.5</span><span class="pp">]</span><span class="kw">;</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="ex">isRegion</span> = lat<span class="op">&gt;</span>=latBounds<span class="er">(</span><span class="ex">1</span><span class="kw">)</span> <span class="kw">&amp;</span> <span class="ex">lat</span><span class="op">&lt;</span>=latBounds<span class="er">(</span><span class="ex">2</span><span class="kw">)</span> <span class="kw">&amp;</span> <span class="ex">lon</span><span class="op">&gt;</span>=lonBounds<span class="er">(</span><span class="ex">1</span><span class="kw">)</span> <span class="kw">&amp;</span> <span class="ex">lon</span><span class="op">&lt;</span>=lonBounds<span class="er">(</span><span class="ex">2</span><span class="kw">);</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="ex">isRow</span> = any<span class="er">(</span><span class="ex">isRegion,2</span><span class="kw">);</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="ex">isCol</span> = any<span class="er">(</span><span class="ex">isRegion,1</span><span class="kw">);</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="ex">contour</span><span class="er">(</span><span class="ex">lon</span><span class="er">(</span><span class="ex">isRow,isCol</span><span class="kw">)</span><span class="ex">,lat</span><span class="er">(</span><span class="ex">isRow,isCol</span><span class="kw">)</span><span class="ex">,data</span><span class="er">(</span><span class="ex">isRow,isCol</span><span class="kw">));</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="ex">xlim</span><span class="er">(</span><span class="ex">lonBounds</span><span class="kw">);</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="ex">ylim</span><span class="er">(</span><span class="ex">latBounds</span><span class="kw">);</span></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="ex">title</span><span class="er">(</span><span class="ex">name+</span> <span class="st">" (selected region)"</span><span class="kw">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="tabset-1-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-4-tab">
 <p>With <code>wget</code> and <code>curl</code>:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Coming soon!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Coming soon!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -681,10 +771,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="how-do-i-subset-a-data-granule-using-xarray" class="level2">
 <h2 class="anchored" data-anchor-id="how-do-i-subset-a-data-granule-using-xarray">How do I subset a data granule using xarray?</h2>
-</section>
-<section id="how-do-i-download-a-subset-of-netcdf-4" class="level2">
-<h2 class="anchored" data-anchor-id="how-do-i-download-a-subset-of-netcdf-4">How do I download a subset of NetCDF-4?</h2>
-<p><em>this might be a deprecated idea</em></p>
 
 
 </section>
