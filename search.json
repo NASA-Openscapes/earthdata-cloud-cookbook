@@ -1005,7 +1005,7 @@
     "href": "external/IS2_cloud_Landsat_integration.html",
     "title": "ICESat-2 and Landsat in the cloud",
     "section": "",
-    "text": "imported on: 2023-11-30\nThis notebook was originally developed by CryoCloud and NSIDC."
+    "text": "imported on: 2023-12-06\nThis notebook was originally developed by CryoCloud and NSIDC."
   },
   {
     "objectID": "external/IS2_cloud_Landsat_integration.html#notes",
@@ -1341,7 +1341,7 @@
     "href": "how-tos/read_data.html#csv",
     "title": "Read Data",
     "section": "CSV",
-    "text": "CSV\n\nPythonRMATLAB\n\n\nTo open CSV files, we recommend using pandas’s read_csv.\nimport pandas as pd\ndf = pd.read_csv(filename)\n\n\nR code coming soon!\n# Coming soon!\n\n\nMATLAB supports interacting with CSV files and other tabular file formats through functions readtable, readtimetable, readcell, and readmatrix, as well as their counterparts for writing to files.\n% Read time table and display summary\nTT = readtimetable('myTimeTable.csv');\nsummary(TT)\nAdvanced workflows can be implemented using detectImportOptions and functions referenced in its documentation.\n% Read variables \"TaxiIn\" and \"TaxiOut\" from airlines dataset\nopts.SelectedVariableNames = [\"TaxiIn\",\"TaxiOut\"];\nT = readtable(\"myAirlinesDataset.csv\",opts);\nNotes\n\nMATLAB provides higher-level mechanisms form importing data files through the function importdata and the Import Tool.\nA general list of functions and workflows for interacting with deliimited and formatted text files is provided here."
+    "text": "CSV\n\nPythonRMATLAB\n\n\nTo open CSV files, we recommend using pandas’s read_csv.\nimport pandas as pd\ndf = pd.read_csv(filename)\n\n\nR code coming soon!\n# Coming soon!\n\n\nMATLAB supports interacting with CSV files and other tabular file formats through functions readtable, readtimetable, readcell, and readmatrix, as well as their counterparts for writing to files.\n% Read time table and display summary\nTT = readtimetable(\"myTimeTable.csv\");\nsummary(TT)\nAdvanced workflows can be implemented using detectImportOptions and functions referenced in its documentation.\n% Read variables \"TaxiIn\" and \"TaxiOut\" from airlines dataset\nfilename = \"airlinesmall.csv\";\nopts = detectImportOptions(filename);\nopts.SelectedVariableNames = [\"TaxiIn\",\"TaxiOut\"];\nT = readtable(filename, opts);\nNotes\n\nMATLAB provides higher-level mechanisms form importing data files through the function importdata and the Import Tool.\nA general list of functions and workflows for interacting with deliimited and formatted text files is provided here."
   },
   {
     "objectID": "how-tos/read_data.html#excel",
@@ -1355,7 +1355,7 @@
     "href": "how-tos/read_data.html#mat-files-.mat",
     "title": "Read Data",
     "section": "MAT-Files (.mat)",
-    "text": "MAT-Files (.mat)\n\nPythonRMATLAB\n\n\n#coming soon! scipy & .mat\n\n\nR code coming soon!\n# Coming soon!\n\n\nMATLAB can interact with MAT-Files (.mat) using functions load, save, and through matfile objects.\nNotes\n\nMATLAB provides higher-level mechanisms form importing data files through the function importdata and the Import Tool.\nMultiple versions of the MAT-File format have been released. The latest, MAT-File v7.3 is based on the HDF5 file format."
+    "text": "MAT-Files (.mat)\n\nPythonRMATLAB\n\n\n#coming soon! scipy & .mat\n\n\nR code coming soon!\n# Coming soon!\n\n\nMATLAB can interact with MAT-Files (.mat) using functions load, save, and through matfile objects.\nNotes\n\nMATLAB provides higher-level mechanisms form importing data files through the function importdata and the Import Tool.\nMultiple versions of the MAT-File format have been released. The latest, MAT-File v7.3, is based on the HDF5 file format."
   },
   {
     "objectID": "how-tos/read_data.html#text-data-files",
@@ -2272,7 +2272,7 @@
     "href": "external/appeears_csv_cloud_access.html",
     "title": "How to work with AppEEARS CSV outputs in the cloud.",
     "section": "",
-    "text": "imported on: 2023-11-30\nThis notebook was originally developed by LP DAAC to show how to work with AppEEARS CSV outputs directly in the cloud."
+    "text": "imported on: 2023-12-06\nThis notebook was originally developed by LP DAAC to show how to work with AppEEARS CSV outputs directly in the cloud."
   },
   {
     "objectID": "external/appeears_csv_cloud_access.html#setting-up",
