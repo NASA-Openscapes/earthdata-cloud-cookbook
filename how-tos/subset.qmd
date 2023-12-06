@@ -93,14 +93,132 @@ R code coming soon!
 # Coming soon!
 ```
 
-## Matlab
+## MATLAB
 
-Matlab code coming soon!
+This example assumes that you have experimented with and understood the tutorial _MATLAB Access Single NASA EarthData L2 NetCDF_ presented in this Cookbook.
 
+To subset a dataset, either read it over its full extent and subset it using MATLAB indexing (_a posteriori_, client-side), or use the `start`, `count`, and `stride` parameters of function `h5read` to read only specific regions/samples (_hyperslabs_) of it (_server side_). The code snippets that follow present both approaches, for accessing a dataset of sea surface temperature.
+
+Follow the authentication procedure presnted in the tutorial:
 ```bash
-#| echo: true
-# Coming soon!
+addpath("<PATH_TO_FUNCTION_LOADAWSCREDENTIALSENPOINT>") ;
+daacCredentialsEndpoint = "https://archive.podaac.earthdata.nasa.gov/s3credentials";
+loadAWSCredentials(daacCredentialsEndpoint);
 ```
+
+Define relevant file and dataset:
+```
+filePath = "s3://podaac-ops-cumulus-protected/MODIS_A-JPL-L2P-v2019.0/20100619062008-JPL-L2P_GHRSST-SSTskin-MODIS_A-N-v02.0-fv01.0.nc";
+datasetName = "sea_surface_temperature_4um";
+datasetPath = "/" + datasetName;
+```
+
+Read full dataset, longitudes, and latitudes. Replace fill values by NaN (so they are not displayed by MALTAB), and build contour plot:
+```
+fill_value = h5readatt(filePath,datasetPath,"_FillValue");
+name = h5readatt(filePath,datasetPath,"long_name");
+data = h5read(filePath,datasetPath);
+data(data == fill_value) = NaN;
+lat = h5read(filePath,"/lat");
+lon = h5read(filePath,"/lon");
+contour(lon,lat,data);
+title(name);
+```
+
+Subset/sub-sample full dataset with a step of 10 (a posteriori) using MATLAB indexing:
+```
+step = 10;
+dataSize = size(data);
+rowIx = 1 : step : dataSize(1);
+colIx = 1 : step : dataSize(2);
+contour(lon(rowIx,colIx),lat(rowIx,colIx),data(rowIx,colIx));
+title(name + " (sub-sampled through MATLAB indexing)");
+```
+
+Use the `start`, `count`, and `stride` parameters of function `h5read` to read only specific regions/samples (_hyperslabs_) of it (_server side_). These parameters must be defined as vectors whose size matches the number of dimensions of the dataset. Here, we want to read data starting at index 1, with a stride/step of 10, and cover the full extent of the dataset (count = Inf). Based on our experiments above, we assume that the dataset is a 2D array:
+```
+dataStride10 = h5read(filePath,datasetPath,[1,1],[Inf,Inf],[step,step]);
+```
+Running this leads to the following error:
+```
+Error using h5readc
+The START, COUNT, and STRIDE parameters must be double precision, positive, and have length equal to the rank of the dataset.
+```
+This error message is too succint to be helpful. Try to get more information about the dataset using the `h5disp`, which is cloud-enabled unlike `ncdisp`:
+```
+h5disp(filePath,datasetPath)
+
+OUTPUT:
+HDF5 20100619062008-JPL-L2P_GHRSST-SSTskin-MODIS_A-N-v02.0-fv01.0.nc 
+Dataset 'sea_surface_temperature_4um' 
+    Size:  1354x2030x1                    <--- Shows a 3rd (singleton) dimension
+    MaxSize:  1354x2030x1                     
+    Datatype:   H5T_STD_I16LE (int16)
+    ChunkSize:  677x1015x1
+    Filters:  deflate(5)
+    FillValue:  -32767
+    Attributes:
+        'long_name':  'sea surface temperature'
+        'units':  'kelvin'
+        '_FillValue':  -32767 
+        'valid_min':  -1000 
+        'valid_max':  10000 
+        'comment':  'sea surface temperature from mid-IR (4 um) channels; non L2P core field'
+        'scale_factor':  0.005000 
+        'add_offset':  273.149994 
+        'coordinates':  'lon lat'
+        'coverage_content_type':  'physicalMeasurement'
+        'DIMENSION_LIST':  H5T_VLEN
+```
+This output shows a 3rd (singleton) dimension, but it still does not explain what it is. 
+
+One workaround is to display more of the content of the file through `h5disp` and/or `h5info` and try to get relevant information about dimensions. The following shows a simpler approach, however: create a local copy of the file and analyze it using `ncdisp`. It is possible because MATLAB IO functions, and in particular `copyfile`, are cloud-enabled:
+```
+copyfile(filePath,"test.nc");
+ncdisp("test.nc",datasetName);
+
+OUTPUT:
+Source:
+           .../test.nc
+Format:
+           netcdf4
+Dimensions:
+           ni   = 1354
+           nj   = 2030
+           time = 1
+Variables:
+    sea_surface_temperature_4um
+           Size:       1354x2030x1
+           Dimensions: ni,nj,time
+           Datatype:   int16
+           Attributes:
+                 ...
+```
+This makes it clear that there is a 3rd dimension that is _time_, with a size of 1. 
+
+Subset the dataset using `h5read` and vectors of 3 elements that define `start`, `count`, and `stride` for the 3 dimensions:
+```
+dataStride10 = h5read(filePath,datasetPath,[1,1,1],[Inf,Inf,Inf],[step,step,1]);
+dataStride10(dataStride10 == fill_value) = NaN;
+latStride10 = h5read(filePath,"/lat",[1,1],[Inf,Inf],[step,step]);
+lonStride10 = h5read(filePath,"/lon",[1,1],[Inf,Inf],[step,step]);
+contour(lonStride10,latStride10,dataStride10);
+title(name+ " (sub-sampled through H5READ stride parameter)");
+```
+
+We can target a specific region using the same two approaches. The following shows how to create an array of logicals that "flags" a region of interest, how to identify relevant rows and columns of the data, latitudes, and longitudes arrays, and how to use logical indexing for plotting the data:
+```
+latBounds = [31,33.5];
+lonBounds = [-64,-57.5];
+isRegion = lat>=latBounds(1) & lat<=latBounds(2) & lon>=lonBounds(1) & lon<=lonBounds(2);
+isRow = any(isRegion,2);
+isCol = any(isRegion,1);
+contour(lon(isRow,isCol),lat(isRow,isCol),data(isRow,isCol));
+xlim(lonBounds);
+ylim(latBounds);
+title(name+ " (selected region)");
+```
+
 
 ## Command Line
 
