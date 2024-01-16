@@ -1,0 +1,44 @@
+## GitHub for Project Management and Calendaring
+
+People want to be able to see ongoing NASA Openscapes and DAAC events, their status, and where they fit in our calendars. The way we use [GitHub Projects](https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects) for this purpose will evolve as people see what works for them.
+
+![MainPlanning GitHub Project - Status Table view](images/github-project-views.png){width="85%"}
+
+**The [MainPlanning](https://github.com/orgs/NASA-Openscapes/projects/7) Project** pulls from several repositories in the NASA-Openscapes GitHub organization:
+
+-   [how_we_work](https://github.com/NASA-Openscapes/how_we_work) - for tracking `earthaccess` and other items not included in specific repos listed next
+-   [workshop-planning](https://github.com/NASA-Openscapes/workshop-planning) for planning & calendaring workshops
+-   [earthdata-cloud-cookbook](https://github.com/NASA-Openscapes/earthdata-cloud-cookbook)
+-   cloud-infrastructure (to be created); currently conversations tracked in [2i2cAccessPolicies](https://github.com/NASA-Openscapes/2i2cAccessPolicies)
+    -   MATLAB
+    -   2i2c access policy & fledging (TODO: [2i2cAccessPolicies](https://github.com/NASA-Openscapes/2i2cAccessPolicies) is currently a repo - should this move into Cookbook?)
+
+
+## How are we using it?
+
+Here we'll use the [workshop-planning](https://github.com/NASA-Openscapes/workshop-planning) repo as an example. The way we use it will evolve to meet people's needs and use cases.
+
+### Issues
+
+Are you leading a workshop or attending a meeting? Open an issue in the workshop-planning repo. The issue title should have the workshop name and date. Add the issue to the MainPlanning project. We can do this either from the issue or from the project.
+
+### Labels
+
+Add one or more labels to the issue, like `workshop`, or the names of the participating DAACs.
+
+::: callout-note
+## Labels can be edited
+
+Labels are defined at the repo level. If you want to add a new label, check what already exists in other repos and add a new label by copying label names and color codes. (TODO: customize NASA-Openscapes org default labels - [how to](https://docs.github.com/en/organizations/managing-organization-settings/managing-default-labels-for-repositories-in-your-organization))
+:::
+
+### Viewing a Project
+
+We've set up two ways to view the MainPlanning Project: as a Status Table (<https://github.com/orgs/NASA-Openscapes/projects/7/views/1>) or a Roadmap Schedule (<https://github.com/orgs/NASA-Openscapes/projects/7/views/3>).
+
+Notice the URLs above. Each links to a specific view of the same Project. Anyone can add a new view, sort the issues to suit their needs, name it, and save it. It will have its own URL.
+
+
+### Start and End dates
+
+TODO: how to add and view
