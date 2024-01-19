@@ -1,0 +1,124 @@
+---
+title: "Glossary, Cheatsheets, & Guides"
+aliases: 
+  - /glossary.html  
+---
+
+## Glossary
+
+A new paradigm brings new terminology you will encounter while you learn about cloud data access and computing. 
+
+This handy cheatsheet, **Cloud Terminology 101**, defines commonly used cloud computing terms and phrases.
+
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vScDfFwgPMf6mU_UP9qnVs2F4Rtumv7OG4CxgO_YZW8A_VJOI4gGIimcSWbCAMt7rTV1N4kYATjQSCy/embed?start=false&amp;loop=false&amp;delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true">
+
+</iframe>
+
+[Published Google Slide](https://docs.google.com/presentation/d/e/2PACX-1vScDfFwgPMf6mU_UP9qnVs2F4Rtumv7OG4CxgO_YZW8A_VJOI4gGIimcSWbCAMt7rTV1N4kYATjQSCy/pub?start=false&loop=false&delayms=3000){target="_blank"}
+
+More specific to working with NASA Earthdata in the cloud, this **Workflow Terminology Cheatsheet** defines terms associated with NASA Earthdata, cloud-optimized data, and some open software science tools you may encounter. A full list of NASA Eathdata-specific terms are found in the [NASA Earthdata Glossary](https://earthdata.nasa.gov/learn/user-resources/glossary).
+
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vSekMsRRaREYOA81prJvcGfj1-qqm3VZxNDtaJDNIcohk2364cH-f_R07lDrljjd5fOjyakiXK12K5p/embed?start=false&amp;loop=false&amp;delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true">
+
+</iframe>
+
+[Published Google Slide](https://docs.google.com/presentation/d/e/2PACX-1vSekMsRRaREYOA81prJvcGfj1-qqm3VZxNDtaJDNIcohk2364cH-f_R07lDrljjd5fOjyakiXK12K5p/pub?start=false&loop=false&delayms=3000){target="_blank"}
+
+
+## Cheatsheets & Guides
+
+How are all of these terms and concepts related? And how can you begin to put them to work?
+
+Here are some cheatsheets and guides to help visualize what working with NASA Earthdata in the cloud can look like, and how to get started.
+
+_All slides and cheatsheets are available for re-use and remix! Let us know what you think! We welcome your input so we can continue to improve and update these guides. Slides are credited for each deck; Cheatsheets development have been led by Catalina Oaida Taglialatela and Cassie Nickles (PO.DAAC) in Spring 2022._
+
+([Internal link](https://docs.google.com/presentation/d/1a1_HYdvjBGgJ2Iq6pwB96WuSt_cV18y60J91J9TxJgE/edit#slide=id.p){target="_blank"}).
+
+### What is the NASA Earthdata Cloud?
+
+NASA Earthdata Cloud is the NASA archive of Earth observations and is hosted in Amazon Web Services (AWS) cloud with DAAC tools and services built for use "next to the data." The NASA DAACs (data centers) are currently transitioning to this cloud-based environment. The cloud offers a scalable and effective way to address storage, network, and data movement concerns while offering a tremendous amount of flexibility to the user. Particularly if working with large data volumes, data access and processing would be more efficient if workflows are taking place in the cloud, avoiding having to download large data volumes. Data download will continue to be freely available to users, from the Earthdata Cloud archive.
+
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vTu9_vyCmwXf0ekrIyITOvcvTBCdT9sRCXfHuHpr2RDi-K4uZGD9LaW-UWfbTcd2602c7DLetJWGT-v/embed?start=false&amp;loop=false&amp;delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true">
+
+</iframe>
+
+[Published Google Slide](https://docs.google.com/presentation/d/e/2PACX-1vTu9_vyCmwXf0ekrIyITOvcvTBCdT9sRCXfHuHpr2RDi-K4uZGD9LaW-UWfbTcd2602c7DLetJWGT-v/pub?start=false&loop=false&delayms=3000){target="_blank"}
+
+### Cloud Access Pathways
+
+Three pathway examples, to interact and access data (and services) from and within the NASA Earthdata Cloud, are illustrated in the diagram. Green arrows and icons indicate working locally, after downloading data to your local machine, servers, or compute/storage space. Orange arrows and icons highlight a workflow within the cloud, setting up your own AWS EC2 cloud instance, or virtual machine, in the cloud next to the data. Blue arrows and icons also indicate a within the cloud workflow, through shareable cloud environments such as Binder or JupyterHub set up in an AWS cloud region. Note that each of these may have a range of cost models. EOSDIS data are being stored in the *us-west-2* region of AWS cloud; we recommend setting up your cloud computing environment in the same region as the data for free and easy in-cloud access.
+
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vRDnkZBG2B-jTWZZLU_aZZVADuIl1dCQ-MORCvgXKmikcCSd6y1N-3V5GB49CK9G3h0giZClnK7ICrI/embed?start=false&amp;loop=false&amp;delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true">
+
+</iframe>
+
+[Published Google Slide](https://docs.google.com/presentation/d/e/2PACX-1vRDnkZBG2B-jTWZZLU_aZZVADuIl1dCQ-MORCvgXKmikcCSd6y1N-3V5GB49CK9G3h0giZClnK7ICrI/pub?start=false&loop=false&delayms=3000){target="_blank"}
+
+A note on *costing*: What is free and what do I have to budget for, now that data is archived in the cloud?
+
+-   Downloading data from the Earthdata Cloud archive in AWS, to your local computer environment or local storage (e.g. servers) is and will continue to be free for the user.
+-   Accessing the data directly in the cloud (from *us-west-2* S3 region) is free. Users will need a NASA Earthdata Login account and AWS credentials to access, but there is no cost associated with these authentication steps, which are in place for security reasons.
+-   Accessing data in the cloud via EOSDIS or DAAC cloud-based tools and services such as the CMR API, Harmony API, OPenDAP API (from *us-west-2* S3 region) is free to the user. Having the tools and services "next to the data" in the cloud enables DAACs to support data reduction and transformation, more efficiently, on behalf of the user, so users only access the data they need.
+-   Cloud computing environments (i.e. virtual machines in the cloud) for working with data in the cloud (beyond direct or via services provided access) such as data analysis or running models with the data, is user responsibility, and should be considered in budgeting. I.e. User would need to set up a cloud compute environment (such as an EC2 instance or JupyterLab) and are responsible for any storage and computing costs.
+    -   This means that even though direct data access in the cloud is free to the user, they would first need to have a cloud computing environment/machine to execute the data access step from, and then continue their analysis.
+    -   Depending on whether that cloud environment is provided by the user themselves, user's institution, community hubs like Pangeo or NASA Openscapes JupyterLab sandbox, this element of the workflow may require user accountability, budgeting and user financial maintenance.
+
+### Getting Started Roadmap
+
+#### Cloud Workflow
+
+The following is a conceptual roadmap for users getting started with NASA Earth Observations cloud-archived data using an in-cloud workflow (i.e. bringing user code into the cloud, avoiding data download and performing data workflows "next to the data").
+
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vSsEnwqMaMNwtJ3kOLGvavX3QHdvgexWfl2h7Sqda3eLl_QWCb85siuUNJnCW01Pel2RIgqOEkX2bUY/embed?start=false&amp;loop=false&amp;delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true">
+
+</iframe>
+
+[Published Google Slide](https://docs.google.com/presentation/d/e/2PACX-1vSsEnwqMaMNwtJ3kOLGvavX3QHdvgexWfl2h7Sqda3eLl_QWCb85siuUNJnCW01Pel2RIgqOEkX2bUY/pub?start=false&loop=false&delayms=3000){target="_blank"}
+
+#### Local Workflow
+
+The following is a conceptual roadmap for users getting started with NASA Earth Observations cloud-archived data using a local machine (e.g. laptop) workflow, as data storage and computational work.
+
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vTY3L0yW8B2-w0hiDF08RgiI4_ZffxS1qLeVPXIdFdPkQYcMq_6fllA2pEjyOf9uNeSpCyP1BftmaM-/embed?start=false&amp;loop=false&amp;delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true">
+
+</iframe>
+
+[Published Google Slide](https://docs.google.com/presentation/d/e/2PACX-1vTY3L0yW8B2-w0hiDF08RgiI4_ZffxS1qLeVPXIdFdPkQYcMq_6fllA2pEjyOf9uNeSpCyP1BftmaM-/pub?start=false&loop=false&delayms=3000){target="_blank"}
+
+### Tools & Services Roadmap
+
+Below is a practical guide for learning about and selecting helpful tools or services for a given use case, focusing on how to find and access NASA Earthdata Cloud-archived data from local compute environment (e.g. laptop) or from a cloud computing workspace, with accompanying example tutorials. Once you follow your desired pathway, click on the respective blue notebook icon to get to the example tutorial. Note: these pathways are not exhaustive, there are many ways to accomplish these common steps, but these are some of our recommendations.
+
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vSt78F2dKRltMnKcyXj8hlKQzoIbmCKL9vb4A-7t6UynxZ5UgDhKVVVM5TjI3WBKeuwcRpUz7zFntLv/embed?start=false&amp;loop=false&amp;delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true">
+
+</iframe>
+
+[Published Google Slide](https://docs.google.com/presentation/d/e/2PACX-1vSt78F2dKRltMnKcyXj8hlKQzoIbmCKL9vb4A-7t6UynxZ5UgDhKVVVM5TjI3WBKeuwcRpUz7zFntLv/pub?start=false&loop=false&delayms=3000){target="_blank"}
+
+
+### Workflow Cheatsheet
+
+The following is a practical reference guide with links to tutorials and informational websites for users who are starting to take the conceptual pieces and explore and implement in their own workflows.
+
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vTyXBywWjUONNGLgRSjJdXls4RRSHimW7nIqTizciyyaXfB-AafoqhuMXXxjAGK2fcLWCw82ItelymM/embed?start=false&amp;loop=false&amp;delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true">
+
+</iframe>
+
+[Published Google Slide](https://docs.google.com/presentation/d/e/2PACX-1vTyXBywWjUONNGLgRSjJdXls4RRSHimW7nIqTizciyyaXfB-AafoqhuMXXxjAGK2fcLWCw82ItelymM/pub?start=false&loop=false&delayms=3000){target="_blank"}
+
+
+## Slides
+Selected presentations about working with NASA Earthdata on the Cloud; for all presentations see [nasa-openscapes.github.io > slides](https://nasa-openscapes.github.io/about.html#slides).
+
+### [NASA Earthdata Cloud: Myths, Truths, Questions](https://docs.google.com/presentation/d/1rmzodGujlOQxy4ocl7g2BEqVxMOQoIS_Fw48rifvh0M/edit?usp=sharing)
+
+by Amy Steiker, Kate Heightley (NSIDC) September 7, 2022
+
+### [NSIDC DAAC User Working Group](https://docs.google.com/presentation/d/1Wtlgt-wUx8HgeWjoxvvz4BwknLlKDmGP2F-pSuI5utQ/edit?usp=sharing){target="_blank"}
+
+by Andrew Barrett, Amy Steiker, Walt Meier, Jennie Roebuck, Mikala Beig, Luis Lopez, (NSIDC) May 20, 2022.
+
+### [NASA Earthdata Cloud & The Cloud Paradigm](https://docs.google.com/presentation/d/1D-d3VQDG-KlRt6gnyfj5aN3yVo1FBsbYTaQInRB4eMw/edit#slide=id.p){target="_blank"}
+
+by Aaron Friesz (LP DAAC), April 2022.
