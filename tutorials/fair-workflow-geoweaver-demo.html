@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.549">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>EarthData Cloud Cookbook - Openscapes Cohort 2023 - Geoweaver FAIRable and Tangible Workflow Demo</title>
+<title>EarthData Cloud Cookbook</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,7 +22,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -57,7 +57,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
@@ -82,7 +82,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -91,13 +97,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
 }</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
@@ -110,12 +117,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../tutorials/index.html">Tutorials</a></li><li class="breadcrumb-item"><a href="../tutorials/fair-workflow-geoweaver-demo.html">Pygeoweaver Workflow Demo</a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../tutorials/index.html">Tutorials</a></li><li class="breadcrumb-item"><a href="../tutorials/fair-workflow-geoweaver-demo.html">Pygeoweaver Workflow Demo</a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -125,16 +132,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
-    <div class="pt-lg-2 mt-2 text-center sidebar-header sidebar-header-stacked">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
       <a href="../index.html" class="sidebar-logo-link">
       <img src="../images/nasa-openscapes.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
     <div class="sidebar-title mb-0 py-0">
       <a href="../">NASA Earthdata Cloud Cookbook</a> 
         <div class="sidebar-tools-main tools-wide">
-    <a href="https://nasa-openscapes.github.io" rel="" title="NASA-Openscapes website" class="quarto-navigation-tool px-1" aria-label="NASA-Openscapes website"><i class="bi bi-globe"></i></a>
-    <a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook" rel="" title="Earthdata Cloud Cookbook repo" class="quarto-navigation-tool px-1" aria-label="Earthdata Cloud Cookbook repo"><i class="bi bi-github"></i></a>
+    <a href="https://nasa-openscapes.github.io" title="NASA-Openscapes website" class="quarto-navigation-tool px-1" aria-label="NASA-Openscapes website"><i class="bi bi-globe"></i></a>
+    <a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook" title="Earthdata Cloud Cookbook repo" class="quarto-navigation-tool px-1" aria-label="Earthdata Cloud Cookbook repo"><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
     </div>
@@ -394,13 +401,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../workshops/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Workshops &amp; Hackathons</span></a>
+            <a href="../leading-workshops/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Leading Workshops</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../leading-workshops/add-folks-to-2i2c-github-teams.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2i2c Hub access</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../workshops/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Workshops &amp; Hackathons</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../workshops/setup.html" class="sidebar-item-text sidebar-link">
@@ -413,11 +437,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="sidebar-item-container"> 
             <a href="../in-development/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">In Development</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../examples/NSIDC/ICESat2-CMR-OnPrem-vs-Cloud.html" class="sidebar-item-text sidebar-link">
@@ -464,11 +488,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="sidebar-item-container"> 
             <a href="../examples/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Example Workflows</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../examples/GESDISC/GESDISC_MERRA2_tavg1_2d_flx_Nx__Kerchunk.html" class="sidebar-item-text sidebar-link">
@@ -507,11 +531,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="sidebar-item-container"> 
             <a href="../contributing/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Contributing</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../contributing/calendar-project-management.html" class="sidebar-item-text sidebar-link">
@@ -554,11 +578,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="sidebar-item-container"> 
             <a href="../appendix/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Appendix</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../appendix/authentication.html" class="sidebar-item-text sidebar-link">
@@ -570,14 +594,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#reset-passwords-optional-if-you-already-did" id="toc-reset-passwords-optional-if-you-already-did" class="nav-link active" data-scroll-target="#reset-passwords-optional-if-you-already-did">2. Reset Passwords (optional if you already did)</a></li>
+  <li><a href="#openscapes-cohort-2023---geoweaver-fairable-and-tangible-workflow-demo" id="toc-openscapes-cohort-2023---geoweaver-fairable-and-tangible-workflow-demo" class="nav-link active" data-scroll-target="#openscapes-cohort-2023---geoweaver-fairable-and-tangible-workflow-demo">Openscapes Cohort 2023 - Geoweaver FAIRable and Tangible Workflow Demo</a>
+  <ul class="collapse">
+  <li><a href="#reset-passwords-optional-if-you-already-did" id="toc-reset-passwords-optional-if-you-already-did" class="nav-link" data-scroll-target="#reset-passwords-optional-if-you-already-did">2. Reset Passwords (optional if you already did)</a></li>
   <li><a href="#import-workflow-earthdata-cloud-clinic" id="toc-import-workflow-earthdata-cloud-clinic" class="nav-link" data-scroll-target="#import-workflow-earthdata-cloud-clinic">3. Import Workflow : Earthdata Cloud Clinic</a></li>
   <li><a href="#check-workflow-details" id="toc-check-workflow-details" class="nav-link" data-scroll-target="#check-workflow-details">4. Check Workflow Details</a></li>
   <li><a href="#run-workflow" id="toc-run-workflow" class="nav-link" data-scroll-target="#run-workflow">5. Run workflow</a></li>
@@ -587,31 +613,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#check-history-of-specific-processes-or-workflows" id="toc-check-history-of-specific-processes-or-workflows" class="nav-link" data-scroll-target="#check-history-of-specific-processes-or-workflows">9. Check history of specific processes or workflows</a></li>
   <li><a href="#directly-run-local-python-process-using-pygeoweaver" id="toc-directly-run-local-python-process-using-pygeoweaver" class="nav-link" data-scroll-target="#directly-run-local-python-process-using-pygeoweaver">10. Directly run local python process using PyGeoweaver</a></li>
   <li><a href="#geoweaver-gui-for-creating-and-editing-workflows" id="toc-geoweaver-gui-for-creating-and-editing-workflows" class="nav-link" data-scroll-target="#geoweaver-gui-for-creating-and-editing-workflows">11. Geoweaver GUI for creating and editing workflows</a></li>
+  </ul></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.dev/nasa-openscapes/earthdata-cloud-cookbook/blob/main/tutorials/fair-workflow-geoweaver-demo.ipynb" class="toc-action">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/blob/main/tutorials/fair-workflow-geoweaver-demo.ipynb" class="toc-action">View source</a></p><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.dev/nasa-openscapes/earthdata-cloud-cookbook/blob/main/tutorials/fair-workflow-geoweaver-demo.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/blob/main/tutorials/fair-workflow-geoweaver-demo.ipynb" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Openscapes Cohort 2023 - Geoweaver FAIRable and Tangible Workflow Demo</h1>
-</div>
 
 
 
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
-
-</header>
-
+<section id="openscapes-cohort-2023---geoweaver-fairable-and-tangible-workflow-demo" class="level1">
+<h1>Openscapes Cohort 2023 - Geoweaver FAIRable and Tangible Workflow Demo</h1>
 <p>PyGeoweaver package is a Python wrapper of the <code>GeoWeaver</code>. This package is designed for Jupyter users to be able to directly use Geoweaver in Jupyter notebook or JupyterLab (JupyterHub). ## 1. Installing PyGeoweaver You can either install pygeoweaver using <code>pip</code> or build from <code>source</code></p>
-<div class="cell" data-tags="[]" data-execution_count="21">
+<div id="f75d13ca-b4f1-4f53-b624-497dc14abd14" class="cell" data-tags="[]" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install pygeoweaver</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Requirement already satisfied: pygeoweaver in /Users/l21-n02609-comm/opt/anaconda3/lib/python3.9/site-packages (0.7.4)
@@ -626,7 +641,7 @@ Requirement already satisfied: charset-normalizer&lt;4,&gt;=2 in /Users/l21-n026
 </div>
 </div>
 <p>The <code>gw.start()</code> function starts the Geoweaver Application on background to serve requests</p>
-<div class="cell" data-tags="[]" data-execution_count="23">
+<div id="78652e20-785f-4f18-8117-b5e6f9a53285" class="cell" data-tags="[]" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pygeoweaver <span class="im">as</span> gw</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>gw.start()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -639,7 +654,7 @@ Success: Geoweaver is up</code></pre>
 <section id="reset-passwords-optional-if-you-already-did" class="level2">
 <h2 class="anchored" data-anchor-id="reset-passwords-optional-if-you-already-did">2. Reset Passwords (optional if you already did)</h2>
 <p>This password will be used to authenticate the process runs on <code>localhost</code> (a.k.a the default host with id <code>100001</code>).</p>
-<div class="cell" data-tags="[]" data-execution_count="25">
+<div id="24879eea-f9e8-4d29-96e9-4bb42a1c4873" class="cell" data-tags="[]" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>gw.reset_password()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdin">
 <pre><code>Enter password:  ········
@@ -654,7 +669,7 @@ Re-enter password:  ········</code></pre>
 <h2 class="anchored" data-anchor-id="import-workflow-earthdata-cloud-clinic">3. Import Workflow : Earthdata Cloud Clinic</h2>
 <p>This tutorial from Cloud cookbook uses two different direct cloud access &amp; subsetting options available in the Earthdata Cloud. * The <code>earthaccess</code> python library for data search and direct cloud access, followed by <code>xarray</code> subsetting * The <code>Harmony-py</code> python library for direct cloud access &amp; data subsetting</p>
 <p>The workflow for earthdata cloud clinic for geoweaver is hosted at <a href="https://github.com/earth-artificial-intelligence/earth_data_cloud_clinic_geoweaver"><code>https://github.com/earth-artificial-intelligence/earth_data_cloud_clinic_geoweaver</code></a></p>
-<div class="cell" data-tags="[]" data-execution_count="31">
+<div id="a6992cb8-3158-493c-a81b-7b9dc209bb87" class="cell" data-tags="[]" data-execution_count="31">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> urllib.request</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> Image</span>
@@ -810,11 +825,11 @@ Successfully saved to database. Complete.</code></pre>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="fair-workflow-geoweaver-demo_files/figure-html/2901068b-6581-4891-85df-63a02f01c90d-1-68e64f57-c274-4308-9cbb-0b585c5529f8.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Screen Shot 2023-06-21 at 12.41.43 AM.png</figcaption>
+<figcaption>Screen Shot 2023-06-21 at 12.41.43 AM.png</figcaption>
 </figure>
 </div>
 <p>Check workflow id and other metadata using <code>detail_workflow</code>.</p>
-<div class="cell" data-tags="[]" data-execution_count="27">
+<div id="dea0d9a9-0175-466a-bc6f-af6428df2f86" class="cell" data-tags="[]" data-execution_count="27">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>gw.detail_workflow(<span class="st">"kr2novmm4i9i27z5adyj"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>WorkflowId: kr2novmm4i9i27z5adyj
@@ -830,7 +845,7 @@ Successfully saved to database. Complete.</code></pre>
 <h2 class="anchored" data-anchor-id="run-workflow">5. Run workflow</h2>
 <p>The follow line will execute the workflow on the provided host. <code>100001</code> means localhost. You can use <code>gw.detail_host("100001")</code> to check the details.</p>
 <p>It will prompt a password input field to ask for password of the target host. If you don’t know your default password of localhost, please run <code>gw.reset_password()</code>.</p>
-<div class="cell" data-tags="[]" data-execution_count="32">
+<div id="791a6a81-687b-4d30-aa31-bdd9e463e6c2" class="cell" data-tags="[]" data-execution_count="32">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>gw.run_workflow(workflow_id<span class="op">=</span><span class="st">'kr2novmm4i9i27z5adyj'</span>, host_list<span class="op">=</span><span class="st">'100001'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdin">
 <pre><code>Enter password for host - 100001:  ········</code></pre>
@@ -854,7 +869,7 @@ Execution is over. Final status: Done.</code></pre>
 <section id="check-workflow-history" class="level2">
 <h2 class="anchored" data-anchor-id="check-workflow-history">6. Check workflow history</h2>
 <p>From the log, we can see the workflow completed successfully after running all the four member processes. The final process run’s history id is <code>ohvdmvpfy1m</code>. We can use <code>show_history</code> to check.</p>
-<div class="cell" data-tags="[]" data-execution_count="33">
+<div id="cdb37fd3-e2a8-4e8a-a4ed-a95bce4adce7" class="cell" data-tags="[]" data-execution_count="33">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Get Results by Checking History</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>gw.show_history(<span class="st">"fk604fwceda"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -918,10 +933,14 @@ new figure is saved to /Users/joe/geoweaver_plot_sst.png
 </section>
 <section id="display-sea-surface-temperature-data" class="level2">
 <h2 class="anchored" data-anchor-id="display-sea-surface-temperature-data">7. Display sea surface temperature data</h2>
-<div class="cell" data-tags="[]" data-execution_count="34">
+<div id="0ca906f6-dff0-49c8-b231-3f342dac0ff2" class="cell" data-tags="[]" data-execution_count="34">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>display(Image(filename<span class="op">=</span>os.path.join(home_dir, <span class="st">'geoweaver_plot_sst.png'</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="fair-workflow-geoweaver-demo_files/figure-html/cell-9-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="fair-workflow-geoweaver-demo_files/figure-html/cell-9-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Bingo! The image is successfully retrieved by the workflow and the data in xarray is rendered and saved to a local png file. The workflow runs with no errors and the replication succeeded.</p>
@@ -930,7 +949,7 @@ new figure is saved to /Users/joe/geoweaver_plot_sst.png
 <h2 class="anchored" data-anchor-id="edit-the-process-to-change-date-range">8. Edit the process to change date range</h2>
 <p>Replicating is only the start. We always want to change the code and make it work for our purposes. Here we will demonstrate how to change the code in the workflow.</p>
 <p>First, let’s list all the processes in the workflow:</p>
-<div class="cell" data-tags="[]" data-execution_count="35">
+<div id="f233c94f-d631-4e49-aacd-aa4a6b4ac4a2" class="cell" data-tags="[]" data-execution_count="35">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>gw.list_processes_in_workflow(workflow_id<span class="op">=</span><span class="st">'kr2novmm4i9i27z5adyj'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="35">
 <div>
@@ -974,7 +993,7 @@ new figure is saved to /Users/joe/geoweaver_plot_sst.png
 <p>You can see the ids are a little different with dashes in the middle of them. That is because we need to distinguish the processes in the workflow as there might be same processes called multiple times in one workflow.</p>
 <p>The original process id is just the first part. For example, the process id of <code>retrieve_sst</code> is <code>nlsntt</code>.</p>
 <p>Copy that id and use <code>get_code_for_process</code> function to get current code.</p>
-<div class="cell" data-tags="[]" data-execution_count="36">
+<div id="6b8c45c1-a0d6-42d1-adc6-20026d868d24" class="cell" data-tags="[]" data-execution_count="36">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>gw.get_process_code(<span class="st">'nlsntt'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="36">
 <pre><code>'from earth_data_utils import *\n\ndef search_and_get_sst():\n  auth_earthaccess()\n  results = earthaccess.search_data(\n      short_name=sst_short_name,\n      cloud_hosted=True,\n      temporal=("2021-07-01", "2021-07-02"),\n  )\n  print("found results: ", results)\n  return results\n\ndef plot_subset(ds_subset):\n  ds_subset.plot(figsize=(12,6), x=\'lon\', y=\'lat\')\n  home_dir = os.path.expanduser(\'~\')\n  \n  file_name = f"geoweaver_plot_sst.png"\n  save_file_path = os.path.join(home_dir, file_name)\n  plt.savefig(save_file_path)\n  print(f"new figure is saved to {save_file_path}")\n\nwith get_dataset(search_and_get_sst()) as ds:\n  subset = ds["analysed_sst"].sel(lat=slice(27, 37), \n                                lon=slice(-70,-50)).std(\'time\')\n  plot_subset(subset)\n\n'</code></pre>
@@ -982,7 +1001,7 @@ new figure is saved to /Users/joe/geoweaver_plot_sst.png
 </div>
 <p>The code is not formatted correctly. So many <code>\n</code> are confusing.</p>
 <p>An easy way is to directly save the code into a local file using function <code>sync</code>.</p>
-<div class="cell" data-tags="[]" data-execution_count="37">
+<div id="e65df69a-6324-463c-8b6c-6cb61eb418a1" class="cell" data-tags="[]" data-execution_count="37">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># write the file to disk to make changes</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>gw.sync(process_id<span class="op">=</span><span class="st">'nlsntt'</span>, local_path<span class="op">=</span><span class="st">"."</span>, direction<span class="op">=</span><span class="st">"download"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1020,7 +1039,7 @@ with get_dataset(search_and_get_sst()) as ds:
   plot_subset(subset)</code></pre>
 <p>Suppose we want the SST data of another region, for example, change the <code>lat=slice(27, 37)</code> to <code>lat=slice(37, 47)</code>. Make the change in <code>retrieve_sst.py</code>, save and close.</p>
 <p>Next step is to write the new code back into Geoweaver process using the same <code>sync</code> function. This time, the option <code>direction</code> should be <code>upload</code> meaning we are syncing changes from local file to Geoweaver database.</p>
-<div class="cell" data-tags="[]" data-execution_count="49">
+<div id="02694a4d-6229-4e5d-980d-6e264ed0beb5" class="cell" data-tags="[]" data-execution_count="49">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># sync changes back to the workflow after editing the file</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>gw.sync(process_id<span class="op">=</span><span class="st">'nlsntt'</span>, local_path<span class="op">=</span><span class="st">'retrieve_sst.py'</span>, direction<span class="op">=</span><span class="st">"upload"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1030,7 +1049,7 @@ Process update was successful</code></pre>
 </div>
 </div>
 <p>After the step finishes, verify the code change using <code>get_process_code</code> again.</p>
-<div class="cell" data-tags="[]" data-execution_count="50">
+<div id="aa3ceabb-f65a-44f6-9c68-3120a59df722" class="cell" data-tags="[]" data-execution_count="50">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>gw.get_process_code(<span class="st">'nlsntt'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="50">
 <pre><code>'from earth_data_utils import *\n\ndef search_and_get_sst():\n  auth_earthaccess()\n  results = earthaccess.search_data(\n      short_name=sst_short_name,\n      cloud_hosted=True,\n      temporal=("2021-07-01", "2021-07-02"),\n  )\n  print("found results: ", results)\n  return results\n\ndef plot_subset(ds_subset):\n  ds_subset.plot(figsize=(12,6), x=\'lon\', y=\'lat\')\n  home_dir = os.path.expanduser(\'~\')\n  \n  file_name = f"geoweaver_plot_sst.png"\n  save_file_path = os.path.join(home_dir, file_name)\n  plt.savefig(save_file_path)\n  print(f"new figure is saved to {save_file_path}")\n\nwith get_dataset(search_and_get_sst()) as ds:\n  subset = ds["analysed_sst"].sel(lat=slice(37, 47), \n                                lon=slice(-70,-50)).std(\'time\')\n  plot_subset(subset)\n\n'</code></pre>
@@ -1038,7 +1057,7 @@ Process update was successful</code></pre>
 </div>
 <p>Ok, great! You can see the changes are made as the <code>lat=</code> has become <code>37, 47</code> now. The editing process is complete.</p>
 <p>Now, we just need to rerun the workflow again with the new code.</p>
-<div class="cell" data-tags="[]" data-execution_count="51">
+<div id="f1199388-cb00-42c1-8301-2217f369e7ed" class="cell" data-tags="[]" data-execution_count="51">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>gw.run_workflow(workflow_id<span class="op">=</span><span class="st">'kr2novmm4i9i27z5adyj'</span>, host_list<span class="op">=</span><span class="st">'100001'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdin">
 <pre><code>Enter password for host - 100001:  ········</code></pre>
@@ -1059,7 +1078,7 @@ Execution is over. Final status: Done.</code></pre>
 </div>
 </div>
 <p>You can see there is a new history id for process <code>nlsntt</code>: m3t1sdcsl3k. Check its content to find the result png file location:</p>
-<div class="cell" data-tags="[]" data-execution_count="52">
+<div id="f81da861-0e0d-4392-90a3-43c113e9ec00" class="cell" data-tags="[]" data-execution_count="52">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>gw.show_history(<span class="st">"e1ce5zjdm3y"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>+-------------+--------+---------------------+---------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------+
@@ -1118,10 +1137,14 @@ new figure is saved to /Users/joe/geoweaver_plot_sst.png
 </div>
 </div>
 <p>The new png is generated. Visualize it in jupyter.</p>
-<div class="cell" data-tags="[]" data-execution_count="53">
+<div id="0781f887-8ba9-40f7-8c94-a1fa314f601c" class="cell" data-tags="[]" data-execution_count="53">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>display(Image(filename<span class="op">=</span>os.path.join(home_dir, <span class="st">'geoweaver_plot_sst.png'</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="fair-workflow-geoweaver-demo_files/figure-html/cell-17-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="fair-workflow-geoweaver-demo_files/figure-html/cell-17-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Nice! The figure looks great with SST texture different from the one displayed above. That means the change of the spatial extent in the process worked great!</p>
@@ -1129,7 +1152,7 @@ new figure is saved to /Users/joe/geoweaver_plot_sst.png
 </section>
 <section id="check-history-of-specific-processes-or-workflows" class="level2">
 <h2 class="anchored" data-anchor-id="check-history-of-specific-processes-or-workflows">9. Check history of specific processes or workflows</h2>
-<div class="cell" data-tags="[]" data-execution_count="54">
+<div id="dc85be58-52ed-4837-a272-d1b1709a9384" class="cell" data-tags="[]" data-execution_count="54">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># get run history of the process</span></span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>gw.get_process_history(<span class="st">'nlsntt'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="54">
@@ -1470,7 +1493,7 @@ new figure is saved to /Users/joe/geoweaver_plot_sst.png
 </div>
 </div>
 </div>
-<div class="cell" data-tags="[]" data-execution_count="55">
+<div id="eec7f771-5268-4d57-82f3-bbc467fccb9c" class="cell" data-tags="[]" data-execution_count="55">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>gw.get_workflow_history(<span class="st">'kr2novmm4i9i27z5adyj'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="55">
 <div>
@@ -1634,7 +1657,7 @@ new figure is saved to /Users/joe/geoweaver_plot_sst.png
 </section>
 <section id="directly-run-local-python-process-using-pygeoweaver" class="level2">
 <h2 class="anchored" data-anchor-id="directly-run-local-python-process-using-pygeoweaver">10. Directly run local python process using PyGeoweaver</h2>
-<div class="cell" data-tags="[]" data-execution_count="56">
+<div id="aed38c56-ffad-4116-9933-694fe3fdabf8" class="cell" data-tags="[]" data-execution_count="56">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>gw.run_process(host_id<span class="op">=</span><span class="st">'100001'</span>, process_id<span class="op">=</span><span class="st">'nlsntt'</span>, sync_path<span class="op">=</span><span class="st">'retrieve_sst.py'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdin">
 <pre><code>Enter password for host - 100001:  ········</code></pre>
@@ -1701,10 +1724,14 @@ new figure is saved to /Users/joe/geoweaver_plot_sst.png
 </div>
 </div>
 <p>Use the same code to visualize the result in a plot.</p>
-<div class="cell" data-tags="[]" data-execution_count="57">
+<div id="83b83c47-5252-4ad8-b7a6-f78fcf7ffda0" class="cell" data-tags="[]" data-execution_count="57">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>display(Image(filename<span class="op">=</span>os.path.join(home_dir, <span class="st">'geoweaver_plot_sst.png'</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="fair-workflow-geoweaver-demo_files/figure-html/cell-21-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="fair-workflow-geoweaver-demo_files/figure-html/cell-21-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>This image has the same texture as we got in the previous workflow run, and it means running local python directly in pygeoweaver will have the same outputs and won’t impact the consistency.</p>
@@ -1717,13 +1744,13 @@ new figure is saved to /Users/joe/geoweaver_plot_sst.png
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="fair-workflow-geoweaver-demo_files/figure-html/218b43d4-b8d2-4ffe-9f0d-2505aec3c4b0-1-bd0d1cb0-8970-4c3b-9789-b2c8ade43188.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 <p>If you’re running Jupyter on your localhost, accessing Geoweaver is like a breeze. If you’re on your localhost, simply type <code>gw.show</code> in a Jupyter cell block or navigate to http://localhost:8070/Geoweaver in your browser, and you’re good to go. However, if you’re running Jupyter on a remote host, a little extra setup is needed to access Geoweaver.</p>
 <p>To access Geoweaver on a remote host, you’ll need to proxy the URL to a public address. For instance, if you’re using an AWS EC2 instance, replace “localhost” in the URL with the public IP address of your instance. Then enter the modified URL in your browser. Don’t forget to add port 8070 to the inbound rule in your EC2 instance’s security group settings to ensure a smooth connection.</p>
 <p>If you’re eager to explore Geoweaver’s GUI and dive into detailed tutorials, you can find them at https://esipfed.github.io/Geoweaver/. However, in this notebook, our focus is on demonstrating the incredible capabilities of Geoweaver for replicating and reproducing workflows.</p>
-<div class="cell" data-tags="[]" data-execution_count="19">
+<div id="a18470ef-23d6-49f4-b1c5-0d1ae2d92059" class="cell" data-tags="[]" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>gw.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>2023-06-21 03:17:27,586 - INFO - enter ipython block
@@ -1737,6 +1764,7 @@ new figure is saved to /Users/joe/geoweaver_plot_sst.png
 </div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -1781,6 +1809,33 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       } else {
         el.classList.add('notransition');
       }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
     }
   }
   const toggleColorMode = (alternate) => {
@@ -1849,13 +1904,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return localAlternateSentinel;
     }
   }
-  let localAlternateSentinel = 'default';
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
   // Dark / light mode switch
   window.quartoToggleColorScheme = () => {
     // Read the current dark / light value 
     let toAlternate = !hasAlternateSentinel();
     toggleColorMode(toAlternate);
     setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
   };
   // Ensure there is a toggle, if there isn't float one in the top right
   if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -1934,10 +1991,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1947,8 +2003,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1961,6 +2026,125 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -2004,6 +2188,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -2029,6 +2214,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -2090,12 +2301,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../tutorials/Earthdata_Cloud__Data_Access_OPeNDAP_Example.html" class="pagination-link">
+      <a href="../tutorials/Earthdata_Cloud__Data_Access_OPeNDAP_Example.html" class="pagination-link  aria-label=" opendap="" access"="">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">OPeNDAP Access</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../tutorials/matlab.html" class="pagination-link">
+      <a href="../tutorials/matlab.html" class="pagination-link" aria-label="MATLAB Access NetCDF">
         <span class="nav-page-text">MATLAB Access NetCDF</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
@@ -2103,15 +2314,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
-    <div class="nav-footer-left">NASA Earthdata Cloud Cookbook, © NASA Openscapes Team (2023).</div>   
+    <div class="nav-footer-left">
+<p>NASA Earthdata Cloud Cookbook, © NASA Openscapes Team (2023).</p>
+</div>   
     <div class="nav-footer-center">
       &nbsp;
-    </div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.dev/nasa-openscapes/earthdata-cloud-cookbook/blob/main/tutorials/fair-workflow-geoweaver-demo.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/blob/main/tutorials/fair-workflow-geoweaver-demo.ipynb" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>
   </div>
 </footer>
+
 
 
 

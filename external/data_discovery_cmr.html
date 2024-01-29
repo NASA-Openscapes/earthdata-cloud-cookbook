@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.549">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -22,7 +22,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -80,7 +80,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -89,6 +95,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -99,487 +106,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link rel="stylesheet" href="../styles.css">
 </head>
 
-<body class="nav-sidebar docked">
+<body>
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-        <i class="bi bi-layout-text-sidebar-reverse"></i>
-      </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
-      NASA Earthdata Cloud Cookbook
-      </li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
-        <i class="bi bi-search"></i>
-      </button>
-    </div>
-  </nav>
-</header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
-    <div class="pt-lg-2 mt-2 text-center sidebar-header sidebar-header-stacked">
-      <a href="../index.html" class="sidebar-logo-link">
-      <img src="../images/nasa-openscapes.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
-      </a>
-    <div class="sidebar-title mb-0 py-0">
-      <a href="../">NASA Earthdata Cloud Cookbook</a> 
-        <div class="sidebar-tools-main tools-wide">
-    <a href="https://nasa-openscapes.github.io" rel="" title="NASA-Openscapes website" class="quarto-navigation-tool px-1" aria-label="NASA-Openscapes website"><i class="bi bi-globe"></i></a>
-    <a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook" rel="" title="Earthdata Cloud Cookbook repo" class="quarto-navigation-tool px-1" aria-label="Earthdata Cloud Cookbook repo"><i class="bi bi-github"></i></a>
-  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
-</div>
-    </div>
-      </div>
-        <div class="mt-2 flex-shrink-0 align-items-center">
-        <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Search"></div>
-        </div>
-        </div>
-    <div class="sidebar-menu-container"> 
-    <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Welcome</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../when-to-cloud.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">When To Cloud</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../our-cookbook.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Our Cookbook</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../glossary.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Glossary &amp; Cheatsheets</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../environment-setup/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Cloud Environment Setup</span></a>
-  </div>
-</li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">
- <span class="menu-text">How do I…</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
- <span class="menu-text">find data</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../how-tos/find-data/earthdata_search.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">with Earthdata Search</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../how-tos/find-data/find-python.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">with Python</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../how-tos/find-data/find-r.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">with R</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
- <span class="menu-text">access data in cloud</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../how-tos/access-data/access-cloud-python.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">with Python</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
- <span class="menu-text">access data locally</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../how-tos/access-data/access-local-python.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">with Python</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../how-tos/access-data/access-local-opendap.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">with OPeNDAP</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../how-tos/read_data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">read data</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../how-tos/subset.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">subset data</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../how-tos/reformat.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">reformat data files</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../how-tos/reproject_regrid.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">reproject and regrid</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../how-tos/aggregate.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">aggregate data</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../how-tos/plot.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">plot data</span></a>
-  </div>
-</li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="../how-tos/use_apis.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">use APIs</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../external/appeears_csv_cloud_access.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">AppEEARS Cloud CSV Access</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../how-tos/how_to_guide_parking_lot.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">parking lot</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="../tutorials/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Tutorials</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../examples/Earthdata-cloud-clinic.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Earthdata Cloud Clinic</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../tutorials/Hurricanes_Wind_and_Sea_Surface_Temperature.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Multi-datasets</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../tutorials/Sea_Level_Rise.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Sea Level Rise</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../tutorials/Above_Ground_Biomass_Density.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Carbon Stocks</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../tutorials/Observing_Seasonal_Ag_Changes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Agriculture Observations</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../external/IS2_cloud_Landsat_integration.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">ICESat-2</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../tutorials/04_On-Prem_Cloud.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Cloud &amp; Non-cloud</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../tutorials/earthaccess-demo.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><code>earthaccess</code> Python library</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../tutorials/Earthdata_Cloud__Data_Access_OPeNDAP_Example.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">OPeNDAP Access</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../tutorials/fair-workflow-geoweaver-demo.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Pygeoweaver Workflow Demo</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../tutorials/matlab.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">MATLAB Access NetCDF</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="../workshops/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Workshops &amp; Hackathons</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../workshops/setup.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Workshop Setup</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="../in-development/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">In Development</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../examples/NSIDC/ICESat2-CMR-OnPrem-vs-Cloud.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Search &amp; Download NSIDC Cloud</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../examples/NSIDC/ICESat2-CMR-AWS-S3.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Access NSIDC Cloud w/ CMR</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../examples/Transform-workflow.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Direct Access &amp; Harmony Workflow</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../examples/USGS_Landsat/Landsat_C2_Search_Access.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Search &amp; Access USGS Landsat Cloud</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../examples/ORNL/Data_Access__Direct_S3_Access__ORNL_DAYMET.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Direct S3 Data Access: NetCDF - Daymet v4 Daily TMAX Example</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../external/cof-zarr-reformat.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Access ECCO data via Harmony &amp; the Zarr reformatter service</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../external/zarr-eosdis-store.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">zarr-eosdis-store example</span></a>
-  </div>
-</li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="../examples/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Example Workflows</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../examples/GESDISC/GESDISC_MERRA2_tavg1_2d_flx_Nx__Kerchunk.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">GES DISC - MERRA2</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../examples/LPDAAC/LPDAAC_ECOSTRESS_LSTE__Kerchunk.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">LP DAAC ECOSTRESS</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../examples/PODAAC/PODAAC_ECCO_SSH__Kerchunk.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">PO.DAAC ECCO SSH</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../in-development/CMR-STAC-Search.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">CMR STAC in R</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../in-development/earthdata-python-r-handoff.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><code>earthdata</code>: Python-R Handoff</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="../contributing/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Contributing</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../contributing/calendar-project-management.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Calendaring and Project Management</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../contributing/onboarding.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Onboarding Mentors</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../contributing/setup.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Setup</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../contributing/workflow.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Workflows</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../contributing/quarto-website-tutorial.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Quarto Tutorial</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../contributing/troubleshooting.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Troubleshooting</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="../appendix/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Appendix</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../appendix/authentication.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Authentication</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-    </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#what-is-cmr" id="toc-what-is-cmr" class="nav-link active" data-scroll-target="#what-is-cmr">What is CMR</a></li>
+  <li><a href="#data-discovery-with-cmr" id="toc-data-discovery-with-cmr" class="nav-link active" data-scroll-target="#data-discovery-with-cmr">01. Data discovery with CMR</a>
+  <ul class="collapse">
+  <li><a href="#what-is-cmr" id="toc-what-is-cmr" class="nav-link" data-scroll-target="#what-is-cmr">What is CMR</a></li>
   <li><a href="#what-is-the-cmr-api" id="toc-what-is-the-cmr-api" class="nav-link" data-scroll-target="#what-is-the-cmr-api">What is the CMR API</a></li>
   <li><a href="#how-to-search-cmr-from-python" id="toc-how-to-search-cmr-from-python" class="nav-link" data-scroll-target="#how-to-search-cmr-from-python">How to search CMR from Python</a></li>
   <li><a href="#granule-search" id="toc-granule-search" class="nav-link" data-scroll-target="#granule-search">Granule Search</a></li>
+  </ul></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.dev/nasa-openscapes/earthdata-cloud-cookbook/blob/main/external/data_discovery_cmr.ipynb" class="toc-action">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/blob/main/external/data_discovery_cmr.ipynb" class="toc-action">View source</a></p><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.dev/nasa-openscapes/earthdata-cloud-cookbook/blob/main/external/data_discovery_cmr.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/blob/main/external/data_discovery_cmr.ipynb" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -599,8 +146,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
+
 </header>
 
+
+<section id="data-discovery-with-cmr" class="level1">
+<h1>01. Data discovery with CMR</h1>
 <p>In this tutorial you will learn: - what CMR is;<br>
 - how to use the <code>requests</code> package to search data collections and granules;<br>
 - how to parse the results of these searches.</p>
@@ -620,25 +171,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The first step is to import python packages. We will use:<br>
 - <code>requests</code> This package does most of the work for us accessing the CMR API using HTTP methods. - <code>pprint</code> to <em>pretty print</em> the results of the search.</p>
 <p>A more in depth tutorial on <code>requests</code> is <a href="https://realpython.com/python-requests/">here</a></p>
-<div class="cell" data-execution_count="1">
+<div id="prime-hierarchy" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pprint <span class="im">import</span> pprint</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Then we need to authenticate with EarthData Login. Since we’ve already set this up in the previous lesson, here you need to enter your username before executing the cell.</p>
 <p>To conduct a search using the CMR API, <code>requests</code> needs the url for the root CMR search endpoint. We’ll build this url as a python variable.</p>
-<div class="cell" data-execution_count="2">
+<div id="existing-concert" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>CMR_OPS <span class="op">=</span> <span class="st">'https://cmr.earthdata.nasa.gov/search'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>CMR allows search by <strong>collections</strong>, which are datasets, and <strong>granules</strong>, which are files that contain data. Many of the same search parameters can be used for colections and granules but the type of results returned differ. Search parameters can be found in the <a href="https://cmr.earthdata.nasa.gov/search/site/docs/search/api.html">API Documentation</a>.</p>
 <p>Whether we search <strong>collections</strong> or <strong>granules</strong> is distinguished by adding <code>"collections"</code> or <code>"granules"</code> to the url for the root CMR endpoint.</p>
 <p>We are going to search collections first, so we add collections to the url. I’m using a <code>python</code> format string here.</p>
-<div class="cell" data-execution_count="3">
+<div id="floating-defensive" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="ss">f'</span><span class="sc">{</span>CMR_OPS<span class="sc">}</span><span class="ss">/</span><span class="sc">{</span><span class="st">"collections"</span><span class="sc">}</span><span class="ss">'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>In this first example, I want to retrieve a list of collections that are hosted in the cloud. Each collection has a <code>cloud_hosted</code> parameter that is either True if that collection is in the cloud and False if it is not. The migration of NASA data to the cloud is a work in progress. Not all collections tagged as <code>cloud_hosted</code> have granules. To search for only <code>cloud_hosted</code> datasets with granules, I also set <code>has_granules</code> to <code>True</code>.</p>
 <p>I also want to get the content in <code>json</code> (pronounced “jason”) format, so I pass a dictionary to the header keyword argument to say that I want results returned as <code>json</code>.</p>
 <p>The <code>.get()</code> method is used to send this information to the CMR API. <code>get()</code> calls the HTTP method <strong>GET</strong>.</p>
-<div class="cell" data-execution_count="5">
+<div id="suited-wrestling" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.get(url,</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>                        params<span class="op">=</span>{</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>                            <span class="st">'cloud_hosted'</span>: <span class="st">'True'</span>,</span>
@@ -651,14 +202,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p><code>requests</code> returns a <code>Response</code> object.</p>
 <p>Often, we want to check that our request was successful. In a notebook or someother interactive environment, we can just type the name of the variable we have saved our <code>requests</code> Response to, in this case the <code>response</code> variable.</p>
-<div class="cell" data-execution_count="6">
+<div id="ongoing-progressive" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>response</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
 <pre><code>&lt;Response [200]&gt;</code></pre>
 </div>
 </div>
 <p>A cleaner and more understandable method is to check the <code>status_code</code> attribute. Both methods return a HTTP status code. You’ve probably seen a 404 error when you have tried to access a website that doesn’t exist.</p>
-<div class="cell" data-execution_count="7">
+<div id="printable-determination" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>response.status_code</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>200</code></pre>
@@ -668,7 +219,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The response from <code>requests.get</code> returns the results of the search and metadata about those results in the <code>headers</code>.</p>
 <p>More information about the <code>response</code> object can be found by typing <code>help(response)</code>.</p>
 <p><code>headers</code> contains useful information in a case-insensitive dictionary. This information is printed below. <em>TODO: maybe some context for where the 2 elements k, v, come from?</em></p>
-<div class="cell" data-execution_count="8">
+<div id="driving-vintage" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k, v <span class="kw">in</span> response.headers.items():</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f'</span><span class="sc">{</span>k<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>v<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -698,14 +249,14 @@ X-Amz-Cf-Id: BXEUlb5ygB9nj9ygUbSZvIc3BE4k0d1Mn1qDd66IkkuX1rC_Z-mN6Q==</code></pr
 </div>
 <p>We can see that the content returned is in <code>json</code> format in the UTF-8 character set. We can also see from <code>CMR-Hits</code> that 919 collections were found.</p>
 <p>Each item in the dictionary can be accessed in the normal way you access a <code>python</code> dictionary but because it is case-insensitive, both</p>
-<div class="cell" data-execution_count="9">
+<div id="entertaining-blend" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>response.headers[<span class="st">'CMR-Hits'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
 <pre><code>'917'</code></pre>
 </div>
 </div>
 <p>and</p>
-<div class="cell" data-execution_count="10">
+<div id="unsigned-january" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>response.headers[<span class="st">'cmr-hits'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
 <pre><code>'917'</code></pre>
@@ -787,7 +338,7 @@ X-Amz-Cf-Id: BXEUlb5ygB9nj9ygUbSZvIc3BE4k0d1Mn1qDd66IkkuX1rC_Z-mN6Q==</code></pr
 </tbody>
 </table>
 <p>When search by provider, use <em>Cloud Provider</em> to search for cloud-hosted datasets and <em>On-Premises Provider</em> to search for datasets archived at the DAACs.</p>
-<div class="cell" data-execution_count="26">
+<div id="economic-airfare" class="cell" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>provider <span class="op">=</span> <span class="st">'ASF'</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.get(url,</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>                        params<span class="op">=</span>{</span>
@@ -800,14 +351,14 @@ X-Amz-Cf-Id: BXEUlb5ygB9nj9ygUbSZvIc3BE4k0d1Mn1qDd66IkkuX1rC_Z-mN6Q==</code></pr
 <span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>                        }</span>
 <span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>                       )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="27">
+<div id="imperial-congo" class="cell" data-execution_count="27">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>response.headers[<span class="st">'cmr-hits'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="27">
 <pre><code>'45'</code></pre>
 </div>
 </div>
 <p>Search results are contained in the content part of the Response object. However, <code>response.content</code> returns information in bytes.</p>
-<div class="cell" data-jupyter="{&quot;outputs_hidden&quot;:true}" data-tags="[]" data-execution_count="28">
+<div id="hawaiian-honolulu" class="cell" data-jupyter="{&quot;outputs_hidden&quot;:true}" data-tags="[]" data-execution_count="28">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>response.content</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="28">
 <pre><code>b'{"feed":{"updated":"2021-11-02T22:41:34.322Z","id":"https://cmr.earthdata.nasa.gov:443/search/collections.json?cloud_hosted=True&amp;has_granules=True&amp;provider=ASF","title":"ECHO dataset metadata","entry":[{"boxes":["-90 -180 90 180"],"time_start":"2014-04-03T00:00:00.000Z","version_id":"1","updated":"2021-07-15T19:16:39.000Z","dataset_id":"SENTINEL-1A_SLC","has_spatial_subsetting":false,"has_transforms":false,"has_variables":false,"data_center":"ASF","short_name":"SENTINEL-1A_SLC","organizations":["ASF","ESA/CS1CGS"],"title":"SENTINEL-1A_SLC","coordinate_system":"CARTESIAN","summary":"Sentinel-1A slant-range product","service_features":{"opendap":{"has_formats":false,"has_variables":false,"has_transforms":false,"has_spatial_subsetting":false,"has_temporal_subsetting":false},"esi":{"has_formats":false,"has_variables":false,"has_transforms":false,"has_spatial_subsetting":false,"has_temporal_subsetting":false},"harmony":{"has_formats":false,"has_variables":false,"has_transforms":false,"has_spatial_subsetting":false,"has_temporal_subsetting":false}},"orbit_parameters":{},"id":"C1214470488-ASF","has_formats":false,"original_format":"ECHO10","archive_center":"ASF","has_temporal_subsetting":false,"browse_flag":false,"platforms":["Sentinel-1A"],"online_access_flag":true,"links":[{"rel":"http://esipfed.org/ns/fedsearch/1.1/data#","hreflang":"en-US","href":"https://vertex.daac.asf.alaska.edu/"}]},{"boxes":["-90 -180 90 180"],"time_start":"2016-04-25T00:00:00.000Z","version_id":"1","updated":"2021-07-15T19:17:22.000Z","dataset_id":"SENTINEL-1B_SLC","has_spatial_subsetting":false,"has_transforms":false,"has_variables":false,"data_center":"ASF","short_name":"SENTINEL-1B_SLC","organizations":["ASF","ESA/CS1CGS"],"title":"SENTINEL-1B_SLC","coordinate_system":"CARTESIAN","summary":"Sentinel-1B slant-range product","service_features":{"opendap":{"has_formats":false,"has_variables":false,"has_transforms":false,"has_spatial_subsetting":false,"has_temporal_subsetting":false},"esi":{"has_formats":false,"has_variables":false,"has_transforms":false,"has_spatial_subsetting":false,"has_temporal_subsetting":false},"harmony":{"has_formats":false,"has_variables":false,"has_transforms":false,"has_spatial_subsetting":false,"has_temporal_subsetting":false}},"orbit_parameters":{},"id":"C1327985661-ASF","has_formats":false,"original_format":"ECHO10","archive_center":"ASF","has_temporal_subsetting":false,"browse_flag":false,"platforms":["Sentinel-1B"],"online_access_flag":true,"links":[{"rel":"http://esipfed.org/ns/fedsearch/1.1/data#","hreflang":"en-US","href":"https://vertex.daac.asf.alaska.edu/"}]},{"boxes":["-90 -180 90 180"],"time_start":"2014-04-03T00:00:00.000Z","version_id":"1","updated":"2021-07-15T19:15:56.000Z","dataset_id":"SENTINEL-1A_DUAL_POL_GRD_HIGH_RES","has_spatial_subsetting":false,"has_transforms":false,"has_variables":false,"data_center":"ASF","short_name":"SENTINEL-1A_DP_GRD_HIGH","organizations":["ASF","ESA/CS1CGS"],"title":"SENTINEL-1A_DUAL_POL_GRD_HIGH_RES","coordinate_system":"CARTESIAN","summary":"Sentinel-1A Dual-pol ground projected high and full resolution images","service_features":{"opendap":{"has_formats":false,"has_variables":false,"has_transforms":false,"has_spatial_subsetting":false,"has_temporal_subsetting":false},"esi":{"has_formats":false,"has_variables":false,"has_transforms":false,"has_spatial_subsetting":false,"has_temporal_subsetting":false},"harmony":{"has_formats":false,"has_variables":false,"has_transforms":false,"has_spatial_subsetting":false,"has_temporal_subsetting":false}},"orbit_parameters":{},"id":"C1214470533-ASF","has_formats":false,"original_format":"ECHO10","archive_center":"ASF","has_temporal_subsetting":false,"browse_flag":false,"platforms":["Sentinel-1A"],"online_access_flag":true,"links":[{"rel":"http://esipfed.org/ns/fedsearch/1.1/data#","hreflang":"en-US","href":"https://vertex.daac.asf.alaska.edu/"}]},{"boxes":["-90 -180 90 180"],"time_start":"2016-04-25T00:00:00.000Z","version_id":"1","updated":"2021-07-15T19:16:47.000Z","dataset_id":"SENTINEL-1B_DUAL_POL_GRD_HIGH_RES","has_spatial_subsetting":false,"has_transforms":false,"has_variables":false,"data_center":"ASF","short_name":"SENTINEL-1B_DP_GRD_HIGH","organizations":["ASF","ESA/CS1CGS"],"title":"SENTINEL-1B_DUAL_POL_GRD_HIGH_RES","coordinate_system":"CARTESIAN","summary":"Sentinel-1B Dual-pol ground projected high and full resolution images","service_features":{"opendap":{"has_formats":false,"has_variables":false,"has_transforms":false,"has_spatial_subsetting":false,"has_temporal_subsetting":false},"esi":{"has_formats":false,"has_variables":false,"has_transforms":false,"has_spatial_subsetting":false,"has_temporal_subsetting":false},"harmony":{"has_formats":false,"has_variables":false,"has_transforms":false,"has_spatial_subsetting":false,"has_temporal_subsetting":false}},"orbit_parameters":{},"id":"C1327985645-ASF","has_formats":false,"original_format":"ECHO10","archive_center":"ASF","has_temporal_subsetting":false,"browse_flag":false,"platforms":["Sentinel-1B"],"online_access_flag":true,"links":[{"rel":"http://esipfed.org/ns/fedsearch/1.1/data#","hreflang":"en-US","href":"https://vertex.daac.asf.alaska.edu/"}]},{"boxes":["-90 -180 90 180"],"time_start":"2016-04-25T00:00:00.000Z","version_id":"1","updated":"2021-07-15T19:16:49.000Z","dataset_id":"SENTINEL-1B_DUAL_POL_GRD_MEDIUM_RES","has_spatial_subsetting":false,"has_transforms":false,"has_variables":false,"data_center":"ASF","short_name":"SENTINEL-1B_DP_GRD_MEDIUM","organizations":["ASF","ESA/CS1CGS"],"title":"SENTINEL-1B_DUAL_POL_GRD_MEDIUM_RES","coordinate_system":"CARTESIAN","summary":"Sentinel-1B Dual-pol ground projected medium resolution images","service_features":{"opendap":{"has_formats":false,"has_variables":false,"has_transforms":false,"has_spatial_subsetting":false,"has_temporal_subsetting":false},"esi":{"has_formats":false,"has_variables":false,"has_transforms":false,"has_spatial_subsetting":false,"has_temporal_subsetting":false},"harmony":{"has_formats":false,"has_variables":false,"has_transforms":false,"has_spatial_subsetting":false,"has_temporal_subsetting":false}},"orbit_parameters":{},"id":"C1327985660-ASF","has_formats":false,"original_format":"ECHO10","archive_center":"ASF","has_temporal_subsetting":false,"browse_flag":false,"platforms":["Sentinel-1B"],"online_access_flag":true,"links":[{"rel":"http://esipfed.org/ns/fedsearch/1.1/data#","hreflang":"en-US","href":"https://vertex.daac.asf.alaska.edu/"}]},{"boxes":["-90 -180 90 180"],"time_start":"2014-04-03T00:00:00.000Z","version_id":"1","updated":"2021-07-15T19:15:58.000Z","dataset_id":"SENTINEL-1A_DUAL_POL_GRD_MEDIUM_RES","has_spatial_subsetting":false,"has_transforms":false,"has_variables":false,"data_center":"ASF","short_name":"SENTINEL-1A_DP_GRD_MEDIUM","organizations":["ASF","ESA/CS1CGS"],"title":"SENTINEL-1A_DUAL_POL_GRD_MEDIUM_RES","coordinate_system":"CARTESIAN","summary":"Sentinel-1A Dual-pol ground projected medium resolution images","service_features":{"opendap":{"has_formats":false,"has_variables":false,"has_transforms":false,"has_spatial_subsetting":false,"has_temporal_subsetting":false},"esi":{"has_formats":false,"has_variables":false,"has_transforms":false,"has_spatial_subsetting":false,"has_temporal_subsetting":false},"harmony":{"has_formats":false,"has_variables":false,"has_transforms":false,"has_spatial_subsetting":false,"has_temporal_subsetting":false}},"orbit_parameters":{},"id":"C1214471521-ASF","has_formats":false,"original_format":"ECHO10","archive_center":"ASF","has_temporal_subsetting":false,"browse_flag":false,"platforms":["Sentinel-1A"],"online_access_flag":true,"links":[{"rel":"http://esipfed.org/ns/fedsearch/1.1/data#","hreflang":"en-US","href":"https://vertex.daac.asf.alaska.edu/"}]},{"boxes":["-90 -180 90 180"],"time_start":"2014-04-03T00:00:00.000Z","version_id":"1","updated":"2021-07-15T19:16:20.000Z","dataset_id":"SENTINEL-1A_RAW","has_spatial_subsetting":false,"has_transforms":false,"has_variables":false,"data_center":"ASF","short_name":"SENTINEL-1A_RAW","organizations":["ASF","ESA/CS1CGS"],"title":"SENTINEL-1A_RAW","coordinate_system":"CARTESIAN","summary":"Sentinel-1A level zero product","service_features":{"opendap":{"has_formats":false,"has_variables":false,"has_transforms":false,"has_spatial_subsetting":false,"has_temporal_subsetting":false},"esi":{"has_formats":false,"has_variables":false,"has_transforms":false,"has_spatial_subsetting":false,"has_temporal_subsetting":false},"harmony":{"has_formats":false,"has_variables":false,"has_transforms":false,"has_spatial_subsetting":false,"has_temporal_subsetting":false}},"orbit_parameters":{},"id":"C1214470561-ASF","has_formats":false,"original_format":"ECHO10","archive_center":"ASF","has_temporal_subsetting":false,"browse_flag":false,"platforms":["Sentinel-1A"],"online_access_flag":true,"links":[{"rel":"http://esipfed.org/ns/fedsearch/1.1/data#","hreflang":"en-US","href":"https://vertex.daac.asf.alaska.edu/"}]},{"boxes":["-90 -180 90 180"],"time_start":"2014-04-03T00:00:00.000Z","version_id":"1","updated":"2021-07-15T19:16:15.000Z","dataset_id":"SENTINEL-1A_METADATA_SLC","has_spatial_subsetting":false,"has_transforms":false,"has_variables":false,"data_center":"ASF","short_name":"SENTINEL-1A_META_SLC","organizations":["ASF"],"title":"SENTINEL-1A_METADATA_SLC","coordinate_system":"CARTESIAN","summary":"Metadata for Sentinel-1A slant-range product","service_features":{"opendap":{"has_formats":false,"has_variables":false,"has_transforms":false,"has_spatial_subsetting":false,"has_temporal_subsetting":false},"esi":{"has_formats":false,"has_variables":false,"has_transforms":false,"has_spatial_subsetting":false,"has_temporal_subsetting":false},"harmony":{"has_formats":false,"has_variables":false,"has_transforms":false,"has_spatial_subsetting":false,"has_temporal_subsetting":false}},"orbit_parameters":{},"id":"C1214470496-ASF","has_formats":false,"original_format":"ECHO10","archive_center":"ASF","has_temporal_subsetting":false,"browse_flag":false,"platforms":["Sentinel-1A"],"online_access_flag":true,"links":[{"rel":"http://esipfed.org/ns/fedsearch/1.1/data#","hreflang":"en-US","href":"https://vertex.daac.asf.alaska.edu/"}]},{"boxes":["-90 -180 90 180"],"time_start":"2016-04-25T00:00:00.000Z","version_id":"1","updated":"2021-07-15T19:17:02.000Z","dataset_id":"SENTINEL-1B_METADATA_SLC","has_spatial_subsetting":false,"has_transforms":false,"has_variables":false,"data_center":"ASF","short_name":"SENTINEL-1B_META_SLC","organizations":["ASF"],"title":"SENTINEL-1B_METADATA_SLC","coordinate_system":"CARTESIAN","summary":"Metadata for Sentinel-1B slant-range product","service_features":{"opendap":{"has_formats":false,"has_variables":false,"has_transforms":false,"has_spatial_subsetting":false,"has_temporal_subsetting":false},"esi":{"has_formats":false,"has_variables":false,"has_transforms":false,"has_spatial_subsetting":false,"has_temporal_subsetting":false},"harmony":{"has_formats":false,"has_variables":false,"has_transforms":false,"has_spatial_subsetting":false,"has_temporal_subsetting":false}},"orbit_parameters":{},"id":"C1327985617-ASF","has_formats":false,"original_format":"ECHO10","archive_center":"ASF","has_temporal_subsetting":false,"browse_flag":false,"platforms":["Sentinel-1B"],"online_access_flag":true,"links":[{"rel":"http://esipfed.org/ns/fedsearch/1.1/data#","hreflang":"en-US","href":"https://vertex.daac.asf.alaska.edu/"}]},{"boxes":["-90 -180 90 180"],"time_start":"2014-04-03T00:00:00.000Z","version_id":"1","updated":"2021-07-15T19:16:26.000Z","dataset_id":"SENTINEL-1A_SINGLE_POL_GRD_HIGH_RES","has_spatial_subsetting":false,"has_transforms":false,"has_variables":false,"data_center":"ASF","short_name":"SENTINEL-1A_SP_GRD_HIGH","organizations":["ASF","ESA/CS1CGS"],"title":"SENTINEL-1A_SINGLE_POL_GRD_HIGH_RES","coordinate_system":"CARTESIAN","summary":"Sentinel-1A Single-pol ground projected high and full resolution images","service_features":{"opendap":{"has_formats":false,"has_variables":false,"has_transforms":false,"has_spatial_subsetting":false,"has_temporal_subsetting":false},"esi":{"has_formats":false,"has_variables":false,"has_transforms":false,"has_spatial_subsetting":false,"has_temporal_subsetting":false},"harmony":{"has_formats":false,"has_variables":false,"has_transforms":false,"has_spatial_subsetting":false,"has_temporal_subsetting":false}},"orbit_parameters":{},"id":"C1214470682-ASF","has_formats":false,"original_format":"ECHO10","archive_center":"ASF","has_temporal_subsetting":false,"browse_flag":false,"platforms":["Sentinel-1A"],"online_access_flag":true,"links":[{"rel":"http://esipfed.org/ns/fedsearch/1.1/data#","hreflang":"en-US","href":"https://vertex.daac.asf.alaska.edu/"}]}]}}'</code></pre>
@@ -815,7 +366,7 @@ X-Amz-Cf-Id: BXEUlb5ygB9nj9ygUbSZvIc3BE4k0d1Mn1qDd66IkkuX1rC_Z-mN6Q==</code></pr
 </div>
 <p>It is more convenient to work with <code>json</code> formatted data. I’m using pretty print <code>pprint</code> to print the data in an easy to read way.</p>
 <p><strong>Step through <code>response.json()</code>, then to <code>response.json()['feed']['entry'][0]</code></strong>. A reminder that python starts indexing at 0, not 1!</p>
-<div class="cell" data-execution_count="29">
+<div id="frequent-tucson" class="cell" data-execution_count="29">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>pprint(response.json()[<span class="st">'feed'</span>][<span class="st">'entry'</span>][<span class="dv">0</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>{'archive_center': 'ASF',
@@ -862,10 +413,10 @@ X-Amz-Cf-Id: BXEUlb5ygB9nj9ygUbSZvIc3BE4k0d1Mn1qDd66IkkuX1rC_Z-mN6Q==</code></pr
 </div>
 </div>
 <p>The first response is not the result I am looking for <em>TODO: because xyz…but it does show a few variables that we can use to further refine the search</em>. So I want to print the name of the dataset (<code>dataset_id</code>) and the concept id (<code>id</code>). We can build this variable and print statement like we did above with the <code>url</code> variable. <em>TODO: is it worth saying something about what “feed” and “entry” are?</em></p>
-<div class="cell" data-execution_count="30">
+<div id="radio-lightning" class="cell" data-execution_count="30">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>collections <span class="op">=</span> response.json()[<span class="st">'feed'</span>][<span class="st">'entry'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="31">
+<div id="other-grant" class="cell" data-execution_count="31">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> collection <span class="kw">in</span> collections:</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f'</span><span class="sc">{</span>collection[<span class="st">"archive_center"</span>]<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>collection[<span class="st">"dataset_id"</span>]<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>collection[<span class="st">"id"</span>]<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -882,7 +433,7 @@ ASF SENTINEL-1A_SINGLE_POL_GRD_HIGH_RES C1214470682-ASF</code></pre>
 </div>
 </div>
 <p>But there is a problem. We know from <code>CMR-Hits</code> that there are 49 datasets but only 10 are printed. This is because CMR restricts the number of results returned by a query. The default is 10 but it can be set to a maximum of 2000. Knowing that there were 49 ‘hits’, I’ll set <code>page_size</code> to 49. Then, we can re-run our for loop for the collections.</p>
-<div class="cell" data-execution_count="32">
+<div id="federal-analyst" class="cell" data-execution_count="32">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.get(url,</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>                        params<span class="op">=</span>{</span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>                            <span class="st">'cloud_hosted'</span>: <span class="st">'True'</span>,</span>
@@ -894,7 +445,7 @@ ASF SENTINEL-1A_SINGLE_POL_GRD_HIGH_RES C1214470682-ASF</code></pre>
 <span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>                        }</span>
 <span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>                       )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="33">
+<div id="consecutive-detroit" class="cell" data-execution_count="33">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>collections <span class="op">=</span> response.json()[<span class="st">'feed'</span>][<span class="st">'entry'</span>]</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> collection <span class="kw">in</span> collections:</span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f'</span><span class="sc">{</span>collection[<span class="st">"archive_center"</span>]<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>collection[<span class="st">"dataset_id"</span>]<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>collection[<span class="st">"id"</span>]<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -958,14 +509,14 @@ ASF STS-59_METADATA_GRD C1661710586-ASF</code></pre>
 <p>I’ll use a simple bounding box to search. - SW: 76.08166,-67.1746 - NW: 88.19689,21.04862</p>
 <p>From the collections search, I know the concept ids for Sentinel-1A and Sentinel-1B GRD medium resolution are - C1214472336-ASF - C1327985578-ASF</p>
 <p>We need to change the resource url to look for granules instead of collections</p>
-<div class="cell" data-execution_count="34">
+<div id="unlimited-underwear" class="cell" data-execution_count="34">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="ss">f'</span><span class="sc">{</span>CMR_OPS<span class="sc">}</span><span class="ss">/</span><span class="sc">{</span><span class="st">"granules"</span><span class="sc">}</span><span class="ss">'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We will search by <code>concept_id</code>, <code>temporal</code>, and <code>bounding_box</code>. Details about these search parameters can be found in the CMR API Documentation.</p>
 <p>The formatting of the values for each parameter is quite specific.<br>
 Temporal parameters are in ISO 8061 format <code>yyyy-MM-ddTHH:mm:ssZ</code>.<br>
 Bounding box coordinates are lower left longitude, lower left latitude, upper right longitude, upper right latitude.</p>
-<div class="cell" data-execution_count="36">
+<div id="identified-johnson" class="cell" data-execution_count="36">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.get(url, </span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>                        params<span class="op">=</span>{</span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>                            <span class="st">'concept_id'</span>: <span class="st">'C1214472336-ASF'</span>,</span>
@@ -982,18 +533,18 @@ Bounding box coordinates are lower left longitude, lower left latitude, upper ri
 <pre><code>200</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="37">
+<div id="aggressive-repair" class="cell" data-execution_count="37">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(response.headers[<span class="st">'CMR-Hits'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>6</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="38">
+<div id="animal-facing" class="cell" data-execution_count="38">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>granules <span class="op">=</span> response.json()[<span class="st">'feed'</span>][<span class="st">'entry'</span>]</span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="co">#for granule in granules:</span></span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="co">#    print(f'{granule["archive_center"]} {granule["dataset_id"]} {granule["id"]}')</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="39">
+<div id="deluxe-blues" class="cell" data-execution_count="39">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>pprint(granules)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[{'browse_flag': True,
@@ -1235,6 +786,7 @@ Bounding box coordinates are lower left longitude, lower left latitude, upper ri
 
 
 </section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -1278,6 +830,33 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       } else {
         el.classList.add('notransition');
       }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
     }
   }
   const toggleColorMode = (alternate) => {
@@ -1346,13 +925,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return localAlternateSentinel;
     }
   }
-  let localAlternateSentinel = 'default';
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
   // Dark / light mode switch
   window.quartoToggleColorScheme = () => {
     // Read the current dark / light value 
     let toAlternate = !hasAlternateSentinel();
     toggleColorMode(toAlternate);
     setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
   };
   // Ensure there is a toggle, if there isn't float one in the top right
   if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -1431,10 +1012,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1444,8 +1024,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1458,6 +1047,125 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -1501,6 +1209,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1526,6 +1235,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1588,15 +1323,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
-    <div class="nav-footer-left">NASA Earthdata Cloud Cookbook, © NASA Openscapes Team (2023).</div>   
+    <div class="nav-footer-left">
+<p>NASA Earthdata Cloud Cookbook, © NASA Openscapes Team (2023).</p>
+</div>   
     <div class="nav-footer-center">
       &nbsp;
-    </div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.dev/nasa-openscapes/earthdata-cloud-cookbook/blob/main/external/data_discovery_cmr.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/blob/main/external/data_discovery_cmr.ipynb" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>
   </div>
 </footer>
+
 
 
 

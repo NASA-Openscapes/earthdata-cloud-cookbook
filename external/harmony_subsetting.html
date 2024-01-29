@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.549">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -22,7 +22,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -57,7 +57,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
@@ -80,7 +80,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -89,495 +95,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
 }</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
 <link rel="stylesheet" href="../styles.css">
 </head>
 
-<body class="nav-sidebar docked">
+<body>
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-        <i class="bi bi-layout-text-sidebar-reverse"></i>
-      </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
-      NASA Earthdata Cloud Cookbook
-      </li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
-        <i class="bi bi-search"></i>
-      </button>
-    </div>
-  </nav>
-</header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
-    <div class="pt-lg-2 mt-2 text-center sidebar-header sidebar-header-stacked">
-      <a href="../index.html" class="sidebar-logo-link">
-      <img src="../images/nasa-openscapes.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
-      </a>
-    <div class="sidebar-title mb-0 py-0">
-      <a href="../">NASA Earthdata Cloud Cookbook</a> 
-        <div class="sidebar-tools-main tools-wide">
-    <a href="https://nasa-openscapes.github.io" rel="" title="NASA-Openscapes website" class="quarto-navigation-tool px-1" aria-label="NASA-Openscapes website"><i class="bi bi-globe"></i></a>
-    <a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook" rel="" title="Earthdata Cloud Cookbook repo" class="quarto-navigation-tool px-1" aria-label="Earthdata Cloud Cookbook repo"><i class="bi bi-github"></i></a>
-  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
-</div>
-    </div>
-      </div>
-        <div class="mt-2 flex-shrink-0 align-items-center">
-        <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Search"></div>
-        </div>
-        </div>
-    <div class="sidebar-menu-container"> 
-    <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Welcome</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../when-to-cloud.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">When To Cloud</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../our-cookbook.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Our Cookbook</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../glossary.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Glossary &amp; Cheatsheets</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../environment-setup/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Cloud Environment Setup</span></a>
-  </div>
-</li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">
- <span class="menu-text">How do I…</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
- <span class="menu-text">find data</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../how-tos/find-data/earthdata_search.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">with Earthdata Search</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../how-tos/find-data/find-python.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">with Python</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../how-tos/find-data/find-r.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">with R</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
- <span class="menu-text">access data in cloud</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../how-tos/access-data/access-cloud-python.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">with Python</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
- <span class="menu-text">access data locally</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../how-tos/access-data/access-local-python.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">with Python</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../how-tos/access-data/access-local-opendap.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">with OPeNDAP</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../how-tos/read_data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">read data</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../how-tos/subset.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">subset data</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../how-tos/reformat.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">reformat data files</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../how-tos/reproject_regrid.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">reproject and regrid</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../how-tos/aggregate.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">aggregate data</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../how-tos/plot.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">plot data</span></a>
-  </div>
-</li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="../how-tos/use_apis.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">use APIs</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../external/appeears_csv_cloud_access.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">AppEEARS Cloud CSV Access</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../how-tos/how_to_guide_parking_lot.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">parking lot</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="../tutorials/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Tutorials</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../examples/Earthdata-cloud-clinic.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Earthdata Cloud Clinic</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../tutorials/Hurricanes_Wind_and_Sea_Surface_Temperature.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Multi-datasets</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../tutorials/Sea_Level_Rise.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Sea Level Rise</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../tutorials/Above_Ground_Biomass_Density.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Carbon Stocks</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../tutorials/Observing_Seasonal_Ag_Changes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Agriculture Observations</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../external/IS2_cloud_Landsat_integration.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">ICESat-2</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../tutorials/04_On-Prem_Cloud.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Cloud &amp; Non-cloud</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../tutorials/earthaccess-demo.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><code>earthaccess</code> Python library</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../tutorials/Earthdata_Cloud__Data_Access_OPeNDAP_Example.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">OPeNDAP Access</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../tutorials/fair-workflow-geoweaver-demo.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Pygeoweaver Workflow Demo</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../tutorials/matlab.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">MATLAB Access NetCDF</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="../workshops/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Workshops &amp; Hackathons</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../workshops/setup.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Workshop Setup</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="../in-development/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">In Development</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../examples/NSIDC/ICESat2-CMR-OnPrem-vs-Cloud.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Search &amp; Download NSIDC Cloud</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../examples/NSIDC/ICESat2-CMR-AWS-S3.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Access NSIDC Cloud w/ CMR</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../examples/Transform-workflow.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Direct Access &amp; Harmony Workflow</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../examples/USGS_Landsat/Landsat_C2_Search_Access.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Search &amp; Access USGS Landsat Cloud</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../examples/ORNL/Data_Access__Direct_S3_Access__ORNL_DAYMET.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Direct S3 Data Access: NetCDF - Daymet v4 Daily TMAX Example</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../external/cof-zarr-reformat.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Access ECCO data via Harmony &amp; the Zarr reformatter service</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../external/zarr-eosdis-store.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">zarr-eosdis-store example</span></a>
-  </div>
-</li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="../examples/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Example Workflows</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../examples/GESDISC/GESDISC_MERRA2_tavg1_2d_flx_Nx__Kerchunk.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">GES DISC - MERRA2</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../examples/LPDAAC/LPDAAC_ECOSTRESS_LSTE__Kerchunk.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">LP DAAC ECOSTRESS</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../examples/PODAAC/PODAAC_ECCO_SSH__Kerchunk.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">PO.DAAC ECCO SSH</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../in-development/CMR-STAC-Search.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">CMR STAC in R</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../in-development/earthdata-python-r-handoff.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><code>earthdata</code>: Python-R Handoff</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="../contributing/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Contributing</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../contributing/calendar-project-management.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Calendaring and Project Management</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../contributing/onboarding.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Onboarding Mentors</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../contributing/setup.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Setup</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../contributing/workflow.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Workflows</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../contributing/quarto-website-tutorial.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Quarto Tutorial</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../contributing/troubleshooting.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Troubleshooting</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="../appendix/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Appendix</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../appendix/authentication.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Authentication</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-    </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#using-the-harmony-py-library-to-access-customized-data-from-nasa-earthdata" id="toc-using-the-harmony-py-library-to-access-customized-data-from-nasa-earthdata" class="nav-link active" data-scroll-target="#using-the-harmony-py-library-to-access-customized-data-from-nasa-earthdata">Using the Harmony-Py library to access customized data from NASA Earthdata</a>
+  <li><a href="#data-subsetting-and-transformation-services-in-the-cloud" id="toc-data-subsetting-and-transformation-services-in-the-cloud" class="nav-link active" data-scroll-target="#data-subsetting-and-transformation-services-in-the-cloud">07. Data Subsetting and Transformation Services in the Cloud</a>
+  <ul class="collapse">
+  <li><a href="#using-the-harmony-py-library-to-access-customized-data-from-nasa-earthdata" id="toc-using-the-harmony-py-library-to-access-customized-data-from-nasa-earthdata" class="nav-link" data-scroll-target="#using-the-harmony-py-library-to-access-customized-data-from-nasa-earthdata">Using the Harmony-Py library to access customized data from NASA Earthdata</a>
   <ul class="collapse">
   <li><a href="#timing" id="toc-timing" class="nav-link" data-scroll-target="#timing">Timing:</a></li>
   </ul></li>
@@ -606,8 +152,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#plot-the-data" id="toc-plot-the-data" class="nav-link" data-scroll-target="#plot-the-data">Plot the data</a></li>
   </ul></li>
   <li><a href="#resources" id="toc-resources" class="nav-link" data-scroll-target="#resources">Resources</a></li>
+  </ul></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.dev/nasa-openscapes/earthdata-cloud-cookbook/blob/main/external/harmony_subsetting.ipynb" class="toc-action">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/blob/main/external/harmony_subsetting.ipynb" class="toc-action">View source</a></p><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.dev/nasa-openscapes/earthdata-cloud-cookbook/blob/main/external/harmony_subsetting.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/blob/main/external/harmony_subsetting.ipynb" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -627,8 +174,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
+
 </header>
 
+
+<section id="data-subsetting-and-transformation-services-in-the-cloud" class="level1">
+<h1>07. Data Subsetting and Transformation Services in the Cloud</h1>
 <section id="using-the-harmony-py-library-to-access-customized-data-from-nasa-earthdata" class="level2">
 <h2 class="anchored" data-anchor-id="using-the-harmony-py-library-to-access-customized-data-from-nasa-earthdata">Using the Harmony-Py library to access customized data from NASA Earthdata</h2>
 <hr>
@@ -656,7 +207,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="data/subsetting_diagram.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Data file filtering and subsetting</figcaption>
+<figcaption>Data file filtering and subsetting</figcaption>
 </figure>
 </div>
 <p>See more on the <a href="https://harmony.earthdata.nasa.gov/">Earthdata Harmony landing page</a>, including documentation on the Harmony API itself.</p>
@@ -673,7 +224,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="import-packages" class="level2">
 <h2 class="anchored" data-anchor-id="import-packages">Import Packages</h2>
-<div class="cell" data-execution_count="1">
+<div id="3d6cf2c7-ea5b-41eb-999c-483240d5e529" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> harmony <span class="im">import</span> BBox, Client, Collection, Request, LinkType</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> harmony.config <span class="im">import</span> Environment</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
@@ -693,22 +244,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Why is this?</p>
 <p>Due to varying <a href="https://earthdata.nasa.gov/collaborate/new-missions/level-of-service">levels of service</a>, cloud migration status, and unique characteristics of the datasets themselves, not all service options are provided for all datasets. Therefore it is important to first explore a given dataset’s metadata to discover what service options are provided.</p>
 <p>Let’s utilize the CMR API skills we learned on Day 1 to inspect service metadata:</p>
-<div class="cell" data-execution_count="2">
+<div id="d75da0d2-96eb-4f9b-8661-c0e9ffec99c5" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">'https://cmr.earthdata.nasa.gov/search'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We want to search by collection to inspect the access and service options that exist:</p>
-<div class="cell" data-execution_count="3">
+<div id="b11040e5-9619-4017-beff-5f69105107c3" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>collection_url <span class="op">=</span> <span class="ss">f'</span><span class="sc">{</span>url<span class="sc">}</span><span class="ss">/</span><span class="sc">{</span><span class="st">"collections"</span><span class="sc">}</span><span class="ss">'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>In the CMR introduction tutorial, we explored cloud-hosted collections from different DAAC providers, and identified the CMR <code>concept-id</code> for a given data set id (also referred to as a <code>short_name</code>).</p>
 <p>Here we are jumping ahead and already know the <code>concept_id</code> we are interested in, by browsing cloud-hosted datasets from PO.DAAC in Earthdata Search: https://search.earthdata.nasa.gov/portal/podaac-cloud/search.</p>
 <p>We are going to focus on <code>MODIS_A-JPL-L2P-v2019.0</code>: GHRSST Level 2P Global Sea Surface Skin Temperature from the Moderate Resolution Imaging Spectroradiometer (MODIS) on the NASA Aqua satellite (GDS2). Let’s first save this as a variable that we can use later on once we request data from Harmony.</p>
-<div class="cell" data-execution_count="4">
+<div id="cde1f5a8-58b2-4b4f-b959-3e78a375cbe3" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>short_name<span class="op">=</span> <span class="st">'MODIS_A-JPL-L2P-v2019.0'</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>concept_id <span class="op">=</span> <span class="st">'C1940473819-POCLOUD'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We will view the top-level metadata for this collection to see what additional service and variable metadata exist.</p>
-<div class="cell" data-execution_count="5">
+<div id="65ab652b-9bd1-4fb9-98c6-1996888c9b48" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.get(collection_url, </span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>                        params<span class="op">=</span>{</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>                            <span class="st">'concept_id'</span>: concept_id,</span>
@@ -720,7 +271,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> response.json()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Print the response:</p>
-<div class="cell" data-tags="[]" data-execution_count="6">
+<div id="82698422-d47d-4f10-99f2-e66a3ab306b6" class="cell" data-tags="[]" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>pprint(response)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>{'feed': {'entry': [{'archive_center': 'NASA/JPL/PODAAC',
@@ -913,18 +464,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p>We will dig into more details on what Harmony offers for this dataset.</p>
 <p>First, we need to isolate the services returned for this dataset:</p>
-<div class="cell" data-execution_count="7">
+<div id="b2fbb3ff-255a-4d71-83ca-c648a80f558b" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>services <span class="op">=</span> response[<span class="st">'feed'</span>][<span class="st">'entry'</span>][<span class="dv">0</span>][<span class="st">'associations'</span>][<span class="st">'services'</span>]</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(services)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>['S1962070864-POCLOUD', 'S2004184019-POCLOUD']</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="8">
+<div id="8702a829-1a48-4287-aa25-a6ae5203c120" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>service_url <span class="op">=</span> <span class="st">"https://cmr.earthdata.nasa.gov/search/services"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Inspect the first service returned. Now we’re going to search the services endpoint to view that individual service’s metadata, like we did with our dataset above. This time, we’re explicitly setting the format of the response to umm-json in the Accept Header in order to see detailed metadata about the service.</p>
-<div class="cell" data-execution_count="9">
+<div id="c693321e-8640-4057-b344-7125fb5dee38" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>service_response <span class="op">=</span> requests.get(service_url, </span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>                        params<span class="op">=</span>{</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>                            <span class="st">'concept_id'</span>: services[<span class="dv">0</span>],</span>
@@ -936,7 +487,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>service_response <span class="op">=</span> service_response.json()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Details about the service metadata record include the service options provided by the “backend” processor connected to Harmony, in this case the PODAAC Level 2 Cloud Subsetter:</p>
-<div class="cell" data-execution_count="10">
+<div id="e781ca9d-788e-41fa-945b-4f3f5e8280ff" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>pprint(service_response)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>{'hits': 1,
@@ -991,7 +542,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="discover-all-datasets-that-support-harmony-services" class="level3">
 <h3 class="anchored" data-anchor-id="discover-all-datasets-that-support-harmony-services"><em>Discover all datasets that support Harmony services</em></h3>
 <p>Instead of searching for services on a known dataset of interest, we may want to discovery all available datasets that are supported for a given service. We can utilize <a href="https://graphql.org/">GraphQL</a>, which is a way for us to efficiently gain information across service and collection metadata so that we can print out all supported Harmony datasets. First, we need to specify a query string. Here we are asking to query all collections with service type “Harmony”, and to provide details on the service options attached to those services:</p>
-<div class="cell" data-execution_count="11">
+<div id="387460f2-8929-40a6-9a1c-754a16471c52" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>query <span class="op">=</span> <span class="st">"""query {</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="st">  collections(limit: 2000, serviceType: "Harmony") {</span></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="st">    count</span></span>
@@ -1016,7 +567,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a><span class="st">}"""</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This utilizes a different API endpoint to query CMR metdata using GraphQL. Here we set up another request, passing our query string above:</p>
-<div class="cell" data-execution_count="12">
+<div id="14ad5782-9a1c-485f-8309-60fd9adabb45" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>graphql_url <span class="op">=</span> <span class="st">'https://graphql.earthdata.nasa.gov/api'</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>graphql_response <span class="op">=</span> requests.get(graphql_url,</span>
@@ -1027,7 +578,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>                       )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>A json response is returned that provides all collections with Harmony-supported services. We can then extract just the collection<code>shortName</code>, <code>conceptID</code>, and the service names supported for each collection:</p>
-<div class="cell" data-execution_count="13">
+<div id="501a9b64-104c-460b-8666-561ee3063917" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>services <span class="op">=</span> graphql_response.json()[<span class="st">'data'</span>][<span class="st">'collections'</span>][<span class="st">'items'</span>]</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> service <span class="kw">in</span> services:</span>
@@ -1370,7 +921,7 @@ Services: PODAAC L2 Cloud Subsetter</code></pre>
 <section id="discover-variable-names" class="level2">
 <h2 class="anchored" data-anchor-id="discover-variable-names">Discover variable names</h2>
 <p>Just like services, a dataset may also be associated to metadata on their individual data variables, which can be used as input if we wish to subset by one or more variables of interest.</p>
-<div class="cell" data-tags="[]" data-execution_count="14">
+<div id="2052dc8d-92c7-401b-b934-1e86231c92c6" class="cell" data-tags="[]" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>variables <span class="op">=</span> response[<span class="st">'feed'</span>][<span class="st">'entry'</span>][<span class="dv">0</span>][<span class="st">'associations'</span>][<span class="st">'variables'</span>]</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(variables)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1378,10 +929,10 @@ Services: PODAAC L2 Cloud Subsetter</code></pre>
 </div>
 </div>
 <p>Several variable records are returned. Again, like we did for services, we’ll search the variables endpoint to view an individual variable’s metadata, and we’ll print out the list of variables for our dataset.</p>
-<div class="cell" data-tags="[]" data-execution_count="15">
+<div id="b16209fa-dec0-49f4-9de0-f68305a5664e" class="cell" data-tags="[]" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>var_url <span class="op">=</span> <span class="st">"https://cmr.earthdata.nasa.gov/search/variables"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="16">
+<div id="34684453-145f-4e13-94d8-4797d5eb6706" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>var_response <span class="op">=</span> requests.get(var_url, </span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>                        params<span class="op">=</span>{</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>                            <span class="st">'concept_id'</span>: variables[<span class="dv">0</span>],</span>
@@ -1392,7 +943,7 @@ Services: PODAAC L2 Cloud Subsetter</code></pre>
 <span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>                       )</span>
 <span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>var_response <span class="op">=</span> var_response.json()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="17">
+<div id="805e8fea-43c6-4615-a27f-5a8b1b1e8b5b" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>pprint(var_response)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>{'hits': 1,
@@ -1440,7 +991,7 @@ Services: PODAAC L2 Cloud Subsetter</code></pre>
 </div>
 </div>
 <p>Next, print out a simple list of all associated variable names by looping the same variable response we submitted above, this time for each variable:</p>
-<div class="cell" data-execution_count="18">
+<div id="9fc1a4a5-4d84-4eca-a83a-18499cba5feb" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>var_list <span class="op">=</span> []</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(variables)):</span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>    var_response <span class="op">=</span> requests.get(var_url, </span>
@@ -1454,7 +1005,7 @@ Services: PODAAC L2 Cloud Subsetter</code></pre>
 <span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>    var_response <span class="op">=</span> var_response.json()</span>
 <span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>    var_list.append(var_response[<span class="st">'items'</span>][<span class="dv">0</span>][<span class="st">'umm'</span>][<span class="st">'Name'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="19">
+<div id="4a93372a-3acc-4dfb-af7c-3552c1e6984e" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>pprint(var_list)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>['sses_standard_deviation_4um',
@@ -1483,7 +1034,7 @@ Services: PODAAC L2 Cloud Subsetter</code></pre>
 <h3 class="anchored" data-anchor-id="create-harmony-client-object">Create Harmony Client object</h3>
 <p>First, we need to create a Harmony Client, which is what we will interact with to submit and inspect a data request to Harmony, as well as to retrieve results.</p>
 <p>When creating the Client, we need to provide Earthdata Login credentials, which are required to access data from NASA EOSDIS. This basic line below assumes that we have a <code>.netrc</code> available.</p>
-<div class="cell" data-execution_count="20">
+<div id="aee9843a-1875-4fb4-b241-47389333c010" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>harmony_client <span class="op">=</span> Client()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
@@ -1493,7 +1044,7 @@ Services: PODAAC L2 Cloud Subsetter</code></pre>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="data/Worldview-snapshot-Ida.jpeg" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Hurrican Ida snapshot - Worldview</figcaption>
+<figcaption>Hurrican Ida snapshot - Worldview</figcaption>
 </figure>
 </div>
 </section>
@@ -1510,7 +1061,7 @@ Services: PODAAC L2 Cloud Subsetter</code></pre>
 <li><code>temporal</code>: Date/time constraints on the data. The example below demonstrates temporal start and end ranges using the python datetime library.</li>
 </ul>
 <p>As we identified above, only subsetting options are available for this dataset. If other service options such as reformatting are available for a given dataset, these can also be specified using Harmony-py: See the <a href="https://harmony-py.readthedocs.io/en/latest/">documentation</a> for details on how to construct these parameters.</p>
-<div class="cell" data-execution_count="21">
+<div id="3bab287d-ef49-44bb-9d14-fbcb72407341" class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>request <span class="op">=</span> Request(</span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>    collection<span class="op">=</span>Collection(<span class="bu">id</span><span class="op">=</span>short_name),</span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>    spatial<span class="op">=</span>BBox(<span class="op">-</span><span class="fl">97.77667</span>,<span class="fl">21.20806</span>,<span class="op">-</span><span class="fl">83.05197</span>,<span class="fl">30.16605</span>),</span>
@@ -1524,7 +1075,7 @@ Services: PODAAC L2 Cloud Subsetter</code></pre>
 <section id="check-request-validity" class="level3">
 <h3 class="anchored" data-anchor-id="check-request-validity">Check Request validity</h3>
 <p>Before submitting a Harmony Request, we can test your request to see if it’s valid and how to fix it if not. In particular, <code>request.is_valid</code> will check to ensure that the spatial BBox bounds and temporal ranges are entered correctly.</p>
-<div class="cell" data-execution_count="22">
+<div id="7cb74a84-9d0a-4a1a-bf49-c8d227134ce1" class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>request.is_valid()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="22">
 <pre><code>True</code></pre>
@@ -1534,7 +1085,7 @@ Services: PODAAC L2 Cloud Subsetter</code></pre>
 <section id="submit-request" class="level3">
 <h3 class="anchored" data-anchor-id="submit-request">Submit request</h3>
 <p>Now that the request is created, we can now submit it to Harmony using the Harmony Client object. A job id is returned, which is a unique identifier that represents the submitted request.</p>
-<div class="cell" data-execution_count="23">
+<div id="48e5d0b2-d28c-4fe6-975d-3003b112ca6b" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>job_id <span class="op">=</span> harmony_client.submit(request)</span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>job_id</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="23">
@@ -1545,7 +1096,7 @@ Services: PODAAC L2 Cloud Subsetter</code></pre>
 <section id="check-request-status" class="level3">
 <h3 class="anchored" data-anchor-id="check-request-status">Check request status</h3>
 <p>We can check on the progress of a processing job with status(). This method blocks while communicating with the server but returns quickly.</p>
-<div class="cell" data-execution_count="24">
+<div id="c8ca8da2-9f33-4fc9-bb63-c717d47e97dd" class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>harmony_client.status(job_id)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="24">
 <pre><code>{'status': 'running',
@@ -1558,7 +1109,7 @@ Services: PODAAC L2 Cloud Subsetter</code></pre>
 </div>
 </div>
 <p>Depending on the size of the request, it may be helpful to wait until the request has completed processing before the remainder of the code is executed. The wait_for_processing() method will block subsequent lines of code while optionally showing a progress bar.</p>
-<div class="cell" data-execution_count="25">
+<div id="37bdad26-3c82-4ab4-8c31-abd9027c65e5" class="cell" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>harmony_client.wait_for_processing(job_id, show_progress<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code> [ Processing: 100% ] |###################################################| [|]</code></pre>
@@ -1569,7 +1120,7 @@ Services: PODAAC L2 Cloud Subsetter</code></pre>
 <h3 class="anchored" data-anchor-id="view-harmony-job-response-and-output-urls">View Harmony job response and output URLs</h3>
 <p>Once the data request has finished processing, we can view details on the job that was submitted to Harmony, including the API call to Harmony, and informational messages on the request if available.</p>
 <p>result_json() calls wait_for_processing() and returns the complete job in JSON format once processing is complete.</p>
-<div class="cell" data-execution_count="26">
+<div id="cf7f40e0-815a-452b-a250-439566d8495f" class="cell" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> harmony_client.result_json(job_id)</span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>pprint(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1648,7 +1199,7 @@ Services: PODAAC L2 Cloud Subsetter</code></pre>
 <section id="retrieve-list-of-output-urls." class="level4">
 <h4 class="anchored" data-anchor-id="retrieve-list-of-output-urls.">Retrieve list of output URLs.</h4>
 <p>The result_urls() method calls wait_for_processing() and returns a list of the processed data URLs once processing is complete. You may optionally show the progress bar as shown below.</p>
-<div class="cell" data-execution_count="27">
+<div id="b66d9800-173b-48d3-bb8a-63ff6b22d1e7" class="cell" data-execution_count="27">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> harmony_client.result_urls(job_id, link_type<span class="op">=</span>LinkType.s3)</span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>urls <span class="op">=</span> <span class="bu">list</span>(results)</span>
 <span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>pprint(urls)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1662,7 +1213,7 @@ Services: PODAAC L2 Cloud Subsetter</code></pre>
 </div>
 </div>
 <p>We can see that the first file returned does not include the <code>_subsetted</code> suffix, which indicates that a blank file was returned, as no data values were located within our subsetted region. We’ll select the second URL in the list to bring into xarray below.</p>
-<div class="cell" data-execution_count="28">
+<div id="d7d24d64-1b86-473c-9a42-7ece5d4e58fd" class="cell" data-execution_count="28">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> urls[<span class="dv">1</span>]</span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>url</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="28">
@@ -1673,7 +1224,7 @@ Services: PODAAC L2 Cloud Subsetter</code></pre>
 <section id="aws-credential-retrieval" class="level4">
 <h4 class="anchored" data-anchor-id="aws-credential-retrieval">AWS credential retrieval</h4>
 <p>Using aws_credentials you can retrieve the credentials needed to access the Harmony s3 staging bucket and its contents.</p>
-<div class="cell" data-tags="[]" data-execution_count="29">
+<div id="dfe9c7b0-b129-4910-a80d-48c5b8081598" class="cell" data-tags="[]" data-execution_count="29">
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>creds <span class="op">=</span> harmony_client.aws_credentials()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
@@ -1681,7 +1232,7 @@ Services: PODAAC L2 Cloud Subsetter</code></pre>
 <section id="open-staged-files-with-s3fs-and-xarray" class="level3">
 <h3 class="anchored" data-anchor-id="open-staged-files-with-s3fs-and-xarray">Open staged files with <em>s3fs</em> and <em>xarray</em></h3>
 <p>We use the AWS <code>s3fs</code> package to create a file system that can then be read by xarray:</p>
-<div class="cell" data-execution_count="30">
+<div id="676a86b1-8432-4fc8-a815-c1175a28ff3c" class="cell" data-execution_count="30">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>s3_fs <span class="op">=</span> s3fs.S3FileSystem(</span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>    key<span class="op">=</span>creds[<span class="st">'aws_access_key_id'</span>],</span>
 <span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>    secret<span class="op">=</span>creds[<span class="st">'aws_secret_access_key'</span>],</span>
@@ -1690,12 +1241,11 @@ Services: PODAAC L2 Cloud Subsetter</code></pre>
 <span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now that we have our s3 file system set, including our declared credentials, we’ll use that to open the url, and read in the file through xarray. This extra step is needed because xarray cannot open the S3 location directly. Instead, the S3 file object is passed to xarray, in order to then open the dataset.</p>
-<div class="cell" data-execution_count="31">
+<div id="75b8b7c9-3604-44ee-992e-c13e505e13ca" class="cell" data-execution_count="31">
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> s3_fs.<span class="bu">open</span>(url, mode<span class="op">=</span><span class="st">'rb'</span>)</span>
 <span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>ds <span class="op">=</span> xr.open_dataset(f)</span>
 <span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>ds</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="31">
-
 <div><svg style="position: absolute; width: 0; height: 0; overflow: hidden">
 <defs>
 <symbol id="icon-database" viewbox="0 0 32 32">
@@ -2088,10 +1638,14 @@ Attributes: (12/50)
 <section id="plot-the-data" class="level3">
 <h3 class="anchored" data-anchor-id="plot-the-data">Plot the data</h3>
 <p>Use the xarray built in plotting function to create a simple plot along the x and y dimensions of the dataset:</p>
-<div class="cell" data-execution_count="32">
+<div id="f34908b3-d89d-4782-973b-40db286ce56c" class="cell" data-execution_count="32">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>ds.sea_surface_temperature.plot() <span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="harmony_subsetting_files/figure-html/cell-33-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="harmony_subsetting_files/figure-html/cell-33-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -2104,6 +1658,7 @@ Attributes: (12/50)
 </ol>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -2148,6 +1703,33 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       } else {
         el.classList.add('notransition');
       }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
     }
   }
   const toggleColorMode = (alternate) => {
@@ -2216,13 +1798,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return localAlternateSentinel;
     }
   }
-  let localAlternateSentinel = 'default';
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
   // Dark / light mode switch
   window.quartoToggleColorScheme = () => {
     // Read the current dark / light value 
     let toAlternate = !hasAlternateSentinel();
     toggleColorMode(toAlternate);
     setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
   };
   // Ensure there is a toggle, if there isn't float one in the top right
   if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -2301,10 +1885,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -2314,8 +1897,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -2328,6 +1920,125 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -2371,6 +2082,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -2396,6 +2108,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -2458,15 +2196,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
-    <div class="nav-footer-left">NASA Earthdata Cloud Cookbook, © NASA Openscapes Team (2023).</div>   
+    <div class="nav-footer-left">
+<p>NASA Earthdata Cloud Cookbook, © NASA Openscapes Team (2023).</p>
+</div>   
     <div class="nav-footer-center">
       &nbsp;
-    </div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.dev/nasa-openscapes/earthdata-cloud-cookbook/blob/main/external/harmony_subsetting.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/blob/main/external/harmony_subsetting.ipynb" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>
   </div>
 </footer>
+
 
 
 
