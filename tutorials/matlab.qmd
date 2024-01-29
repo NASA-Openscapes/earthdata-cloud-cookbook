@@ -13,7 +13,7 @@ You're able to use MATLAB in the 2i2c JupyterHub; you are able to bring your own
 
 ![Launch MATLAB from the JupyterHub interface by double-clicking](images/matlab-launch.png){fig-alt="screenshot of JupyterHub interface launch page, with MATLAB kernel options" fig-align="center" width="60%"}
 
-![Enter your MATLAB login information](images/matlab-login.png){fig-alt="screenshot of MATLAB login page prompting your email address" fig-align="center" width="60%"}
+![Enter your MATLAB login information. NOTE: You will also need to be able to access your MATLAB account via MATLAB Online.](images/matlab-login.png){fig-alt="screenshot of MATLAB login page prompting your email address" fig-align="center" width="60%"}
 
 ## Credentials
 
@@ -31,11 +31,13 @@ Direct S3 access is achieved by passing NASA supplied temporary credentials to A
 
 -   NSIDC: <https://data.nsidc.earthdatacloud.nasa.gov/s3credentials>
 
-You will need your EarthData login to access these links. Create an account here: <https://urs.earthdata.nasa.gov/users/new>.
+You will need your EarthData login to access these links. Create an account here: <https://urs.earthdata.nasa.gov/users/new>. 
 
 ## Prerequisites
 
-1.  Save the following function in a text file called `loadAWSCredentials.txt` to your MATLAB working folder or to any folder that is on [MATLAB search path](https://www.mathworks.com/help/matlab/search-path.html).
+If you'd rather watch these instructions, there is a short demo video here: <https://drive.google.com/drive/folders/1en_SHtjtF4pUt4WU0SzyV16SEegjiwrT?usp=sharing> 
+
+1.  Save the following function in a text file called `loadAWSCredentials.m` to your MATLAB working folder or to any folder that is on [MATLAB search path](https://www.mathworks.com/help/matlab/search-path.html).
 
 ``` bash
 function s3Credentials = loadAWSCredentials(daacCredentialsEndpoint, login, password)
@@ -115,7 +117,7 @@ DATASET_PATH = "/" + DATASET_NAME ;
 First, check that you can access the dataset:
 
 ``` bash
-h5disp(FILE_PATH);
+h5disp(FILE_NAME);
 ```
 
 If credentials and paths are correct, h5disp will display the structure of the data file.
