@@ -660,7 +660,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/matlab-login.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%" alt="screenshot of MATLAB login page prompting your email address"></p>
-<figcaption>Enter your MATLAB login information</figcaption>
+<figcaption>Enter your MATLAB login information. NOTE: You will also need to be able to access your MATLAB account via MATLAB Online.</figcaption>
 </figure>
 </div>
 </section>
@@ -679,8 +679,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="prerequisites" class="level2">
 <h2 class="anchored" data-anchor-id="prerequisites">Prerequisites</h2>
+<p>If you’d rather watch these instructions, there is a short demo video here: <a href="https://drive.google.com/drive/folders/1en_SHtjtF4pUt4WU0SzyV16SEegjiwrT?usp=sharing" class="uri">https://drive.google.com/drive/folders/1en_SHtjtF4pUt4WU0SzyV16SEegjiwrT?usp=sharing</a></p>
 <ol type="1">
-<li>Save the following function in a text file called <code>loadAWSCredentials.txt</code> to your MATLAB working folder or to any folder that is on <a href="https://www.mathworks.com/help/matlab/search-path.html">MATLAB search path</a>.</li>
+<li>Save the following function in a text file called <code>loadAWSCredentials.m</code> to your MATLAB working folder or to any folder that is on <a href="https://www.mathworks.com/help/matlab/search-path.html">MATLAB search path</a>.</li>
 </ol>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span><span class="fu"> s3Credentials</span> <span class="ex">=</span> loadAWSCredentials<span class="er">(</span><span class="ex">daacCredentialsEndpoint,</span> login, password<span class="kw">)</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="ex">nargin</span> <span class="op">&lt;</span> 2 <span class="kw">||</span> <span class="ex">isempty</span><span class="er">(</span><span class="fu">login</span><span class="kw">)</span></span>
@@ -741,7 +742,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">DATASET_NAME</span> = <span class="st">"sea_surface_temperature_4um"</span><span class="kw">;</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="ex">DATASET_PATH</span> = <span class="st">"/"</span> + DATASET_NAME <span class="kw">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>First, check that you can access the dataset:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">h5disp</span><span class="er">(</span><span class="ex">FILE_PATH</span><span class="kw">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">h5disp</span><span class="er">(</span><span class="ex">FILE_NAME</span><span class="kw">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>If credentials and paths are correct, h5disp will display the structure of the data file.</p>
 </section>
 <section id="using-matlab-high-level-hdf5-interface" class="level3">
