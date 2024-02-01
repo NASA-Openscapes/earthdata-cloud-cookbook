@@ -30,7 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
 <link href="../external/appeears_csv_cloud_access.html" rel="next">
-<link href="../how-tos/plot.html" rel="prev">
+<link href="../how-tos/subset.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -234,30 +234,6 @@ ul.task-list li input[type="checkbox"] {
   <div class="sidebar-item-container"> 
   <a href="../how-tos/subset.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">subset data</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../how-tos/reformat.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">reformat data files</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../how-tos/reproject_regrid.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">reproject and regrid</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../how-tos/aggregate.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">aggregate data</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../how-tos/plot.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">plot data</span></a>
   </div>
 </li>
           <li class="sidebar-item sidebar-item-section">
@@ -567,13 +543,16 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#using-apis" id="toc-using-apis" class="nav-link active" data-scroll-target="#using-apis">Using APIs</a></li>
   <li><a href="#how-do-i-know" id="toc-how-do-i-know" class="nav-link" data-scroll-target="#how-do-i-know">How do I know?</a>
   <ul class="collapse">
-  <li><a href="#services-using-earthdata-search" id="toc-services-using-earthdata-search" class="nav-link" data-scroll-target="#services-using-earthdata-search">Services using EarthData Search</a></li>
-  <li><a href="#services-using-cmr" id="toc-services-using-cmr" class="nav-link" data-scroll-target="#services-using-cmr">Services using CMR</a></li>
-  <li><a href="#services-using-earthaccess" id="toc-services-using-earthaccess" class="nav-link" data-scroll-target="#services-using-earthaccess">Services using <code>earthaccess</code></a></li>
+  <li><a href="#finding-services-using-earthdata-search" id="toc-finding-services-using-earthdata-search" class="nav-link" data-scroll-target="#finding-services-using-earthdata-search">Finding Services using EarthData Search</a></li>
+  <li><a href="#finding-services-using-cmr" id="toc-finding-services-using-cmr" class="nav-link" data-scroll-target="#finding-services-using-cmr">Finding Services using CMR</a></li>
   </ul></li>
+  <li><a href="#nasa-api-examples" id="toc-nasa-api-examples" class="nav-link" data-scroll-target="#nasa-api-examples">NASA API Examples</a>
+  <ul class="collapse">
   <li><a href="#harmony" id="toc-harmony" class="nav-link" data-scroll-target="#harmony">Harmony</a></li>
   <li><a href="#opendap" id="toc-opendap" class="nav-link" data-scroll-target="#opendap">OPeNDAP</a></li>
+  <li><a href="#earthaccess" id="toc-earthaccess" class="nav-link" data-scroll-target="#earthaccess"><code>earthaccess</code></a></li>
   <li><a href="#appeears" id="toc-appeears" class="nav-link" data-scroll-target="#appeears">AppEEARS</a></li>
+  </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/edit/main/how-tos/use_apis.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/blob/main/how-tos/use_apis.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -601,38 +580,41 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="using-apis" class="level2">
 <h2 class="anchored" data-anchor-id="using-apis">Using APIs</h2>
-<p><em>Coming soon: Intro with short explicit description. APIs - What are they? Borrow from get-started/api-primer.md</em></p>
+<p>API stands for Application Programming Interface, and is basically “like a digital mediator that enables different software applications to talk to each other and exchange information. It defines the methods, parameters, and data formats you can use to access certain features or retrieve data from an application or service.” (<a href="https://zapier.com/blog/how-to-use-api/#what">How to Use An API</a>)</p>
 </section>
 <section id="how-do-i-know" class="level2">
 <h2 class="anchored" data-anchor-id="how-do-i-know">How do I know?</h2>
 <p>How do I know what API services are available for a dataset?</p>
-<p>Some but not all datasets have API services that can reproject, resample or reformat files on the server file. This How-To shows how to find which services are available.</p>
-<section id="services-using-earthdata-search" class="level3">
-<h3 class="anchored" data-anchor-id="services-using-earthdata-search">Services using EarthData Search</h3>
-<p>Finding services associated with a dataset using EarthData</p>
+<p>Some but not all datasets have API services that can reproject, resample or reformat files on the server file. These How-To’s below show how to find which services are available:</p>
+<section id="finding-services-using-earthdata-search" class="level3">
+<h3 class="anchored" data-anchor-id="finding-services-using-earthdata-search">Finding Services using EarthData Search</h3>
+<p>After selecting a dataset and the needed files using Earthdata Search (<a href="https://nasa-openscapes.github.io/earthdata-cloud-cookbook/how-tos/find-data/earthdata_search.html">tutorial here</a>), when the download files button is selected, it will navigate users to a new page on the sidebar. If the dataset is customizable through APIs, different options will pop up under “Select a data access method” or “Configure data customization options”</p>
 </section>
-<section id="services-using-cmr" class="level3">
-<h3 class="anchored" data-anchor-id="services-using-cmr">Services using CMR</h3>
-<p>Find services associated with a dataset using CMR</p>
-</section>
-<section id="services-using-earthaccess" class="level3">
-<h3 class="anchored" data-anchor-id="services-using-earthaccess">Services using <code>earthaccess</code></h3>
-<p>Find services associated with a dataset using <code>earthaccess</code></p>
+<section id="finding-services-using-cmr" class="level3">
+<h3 class="anchored" data-anchor-id="finding-services-using-cmr">Finding Services using CMR</h3>
+<p>Follow <a href="https://cmr.earthdata.nasa.gov/search/site/docs/search/api.html#c-service-parameters">this link</a> to see how to programmatically discover what services are associated with what NASA Earthdata.</p>
 </section>
 </section>
+<section id="nasa-api-examples" class="level1">
+<h1>NASA API Examples</h1>
 <section id="harmony" class="level2">
 <h2 class="anchored" data-anchor-id="harmony">Harmony</h2>
-<p>short description, when to use it</p>
+<p><a href="https://harmony.earthdata.nasa.gov/">Harmony</a> allows you to seamlessly analyze Earth observation data from different NASA data centers with services that offer data reduction and common access mechanisms across all NASA data centers. There is a python client library called <a href="https://github.com/nasa/harmony-py">harmony-py</a> that exists as a wrapper for the Harmony services, and <a href="https://github.com/nasa/harmony/blob/main/docs/Harmony%20API%20introduction.ipynb">this notebook</a> gives a brief introduction to the Harmony API services.</p>
 </section>
 <section id="opendap" class="level2">
 <h2 class="anchored" data-anchor-id="opendap">OPeNDAP</h2>
-<p>short description, when to use it</p>
+<p>OPeNDAP, or the <a href="https://www.earthdata.nasa.gov/engage/open-data-services-and-software/api/opendap">Open-source Project for a Network Data Access Protocol</a>, is a data server that allows for accessing scientific datasets through the public internet. OPeNDAP links can be acquired through dataset landing pages or the <a href="https://cmr.earthdata.nasa.gov/search/site/collections/directory/eosdis">common metadata repository</a>. For more information, see the <a href="https://opendap.github.io/documentation/tutorials/DataAccessTutorials.html">OPeNDAP Data Access Client Tutorials</a>.</p>
+</section>
+<section id="earthaccess" class="level2">
+<h2 class="anchored" data-anchor-id="earthaccess"><code>earthaccess</code></h2>
+<p><a href="https://earthaccess.readthedocs.io/en/latest/"><code>earthaccess</code></a> is a python library to search, download or stream NASA Earth science data with just a few lines of code that also abstracts a lot of other APIs developed by NASA.</p>
 </section>
 <section id="appeears" class="level2">
 <h2 class="anchored" data-anchor-id="appeears">AppEEARS</h2>
 <p>The <a href="https://appeears.earthdatacloud.nasa.gov/">Application for Extracting and Exploring Analysis Ready Samples (AρρEEARS)</a> offers users a simple and efficient way to perform data access and transformation processes. By enabling users to subset data spatially, temporally, and by layer, the volume of data downloaded for analysis is greatly reduced. AppEEARS requests can be submitted in website and via API. In a same way, outputs generated can also be accessed from AppEEARS website and through API. View <a href="https://appeears.earthdatacloud.nasa.gov/help">AppEEARS documentation</a> and <a href="https://appeears.earthdatacloud.nasa.gov/api/">API documentation</a> for more information. Additionally, you can work with the data in the cloud using provided S3 links. Visit <a href="https://github.com/nasa/AppEEARS-Data-Resources">AppEEARS Data Resources Repository</a> for more tutorials on how to work with AppEEARS programaticaly.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -1169,8 +1151,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../how-tos/plot.html" class="pagination-link  aria-label=" plot="" data"="">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">plot data</span>
+      <a href="../how-tos/subset.html" class="pagination-link  aria-label=" subset="" data"="">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">subset data</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
