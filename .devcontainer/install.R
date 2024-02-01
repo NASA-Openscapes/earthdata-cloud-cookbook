@@ -7,5 +7,5 @@
 install.packages(c("rstac", "spData", "earthdatalogin", "quarto"))
 remotes::install_github('r-tmap/tmap')
 
-install.packages(c("IRkernel", "languageserver", "httpgd"))
+install.packages(c("IRkernel", "languageserver", "httpgd", "aws.s3"))
 IRkernel::installspec()
