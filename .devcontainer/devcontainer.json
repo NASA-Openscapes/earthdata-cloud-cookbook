@@ -1,0 +1,53 @@
+{
+	  "image": "ghcr.io/boettiger-lab/nasa-tops:latest",
+	  "runArgs": [ "--security-opt", "seccomp=unconfined" ],
+	  "name": "NASA TOPS Environment",
+	  // build image as a github-action and grab instead; faster.
+	  // "build": {
+	  //	"dockerfile": "Dockerfile"
+	  //},
+	  "waitFor": "onCreateCommand",
+	  "features": {
+		"ghcr.io/rocker-org/devcontainer-features/quarto-cli:1": {},
+		// Install JupyterLab and IRkernel.
+		// More info: https://github.com/rocker-org/devcontainer-templates/tree/main/src/r-ver
+		"ghcr.io/rocker-org/devcontainer-features/r-rig:1": {
+			"version": "none",
+			"installJupyterlab": true
+		}
+	  },
+	  "customizations": {
+		"codespaces": {
+			"openFiles": ["README.md"]
+		  },
+		  "vscode": {
+		  "settings": {
+			"r.rterm.linux": "/usr/local/bin/radian",
+			"r.bracketedPaste": true,
+			"r.plot.useHttpgd": true,
+			"[r]": {
+			  "editor.wordSeparators": "`~!@#%$^&*()-=+[{]}\\|;:'\",<>/?"
+			}
+		  },
+		  "extensions": [
+			"reditorsupport.r",
+			"rdebugger.r-debugger",
+			"ms-toolsai.jupyter",
+			"ms-python.python"			
+			]
+		}
+	  },
+	  // Forward the RStudio ports
+	  "forwardPorts": [8787],
+	  "portsAttributes": {
+		"8787": {
+			"label": "Rstudio",
+			"requireLocalPort": true,
+			"onAutoForward": "ignore"
+		}
+	  },
+	  // Use 'postCreateCommand' to run commands after the container is created.
+	  "postCreateCommand": "bash .devcontainer/setup.sh",
+	  "postAttachCommand": "sudo rstudio-server start &> /dev/null && bash .devcontainer/welcome.sh",
+	  "remoteUser": "rstudio"
+	}
