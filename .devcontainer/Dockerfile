@@ -43,9 +43,6 @@ RUN wget https://github.com/NASA-Openscapes/corn/raw/main/ci/environment.yml && 
 # some teaching preferences
 RUN git config --global pull.rebase false
 
-COPY conda_init.sh /etc/profile.d/conda_init.sh
-RUN bash -c "conda init"
-
 # NOTES: 
 # conda (base) just means $CONDA_ENV/bin/
 # conda (openscapes) means $MY_ENV, identically, $CONDA_ENV/envs/openscapes/bin/
@@ -56,4 +53,9 @@ RUN ${MY_ENV}/bin/python -m pip install ipykernel && \
     ${MY_ENV}/bin/python -m ipykernel install --sys-prefix --name=openscapes
 
 ENV PATH=${MY_ENV}/bin:${PATH}
+
+COPY conda_init.sh /etc/profile.d/conda_init.sh
+RUN bash -c /etc/profile.d/conda_init.sh
+
+
 
