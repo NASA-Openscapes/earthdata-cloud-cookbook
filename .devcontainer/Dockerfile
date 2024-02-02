@@ -52,7 +52,7 @@ RUN git config --global pull.rebase false
 RUN ${MY_ENV}/bin/python -m pip install ipykernel && \
     ${MY_ENV}/bin/python -m ipykernel install --sys-prefix --name=openscapes
 
-ENV PATH=${MY_ENV}/bin:${PATH}
+#ENV PATH=${MY_ENV}/bin:${PATH}
 
 COPY conda_init.sh /etc/profile.d/conda_init.sh
 RUN bash -c /etc/profile.d/conda_init.sh
