@@ -1,7 +1,7 @@
 {
-	  "image": "ghcr.io/boettiger-lab/nasa-tops:latest",
+	  "image": "ghcr.io/eeholmes/earthdata-cloud-cookbook/cookbook:latest",
 	  "runArgs": [ "--security-opt", "seccomp=unconfined" ],
-	  "name": "NASA TOPS Environment",
+	  "name": "NASA OpenScapes Environment",
 	  // build image as a github-action and grab instead; faster.
 	  // "build": {
 	  //	"dockerfile": "Dockerfile"
