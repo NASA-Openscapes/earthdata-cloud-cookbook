@@ -1,11 +1,10 @@
 ## devcontainer-focused Rocker
-FROM docker.io/rocker/binder:4.3
-
-USER root
+FROM ghcr.io/rocker-org/devcontainer/tidyverse:4.3
 
 ## latest version of geospatial libs
 RUN /rocker_scripts/experimental/install_dev_osgeo.sh
 RUN apt-get update -qq && apt-get -y install vim
+RUN /rocker_scripts/install_jupyter.sh
 
 # conda
 ENV CONDA_ENV=/opt/miniforge3
@@ -18,6 +17,10 @@ RUN chown ${NB_USER}:staff -R ${CONDA_ENV}
 # podman doesn not understand group permissions
 RUN chown ${NB_USER}:staff -R ${VIRTUAL_ENV}
 RUN chown ${NB_USER}:staff -R ${R_HOME}/site-library
+
+# some teaching preferences
+RUN git config --system pull.rebase false && \
+    git config --system credential.helper 'cache --timeout=36000'
 
 
 
@@ -49,9 +52,5 @@ RUN wget https://github.com/NASA-Openscapes/corn/raw/main/ci/environment.yml && 
 RUN ${MY_ENV}/bin/python -m pip install ipykernel && \
     ${MY_ENV}/bin/python -m ipykernel install --prefix /opt/venv --name=openscapes
 
-
-# some teaching preferences
-RUN git config --system pull.rebase false && \
-    git config --system credential.helper 'cache --timeout=36000'
 
 
