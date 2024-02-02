@@ -1,44 +1,29 @@
-name: Render and deploy quarto files
 on:
+  workflow_dispatch:
   push:
-    branches:
-      - main  
+    branches: main
+
+name: Quarto Publish
 
 jobs:
-  quarto-render-and-deploy:
+  build-deploy:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        shell: bash -l {0}
+    container: 
+      image: ghcr.io/boettiger-lab/nasa-tops:latest
+      options: --user root --security-opt seccomp=unconfined
+    permissions:
+      contents: write
     steps:
-    - uses: actions/checkout@v2
-    - uses: conda-incubator/setup-miniconda@v2
-      with:
-        python-version: 3.8
-        channels: conda-forge
-        miniforge-variant: Mambaforge
-        activate-environment: quarto-import
-        environment-file: _import/environment.yml
-            
-    - name: "Import external notebooks"
-      working-directory: ./_import
-      run: |
-        conda info
-        pytest
-        python quarto_import.py -f assets.json
+      - name: Quarto-inside-docker permissions
+        run: git config --system --add safe.directory '*'
+    
+      - name: Check out repository
+        uses: actions/checkout@v3
 
-    - name: Set up Quarto
-      uses: quarto-dev/quarto-actions/setup@v2
-      with:
-        # To install LaTeX to build PDF book 
-        tinytex: true 
-        # uncomment below and fill to pin a version
-        # version: 0.9.600
-
-    - name: Publish to GitHub Pages (and render)
-      uses: quarto-dev/quarto-actions/publish@v2
-      with:
-        target: gh-pages
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # this secret is always available for github actions
-      
+      - name: Render and Publish
+        if: github.repository == 'NASA-Openscapes/earthdata-cloud-cookbook'
+        uses: quarto-dev/quarto-actions/publish@v2
+        with:
+          target: gh-pages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
