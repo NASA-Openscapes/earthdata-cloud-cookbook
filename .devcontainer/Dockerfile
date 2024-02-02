@@ -44,7 +44,7 @@ RUN wget https://github.com/NASA-Openscapes/corn/raw/main/ci/environment.yml && 
 RUN git config --global pull.rebase false
 
 COPY conda_init.sh /etc/profile.d/conda_init.sh
-RUN bash -c conda_init.sh
+RUN bash -c /etc/profile.d/conda_init.sh
 
 # NOTES: 
 # conda (base) just means $CONDA_ENV/bin/
