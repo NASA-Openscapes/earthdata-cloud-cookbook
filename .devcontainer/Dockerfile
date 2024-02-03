@@ -1,31 +1,33 @@
 ## devcontainer-focused Rocker
 FROM ghcr.io/rocker-org/devcontainer/tidyverse:4.3
 
+#RUN /rocker_scripts/install_geospatial.sh
 ## latest version of geospatial libs
-# RUN /rocker_scripts/experimental/install_dev_osgeo.sh
-RUN apt-get update -qq && apt-get -y install vim texlive-base
+RUN /rocker_scripts/experimental/install_dev_osgeo.sh
+RUN apt-get update -qq && apt-get -y install vim texlive
 
 # standard python/jupyter setup
 ENV NB_USER=rstudio
 ENV VIRTUAL_ENV=/opt/venv
 ENV PATH=${VIRTUAL_ENV}/bin:${PATH}
-RUN wget https://github.com/rocker-org/rocker-versioned2/raw/master/scripts/install_jupyter.sh && bash -e install_jupyter.sh && rm install_jupyter.sh
+RUN wget https://github.com/rocker-org/rocker-versioned2/raw/master/scripts/install_jupyter.sh && \
+  bash -e install_jupyter.sh && \
+  rm install_jupyter.sh && \
+  chown ${NB_USER}:staff -R ${VIRTUAL_ENV}
 
 # Set up conda
 ENV CONDA_ENV=/opt/miniforge3
 ENV PATH=${PATH}:$CONDA_ENV/bin
 RUN curl -L -O "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh" && \
-    bash Miniforge3-$(uname)-$(uname -m).sh -b -p ${CONDA_ENV} 
-RUN chown ${NB_USER}:staff -R ${CONDA_ENV}
+    bash Miniforge3-$(uname)-$(uname -m).sh -b -p ${CONDA_ENV} && \
+    chown ${NB_USER}:staff -R ${CONDA_ENV}
 
 # podman doesn't not understand group permissions
-RUN chown ${NB_USER}:staff -R ${VIRTUAL_ENV}
 RUN chown ${NB_USER}:staff -R ${R_HOME}/site-library
 
 # some teaching preferences
 RUN git config --system pull.rebase false && \
     git config --system credential.helper 'cache --timeout=36000'
-
 
 ## codeserver
 RUN curl -fsSL https://code-server.dev/install.sh | sh
