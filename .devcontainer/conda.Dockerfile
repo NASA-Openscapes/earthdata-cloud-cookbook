@@ -24,9 +24,6 @@ RUN curl -L -O "https://github.com/conda-forge/miniforge/releases/latest/downloa
     chown ${NB_USER}:staff -R ${CONDA_ENV} && \
     rm Miniforge3*.sh *.deb
 
-# Set up a primary conda environment distinct from (base)
-ENV MY_ENV=${CONDA_ENV}/envs/openscapes
-ENV PATH=${MY_ENV}/bin:${PATH}
 RUN echo "PATH=${PATH}" >>"${R_HOME}/etc/Renviron.site"
 
 # Initialize conda by default for all users:
@@ -42,5 +39,5 @@ COPY install.R install.R
 RUN Rscript install.R && rm install.R
 
 COPY environment.yml environment.yml
-RUN conda env create -p ${MY_ENV} -f environment.yml && conda clean --all
+RUN conda env create -p ${CONDA_ENV} -f environment.yml && conda clean --all
 
