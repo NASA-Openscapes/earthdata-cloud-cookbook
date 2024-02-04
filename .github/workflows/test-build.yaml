@@ -9,7 +9,7 @@ jobs:
   build-deploy:
     runs-on: ubuntu-latest
     container: 
-      image: ghcr.io/boettiger-lab/nasa-tops:latest
+      image: ghcr.io/eeholmes/earthdata-cloud-cookbook/cookbook:latest
       options: --user root --security-opt seccomp=unconfined
     permissions:
       contents: write
