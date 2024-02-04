@@ -5,8 +5,8 @@ FROM ghcr.io/rocker-org/devcontainer/tidyverse:4.3
 RUN /rocker_scripts/experimental/install_dev_osgeo.sh && rm -rf /build_*
 RUN apt-get update -qq && apt-get -y install vim
 
-# podman doesn't not understand group permissions
-# RUN chown rstudio:staff -R ${R_HOME}/site-library
+# podman doesn't understand group permissions
+RUN chown rstudio:staff ${R_HOME}/site-library
 
 # some teaching preferences
 RUN git config --system pull.rebase false && \
