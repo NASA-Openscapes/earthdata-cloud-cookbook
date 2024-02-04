@@ -39,5 +39,5 @@ COPY install.R install.R
 RUN Rscript install.R && rm install.R
 
 COPY environment.yml environment.yml
-RUN conda env create -p ${CONDA_ENV} -f environment.yml && conda clean --all
+RUN conda env update -f environment.yml && conda clean --all
 
