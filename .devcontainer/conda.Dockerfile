@@ -1,7 +1,7 @@
-## devcontainer-focused Rocker
+# devcontainer-focused Rocker
 FROM ghcr.io/rocker-org/devcontainer/tidyverse:4.3
 
-## latest version of geospatial libs
+# latest version of geospatial libs
 RUN /rocker_scripts/experimental/install_dev_osgeo.sh
 RUN apt-get update -qq && apt-get -y install vim
 
@@ -12,7 +12,7 @@ RUN chown rstudio:staff -R ${R_HOME}/site-library
 RUN git config --system pull.rebase false && \
     git config --system credential.helper 'cache --timeout=36000'
 
-## codeserver
+# codeserver
 RUN curl -fsSL https://code-server.dev/install.sh | sh
 
 # Set up conda
@@ -23,11 +23,15 @@ RUN curl -L -O "https://github.com/conda-forge/miniforge/releases/latest/downloa
     bash Miniforge3-$(uname)-$(uname -m).sh -b -p ${CONDA_ENV} && \
     chown ${NB_USER}:staff -R ${CONDA_ENV}
 
-
 # Initialize conda by default for all users:
 RUN conda init --system
 
-## Openscapes-specific configs
+# Set up a primary conda environment distinct from (base)
+ENV MY_ENV=${CONDA_ENV}/envs/openscapes
+ENV PATH=${MY_ENV}/bin:${PATH}
+RUN echo "PATH=${PATH}" >>"${R_HOME}/etc/Renviron.site"
+
+# Standard user setup here
 USER ${NB_USER} 
 WORKDIR /home/${NB_USER}
 RUN usermod -s /bin/bash ${NB_USER} 
@@ -36,12 +40,6 @@ RUN usermod -s /bin/bash ${NB_USER}
 COPY install.R install.R
 RUN Rscript install.R && rm install.R
 
-# consider installing jupyter-like stuff into base env instead?
-# Create a conda-based env and install into it without using conda init/conda activate
-# (this yaml file doesn't include everything from pangeo, consider a different one...)
-ENV MY_ENV=${CONDA_ENV}/envs/openscapes
 COPY environment.yml environment.yml
 RUN conda env create -p ${MY_ENV} -f environment.yml
-
-ENV PATH=${MY_ENV}/bin:${PATH}
 
