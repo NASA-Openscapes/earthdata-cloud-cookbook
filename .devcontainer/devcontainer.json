@@ -1,5 +1,5 @@
 {
-	  "image": "ghcr.io/eeholmes/earthdata-cloud-cookbook/cookbook:venv",
+	  "image": "docker.io/cboettig/nasa:venv",
 	  "runArgs": [ "--security-opt", "seccomp=unconfined" ],
 	  "name": "NASA OpenScapes Environment"
 }
