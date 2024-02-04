@@ -29,7 +29,7 @@ RUN git config --system pull.rebase false && \
     git config --system credential.helper 'cache --timeout=36000'
 
 ## codeserver
-RUN curl -fsSL https://code-server.dev/install.sh | sh
+RUN curl -fsSL https://code-server.dev/install.sh | sh && rm -rf .cache
 
 
 ## Openscapes-specific configs
@@ -38,7 +38,7 @@ WORKDIR /home/rstudio
 RUN usermod -s /bin/bash rstudio
 
 # install into the default environment
-COPY requirements.txt requirements.txt
+COPY nasa-requirements.txt requirements.txt
 RUN python -m pip install -r requirements.txt && rm requirements.txt
 COPY install.R install.R
 RUN Rscript install.R && rm install.R

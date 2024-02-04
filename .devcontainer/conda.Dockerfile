@@ -2,11 +2,11 @@
 FROM ghcr.io/rocker-org/devcontainer/tidyverse:4.3
 
 # latest version of geospatial libs
-RUN /rocker_scripts/experimental/install_dev_osgeo.sh
+RUN /rocker_scripts/experimental/install_dev_osgeo.sh && rm -rf /build_*
 RUN apt-get update -qq && apt-get -y install vim
 
 # podman doesn't not understand group permissions
-RUN chown rstudio:staff -R ${R_HOME}/site-library
+# RUN chown rstudio:staff -R ${R_HOME}/site-library
 
 # some teaching preferences
 RUN git config --system pull.rebase false && \
@@ -42,7 +42,5 @@ COPY install.R install.R
 RUN Rscript install.R && rm install.R
 
 COPY environment.yml environment.yml
-RUN conda env create -p ${MY_ENV} -f environment.yml
-
-RUN rm -rf .cache && conda clean --all
+RUN conda env create -p ${MY_ENV} -f environment.yml && conda clean --all
 
