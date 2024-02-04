@@ -2,6 +2,8 @@ on:
   workflow_dispatch:
   push:
     branches: main
+  schedule:
+        - cron: "0 0 1 * *" # monthly
 
 name: Quarto Test Build
 
@@ -22,5 +24,4 @@ jobs:
 
       - name: Render
         run: |
-             rm -rf _freeze
-             quarto render
+             quarto render --no-cache
