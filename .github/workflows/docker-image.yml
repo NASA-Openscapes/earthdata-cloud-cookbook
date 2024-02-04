@@ -18,7 +18,12 @@ jobs:
           password: ${{secrets.GITHUB_TOKEN}}
       - name: Build the Docker image
         if: github.repository == 'eeholmes/earthdata-cloud-cookbook'
-        run: docker build .devcontainer -f .devcontainer/conda.Dockerfile  --tag ghcr.io/eeholmes/earthdata-cloud-cookbook/cookbook:latest
+        run: |
+          docker build .devcontainer -f .devcontainer/conda.Dockerfile  --tag ghcr.io/eeholmes/earthdata-cloud-cookbook/cookbook:latest
+          docker build .devcontainer -f .devcontainer/venv.Dockerfile  --tag ghcr.io/eeholmes/earthdata-cloud-cookbook/cookbook:venv
       - name: Publish
         if: github.repository == 'eeholmes/earthdata-cloud-cookbook'
-        run: docker push ghcr.io/eeholmes/earthdata-cloud-cookbook/cookbook:latest
+        run: |
+          docker push ghcr.io/eeholmes/earthdata-cloud-cookbook/cookbook:latest
+          docker push ghcr.io/eeholmes/earthdata-cloud-cookbook/cookbook:venv
+
