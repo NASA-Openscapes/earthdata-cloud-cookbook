@@ -29,8 +29,7 @@ RUN usermod -s /bin/bash rstudio
 
 # install into the default environment
 COPY nasa-requirements.txt requirements.txt
-RUN python -m pip install -r requirements.txt && rm requirements.txt
+RUN python -m pip install --no-cache-dir -r requirements.txt && rm requirements.txt
 COPY install.R install.R
 RUN Rscript install.R && rm install.R
-
 

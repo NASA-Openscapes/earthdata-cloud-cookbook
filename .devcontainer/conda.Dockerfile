@@ -21,7 +21,8 @@ ENV CONDA_ENV=/opt/miniforge3
 ENV PATH=${CONDA_ENV}/bin:${PATH}
 RUN curl -L -O "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh" && \
     bash Miniforge3-$(uname)-$(uname -m).sh -b -p ${CONDA_ENV} && \
-    chown ${NB_USER}:staff -R ${CONDA_ENV}
+    chown ${NB_USER}:staff -R ${CONDA_ENV} && \
+    rm Miniforge3*.sh *.deb
 
 # Set up a primary conda environment distinct from (base)
 ENV MY_ENV=${CONDA_ENV}/envs/openscapes
@@ -42,4 +43,6 @@ RUN Rscript install.R && rm install.R
 
 COPY environment.yml environment.yml
 RUN conda env create -p ${MY_ENV} -f environment.yml
+
+RUN rm -rf .cache && conda clean --all
 
