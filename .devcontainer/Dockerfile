@@ -1,7 +1,6 @@
 ## devcontainer-focused Rocker
 FROM ghcr.io/rocker-org/devcontainer/tidyverse:4.3
 
-#RUN /rocker_scripts/install_geospatial.sh
 ## latest version of geospatial libs
 RUN /rocker_scripts/experimental/install_dev_osgeo.sh
 RUN apt-get update -qq && apt-get -y install vim texlive
