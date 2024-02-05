@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>EarthData Cloud Cookbook - How to Add Folks to 2i2c GitHub Teams</title>
+<title>EarthData Cloud Cookbook - How to Add Folks to the 2i2c Hub</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -544,7 +544,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#google-form-response-setup" id="toc-google-form-response-setup" class="nav-link" data-scroll-target="#google-form-response-setup">2. Google Form response setup</a></li>
   <li><a href="#email-alert-of-new-signup" id="toc-email-alert-of-new-signup" class="nav-link" data-scroll-target="#email-alert-of-new-signup">3. Email alert of new signup</a></li>
   <li><a href="#copy-github-username" id="toc-copy-github-username" class="nav-link" data-scroll-target="#copy-github-username">4. Copy GitHub username</a></li>
-  <li><a href="#paste-github-username" id="toc-paste-github-username" class="nav-link" data-scroll-target="#paste-github-username">5. Paste GitHub username</a></li>
+  <li><a href="#add-github-username-to-a-github-team" id="toc-add-github-username-to-a-github-team" class="nav-link" data-scroll-target="#add-github-username-to-a-github-team">5. Add GitHub username to a GitHub Team</a></li>
   <li><a href="#email-confirmation" id="toc-email-confirmation" class="nav-link" data-scroll-target="#email-confirmation">6. Email confirmation</a></li>
   <li><a href="#register-date-in-form-response-sheet" id="toc-register-date-in-form-response-sheet" class="nav-link" data-scroll-target="#register-date-in-form-response-sheet">7. Register date in Form Response Sheet</a></li>
   <li><a href="#directions-for-workshop-participants" id="toc-directions-for-workshop-participants" class="nav-link" data-scroll-target="#directions-for-workshop-participants">Directions for workshop participants</a></li>
@@ -562,7 +562,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../leading-workshops/index.html">Leading Workshops</a></li><li class="breadcrumb-item"><a href="../leading-workshops/add-folks-to-2i2c-github-teams.html">2i2c Hub access</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">How to Add Folks to 2i2c GitHub Teams</h1>
+<h1 class="title">How to Add Folks to the 2i2c Hub</h1>
 </div>
 
 
@@ -579,9 +579,11 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<p>We use GitHub Teams to manage access to the 2i2c Hub. To accomplish this, we use a dedicated GitHub Organization - <a href="https://github.com/nasa-openscapes-workshops">nasa-openscapes-workshops</a> - with <a href="https://github.com/orgs/nasa-openscapes-workshops/teams">GitHub Teams</a> for admin (people who can add others to the Hub), workshop participants, Champions Cohorts, and long term access.</p>
+<p>People are given Openscapes 2i2c JupyterHub access for workshops run by NASA Openscapes Mentors. This is the workflow to add individual users one by one. When we have a list of workshop participants, there are quicker ways to add all at once; we’ll document that after testing.</p>
 <section id="share-google-form-with-participants" class="level2">
 <h2 class="anchored" data-anchor-id="share-google-form-with-participants">1. Share Google Form with participants</h2>
-<p>Ask participants: Please add your GitHub Username to this <a href="https://forms.gle/XRPsKiqaZC4bkYoi8">Google form</a> for NASA Openscapes JupyterHub Access .</p>
+<p>Ask participants: Please add your GitHub Username to this <a href="https://forms.gle/XRPsKiqaZC4bkYoi8">Google form</a> for NASA Openscapes JupyterHub Access.</p>
 </section>
 <section id="google-form-response-setup" class="level2">
 <h2 class="anchored" data-anchor-id="google-form-response-setup">2. Google Form response setup</h2>
@@ -610,19 +612,30 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="copy-github-username">4. Copy GitHub username</h2>
 <p>On the response page, copy the Github Username <img src="images/google-form-gh-username.png" class="img-fluid" alt="alt text goes here" width="406"></p>
 </section>
-<section id="paste-github-username" class="level2">
-<h2 class="anchored" data-anchor-id="paste-github-username">5. Paste GitHub username</h2>
-<p>Go to <a href="https://github.com/orgs/NASA-Openscapes/teams/workshopaccess-2i2c">WorkshopAccess-2i2c Team in GitHub</a> &gt; Click Add member &gt; Paste GitHub username. Note there is a separate GitHub team for <a href="https://github.com/orgs/NASA-Openscapes/teams/longtermaccess-2i2c">LongtermAccess-2i2c</a>.</p>
+<section id="add-github-username-to-a-github-team" class="level2">
+<h2 class="anchored" data-anchor-id="add-github-username-to-a-github-team">5. Add GitHub username to a GitHub Team</h2>
+<p>For workshop participants, go to the <a href="https://github.com/orgs/nasa-openscapes-workshops/teams/workshopaccess-2i2c">WorkshopAccess-2i2c Team</a> in GitHub &gt; Click Add member &gt; Paste GitHub username. Note there are a separate <a href="https://github.com/orgs/nasa-openscapes-workshops/teams">GitHub Teams</a> for Champions Cohorts and long term access.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/github-add-to-team.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="alt text goes here" width="436"></p>
 </figure>
 </div>
-<p>GitHub will ask you for 2-factor authentication for the first one you add, not after that.</p>
-<p>This is what this looks like in their inbox:</p>
+<p>GitHub will ask you for 2-factor authentication for the first one you add in a batch, not after that.</p>
+<p>People may see invitation notifications in two ways. They must accept the invitation to be able to access the Hub. This is what it looks like in their email inbox:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/github-notification-email.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="alt text goes here" width="439"></p>
+</figure>
+</div>
+<p>This is what the invitation looks like in the GitHub website interface - clicking the yellow banner notification leads to the invitation:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/github-notification-banner.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:85.0%" alt="alt text goes here"></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/github-notification-banner-part2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:85.0%"></p>
 </figure>
 </div>
 </section>
@@ -659,7 +672,7 @@ Hi [FIRST NAME],</p>
 <section id="directions-for-workshop-participants" class="level2">
 <h2 class="anchored" data-anchor-id="directions-for-workshop-participants">Directions for workshop participants</h2>
 <ol type="1">
-<li><p>Please go to <a href="https://github.com/nasa-openscapes" class="uri">https://github.com/nasa-openscapes</a></p></li>
+<li><p>Please go to <a href="https://github.com/nasa-openscapes-workshops" class="uri">https://github.com/nasa-openscapes-workshops</a></p></li>
 <li><p>Click the big yellow bar that says “you’ve been invited”&nbsp;</p></li>
 <li><p>Not seeing that bar?&nbsp;</p>
 <ol type="1">
@@ -682,7 +695,7 @@ Hi [FIRST NAME],</p>
 </section>
 <section id="didnt-get-email" class="level3">
 <h3 class="anchored" data-anchor-id="didnt-get-email">Didn’t get email</h3>
-<p>Go to <a href="https://github.com/nasa-openscapes" class="uri">https://github.com/nasa-openscapes</a>, see the big yellow bar that says You’re invited.&nbsp;</p>
+<p>Go to <a href="https://github.com/nasa-openscapes-workshops" class="uri">https://github.com/nasa-openscapes-workshops</a>, see the big yellow bar that says You’re invited.&nbsp;</p>
 </section>
 </section>
 <section id="notes-on-process-and-any-issues" class="level2">
