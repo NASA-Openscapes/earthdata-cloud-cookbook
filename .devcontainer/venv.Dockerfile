@@ -1,6 +1,9 @@
 ## devcontainer-focused Rocker
 FROM ghcr.io/rocker-org/devcontainer/tidyverse:4.3
 
+## Set the default shell
+ENV SHELL=/bin/bash
+
 ## latest version of geospatial libs
 RUN /rocker_scripts/experimental/install_dev_osgeo.sh && rm -rf build_*
 RUN apt-get update -qq && apt-get -y install vim
