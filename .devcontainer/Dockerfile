@@ -3,6 +3,9 @@ FROM ghcr.io/rocker-org/devcontainer/tidyverse:4.3
 
 ## latest version of geospatial libs
 RUN /rocker_scripts/experimental/install_dev_osgeo.sh
+
+## install vim for convenience
+## texlive installed for install_jupyter.sh because it tries to install some basic tex libraries
 RUN apt-get update -qq && apt-get -y install vim texlive
 
 # standard python/jupyter setup
