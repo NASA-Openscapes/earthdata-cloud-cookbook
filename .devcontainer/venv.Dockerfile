@@ -11,6 +11,7 @@ RUN /rocker_scripts/experimental/install_dev_osgeo.sh && rm -rf build_*
 RUN apt-get update -qq && apt-get -y install vim
 
 # standard python/jupyter setup
+# install python that is with the ubuntu install
 ENV NB_USER=rstudio
 ENV VIRTUAL_ENV=/opt/venv
 ENV PATH=${VIRTUAL_ENV}/bin:${PATH}
