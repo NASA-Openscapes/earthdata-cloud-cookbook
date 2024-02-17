@@ -4,9 +4,10 @@ FROM ghcr.io/rocker-org/devcontainer/tidyverse:4.3
 ## Set the default shell
 ENV SHELL=/bin/bash
 
-# latest version of geospatial libs
-RUN /rocker_scripts/experimental/install_dev_osgeo.sh && rm -rf /build_*
+# latest version of geospatial libs -- big! 
+# RUN /rocker_scripts/experimental/install_dev_osgeo.sh && rm -rf /build_*
 # install vim for convenience
+
 RUN apt-get update -qq && apt-get -y install vim
 
 # some teaching preferences
@@ -16,8 +17,14 @@ RUN git config --system pull.rebase false && \
 # codeserver; Adds the VSCode button
 RUN curl -fsSL https://code-server.dev/install.sh | sh && rm -rf .cache
 
+# Rename the rstudio user as jovyan
+RUN usermod -l jovyan rstudio && \
+    usermod -d /home/jovyan -m jovyan && \
+    groupmod -n jovyan rstudio
+
+
 # Set up conda
-ENV NB_USER=rstudio
+ENV NB_USER=jovyan
 ENV CONDA_ENV=/opt/miniforge3
 ENV PATH=${CONDA_ENV}/bin:${PATH}
 RUN curl -L -O "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh" && \
@@ -40,6 +47,10 @@ USER ${NB_USER}
 WORKDIR /home/${NB_USER}
 # make bash default shell
 RUN usermod -s /bin/bash ${NB_USER} 
+
+
+ENV NOTEBOOK_ENV=${CONDA_ENV}/envs/openscapes
+ENV PATH=${NOTEBOOK_ENV}/bin:${PATH}
 
 COPY environment.yml environment.yml
 RUN conda env update -f environment.yml && conda clean --all
