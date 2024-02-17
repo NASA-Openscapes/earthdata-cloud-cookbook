@@ -1,0 +1,30 @@
+name: Docker Image CI conda
+on:
+  workflow_dispatch: null
+  push:
+    paths:
+      - '.devcontainer/conda.Dockerfile'
+      - '.devcontainer/environment.yml'
+      - '.github/workflows/docker-build-conda.yml'
+    branches: main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions: write-all
+    steps:
+      - uses: actions/checkout@v3
+      - name: Login to GitHub Container Registry
+        if: github.repository == 'eeholmes/earthdata-cloud-cookbook'
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{github.actor}}
+          password: ${{secrets.GITHUB_TOKEN}}
+      - name: Build the Docker image
+        if: github.repository == 'eeholmes/earthdata-cloud-cookbook'
+        run: |
+          docker build .devcontainer -f .devcontainer/conda.Dockerfile  --tag ghcr.io/eeholmes/earthdata-cloud-cookbook/cookbook-conda:latest
+      - name: Publish
+        if: github.repository == 'eeholmes/earthdata-cloud-cookbook'
+        run: |
+          docker push ghcr.io/eeholmes/earthdata-cloud-cookbook/cookbook-conda:latest
