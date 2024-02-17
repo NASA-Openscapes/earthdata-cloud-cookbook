@@ -1,8 +1,11 @@
-name: Docker Image CI
+name: Docker Image CI venv
 on:
   workflow_dispatch: null
   push:
-    paths: ['.devcontainer/*.Dockerfile', '.devcontainer/*requirements.txt', '.devcontainer/environment.yml']
+    paths:
+      - '.devcontainer/venv.Dockerfile'
+      - '.devcontainer/nasa-requirements.txt'
+      - '.github/workflows/docker-image-venv.yml'
     branches: main
 jobs:
   build:
@@ -20,11 +23,9 @@ jobs:
       - name: Build the Docker image
         if: github.repository == 'eeholmes/earthdata-cloud-cookbook'
         run: |
-          docker build .devcontainer -f .devcontainer/conda.Dockerfile  --tag ghcr.io/eeholmes/earthdata-cloud-cookbook/cookbook:conda
-          docker build .devcontainer -f .devcontainer/venv.Dockerfile  --tag ghcr.io/eeholmes/earthdata-cloud-cookbook/cookbook:venv
+          docker build .devcontainer -f .devcontainer/venv.Dockerfile  --tag ghcr.io/eeholmes/earthdata-cloud-cookbook/cookbook-venv:latest
       - name: Publish
         if: github.repository == 'eeholmes/earthdata-cloud-cookbook'
         run: |
-          docker push ghcr.io/eeholmes/earthdata-cloud-cookbook/cookbook:conda
-          docker push ghcr.io/eeholmes/earthdata-cloud-cookbook/cookbook:venv
+          docker push ghcr.io/eeholmes/earthdata-cloud-cookbook/cookbook-venv:latest
 
