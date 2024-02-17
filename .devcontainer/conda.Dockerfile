@@ -25,15 +25,20 @@ RUN usermod -l jovyan rstudio && \
 
 # Set up conda
 ENV NB_USER=jovyan
-ENV CONDA_ENV=/opt/miniforge3
-ENV PATH=${CONDA_ENV}/bin:${PATH}
+ENV CONDA_DIR=/opt/miniforge3
+ENV CONDA_ENV=openscapes
+ENV NB_PYTHON_PREFIX=${CONDA_DIR}/envs/${CONDA_ENV} 
+ENV PATH=${NB_PYTHON_PREFIX}/bin:/${CONDA_DIR}/bin:${PATH}
+
+# install conda
 RUN curl -L -O "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh" && \
-    bash Miniforge3-$(uname)-$(uname -m).sh -b -p ${CONDA_ENV} && \
-    chown ${NB_USER}:staff -R ${CONDA_ENV} && \
+    bash Miniforge3-$(uname)-$(uname -m).sh -b -p ${CONDA_DIR} && \
+    chown ${NB_USER}:staff -R ${CONDA_DIR} && \
     rm -f Miniforge3*.sh *.deb
 
-ENV NOTEBOOK_ENV=${CONDA_ENV}/envs/openscapes
-ENV PATH=${NOTEBOOK_ENV}/bin:${PATH}
+# conda decorators
+RUN conda init --system
+RUN echo ". ${CONDA_DIR}/etc/profile.d/conda.sh ; conda activate ${CONDA_ENV}" > /etc/profile.d/init_conda.sh
 
 # Tell RStudio how to find Python
 RUN echo "PATH=${PATH}" >>"${R_HOME}/etc/Renviron.site"
@@ -41,8 +46,6 @@ RUN echo "PATH=${PATH}" >>"${R_HOME}/etc/Renviron.site"
 # install R packages into the site library
 COPY install.R install.R
 RUN Rscript install.R && rm install.R
-
-RUN conda init --system
 
 # Standard user setup here
 USER ${NB_USER} 
