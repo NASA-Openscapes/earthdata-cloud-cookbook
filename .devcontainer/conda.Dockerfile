@@ -32,6 +32,9 @@ RUN curl -L -O "https://github.com/conda-forge/miniforge/releases/latest/downloa
     chown ${NB_USER}:staff -R ${CONDA_ENV} && \
     rm -f Miniforge3*.sh *.deb
 
+ENV NOTEBOOK_ENV=${CONDA_ENV}/envs/openscapes
+ENV PATH=${NOTEBOOK_ENV}/bin:${PATH}
+
 # Tell RStudio how to find Python
 RUN echo "PATH=${PATH}" >>"${R_HOME}/etc/Renviron.site"
 
@@ -39,7 +42,6 @@ RUN echo "PATH=${PATH}" >>"${R_HOME}/etc/Renviron.site"
 COPY install.R install.R
 RUN Rscript install.R && rm install.R
 
-# Initialize conda by default for all users:
 RUN conda init --system
 
 # Standard user setup here
@@ -47,10 +49,6 @@ USER ${NB_USER}
 WORKDIR /home/${NB_USER}
 # make bash default shell
 RUN usermod -s /bin/bash ${NB_USER} 
-
-
-ENV NOTEBOOK_ENV=${CONDA_ENV}/envs/openscapes
-ENV PATH=${NOTEBOOK_ENV}/bin:${PATH}
 
 COPY environment.yml environment.yml
 RUN conda env update -f environment.yml && conda clean --all
