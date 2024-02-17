@@ -25,36 +25,40 @@ RUN curl -L -O "https://github.com/conda-forge/miniforge/releases/latest/downloa
     chown ${NB_USER}:staff -R ${CONDA_ENV}
 
 # podman doesn't not understand group permissions
-RUN chown ${NB_USER}:staff -R ${R_HOME}/site-library
+# RUN chown ${NB_USER}:staff -R ${R_HOME}/site-library
 
-# some teaching preferences
+# some teaching preferences; might replace with gh-creds
 RUN git config --system pull.rebase false && \
     git config --system credential.helper 'cache --timeout=36000'
 
-## codeserver
+## codeserver; Add VSCode button
 RUN curl -fsSL https://code-server.dev/install.sh | sh && rm -rf .cache
 
+## Install the R packages into site library
+COPY install.R install.R
+RUN Rscript install.R && rm install.R
 
 ## Openscapes-specific configs
 USER rstudio
 WORKDIR /home/rstudio
+# make bash the user default
 RUN usermod -s /bin/bash rstudio
 
-# install into the default environment
+# install into the default venv environment
 COPY nasa-requirements.txt requirements.txt
 RUN python -m pip install -r requirements.txt && rm requirements.txt
-COPY install.R install.R
-RUN Rscript install.R && rm install.R
 
 # Create a conda-based env and install into it without using conda init/conda activate
 # (this yaml file doesn't include everything from pangeo, consider a different one...)
-ENV MY_ENV=${CONDA_ENV}/envs/openscapes
+# pangeo uses the name 'notebook'
+ENV ENV_NAME=notebook
+ENV MY_ENV=${CONDA_ENV}/envs/${ENV_NAME}
 RUN wget https://github.com/NASA-Openscapes/corn/raw/main/ci/environment.yml && \
     conda env create -p ${MY_ENV} -f environment.yml
 
-# This won't be the default enviornment but we register it
+# This won't be the default environment but we register it
 RUN ${MY_ENV}/bin/python -m pip install ipykernel && \
-    ${MY_ENV}/bin/python -m ipykernel install --prefix /opt/venv --name=openscapes
+    ${MY_ENV}/bin/python -m ipykernel install --prefix /opt/venv --name=${ENV_NAME}
 
 
 
