@@ -52,18 +52,24 @@ website:
                 href: how-tos/find-data/find-python.ipynb
               - text: "with R" 
                 href: how-tos/find-data/find-r.qmd
+              - text: "with MATLAB"
+                href: how-tos/find-data/find-matlab.qmd 
           - section: "access data in cloud"
             contents: 
               - text: "with Python"
                 href: how-tos/access-data/access-cloud-python.ipynb
  #             - text: "with R"
  #               href: how-tos/access-data/access-cloud-r.qmd 
+              - text: "with MATLAB"
+                href: how-tos/access-data/access-cloud-matlab.qmd 
           - section: "access data locally"  
             contents:
               - text: "with Python"
                 href: how-tos/access-data/access-local-python.ipynb
               - text: "with OPeNDAP"
                 href: how-tos/access-data/access-local-opendap.qmd
+              - text: "with MATLAB"
+                href: how-tos/access-data/access-local-matlab.qmd                 
           - text: "read data"    
             href: how-tos/read_data.qmd
           - text: "subset data"
@@ -81,6 +87,8 @@ website:
             contents:
               - text: "AppEEARS Cloud CSV Access "
                 href: external/appeears_csv_cloud_access.ipynb
+              - text: "with MATLAB"
+                href: how-tos/use_apis_matlab.qmd                 
           - text: "parking lot"
             href: how-tos/how_to_guide_parking_lot.qmd
       - section: "Tutorials"
