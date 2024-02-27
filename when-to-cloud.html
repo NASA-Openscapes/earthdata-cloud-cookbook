@@ -9,7 +9,7 @@
 <meta name="author" content="NASA Openscapes Team">
 <meta name="dcterms.date" content="2024-02-27">
 
-<title>EarthData Cloud Cookbook - When To Cloud</title>
+<title>EarthData Cloud Cookbook - When To ‘Cloud’</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -542,7 +542,10 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#questions-to-ask-yourself" id="toc-questions-to-ask-yourself" class="nav-link active" data-scroll-target="#questions-to-ask-yourself">Questions to Ask Yourself</a></li>
+  <li><a href="#what-does-it-mean-to-be-in-the-cloud" id="toc-what-does-it-mean-to-be-in-the-cloud" class="nav-link active" data-scroll-target="#what-does-it-mean-to-be-in-the-cloud">What does it mean to be in The Cloud?</a></li>
+  <li><a href="#questions-to-ask-yourself" id="toc-questions-to-ask-yourself" class="nav-link" data-scroll-target="#questions-to-ask-yourself">Questions to ask yourself</a></li>
+  <li><a href="#to-cloud" id="toc-to-cloud" class="nav-link" data-scroll-target="#to-cloud">To Cloud…</a></li>
+  <li><a href="#not-to-cloud" id="toc-not-to-cloud" class="nav-link" data-scroll-target="#not-to-cloud">Not To Cloud…</a></li>
   <li><a href="#challenges" id="toc-challenges" class="nav-link" data-scroll-target="#challenges">Challenges</a></li>
   <li><a href="#considerations" id="toc-considerations" class="nav-link" data-scroll-target="#considerations">Considerations</a></li>
   </ul>
@@ -553,8 +556,8 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">When To Cloud</h1>
-<p class="subtitle lead">Is cloud access and analysis for you?</p>
+<h1 class="title">When To ‘Cloud’</h1>
+<p class="subtitle lead">Is in-cloud access and analysis for you?</p>
 </div>
 
 
@@ -583,50 +586,106 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Cloud migration can often have a steep learning curve and feel overwhelming. There are times when Cloud is effective and times when the download model may still be more appropriate. Here we aim to help people decide what’s best for their use cases.</p>
+<p>Cloud adoption often has a steep learning curve and can feel overwhelming. There are times when using the cloud is effective and times when the download model is more appropriate. Here we aim to help you decide what’s best for your use case.</p>
+<section id="what-does-it-mean-to-be-in-the-cloud" class="level3">
+<h3 class="anchored" data-anchor-id="what-does-it-mean-to-be-in-the-cloud">What does it mean to be in The Cloud?</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/what-is-the-cloud-basic.png" class="img-fluid figure-img" style="width:60.0%"></p>
+<figcaption>Image by Alexis Hunzinger, GES DISC</figcaption>
+</figure>
+</div>
+<p>At a basic level, “The Cloud” is somewhere that isn’t your computer. We all interact with data and services and that live in “The Cloud” in our daily lives. When we store photos in iCloud or Google accounts instead of on our cell phones, we are using cloud storage. When we watch movies and tv shows on streaming services like Netflix or Hulu, we are using the cloud. In these cases, we are interacting with “the cloud” without knowing it, though we, the user, are not in “the cloud”.</p>
+<p>If you use services like computing and storage, provided by a cloud service provider (Amazon Web Services, Microsoft Azure, Google Cloud Platform, etc.), then you are in “the cloud”. Remember, “the cloud” is somewhere that isn’t your computer. The storage location is elsewhere and the machines and processing is elsewhere.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/what-is-the-cloud-example-science.png" class="img-fluid figure-img"></p>
+<figcaption>Image by Alexis Hunzinger, GES DISC</figcaption>
+</figure>
+</div>
+<div id="fig-cloud-examples" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-cloud-examples-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-cloud-examples" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-movie" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-movie-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/what-is-the-cloud-example-movie.png" class="img-fluid figure-img" data-ref-parent="fig-cloud-examples">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-movie-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) Movie/TV Streaming
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-cloud-examples" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-science" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-science-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/what-is-the-cloud-example-science.png" class="img-fluid figure-img" data-ref-parent="fig-cloud-examples">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-science-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) Scientific Analysis
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cloud-examples-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Examples of how access and usage patterns change with the arrival of The Cloud.
+</figcaption>
+</figure>
+</div>
+<p>The following guidance is specific to NASA Earthdata and the particular cloud it is stored in, Amazon Web Services (AWS). While some services provided by NASA data archives are cloud-based and you interact with, <strong>the guidance below refers to using compute and storage services provided by AWS that allow a user to work closely, or in the same cloud, as the data.</strong></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/what-is-the-cloud-earthdata.png" class="img-fluid figure-img" style="width:60.0%"></p>
+<figcaption>Image by Alexis Hunzinger, GES DISC</figcaption>
+</figure>
+</div>
+</section>
 <section id="questions-to-ask-yourself" class="level3">
-<h3 class="anchored" data-anchor-id="questions-to-ask-yourself">Questions to Ask Yourself</h3>
-<ul>
-<li>what does it mean to be in the cloud?
-<ul>
-<li>accessing services via internet? no</li>
-<li>logging into an AWS/Azure/etc account (awareness)? yes<br>
-</li>
-</ul></li>
-<li>include workflow type figures and discuss
-<ul>
-<li>link to any relevant tutorials that demo these workflows</li>
-<li>how can you “cloud”?</li>
-<li>what’s already available (services that assist)</li>
-</ul></li>
-<li>listing questions from <a href="https://nsidc.github.io/data_strategies_for_future_us/data_strategies_slides#/when-to-cloud">Andy’s slides</a>
-<ul>
-<li>a bit of discussion + examples for each question</li>
-<li>concrete examples accomapnying each question</li>
-<li>“I have a TB of storage on my laptop….” storage scenarios</li>
-<li>see this from Ryan Abernathy: <a href="https://medium.com/pangeo/closed-platforms-vs-open-architectures-for-cloud-native-earth-system-analytics-1ad88708ebb6" class="uri">https://medium.com/pangeo/closed-platforms-vs-open-architectures-for-cloud-native-earth-system-analytics-1ad88708ebb6</a></li>
-<li>include a question on actions that are already services (subsetting, etc.)</li>
-</ul></li>
-</ul>
+<h3 class="anchored" data-anchor-id="questions-to-ask-yourself">Questions to ask yourself</h3>
+<p>Source: <a href="https://nsidc.github.io/data_strategies_for_future_us/data_strategies_slides#/when-to-cloud">Data strategies for Future Us</a> by Andy Barrett - What is the data volume? - How long will it take to download? - Can you store all that data (cost and space)? - Do you have the computing power for processing? - Does your team need a common computing environment? - Do you need to share data at each step or just an end product? - Is the action I want to take an existing service? (i.e.&nbsp;subsetting a dataset)</p>
+</section>
+<section id="to-cloud" class="level3">
+<h3 class="anchored" data-anchor-id="to-cloud">To Cloud…</h3>
+<p>TODO: <em>list example cases here: identify and describe what makes cloud usage more benficial for the team/workflow</em></p>
+<p>Find more discussion on cloud-based solutions for geoscience in this <a href="https://medium.com/pangeo/closed-platforms-vs-open-architectures-for-cloud-native-earth-system-analytics-1ad88708ebb6">Medium article</a> by Ryan Abernathy and Joe Hamman.</p>
+</section>
+<section id="not-to-cloud" class="level3">
+<h3 class="anchored" data-anchor-id="not-to-cloud">Not To Cloud…</h3>
+<p>TODO: <em>list examples cases here: identify and describe what makes the non-option more beneficial for the team/workflow</em></p>
 </section>
 <section id="challenges" class="level3">
 <h3 class="anchored" data-anchor-id="challenges">Challenges</h3>
-<p>It is important to be aware of the drawbacks and challenges associated with working in the cloud. Common feedback from early cloud adopters are summarized here:</p>
+<p>It is important to be aware of the drawbacks and challenges associated with working in the cloud. Feedback from early cloud adopters are summarized here:</p>
 <ul>
-<li>feedback from Champions/workshop participants</li>
-<li>(see Alexis ESIP poster)</li>
-<li>(this could be its own section on website?)</li>
+<li>“I don’t have the time or energy to learn so many new concepts.”</li>
+<li>“Major challenge: budgeting for cloud in a proposal.”</li>
+<li>“My workflow isn’t parallelizable, the file format isn’t cloud-optimized, I’d rather download everything I need and perform analysis locally.”</li>
+<li>“[On the preference to perform analysis locally] …this is fine if data wasn’t getting bigger!”</li>
+<li>“[The cloud] is faster, but only by a factor of 2. Our setup and data granules aren’t structured to take advantage of a faster cloud.”</li>
+<li>“Worried about doing things ‘on my own’, outside of a cloud-hosted JupyterHub.”</li>
+<li>“How does using data from AWS work with GEE?”</li>
 </ul>
+<p><em>Source: <a href="https://agu23.ipostersessions.com/Default.aspx?s=C7-8E-7D-F2-9E-4D-4A-EE-D9-1A-E4-35-08-46-FA-3F">The Cloud: Obstacles and Barriers Encountered by Users</a> (AGU 2023 - Alexis Hunzinger, Christopher Battisto, Allison Alcott, Binita KC)</em></p>
 </section>
 <section id="considerations" class="level3">
 <h3 class="anchored" data-anchor-id="considerations">Considerations</h3>
-<p>We are now accustomed to living in a highly digital world, separated from physical reminders of the services we use. No longer do we access documents from a row of filing cabinets, we now store them in cloud-based archives (e.g.&nbsp;Google Docs). We run code on high-performance computing clusters, removed from the whirring and warmth generated by servers that live away from our desks. The following are considerations for using cloud-based resources:</p>
+<p>We are now accustomed to living in a highly digital world, separated from physical reminders of the technology we use. No longer do we access documents from a row of filing cabinets, we now store them in cloud-based archives (e.g.&nbsp;Google Docs). We run code on high-performance computing clusters, removed from the whirring and warmth generated by servers that live away from our desks. The following are considerations for using powerful cloud-based resources:</p>
 <ul>
-<li>separation from physical signs of compute power (using resources/energy)</li>
-<li>physical location of “the cloud”, whose land is it on?</li>
-<li>testing/playing locally before migrating workflow to the cloud</li>
-<li>working remotely (not WFH, but computer is remote)</li>
-<li>environmental impacts</li>
+<li>Removed from physical signs of energy usage (heat, noise) of supercomputers/servers</li>
+<li>Physical location of “the cloud”, whose land is it on? What resources is it using?</li>
+<li>Environmental impacts of large server farms</li>
+<li>Consider testing locally before migrating a workflow to the cloud</li>
+</ul>
+<p><strong>Does cloud storage and computing increase equity?</strong></p>
+<ul>
+<li><strong>Yes!</strong> Cloud is a solution for equity, as it provides under-resourced organizations (e.g.&nbsp;small universities, international groups) access to equipment they don’t own or maintain.</li>
+<li><strong>No!</strong> Larger organizations, who already own and maintain equipment for storage and computing, often have the budget to also use cloud storage and computing. This increases their pool of resources, giving them a larger advantage.</li>
 </ul>
 
 
