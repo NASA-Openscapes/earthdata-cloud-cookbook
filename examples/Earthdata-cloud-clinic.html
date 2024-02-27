@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.549">
+<meta name="generator" content="quarto-1.4.550">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -134,7 +134,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+    <div class="pt-lg-2 mt-2 text-center sidebar-header sidebar-header-stacked">
       <a href="../index.html" class="sidebar-logo-link">
       <img src="../images/nasa-openscapes.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
@@ -2951,6 +2951,7 @@ Persisting credentials to .netrc</code></pre>
 </script>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="5">
+<div>
 <div><svg style="position: absolute; width: 0; height: 0; overflow: hidden">
 <defs>
 <symbol id="icon-database" viewbox="0 0 32 32">
@@ -3756,6 +3757,7 @@ Sea Level Anomaly Error Estimate
                '2021-09-23 12:00:00', '2021-09-28 12:00:00'],
               dtype='datetime64[ns]', name='Time', freq=None))</pre></div></li></ul></div></li><li class="xr-section-item"><input id="section-1550c20c-e638-4fcd-8ecc-d1dc5eb72d60" class="xr-section-summary-in" type="checkbox"><label for="section-1550c20c-e638-4fcd-8ecc-d1dc5eb72d60" class="xr-section-summary">Attributes: <span>(21)</span></label><div class="xr-section-inline-details"></div><div class="xr-section-details"><dl class="xr-attrs"><dt><span>Conventions :</span></dt><dd>CF-1.6</dd><dt><span>ncei_template_version :</span></dt><dd>NCEI_NetCDF_Grid_Template_v2.0</dd><dt><span>Institution :</span></dt><dd>Jet Propulsion Laboratory</dd><dt><span>geospatial_lat_min :</span></dt><dd>-79.916664</dd><dt><span>geospatial_lat_max :</span></dt><dd>79.916664</dd><dt><span>geospatial_lon_min :</span></dt><dd>0.083333336</dd><dt><span>geospatial_lon_max :</span></dt><dd>359.91666</dd><dt><span>time_coverage_start :</span></dt><dd>2021-07-05</dd><dt><span>time_coverage_end :</span></dt><dd>2021-07-05</dd><dt><span>date_created :</span></dt><dd>2022-10-30T20:58:16.297288</dd><dt><span>title :</span></dt><dd>Sea Level Anomaly Estimate based on Altimeter Data, final product (replaced interim version).</dd><dt><span>short_name :</span></dt><dd>SEA_SURFACE_HEIGHT_ALT_GRIDS_L4_2SATS_5DAY_6THDEG_V_JPL2205</dd><dt><span>long_name :</span></dt><dd>MEaSUREs Gridded Sea Surface Height Anomalies Version 2205</dd><dt><span>summary :</span></dt><dd>Sea level anomaly grids from altimeter data using Kriging interpolation, which gives best linear prediction based upon prior knowledge of covariance. </dd><dt><span>DOI :</span></dt><dd>10.5067/SLREF-CDRV3</dd><dt><span>version_number :</span></dt><dd>2205</dd><dt><span>Data_Pnts_Each_Sat :</span></dt><dd>{"16": 743215, "1007": 674076}</dd><dt><span>source_version :</span></dt><dd>commit 58c7da13c0c0069ae940c33a82bf1544b7d991bf</dd><dt><span>SLA_Global_MEAN :</span></dt><dd>0.06428374482174487</dd><dt><span>SLA_Global_STD :</span></dt><dd>0.0905195660534004</dd><dt><span>latency :</span></dt><dd>final</dd></dl></div></li></div></div>
 </div>
+</div>
 </section></section></main></div>
 
 <section id="subset-data" class="level3">
@@ -3765,6 +3767,7 @@ Sea Level Anomaly Error Estimate
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>ds_subset <span class="op">=</span> ds[<span class="st">'SLA'</span>].sel(Latitude<span class="op">=</span><span class="bu">slice</span>(<span class="fl">15.8</span>, <span class="fl">35.9</span>), Longitude<span class="op">=</span><span class="bu">slice</span>(<span class="fl">234.5</span>,<span class="fl">260.5</span>)) </span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>ds_subset</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
+<div>
 <div><svg style="position: absolute; width: 0; height: 0; overflow: hidden">
 <defs>
 <symbol id="icon-database" viewbox="0 0 32 32">
@@ -4264,6 +4267,7 @@ Attributes:
                '2021-09-13 12:00:00', '2021-09-18 12:00:00',
                '2021-09-23 12:00:00', '2021-09-28 12:00:00'],
               dtype='datetime64[ns]', name='Time', freq=None))</pre></div></li></ul></div></li><li class="xr-section-item"><input id="section-d06c8a38-1eff-4155-a107-4f841814dc76" class="xr-section-summary-in" type="checkbox" checked=""><label for="section-d06c8a38-1eff-4155-a107-4f841814dc76" class="xr-section-summary">Attributes: <span>(4)</span></label><div class="xr-section-inline-details"></div><div class="xr-section-details"><dl class="xr-attrs"><dt><span>units :</span></dt><dd>m</dd><dt><span>long_name :</span></dt><dd>Sea Level Anomaly Estimate</dd><dt><span>standard_name :</span></dt><dd>sea_surface_height_above_sea_level</dd><dt><span>alias :</span></dt><dd>sea_surface_height_above_sea_level</dd></dl></div></li></ul></div></div>
+</div>
 </div>
 </div>
 <p>Use the built-in plotting function of xarray to create a plot of SLA standard deviation over time:</p>
@@ -5451,7 +5455,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../tutorials/index.html" class="pagination-link  aria-label=" tutorials"="">
+      <a href="../tutorials/index.html" class="pagination-link" aria-label="Tutorials">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Tutorials</span>
       </a>          
   </div>

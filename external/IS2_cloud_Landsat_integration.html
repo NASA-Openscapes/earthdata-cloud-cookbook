@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.549">
+<meta name="generator" content="quarto-1.4.550">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -134,7 +134,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+    <div class="pt-lg-2 mt-2 text-center sidebar-header sidebar-header-stacked">
       <a href="../index.html" class="sidebar-logo-link">
       <img src="../images/nasa-openscapes.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
@@ -632,7 +632,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="icesat-2-and-landsat-in-the-cloud" class="level1">
 <h1>ICESat-2 and Landsat in the cloud</h1>
-<p>imported on: <strong>2024-02-14</strong></p>
+<p>imported on: <strong>2024-02-27</strong></p>
 <p>
 This notebook was originally developed by CryoCloud and NSIDC.
 </p>
@@ -643,8 +643,8 @@ This notebook was originally developed by CryoCloud and NSIDC.
 <section id="icesat-2-and-landsat-cloud-access-and-data-integration" class="level1">
 <h1>ICESat-2 and Landsat cloud access and data integration</h1>
 <p>This notebook ({nb-download}<code>download &lt;IS2_cloud_data_integration.ipynb&gt;</code>) builds off of the icepyx <a href="https://icepyx.readthedocs.io/en/latest/example_notebooks/IS2_cloud_data_access.html">IS2_cloud_data_access.ipynb</a> and <a href="https://icesat-2.hackweek.io/tutorials/DataIntegration/dataintegration-1.html">ICESat-2 Hackweek Data Integration 1</a> tutorials. It illustrates the use of icepyx for accessing ICESat-2 data currently available through the AWS (Amazon Web Services) us-west2 hub s3 data bucket as well as data integration with Landsat (cloud-optimized geotiff) and ATM (downloaded csv) datasets.</p>
-<p><code>pyvelzhqglbw Learning Objectives **Goals** - Identify and locate ICESat-2 and Landsat data - Acquire data from the cloud - Open data in `pandas` and `xarray` and basic functioning of DataFrames</code></p>
-<p><code>pyvelzhqglbw Key Takeaway By the end of this tutorial, you will be able to visualize Landsat Cloud Optimized Geotiffs with ICESat-2 and ATM data.</code></p>
+<p><code>ohbujtobkcof Learning Objectives **Goals** - Identify and locate ICESat-2 and Landsat data - Acquire data from the cloud - Open data in `pandas` and `xarray` and basic functioning of DataFrames</code></p>
+<p><code>ohbujtobkcof Key Takeaway By the end of this tutorial, you will be able to visualize Landsat Cloud Optimized Geotiffs with ICESat-2 and ATM data.</code></p>
 <section id="notes" class="level2">
 <h2 class="anchored" data-anchor-id="notes">Notes</h2>
 <ol type="1">
@@ -2673,6 +2673,7 @@ Wall time: 274 ms</code></pre>
 <span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>is2_gt2r.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="21">
 <div>
+<div>
 
 
 <table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
@@ -2721,6 +2722,7 @@ Wall time: 274 ms</code></pre>
 </div>
 </div>
 </div>
+</div>
 <p>We opened this data into a <code>pandas</code> DataFrame, which is a handy tool for Earth data exploration and analysis. The column names derive automatically from the first row of the h5 file and each row corresponds to an ICESat-2 measurement.</p>
 <p>For a tutorial on how to use <code>pandas</code> on this data, check out the <a href="https://icesat-2.hackweek.io/tutorials/DataIntegration/dataintegration-1.html">ICESat-2 Hackweek Data Integration I tutorial</a>. You can learn more about <code>pandas</code> from <a href="https://pandas.pydata.org/docs/user_guide/index.html#user-guide">this cookbook</a>.</p>
 </section>
@@ -2738,6 +2740,7 @@ Wall time: 274 ms</code></pre>
 <span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>atm_l2.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="22">
+<div>
 <div>
 
 
@@ -2832,6 +2835,7 @@ Wall time: 274 ms</code></pre>
 </tbody>
 </table>
 
+</div>
 </div>
 </div>
 </div>
@@ -21074,6 +21078,7 @@ Wall time: 274 ms</code></pre>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>gf.head(<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="31">
 <div>
+<div>
 
 
 <table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
@@ -21156,6 +21161,7 @@ Wall time: 274 ms</code></pre>
 </table>
 
 <p>2 rows × 25 columns</p>
+</div>
 </div>
 </div>
 </div>
@@ -31217,6 +31223,7 @@ Attributes:
 <pre><code>LC08_L1TP_008011_20190507_20200828_02_T1</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="42">
+<div>
 <div><svg style="position: absolute; width: 0; height: 0; overflow: hidden">
 <defs>
 <symbol id="icon-database" viewbox="0 0 32 32">
@@ -31644,6 +31651,7 @@ Data variables:
              dtype='float64', name='y', length=8771))</pre></div></li></ul></div></li><li class="xr-section-item"><input id="section-2e45820b-327e-4eb0-8711-3f2ab2c48c9b" class="xr-section-summary-in" type="checkbox" disabled=""><label for="section-2e45820b-327e-4eb0-8711-3f2ab2c48c9b" class="xr-section-summary" title="Expand/collapse section">Attributes: <span>(0)</span></label><div class="xr-section-inline-details"></div><div class="xr-section-details"><dl class="xr-attrs"></dl></div></li></ul></div></div>
 </div>
 </div>
+</div>
 <p>Typically, it’s best to align <a href="https://docs.dask.org/en/latest/array-best-practices.html">dask chunks</a> with the way image chunks (typically called “tiles”) are stored on disk or cloud storage buckets. The landsat data is stored on AWS S3 in a tiled Geotiff format where tiles are 512x512, so we should pick some multiple of that, and typically aim for chunk sizes of ~100Mb (although this is subjective).</p>
 <p>In a way that is similar to <code>pandas</code>, we can explore variables easily in <code>xarray</code>. We will first work with coordinates (equivalent to indices in <code>pandas</code>). Here <code>x</code> might often be the longitude (it can be renamed to this actually):</p>
 <div id="cell-83" class="cell" data-tags="[]" data-execution_count="43">
@@ -32029,6 +32037,7 @@ Coordinates:
 <div id="cell-86" class="cell" data-tags="[]" data-execution_count="44">
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>scene[<span class="st">'band_data'</span>].sel(band<span class="op">=</span><span class="st">'blue'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="44">
+<div>
 <div><svg style="position: absolute; width: 0; height: 0; overflow: hidden">
 <defs>
 <symbol id="icon-database" viewbox="0 0 32 32">
@@ -32454,6 +32463,7 @@ Attributes:
               7592670.0, 7592640.0, 7592610.0, 7592580.0, 7592550.0, 7592520.0,
               7592490.0, 7592460.0, 7592430.0, 7592400.0],
              dtype='float64', name='y', length=8771))</pre></div></li></ul></div></li><li class="xr-section-item"><input id="section-9b270b8c-815e-4fc3-9d7a-c8c924ce9af9" class="xr-section-summary-in" type="checkbox" checked=""><label for="section-9b270b8c-815e-4fc3-9d7a-c8c924ce9af9" class="xr-section-summary">Attributes: <span>(1)</span></label><div class="xr-section-inline-details"></div><div class="xr-section-details"><dl class="xr-attrs"><dt><span>AREA_OR_POINT :</span></dt><dd>Point</dd></dl></div></li></ul></div></div>
+</div>
 </div>
 </div>
 <p>instead of <code>loc</code> (from <code>pandas</code>) we are using <code>sel</code>, but they function synonymously.</p>
@@ -32914,6 +32924,7 @@ lwir12 100</code></pre>
 LC08_L1TP_008011_20190507_20200828_02_T1</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="49">
+<div>
 <div><svg style="position: absolute; width: 0; height: 0; overflow: hidden">
 <defs>
 <symbol id="icon-database" viewbox="0 0 32 32">
@@ -33344,6 +33355,7 @@ Data variables:
               7855230.0, 7855260.0, 7855290.0, 7855320.0, 7855350.0, 7855380.0,
               7855410.0, 7855440.0, 7855470.0, 7855500.0],
              dtype='float64', name='y', length=13621))</pre></div></li><li class="xr-var-item"><div class="xr-index-name"><div>time</div></div><div class="xr-index-preview">PandasIndex</div><div></div><input id="index-48e431b6-6d39-4fdf-b3f4-dd7f2a696508" class="xr-index-data-in" type="checkbox"><label for="index-48e431b6-6d39-4fdf-b3f4-dd7f2a696508" title="Show/Hide index repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-index-data"><pre>PandasIndex(DatetimeIndex(['2019-05-07 14:54:18.866000', '2019-05-07 14:53:54.971000'], dtype='datetime64[ns]', name='time', freq=None))</pre></div></li></ul></div></li><li class="xr-section-item"><input id="section-ee6901f7-bd5f-4168-956d-e6c90ed667ff" class="xr-section-summary-in" type="checkbox" disabled=""><label for="section-ee6901f7-bd5f-4168-956d-e6c90ed667ff" class="xr-section-summary" title="Expand/collapse section">Attributes: <span>(0)</span></label><div class="xr-section-inline-details"></div><div class="xr-section-details"><dl class="xr-attrs"></dl></div></li></ul></div></div>
+</div>
 </div>
 </div>
 <p>We now have 2 Landsat scenes with all of the bands we are interested in stored in an <code>xarray</code>, but you can imagine that this exact code can scale to years worth of data and bands.</p>
@@ -33956,7 +33968,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../tutorials/Observing_Seasonal_Ag_Changes.html" class="pagination-link  aria-label=" agriculture="" observations"="">
+      <a href="../tutorials/Observing_Seasonal_Ag_Changes.html" class="pagination-link" aria-label="Agriculture Observations">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Agriculture Observations</span>
       </a>          
   </div>
