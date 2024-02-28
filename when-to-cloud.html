@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="NASA Openscapes Team">
-<meta name="dcterms.date" content="2024-02-27">
+<meta name="dcterms.date" content="2024-02-28">
 
 <title>EarthData Cloud Cookbook - When To ‘Cloud’</title>
 <style>
@@ -574,7 +574,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">February 27, 2024</p>
+      <p class="date">February 28, 2024</p>
     </div>
   </div>
   
@@ -596,59 +596,40 @@ ul.task-list li input[type="checkbox"] {
 </figure>
 </div>
 <p>At a basic level, “The Cloud” is somewhere that isn’t your computer. We all interact with data and services and that live in “The Cloud” in our daily lives. When we store photos in iCloud or Google accounts instead of on our cell phones, we are using cloud storage. When we watch movies and tv shows on streaming services like Netflix or Hulu, we are using the cloud. In these cases, we are interacting with “the cloud” without knowing it, though we, the user, are not in “the cloud”.</p>
-<p>If you use services like computing and storage, provided by a cloud service provider (Amazon Web Services, Microsoft Azure, Google Cloud Platform, etc.), then you are in “the cloud”. Remember, “the cloud” is somewhere that isn’t your computer. The storage location is elsewhere and the machines and processing is elsewhere.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/what-is-the-cloud-example-science.png" class="img-fluid figure-img"></p>
+<p><img src="images/what-is-the-cloud-example-movie.png" class="img-fluid figure-img" style="width:80.0%"></p>
 <figcaption>Image by Alexis Hunzinger, GES DISC</figcaption>
 </figure>
 </div>
-<div id="fig-cloud-examples" class="quarto-layout-panel">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-cloud-examples-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-cloud-examples" style="flex-basis: 50.0%;justify-content: flex-start;">
-<div id="fig-movie" class="quarto-figure quarto-figure-center quarto-float anchored">
-<figure class="quarto-float quarto-subfloat-fig figure">
-<div aria-describedby="fig-movie-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/what-is-the-cloud-example-movie.png" class="img-fluid figure-img" data-ref-parent="fig-cloud-examples">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-movie-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-(a) Movie/TV Streaming
-</figcaption>
-</figure>
-</div>
-</div>
-<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-cloud-examples" style="flex-basis: 50.0%;justify-content: flex-start;">
-<div id="fig-science" class="quarto-figure quarto-figure-center quarto-float anchored">
-<figure class="quarto-float quarto-subfloat-fig figure">
-<div aria-describedby="fig-science-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/what-is-the-cloud-example-science.png" class="img-fluid figure-img" data-ref-parent="fig-cloud-examples">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-science-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-(b) Scientific Analysis
-</figcaption>
-</figure>
-</div>
-</div>
-</div>
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cloud-examples-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1: Examples of how access and usage patterns change with the arrival of The Cloud.
-</figcaption>
+<p>If you use services like computing and storage, provided by a cloud service provider (Amazon Web Services, Microsoft Azure, Google Cloud Platform, etc.), then you are in “the cloud”. Remember, “the cloud” is somewhere that isn’t your computer. The storage location is elsewhere and the machines and processing is elsewhere.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/what-is-the-cloud-example-science.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption>Image by Alexis Hunzinger, GES DISC</figcaption>
 </figure>
 </div>
 <p>The following guidance is specific to NASA Earthdata and the particular cloud it is stored in, Amazon Web Services (AWS). While some services provided by NASA data archives are cloud-based and you interact with, <strong>the guidance below refers to using compute and storage services provided by AWS that allow a user to work closely, or in the same cloud, as the data.</strong></p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/what-is-the-cloud-earthdata.png" class="img-fluid figure-img" style="width:60.0%"></p>
+<p><img src="images/what-is-the-cloud-earthdata.png" class="img-fluid figure-img" style="width:80.0%"></p>
 <figcaption>Image by Alexis Hunzinger, GES DISC</figcaption>
 </figure>
 </div>
 </section>
 <section id="questions-to-ask-yourself" class="level3">
 <h3 class="anchored" data-anchor-id="questions-to-ask-yourself">Questions to ask yourself</h3>
-<p>Source: <a href="https://nsidc.github.io/data_strategies_for_future_us/data_strategies_slides#/when-to-cloud">Data strategies for Future Us</a> by Andy Barrett - What is the data volume? - How long will it take to download? - Can you store all that data (cost and space)? - Do you have the computing power for processing? - Does your team need a common computing environment? - Do you need to share data at each step or just an end product? - Is the action I want to take an existing service? (i.e.&nbsp;subsetting a dataset)</p>
+<p>Use the following questions to guide your decisionmaking process about using cloud access and computing:</p>
+<ul>
+<li>What is the data volume?</li>
+<li>How long will it take to download?</li>
+<li>Can you store all that data (cost and space)?</li>
+<li>Do you have the computing power for processing?</li>
+<li>Does your team need a common computing environment?</li>
+<li>Do you need to share data at each step or just an end product?</li>
+<li>Is the action I want to take an existing service? (i.e.&nbsp;subsetting a dataset)</li>
+</ul>
+<p><em>Source: <a href="https://nsidc.github.io/data_strategies_for_future_us/data_strategies_slides#/when-to-cloud">Data strategies for Future Us</a> by Andy Barrett</em></p>
 </section>
 <section id="to-cloud" class="level3">
 <h3 class="anchored" data-anchor-id="to-cloud">To Cloud…</h3>
