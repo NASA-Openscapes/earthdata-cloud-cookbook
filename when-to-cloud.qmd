@@ -12,29 +12,23 @@ Cloud adoption often has a steep learning curve and can feel overwhelming. There
 
 ### What does it mean to be in The Cloud?
 
-![Image by Alexis Hunzinger, GES DISC](images/what-is-the-cloud-basic.png){width=60%}
+![Image by Alexis Hunzinger, GES DISC](images/what-is-the-cloud-basic.png){width=80%}
 
 At a basic level, "The Cloud" is somewhere that isn't your computer. We all interact with data and services and that live in "The Cloud" in our daily lives. When we store photos in iCloud or Google accounts instead of on our cell phones, we are using cloud storage. When we watch movies and tv shows on streaming services like Netflix or Hulu, we are using the cloud. In these cases, we are interacting with "the cloud" without knowing it, though we, the user, are not in "the cloud".
 
+![Image by Alexis Hunzinger, GES DISC](images/what-is-the-cloud-example-movie.png){width=80%}
+
 If you use services like computing and storage, provided by a cloud service provider (Amazon Web Services, Microsoft Azure, Google Cloud Platform, etc.), then you are in "the cloud". Remember, "the cloud" is somewhere that isn't your computer. The storage location is elsewhere and the machines and processing is elsewhere. 
 
-![Image by Alexis Hunzinger, GES DISC](images/what-is-the-cloud-example-science.png)
-
-::: {#fig-cloud-examples layout-ncol=2}
-
-![Movie/TV Streaming](images/what-is-the-cloud-example-movie.png){#fig-movie}
-
-![Scientific Analysis](images/what-is-the-cloud-example-science.png){#fig-science}
-
-Examples of how access and usage patterns change with the arrival of The Cloud.
-:::
+![Image by Alexis Hunzinger, GES DISC](images/what-is-the-cloud-example-science.png){width=80%}
 
 The following guidance is specific to NASA Earthdata and the particular cloud it is stored in, Amazon Web Services (AWS). While some services provided by NASA data archives are cloud-based and you interact with, **the guidance below refers to using compute and storage services provided by AWS that allow a user to work closely, or in the same cloud, as the data.**
 
-![Image by Alexis Hunzinger, GES DISC](images/what-is-the-cloud-earthdata.png){width=60%}
+![Image by Alexis Hunzinger, GES DISC](images/what-is-the-cloud-earthdata.png){width=80%}
 
 ### Questions to ask yourself
-Source: [Data strategies for Future Us](https://nsidc.github.io/data_strategies_for_future_us/data_strategies_slides#/when-to-cloud) by Andy Barrett
+Use the following questions to guide your decisionmaking process about using cloud access and computing:
+
 - What is the data volume?
 - How long will it take to download?
 - Can you store all that data (cost and space)?
@@ -43,6 +37,7 @@ Source: [Data strategies for Future Us](https://nsidc.github.io/data_strategies_
 - Do you need to share data at each step or just an end product?
 - Is the action I want to take an existing service? (i.e. subsetting a dataset)
 
+_Source: [Data strategies for Future Us](https://nsidc.github.io/data_strategies_for_future_us/data_strategies_slides#/when-to-cloud) by Andy Barrett_
 
 ### To Cloud...
 
