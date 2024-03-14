@@ -40,6 +40,7 @@ RUN usermod -s /bin/bash ${NB_USER}
 # install into the default environment
 COPY install.R install.R
 RUN Rscript install.R && rm install.R
+RUN rm install.R
 
 COPY environment.yml environment.yml
 RUN conda env create -p ${MY_ENV} -f environment.yml && conda clean --all
