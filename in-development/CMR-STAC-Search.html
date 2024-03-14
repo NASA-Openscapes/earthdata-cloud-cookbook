@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.550">
+<meta name="generator" content="quarto-1.3.450">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -22,7 +22,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -82,13 +82,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 50,
-  "keyboard-shortcut": [
-    "f",
-    "/",
-    "s"
-  ],
-  "show-item-context": false,
+  "limit": 20,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -97,12 +91,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
-    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
 }</script>
+
 <script src="../site_libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
 <link href="../site_libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
 <script src="../site_libs/datatables-binding-0.25/datatables.js"></script>
@@ -123,12 +117,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../in-development/index.html">In Development</a></li><li class="breadcrumb-item"><a href="../in-development/CMR-STAC-Search.html">CMR STAC in R</a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-        </a>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../in-development/index.html">In Development</a></li><li class="breadcrumb-item"><a href="../in-development/CMR-STAC-Search.html">CMR STAC in R</a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -138,7 +132,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-center sidebar-header sidebar-header-stacked">
       <a href="../index.html" class="sidebar-logo-link">
       <img src="../images/nasa-openscapes.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
@@ -146,8 +140,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div class="sidebar-title mb-0 py-0">
       <a href="../">NASA Earthdata Cloud Cookbook</a> 
         <div class="sidebar-tools-main tools-wide">
-    <a href="https://nasa-openscapes.github.io" title="NASA-Openscapes website" class="quarto-navigation-tool px-1" aria-label="NASA-Openscapes website"><i class="bi bi-globe"></i></a>
-    <a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook" title="Earthdata Cloud Cookbook repo" class="quarto-navigation-tool px-1" aria-label="Earthdata Cloud Cookbook repo"><i class="bi bi-github"></i></a>
+    <a href="https://nasa-openscapes.github.io" rel="" title="NASA-Openscapes website" class="quarto-navigation-tool px-1" aria-label="NASA-Openscapes website"><i class="bi bi-globe"></i></a>
+    <a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook" rel="" title="Earthdata Cloud Cookbook repo" class="quarto-navigation-tool px-1" aria-label="Earthdata Cloud Cookbook repo"><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
     </div>
@@ -345,7 +339,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../external/IS2_cloud_Landsat_integration.html" class="sidebar-item-text sidebar-link">
+  <a href="../external/IS2_cloud_Landsat_integration.ipynb" class="sidebar-item-text sidebar-link">
  <span class="menu-text">ICESat-2</span></a>
   </div>
 </li>
@@ -576,7 +570,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -608,12 +602,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/edit/main/in-development/CMR-STAC-Search.Rmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/blob/main/in-development/CMR-STAC-Search.Rmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/edit/main/in-development/CMR-STAC-Search.Rmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/blob/main/in-development/CMR-STAC-Search.Rmd" class="toc-action">View source</a></p><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../in-development/index.html">In Development</a></li><li class="breadcrumb-item"><a href="../in-development/CMR-STAC-Search.html">CMR STAC in R</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">Getting Started with NASA’s CMR-STAC API in R</h1>
 </div>
@@ -628,9 +622,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
-
 </header>
-
 
 <hr>
 <p><strong>This tutorial demonstrates how to interact with CMR-STAC in R.</strong></p>
@@ -774,6 +766,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame</span>()</span>
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>DT<span class="sc">::</span><span class="fu">datatable</span>(cmr_cat_links)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
+
 <div id="htmlwidget-01afa66ebbcefadf81d4" style="width:100%;height:auto;" class="datatables html-widget"></div>
 <script type="application/json" data-for="htmlwidget-01afa66ebbcefadf81d4">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58"],["self","root","about","child","child","child","child","child","child","child","child","child","child","child","child","child","child","child","child","child","child","child","child","child","child","child","child","child","child","child","child","child","child","child","child","child","child","child","child","child","child","child","child","child","child","child","child","child","child","child","child","child","child","child","child","child","child","child"],["https://cmr.earthdata.nasa.gov/stac/","https://cmr.earthdata.nasa.gov/stac/","https://wiki.earthdata.nasa.gov/display/ED/CMR+SpatioTemporal+Asset+Catalog+%28CMR-STAC%29+Documentation","https://cmr.earthdata.nasa.gov/stac/LARC_ASDC","https://cmr.earthdata.nasa.gov/stac/USGS_EROS","https://cmr.earthdata.nasa.gov/stac/ESA","https://cmr.earthdata.nasa.gov/stac/GHRC","https://cmr.earthdata.nasa.gov/stac/LAADS","https://cmr.earthdata.nasa.gov/stac/OBPG","https://cmr.earthdata.nasa.gov/stac/OB_DAAC","https://cmr.earthdata.nasa.gov/stac/ECHO","https://cmr.earthdata.nasa.gov/stac/ISRO","https://cmr.earthdata.nasa.gov/stac/LPCUMULUS","https://cmr.earthdata.nasa.gov/stac/EDF_DEV04","https://cmr.earthdata.nasa.gov/stac/GES_DISC","https://cmr.earthdata.nasa.gov/stac/ASF","https://cmr.earthdata.nasa.gov/stac/OMINRT","https://cmr.earthdata.nasa.gov/stac/EUMETSAT","https://cmr.earthdata.nasa.gov/stac/NCCS","https://cmr.earthdata.nasa.gov/stac/NSIDCV0","https://cmr.earthdata.nasa.gov/stac/PODAAC","https://cmr.earthdata.nasa.gov/stac/LARC","https://cmr.earthdata.nasa.gov/stac/USGS","https://cmr.earthdata.nasa.gov/stac/SCIOPS","https://cmr.earthdata.nasa.gov/stac/LANCEMODIS","https://cmr.earthdata.nasa.gov/stac/CDDIS","https://cmr.earthdata.nasa.gov/stac/JAXA","https://cmr.earthdata.nasa.gov/stac/AU_AADC","https://cmr.earthdata.nasa.gov/stac/ECHO10_OPS","https://cmr.earthdata.nasa.gov/stac/LPDAAC_ECS","https://cmr.earthdata.nasa.gov/stac/NSIDC_ECS","https://cmr.earthdata.nasa.gov/stac/ORNL_DAAC","https://cmr.earthdata.nasa.gov/stac/LM_FIRMS","https://cmr.earthdata.nasa.gov/stac/SEDAC","https://cmr.earthdata.nasa.gov/stac/LANCEAMSR2","https://cmr.earthdata.nasa.gov/stac/NOAA_NCEI","https://cmr.earthdata.nasa.gov/stac/USGS_LTA","https://cmr.earthdata.nasa.gov/stac/GESDISCCLD","https://cmr.earthdata.nasa.gov/stac/GHRSSTCWIC","https://cmr.earthdata.nasa.gov/stac/LARC_CLOUD","https://cmr.earthdata.nasa.gov/stac/ASIPS","https://cmr.earthdata.nasa.gov/stac/ESDIS","https://cmr.earthdata.nasa.gov/stac/POCLOUD","https://cmr.earthdata.nasa.gov/stac/NSIDC_CPRD","https://cmr.earthdata.nasa.gov/stac/ORNL_CLOUD","https://cmr.earthdata.nasa.gov/stac/FEDEO","https://cmr.earthdata.nasa.gov/stac/MLHUB","https://cmr.earthdata.nasa.gov/stac/XYZ_PROV","https://cmr.earthdata.nasa.gov/stac/GHRC_DAAC","https://cmr.earthdata.nasa.gov/stac/CSDA","https://cmr.earthdata.nasa.gov/stac/NRSCC","https://cmr.earthdata.nasa.gov/stac/CEOS_EXTRA","https://cmr.earthdata.nasa.gov/stac/AMD_KOPRI","https://cmr.earthdata.nasa.gov/stac/AMD_USAPDC","https://cmr.earthdata.nasa.gov/stac/MOPITT","https://cmr.earthdata.nasa.gov/stac/GHRC_CLOUD","https://cmr.earthdata.nasa.gov/stac/LPCLOUD","https://cmr.earthdata.nasa.gov/stac/CCMEO"],["NASA CMR-STAC Root Catalog","NASA CMR-STAC Root Catalog","CMR-STAC Documentation","LARC_ASDC","USGS_EROS","ESA","GHRC","LAADS","OBPG","OB_DAAC","ECHO","ISRO","LPCUMULUS","EDF_DEV04","GES_DISC","ASF","OMINRT","EUMETSAT","NCCS","NSIDCV0","PODAAC","LARC","USGS","SCIOPS","LANCEMODIS","CDDIS","JAXA","AU_AADC","ECHO10_OPS","LPDAAC_ECS","NSIDC_ECS","ORNL_DAAC","LM_FIRMS","SEDAC","LANCEAMSR2","NOAA_NCEI","USGS_LTA","GESDISCCLD","GHRSSTCWIC","LARC_CLOUD","ASIPS","ESDIS","POCLOUD","NSIDC_CPRD","ORNL_CLOUD","FEDEO","MLHUB","XYZ_PROV","GHRC_DAAC","CSDA","NRSCC","CEOS_EXTRA","AMD_KOPRI","AMD_USAPDC","MOPITT","GHRC_CLOUD","LPCLOUD","CCMEO"],["application/json","application/json","application/json","application/json","application/json","application/json","application/json","application/json","application/json","application/json","application/json","application/json","application/json","application/json","application/json","application/json","application/json","application/json","application/json","application/json","application/json","application/json","application/json","application/json","application/json","application/json","application/json","application/json","application/json","application/json","application/json","application/json","application/json","application/json","application/json","application/json","application/json","application/json","application/json","application/json","application/json","application/json","application/json","application/json","application/json","application/json","application/json","application/json","application/json","application/json","application/json","application/json","application/json","application/json","application/json","application/json","application/json","application/json"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>rel<\/th>\n      <th>href<\/th>\n      <th>title<\/th>\n      <th>type<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 </div>
@@ -803,6 +796,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>DT<span class="sc">::</span><span class="fu">datatable</span>(lpcloud_cat<span class="sc">$</span>links)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
+
 <div id="htmlwidget-3301343173de64d99edb" style="width:100%;height:auto;" class="datatables html-widget"></div>
 <script type="application/json" data-for="htmlwidget-3301343173de64d99edb">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19"],["self","root","collections","search","search","conformance","service-desc","service-doc","child","child","child","child","child","child","child","child","child","child","next"],["https://cmr.earthdata.nasa.gov/stac/LPCLOUD","https://cmr.earthdata.nasa.gov/stac/","https://cmr.earthdata.nasa.gov/stac/LPCLOUD/collections","https://cmr.earthdata.nasa.gov/stac/LPCLOUD/search","https://cmr.earthdata.nasa.gov/stac/LPCLOUD/search","https://cmr.earthdata.nasa.gov/stac/LPCLOUD/conformance","https://api.stacspec.org/v1.0.0-beta.1/openapi.yaml","https://api.stacspec.org/v1.0.0-beta.1/index.html","https://cmr.earthdata.nasa.gov/stac/LPCLOUD/collections/ASTGTM.v003","https://cmr.earthdata.nasa.gov/stac/LPCLOUD/collections/ECO_L1B_ATT.v002","https://cmr.earthdata.nasa.gov/stac/LPCLOUD/collections/ECO_L2_CLOUD.v002","https://cmr.earthdata.nasa.gov/stac/LPCLOUD/collections/ECO_L1B_GEO.v002","https://cmr.earthdata.nasa.gov/stac/LPCLOUD/collections/ECO_L2_LSTE.v002","https://cmr.earthdata.nasa.gov/stac/LPCLOUD/collections/ECO_L1B_RAD.v002","https://cmr.earthdata.nasa.gov/stac/LPCLOUD/collections/ECO_L2T_LSTE.v002","https://cmr.earthdata.nasa.gov/stac/LPCLOUD/collections/EMITL1BRAD.v001","https://cmr.earthdata.nasa.gov/stac/LPCLOUD/collections/EMITL2ARFL.v001","https://cmr.earthdata.nasa.gov/stac/LPCLOUD/collections/HLSL30.v2.0","https://cmr.earthdata.nasa.gov/stac/LPCLOUD?page=2"],["Provider catalog","Root catalog","Provider Collections","Provider Item Search","Provider Item Search","Conformance Classes","OpenAPI Doc","HTML documentation",null,null,null,null,null,null,null,null,null,null,null],["application/json","application/json","application/json","application/geo+json","application/geo+json","application/geo+json","application/vnd.oai.openapi;version=3.0","text/html","application/json","application/json","application/json","application/json","application/json","application/json","application/json","application/json","application/json","application/json",null],[null,null,null,"GET","POST",null,null,null,null,null,null,null,null,null,null,null,null,null,null]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>rel<\/th>\n      <th>href<\/th>\n      <th>title<\/th>\n      <th>type<\/th>\n      <th>method<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 </div>
@@ -894,6 +888,7 @@ Improvements/Changes from Previous Versions
 <div class="cell">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>DT<span class="sc">::</span><span class="fu">datatable</span>(astgtm_collection<span class="sc">$</span>links)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
+
 <div id="htmlwidget-a0df08d834f33a67e794" style="width:100%;height:auto;" class="datatables html-widget"></div>
 <script type="application/json" data-for="htmlwidget-a0df08d834f33a67e794">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7"],["self","root","parent","items","about","via","child"],["https://cmr.earthdata.nasa.gov/stac/LPCLOUD/collections/ASTGTM.v003","https://cmr.earthdata.nasa.gov/stac","https://cmr.earthdata.nasa.gov/stac/LPCLOUD","https://cmr.earthdata.nasa.gov/stac/LPCLOUD/collections/ASTGTM.v003/items","https://cmr.earthdata.nasa.gov/search/concepts/C1711961296-LPCLOUD.html","https://cmr.earthdata.nasa.gov/search/concepts/C1711961296-LPCLOUD.json","https://cmr.earthdata.nasa.gov/stac/LPCLOUD/collections/ASTGTM.v003/2000"],["Info about this collection","Root catalog","Parent catalog","Granules in this collection","HTML metadata for collection","CMR JSON metadata for collection","2000 catalog"],["application/json","application/json","application/json","application/json","text/html","application/json","application/json"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>rel<\/th>\n      <th>href<\/th>\n      <th>title<\/th>\n      <th>type<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 </div>
@@ -1288,6 +1283,7 @@ Improvements/Changes from Previous Versions
 <span id="cb41-16"><a href="#cb41-16" aria-hidden="true" tabindex="-1"></a>search_df <span class="ot">&lt;-</span> <span class="fu">do.call</span>(rbind, granule_list)</span>
 <span id="cb41-17"><a href="#cb41-17" aria-hidden="true" tabindex="-1"></a>DT<span class="sc">::</span><span class="fu">datatable</span>(search_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
+
 <div id="htmlwidget-6e68cdeae74be2b16765" style="width:100%;height:auto;" class="datatables html-widget"></div>
 <script type="application/json" data-for="htmlwidget-6e68cdeae74be2b16765">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4"],["ASTGTM.v003","ASTGTM.v003","ASTGTM.v003","ASTGTM.v003"],["ASTGTMV003_N39W123","ASTGTMV003_N39W123","ASTGTMV003_N39W123","ASTGTMV003_N39W123"],["2000-03-01T00:00:00.000Z","2000-03-01T00:00:00.000Z","2000-03-01T00:00:00.000Z","2000-03-01T00:00:00.000Z"],["https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/ASTGTM.003/ASTGTMV003_N39W123_dem.tif","https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/ASTGTM.003/ASTGTMV003_N39W123_num.tif","https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-public/ASTGTM.003/ASTGTMV003_N39W123.1.jpg","https://cmr.earthdata.nasa.gov/search/concepts/G1726750594-LPCLOUD.xml"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Collection<\/th>\n      <th>Granule_ID<\/th>\n      <th>Datetime<\/th>\n      <th>Asset_Link<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 </div>
@@ -1352,33 +1348,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       } else {
         el.classList.add('notransition');
       }
-    }
-  }
-  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
-    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
-    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
-    let newTheme = '';
-    if(darkModeDefault) {
-      newTheme = isAlternate ? baseTheme : alternateTheme;
-    } else {
-      newTheme = isAlternate ? alternateTheme : baseTheme;
-    }
-    const changeGiscusTheme = () => {
-      // From: https://github.com/giscus/giscus/issues/336
-      const sendMessage = (message) => {
-        const iframe = document.querySelector('iframe.giscus-frame');
-        if (!iframe) return;
-        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
-      }
-      sendMessage({
-        setConfig: {
-          theme: newTheme
-        }
-      });
-    }
-    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
-    if (isGiscussLoaded) {
-      changeGiscusTheme();
     }
   }
   const toggleColorMode = (alternate) => {
@@ -1447,15 +1416,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return localAlternateSentinel;
     }
   }
-  const darkModeDefault = false;
-  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  let localAlternateSentinel = 'default';
   // Dark / light mode switch
   window.quartoToggleColorScheme = () => {
     // Read the current dark / light value 
     let toAlternate = !hasAlternateSentinel();
     toggleColorMode(toAlternate);
     setStyleSentinel(toAlternate);
-    toggleGiscusIfUsed(toAlternate, darkModeDefault);
   };
   // Ensure there is a toggle, if there isn't float one in the top right
   if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -1534,9 +1501,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+  function tippyHover(el, contentFn) {
     const config = {
       allowHTML: true,
+      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1546,17 +1514,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start',
+      placement: 'bottom-start'
     };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1569,125 +1528,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
-    });
-  }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    // Strip column container classes
-    const stripColumnClz = (el) => {
-      el.classList.remove("page-full", "page-columns");
-      if (el.children) {
-        for (const child of el.children) {
-          stripColumnClz(child);
-        }
-      }
-    }
-    stripColumnClz(note)
-    if (id === null || id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
-          } else {
-            container.appendChild(child.cloneNode(true));
-            break;
-          }
-        }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
-        }
-        return container.innerHTML
-      } else {
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(note);
-        }
-        return note.innerHTML;
-      }
-    } else {
-      // Remove any anchor links if they are present
-      const anchorLink = note.querySelector('a.anchorjs-link');
-      if (anchorLink) {
-        anchorLink.remove();
-      }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
-      // TODO in 1.5, we should make sure this works without a callout special case
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
-      }
-    }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      if (url.startsWith('#')) {
-        hash = url;
-      } else {
-        try { hash = new URL(url).hash; } catch {}
-      }
-      if (hash) {
-        const id = hash.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note !== null) {
-          try {
-            const html = processXRef(id, note.cloneNode(true));
-            instance.setContent(html);
-          } finally {
-            instance.enable();
-            instance.show();
-          }
-        } else {
-          // See if we can fetch this
-          fetch(url.split('#')[0])
-          .then(res => res.text())
-          .then(html => {
-            const parser = new DOMParser();
-            const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.getElementById(id);
-            if (note !== null) {
-              const html = processXRef(id, note);
-              instance.setContent(html);
-            } 
-          }).finally(() => {
-            instance.enable();
-            instance.show();
-          });
-        }
-      } else {
-        // See if we can fetch a full url (with no hash to target)
-        // This is a special case and we should probably do some content thinning / targeting
-        fetch(url)
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.querySelector('main.content');
-          if (note !== null) {
-            // This should only happen for chapter cross references
-            // (since there is no id in the URL)
-            // remove the first header
-            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-              note.children[0].remove();
-            }
-            const html = processXRef(null, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
-      }
-    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -1731,7 +1571,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
-            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1757,32 +1596,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1844,12 +1657,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../examples/PODAAC/PODAAC_ECCO_SSH__Kerchunk.html" class="pagination-link" aria-label="PO.DAAC ECCO SSH">
+      <a href="../examples/PODAAC/PODAAC_ECCO_SSH__Kerchunk.html" class="pagination-link">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">PO.DAAC ECCO SSH</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../in-development/earthdata-python-r-handoff.html" class="pagination-link" aria-label="`earthdata`: Python-R Handoff">
+      <a href="../in-development/earthdata-python-r-handoff.html" class="pagination-link">
         <span class="nav-page-text"><code>earthdata</code>: Python-R Handoff</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
@@ -1857,18 +1670,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
-    <div class="nav-footer-left">
-<p>NASA Earthdata Cloud Cookbook, © NASA Openscapes Team (2023).</p>
-</div>   
+    <div class="nav-footer-left">NASA Earthdata Cloud Cookbook, © NASA Openscapes Team (2023).</div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/edit/main/in-development/CMR-STAC-Search.Rmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/blob/main/in-development/CMR-STAC-Search.Rmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    </div>
     <div class="nav-footer-right">
       &nbsp;
     </div>
   </div>
 </footer>
-
 
 
 

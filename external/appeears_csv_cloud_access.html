@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.550">
+<meta name="generator" content="quarto-1.3.450">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>EarthData Cloud Cookbook - How to work with AppEEARS CSV outputs in the cloud.</title>
+<title>EarthData Cloud Cookbook - How to work with AppEEARS Point Sample CSV outputs</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,7 +22,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -57,7 +57,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
@@ -82,13 +82,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 50,
-  "keyboard-shortcut": [
-    "f",
-    "/",
-    "s"
-  ],
-  "show-item-context": false,
+  "limit": 20,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -97,14 +91,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
-    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
 }</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
@@ -117,12 +110,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">How do I...</li><li class="breadcrumb-item"><a href="../how-tos/use_apis.html">use APIs</a></li><li class="breadcrumb-item"><a href="../external/appeears_csv_cloud_access.html">AppEEARS Cloud CSV Access</a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-        </a>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">How do I...</li><li class="breadcrumb-item"><a href="../how-tos/use_apis.html">use APIs</a></li><li class="breadcrumb-item"><a href="../external/appeears_csv_cloud_access.html">AppEEARS Cloud CSV Access</a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -132,7 +125,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-center sidebar-header sidebar-header-stacked">
       <a href="../index.html" class="sidebar-logo-link">
       <img src="../images/nasa-openscapes.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
@@ -140,8 +133,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div class="sidebar-title mb-0 py-0">
       <a href="../">NASA Earthdata Cloud Cookbook</a> 
         <div class="sidebar-tools-main tools-wide">
-    <a href="https://nasa-openscapes.github.io" title="NASA-Openscapes website" class="quarto-navigation-tool px-1" aria-label="NASA-Openscapes website"><i class="bi bi-globe"></i></a>
-    <a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook" title="Earthdata Cloud Cookbook repo" class="quarto-navigation-tool px-1" aria-label="Earthdata Cloud Cookbook repo"><i class="bi bi-github"></i></a>
+    <a href="https://nasa-openscapes.github.io" rel="" title="NASA-Openscapes website" class="quarto-navigation-tool px-1" aria-label="NASA-Openscapes website"><i class="bi bi-globe"></i></a>
+    <a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook" rel="" title="Earthdata Cloud Cookbook repo" class="quarto-navigation-tool px-1" aria-label="Earthdata Cloud Cookbook repo"><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
     </div>
@@ -339,7 +332,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../external/IS2_cloud_Landsat_integration.html" class="sidebar-item-text sidebar-link">
+  <a href="../external/IS2_cloud_Landsat_integration.ipynb" class="sidebar-item-text sidebar-link">
  <span class="menu-text">ICESat-2</span></a>
   </div>
 </li>
@@ -570,17 +563,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#how-to-work-with-appeears-csv-outputs-in-the-cloud." id="toc-how-to-work-with-appeears-csv-outputs-in-the-cloud." class="nav-link active" data-scroll-target="#how-to-work-with-appeears-csv-outputs-in-the-cloud.">How to work with AppEEARS CSV outputs in the cloud.</a></li>
-  <li><a href="#how-to-work-with-appeears-point-sample-csv-outputs" id="toc-how-to-work-with-appeears-point-sample-csv-outputs" class="nav-link" data-scroll-target="#how-to-work-with-appeears-point-sample-csv-outputs">How to work with AppEEARS Point Sample CSV outputs</a>
-  <ul class="collapse">
-  <li><a href="#setting-up" id="toc-setting-up" class="nav-link" data-scroll-target="#setting-up">1. Setting up</a></li>
+  <li><a href="#setting-up" id="toc-setting-up" class="nav-link active" data-scroll-target="#setting-up">1. Setting up</a></li>
   <li><a href="#submit-a-point-request-in-appeears" id="toc-submit-a-point-request-in-appeears" class="nav-link" data-scroll-target="#submit-a-point-request-in-appeears">2. Submit a point request in AppEEARS</a></li>
   <li><a href="#extract-the-direct-s3-links" id="toc-extract-the-direct-s3-links" class="nav-link" data-scroll-target="#extract-the-direct-s3-links">3. Extract the Direct S3 links</a></li>
   <li><a href="#create-a-boto3-refreshable-session" id="toc-create-a-boto3-refreshable-session" class="nav-link" data-scroll-target="#create-a-boto3-refreshable-session">4. Create a boto3 Refreshable Session</a></li>
@@ -588,16 +578,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#quality-filtering" id="toc-quality-filtering" class="nav-link" data-scroll-target="#quality-filtering">6. Quality Filtering</a></li>
   <li><a href="#explore-the-lst-time-series" id="toc-explore-the-lst-time-series" class="nav-link" data-scroll-target="#explore-the-lst-time-series">6. Explore the LST Time Series</a></li>
   <li><a href="#contact-info" id="toc-contact-info" class="nav-link" data-scroll-target="#contact-info">Contact Info:</a></li>
-  </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.dev/nasa-openscapes/earthdata-cloud-cookbook/blob/main/external/appeears_csv_cloud_access.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/blob/main/external/appeears_csv_cloud_access.ipynb" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.dev/nasa-openscapes/earthdata-cloud-cookbook/blob/main/external/appeears_csv_cloud_access.ipynb" class="toc-action">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/blob/main/external/appeears_csv_cloud_access.ipynb" class="toc-action">View source</a></p><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">How do I...</li><li class="breadcrumb-item"><a href="../how-tos/use_apis.html">use APIs</a></li><li class="breadcrumb-item"><a href="../external/appeears_csv_cloud_access.html">AppEEARS Cloud CSV Access</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">How to work with AppEEARS CSV outputs in the cloud.</h1>
+<h1 class="title">How to work with AppEEARS Point Sample CSV outputs</h1>
 </div>
 
 
@@ -610,22 +599,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
-
 </header>
 
-
-<section id="how-to-work-with-appeears-csv-outputs-in-the-cloud." class="level1">
-<h1>How to work with AppEEARS CSV outputs in the cloud.</h1>
-<p>imported on: <strong>2024-03-01</strong></p>
-<p>
-This notebook was originally developed by LP DAAC to show how to work with AppEEARS CSV outputs directly in the cloud.
-</p>
-<blockquote class="blockquote">
-<p>The original source for this document is <a href="https://github.com/nasa/AppEEARS-Data-Resources">https://github.com/nasa/AppEEARS-Data-Resources</a></p>
-</blockquote>
-</section>
-<section id="how-to-work-with-appeears-point-sample-csv-outputs" class="level1">
-<h1>How to work with AppEEARS Point Sample CSV outputs</h1>
 <p>This tutorial demonstrates how to access AppEEARS point sample Comma-Separated Values (CSV) outputs direcly from the cloud. NASA’s Application for Extracting and Exploring Analysis Ready Samples (<a href="https://appeears.earthdatacloud.nasa.gov/">AρρEEARS</a>) has been migrated to NASA’s Earthdata Cloud space located in <strong>AWS us-west 2</strong>. This enables the user working in the cloud instance deployed in <strong>AWS us-west 2</strong> to access outputs direcly in the cloud using S3 link returned in the location header of the response. In this tutorial, we will walk through the process of submitting a point sample and accessing a CSV outputs from AppEEARS.</p>
 <p><strong>Requirements</strong><br>
 - Earthdata Login Authentication is required to access AppEEARS API and AppEEARS outpurs direcrly from an Amazon AWS bucket. See <strong>Requirements</strong> section in <a href="../README.md"><strong>README.md</strong></a>.</p>
@@ -642,7 +617,7 @@ This notebook was originally developed by LP DAAC to show how to work with AppEE
 <section id="setting-up" class="level2">
 <h2 class="anchored" data-anchor-id="setting-up">1. Setting up</h2>
 <p>Import required packages.</p>
-<div id="11768894-1829-429d-8eae-a82fd1afc125" class="cell" data-tags="[]" data-execution_count="1">
+<div class="cell" data-tags="[]" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> datetime</span>
@@ -661,7 +636,7 @@ This notebook was originally developed by LP DAAC to show how to work with AppEE
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>warnings.filterwarnings(<span class="st">'ignore'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>To successfully run this tutorial, it is required to create a <strong>.netrc</strong> file in your home directory. The function <code>_validate_netrc</code> defined in <code>aws_session</code> checks if a properly formatted netrc file exists in your home directory. If the netrc file does not exist, it will prompt you for your Earthdata Login username and password and will create a netrc file. Please see the <strong>Prerequisites</strong> section in <a href="../README.md"><strong>README.md</strong></a>.</p>
-<div id="1478c8a0-8325-4474-a88f-86d7a6d33f04" class="cell" data-tags="[]" data-execution_count="2">
+<div class="cell" data-tags="[]" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># validate if netrc file is present else create one via the user / password prompt for the urs.earthdata.nasa.gov</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>aws_session._validate_netrc()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -673,14 +648,14 @@ This notebook was originally developed by LP DAAC to show how to work with AppEE
 <h2 class="anchored" data-anchor-id="submit-a-point-request-in-appeears">2. Submit a point request in AppEEARS</h2>
 <p>In this step, we are going to submit a point request. You can also submit this same request to the <a href="https://appeears.earthdatacloud.nasa.gov/task/point">AppEEARS Graphic User Interface (GUI)</a> by uploading the JSON file provided in the repository (AppEEARS-Data-Resources/Data/point-request.json). If you have completed the request, save your <code>task_id</code> to a variable, skip this step, and move to the next step of tutorial.</p>
 <p>Assign the AρρEEARS API endpoint to a variable.</p>
-<div id="4a6cda95-ec73-47fa-a161-3ac0855b1d51" class="cell" data-tags="[]" data-execution_count="3">
+<div class="cell" data-tags="[]" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>appeears_API_endpoint <span class="op">=</span> <span class="st">'https://appeears.earthdatacloud.nasa.gov/api/'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>A <strong>Bearer Token</strong> is needed to submit requests to the AppEEARS API. To generated a token, a <code>POST</code> request containing Earthdata Login credentials stored in <strong>.netrc file</strong> is submitted to the <a href="https://appeears.earthdatacloud.nasa.gov/api/#authentication"><code>login</code></a> service from the AppEEARS API.</p>
-<div id="c98d105d-4d77-4241-8dd7-5b02e5a3fba0" class="cell" data-tags="[]" data-execution_count="4">
+<div class="cell" data-tags="[]" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>urs <span class="op">=</span> <span class="st">'urs.earthdata.nasa.gov'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="8d41ff3f-44d9-401b-a0c3-2fe58bc21692" class="cell" data-tags="[]" data-execution_count="5">
+<div class="cell" data-tags="[]" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>token_response <span class="op">=</span> requests.post(<span class="st">'</span><span class="sc">{}</span><span class="st">login'</span>.<span class="bu">format</span>(appeears_API_endpoint), auth <span class="op">=</span> (netrc().authenticators(urs)[<span class="dv">0</span>],netrc().authenticators(urs)[<span class="dv">2</span>])).json() <span class="co"># Insert API URL, call login service, provide credentials &amp; return json </span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>token_response</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
@@ -690,12 +665,12 @@ This notebook was originally developed by LP DAAC to show how to work with AppEE
 </div>
 </div>
 <p>We’ll save the <strong>token</strong> to as an <strong>Authorization</strong> object we can pass in the header of any request made to the AppEEARS API.</p>
-<div id="e5c7f3fa-706b-4246-a0fc-d8bdfcd1c5f0" class="cell" data-tags="[]" data-execution_count="6">
+<div class="cell" data-tags="[]" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>token <span class="op">=</span> token_response[<span class="st">'token'</span>]                      <span class="co"># Save login token to a variable</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>head <span class="op">=</span> {<span class="st">'Authorization'</span>: <span class="st">'Bearer </span><span class="sc">{}</span><span class="st">'</span>.<span class="bu">format</span>(token)}  <span class="co"># Create a header to store token information, needed to submit a request</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The payload for an AppEEARS API request is a JSON object. Here, we compile the request JSON object with the required parameters. The coordinates (i.e., lat/lon pair) for where the LP DAAC is located are used as our point location. The data layers <code>LST_Night_1km</code> and <code>LST_Day_1km</code> from <code>MOD11A1</code> version 6.1 are selected below.</p>
-<div id="730d7b6a-3fc2-48d6-8b68-7d00f84758e8" class="cell" data-execution_count="7">
+<div class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>task_name <span class="op">=</span> <span class="st">"EROS"</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>task_type <span class="op">=</span> <span class="st">'point'</span>             <span class="co"># Type of task, area or point</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>startDate <span class="op">=</span> <span class="st">'01-01-2015'</span>        <span class="co"># Start of the date range for which to extract data: MM-DD-YYYY</span></span>
@@ -707,7 +682,7 @@ This notebook was originally developed by LP DAAC to show how to work with AppEE
 <span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"layer"</span>: <span class="st">"LST_Night_1km"</span>, <span class="st">"product"</span>: <span class="st">"MOD11A1.061"</span>}</span>
 <span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="efeb703c-d3f5-4c08-b188-a7d370cdb301" class="cell" data-execution_count="8">
+<div class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>task <span class="op">=</span> {</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">'task_type'</span>: task_type,</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'task_name'</span>: task_name,</span>
@@ -730,7 +705,7 @@ This notebook was originally developed by LP DAAC to show how to work with AppEE
 <span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Next, submit the AppEEARS request using <code>post</code> function from <code>requests</code> library.</p>
-<div id="543a7334-02b2-4385-9762-d8730099623b" class="cell" data-execution_count="9">
+<div class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>task_response <span class="op">=</span> requests.post(<span class="st">'</span><span class="sc">{}</span><span class="st">task'</span>.<span class="bu">format</span>(appeears_API_endpoint), json<span class="op">=</span>task, headers<span class="op">=</span>head).json()   <span class="co"># Post json to the API task service, return response as json</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>task_response</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
@@ -738,14 +713,14 @@ This notebook was originally developed by LP DAAC to show how to work with AppEE
 </div>
 </div>
 <p>Save the <code>task_id</code> and wait until your request is processed and complete.</p>
-<div id="de2738dc-5ba5-4b53-a79e-2b2a0c4ada96" class="cell" data-execution_count="10">
+<div class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>task_id <span class="op">=</span> task_response[<span class="st">'task_id'</span>]</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>task_id</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
 <pre><code>'9b2f9a77-da1a-41ac-ba47-baeb577ad99f'</code></pre>
 </div>
 </div>
-<div id="439a8ea4-7bc2-46e6-9eb6-efe7e7454194" class="cell" data-execution_count="11">
+<div class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ping API until request is complete, then continue to Section 3</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> requests.get(<span class="st">'</span><span class="sc">{}</span><span class="st">task/</span><span class="sc">{}</span><span class="st">'</span>.<span class="bu">format</span>(appeears_API_endpoint, task_id), headers<span class="op">=</span>head).json()[<span class="st">'status'</span>] <span class="op">!=</span> <span class="st">'done'</span>:</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(requests.get(<span class="st">'</span><span class="sc">{}</span><span class="st">task/</span><span class="sc">{}</span><span class="st">'</span>.<span class="bu">format</span>(appeears_API_endpoint, task_id), headers<span class="op">=</span>head).json()[<span class="st">'status'</span>])</span>
@@ -800,12 +775,12 @@ done</code></pre>
 <section id="extract-the-direct-s3-links" class="level2">
 <h2 class="anchored" data-anchor-id="extract-the-direct-s3-links">3. Extract the Direct S3 links</h2>
 <p>Now that we have our outputs ready, we can get the bundle information for the files included in the outputs. If you submitted your request using AppEEARS GUI, assign your sample’s <code>task_id</code> to the variable <code>task_id</code> below.</p>
-<div id="40c01559-d4a6-4e14-a83e-2b2b973b4e96" class="cell" data-tags="[]" data-execution_count="12">
+<div class="cell" data-tags="[]" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co">#task_id = '&lt;ADD task_id / request_id from AppEEARS GUI&gt;'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>requests.get</code> is used toget the bundle information. Below, bundle information is printed. The bundle information includes <code>s3_url</code> in addition to the other information such as <code>file_name</code>, <code>file_id</code>, and <code>file_type</code>.<br>
 Each output file can be downloaded using the <code>file_id</code> and AppEEARS API endpoint. AppEEARS outputs are also stored in an AWS bucket that can be accessed using <code>S3_url</code>.</p>
-<div id="010b3041-eaf8-47a0-b327-30beb49ec6d9" class="cell" data-tags="[]" data-execution_count="13">
+<div class="cell" data-tags="[]" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>bundle <span class="op">=</span> requests.get(<span class="st">'</span><span class="sc">{}</span><span class="st">bundle/</span><span class="sc">{}</span><span class="st">'</span>.<span class="bu">format</span>(appeears_API_endpoint,task_id), headers<span class="op">=</span>head).json()  <span class="co"># Call API and return bundle contents for the task_id as json</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>bundle</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="13">
@@ -846,7 +821,7 @@ Each output file can be downloaded using the <code>file_id</code> and AppEEARS A
 </div>
 </div>
 <p>Below, the S3 Links to CSV output is filted.</p>
-<div id="236cb7d7-50fc-4954-9d4e-7c630e6eb798" class="cell" data-tags="[]" data-execution_count="14">
+<div class="cell" data-tags="[]" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="bu">file</span> <span class="op">=</span> [f <span class="cf">for</span> f <span class="kw">in</span> bundle[<span class="st">'files'</span>] <span class="cf">if</span> f[<span class="st">'file_type'</span>] <span class="op">==</span> <span class="st">'csv'</span>]</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>csv_urls <span class="op">=</span> <span class="bu">file</span>[<span class="dv">0</span>][<span class="st">'s3_url'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -854,7 +829,7 @@ Each output file can be downloaded using the <code>file_id</code> and AppEEARS A
 <section id="create-a-boto3-refreshable-session" class="level2">
 <h2 class="anchored" data-anchor-id="create-a-boto3-refreshable-session">4. Create a boto3 Refreshable Session</h2>
 <p>AppEEARS outputs are freely accessible from a cloud instance in <code>us-west-2</code> region. In order to access our output files, a <strong>Boto3 session</strong> is needed. The Boto session will stores the required configurations for an easy integration between Python and AWS services. Below, <code>get_boto3_refreshable_session</code> stored in <code>aws_session</code> will access your Earthdata login credentidals store in .netrc file and generate S3 credential by making a call to AppEEARS S3 credential endpoint, and create a boto3 session. This session will be auto-renewed as needed to prevent timeouts errors related to S3 credentials.</p>
-<div id="7b588bed-8972-4d8b-bc16-a033115b54a1" class="cell" data-tags="[]" data-execution_count="15">
+<div class="cell" data-tags="[]" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>region_name <span class="op">=</span> <span class="st">'us-west-2'</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>s3_creds_endpoint <span class="op">=</span> <span class="ss">f"</span><span class="sc">{</span>appeears_API_endpoint<span class="sc">}</span><span class="ss">/s3credentials"</span></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Boto3 Session required by the pandas package </span></span>
@@ -864,24 +839,23 @@ Each output file can be downloaded using the <code>file_id</code> and AppEEARS A
 </div>
 </div>
 <p>Next, an object for s3 client is created using <code>boto3_session</code>.</p>
-<div id="76ad82d4-9363-4614-a682-e796d1633ce8" class="cell" data-execution_count="16">
+<div class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>boto3_client <span class="op">=</span> boto3_session.client(<span class="st">'s3'</span>, config<span class="op">=</span>Config(max_pool_connections<span class="op">=</span><span class="dv">20</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="csv-file-in-region-direct-s3-access" class="level2">
 <h2 class="anchored" data-anchor-id="csv-file-in-region-direct-s3-access">5. CSV File In-Region Direct S3 Access</h2>
 <p>To read the CSV file, an object is created for the bucket name along with the file name of csv file. AppEEARS stores the output csv file in a folder. <code>Bucket</code> and <code>key</code> can be extracted using <code>S3</code> URL as below.</p>
-<div id="4ce12ea8-d73f-4f77-a7a5-0da6922c9dc0" class="cell" data-tags="[]" data-execution_count="17">
+<div class="cell" data-tags="[]" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>bucket_name <span class="op">=</span> csv_urls.split(<span class="st">'/'</span>)[<span class="dv">2</span>]</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>key_name <span class="op">=</span> csv_urls.split(bucket_name)[<span class="dv">1</span>].strip(<span class="st">"/"</span>)</span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>obj <span class="op">=</span> boto3_client.get_object(Bucket <span class="op">=</span> bucket_name, Key <span class="op">=</span> key_name) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Next, <code>read_csv</code> from <code>pandas</code> is used to read the body of created object.</p>
-<div id="e1253752-bc10-4c66-b6e0-0a2985749351" class="cell" data-tags="[]" data-execution_count="18">
+<div class="cell" data-tags="[]" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>output_csv <span class="op">=</span> pandas.read_csv(obj[<span class="st">'Body'</span>])</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>output_csv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="18">
-<div>
 <div>
 
 
@@ -1184,12 +1158,11 @@ Each output file can be downloaded using the <code>file_id</code> and AppEEARS A
 </div>
 </div>
 </div>
-</div>
 </section>
 <section id="quality-filtering" class="level2">
 <h2 class="anchored" data-anchor-id="quality-filtering">6. Quality Filtering</h2>
 <p>To get the good quality data, the quality unique values are assigned to a variable. Good quality data have a decoded quality flag as <code>LST produced, good quality, not necessary to examine more detailed QA</code>. The LST values equal to zero, the layer fill_value, are also filtered.</p>
-<div id="b3a36721-8022-48db-9544-87569e0f8c0f" class="cell" data-tags="[]" data-execution_count="19">
+<div class="cell" data-tags="[]" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>quality_val <span class="op">=</span> numpy.array(output_csv[<span class="st">'MOD11A1_061_QC_Night_MODLAND_Description'</span>])</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>quality_unique <span class="op">=</span> numpy.unique(quality_val)</span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>quality_unique</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1200,7 +1173,7 @@ Each output file can be downloaded using the <code>file_id</code> and AppEEARS A
       dtype=object)</code></pre>
 </div>
 </div>
-<div id="183ee350-b067-455e-aa4a-e69c884a2118" class="cell" data-tags="[]" data-execution_count="20">
+<div class="cell" data-tags="[]" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>good_qual_flag <span class="op">=</span> <span class="st">'LST produced, good quality, not necessary to examine more detailed QA'</span></span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>goodQual <span class="op">=</span> output_csv[output_csv[<span class="st">'MOD11A1_061_QC_Night_MODLAND_Description'</span>] <span class="op">==</span> good_qual_flag]</span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>goodQual <span class="op">=</span> goodQual[goodQual[<span class="st">'MOD11A1_061_LST_Day_1km'</span>] <span class="op">!=</span> <span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1209,10 +1182,10 @@ Each output file can be downloaded using the <code>file_id</code> and AppEEARS A
 <section id="explore-the-lst-time-series" class="level2">
 <h2 class="anchored" data-anchor-id="explore-the-lst-time-series">6. Explore the LST Time Series</h2>
 <p>The <code>matplotlib</code> can be used to create visualizations for a Pandas DataFrames. <code>pyplot</code> is used below to visualize non-Nan day and night LST observations flagged with the good quality.</p>
-<div id="35e5c25b-0088-4a83-93c6-de3dc1ceed9a" class="cell" data-tags="[]" data-execution_count="21">
+<div class="cell" data-tags="[]" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="a422a2c0-4ae0-4343-a4e0-3f361c30f8db" class="cell" data-tags="[]" data-execution_count="22">
+<div class="cell" data-tags="[]" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>fig, ax1 <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">15</span>, <span class="dv">8</span>))</span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>ax1.plot(goodQual[<span class="st">'Date'</span>], goodQual[<span class="st">'MOD11A1_061_LST_Day_1km'</span>] <span class="op">-</span> <span class="fl">273.15</span>, color<span class="op">=</span><span class="st">"#6495ED"</span>, lw<span class="op">=</span><span class="dv">2</span>)</span>
@@ -1233,11 +1206,7 @@ INFO : Using categorical units to plot a list of strings that are all parsable a
 INFO : Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="appeears_csv_cloud_access_files/figure-html/cell-23-output-2.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
+<p><img src="appeears_csv_cloud_access_files/figure-html/cell-23-output-2.png" class="img-fluid"></p>
 </div>
 </div>
 </section>
@@ -1251,7 +1220,6 @@ Date last modified: 05-06-2023</p>
 <p>¹Work performed under USGS contract G15PD00467 for NASA contract NNG14HH33I.</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -1296,33 +1264,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       } else {
         el.classList.add('notransition');
       }
-    }
-  }
-  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
-    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
-    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
-    let newTheme = '';
-    if(darkModeDefault) {
-      newTheme = isAlternate ? baseTheme : alternateTheme;
-    } else {
-      newTheme = isAlternate ? alternateTheme : baseTheme;
-    }
-    const changeGiscusTheme = () => {
-      // From: https://github.com/giscus/giscus/issues/336
-      const sendMessage = (message) => {
-        const iframe = document.querySelector('iframe.giscus-frame');
-        if (!iframe) return;
-        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
-      }
-      sendMessage({
-        setConfig: {
-          theme: newTheme
-        }
-      });
-    }
-    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
-    if (isGiscussLoaded) {
-      changeGiscusTheme();
     }
   }
   const toggleColorMode = (alternate) => {
@@ -1391,15 +1332,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return localAlternateSentinel;
     }
   }
-  const darkModeDefault = false;
-  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  let localAlternateSentinel = 'default';
   // Dark / light mode switch
   window.quartoToggleColorScheme = () => {
     // Read the current dark / light value 
     let toAlternate = !hasAlternateSentinel();
     toggleColorMode(toAlternate);
     setStyleSentinel(toAlternate);
-    toggleGiscusIfUsed(toAlternate, darkModeDefault);
   };
   // Ensure there is a toggle, if there isn't float one in the top right
   if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -1478,9 +1417,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+  function tippyHover(el, contentFn) {
     const config = {
       allowHTML: true,
+      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1490,17 +1430,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start',
+      placement: 'bottom-start'
     };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1513,125 +1444,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
-    });
-  }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    // Strip column container classes
-    const stripColumnClz = (el) => {
-      el.classList.remove("page-full", "page-columns");
-      if (el.children) {
-        for (const child of el.children) {
-          stripColumnClz(child);
-        }
-      }
-    }
-    stripColumnClz(note)
-    if (id === null || id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
-          } else {
-            container.appendChild(child.cloneNode(true));
-            break;
-          }
-        }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
-        }
-        return container.innerHTML
-      } else {
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(note);
-        }
-        return note.innerHTML;
-      }
-    } else {
-      // Remove any anchor links if they are present
-      const anchorLink = note.querySelector('a.anchorjs-link');
-      if (anchorLink) {
-        anchorLink.remove();
-      }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
-      // TODO in 1.5, we should make sure this works without a callout special case
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
-      }
-    }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      if (url.startsWith('#')) {
-        hash = url;
-      } else {
-        try { hash = new URL(url).hash; } catch {}
-      }
-      if (hash) {
-        const id = hash.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note !== null) {
-          try {
-            const html = processXRef(id, note.cloneNode(true));
-            instance.setContent(html);
-          } finally {
-            instance.enable();
-            instance.show();
-          }
-        } else {
-          // See if we can fetch this
-          fetch(url.split('#')[0])
-          .then(res => res.text())
-          .then(html => {
-            const parser = new DOMParser();
-            const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.getElementById(id);
-            if (note !== null) {
-              const html = processXRef(id, note);
-              instance.setContent(html);
-            } 
-          }).finally(() => {
-            instance.enable();
-            instance.show();
-          });
-        }
-      } else {
-        // See if we can fetch a full url (with no hash to target)
-        // This is a special case and we should probably do some content thinning / targeting
-        fetch(url)
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.querySelector('main.content');
-          if (note !== null) {
-            // This should only happen for chapter cross references
-            // (since there is no id in the URL)
-            // remove the first header
-            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-              note.children[0].remove();
-            }
-            const html = processXRef(null, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
-      }
-    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -1675,7 +1487,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
-            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1701,32 +1512,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1788,12 +1573,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../how-tos/use_apis.html" class="pagination-link" aria-label="use APIs">
+      <a href="../how-tos/use_apis.html" class="pagination-link">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">use APIs</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../how-tos/how_to_guide_parking_lot.html" class="pagination-link" aria-label="parking lot">
+      <a href="../how-tos/how_to_guide_parking_lot.html" class="pagination-link">
         <span class="nav-page-text">parking lot</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
@@ -1801,18 +1586,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
-    <div class="nav-footer-left">
-<p>NASA Earthdata Cloud Cookbook, © NASA Openscapes Team (2023).</p>
-</div>   
+    <div class="nav-footer-left">NASA Earthdata Cloud Cookbook, © NASA Openscapes Team (2023).</div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.dev/nasa-openscapes/earthdata-cloud-cookbook/blob/main/external/appeears_csv_cloud_access.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/blob/main/external/appeears_csv_cloud_access.ipynb" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    </div>
     <div class="nav-footer-right">
       &nbsp;
     </div>
   </div>
 </footer>
-
 
 
 

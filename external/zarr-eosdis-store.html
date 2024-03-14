@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.550">
+<meta name="generator" content="quarto-1.3.450">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>EarthData Cloud Cookbook - zarr-eosdis-store example</title>
+<title>EarthData Cloud Cookbook - Zarr Example</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,7 +22,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -82,13 +82,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 50,
-  "keyboard-shortcut": [
-    "f",
-    "/",
-    "s"
-  ],
-  "show-item-context": false,
+  "limit": 20,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -97,7 +91,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
-    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -114,12 +107,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../in-development/index.html">In Development</a></li><li class="breadcrumb-item"><a href="../external/zarr-eosdis-store.html">zarr-eosdis-store example</a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-        </a>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../in-development/index.html">In Development</a></li><li class="breadcrumb-item"><a href="../external/zarr-eosdis-store.html">zarr-eosdis-store example</a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -129,7 +122,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-center sidebar-header sidebar-header-stacked">
       <a href="../index.html" class="sidebar-logo-link">
       <img src="../images/nasa-openscapes.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
@@ -137,8 +130,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div class="sidebar-title mb-0 py-0">
       <a href="../">NASA Earthdata Cloud Cookbook</a> 
         <div class="sidebar-tools-main tools-wide">
-    <a href="https://nasa-openscapes.github.io" title="NASA-Openscapes website" class="quarto-navigation-tool px-1" aria-label="NASA-Openscapes website"><i class="bi bi-globe"></i></a>
-    <a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook" title="Earthdata Cloud Cookbook repo" class="quarto-navigation-tool px-1" aria-label="Earthdata Cloud Cookbook repo"><i class="bi bi-github"></i></a>
+    <a href="https://nasa-openscapes.github.io" rel="" title="NASA-Openscapes website" class="quarto-navigation-tool px-1" aria-label="NASA-Openscapes website"><i class="bi bi-globe"></i></a>
+    <a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook" rel="" title="Earthdata Cloud Cookbook repo" class="quarto-navigation-tool px-1" aria-label="Earthdata Cloud Cookbook repo"><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
     </div>
@@ -336,7 +329,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../external/IS2_cloud_Landsat_integration.html" class="sidebar-item-text sidebar-link">
+  <a href="../external/IS2_cloud_Landsat_integration.ipynb" class="sidebar-item-text sidebar-link">
  <span class="menu-text">ICESat-2</span></a>
   </div>
 </li>
@@ -567,7 +560,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -576,14 +569,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#zarr-eosdis-store-example" id="toc-zarr-eosdis-store-example" class="nav-link active" data-scroll-target="#zarr-eosdis-store-example">zarr-eosdis-store example</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.dev/nasa-openscapes/earthdata-cloud-cookbook/blob/main/external/zarr-eosdis-store.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/blob/main/external/zarr-eosdis-store.ipynb" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.dev/nasa-openscapes/earthdata-cloud-cookbook/blob/main/external/zarr-eosdis-store.ipynb" class="toc-action">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/blob/main/external/zarr-eosdis-store.ipynb" class="toc-action">View source</a></p><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../in-development/index.html">In Development</a></li><li class="breadcrumb-item"><a href="../external/zarr-eosdis-store.html">zarr-eosdis-store example</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">zarr-eosdis-store example</h1>
+<h1 class="title">Zarr Example</h1>
 </div>
 
 
@@ -596,14 +589,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
-
 </header>
 
-
+<p>imported on: <strong>2023-05-30</strong></p>
+<p>
+This notebook is from NASA’s Zarr <strong>EOSDIS</strong> store notebook
+</p>
+<blockquote class="blockquote">
+<p>The original source for this document is <a href="https://github.com/nasa/zarr-eosdis-store">https://github.com/nasa/zarr-eosdis-store</a></p>
+</blockquote>
 <section id="zarr-eosdis-store-example" class="level1">
 <h1>zarr-eosdis-store example</h1>
 <p>Install dependencies</p>
-<div id="58e9b929-9af1-4b67-8e7c-eb91e127a59b" class="cell" data-tags="[]">
+<div class="cell" data-tags="[]">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># zarr and zarr-eosdis-store, the main libraries being demoed</span></span>
@@ -616,7 +614,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>   machine urs.earthdata.nasa.gov login YOUR_USER password YOUR_PASSWORD</code></pre>
 <p>Never share or commit your password / .netrc file!</p>
 <p>Basic usage. After these lines, we work with <code>ds</code> as though it were a normal Zarr dataset</p>
-<div id="eae50b50-9685-4407-893e-7284c457442a" class="cell" data-execution_count="2">
+<div class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> zarr</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> eosdis_store <span class="im">import</span> EosdisStore</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -625,7 +623,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>ds <span class="op">=</span> zarr.<span class="bu">open</span>(EosdisStore(url))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>View the file’s variable structure</p>
-<div id="39639c1b-c35a-4761-a8f9-bbc99d98b6ee" class="cell" data-execution_count="3">
+<div class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(ds.tree())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>/
@@ -641,30 +639,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Fetch the latitude and longitude arrays and determine start and end indices for our area of interest. In this case, we’re looking at the Great Lakes, which have a nice, recognizeable shape. Latitudes 41 to 49, longitudes -93 to 76.</p>
-<div id="f05f402d-f903-4056-87a7-70f62a364525" class="cell" data-execution_count="4">
+<div class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>lats <span class="op">=</span> ds[<span class="st">'lat'</span>][:]</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>lons <span class="op">=</span> ds[<span class="st">'lon'</span>][:]</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>lat_range <span class="op">=</span> <span class="bu">slice</span>(lats.searchsorted(<span class="dv">41</span>), lats.searchsorted(<span class="dv">49</span>))</span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>lon_range <span class="op">=</span> <span class="bu">slice</span>(lons.searchsorted(<span class="op">-</span><span class="dv">93</span>), lons.searchsorted(<span class="op">-</span><span class="dv">76</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Get the analysed sea surface temperature variable over our area of interest and apply scale factor and offset from the file metadata. In a future release, scale factor and add offset will be automatically applied.</p>
-<div id="d893dca4-02fa-45ca-a088-5cd3392f9a33" class="cell" data-execution_count="5">
+<div class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>var <span class="op">=</span> ds[<span class="st">'analysed_sst'</span>]</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>analysed_sst <span class="op">=</span> var[<span class="dv">0</span>, lat_range, lon_range] <span class="op">*</span> var.attrs[<span class="st">'scale_factor'</span>] <span class="op">+</span> var.attrs[<span class="st">'add_offset'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Draw a pretty picture</p>
-<div id="3bb4f1a7-673d-4dd5-8633-10decf94d286" class="cell" data-execution_count="6">
+<div class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib <span class="im">import</span> pyplot <span class="im">as</span> plt</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>plt.rcParams[<span class="st">"figure.figsize"</span>] <span class="op">=</span> [<span class="dv">16</span>, <span class="dv">8</span>]</span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>plt.imshow(analysed_sst[::<span class="op">-</span><span class="dv">1</span>, :])</span>
 <span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="va">None</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="zarr-eosdis-store_files/figure-html/cell-7-output-1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
+<p><img src="zarr-eosdis-store_files/figure-html/cell-7-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 <p>In a dozen lines of code and a few seconds, we have managed to fetch and visualize the 3.2 megabyte we needed from a 732 megabyte file using the original archive URL and no processing services</p>
@@ -714,33 +708,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       } else {
         el.classList.add('notransition');
       }
-    }
-  }
-  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
-    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
-    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
-    let newTheme = '';
-    if(darkModeDefault) {
-      newTheme = isAlternate ? baseTheme : alternateTheme;
-    } else {
-      newTheme = isAlternate ? alternateTheme : baseTheme;
-    }
-    const changeGiscusTheme = () => {
-      // From: https://github.com/giscus/giscus/issues/336
-      const sendMessage = (message) => {
-        const iframe = document.querySelector('iframe.giscus-frame');
-        if (!iframe) return;
-        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
-      }
-      sendMessage({
-        setConfig: {
-          theme: newTheme
-        }
-      });
-    }
-    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
-    if (isGiscussLoaded) {
-      changeGiscusTheme();
     }
   }
   const toggleColorMode = (alternate) => {
@@ -809,15 +776,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return localAlternateSentinel;
     }
   }
-  const darkModeDefault = false;
-  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  let localAlternateSentinel = 'default';
   // Dark / light mode switch
   window.quartoToggleColorScheme = () => {
     // Read the current dark / light value 
     let toAlternate = !hasAlternateSentinel();
     toggleColorMode(toAlternate);
     setStyleSentinel(toAlternate);
-    toggleGiscusIfUsed(toAlternate, darkModeDefault);
   };
   // Ensure there is a toggle, if there isn't float one in the top right
   if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -896,9 +861,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+  function tippyHover(el, contentFn) {
     const config = {
       allowHTML: true,
+      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -908,17 +874,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start',
+      placement: 'bottom-start'
     };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -931,125 +888,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
-    });
-  }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    // Strip column container classes
-    const stripColumnClz = (el) => {
-      el.classList.remove("page-full", "page-columns");
-      if (el.children) {
-        for (const child of el.children) {
-          stripColumnClz(child);
-        }
-      }
-    }
-    stripColumnClz(note)
-    if (id === null || id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
-          } else {
-            container.appendChild(child.cloneNode(true));
-            break;
-          }
-        }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
-        }
-        return container.innerHTML
-      } else {
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(note);
-        }
-        return note.innerHTML;
-      }
-    } else {
-      // Remove any anchor links if they are present
-      const anchorLink = note.querySelector('a.anchorjs-link');
-      if (anchorLink) {
-        anchorLink.remove();
-      }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
-      // TODO in 1.5, we should make sure this works without a callout special case
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
-      }
-    }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      if (url.startsWith('#')) {
-        hash = url;
-      } else {
-        try { hash = new URL(url).hash; } catch {}
-      }
-      if (hash) {
-        const id = hash.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note !== null) {
-          try {
-            const html = processXRef(id, note.cloneNode(true));
-            instance.setContent(html);
-          } finally {
-            instance.enable();
-            instance.show();
-          }
-        } else {
-          // See if we can fetch this
-          fetch(url.split('#')[0])
-          .then(res => res.text())
-          .then(html => {
-            const parser = new DOMParser();
-            const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.getElementById(id);
-            if (note !== null) {
-              const html = processXRef(id, note);
-              instance.setContent(html);
-            } 
-          }).finally(() => {
-            instance.enable();
-            instance.show();
-          });
-        }
-      } else {
-        // See if we can fetch a full url (with no hash to target)
-        // This is a special case and we should probably do some content thinning / targeting
-        fetch(url)
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.querySelector('main.content');
-          if (note !== null) {
-            // This should only happen for chapter cross references
-            // (since there is no id in the URL)
-            // remove the first header
-            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-              note.children[0].remove();
-            }
-            const html = processXRef(null, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
-      }
-    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -1093,7 +931,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
-            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1119,32 +956,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1206,12 +1017,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../external/cof-zarr-reformat.html" class="pagination-link" aria-label="Access ECCO data via Harmony &amp; the Zarr reformatter service">
+      <a href="../external/cof-zarr-reformat.html" class="pagination-link">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Access ECCO data via Harmony &amp; the Zarr reformatter service</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../examples/index.html" class="pagination-link" aria-label="Example Workflows">
+      <a href="../examples/index.html" class="pagination-link">
         <span class="nav-page-text">Example Workflows</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
@@ -1219,18 +1030,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
-    <div class="nav-footer-left">
-<p>NASA Earthdata Cloud Cookbook, © NASA Openscapes Team (2023).</p>
-</div>   
+    <div class="nav-footer-left">NASA Earthdata Cloud Cookbook, © NASA Openscapes Team (2023).</div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.dev/nasa-openscapes/earthdata-cloud-cookbook/blob/main/external/zarr-eosdis-store.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/blob/main/external/zarr-eosdis-store.ipynb" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    </div>
     <div class="nav-footer-right">
       &nbsp;
     </div>
   </div>
 </footer>
-
 
 
 
