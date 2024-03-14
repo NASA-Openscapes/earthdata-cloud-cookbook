@@ -55,4 +55,5 @@ RUN usermod -s /bin/bash ${NB_USER}
 
 COPY environment.yml environment.yml
 RUN conda env update -f environment.yml && conda clean --all
+RUN rm environment.yml
 
