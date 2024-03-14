@@ -28,6 +28,7 @@ RUN curl -fsSL https://code-server.dev/install.sh | sh && rm -rf .cache
 ## Install R packages into the site library
 COPY install.R install.R
 RUN Rscript install.R && rm install.R
+RUN rm install.R
 
 ## Openscapes-specific configs
 USER rstudio
@@ -37,4 +38,5 @@ RUN usermod -s /bin/bash rstudio
 # install into the default venv environment
 COPY nasa-requirements.txt requirements.txt
 RUN python -m pip install --no-cache-dir -r requirements.txt && rm requirements.txt
+RUN rm requirements.txt
 
