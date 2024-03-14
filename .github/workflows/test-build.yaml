@@ -2,14 +2,16 @@ on:
   workflow_dispatch:
   push:
     branches: main
+  schedule:
+        - cron: "0 0 1 * *" # monthly
 
-name: Quarto Publish
+name: Quarto Test Build
 
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
     container: 
-      image: ghcr.io/boettiger-lab/nasa-tops:latest
+      image: ghcr.io/eeholmes/earthdata-cloud-cookbook/cookbook:latest
       options: --user root --security-opt seccomp=unconfined
     permissions:
       contents: write
@@ -20,10 +22,6 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v3
 
-      - name: Render and Publish
-        if: github.repository == 'NASA-Openscapes/earthdata-cloud-cookbook'
-        uses: quarto-dev/quarto-actions/publish@v2
-        with:
-          target: gh-pages
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Render
+        run: |
+             quarto render --no-cache

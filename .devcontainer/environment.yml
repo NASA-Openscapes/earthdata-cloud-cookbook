@@ -1,0 +1,88 @@
+name: openscapes
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10
+  - dask
+  - dask-gateway
+  - graphviz
+  - distributed
+  - rioxarray
+  - xarray>=2022.12
+  - h5netcdf
+  - netcdf4>=1.6.4
+  - h5py
+  - gdal~=3.8
+  - geoviews
+  - holoviews=1.16.2
+  - matplotlib-base
+  - seaborn
+  - intake
+  - hvplot
+  - datashader
+  - pyproj
+  - bqplot
+  - geopandas
+  - zarr
+  - cartopy
+  - pynco
+  - rasterio
+  - shapely
+  - pyresample
+  - icepyx
+  - joblib
+  - pystac-client
+  - odc-stac
+  - pydap
+  - lxml
+  - ipyleaflet
+  # when jlab 4 gets released we can upgrade dask-labextension
+  # - dask-labextension
+  # - dask-labextension==6.2.0
+  - dask-labextension
+  - jupyter-server-proxy
+  - jupyter-vscode-proxy
+  - jupyter-rsession-proxy
+  - ipywidgets
+  - jupyter-book
+  - jupyterlab>4
+  - jupyterlab-myst
+  - jupyterhub-singleuser
+  - jupyterlab-geojson
+  - jupyterlab-favorites
+  - jupyterlab-git
+  - jupyter-resource-usage
+  - jupyterlab-h5web
+  - hdf5plugin
+  - ipympl
+  - conda-lock
+  - pooch
+  - earthaccess>=0.8.2
+  - sliderule>=3.6.0
+  # QGIS
+  - qgis~=3.28
+  - pyopencl
+  - ocl-icd-system
+  - websockify>=0.10
+  # /QGIS 
+  - h5coro
+  - git >=2.39
+  - itslive
+  - rasterstats
+  - kerchunk
+  - rechunker
+  - pqdm
+  - spectral
+  - scikit-image
+  - coiled
+  - s3fs
+  - nbgitpuller
+  - awscliv2
+  - jupyter-server-proxy
+  - jupyter-vscode-proxy
+  # https://github.com/jupyterlab/jupyter-collaboration/issues/202
+  # - jupyter-collaboration
+  - code-server >=3.2
+  - pip
+platforms:
+  - linux-64
