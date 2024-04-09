@@ -28,6 +28,8 @@ Create an annual budget of the total Credits left (you may need to calculate thi
 
 ![](images/choose-budget-type.png){fig-align="center" width="394"}
 
+Exclude Credits and Refunds, include Discounts. You can elect to receive emails with a regular cadence: weekly, monthly.
+
 We set these up at 50, 75, 90, 95% of the total budget, and we will receive emails at those percentages. The thinking is that we will need to request more credits starting at 50-75%, and then make sure we have them in hand by 90-95%.
 
 ### Threshold alerts
