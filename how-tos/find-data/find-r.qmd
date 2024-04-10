@@ -6,21 +6,111 @@ execute:
 
 Here are our recommended approaches for finding data with R, from the command line or a notebook.
 
-To find data in R, we'll also use the `earthaccess` python package - we can do so from R using the [`reticulate`](https://rstudio.github.io/reticulate/) package ([cheatsheet](https://www.rstudio.com/resources/cheatsheets/)). Note below that we import the python library as an R object we name `earthaccess`, as well as the `earthaccess$` syntax for accessing functions from the `earthaccess` library. The `granules` object has a list of JSON dictionaries with some extra dictionaries.
+## Authentication for NASA Earthdata 
+
+An Earthdata Login account is required to access data from the NASA Earthdata system. Please visit <https://urs.earthdata.nasa.gov> to register and manage your Earthdata Login account. This account is free to create and only takes a moment to set up.
+
+The first step is to get the correct authentication that will allow us to get cloud-hosted data from NASA. This is all done through Earthdata Login. We can use the `earthdatalogin` R package 
+to help us manage this.
+
+The easiest and most portable method of access is using the netrc basic
+authentication protocol for HTTP. Call `edl_netrc()` to set this up
+given your username and password (passed as optional arguments or read
+from the environmental variables. If neither provides credentials,
+`earthdatalogin` will provide it’s own credentials, but you may
+experience rate limits more readily).
+
+Once you have created an account on Earthdata, the easiest way to store your
+credentials is by setting them as environment variables in your `~/.Renviron` file. 
+The usethis package has a handy function to find and open this file for editing:
 
 ```r
+usethis::edit_r_environ()
+```
+
+Then add the following lines to the file, save the file, and restart R
+
+```
+EARTHDATA_USER="your_user_name"
+EARTHDATA_PASSWORD="your_password"
+```
+
+Now, when you call `edl_netrc()`, it will consult these environment variables
+to create a netrc file that will be used to authenticate with the NASA Earthdata
+servers.
+
+
+``` r
+edl_netrc()
+```
+
+If `edl_netrc()` has been called, then most existing spatial data
+packages in R can then seamlessly access NASA Earthdata over HTTP links.
+
+## Searching for data
+
+
+The NASA cloud data is searchable programmatically via two methods - NASA's own search service, and the NASA Spatio-Temporal Asset Catalog (STAC) API. To find data in R, we'll mainly rely on the [rstac](https://brazil-data-cube.github.io/rstac/) package. This enables us interact with the NASA [STAC](https://stacspec.org/en) API to search for our data, and at the same time learn about STAC more generally. This will be useful as it is a common standard for distributing spatial data.
+
+We will also search for data using the [NASA Earthdata search API](https://cmr.earthdata.nasa.gov/search/site/docs/search/api.html), which is the service that powers the [Earthdata web search portal](https://search.earthdata.nasa.gov/search?fst0=atmosphere).
+
+For both of these services, the [earthdatalogin](https://boettiger-lab.github.io/earthdatalogin/) package will help us get set up and provide a few handy functions
+to smooth some rough edges.
+
+## rstac
+
+All of the NASA STAC catalogues can be viewd here: https://radiantearth.github.io/stac-browser/#/external/cmr.earthdata.nasa.gov/stac/.
+
+We will use the rstac package to first browse the collections in the PO DAAC 
+catalogue (POCLOUD):
+
+```{r}
 ## In R
 ## load R libraries
-library(tidyverse) # install.packages("tidyverse") 
-library(reticulate) # install.packages("reticulate")
+# install.packages("pak") 
+# pak::pak(c("tidyverse", "rstac", "boettiger-lab/earthdatalogin"))
 
-## load python library
-earthaccess <- reticulate::import("earthaccess") 
+library(rstac)
+library(earthdatalogin)
 
-## use earthaccess to access data # https://nsidc.github.io/earthaccess/tutorials/search-granules/
-granules <- earthaccess$search_data(
-  doi = "10.5067/SLREF-CDRV3",
-  temporal = reticulate::tuple("2017-01", "2017-02") # with an earthaccess update, this can be simply c() or list()
+po_collections <- stac("https://cmr.earthdata.nasa.gov/stac/POCLOUD/") |>
+  collections() |>
+  get_request()
+
+po_collections
+```
+
+This only gives us the first 10 collections in the catalogue; to get the rest
+we can use the `collections_fetch()` function:
+
+```{r}
+all_po_collections <- collections_fetch(po_collections)
+all_po_collections
+
+length(all_po_collections$collections)
+
+head(all_po_collections$collections)
+```
+
+Once we have searched through the collections, we can choose the one we are 
+interested in and query it to get the items (granules) we are interested in:
+
+```{r}
+items <- stac("https://cmr.earthdata.nasa.gov/stac/POCLOUD") |> 
+  stac_search(collections = "MUR-JPL-L4-GLOB-v4.1",
+              datetime = paste(start,end, sep = "/")) |>
+  post_request() |>
+  items_fetch()
+
+items
+```
+
+
+
+
+```{r}
+granules <- edl_search(
+  doi = URLencode("10.5067/SLREF-CDRV3", reserved = TRUE)
 )
 
 ## Granules found: 72
