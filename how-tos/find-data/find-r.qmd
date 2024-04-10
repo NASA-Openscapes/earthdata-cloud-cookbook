@@ -8,58 +8,69 @@ Here are our recommended approaches for finding data with R, from the command li
 
 ## Authentication for NASA Earthdata 
 
-An Earthdata Login account is required to access data from the NASA Earthdata system. Please visit <https://urs.earthdata.nasa.gov> to register and manage your Earthdata Login account. This account is free to create and only takes a moment to set up.
+An Earthdata Login account is required to access data from the NASA Earthdata
+system. Please visit <https://urs.earthdata.nasa.gov> to register and manage
+your Earthdata Login account. This account is free to create and only takes a
+moment to set up.
 
-The first step is to get the correct authentication that will allow us to get cloud-hosted data from NASA. This is all done through Earthdata Login. We can use the `earthdatalogin` R package 
-to help us manage this.
+Once you have created your Earthdata Login account, you can use the 
+`earthdatalogin` R package to help you manage your authentication within R.
 
-The easiest and most portable method of access is using the netrc basic
-authentication protocol for HTTP. Call `edl_netrc()` to set this up
-given your username and password (passed as optional arguments or read
-from the environmental variables. If neither provides credentials,
-`earthdatalogin` will provide it’s own credentials, but you may
-experience rate limits more readily).
-
-Once you have created an account on Earthdata, the easiest way to store your
-credentials is by setting them as environment variables in your `~/.Renviron` file. 
+The easiest and most portable method of access is using the `netrc` basic
+authentication protocol for HTTP. Call `edl_netrc()` to set this up given your
+username and password. The easiest way to store your credentials for use in
+`edl_netrc()` is to set them as environment variables in your `~/.Renviron` file.
 The usethis package has a handy function to find and open this file for editing:
 
 ```r
 usethis::edit_r_environ()
 ```
 
-Then add the following lines to the file, save the file, and restart R
+Then add the following lines to the file, save the file, and restart R.
 
 ```
 EARTHDATA_USER="your_user_name"
 EARTHDATA_PASSWORD="your_password"
 ```
 
-Now, when you call `edl_netrc()`, it will consult these environment variables
-to create a netrc file that will be used to authenticate with the NASA Earthdata
-servers.
-
+Now, when you call `edl_netrc()`, it will consult these environment variables to
+create a `.netrc` file that will be used to authenticate with the NASA Earthdata
+services. If you don't have your credentials saved as environment variables, 
+`earthdatalogin` will provide it’s own credentials, but you may experience rate 
+limits more readily. You can also manually type in your credentials to the `username`
+and `password` arguments to `edl_netrc()` but this is not recommended as it 
+is too easy to accidentally share these in your code.
 
 ``` r
 edl_netrc()
 ```
 
-If `edl_netrc()` has been called, then most existing spatial data
-packages in R can then seamlessly access NASA Earthdata over HTTP links.
+Once `edl_netrc()` has been called in your R session, then most existing spatial 
+data packages in R can seamlessly access NASA Earthdata over HTTP links.
 
 ## Searching for data
 
+The NASA cloud data is searchable programmatically via two methods - NASA's own
+search service, and the NASA Spatio-Temporal Asset Catalog (STAC) API. To find
+data in R, we'll mainly rely on the
+[rstac](https://brazil-data-cube.github.io/rstac/) package. This enables us
+interact with the NASA [STAC](https://stacspec.org/en) API to search for our
+data, and at the same time learn about STAC more generally. This will be useful
+as it is a common standard for distributing spatial data.
 
-The NASA cloud data is searchable programmatically via two methods - NASA's own search service, and the NASA Spatio-Temporal Asset Catalog (STAC) API. To find data in R, we'll mainly rely on the [rstac](https://brazil-data-cube.github.io/rstac/) package. This enables us interact with the NASA [STAC](https://stacspec.org/en) API to search for our data, and at the same time learn about STAC more generally. This will be useful as it is a common standard for distributing spatial data.
+We will also search for data using the 
+[NASA Earthdata search API](https://cmr.earthdata.nasa.gov/search/site/docs/search/api.html), 
+which is the service that powers the 
+[Earthdata web search portal](https://search.earthdata.nasa.gov/search?fst0=atmosphere).
 
-We will also search for data using the [NASA Earthdata search API](https://cmr.earthdata.nasa.gov/search/site/docs/search/api.html), which is the service that powers the [Earthdata web search portal](https://search.earthdata.nasa.gov/search?fst0=atmosphere).
+For both of these services, the
+[earthdatalogin](https://boettiger-lab.github.io/earthdatalogin/) package will
+help us get set up and provide a few handy functions to smooth some rough edges.
 
-For both of these services, the [earthdatalogin](https://boettiger-lab.github.io/earthdatalogin/) package will help us get set up and provide a few handy functions
-to smooth some rough edges.
+### rstac
 
-## rstac
-
-All of the NASA STAC catalogues can be viewd here: https://radiantearth.github.io/stac-browser/#/external/cmr.earthdata.nasa.gov/stac/.
+All of the NASA STAC catalogues can be viewed here: 
+<https://radiantearth.github.io/stac-browser/#/external/cmr.earthdata.nasa.gov/stac/>.
 
 We will use the rstac package to first browse the collections in the PO DAAC 
 catalogue (POCLOUD):
