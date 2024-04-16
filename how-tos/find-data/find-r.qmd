@@ -14,7 +14,15 @@ your Earthdata Login account. This account is free to create and only takes a
 moment to set up.
 
 Once you have created your Earthdata Login account, you can use the 
-`earthdatalogin` R package to help you manage your authentication within R.
+[earthdatalogin](https://github.com/boettiger-lab/earthdatalogin/) R package to help you manage your authentication within R.
+
+There is some functionality currently only available in the development version
+of earthdatalogin, so we will install it from GitHub using the [pak](https://pak.r-lib.org/) package:
+
+``` r
+install.packages("pak")
+pak::pak("boettiger-lab/earthdatalogin")
+```
 
 The easiest and most portable method of access is using the `netrc` basic
 authentication protocol for HTTP. Call `edl_netrc()` to set this up given your
@@ -23,6 +31,7 @@ username and password. The easiest way to store your credentials for use in
 The usethis package has a handy function to find and open this file for editing:
 
 ```r
+# install.packages("usethis")
 usethis::edit_r_environ()
 ```
 
@@ -36,17 +45,19 @@ EARTHDATA_PASSWORD="your_password"
 Now, when you call `edl_netrc()`, it will consult these environment variables to
 create a `.netrc` file that will be used to authenticate with the NASA Earthdata
 services. If you don't have your credentials saved as environment variables, 
-`earthdatalogin` will provide it’s own credentials, but you may experience rate 
+`earthdatalogin` will provide its own credentials, but you may experience rate 
 limits more readily. You can also manually type in your credentials to the `username`
 and `password` arguments to `edl_netrc()` but this is not recommended as it 
 is too easy to accidentally share these in your code.
 
-``` r
+```r
+library(earthdatalogin)
+
 edl_netrc()
 ```
 
-Once `edl_netrc()` has been called in your R session, then most existing spatial 
-data packages in R can seamlessly access NASA Earthdata over HTTP links.
+Once `edl_netrc()` has been called in your R session, then most spatial 
+packages in R can seamlessly access NASA Earthdata over HTTP links.
 
 ## Searching for data
 
@@ -101,12 +112,19 @@ all_po_collections
 length(all_po_collections$collections)
 
 head(all_po_collections$collections)
+
+sapply(all_po_collections$collections, `[[`, "title")
+grep("MUR-JPL", sapply(all_po_collections$collections, `[[`, "id"), value = TRUE)
 ```
 
 Once we have searched through the collections, we can choose the one we are 
 interested in and query it to get the items (granules) we are interested in:
 
 ```{r}
+
+start <- "2020-01-01"
+end   <- "2020-01-03" 
+
 items <- stac("https://cmr.earthdata.nasa.gov/stac/POCLOUD") |> 
   stac_search(collections = "MUR-JPL-L4-GLOB-v4.1",
               datetime = paste(start,end, sep = "/")) |>
@@ -120,16 +138,10 @@ items
 
 
 ```{r}
-granules <- edl_search(
-  doi = URLencode("10.5067/SLREF-CDRV3", reserved = TRUE)
-)
+library(terra)
+urls <- edl_search(short_name = "MUR-JPL-L4-GLOB-v4.1",
+                   temporal = c(start, end))
 
-## Granules found: 72
-
-## exploring
-granules # this is the result of the get request. 
-
-class(granules) # "list"
-## granules <- reticulate::py_to_r(granules) # Object to convert is not a Python object
+terra::rast(paste0("/vsicurl/", urls[1]))
 
 ```
