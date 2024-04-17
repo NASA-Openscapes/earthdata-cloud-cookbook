@@ -188,7 +188,7 @@ library(terra)
 
 rast <- terra::rast(granule_urls[1], vsi = TRUE)
 
-# This does not come with an extent and CRS so we can supply it manually
+# This does not come with an extent and CRS embedded so we can supply it manually
 granules[[1]]$boxes
 ext(rast) <- c(-180, 180, -90, 90)
 crs(rast) <- "EPSG:4326"
@@ -218,7 +218,8 @@ plot(rast_cropped[["SSH"]])
 #### Using the `{stars}` package
 
 The `read_*` functions in stars do not have the `vsi` argument, but we can do
-the same thing simply by prepending `"/vsicurl/"` to the url ourselves:
+the same thing simply by prepending `"/vsicurl/"` to the url ourselves. Here 
+we will use the `read_mdim()` function.
 
 ```{r}
 library(stars)
@@ -227,5 +228,11 @@ ssh_stars <- read_mdim(paste0("/vsicurl/", granule_urls[1]))
 plot(ssh_stars)
 ```
 
-We can 
+We can again crop this using the same bounding box as we did with terra:
+
+```{r}
+st_crop(ssh_stars, st_bbox(c(xmin = -150, xmax = -120, ymin = 35, ymax = 60))) |> 
+  plot()
+```
+
 
