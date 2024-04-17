@@ -569,7 +569,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#using-the-web-interface" id="toc-using-the-web-interface" class="nav-link active" data-scroll-target="#using-the-web-interface">Using the web interface</a></li>
+  <li><a href="#searching-programmatically" id="toc-searching-programmatically" class="nav-link" data-scroll-target="#searching-programmatically">Searching programmatically</a></li>
+  <li><a href="#authentication-for-nasa-earthdata" id="toc-authentication-for-nasa-earthdata" class="nav-link" data-scroll-target="#authentication-for-nasa-earthdata">Authentication for NASA Earthdata</a></li>
+  <li><a href="#finding-data-in-nasa-stacs-with-rstac" id="toc-finding-data-in-nasa-stacs-with-rstac" class="nav-link" data-scroll-target="#finding-data-in-nasa-stacs-with-rstac">Finding data in NASA STACs with rstac</a></li>
+  <li><a href="#finding-data-in-nasa-earthdata-search-using-earthdatalogin" id="toc-finding-data-in-nasa-earthdata-search-using-earthdatalogin" class="nav-link" data-scroll-target="#finding-data-in-nasa-earthdata-search-using-earthdatalogin">Finding data in NASA EarthData Search using earthdatalogin</a></li>
+  <li><a href="#accessing-data-using-gdalcubes" id="toc-accessing-data-using-gdalcubes" class="nav-link" data-scroll-target="#accessing-data-using-gdalcubes">Accessing data using gdalcubes</a></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/edit/main/how-tos/find-data/find-r.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/blob/main/how-tos/find-data/find-r.qmd" class="toc-action">View source</a></p><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -591,31 +602,170 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
+<p><em>This is a work in progress, and may be split up into different modules/tutorials as we continue to work on it.</em></p>
 <p>Here are our recommended approaches for finding data with R, from the command line or a notebook.</p>
-<p>To find data in R, we’ll also use the <code>earthaccess</code> python package - we can do so from R using the <a href="https://rstudio.github.io/reticulate/"><code>reticulate</code></a> package (<a href="https://www.rstudio.com/resources/cheatsheets/">cheatsheet</a>). Note below that we import the python library as an R object we name <code>earthaccess</code>, as well as the <code>earthaccess$</code> syntax for accessing functions from the <code>earthaccess</code> library. The <code>granules</code> object has a list of JSON dictionaries with some extra dictionaries.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="do">## In R</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="do">## load R libraries</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) <span class="co"># install.packages("tidyverse") </span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reticulate) <span class="co"># install.packages("reticulate")</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="do">## load python library</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>earthaccess <span class="ot">&lt;-</span> reticulate<span class="sc">::</span><span class="fu">import</span>(<span class="st">"earthaccess"</span>) </span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="do">## use earthaccess to access data # https://nsidc.github.io/earthaccess/tutorials/search-granules/</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>granules <span class="ot">&lt;-</span> earthaccess<span class="sc">$</span><span class="fu">search_data</span>(</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">doi =</span> <span class="st">"10.5067/SLREF-CDRV3"</span>,</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">temporal =</span> reticulate<span class="sc">::</span><span class="fu">tuple</span>(<span class="st">"2017-01"</span>, <span class="st">"2017-02"</span>) <span class="co"># with an earthaccess update, this can be simply c() or list()</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="do">## Granules found: 72</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="do">## exploring</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>granules <span class="co"># this is the result of the get request. </span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(granules) <span class="co"># "list"</span></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="do">## granules &lt;- reticulate::py_to_r(granules) # Object to convert is not a Python object</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="using-the-web-interface" class="level3">
+<h3 class="anchored" data-anchor-id="using-the-web-interface">Using the web interface</h3>
+<p>See <a href="../../how-tos/find-data/earthdata_search.html"><strong>How do I find data using Earthdata Search?</strong></a> - in that tutorial, we found the dataset <em>ECCO Sea Surface Height - Monthly Mean 0.5 Degree (Version 4 Release 4)</em>, with the shortname <code>ECCO_L4_SSH_05DEG_MONTHLY_V4R4</code>.</p>
+</section>
+<section id="searching-programmatically" class="level3">
+<h3 class="anchored" data-anchor-id="searching-programmatically">Searching programmatically</h3>
+<p>The NASA cloud data is searchable programmatically via two methods - NASA’s own search service, and the NASA Spatio-Temporal Asset Catalog (STAC) API. To find data in R, we’ll mainly rely on the <a href="https://brazil-data-cube.github.io/rstac/">rstac</a> package. This enables us interact with the NASA <a href="https://stacspec.org/en">STAC</a> API to search for our data, and at the same time learn about STAC more generally. This will be useful as it is a common standard for distributing spatial data.</p>
+<p>We will also search for data using the <a href="https://cmr.earthdata.nasa.gov/search/site/docs/search/api.html">NASA Earthdata search API</a>, which is the service that powers the <a href="https://search.earthdata.nasa.gov/search">Earthdata web search portal</a>.</p>
+<p>For both of these services, the <a href="https://boettiger-lab.github.io/earthdatalogin/">earthdatalogin</a> package will help us get set up and provide a few handy functions to smooth some rough edges.</p>
+</section>
+<section id="authentication-for-nasa-earthdata" class="level3">
+<h3 class="anchored" data-anchor-id="authentication-for-nasa-earthdata">Authentication for NASA Earthdata</h3>
+<p>An Earthdata Login account is required to access data from the NASA Earthdata system. Please visit <a href="https://urs.earthdata.nasa.gov" class="uri">https://urs.earthdata.nasa.gov</a> to register and manage your Earthdata Login account. This account is free to create and only takes a moment to set up.</p>
+<p>Once you have created your Earthdata Login account, you can use the <a href="https://github.com/boettiger-lab/earthdatalogin/">earthdatalogin</a> R package to help you manage your authentication within R.</p>
+<p>There is some functionality currently only available in the development version of earthdatalogin, so we will install it from GitHub using the <a href="https://pak.r-lib.org/">pak</a> package:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"pak"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>pak<span class="sc">::</span><span class="fu">pak</span>(<span class="st">"boettiger-lab/earthdatalogin"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The easiest and most portable method of access is using the <code>netrc</code> basic authentication protocol for HTTP. Call <code>edl_netrc()</code> to set this up given your username and password. The easiest way to store your credentials for use in <code>edl_netrc()</code> is to set them as environment variables in your <code>~/.Renviron</code> file. The usethis package has a handy function to find and open this file for editing:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("usethis")</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">edit_r_environ</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Then add the following lines to the file, save the file, and restart R.</p>
+<pre><code>EARTHDATA_USER="your_user_name"
+EARTHDATA_PASSWORD="your_password"</code></pre>
+<p>Now, when you call <code>edl_netrc()</code>, it will consult these environment variables to create a <code>.netrc</code> file that will be used to authenticate with the NASA Earthdata services. If you don’t have your credentials saved as environment variables, <code>earthdatalogin</code> will provide its own credentials, but you may experience rate limits more readily. You can also manually type in your credentials to the <code>username</code> and <code>password</code> arguments to <code>edl_netrc()</code> but this is not recommended as it is too easy to accidentally share these in your code.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(earthdatalogin)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">edl_netrc</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Once <code>edl_netrc()</code> has been called in your R session, then most spatial packages in R can seamlessly access NASA Earthdata over HTTP links.</p>
+</section>
+<section id="finding-data-in-nasa-stacs-with-rstac" class="level3">
+<h3 class="anchored" data-anchor-id="finding-data-in-nasa-stacs-with-rstac">Finding data in NASA STACs with rstac</h3>
+<p>All of the NASA STAC catalogues can be viewed here: <a href="https://radiantearth.github.io/stac-browser/#/external/cmr.earthdata.nasa.gov/stac/" class="uri">https://radiantearth.github.io/stac-browser/#/external/cmr.earthdata.nasa.gov/stac/</a>.</p>
+<p>We will use the rstac package to first browse the collections in the PO DAAC catalogue (POCLOUD):</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="do">## In R</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="do">## load R libraries</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("pak") </span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># pak::pak(c("tidyverse", "rstac", "boettiger-lab/earthdatalogin"))</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rstac)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(earthdatalogin)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>po_collections <span class="ot">&lt;-</span> <span class="fu">stac</span>(<span class="st">"https://cmr.earthdata.nasa.gov/stac/POCLOUD/"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">collections</span>() <span class="sc">|&gt;</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">get_request</span>()</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>po_collections</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This only gives us the first 10 collections in the catalogue; to get the rest we can use the <code>collections_fetch()</code> function:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>all_po_collections <span class="ot">&lt;-</span> <span class="fu">collections_fetch</span>(po_collections)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>all_po_collections</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(all_po_collections<span class="sc">$</span>collections)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(all_po_collections<span class="sc">$</span>collections)</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Just look at the titles:</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(all_po_collections<span class="sc">$</span>collections, <span class="st">`</span><span class="at">[[</span><span class="st">`</span>, <span class="st">"title"</span>)</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Get shortnames from the 'id' field and search for a match:</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span>(<span class="st">"ECCO_L4_SSH"</span>, <span class="fu">sapply</span>(all_po_collections<span class="sc">$</span>collections, <span class="st">`</span><span class="at">[[</span><span class="st">`</span>, <span class="st">"id"</span>), <span class="at">value =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Once we have searched through the collections, we can choose the one we are interested in and query it to get the items (granules) we are interested in:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>start <span class="ot">&lt;-</span> <span class="st">"2015-01-01"</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>end   <span class="ot">&lt;-</span> <span class="st">"2015-12-31"</span> </span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>items <span class="ot">&lt;-</span> <span class="fu">stac</span>(<span class="st">"https://cmr.earthdata.nasa.gov/stac/POCLOUD"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stac_search</span>(<span class="at">collections =</span> <span class="st">"ECCO_L4_SSH_05DEG_MONTHLY_V4R4"</span>,</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>              <span class="at">datetime =</span> <span class="fu">paste</span>(start,end, <span class="at">sep =</span> <span class="st">"/"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">post_request</span>() <span class="sc">|&gt;</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">items_fetch</span>()</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>items</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>There are 13 ‘items’ representing the same 13 granules <a href="https://search.earthdata.nasa.gov/search/granules?p=C1990404799-POCLOUD&amp;pg%5B0%5D%5Bv%5D=f&amp;pg%5B0%5D%5Bgsk%5D=-start_date&amp;q=ECCO%20monthly%20SSH&amp;qt=2015-01-01T00:00:00.000Z,2015-12-31T23:59:59.999Z&amp;ff=Available%20in%20Earthdata%20Cloud&amp;tl=1713291266.503!3!!&amp;long=0.0703125">we found when we searched using EarthData Search</a>.</p>
+<p>We can see more details of the items (granules) by printing the <code>features</code> list item:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>items<span class="sc">$</span>features</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># And the urls:</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="fu">edl_stac_urls</span>(items)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="finding-data-in-nasa-earthdata-search-using-earthdatalogin" class="level3">
+<h3 class="anchored" data-anchor-id="finding-data-in-nasa-earthdata-search-using-earthdatalogin">Finding data in NASA EarthData Search using earthdatalogin</h3>
+<p>Once we know the shortname of a collection (usually by looking in the EarthData Search portal), we can supply it to <code>edl_search()</code> to get the metadata and file urls of the individual granules:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>granules <span class="ot">&lt;-</span> <span class="fu">edl_search</span>(</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">short_name =</span> <span class="st">"ECCO_L4_SSH_05DEG_MONTHLY_V4R4"</span>,</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">temporal =</span> <span class="fu">c</span>(start, end), </span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">parse_results =</span> <span class="cn">FALSE</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>granules</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>granules[[<span class="dv">1</span>]]</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="co"># See the granule titles</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(granules, <span class="st">`</span><span class="at">[</span><span class="st">`</span>, <span class="st">"title"</span>)</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Note these are the same urls obtained via the rstac workflow demonstrated above</span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>granule_urls <span class="ot">&lt;-</span> <span class="fu">edl_extract_urls</span>(granules)</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>granule_urls</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="accessing-data-using-the-terra-package" class="level4">
+<h4 class="anchored" data-anchor-id="accessing-data-using-the-terra-package">Accessing data using the <code>{terra}</code> package</h4>
+<p>We can read any of these urls using <code>terra::rast()</code>. We supply the <code>vsi = TRUE</code> argument, which prepends <code>"/vsicurl/"</code> to the url, indicating that the file should be opened as a “virtual” remote dataset. This allows random partial reading of files without prior download of the entire file. This will vastly speed up most operations as only the subset of the data required is ever actually downloaded.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(terra)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>rast <span class="ot">&lt;-</span> terra<span class="sc">::</span><span class="fu">rast</span>(granule_urls[<span class="dv">1</span>], <span class="at">vsi =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co"># This does not come with an extent and CRS embedded so we can supply it manually</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>granules[[<span class="dv">1</span>]]<span class="sc">$</span>boxes</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ext</span>(rast) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">180</span>, <span class="dv">180</span>, <span class="sc">-</span><span class="dv">90</span>, <span class="dv">90</span>)</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="fu">crs</span>(rast) <span class="ot">&lt;-</span> <span class="st">"EPSG:4326"</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(rast[[<span class="st">"SSH"</span>]])</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="co"># We notice that this plot is upside-down - it is likely that the NetCDF file</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="co"># does not conform properly to the conventions. But we can flip it:</span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>rast <span class="ot">&lt;-</span> <span class="fu">flip</span>(rast, <span class="at">direction =</span> <span class="st">"vertical"</span>)</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(rast)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>If we want to crop the raster, we can define an extent and crop it to that area. Because we previously called <code>edl_netrc()</code>, we are not only authenticated with the server so we can access the data, but we have also set up <code>terra</code> and <code>stars</code> to us the underlying <code>GDAL</code> library to access the data in such a way that only subset of the data we have requested is actually downloaded.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>crop_box <span class="ot">&lt;-</span> <span class="fu">rast</span>(<span class="at">extent =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">150</span>, <span class="sc">-</span><span class="dv">120</span>, <span class="dv">35</span>, <span class="dv">60</span>), <span class="at">crs =</span> <span class="st">"EPSG:4326"</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>rast_cropped <span class="ot">&lt;-</span> <span class="fu">crop</span>(rast, crop_box)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(rast_cropped[[<span class="st">"SSH"</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="accessing-data-using-the-stars-package" class="level4">
+<h4 class="anchored" data-anchor-id="accessing-data-using-the-stars-package">Accessing data using the <code>{stars}</code> package</h4>
+<p>The <code>read_*</code> functions in stars do not have the <code>vsi</code> argument, but we can do the same thing simply by prepending <code>"/vsicurl/"</code> to the url ourselves. Here we will use the <code>read_mdim()</code> function.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stars)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>ssh_stars <span class="ot">&lt;-</span> <span class="fu">read_mdim</span>(<span class="fu">paste0</span>(<span class="st">"/vsicurl/"</span>, granule_urls[<span class="dv">1</span>]))</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(ssh_stars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We can again crop this using the same bounding box as we did with terra:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">st_crop</span>(</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  ssh_stars, </span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_bbox</span>(<span class="fu">c</span>(<span class="at">xmin =</span> <span class="sc">-</span><span class="dv">150</span>, <span class="at">xmax =</span> <span class="sc">-</span><span class="dv">120</span>, <span class="at">ymin =</span> <span class="dv">35</span>, <span class="at">ymax =</span> <span class="dv">60</span>))</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span> </span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="accessing-data-using-gdalcubes" class="level3">
+<h3 class="anchored" data-anchor-id="accessing-data-using-gdalcubes">Accessing data using gdalcubes</h3>
+<p><em>Coming soon!</em></p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -984,7 +1134,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <div class="nav-footer-left">NASA Earthdata Cloud Cookbook, © NASA Openscapes Team (2023).</div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/edit/main/how-tos/find-data/find-r.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/blob/main/how-tos/find-data/find-r.qmd" class="toc-action">View source</a></p><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/issues/new" class="toc-action">Report an issue</a></p></div></div></div>
+    </div>
     <div class="nav-footer-right">
       &nbsp;
     </div>
