@@ -4,6 +4,9 @@ execute:
   eval: false
 ---
 
+*This is a work in progress, and may be split up into different modules/tutorials
+as we continue to work on it.*
+
 Here are our recommended approaches for finding data with R, from the command line or a notebook.
 
 ### Using the web interface
@@ -14,7 +17,7 @@ See [**How do I find data using Earthdata Search?**](earthdata_search.md) - in t
 
 The NASA cloud data is searchable programmatically via two methods - NASA's own
 search service, and the NASA Spatio-Temporal Asset Catalog (STAC) API. To find
-data in R, we'll mainly rely on the
+data in R, we'll mainly rely on the 
 [rstac](https://brazil-data-cube.github.io/rstac/) package. This enables us
 interact with the NASA [STAC](https://stacspec.org/en) API to search for our
 data, and at the same time learn about STAC more generally. This will be useful
@@ -29,7 +32,7 @@ For both of these services, the
 [earthdatalogin](https://boettiger-lab.github.io/earthdatalogin/) package will
 help us get set up and provide a few handy functions to smooth some rough edges.
 
-## Authentication for NASA Earthdata 
+### Authentication for NASA Earthdata 
 
 An Earthdata Login account is required to access data from the NASA Earthdata
 system. Please visit <https://urs.earthdata.nasa.gov> to register and manage
@@ -110,7 +113,6 @@ This only gives us the first 10 collections in the catalogue; to get the rest
 we can use the `collections_fetch()` function:
 
 ```{r}
-#| eval: false
 all_po_collections <- collections_fetch(po_collections)
 all_po_collections
 
@@ -153,7 +155,7 @@ items$features
 edl_stac_urls(items)
 ```
 
-### Finding data using earthdatalogin
+### Finding data in NASA EarthData Search using earthdatalogin
 
 Once we know the shortname of a collection (usually by looking in the EarthData Search portal), we can supply it to `edl_search()` to get the metadata and file urls of the individual granules:
 
@@ -168,6 +170,7 @@ granules
 
 granules[[1]]
 
+# See the granule titles
 sapply(granules, `[`, "title")
 
 # Note these are the same urls obtained via the rstac workflow demonstrated above
@@ -175,7 +178,7 @@ granule_urls <- edl_extract_urls(granules)
 granule_urls
 ```
 
-#### Using the `{terra}` package
+#### Accessing data using the `{terra}` package
 
 We can read any of these urls using `terra::rast()`. We supply the `vsi = TRUE` 
 argument, which prepends `"/vsicurl/"` to the url, indicating that the file
@@ -204,8 +207,7 @@ plot(rast)
 If we want to crop the raster, we can define an extent and crop it to that area.
 Because we previously called `edl_netrc()`, we are not only authenticated with 
 the server so we can access the data, but we have also set up `terra` and `stars`
-to access the data in such a way that only the subset of the data
-we have requested is actually downloaded.
+to us the underlying `GDAL` library to access the data in such a way that only \the subset of the data we have requested is actually downloaded.
 
 ```{r}
 crop_box <- rast(extent = c(-150, -120, 35, 60), crs = "EPSG:4326")
@@ -215,7 +217,7 @@ rast_cropped <- crop(rast, crop_box)
 plot(rast_cropped[["SSH"]])
 ```
 
-#### Using the `{stars}` package
+#### Accessing data using the `{stars}` package
 
 The `read_*` functions in stars do not have the `vsi` argument, but we can do
 the same thing simply by prepending `"/vsicurl/"` to the url ourselves. Here 
@@ -231,8 +233,15 @@ plot(ssh_stars)
 We can again crop this using the same bounding box as we did with terra:
 
 ```{r}
-st_crop(ssh_stars, st_bbox(c(xmin = -150, xmax = -120, ymin = 35, ymax = 60))) |> 
+st_crop(
+  ssh_stars, 
+  st_bbox(c(xmin = -150, xmax = -120, ymin = 35, ymax = 60))
+) |> 
   plot()
 ```
 
 
+
+### Accessing data using gdalcubes
+
+*Coming soon!*
