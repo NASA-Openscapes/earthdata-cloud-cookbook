@@ -6,6 +6,29 @@ execute:
 
 Here are our recommended approaches for finding data with R, from the command line or a notebook.
 
+### Using the web interface
+
+See [**How do I find data using Earthdata Search?**](earthdata_search.md) - in that tutorial, we found the dataset *ECCO Sea Surface Height - Monthly Mean 0.5 Degree (Version 4 Release 4)*, with the shortname `ECCO_L4_SSH_05DEG_MONTHLY_V4R4`.
+
+### Searching programmatically
+
+The NASA cloud data is searchable programmatically via two methods - NASA's own
+search service, and the NASA Spatio-Temporal Asset Catalog (STAC) API. To find
+data in R, we'll mainly rely on the
+[rstac](https://brazil-data-cube.github.io/rstac/) package. This enables us
+interact with the NASA [STAC](https://stacspec.org/en) API to search for our
+data, and at the same time learn about STAC more generally. This will be useful
+as it is a common standard for distributing spatial data.
+
+We will also search for data using the 
+[NASA Earthdata search API](https://cmr.earthdata.nasa.gov/search/site/docs/search/api.html), 
+which is the service that powers the 
+[Earthdata web search portal](https://search.earthdata.nasa.gov/search).
+
+For both of these services, the
+[earthdatalogin](https://boettiger-lab.github.io/earthdatalogin/) package will
+help us get set up and provide a few handy functions to smooth some rough edges.
+
 ## Authentication for NASA Earthdata 
 
 An Earthdata Login account is required to access data from the NASA Earthdata
@@ -50,7 +73,7 @@ limits more readily. You can also manually type in your credentials to the `user
 and `password` arguments to `edl_netrc()` but this is not recommended as it 
 is too easy to accidentally share these in your code.
 
-```r
+```{r}
 library(earthdatalogin)
 
 edl_netrc()
@@ -59,26 +82,7 @@ edl_netrc()
 Once `edl_netrc()` has been called in your R session, then most spatial 
 packages in R can seamlessly access NASA Earthdata over HTTP links.
 
-## Searching for data
-
-The NASA cloud data is searchable programmatically via two methods - NASA's own
-search service, and the NASA Spatio-Temporal Asset Catalog (STAC) API. To find
-data in R, we'll mainly rely on the
-[rstac](https://brazil-data-cube.github.io/rstac/) package. This enables us
-interact with the NASA [STAC](https://stacspec.org/en) API to search for our
-data, and at the same time learn about STAC more generally. This will be useful
-as it is a common standard for distributing spatial data.
-
-We will also search for data using the 
-[NASA Earthdata search API](https://cmr.earthdata.nasa.gov/search/site/docs/search/api.html), 
-which is the service that powers the 
-[Earthdata web search portal](https://search.earthdata.nasa.gov/search?fst0=atmosphere).
-
-For both of these services, the
-[earthdatalogin](https://boettiger-lab.github.io/earthdatalogin/) package will
-help us get set up and provide a few handy functions to smooth some rough edges.
-
-### rstac
+### Finding data in NASA STACs with rstac
 
 All of the NASA STAC catalogues can be viewed here: 
 <https://radiantearth.github.io/stac-browser/#/external/cmr.earthdata.nasa.gov/stac/>.
@@ -106,6 +110,7 @@ This only gives us the first 10 collections in the catalogue; to get the rest
 we can use the `collections_fetch()` function:
 
 ```{r}
+#| eval: false
 all_po_collections <- collections_fetch(po_collections)
 all_po_collections
 
@@ -113,20 +118,22 @@ length(all_po_collections$collections)
 
 head(all_po_collections$collections)
 
+# Just look at the titles:
 sapply(all_po_collections$collections, `[[`, "title")
-grep("MUR-JPL", sapply(all_po_collections$collections, `[[`, "id"), value = TRUE)
+
+# Get shortnames from the 'id' field and search for a match:
+grep("ECCO_L4_SSH", sapply(all_po_collections$collections, `[[`, "id"), value = TRUE)
 ```
 
 Once we have searched through the collections, we can choose the one we are 
 interested in and query it to get the items (granules) we are interested in:
 
 ```{r}
-
-start <- "2020-01-01"
-end   <- "2020-01-03" 
+start <- "2015-01-01"
+end   <- "2015-12-31" 
 
 items <- stac("https://cmr.earthdata.nasa.gov/stac/POCLOUD") |> 
-  stac_search(collections = "MUR-JPL-L4-GLOB-v4.1",
+  stac_search(collections = "ECCO_L4_SSH_05DEG_MONTHLY_V4R4",
               datetime = paste(start,end, sep = "/")) |>
   post_request() |>
   items_fetch()
@@ -134,14 +141,91 @@ items <- stac("https://cmr.earthdata.nasa.gov/stac/POCLOUD") |>
 items
 ```
 
+There are 13 'items' representing the same 13 granules [we found when we searched using EarthData Search](https://search.earthdata.nasa.gov/search/granules?p=C1990404799-POCLOUD&pg%5B0%5D%5Bv%5D=f&pg%5B0%5D%5Bgsk%5D=-start_date&q=ECCO%20monthly%20SSH&qt=2015-01-01T00:00:00.000Z,2015-12-31T23:59:59.999Z&ff=Available%20in%20Earthdata%20Cloud&tl=1713291266.503!3!!&long=0.0703125).
 
+We can see more details of the items (granules) by printing the `features` list
+item:
 
+```{r}
+items$features
+
+# And the urls:
+edl_stac_urls(items)
+```
+
+### Finding data using earthdatalogin
+
+Once we know the shortname of a collection (usually by looking in the EarthData Search portal), we can supply it to `edl_search()` to get the metadata and file urls of the individual granules:
+
+```{r}
+granules <- edl_search(
+  short_name = "ECCO_L4_SSH_05DEG_MONTHLY_V4R4",
+  temporal = c(start, end), 
+  parse_results = FALSE
+)
+
+granules
+
+granules[[1]]
+
+sapply(granules, `[`, "title")
+
+# Note these are the same urls obtained via the rstac workflow demonstrated above
+granule_urls <- edl_extract_urls(granules)
+granule_urls
+```
+
+#### Using the `{terra}` package
+
+We can read any of these urls using `terra::rast()`. We supply the `vsi = TRUE` 
+argument, which prepends `"/vsicurl/"` to the url, indicating that the file
+should be opened as a "virtual" remote dataset. This allows random partial 
+reading of files without prior download of the entire file. This will vastly speed up
+most operations as only the subset of the data required is ever actually downloaded.
 
 ```{r}
 library(terra)
-urls <- edl_search(short_name = "MUR-JPL-L4-GLOB-v4.1",
-                   temporal = c(start, end))
 
-terra::rast(paste0("/vsicurl/", urls[1]))
+rast <- terra::rast(granule_urls[1], vsi = TRUE)
 
+# This does not come with an extent and CRS so we can supply it manually
+granules[[1]]$boxes
+ext(rast) <- c(-180, 180, -90, 90)
+crs(rast) <- "EPSG:4326"
+
+plot(rast[["SSH"]])
+
+# We notice that this plot is upside-down - it is likely that the NetCDF file
+# does not conform properly to the conventions. But we can flip it:
+rast <- flip(rast, direction = "vertical")
+plot(rast)
 ```
+
+If we want to crop the raster, we can define an extent and crop it to that area.
+Because we previously called `edl_netrc()`, we are not only authenticated with 
+the server so we can access the data, but we have also set up `terra` and `stars`
+to access the data in such a way that only the subset of the data
+we have requested is actually downloaded.
+
+```{r}
+crop_box <- rast(extent = c(-150, -120, 35, 60), crs = "EPSG:4326")
+
+rast_cropped <- crop(rast, crop_box)
+
+plot(rast_cropped[["SSH"]])
+```
+
+#### Using the `{stars}` package
+
+The `read_*` functions in stars do not have the `vsi` argument, but we can do
+the same thing simply by prepending `"/vsicurl/"` to the url ourselves:
+
+```{r}
+library(stars)
+ssh_stars <- read_mdim(paste0("/vsicurl/", granule_urls[1]))
+
+plot(ssh_stars)
+```
+
+We can 
+
