@@ -4,7 +4,48 @@ title: How to Add Folks to the 2i2c Hub
 
 We use GitHub Teams to manage access to the 2i2c Hub. To accomplish this, we use a dedicated GitHub Organization - [nasa-openscapes-workshops](https://github.com/nasa-openscapes-workshops) - with [GitHub Teams](https://github.com/orgs/nasa-openscapes-workshops/teams) for admin (people who can add others to the Hub), workshop participants, Champions Cohorts, and long term access.
 
-People are given Openscapes 2i2c JupyterHub access for workshops run by NASA Openscapes Mentors. This is the workflow to add individual users one by one. When we have a list of workshop participants, there are quicker ways to add all at once; we'll document that after testing.
+People are given Openscapes 2i2c JupyterHub access for workshops run by NASA Openscapes Mentors.
+
+## 1. Create a team in [nasa-openscapes-workshops](https://github.com/orgs/nasa-openscapes-workshops/teams)
+
+There are several teams in this organization; the `AdminTeam` team is for 
+members who have permission to create teams and add members to teams.
+
+- If this is for a one-off workshop, name the team `[workshop-name]-[workshop-date]`, with 
+workshop date in the format `yyyy-mm-dd`
+- If this is for a new champions cohort, name the team `nasa-champtions-yyyy`
+
+## 2. Add teams to 2i2c Hub configuration
+
+Make a pull request to the [common.values.yaml](https://github.com/2i2c-org/infrastructure/blob/main/config/clusters/openscapes/common.values.yaml) file, adding the new team
+to the `allowed-teams` item in whichever sections are appropriate for your
+workshop/cohort:
+
+- `display_name: Python`
+- `display_name: R`
+- `display_name: Matlab`
+- `display_name: "Bring your own image"`
+
+These will dictate which images are available to participants when they log in 
+to the hub.
+
+Team specification is in the form `[github-org]:[team]` (e.g., `nasa-openscapes-workshops:champions-access-2i2c-2024`)
+
+You also need to add the team to the `allowed_organizations` item under 
+`hub > config > GitHubOAuthenticator`
+
+You can see an example pull request [here](https://github.com/2i2c-org/infrastructure/pull/3944).
+
+
+
+
+
+
+
+
+
+
+This is the workflow to add individual users one by one. When we have a list of workshop participants, there are quicker ways to add all at once; we'll document that after testing.
 
 ## 1. Share Google Form with participants
 
