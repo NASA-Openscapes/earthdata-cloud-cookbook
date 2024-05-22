@@ -132,7 +132,12 @@ members who have permission to create teams and add members to teams.
 workshop date in the format `yyyy-mm-dd`
 - If this is for a new champions cohort, name the team `nasa-champtions-yyyy`
 
-### 2. Add teams to 2i2c Hub configuration
+### 2. Add team name to workshop registry
+
+We keep a registry of all workshops in [this sheet](https://docs.google.com/spreadsheets/d/1Sg4fMDGxMLI0p5cgK5xyamFJpKC6NyNneqXLDReSKcg/edit#gid=695033382). Add the name 
+of the GitHub team to `2i2c access type` column in the appropriate row.
+
+### 3. Add teams to 2i2c Hub configuration
 
 Make a pull request to the Openscapes [common.values.yaml](https://github.com/2i2c-org/infrastructure/blob/main/config/clusters/openscapes/common.values.yaml) file in 
 the 2i2c infrastructure repository, adding the new team to the `allowed-teams` 
@@ -153,12 +158,12 @@ You also need to add the team to the `allowed_organizations` item under
 
 You can see an example pull request [here](https://github.com/2i2c-org/infrastructure/pull/3944).
 
-### 3. Share Google Form with participants needing access for the cohort or workshop
+### 4. Share Google Form with participants needing access for the cohort or workshop
 
 Ask users: Please add your GitHub Username to this [Google form](https://forms.gle/htV2PxJwRaP8jDpC6) 
 for NASA Openscapes JupyterHub Access.
 
-### 4. Add users to a team in a batch using [kyber](https://github.com/Openscapes/kyber)
+### 5. Add users to a team in a batch using [kyber](https://github.com/Openscapes/kyber)
 
 ::: {.callout-tip}
 Do this fairly close to the day of the workshop to try to get the greatest 
