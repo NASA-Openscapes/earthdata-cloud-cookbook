@@ -21,7 +21,7 @@ Access for for cohorts and workshop participants currently uses the [same
 workflow](#adding-workshop-participants-or-champions-cohorts-as-a-batch).
 
 We are also working on a method to give just-in-time access for specific workshops
-without using GitHub teams or other managed access. Details of this process will 
+without using GitHub Teams or other managed access. Details of this process will be
 added as we finalize it.
 
 ## Individual long-term access
@@ -62,7 +62,7 @@ If you are adding many new mentors to the long-term access team, you can use the
 same steps as [for adding workshop participants](#4-add-users-to-a-team-in-a-batch-using-kyber)
 :::
 
-Go to the NASA Openscapes [LongtermAccess-2i2c Team](https://github.com/orgs/nasa-openscapes/teams/longtermaccess-2i2c) in GitHub \> Click Add member \> Paste GitHub username. Note there are separate [GitHub Teams](https://github.com/orgs/nasa-openscapes-workshops/teams) for Champions Cohorts and individual workshops.
+Go to the NASA Openscapes [LongtermAccess-2i2c Team](https://github.com/orgs/nasa-openscapes/teams/longtermaccess-2i2c) in GitHub \> Click Add member \> Paste GitHub username. Note there are separate [GitHub Teams](https://github.com/orgs/nasa-openscapes-workshops/teams) for Champions Cohorts and workshops.
 
 ![](images/github-add-to-team.png){fig-alt="alt text goes here" fig-align="center" width="436"}
 
@@ -82,7 +82,7 @@ This is what the invitation looks like in the GitHub website interface - clickin
 
 ### 6. Email confirmation
 
-Go back to the form and grab their email address. Send the following emails to the person.
+Go back to the Google form response and grab their email address. Send the following emails to the person.
 
 **Email for General requests:** 
 
@@ -99,7 +99,7 @@ Go back to the form and grab their email address. Send the following emails to t
 
 ### 7. Register date in Form Response Sheet
 
-In the [Form Response Sheet](https://docs.google.com/spreadsheets/d/1TgokoQa-jYncYSOjeYoWYRuDAbyo4uUR-MSzUotvM00/edit?resourcekey#gid=1416760746), in Column G add the date they were added to the Hub, or if the request came via 
+In the [Form Response Sheet](https://docs.google.com/spreadsheets/d/1TgokoQa-jYncYSOjeYoWYRuDAbyo4uUR-MSzUotvM00/edit?resourcekey#gid=1416760746), in column `Added to NASA 2i2c hub` add the date they were added to the Hub, or if the request came via 
 email add a new row - in part so that we as admins knew if someone had already fulfilled the request. Check Column A for the date of the form request.
 
 ### Directions for invitees
@@ -130,7 +130,7 @@ members who have permission to create teams and add members to teams.
 
 - If this is for a one-off workshop, name the team `[workshop-name]-[workshop-date]`, with 
 workshop date in the format `yyyy-mm-dd`
-- If this is for a new champions cohort, name the team `nasa-champtions-yyyy`
+- If this is for a new champions cohort, name the team `nasa-champions-yyyy`
 
 ### 2. Add team name to workshop registry
 
@@ -149,7 +149,7 @@ item in whichever sections are appropriate for your workshop/cohort:
 - `display_name: "Bring your own image"`
 
 These will determine which images are available to participants when they log in 
-to the hub.
+to the Hub.
 
 Team specification is in the form `[github-org]:[team]` (e.g., `nasa-openscapes-workshops:champions-access-2i2c-2024`)
 
@@ -163,7 +163,7 @@ You can see an example pull request [here](https://github.com/2i2c-org/infrastru
 Ask users: Please add your GitHub Username to this [Google form](https://forms.gle/htV2PxJwRaP8jDpC6) 
 for NASA Openscapes JupyterHub Access.
 
-### 5. Add users to a team in a batch using [kyber](https://github.com/Openscapes/kyber)
+### 5. Add users to a Team in a batch using [kyber](https://github.com/Openscapes/kyber)
 
 ::: {.callout-tip}
 Do this fairly close to the day of the workshop to try to get the greatest 
@@ -171,7 +171,7 @@ number particpants to have filled out the form, and reduce the number of manual
 additions on the day of the workshop.
 :::
 
-1. Open the [spreadsheet of form responses](https://docs.google.com/spreadsheets/d/1TgokoQa-jYncYSOjeYoWYRuDAbyo4uUR-MSzUotvM00/edit?resourcekey#gid=1416760746), select the rows containing the people you want to add, and copy it to your clipboard.
+1. Open the [spreadsheet of form responses](https://docs.google.com/spreadsheets/d/1TgokoQa-jYncYSOjeYoWYRuDAbyo4uUR-MSzUotvM00/edit?resourcekey#gid=1416760746), select the GitHub usernames from the rows containing the people you want to add, and copy it to your clipboard.
 
 ::: {.callout-tip}
 Some workshop instructors will use their own form to record participants,
@@ -193,7 +193,7 @@ rather than the Openscapes form. In that case use those responses instead.
   ```
   
   The `responses` object will have a column of usernames. It likely won't be 
-  called `username`, so you can rename it orm even easierm change the name inside
+  called `username`, so you can rename it or even easier, change the name inside
   the `tribble::tribble()` call that you pasted. Verify these are the usernames
   you want to add, and run `kyber::add_team_members()` as follows:
   
