@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -545,20 +579,32 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#share-google-form-with-participants" id="toc-share-google-form-with-participants" class="nav-link active" data-scroll-target="#share-google-form-with-participants">1. Share Google Form with participants</a></li>
+  <li><a href="#individual-long-term-access" id="toc-individual-long-term-access" class="nav-link active" data-scroll-target="#individual-long-term-access">Individual long-term access</a>
+  <ul class="collapse">
+  <li><a href="#share-google-form-with-users-needing-long-term-access" id="toc-share-google-form-with-users-needing-long-term-access" class="nav-link" data-scroll-target="#share-google-form-with-users-needing-long-term-access">1. Share Google Form with users needing long-term access</a></li>
   <li><a href="#google-form-response-setup" id="toc-google-form-response-setup" class="nav-link" data-scroll-target="#google-form-response-setup">2. Google Form response setup</a></li>
   <li><a href="#email-alert-of-new-signup" id="toc-email-alert-of-new-signup" class="nav-link" data-scroll-target="#email-alert-of-new-signup">3. Email alert of new signup</a></li>
   <li><a href="#copy-github-username" id="toc-copy-github-username" class="nav-link" data-scroll-target="#copy-github-username">4. Copy GitHub username</a></li>
-  <li><a href="#add-github-username-to-a-github-team" id="toc-add-github-username-to-a-github-team" class="nav-link" data-scroll-target="#add-github-username-to-a-github-team">5. Add GitHub username to a GitHub Team</a></li>
+  <li><a href="#add-github-username-to-the-github-team" id="toc-add-github-username-to-the-github-team" class="nav-link" data-scroll-target="#add-github-username-to-the-github-team">5. Add GitHub username to the GitHub Team</a></li>
   <li><a href="#email-confirmation" id="toc-email-confirmation" class="nav-link" data-scroll-target="#email-confirmation">6. Email confirmation</a></li>
   <li><a href="#register-date-in-form-response-sheet" id="toc-register-date-in-form-response-sheet" class="nav-link" data-scroll-target="#register-date-in-form-response-sheet">7. Register date in Form Response Sheet</a></li>
+  <li><a href="#directions-for-invitees" id="toc-directions-for-invitees" class="nav-link" data-scroll-target="#directions-for-invitees">Directions for invitees</a></li>
+  </ul></li>
+  <li><a href="#adding-workshop-participants-or-champions-cohorts-as-a-batch" id="toc-adding-workshop-participants-or-champions-cohorts-as-a-batch" class="nav-link" data-scroll-target="#adding-workshop-participants-or-champions-cohorts-as-a-batch">Adding workshop participants or Champions cohorts as a batch</a>
+  <ul class="collapse">
+  <li><a href="#create-a-team-in-nasa-openscapes-workshops" id="toc-create-a-team-in-nasa-openscapes-workshops" class="nav-link" data-scroll-target="#create-a-team-in-nasa-openscapes-workshops">1. Create a team in nasa-openscapes-workshops</a></li>
+  <li><a href="#add-team-name-to-workshop-registry" id="toc-add-team-name-to-workshop-registry" class="nav-link" data-scroll-target="#add-team-name-to-workshop-registry">2. Add team name to workshop registry</a></li>
+  <li><a href="#add-teams-to-2i2c-hub-configuration" id="toc-add-teams-to-2i2c-hub-configuration" class="nav-link" data-scroll-target="#add-teams-to-2i2c-hub-configuration">3. Add teams to 2i2c Hub configuration</a></li>
+  <li><a href="#share-google-form-with-participants-needing-access-for-the-cohort-or-workshop" id="toc-share-google-form-with-participants-needing-access-for-the-cohort-or-workshop" class="nav-link" data-scroll-target="#share-google-form-with-participants-needing-access-for-the-cohort-or-workshop">4. Share Google Form with participants needing access for the cohort or workshop</a></li>
+  <li><a href="#add-users-to-a-team-in-a-batch-using-kyber" id="toc-add-users-to-a-team-in-a-batch-using-kyber" class="nav-link" data-scroll-target="#add-users-to-a-team-in-a-batch-using-kyber">5. Add users to a Team in a batch using kyber</a></li>
   <li><a href="#directions-for-workshop-participants" id="toc-directions-for-workshop-participants" class="nav-link" data-scroll-target="#directions-for-workshop-participants">Directions for workshop participants</a></li>
+  </ul></li>
   <li><a href="#troubleshooting" id="toc-troubleshooting" class="nav-link" data-scroll-target="#troubleshooting">Troubleshooting</a>
   <ul class="collapse">
   <li><a href="#users-get-403-error" id="toc-users-get-403-error" class="nav-link" data-scroll-target="#users-get-403-error">Users get 403 error</a></li>
   <li><a href="#didnt-get-email" id="toc-didnt-get-email" class="nav-link" data-scroll-target="#didnt-get-email">Didn’t get email</a></li>
-  </ul></li>
   <li><a href="#notes-on-process-and-any-issues" id="toc-notes-on-process-and-any-issues" class="nav-link" data-scroll-target="#notes-on-process-and-any-issues">Notes on process and any issues</a></li>
+  </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/edit/main/leading-workshops/add-folks-to-2i2c-github-teams.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/blob/main/leading-workshops/add-folks-to-2i2c-github-teams.qmd" class="toc-action">View source</a></p><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
@@ -582,15 +628,32 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>We use GitHub Teams to manage access to the 2i2c Hub. To accomplish this, we use a dedicated GitHub Organization - <a href="https://github.com/nasa-openscapes-workshops">nasa-openscapes-workshops</a> - with <a href="https://github.com/orgs/nasa-openscapes-workshops/teams">GitHub Teams</a> for admin (people who can add others to the Hub), workshop participants, Champions Cohorts, and long term access.</p>
-<p>People are given Openscapes 2i2c JupyterHub access for workshops run by NASA Openscapes Mentors. This is the workflow to add individual users one by one. When we have a list of workshop participants, there are quicker ways to add all at once; we’ll document that after testing.</p>
-<section id="share-google-form-with-participants" class="level2">
-<h2 class="anchored" data-anchor-id="share-google-form-with-participants">1. Share Google Form with participants</h2>
-<p>Ask participants: Please add your GitHub Username to this <a href="https://forms.gle/XRPsKiqaZC4bkYoi8">Google form</a> for NASA Openscapes JupyterHub Access.</p>
+<!--
+Move out of leading-workshops - Create "Administration" chapter
+Three patterns: 
+- One-offs (Long-Term-Access in NASA-Openscapes)
+- Workshops
+- Cohorts
+-->
+<p>We use GitHub Teams to manage access to the 2i2c Hub. There are three different patterns of access:</p>
+<ol type="1">
+<li><a href="#individual-long-term-access">Individually-managed long-term access for NASA-Openscapes mentors and others</a></li>
+<li>Access for participants in a NASA-Openscapes champions cohort</li>
+<li>Access for participants in a workshop</li>
+</ol>
+<p>Access for for cohorts and workshop participants currently uses the <a href="#adding-workshop-participants-or-champions-cohorts-as-a-batch">same workflow</a>.</p>
+<p>We are also working on a method to give just-in-time access for specific workshops without using GitHub Teams or other managed access. Details of this process will be added as we finalize it.</p>
+<section id="individual-long-term-access" class="level2">
+<h2 class="anchored" data-anchor-id="individual-long-term-access">Individual long-term access</h2>
+<p>Individuals are given long-term access by adding them as members of the <a href="https://github.com/orgs/NASA-Openscapes/teams/longtermaccess-2i2c">LongtermAccess-2i2c team in the NASA-Openscapes organization</a>.</p>
+<p>This is the workflow to add individual users one by one.</p>
+<section id="share-google-form-with-users-needing-long-term-access" class="level3">
+<h3 class="anchored" data-anchor-id="share-google-form-with-users-needing-long-term-access">1. Share Google Form with users needing long-term access</h3>
+<p>Ask users: Please add your GitHub Username to this <a href="https://forms.gle/htV2PxJwRaP8jDpC6">Google form</a> for NASA Openscapes JupyterHub Access. Requests also sometimes come in via email directly from NASA mentors.</p>
 </section>
-<section id="google-form-response-setup" class="level2">
-<h2 class="anchored" data-anchor-id="google-form-response-setup">2. Google Form response setup</h2>
-<p>Set the form responses <a href="https://docs.google.com/forms/d/1xeSEv_NWIay00M8wWp5NSCFxGtIZvLd148VuRMwPYSs/edit#response=ACYDBNibER-tNcT6dFTmMU54wY9-yl2B-W3kYhQH2PMv_y7uUDbjg1u22FeO0qLZAJIC9BY">Openscapes_JupyterHubAccess</a> to notify when there are responses. Also do this for any separate sheets used for workshop JupyterHub registration<!--- [this sheet](https://docs.google.com/spreadsheets/d/1ipMjDIk7B7oiwanThwXjA_m2JvKA0wbGE01u-Azu75A/edit#gid=1514300535) ---> Click on Responses &gt; click three vertical dots and then check “email notification.”</p>
+<section id="google-form-response-setup" class="level3">
+<h3 class="anchored" data-anchor-id="google-form-response-setup">2. Google Form response setup</h3>
+<p>Set the form responses in <a href="https://docs.google.com/forms/d/1P_EudQKv3VzoceNSZLv1a3hHM59bZNIvCnwDEeKKvY4/edit#response=ACYDBNiewOAkYG0UxG2XcAmnfnWclek1AAtHeze3mxyaFBF0znCbwqf1TZA6IMHrkGeOXJo">Openscapes_JupyterHubAccess</a> to notify when there are responses: Click on Responses &gt; click three vertical dots and then check “email notification.”</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/google-form.png" class="img-fluid figure-img" alt="alt text goes here" width="391"></p>
@@ -602,8 +665,8 @@ ul.task-list li input[type="checkbox"] {
 </figure>
 </div>
 </section>
-<section id="email-alert-of-new-signup" class="level2">
-<h2 class="anchored" data-anchor-id="email-alert-of-new-signup">3. Email alert of new signup</h2>
+<section id="email-alert-of-new-signup" class="level3">
+<h3 class="anchored" data-anchor-id="email-alert-of-new-signup">3. Email alert of new signup</h3>
 <p>When you get an email click ‘<strong>view response</strong>’ (not <code>view summary</code>)</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -611,20 +674,33 @@ ul.task-list li input[type="checkbox"] {
 </figure>
 </div>
 </section>
-<section id="copy-github-username" class="level2">
-<h2 class="anchored" data-anchor-id="copy-github-username">4. Copy GitHub username</h2>
+<section id="copy-github-username" class="level3">
+<h3 class="anchored" data-anchor-id="copy-github-username">4. Copy GitHub username</h3>
 <p>On the response page, copy the Github Username <img src="images/google-form-gh-username.png" class="img-fluid" alt="alt text goes here" width="406"></p>
 </section>
-<section id="add-github-username-to-a-github-team" class="level2">
-<h2 class="anchored" data-anchor-id="add-github-username-to-a-github-team">5. Add GitHub username to a GitHub Team</h2>
-<p>For workshop participants, go to the <a href="https://github.com/orgs/nasa-openscapes-workshops/teams/workshopaccess-2i2c">WorkshopAccess-2i2c Team</a> in GitHub &gt; Click Add member &gt; Paste GitHub username. Note there are a separate <a href="https://github.com/orgs/nasa-openscapes-workshops/teams">GitHub Teams</a> for Champions Cohorts and long term access.</p>
+<section id="add-github-username-to-the-github-team" class="level3">
+<h3 class="anchored" data-anchor-id="add-github-username-to-the-github-team">5. Add GitHub username to the GitHub Team</h3>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If you are adding many new mentors to the long-term access team, you can use the same steps as <a href="#4-add-users-to-a-team-in-a-batch-using-kyber">for adding workshop participants</a></p>
+</div>
+</div>
+<p>Go to the NASA Openscapes <a href="https://github.com/orgs/nasa-openscapes/teams/longtermaccess-2i2c">LongtermAccess-2i2c Team</a> in GitHub &gt; Click Add member &gt; Paste GitHub username. Note there are separate <a href="https://github.com/orgs/nasa-openscapes-workshops/teams">GitHub Teams</a> for Champions Cohorts and workshops.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/github-add-to-team.png" class="img-fluid figure-img" alt="alt text goes here" width="436"></p>
 </figure>
 </div>
-<p>GitHub will ask you for 2-factor authentication for the first one you add in a batch, not after that.</p>
-<p>People may see invitation notifications in two ways. They must accept the invitation to be able to access the Hub. This is what it looks like in their email inbox:</p>
+<p>GitHub may ask you for 2-factor authentication for the first one you add in a batch, not after that.</p>
+<p>People may see invitation notifications in two ways; in GitHub itself, and/or via email. They must accept the invitation to be able to access the Hub. This is what it looks like in their email inbox:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/github-notification-email.png" class="img-fluid figure-img" alt="alt text goes here" width="439"></p>
@@ -642,40 +718,27 @@ ul.task-list li input[type="checkbox"] {
 </figure>
 </div>
 </section>
-<section id="email-confirmation" class="level2">
-<h2 class="anchored" data-anchor-id="email-confirmation">6. Email confirmation</h2>
-<p>Go back to the form and grab their email address. Send one of the following emails to the person.</p>
-<p><strong>Email for workshop specific:</strong>&nbsp;</p>
-<blockquote class="blockquote">
-<p>Subject: NASA Openscapes Access to 2i2c Hub<br>
-Hi [FIRST NAME],</p>
-<p>I have added you to the NASA Openscapes GitHub Organization’s Workshop Team. Please check your email and accept this invitation from GitHub. Once you have joined the team, you will be able to access the JupyterHub.<br>
-- Here is the link to the hub: <a href="https://openscapes.2i2c.cloud/" class="uri">https://openscapes.2i2c.cloud/</a><br>
-- Here is the material for the Workshop NAME&gt; <a href="https://nasa-openscapes.github.io/2023-ssc/" class="uri">https://nasa-openscapes.github.io/2023-ssc/</a>.</p>
-<p>Have a great workshop,</p>
-</blockquote>
-<p>…</p>
+<section id="email-confirmation" class="level3">
+<h3 class="anchored" data-anchor-id="email-confirmation">6. Email confirmation</h3>
+<p>Go back to the Google form response and grab their email address. Send the following emails to the person.</p>
 <p><strong>Email for General requests:</strong>&nbsp;</p>
 <blockquote class="blockquote">
-<p>Subject: NASA Openscapes Access to 2i2c Hub Hi [FIRST NAME],</p>
+<p>Subject: NASA Openscapes Access to 2i2c Hub</p>
+<p>Hi [FIRST NAME],</p>
 <p>I have added you to the NASA Openscapes 2i2c Jupyter Hub. Here is the link to the hub: <a href="https://openscapes.2i2c.cloud/" class="uri">https://openscapes.2i2c.cloud/</a>&nbsp;</p>
 <p>There is a getting started guide in the NASA Earthdata Cloud Cookbook here: <a href="https://nasa-openscapes.github.io/earthdata-cloud-cookbook/" class="uri">https://nasa-openscapes.github.io/earthdata-cloud-cookbook/</a></p>
-<p>We’d love to know about the kind of work you are doing on the hub, and I’ll follow up in the next few months.&nbsp;</p>
-</blockquote>
-<blockquote class="blockquote">
+<p>We’d love to know about the kind of work you are doing on the hub. Please add a brief description of your progress as you go at <a href="https://github.com/NASA-Openscapes/2i2cAccessPolicies/discussions/2" class="uri">https://github.com/NASA-Openscapes/2i2cAccessPolicies/discussions/2</a>. We will follow up in the next few months.&nbsp;</p>
 <p>Best,</p>
 </blockquote>
-<p>…&nbsp;</p>
-<p>&nbsp;</p>
 </section>
-<section id="register-date-in-form-response-sheet" class="level2">
-<h2 class="anchored" data-anchor-id="register-date-in-form-response-sheet">7. Register date in Form Response Sheet</h2>
-<p>In the <a href="https://docs.google.com/spreadsheets/d/10Qg8YtUegXs9bepJzvK4UN54bX8BLXTrhxsjb2uV_6k/edit?resourcekey#gid=1824163684">Form Response Sheet</a>, in Column G add the date they were added to the Hub - in part so that we as admins knew if someone had already fulfilled the request. Rows 453+ are the most recent, but it can vary. Check Column A for the date of the form request.</p>
+<section id="register-date-in-form-response-sheet" class="level3">
+<h3 class="anchored" data-anchor-id="register-date-in-form-response-sheet">7. Register date in Form Response Sheet</h3>
+<p>In the <a href="https://docs.google.com/spreadsheets/d/1TgokoQa-jYncYSOjeYoWYRuDAbyo4uUR-MSzUotvM00/edit?resourcekey#gid=1416760746">Form Response Sheet</a>, in column <code>Added to NASA 2i2c hub</code> add the date they were added to the Hub, or if the request came via email add a new row - in part so that we as admins knew if someone had already fulfilled the request. Check Column A for the date of the form request.</p>
 </section>
-<section id="directions-for-workshop-participants" class="level2">
-<h2 class="anchored" data-anchor-id="directions-for-workshop-participants">Directions for workshop participants</h2>
+<section id="directions-for-invitees" class="level3">
+<h3 class="anchored" data-anchor-id="directions-for-invitees">Directions for invitees</h3>
 <ol type="1">
-<li><p>Please go to <a href="https://github.com/nasa-openscapes-workshops" class="uri">https://github.com/nasa-openscapes-workshops</a></p></li>
+<li><p>Please go to <a href="https://github.com/nasa-openscapes" class="uri">https://github.com/nasa-openscapes</a></p></li>
 <li><p>Click the big yellow bar that says “you’ve been invited”&nbsp;</p></li>
 <li><p>Not seeing that bar?&nbsp;</p>
 <ol type="1">
@@ -685,11 +748,123 @@ Hi [FIRST NAME],</p>
 </ol></li>
 </ol>
 </section>
+</section>
+<section id="adding-workshop-participants-or-champions-cohorts-as-a-batch" class="level2">
+<h2 class="anchored" data-anchor-id="adding-workshop-participants-or-champions-cohorts-as-a-batch">Adding workshop participants or Champions cohorts as a batch</h2>
+<p>Participants in workshops run by NASA Openscapes Mentors are given Openscapes 2i2c JupyterHub access, as are participants in Champions Cohorts.</p>
+<p>We use a dedicated GitHub Organization - <a href="https://github.com/nasa-openscapes-workshops">nasa-openscapes-workshops</a> - to manage access, with <a href="https://github.com/orgs/nasa-openscapes-workshops/teams">GitHub Teams</a> for workshops and Champions Cohorts.</p>
+<section id="create-a-team-in-nasa-openscapes-workshops" class="level3">
+<h3 class="anchored" data-anchor-id="create-a-team-in-nasa-openscapes-workshops">1. Create a team in <a href="https://github.com/orgs/nasa-openscapes-workshops/teams">nasa-openscapes-workshops</a></h3>
+<p>There are several teams in this organization; the <code>AdminTeam</code> team is for members who have permission to create teams and add members to teams.</p>
+<ul>
+<li>If this is for a one-off workshop, name the team <code>[workshop-name]-[workshop-date]</code>, with workshop date in the format <code>yyyy-mm-dd</code></li>
+<li>If this is for a new champions cohort, name the team <code>nasa-champions-yyyy</code></li>
+</ul>
+</section>
+<section id="add-team-name-to-workshop-registry" class="level3">
+<h3 class="anchored" data-anchor-id="add-team-name-to-workshop-registry">2. Add team name to workshop registry</h3>
+<p>We keep a registry of all workshops in <a href="https://docs.google.com/spreadsheets/d/1Sg4fMDGxMLI0p5cgK5xyamFJpKC6NyNneqXLDReSKcg/edit#gid=695033382">this sheet</a>. Add the name of the GitHub team to <code>2i2c access type</code> column in the appropriate row.</p>
+</section>
+<section id="add-teams-to-2i2c-hub-configuration" class="level3">
+<h3 class="anchored" data-anchor-id="add-teams-to-2i2c-hub-configuration">3. Add teams to 2i2c Hub configuration</h3>
+<p>Make a pull request to the Openscapes <a href="https://github.com/2i2c-org/infrastructure/blob/main/config/clusters/openscapes/common.values.yaml">common.values.yaml</a> file in the 2i2c infrastructure repository, adding the new team to the <code>allowed-teams</code> item in whichever sections are appropriate for your workshop/cohort (likely all of them):</p>
+<ul>
+<li><code>display_name: Python</code></li>
+<li><code>display_name: R</code></li>
+<li><code>display_name: Matlab</code></li>
+<li><code>display_name: "Bring your own image"</code></li>
+</ul>
+<p>These will determine which images are available to participants when they log in to the Hub.</p>
+<p>Team specification is in the form <code>[github-org]:[team]</code> (e.g., <code>nasa-openscapes-workshops:champions-access-2i2c-2024</code>)</p>
+<p>You also need to add the team to the <code>allowed_organizations</code> item under <code>hub &gt; config &gt; GitHubOAuthenticator</code></p>
+<p>You can see an example pull request <a href="https://github.com/2i2c-org/infrastructure/pull/3944">here</a>.</p>
+</section>
+<section id="share-google-form-with-participants-needing-access-for-the-cohort-or-workshop" class="level3">
+<h3 class="anchored" data-anchor-id="share-google-form-with-participants-needing-access-for-the-cohort-or-workshop">4. Share Google Form with participants needing access for the cohort or workshop</h3>
+<p>Ask users: Please add your GitHub Username to this <a href="https://forms.gle/htV2PxJwRaP8jDpC6">Google form</a> for NASA Openscapes JupyterHub Access.</p>
+</section>
+<section id="add-users-to-a-team-in-a-batch-using-kyber" class="level3">
+<h3 class="anchored" data-anchor-id="add-users-to-a-team-in-a-batch-using-kyber">5. Add users to a Team in a batch using <a href="https://github.com/Openscapes/kyber">kyber</a></h3>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Do this fairly close to the day of the workshop to try to get the greatest number particpants to have filled out the form, and reduce the number of manual additions on the day of the workshop.</p>
+</div>
+</div>
+<ol type="1">
+<li>Open the <a href="https://docs.google.com/spreadsheets/d/1TgokoQa-jYncYSOjeYoWYRuDAbyo4uUR-MSzUotvM00/edit?resourcekey#gid=1416760746">spreadsheet of form responses</a>, select the GitHub usernames from the rows containing the people you want to add, and copy it to your clipboard.</li>
+</ol>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Some workshop instructors will use their own form to record participants, rather than the Openscapes form. In that case use those responses instead. But do paste all those rows into this Main form; it is important that we have a record of everyone using the Hub and a way to contact them via email.</p>
+</div>
+</div>
+<ol start="2" type="1">
+<li>In R, do the following:</li>
+</ol>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kyber)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(datapasta)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Run datapasta::tribble_paste() or use the RStudio Addin 'Paste as tribble'</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># assign the pasted output to a new object:</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>responses <span class="ot">&lt;-</span> tribble<span class="sc">::</span><span class="fu">tribble</span>(</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># The stuff that was pasted</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The <code>responses</code> object will have a column of usernames. It likely won’t be called <code>username</code>, so you can rename it or even easier, change the name inside the <code>tribble::tribble()</code> call that you pasted. Verify these are the usernames you want to add, and run <code>kyber::add_team_members()</code> as follows:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>team_name <span class="ot">&lt;-</span> <span class="st">"the name of the github team you want to add to"</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">add_team_members</span>(</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  team_name, </span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">members =</span> responses<span class="sc">$</span>username, </span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">org =</span> <span class="st">"nasa-openscapes-workshops"</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="3" type="1">
+<li>Go the appropriate team in the <a href="https://github.com/orgs/nasa-openscapes-workshops/teams">nasa-openscapes-workshops</a> organization and verify that there are the appropriate “pending members”:</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/github-pending-member.png" class="img-fluid figure-img" alt="alt text goes here" width="399"></p>
+</figure>
+</div>
+<ol start="4" type="1">
+<li>Go back to the spreadsheet of responses, and fill in the <code>Added to NASA 2i2c hub</code> column with the date you added them.</li>
+</ol>
+</section>
+<section id="directions-for-workshop-participants" class="level3">
+<h3 class="anchored" data-anchor-id="directions-for-workshop-participants">Directions for workshop participants</h3>
+<ol type="1">
+<li><p>Please go to <a href="https://github.com/nasa-openscapes-workshops" class="uri">https://github.com/nasa-openscapes-workshops</a></p></li>
+<li><p>Click the big yellow bar that says “you’ve been invited”&nbsp;</p></li>
+<li><p>Not seeing that bar?&nbsp;</p>
+<ol type="1">
+<li><p>Are you logged into <a href="https://github.com">GitHub.com</a>?</p></li>
+<li><p>Have you shared your GitHub username via <a href="https://forms.gle/XRPsKiqaZC4bkYoi8">this form</a>?</p></li>
+<li><p>You can also check your email that you use for GitHub and look for an invitation from GitHub and NASA-Openscapes-Workshops</p></li>
+</ol></li>
+</ol>
+</section>
+</section>
 <section id="troubleshooting" class="level2">
 <h2 class="anchored" data-anchor-id="troubleshooting">Troubleshooting</h2>
 <section id="users-get-403-error" class="level3">
 <h3 class="anchored" data-anchor-id="users-get-403-error">Users get 403 error</h3>
-<p>This is a common issue. User must find email notification from GitHub and accept invitation. If they had clicked in email to accept but did not complete accepting in GitHub, edit their invitation in GitHub to uninvite and reinvite. They should get new email to accept.</p>
+<p>This is a common issue. User must find email notification from GitHub and accept invitation. If they had clicked in email to accept but did not complete accepting in GitHub, edit their invitation in GitHub to uninvite and reinvite. They should get a new email to accept.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/github-pending-member.png" class="img-fluid figure-img" alt="alt text goes here" width="399"></p>
@@ -700,12 +875,12 @@ Hi [FIRST NAME],</p>
 <h3 class="anchored" data-anchor-id="didnt-get-email">Didn’t get email</h3>
 <p>Go to <a href="https://github.com/nasa-openscapes-workshops" class="uri">https://github.com/nasa-openscapes-workshops</a>, see the big yellow bar that says You’re invited.&nbsp;</p>
 </section>
-</section>
-<section id="notes-on-process-and-any-issues" class="level2">
-<h2 class="anchored" data-anchor-id="notes-on-process-and-any-issues">Notes on process and any issues</h2>
+<section id="notes-on-process-and-any-issues" class="level3">
+<h3 class="anchored" data-anchor-id="notes-on-process-and-any-issues">Notes on process and any issues</h3>
 <p>Yuvi has started documenting the issues we are running into here -&gt; <a href="https://hackmd.io/tWfqVai4SDC1CbQ4mhfIbw" class="uri">https://hackmd.io/tWfqVai4SDC1CbQ4mhfIbw</a>&nbsp;</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
