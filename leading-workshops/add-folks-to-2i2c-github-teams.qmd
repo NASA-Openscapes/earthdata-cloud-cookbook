@@ -94,7 +94,7 @@ Go back to the Google form response and grab their email address. Send the follo
 >
 > There is a getting started guide in the NASA Earthdata Cloud Cookbook here: <https://nasa-openscapes.github.io/earthdata-cloud-cookbook/>
 >
-> We'd love to know about the kind of work you are doing on the hub, and I'll follow up in the next few months. 
+> We'd love to know about the kind of work you are doing on the hub. Please add a brief description of your progress as you go at <https://github.com/NASA-Openscapes/2i2cAccessPolicies/discussions/2>. We will follow up in the next few months. 
 >
 > Best,
 
@@ -143,7 +143,7 @@ of the GitHub team to `2i2c access type` column in the appropriate row.
 
 Make a pull request to the Openscapes [common.values.yaml](https://github.com/2i2c-org/infrastructure/blob/main/config/clusters/openscapes/common.values.yaml) file in 
 the 2i2c infrastructure repository, adding the new team to the `allowed-teams` 
-item in whichever sections are appropriate for your workshop/cohort:
+item in whichever sections are appropriate for your workshop/cohort (likely all of them):
 
 - `display_name: Python`
 - `display_name: R`
@@ -177,7 +177,7 @@ additions on the day of the workshop.
 
 ::: {.callout-tip}
 Some workshop instructors will use their own form to record participants,
-rather than the Openscapes form. In that case use those responses instead.
+rather than the Openscapes form. In that case use those responses instead. But do paste all those rows into this Main form; it is important that we have a record of everyone using the Hub and a way to contact them via email.
 :::
 
 2. In R, do the following:
