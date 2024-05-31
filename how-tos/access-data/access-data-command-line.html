@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="NASA Openscapes Team">
-<meta name="dcterms.date" content="2024-05-31">
 
-<title>EarthData Cloud Cookbook - NASA Earthdata Cloud Cookbook</title>
+<title>EarthData Cloud Cookbook - How do I access data stored in Earthdata Cloud with cURL and Wget?</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -25,24 +23,23 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./when-to-cloud.html" rel="next">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -65,7 +62,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-sidebar docked">
@@ -77,7 +74,9 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Welcome</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
+      NASA Earthdata Cloud Cookbook
+      </li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -91,11 +90,11 @@ ul.task-list li input[type="checkbox"] {
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-center sidebar-header sidebar-header-stacked">
-      <a href="./index.html" class="sidebar-logo-link">
-      <img src="./images/nasa-openscapes.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      <a href="../../index.html" class="sidebar-logo-link">
+      <img src="../../images/nasa-openscapes.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">NASA Earthdata Cloud Cookbook</a> 
+      <a href="../../">NASA Earthdata Cloud Cookbook</a> 
         <div class="sidebar-tools-main tools-wide">
     <a href="https://nasa-openscapes.github.io" rel="" title="NASA-Openscapes website" class="quarto-navigation-tool px-1" aria-label="NASA-Openscapes website"><i class="bi bi-globe"></i></a>
     <a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook" rel="" title="Earthdata Cloud Cookbook repo" class="quarto-navigation-tool px-1" aria-label="Earthdata Cloud Cookbook repo"><i class="bi bi-github"></i></a>
@@ -112,31 +111,31 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Welcome</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./when-to-cloud.html" class="sidebar-item-text sidebar-link">
+  <a href="../../when-to-cloud.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">When To Cloud</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./our-cookbook.html" class="sidebar-item-text sidebar-link">
+  <a href="../../our-cookbook.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Our Cookbook</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./glossary.html" class="sidebar-item-text sidebar-link">
+  <a href="../../glossary.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Glossary &amp; Cheatsheets</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./environment-setup/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../environment-setup/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Cloud Environment Setup</span></a>
   </div>
 </li>
@@ -160,19 +159,19 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./how-tos/find-data/earthdata_search.html" class="sidebar-item-text sidebar-link">
+  <a href="../../how-tos/find-data/earthdata_search.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">with Earthdata Search</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./how-tos/find-data/find-python.html" class="sidebar-item-text sidebar-link">
+  <a href="../../how-tos/find-data/find-python.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">with Python</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./how-tos/find-data/find-r.html" class="sidebar-item-text sidebar-link">
+  <a href="../../how-tos/find-data/find-r.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">with R</span></a>
   </div>
 </li>
@@ -189,7 +188,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./how-tos/access-data/access-cloud-python.html" class="sidebar-item-text sidebar-link">
+  <a href="../../how-tos/access-data/access-cloud-python.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">with Python</span></a>
   </div>
 </li>
@@ -206,13 +205,13 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./how-tos/access-data/access-local-python.html" class="sidebar-item-text sidebar-link">
+  <a href="../../how-tos/access-data/access-local-python.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">with Python</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./how-tos/access-data/access-local-opendap.html" class="sidebar-item-text sidebar-link">
+  <a href="../../how-tos/access-data/access-local-opendap.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">with OPeNDAP</span></a>
   </div>
 </li>
@@ -220,25 +219,25 @@ ul.task-list li input[type="checkbox"] {
   </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./how-tos/read_data.html" class="sidebar-item-text sidebar-link">
+  <a href="../../how-tos/read_data.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">read data</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./how-tos/subset.html" class="sidebar-item-text sidebar-link">
+  <a href="../../how-tos/subset.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">subset data</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./how-tos/using-s3-storage.html" class="sidebar-item-text sidebar-link">
+  <a href="../../how-tos/using-s3-storage.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Store data in the cloud</span></a>
   </div>
 </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./how-tos/use_apis.html" class="sidebar-item-text sidebar-link">
+            <a href="../../how-tos/use_apis.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">use APIs</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -247,7 +246,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./external/appeears_csv_cloud_access.html" class="sidebar-item-text sidebar-link">
+  <a href="../../external/appeears_csv_cloud_access.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">AppEEARS Cloud CSV Access</span></a>
   </div>
 </li>
@@ -255,7 +254,7 @@ ul.task-list li input[type="checkbox"] {
   </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./how-tos/how_to_guide_parking_lot.html" class="sidebar-item-text sidebar-link">
+  <a href="../../how-tos/how_to_guide_parking_lot.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">parking lot</span></a>
   </div>
 </li>
@@ -263,7 +262,7 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./tutorials/index.html" class="sidebar-item-text sidebar-link">
+            <a href="../../tutorials/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Tutorials</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -272,67 +271,67 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorials/Earthdata-cloud-clinic.html" class="sidebar-item-text sidebar-link">
+  <a href="../../tutorials/Earthdata-cloud-clinic.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Earthdata Cloud Clinic</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorials/Hurricanes_Wind_and_Sea_Surface_Temperature.html" class="sidebar-item-text sidebar-link">
+  <a href="../../tutorials/Hurricanes_Wind_and_Sea_Surface_Temperature.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Multi-datasets</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorials/Sea_Level_Rise.html" class="sidebar-item-text sidebar-link">
+  <a href="../../tutorials/Sea_Level_Rise.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Sea Level Rise</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorials/Above_Ground_Biomass_Density.html" class="sidebar-item-text sidebar-link">
+  <a href="../../tutorials/Above_Ground_Biomass_Density.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Carbon Stocks</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorials/Observing_Seasonal_Ag_Changes.html" class="sidebar-item-text sidebar-link">
+  <a href="../../tutorials/Observing_Seasonal_Ag_Changes.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Agriculture Observations</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./external/IS2_cloud_Landsat_integration.ipynb" class="sidebar-item-text sidebar-link">
+  <a href="../../external/IS2_cloud_Landsat_integration.ipynb" class="sidebar-item-text sidebar-link">
  <span class="menu-text">ICESat-2</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorials/04_On-Prem_Cloud.html" class="sidebar-item-text sidebar-link">
+  <a href="../../tutorials/04_On-Prem_Cloud.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Cloud &amp; Non-cloud</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorials/earthaccess-demo.html" class="sidebar-item-text sidebar-link">
+  <a href="../../tutorials/earthaccess-demo.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><code>earthaccess</code> Python library</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorials/Earthdata_Cloud__Data_Access_OPeNDAP_Example.html" class="sidebar-item-text sidebar-link">
+  <a href="../../tutorials/Earthdata_Cloud__Data_Access_OPeNDAP_Example.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">OPeNDAP Access</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorials/fair-workflow-geoweaver-demo.html" class="sidebar-item-text sidebar-link">
+  <a href="../../tutorials/fair-workflow-geoweaver-demo.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Pygeoweaver Workflow Demo</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorials/matlab.html" class="sidebar-item-text sidebar-link">
+  <a href="../../tutorials/matlab.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">MATLAB Access NetCDF</span></a>
   </div>
 </li>
@@ -340,7 +339,7 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./leading-workshops/index.html" class="sidebar-item-text sidebar-link">
+            <a href="../../leading-workshops/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Leading Workshops</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -349,7 +348,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./leading-workshops/add-folks-to-2i2c-github-teams.html" class="sidebar-item-text sidebar-link">
+  <a href="../../leading-workshops/add-folks-to-2i2c-github-teams.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">2i2c Hub access</span></a>
   </div>
 </li>
@@ -357,7 +356,7 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./workshops/index.html" class="sidebar-item-text sidebar-link">
+            <a href="../../workshops/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Workshops &amp; Hackathons</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -366,7 +365,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./workshops/setup.html" class="sidebar-item-text sidebar-link">
+  <a href="../../workshops/setup.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Workshop Setup</span></a>
   </div>
 </li>
@@ -374,13 +373,13 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./policies-usage/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../policies-usage/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Policies &amp; Usage Costs</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./in-development/index.html" class="sidebar-item-text sidebar-link">
+            <a href="../../in-development/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">In Development</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -389,49 +388,49 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./examples/NSIDC/ICESat2-CMR-OnPrem-vs-Cloud.html" class="sidebar-item-text sidebar-link">
+  <a href="../../examples/NSIDC/ICESat2-CMR-OnPrem-vs-Cloud.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Search &amp; Download NSIDC Cloud</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./examples/NSIDC/ICESat2-CMR-AWS-S3.html" class="sidebar-item-text sidebar-link">
+  <a href="../../examples/NSIDC/ICESat2-CMR-AWS-S3.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Access NSIDC Cloud w/ CMR</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./examples/Transform-workflow.html" class="sidebar-item-text sidebar-link">
+  <a href="../../examples/Transform-workflow.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Direct Access &amp; Harmony Workflow</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./examples/USGS_Landsat/Landsat_C2_Search_Access.html" class="sidebar-item-text sidebar-link">
+  <a href="../../examples/USGS_Landsat/Landsat_C2_Search_Access.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Search &amp; Access USGS Landsat Cloud</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./examples/ORNL/Data_Access__Direct_S3_Access__ORNL_DAYMET.html" class="sidebar-item-text sidebar-link">
+  <a href="../../examples/ORNL/Data_Access__Direct_S3_Access__ORNL_DAYMET.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Direct S3 Data Access: NetCDF - Daymet v4 Daily TMAX Example</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./external/cof-zarr-reformat.html" class="sidebar-item-text sidebar-link">
+  <a href="../../external/cof-zarr-reformat.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Access ECCO data via Harmony &amp; the Zarr reformatter service</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./external/zarr-eosdis-store.html" class="sidebar-item-text sidebar-link">
+  <a href="../../external/zarr-eosdis-store.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">zarr-eosdis-store example</span></a>
   </div>
 </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./examples/index.html" class="sidebar-item-text sidebar-link">
+            <a href="../../examples/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Example Workflows</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -440,19 +439,19 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./examples/GESDISC/GESDISC_MERRA2_tavg1_2d_flx_Nx__Kerchunk.html" class="sidebar-item-text sidebar-link">
+  <a href="../../examples/GESDISC/GESDISC_MERRA2_tavg1_2d_flx_Nx__Kerchunk.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">GES DISC - MERRA2</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./examples/LPDAAC/LPDAAC_ECOSTRESS_LSTE__Kerchunk.html" class="sidebar-item-text sidebar-link">
+  <a href="../../examples/LPDAAC/LPDAAC_ECOSTRESS_LSTE__Kerchunk.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">LP DAAC ECOSTRESS</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./examples/PODAAC/PODAAC_ECCO_SSH__Kerchunk.html" class="sidebar-item-text sidebar-link">
+  <a href="../../examples/PODAAC/PODAAC_ECCO_SSH__Kerchunk.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">PO.DAAC ECCO SSH</span></a>
   </div>
 </li>
@@ -460,13 +459,13 @@ ul.task-list li input[type="checkbox"] {
   </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./in-development/CMR-STAC-Search.html" class="sidebar-item-text sidebar-link">
+  <a href="../../in-development/CMR-STAC-Search.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">CMR STAC in R</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./in-development/earthdata-python-r-handoff.html" class="sidebar-item-text sidebar-link">
+  <a href="../../in-development/earthdata-python-r-handoff.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><code>earthdata</code>: Python-R Handoff</span></a>
   </div>
 </li>
@@ -474,7 +473,7 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./contributing/index.html" class="sidebar-item-text sidebar-link">
+            <a href="../../contributing/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Contributing</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -483,37 +482,37 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./contributing/calendar-project-management.html" class="sidebar-item-text sidebar-link">
+  <a href="../../contributing/calendar-project-management.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Calendaring and Project Management</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./contributing/onboarding.html" class="sidebar-item-text sidebar-link">
+  <a href="../../contributing/onboarding.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Onboarding Mentors</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./contributing/setup.html" class="sidebar-item-text sidebar-link">
+  <a href="../../contributing/setup.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Setup</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./contributing/workflow.html" class="sidebar-item-text sidebar-link">
+  <a href="../../contributing/workflow.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Workflows</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./contributing/quarto-website-tutorial.html" class="sidebar-item-text sidebar-link">
+  <a href="../../contributing/quarto-website-tutorial.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Quarto Tutorial</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./contributing/troubleshooting.html" class="sidebar-item-text sidebar-link">
+  <a href="../../contributing/troubleshooting.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Troubleshooting</span></a>
   </div>
 </li>
@@ -521,7 +520,7 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./appendix/index.html" class="sidebar-item-text sidebar-link">
+            <a href="../../appendix/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Appendix</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -530,7 +529,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./appendix/authentication.html" class="sidebar-item-text sidebar-link">
+  <a href="../../appendix/authentication.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Authentication</span></a>
   </div>
 </li>
@@ -542,44 +541,21 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#welcome" id="toc-welcome" class="nav-link active" data-scroll-target="#welcome">Welcome</a></li>
-  <li><a href="#the-cloud-paradigm" id="toc-the-cloud-paradigm" class="nav-link" data-scroll-target="#the-cloud-paradigm">The Cloud Paradigm</a></li>
-  <li><a href="#about" id="toc-about" class="nav-link" data-scroll-target="#about">About</a></li>
-  <li><a href="#citation" id="toc-citation" class="nav-link" data-scroll-target="#citation">Citation</a></li>
-  <li><a href="#license" id="toc-license" class="nav-link" data-scroll-target="#license">License</a></li>
-  </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/edit/main/index.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/blob/main/index.qmd" class="toc-action">View source</a></p><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">NASA Earthdata Cloud Cookbook</h1>
-<p class="subtitle lead">Supporting NASA Earth Science Research Teams’ Migration to the Cloud</p>
+<h1 class="title">How do I access data stored in Earthdata Cloud with cURL and Wget?</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>NASA Openscapes Team </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">May 31, 2024</p>
-    </div>
-  </div>
   
     
   </div>
@@ -587,48 +563,16 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="welcome" class="level2">
-<h2 class="anchored" data-anchor-id="welcome">Welcome</h2>
-<p><strong>Welcome to the NASA Openscapes Earthdata Cloud Cookbook!</strong></p>
-<p>This Cookbook is learning-oriented to support scientific researchers who use NASA Earthdata as NASA migrates data and workflows to the cloud. It has resources to learn how to work with NASA Earthdata in the cloud, as well as documentation for how to contribute to these resources. It is under active, open development.</p>
-</section>
-<section id="the-cloud-paradigm" class="level2">
-<h2 class="anchored" data-anchor-id="the-cloud-paradigm">The Cloud Paradigm</h2>
-<p>NASA Earthdata is available from Earth Observing System Data and Information System (EOSDIS) <a href="https://earthdata.nasa.gov/eosdis/daacs">Distributed Active Archive Centers</a> (DAACs) that are in the process of moving data holdings to a cloud platform. In the new paradigm, data storage (orange in the illustration) will migrate to the cloud (green) and DAAC-provided tools and services built on top of the data are co-located in the Earthdata Cloud.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/cloud-paradigm-earthdata-oaida.jpg" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Illustration by Catalina Oaida, PO.DAAC</figcaption>
-</figure>
-</div>
-<p>As this data migration occurs, DAACs will have more information about how users can access data. For example, the <a href="https://podaac.jpl.nasa.gov/cloud-datasets/about">Cloud Data page at PO.DAAC</a> offers access to resources to help guide data users in discovering, accessing, and utilizing cloud data. During this transition, some data will continue to be available from the traditional on premise archive, while some data will also be available from and within the Earthdata Cloud.</p>
-<p><strong>Learn More About NASA’s Earthdata Cloud Migration</strong></p>
-<ul>
-<li><a href="https://earthdata.nasa.gov/eosdis/cloud-evolution">NASA EarthData Cloud Evolution</a> - Starting point for understanding the background for moving to the Cloud.</li>
-<li><a href="https://vimeo.com/434343794">How We Work</a> - Nice overview of EOSDIS work and emphasis on open science by Katie Baynes, Keynote at FedGeoDay2020 (video).</li>
-<li><a href="https://earthdata.nasa.gov/learn/articles/cloud-data-egress">Cloud Data Egress: How EOSDIS Supports User Needs</a> - Describes supporting users’ needs during cloud migration by providing analysis-ready data by Emily Cassidy (blog).</li>
-</ul>
-</section>
-<section id="about" class="level2">
-<h2 class="anchored" data-anchor-id="about">About</h2>
-<p>This Earthdata Cloud Cookbook is being developed as a cross-DAAC collaboration by the NASA-Openscapes Team. Learn more at <a href="https://nasa-openscapes.github.io">nasa-openscapes.github.io</a>.</p>
-</section>
-<section id="citation" class="level2">
-<h2 class="anchored" data-anchor-id="citation">Citation</h2>
-<p>Please cite the NASA Earthdata Cloud Cookbook through the project’s Zenodo archive using DOI: <a href="https://doi.org/10.5281/zenodo.7786710">10.5281/zenodo.7786710</a>. This DOI represents all versions, and will always resolve to the latest one.</p>
-<p>The citation will look something like:</p>
-<blockquote class="blockquote">
-<p>Andy Barrett, Chris Battisto, Brandon Bottomley, Aaron Friesz, Alexis Hunzinger, Mahsa Jami, Alex Lewandowski, Bri Lind, Luis López, Jack McNelis, Cassie Nickles, Catalina Oaida Taglialatela, Celia Ou, Brianna Pagán, Sargent Shriver, Amy Steiker, Michele Thornton, Makhan Virdi, Jessica Nicole Welch, Jess Welch, Erin Robinson, Julia Stewart Lowndes. (2023). NASA-Openscapes/earthdata-cloud-cookbook: NASA EarthData Cloud Cookbook v2023.03.0 (v2023.03.0). Zenodo. https://doi.org/10.5281/zenodo.7786711</p>
-</blockquote>
-<p>Please visit the Cookbook’s <a href="https://doi.org/10.5281/zenodo.7786710">DOI link</a> to get the most recent version - the one above is not automatically generated and may be out of date as we release updated versions of the Cookbook.</p>
-</section>
-<section id="license" class="level2">
-<h2 class="anchored" data-anchor-id="license">License</h2>
-<p>Openscapes makes all of their materials publicly available under open source licenses.</p>
-<p>Our <a href="./LICENSE.html">License</a> is adapted from <a href="https://github.com/alan-turing-institute/the-turing-way/blob/master/LICENSE.md">The Turing Way</a></p>
+<p><a href="https://urs.earthdata.nasa.gov/documentation/for_users/data_access/curl_and_wget">How To Access Data With cURL And Wget</a> provides an step-by-step instruction on how to bulk download data from NASA EOSDIS DAACs using <a href="https://www.gnu.org/software/wget/">wget</a> and <a href="https://curl.se/">cURL</a> from the command line.</p>
+<p>This section provides additional recommendations relevant to bulk downloading data using wget/cURL. The existing documentation will be updated with these additional notes in future. - You need to <a href="https://ftp.gnu.org/gnu/wget/">install wget</a> or <a href="https://curl.se/download.html">install cURL</a> before diving into this documentation. - View <a href="https://developer.zendesk.com/documentation/api-basics/getting-started/installing-and-using-curl/#installing-curl">installing curl instructions</a> and <a href="http://wget.addictivecode.org/FrequentlyAskedQuestions.html#download">Frequently Asked Questions About Downloading GNU Wget</a> for more details. - You also need to save download link(s) for your data as a text file using <a href="https://search.earthdata.nasa.gov/search">Nasa Earthdata Search</a> or <a href="https://www.earthdata.nasa.gov/eosdis/science-system-description/eosdis-components/cmr">Common Metadata Repository (CMR)</a> API. - Navigate to the directory you want to save the data using <code>cd Insert_Your_Directory</code>. - To bulk download multiple files using cURL try: <code>text     xargs -n 1 curl -O -b ~/.urs_cookies -c ~/.urs_cookies -L -n &lt; Insert_Text_File</code> - If you experience authentication issues working with wget, try creating .wgetrc file in your home directory/user profile as suggested in <a href="https://urs.earthdata.nasa.gov/documentation/for_users/data_access/troubleshooting_wget">Troubleshooting wget</a>.</p>
+<p>To Create a .wgetrc file in the command line, enter the following in Terminal.<br>
+- Windows<br>
+<code>text     NUL &gt;&gt; .wgetrc</code> - MacOS or Linux<br>
+<code>text     touch .wgetrc | chmod og-rw .wgetrc</code> To insert your NASA Earthdata Login username and password into the file, enter the following in the Command Prompt and replace your username and password.</p>
+<pre class="text"><code>echo http-user=Insert_Your_Username &gt;&gt; .wgetrc | echo http-password=Insert_Your_Password &gt;&gt; .wgetrc</code></pre>
+<p>After creating .wgetrc file in your home directory/user profile, for downloading a single file try: <code>text     wget Insert_the_Download_Link</code> For downloading multiple files try: <code>text     wget -i Insert_Text_File</code></p>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -979,22 +923,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="./when-to-cloud.html" class="pagination-link">
-        <span class="nav-page-text">When To Cloud</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">NASA Earthdata Cloud Cookbook, © NASA Openscapes Team (2023).</div>   
     <div class="nav-footer-center">
       &nbsp;
-    </div>
+    <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/edit/main/how-tos/access-data/access-data-command-line.md" class="toc-action">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/blob/main/how-tos/access-data/access-data-command-line.md" class="toc-action">View source</a></p><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/issues/new" class="toc-action">Report an issue</a></p></div></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>
