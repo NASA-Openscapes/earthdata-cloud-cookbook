@@ -570,13 +570,25 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 <p><a href="https://urs.earthdata.nasa.gov/documentation/for_users/data_access/curl_and_wget">How To Access Data With cURL And Wget</a> provides an step-by-step instruction on how to bulk download data from NASA EOSDIS DAACs using <a href="https://www.gnu.org/software/wget/">wget</a> and <a href="https://curl.se/">cURL</a> from the command line.</p>
-<p>This section provides additional recommendations relevant to bulk downloading data using wget/cURL. The existing documentation will be updated with these additional notes in future. - You need to <a href="https://ftp.gnu.org/gnu/wget/">install wget</a> or <a href="https://curl.se/download.html">install cURL</a> before diving into this documentation. - View <a href="https://developer.zendesk.com/documentation/api-basics/getting-started/installing-and-using-curl/#installing-curl">installing curl instructions</a> and <a href="http://wget.addictivecode.org/FrequentlyAskedQuestions.html#download">Frequently Asked Questions About Downloading GNU Wget</a> for more details. - You also need to save download link(s) for your data as a text file using <a href="https://search.earthdata.nasa.gov/search">Nasa Earthdata Search</a> or <a href="https://www.earthdata.nasa.gov/eosdis/science-system-description/eosdis-components/cmr">Common Metadata Repository (CMR)</a> API. - Navigate to the directory you want to save the data using <code>cd Insert_Your_Directory</code>. - To bulk download multiple files using cURL try: <code>text     xargs -n 1 curl -O -b ~/.urs_cookies -c ~/.urs_cookies -L -n &lt; Insert_Text_File</code> - If you experience authentication issues working with wget, try creating .wgetrc file in your home directory/user profile as suggested in <a href="https://urs.earthdata.nasa.gov/documentation/for_users/data_access/troubleshooting_wget">Troubleshooting wget</a>.</p>
-<p>To Create a .wgetrc file in the command line, enter the following in Terminal.<br>
-- Windows<br>
-<code>text     NUL &gt;&gt; .wgetrc</code> - MacOS or Linux<br>
-<code>text     touch .wgetrc | chmod og-rw .wgetrc</code> To insert your NASA Earthdata Login username and password into the file, enter the following in the Command Prompt and replace your username and password.</p>
-<pre class="text"><code>echo http-user=Insert_Your_Username &gt;&gt; .wgetrc | echo http-password=Insert_Your_Password &gt;&gt; .wgetrc</code></pre>
-<p>After creating .wgetrc file in your home directory/user profile, for downloading a single file try: <code>text     wget Insert_the_Download_Link</code> For downloading multiple files try: <code>text     wget -i Insert_Text_File</code></p>
+<p>This section provides additional recommendations relevant to bulk downloading data using wget/cURL. The existing documentation will be updated with these additional notes in future.</p>
+<p>You need to <a href="https://ftp.gnu.org/gnu/wget/">install wget</a> or <a href="https://curl.se/download.html">install cURL</a> before diving into this documentation. View <a href="https://developer.zendesk.com/documentation/api-basics/getting-started/installing-and-using-curl/#installing-curl">installing curl instructions</a> and <a href="http://wget.addictivecode.org/FrequentlyAskedQuestions.html#download">Frequently Asked Questions About Downloading GNU Wget</a> for more details.</p>
+<p>You also need to save download link(s) for your data as a text file using <a href="https://search.earthdata.nasa.gov/search">Nasa Earthdata Search</a> or <a href="https://www.earthdata.nasa.gov/eosdis/science-system-description/eosdis-components/cmr">Common Metadata Repository (CMR)</a> API.</p>
+<p>Navigate to the directory you want to save the data using <code>cd YOUR_DIRECTORY_NAME</code>.</p>
+<p>To bulk download multiple files using cURL try:</p>
+<pre><code>xargs -n 1 curl -O -b ~/.urs_cookies -c ~/.urs_cookies -L -n &lt; YOUR_FILENAME</code></pre>
+<p>If you experience authentication issues working with wget, try creating .wgetrc file in your home directory/user profile as suggested in <a href="https://urs.earthdata.nasa.gov/documentation/for_users/data_access/troubleshooting_wget">Troubleshooting wget</a>.</p>
+<p>To create a .wgetrc file in the command line, enter the following in Terminal.</p>
+<p>Windows</p>
+<pre><code>NUL &gt;&gt; .wgetrc  </code></pre>
+<p>MacOS or Linux</p>
+<pre><code>touch .wgetrc | chmod og-rw .wgetrc</code></pre>
+<p>To insert your NASA Earthdata Login username and password into the file, enter the following in the Command Prompt and replace your username and password.</p>
+<pre><code>echo http-user=YOUR_USERNAME &gt;&gt; .wgetrc | echo
+http-password=YOUR_PASSWORD &gt;&gt; .wgetrc</code></pre>
+<p>After creating .wgetrc file in your home directory/user profile, for downloading a single file try:</p>
+<pre><code>wget YOUR_DOWNLOAD_LINK</code></pre>
+<p>For downloading multiple files try:</p>
+<pre><code>wget -i YOUR_FILENAME</code></pre>
 
 
 
