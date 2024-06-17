@@ -1,5 +1,5 @@
 ---
-title: "Policies & Usage Costs"
+title: "Policies & Administration"
 ---
 
 ## NASA Openscapes Policies
