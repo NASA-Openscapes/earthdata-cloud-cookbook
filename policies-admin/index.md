@@ -2,6 +2,11 @@
 title: "Policies & Administration"
 ---
 
+## Leading Workshops
+
+See the [leading workshops](leading-workshops.qmd) page for how to get set up 
+to lead a workshop using the NASA-Openscapes JupyterHub.
+
 ## NASA Openscapes Policies
 
 Our current access policies are found here: <https://github.com/NASA-Openscapes/2i2cAccessPolicies>

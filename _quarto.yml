@@ -112,18 +112,18 @@ website:
             href: tutorials/fair-workflow-geoweaver-demo.ipynb
           - text: "MATLAB Access NetCDF"
             href: tutorials/matlab.qmd
-      - section: "Leading Workshops"
-        href: leading-workshops/index.qmd
-        contents:
-          - text: "2i2c Hub access"
-            href: leading-workshops/add-folks-to-2i2c-github-teams.qmd
       - section: "Workshops & Hackathons"
         href: workshops/index.qmd
         contents:
           - text: "Workshop Setup"
             href: workshops/setup.md
-      - text: "Policies & Administration" 
-        href: policies-admin/index.md              
+      - section: "Policies & Administration" 
+        href: policies-admin/index.md
+        contents: 
+          - text: "2i2c Hub access"
+            href: policies-admin/add-folks-to-2i2c-github-teams.qmd
+          - text: "Leading workshops"
+            href: policies-admin/leading-workshops.qmd
       - section: "In Development"
         href: in-development/index.qmd
         contents:
