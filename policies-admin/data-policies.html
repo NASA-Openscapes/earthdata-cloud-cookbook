@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>EarthData Cloud Cookbook - How to Add Folks to the 2i2c Hub</title>
+<title>EarthData Cloud Cookbook - Data Storage in the NASA Openscapes Hub</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,40 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -63,8 +29,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../workshops/index.html" rel="next">
-<link href="../leading-workshops/index.html" rel="prev">
+<link href="../policies-admin/leading-workshops.html" rel="next">
+<link href="../policies-admin/add-folks-to-2i2c-github-teams.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -110,7 +76,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../leading-workshops/index.html">Leading Workshops</a></li><li class="breadcrumb-item"><a href="../leading-workshops/add-folks-to-2i2c-github-teams.html">2i2c Hub access</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../policies-admin/index.html">Policies &amp; Administration</a></li><li class="breadcrumb-item"><a href="../policies-admin/data-policies.html">Data storage policies</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -379,30 +345,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../leading-workshops/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Leading Workshops</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../leading-workshops/add-folks-to-2i2c-github-teams.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">2i2c Hub access</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
             <a href="../workshops/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Workshops &amp; Hackathons</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../workshops/setup.html" class="sidebar-item-text sidebar-link">
@@ -411,12 +360,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
       </ul>
   </li>
-        <li class="sidebar-item">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../policies-admin/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Policies &amp; Administration</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../policies-usage/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Policies &amp; Usage Costs</span></a>
+  <a href="../policies-admin/add-folks-to-2i2c-github-teams.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2i2c Hub access</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../policies-admin/data-policies.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Data storage policies</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../policies-admin/leading-workshops.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Leading workshops</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="../in-development/index.html" class="sidebar-item-text sidebar-link">
@@ -585,41 +557,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#individual-long-term-access" id="toc-individual-long-term-access" class="nav-link active" data-scroll-target="#individual-long-term-access">Individual long-term access</a>
+  <li><a href="#using-s3-bucket-storage" id="toc-using-s3-bucket-storage" class="nav-link active" data-scroll-target="#using-s3-bucket-storage">Using S3 Bucket Storage</a></li>
+  <li><a href="#data-retention-and-archiving-policy" id="toc-data-retention-and-archiving-policy" class="nav-link" data-scroll-target="#data-retention-and-archiving-policy">Data retention and archiving policy</a>
   <ul class="collapse">
-  <li><a href="#share-google-form-with-users-needing-long-term-access" id="toc-share-google-form-with-users-needing-long-term-access" class="nav-link" data-scroll-target="#share-google-form-with-users-needing-long-term-access">1. Share Google Form with users needing long-term access</a></li>
-  <li><a href="#google-form-response-setup" id="toc-google-form-response-setup" class="nav-link" data-scroll-target="#google-form-response-setup">2. Google Form response setup</a></li>
-  <li><a href="#email-alert-of-new-signup" id="toc-email-alert-of-new-signup" class="nav-link" data-scroll-target="#email-alert-of-new-signup">3. Email alert of new signup</a></li>
-  <li><a href="#copy-github-username" id="toc-copy-github-username" class="nav-link" data-scroll-target="#copy-github-username">4. Copy GitHub username</a></li>
-  <li><a href="#add-github-username-to-the-github-team" id="toc-add-github-username-to-the-github-team" class="nav-link" data-scroll-target="#add-github-username-to-the-github-team">5. Add GitHub username to the GitHub Team</a></li>
-  <li><a href="#email-confirmation" id="toc-email-confirmation" class="nav-link" data-scroll-target="#email-confirmation">6. Email confirmation</a></li>
-  <li><a href="#register-date-in-form-response-sheet" id="toc-register-date-in-form-response-sheet" class="nav-link" data-scroll-target="#register-date-in-form-response-sheet">7. Register date in Form Response Sheet</a></li>
-  <li><a href="#directions-for-invitees" id="toc-directions-for-invitees" class="nav-link" data-scroll-target="#directions-for-invitees">Directions for invitees</a></li>
+  <li><a href="#the-_shared-directory" id="toc-the-_shared-directory" class="nav-link" data-scroll-target="#the-_shared-directory">The <code>_shared</code> directory</a></li>
   </ul></li>
-  <li><a href="#adding-workshop-participants-or-champions-cohorts-as-a-batch" id="toc-adding-workshop-participants-or-champions-cohorts-as-a-batch" class="nav-link" data-scroll-target="#adding-workshop-participants-or-champions-cohorts-as-a-batch">Adding workshop participants or Champions cohorts as a batch</a>
+  <li><a href="#how-to-archive-old-home-directories-admin" id="toc-how-to-archive-old-home-directories-admin" class="nav-link" data-scroll-target="#how-to-archive-old-home-directories-admin">How to archive old home directories (admin)</a>
   <ul class="collapse">
-  <li><a href="#create-a-team-in-nasa-openscapes-workshops" id="toc-create-a-team-in-nasa-openscapes-workshops" class="nav-link" data-scroll-target="#create-a-team-in-nasa-openscapes-workshops">1. Create a team in nasa-openscapes-workshops</a></li>
-  <li><a href="#add-team-name-to-workshop-registry" id="toc-add-team-name-to-workshop-registry" class="nav-link" data-scroll-target="#add-team-name-to-workshop-registry">2. Add team name to workshop registry</a></li>
-  <li><a href="#add-teams-to-2i2c-hub-configuration" id="toc-add-teams-to-2i2c-hub-configuration" class="nav-link" data-scroll-target="#add-teams-to-2i2c-hub-configuration">3. Add teams to 2i2c Hub configuration</a></li>
-  <li><a href="#share-google-form-with-participants-needing-access-for-the-cohort-or-workshop" id="toc-share-google-form-with-participants-needing-access-for-the-cohort-or-workshop" class="nav-link" data-scroll-target="#share-google-form-with-participants-needing-access-for-the-cohort-or-workshop">4. Share Google Form with participants needing access for the cohort or workshop</a></li>
-  <li><a href="#add-users-to-a-team-in-a-batch-using-kyber" id="toc-add-users-to-a-team-in-a-batch-using-kyber" class="nav-link" data-scroll-target="#add-users-to-a-team-in-a-batch-using-kyber">5. Add users to a Team in a batch using kyber</a></li>
-  <li><a href="#directions-for-workshop-participants" id="toc-directions-for-workshop-participants" class="nav-link" data-scroll-target="#directions-for-workshop-participants">Directions for workshop participants</a></li>
-  </ul></li>
-  <li><a href="#troubleshooting" id="toc-troubleshooting" class="nav-link" data-scroll-target="#troubleshooting">Troubleshooting</a>
-  <ul class="collapse">
-  <li><a href="#users-get-403-error" id="toc-users-get-403-error" class="nav-link" data-scroll-target="#users-get-403-error">Users get 403 error</a></li>
-  <li><a href="#didnt-get-email" id="toc-didnt-get-email" class="nav-link" data-scroll-target="#didnt-get-email">Didn’t get email</a></li>
-  <li><a href="#notes-on-process-and-any-issues" id="toc-notes-on-process-and-any-issues" class="nav-link" data-scroll-target="#notes-on-process-and-any-issues">Notes on process and any issues</a></li>
+  <li><a href="#finding-large-home-directories" id="toc-finding-large-home-directories" class="nav-link" data-scroll-target="#finding-large-home-directories">Finding large <code>$HOME</code> directories</a></li>
+  <li><a href="#authenticate-with-s3-archive-bucket" id="toc-authenticate-with-s3-archive-bucket" class="nav-link" data-scroll-target="#authenticate-with-s3-archive-bucket">Authenticate with S3 archive bucket</a></li>
+  <li><a href="#setting-up-and-running-the-archive-script" id="toc-setting-up-and-running-the-archive-script" class="nav-link" data-scroll-target="#setting-up-and-running-the-archive-script">Setting up and running the archive script</a></li>
+  <li><a href="#archiving-the-shared-directory" id="toc-archiving-the-shared-directory" class="nav-link" data-scroll-target="#archiving-the-shared-directory">Archiving the shared directory</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/edit/main/leading-workshops/add-folks-to-2i2c-github-teams.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/blob/main/leading-workshops/add-folks-to-2i2c-github-teams.qmd" class="toc-action">View source</a></p><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/edit/main/policies-admin/data-policies.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/blob/main/policies-admin/data-policies.qmd" class="toc-action">View source</a></p><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">How to Add Folks to the 2i2c Hub</h1>
+<h1 class="title">Data Storage in the NASA Openscapes Hub</h1>
 </div>
 
 
@@ -634,256 +592,102 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<!--
-Move out of leading-workshops - Create "Administration" chapter
-Three patterns: 
-- One-offs (Long-Term-Access in NASA-Openscapes)
-- Workshops
-- Cohorts
--->
-<p>We use GitHub Teams to manage access to the 2i2c Hub. There are three different patterns of access:</p>
-<ol type="1">
-<li><a href="#individual-long-term-access">Individually-managed long-term access for NASA-Openscapes mentors and others</a></li>
-<li>Access for participants in a NASA-Openscapes champions cohort</li>
-<li>Access for participants in a workshop</li>
-</ol>
-<p>Access for for cohorts and workshop participants currently uses the <a href="#adding-workshop-participants-or-champions-cohorts-as-a-batch">same workflow</a>.</p>
-<p>We are also working on a method to give just-in-time access for specific workshops without using GitHub Teams or other managed access. Details of this process will be added as we finalize it.</p>
-<section id="individual-long-term-access" class="level2">
-<h2 class="anchored" data-anchor-id="individual-long-term-access">Individual long-term access</h2>
-<p>Individuals are given long-term access by adding them as members of the <a href="https://github.com/orgs/NASA-Openscapes/teams/longtermaccess-2i2c">LongtermAccess-2i2c team in the NASA-Openscapes organization</a>.</p>
-<p>This is the workflow to add individual users one by one.</p>
-<section id="share-google-form-with-users-needing-long-term-access" class="level3">
-<h3 class="anchored" data-anchor-id="share-google-form-with-users-needing-long-term-access">1. Share Google Form with users needing long-term access</h3>
-<p>Ask users: Please add your GitHub Username to this <a href="https://forms.gle/htV2PxJwRaP8jDpC6">Google form</a> for NASA Openscapes JupyterHub Access. Requests also sometimes come in via email directly from NASA mentors.</p>
-</section>
-<section id="google-form-response-setup" class="level3">
-<h3 class="anchored" data-anchor-id="google-form-response-setup">2. Google Form response setup</h3>
-<p>Set the form responses in <a href="https://docs.google.com/forms/d/1P_EudQKv3VzoceNSZLv1a3hHM59bZNIvCnwDEeKKvY4/edit#response=ACYDBNiewOAkYG0UxG2XcAmnfnWclek1AAtHeze3mxyaFBF0znCbwqf1TZA6IMHrkGeOXJo">Openscapes_JupyterHubAccess</a> to notify when there are responses: Click on Responses &gt; click three vertical dots and then check “email notification.”</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/google-form.png" class="img-fluid figure-img" alt="alt text goes here" width="391"></p>
-</figure>
-</div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/google-form-notifications.png" class="img-fluid figure-img" alt="alt text goes here" width="419"></p>
-</figure>
-</div>
-</section>
-<section id="email-alert-of-new-signup" class="level3">
-<h3 class="anchored" data-anchor-id="email-alert-of-new-signup">3. Email alert of new signup</h3>
-<p>When you get an email click ‘<strong>view response</strong>’ (not <code>view summary</code>)</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/google-form-view-response.png" class="img-fluid figure-img" alt="alt text goes here" width="436"></p>
-</figure>
-</div>
-</section>
-<section id="copy-github-username" class="level3">
-<h3 class="anchored" data-anchor-id="copy-github-username">4. Copy GitHub username</h3>
-<p>On the response page, copy the Github Username <img src="images/google-form-gh-username.png" class="img-fluid" alt="alt text goes here" width="406"></p>
-</section>
-<section id="add-github-username-to-the-github-team" class="level3">
-<h3 class="anchored" data-anchor-id="add-github-username-to-the-github-team">5. Add GitHub username to the GitHub Team</h3>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>If you are adding many new mentors to the long-term access team, you can use the same steps as <a href="#4-add-users-to-a-team-in-a-batch-using-kyber">for adding workshop participants</a></p>
-</div>
-</div>
-<p>Go to the NASA Openscapes <a href="https://github.com/orgs/nasa-openscapes/teams/longtermaccess-2i2c">LongtermAccess-2i2c Team</a> in GitHub &gt; Click Add member &gt; Paste GitHub username. Note there are separate <a href="https://github.com/orgs/nasa-openscapes-workshops/teams">GitHub Teams</a> for Champions Cohorts and workshops.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/github-add-to-team.png" class="img-fluid figure-img" alt="alt text goes here" width="436"></p>
-</figure>
-</div>
-<p>GitHub may ask you for 2-factor authentication for the first one you add in a batch, not after that.</p>
-<p>People may see invitation notifications in two ways; in GitHub itself, and/or via email. They must accept the invitation to be able to access the Hub. This is what it looks like in their email inbox:</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/github-notification-email.png" class="img-fluid figure-img" alt="alt text goes here" width="439"></p>
-</figure>
-</div>
-<p>This is what the invitation looks like in the GitHub website interface - clicking the yellow banner notification leads to the invitation:</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/github-notification-banner.png" class="img-fluid figure-img" style="width:85.0%" alt="alt text goes here"></p>
-</figure>
-</div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/github-notification-banner-part2.png" class="img-fluid figure-img" style="width:85.0%"></p>
-</figure>
-</div>
-</section>
-<section id="email-confirmation" class="level3">
-<h3 class="anchored" data-anchor-id="email-confirmation">6. Email confirmation</h3>
-<p>Go back to the Google form response and grab their email address. Send the following emails to the person.</p>
-<p><strong>Email for General requests:</strong>&nbsp;</p>
-<blockquote class="blockquote">
-<p>Subject: NASA Openscapes Access to 2i2c Hub</p>
-<p>Hi [FIRST NAME],</p>
-<p>I have added you to the NASA Openscapes 2i2c Jupyter Hub. Here is the link to the hub: <a href="https://openscapes.2i2c.cloud/" class="uri">https://openscapes.2i2c.cloud/</a>&nbsp;</p>
-<p>There is a getting started guide in the NASA Earthdata Cloud Cookbook here: <a href="https://nasa-openscapes.github.io/earthdata-cloud-cookbook/" class="uri">https://nasa-openscapes.github.io/earthdata-cloud-cookbook/</a></p>
-<p>We’d love to know about the kind of work you are doing on the hub. Please add a brief description of your progress as you go at <a href="https://github.com/NASA-Openscapes/2i2cAccessPolicies/discussions/2" class="uri">https://github.com/NASA-Openscapes/2i2cAccessPolicies/discussions/2</a>. We will follow up in the next few months.&nbsp;</p>
-<p>Best,</p>
-</blockquote>
-</section>
-<section id="register-date-in-form-response-sheet" class="level3">
-<h3 class="anchored" data-anchor-id="register-date-in-form-response-sheet">7. Register date in Form Response Sheet</h3>
-<p>In the <a href="https://docs.google.com/spreadsheets/d/1TgokoQa-jYncYSOjeYoWYRuDAbyo4uUR-MSzUotvM00/edit?resourcekey#gid=1416760746">Form Response Sheet</a>, in column <code>Added to NASA 2i2c hub</code> add the date they were added to the Hub, or if the request came via email add a new row - in part so that we as admins knew if someone had already fulfilled the request. Check Column A for the date of the form request.</p>
-</section>
-<section id="directions-for-invitees" class="level3">
-<h3 class="anchored" data-anchor-id="directions-for-invitees">Directions for invitees</h3>
-<ol type="1">
-<li><p>Please go to <a href="https://github.com/nasa-openscapes" class="uri">https://github.com/nasa-openscapes</a></p></li>
-<li><p>Click the big yellow bar that says “you’ve been invited”&nbsp;</p></li>
-<li><p>Not seeing that bar?&nbsp;</p>
-<ol type="1">
-<li><p>Are you logged into <a href="https://github.com">GitHub.com</a>?</p></li>
-<li><p>Have you shared your GitHub username via <a href="https://forms.gle/XRPsKiqaZC4bkYoi8">this form</a>?</p></li>
-<li><p>You can also check your email that you use for GitHub and look for an invitation from GitHub and NASA-Openscapes</p></li>
-</ol></li>
-</ol>
-</section>
-</section>
-<section id="adding-workshop-participants-or-champions-cohorts-as-a-batch" class="level2">
-<h2 class="anchored" data-anchor-id="adding-workshop-participants-or-champions-cohorts-as-a-batch">Adding workshop participants or Champions cohorts as a batch</h2>
-<p>Participants in workshops run by NASA Openscapes Mentors are given Openscapes 2i2c JupyterHub access, as are participants in Champions Cohorts.</p>
-<p>We use a dedicated GitHub Organization - <a href="https://github.com/nasa-openscapes-workshops">nasa-openscapes-workshops</a> - to manage access, with <a href="https://github.com/orgs/nasa-openscapes-workshops/teams">GitHub Teams</a> for workshops and Champions Cohorts.</p>
-<section id="create-a-team-in-nasa-openscapes-workshops" class="level3">
-<h3 class="anchored" data-anchor-id="create-a-team-in-nasa-openscapes-workshops">1. Create a team in <a href="https://github.com/orgs/nasa-openscapes-workshops/teams">nasa-openscapes-workshops</a></h3>
-<p>There are several teams in this organization; the <code>AdminTeam</code> team is for members who have permission to create teams and add members to teams.</p>
+<p>Storing large amounts of data in the cloud can incur significant ongoing costs if not done optimally. We are charged daily for data stored in our Hub. We are developing technical strategies and policies to reduce storage costs that will keep the Openscapes 2i2c Hub a shared resource for us all to use, while also providing reusable strategies for other admins.</p>
+<p>The Hub uses an <a href="https://aws.amazon.com/ec2/">EC2</a> compute instance, with the <code>$HOME</code> directory (<code>/users/jovyan/</code> in python images and <code>/users/rstudio/</code> in R images) mounted to <a href="https://aws.amazon.com/efs/">AWS Elastic File System (EFS)</a> storage. This drive is really handy because it is persistent across server restarts and is a great place to store your code. However the <code>$HOME</code> directory should not be used to store data, as it is very expensive, and can also be quite slow to read from and write to.</p>
+<p>To that end, the Hub provides every user access to two <a href="https://aws.amazon.com/s3/">AWS S3</a> buckets - a “scratch” bucket for short-term storage, and a “persistent” bucket for longer-term storage. AWS S3 buckets are like online storage containers, accessible through the internet, where you can store and retrieve files. S3 buckets have fast read/write, and storage costs are relatively inexpensive compared to storing in your <code>$HOME</code> directory. All major cloud providers provide a similar storage service - S3 is Amazon’s version, while Google provides “Google Cloud Storage”, and Microsoft provides “Azure Blob Storage”.</p>
+<p>These buckets are accessible only when you are working inside the Hub; you can access them using the environment variables:</p>
 <ul>
-<li>If this is for a one-off workshop, name the team <code>[workshop-name]-[workshop-date]</code>, with workshop date in the format <code>yyyy-mm-dd</code></li>
-<li>If this is for a new champions cohort, name the team <code>nasa-champions-yyyy</code></li>
-</ul>
-</section>
-<section id="add-team-name-to-workshop-registry" class="level3">
-<h3 class="anchored" data-anchor-id="add-team-name-to-workshop-registry">2. Add team name to workshop registry</h3>
-<p>We keep a registry of all workshops in <a href="https://docs.google.com/spreadsheets/d/1Sg4fMDGxMLI0p5cgK5xyamFJpKC6NyNneqXLDReSKcg/edit#gid=695033382">this sheet</a>. Add the name of the GitHub team to <code>2i2c access type</code> column in the appropriate row.</p>
-</section>
-<section id="add-teams-to-2i2c-hub-configuration" class="level3">
-<h3 class="anchored" data-anchor-id="add-teams-to-2i2c-hub-configuration">3. Add teams to 2i2c Hub configuration</h3>
-<p>Make a pull request to the Openscapes <a href="https://github.com/2i2c-org/infrastructure/blob/main/config/clusters/openscapes/common.values.yaml">common.values.yaml</a> file in the 2i2c infrastructure repository, adding the new team to the <code>allowed-teams</code> item in whichever sections are appropriate for your workshop/cohort (likely all of them):</p>
+<li><code>$SCRATCH_BUCKET</code> pointing to <code>s3://openscapeshub-scratch/[your-username]</code>
 <ul>
-<li><code>display_name: Python</code></li>
-<li><code>display_name: R</code></li>
-<li><code>display_name: Matlab</code></li>
-<li><code>display_name: "Bring your own image"</code></li>
+<li>Scratch buckets are designed for storage of temporary files, e.g. intermediate results. Objects stored in a scratch bucket are removed after 7 days from their creation.</li>
+</ul></li>
+<li><code>$PERSISTENT_BUCKET</code> pointing to <code>s3://openscapeshub-persistent/[your-username]</code>
+<ul>
+<li>Persistent buckets are designed for storing data that is consistently used throughout the lifetime of a project. There is no automatic purging of objects in persistent buckets, so it is the responsibility of the Hub admin and/or Hub users to delete objects when they are no longer needed to minimize cloud billing costs.</li>
+</ul></li>
 </ul>
-<p>These will determine which images are available to participants when they log in to the Hub.</p>
-<p>Team specification is in the form <code>[github-org]:[team]</code> (e.g., <code>nasa-openscapes-workshops:champions-access-2i2c-2024</code>)</p>
-<p>You also need to add the team to the <code>allowed_organizations</code> item under <code>hub &gt; config &gt; GitHubOAuthenticator</code></p>
-<p>You can see an example pull request <a href="https://github.com/2i2c-org/infrastructure/pull/3944">here</a>.</p>
+<section id="using-s3-bucket-storage" class="level3">
+<h3 class="anchored" data-anchor-id="using-s3-bucket-storage">Using S3 Bucket Storage</h3>
+<p>Please see the short tutorial in the Earthdata Cloud Cookbook on <a href="../how-tos/using-s3-storage.html">Using S3 Bucket Storage in NASA-Openscapes Hub</a>.</p>
 </section>
-<section id="share-google-form-with-participants-needing-access-for-the-cohort-or-workshop" class="level3">
-<h3 class="anchored" data-anchor-id="share-google-form-with-participants-needing-access-for-the-cohort-or-workshop">4. Share Google Form with participants needing access for the cohort or workshop</h3>
-<p>Ask users: Please add your GitHub Username to this <a href="https://forms.gle/htV2PxJwRaP8jDpC6">Google form</a> for NASA Openscapes JupyterHub Access.</p>
-</section>
-<section id="add-users-to-a-team-in-a-batch-using-kyber" class="level3">
-<h3 class="anchored" data-anchor-id="add-users-to-a-team-in-a-batch-using-kyber">5. Add users to a Team in a batch using <a href="https://github.com/Openscapes/kyber">kyber</a></h3>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Do this fairly close to the day of the workshop to try to get the greatest number particpants to have filled out the form, and reduce the number of manual additions on the day of the workshop.</p>
-</div>
-</div>
-<ol type="1">
-<li>Open the <a href="https://docs.google.com/spreadsheets/d/1TgokoQa-jYncYSOjeYoWYRuDAbyo4uUR-MSzUotvM00/edit?resourcekey#gid=1416760746">spreadsheet of form responses</a>, select the GitHub usernames from the rows containing the people you want to add, and copy it to your clipboard.</li>
-</ol>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Some workshop instructors will use their own form to record participants, rather than the Openscapes form. In that case use those responses instead. But do paste all those rows into this Main form; it is important that we have a record of everyone using the Hub and a way to contact them via email.</p>
-</div>
-</div>
-<ol start="2" type="1">
-<li>In R, do the following:</li>
-</ol>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kyber)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(datapasta)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Run datapasta::tribble_paste() or use the RStudio Addin 'Paste as tribble'</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># assign the pasted output to a new object:</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>responses <span class="ot">&lt;-</span> tribble<span class="sc">::</span><span class="fu">tribble</span>(</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># The stuff that was pasted</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>The <code>responses</code> object will have a column of usernames. It likely won’t be called <code>username</code>, so you can rename it or even easier, change the name inside the <code>tribble::tribble()</code> call that you pasted. Verify these are the usernames you want to add, and run <code>kyber::add_team_members()</code> as follows:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>team_name <span class="ot">&lt;-</span> <span class="st">"the name of the github team you want to add to"</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">add_team_members</span>(</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  team_name, </span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">members =</span> responses<span class="sc">$</span>username, </span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">org =</span> <span class="st">"nasa-openscapes-workshops"</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ol start="3" type="1">
-<li>Go the appropriate team in the <a href="https://github.com/orgs/nasa-openscapes-workshops/teams">nasa-openscapes-workshops</a> organization and verify that there are the appropriate “pending members”:</li>
-</ol>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/github-pending-member.png" class="img-fluid figure-img" alt="alt text goes here" width="399"></p>
-</figure>
-</div>
-<ol start="4" type="1">
-<li>Go back to the spreadsheet of responses, and fill in the <code>Added to NASA 2i2c hub</code> column with the date you added them.</li>
-</ol>
-</section>
-<section id="directions-for-workshop-participants" class="level3">
-<h3 class="anchored" data-anchor-id="directions-for-workshop-participants">Directions for workshop participants</h3>
-<ol type="1">
-<li><p>Please go to <a href="https://github.com/nasa-openscapes-workshops" class="uri">https://github.com/nasa-openscapes-workshops</a></p></li>
-<li><p>Click the big yellow bar that says “you’ve been invited”&nbsp;</p></li>
-<li><p>Not seeing that bar?&nbsp;</p>
-<ol type="1">
-<li><p>Are you logged into <a href="https://github.com">GitHub.com</a>?</p></li>
-<li><p>Have you shared your GitHub username via <a href="https://forms.gle/XRPsKiqaZC4bkYoi8">this form</a>?</p></li>
-<li><p>You can also check your email that you use for GitHub and look for an invitation from GitHub and NASA-Openscapes-Workshops</p></li>
-</ol></li>
-</ol>
+<section id="data-retention-and-archiving-policy" class="level2">
+<h2 class="anchored" data-anchor-id="data-retention-and-archiving-policy">Data retention and archiving policy</h2>
+<p>User <code>$HOME</code> directories will be retained for six months after their last use. After a home directory has been idle for six months, it will be <a href="#how-to-archive-old-home-directories">archived to our “archive” S3 bucket, and removed</a>. If a user requests their archive back, an admin can restore it for them.</p>
+<p>Once a user’s home directory archive has been sitting in the archive for an additional six months, it will be permanently removed from the archive. After this it can no longer be retrieved. <!-- TODO make this automatic policy in S3 console --></p>
+<p>In addition to these policies, admins will keep an eye on the <a href="https://grafana.openscapes.2i2c.cloud/d/bd232539-52d0-4435-8a62-fe637dc822be/home-directory-usage-dashboard?orgId=1">Home Directory Usage Dashboard</a> in Grafana. When a user’s home directory increases in size to over 100GB, we will contact them and work with them to reduce the size of their home directory - by removing large unnecessary files, and moving the rest to the appropriate S3 bucket (e.g., <code>$PERSISTENT_BUCKET</code>).</p>
+<section id="the-_shared-directory" class="level3">
+<h3 class="anchored" data-anchor-id="the-_shared-directory">The <code>_shared</code> directory</h3>
+<p><a href="https://infrastructure.2i2c.org/topic/infrastructure/storage-layer/#shared-directories">The <code>_shared</code> directory</a> is a place where instructors can put workshop materials for participants to access. It is mounted as <code>/home/jovyan/shared</code>, and is <em>read only</em> for all users. For those with admin access to the Hub, it is also mounted as a writeable directory as <code>/home/jovyan/shared-readwrite</code>.</p>
+<p>This directory will follow the same policies as users’ home directories: after six months, contents will be archived to the “archive” S3 bucket (more below). After an additional six months, the archive will be deleted.</p>
 </section>
 </section>
-<section id="troubleshooting" class="level2">
-<h2 class="anchored" data-anchor-id="troubleshooting">Troubleshooting</h2>
-<section id="users-get-403-error" class="level3">
-<h3 class="anchored" data-anchor-id="users-get-403-error">Users get 403 error</h3>
-<p>This is a common issue. User must find email notification from GitHub and accept invitation. If they had clicked in email to accept but did not complete accepting in GitHub, edit their invitation in GitHub to uninvite and reinvite. They should get a new email to accept.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/github-pending-member.png" class="img-fluid figure-img" alt="alt text goes here" width="399"></p>
-</figure>
-</div>
+<section id="how-to-archive-old-home-directories-admin" class="level2">
+<h2 class="anchored" data-anchor-id="how-to-archive-old-home-directories-admin">How to archive old home directories (admin)</h2>
+<p>To start, you will need to be an admin of the Openscapes Jupyterhub so that the <code>allusers</code> directory is mounted in your home directory. This will contain all users’ home directories, and you will have full read-write access.</p>
+<section id="finding-large-home-directories" class="level3">
+<h3 class="anchored" data-anchor-id="finding-large-home-directories">Finding large <code>$HOME</code> directories</h3>
+<p>Look at the <a href="https://grafana.openscapes.2i2c.cloud/d/bd232539-52d0-4435-8a62-fe637dc822be/home-directory-usage-dashboard?orgId=1">Home Directory Usage Dashboard</a> in Grafana to see the directories that haven’t been used in a long time and/or are very large.</p>
+<p>You can also view and sort users’ directories by size in the Hub with the following command, though this takes a while because it has to summarize <em>a lot</em> of files and directories. This will show the 30 largest home directories:</p>
+<pre><code>du -h --max-depth=1 /home/jovyan/allusers/ | sort -hr | head -n 30</code></pre>
 </section>
-<section id="didnt-get-email" class="level3">
-<h3 class="anchored" data-anchor-id="didnt-get-email">Didn’t get email</h3>
-<p>Go to <a href="https://github.com/nasa-openscapes-workshops" class="uri">https://github.com/nasa-openscapes-workshops</a>, see the big yellow bar that says You’re invited.&nbsp;</p>
+<section id="authenticate-with-s3-archive-bucket" class="level3">
+<h3 class="anchored" data-anchor-id="authenticate-with-s3-archive-bucket">Authenticate with S3 archive bucket</h3>
+<p>We have created an AWS IAM user called <code>archive-homedirs</code> with appropriate permissions to write to the <code>openscapeshub-prod-homedirs-archive</code> bucket. Get access keys for this user from the AWS console, and use these keys to authenticate in the Hub:</p>
+<p>In the terminal, type:</p>
+<pre><code>awsv2 configure</code></pre>
+<p>Enter the access key and secret key at the prompts, and set default region to <code>us-west-2</code>.</p>
+<p>You will also need to temporarily unset some AWS environment variables that have been configured to authenticate with NASA S3 storage. (These will be reset the next time you log in):</p>
+<pre><code>unset AWS_ROLE_ARN
+unset AWS_WEB_IDENTITY_TOKEN_FILE</code></pre>
+<p>Test to make sure you can access the archive bucket:</p>
+<pre><code># test s3 access:
+awsv2 s3 ls s3://openscapeshub-prod-homedirs-archive/archives/
+touch test123.txt
+awsv2 s3 mv test123.txt s3://openscapeshub-prod-homedirs-archive/archives/
+awsv2 s3 rm s3://openscapeshub-prod-homedirs-archive/archives/test123.txt</code></pre>
 </section>
-<section id="notes-on-process-and-any-issues" class="level3">
-<h3 class="anchored" data-anchor-id="notes-on-process-and-any-issues">Notes on process and any issues</h3>
-<p>Yuvi has started documenting the issues we are running into here -&gt; <a href="https://hackmd.io/tWfqVai4SDC1CbQ4mhfIbw" class="uri">https://hackmd.io/tWfqVai4SDC1CbQ4mhfIbw</a>&nbsp;</p>
+<section id="setting-up-and-running-the-archive-script" class="level3">
+<h3 class="anchored" data-anchor-id="setting-up-and-running-the-archive-script">Setting up and running the archive script</h3>
+<p>We use a <a href="https://github.com/NASA-Openscapes/2i2cAccessPolicies/blob/main/scripts/archive-home-dirs.py">python script</a>, <a href="https://github.com/2i2c-org/features/issues/32">developed by <span class="citation" data-cites="yuvipanda">@yuvipanda</span></a>, that reproducibly archives a list of users’ directories into a specified S3 bucket.</p>
+<p>Copy the script into your home directory in the Hub.</p>
+<p>In the Hub as of 2024-05-17, a couple of dependencies for the script are missing; you can install them before running the script:</p>
+<pre><code>pip install escapism
+
+# I had solver errors with pigz so needed to use the classic solver. 
+# Also, the installation of pigz required a machine with &gt;= 3.7GB memory
+conda install pigz --solver classic</code></pre>
+<p>Create a text file, with one username per line, of users’ home directories you would like to archive to s3. It will look like:</p>
+<pre><code>username1
+username2
+# etc...</code></pre>
+<p>Finally, run the script from the terminal, changing the parameter values as required:</p>
+<pre><code>python3 archive-home-dirs.py \
+    --archive-name="archive-$(date +'%Y-%m-%d')" \
+    --basedir=/home/jovyan/allusers/ \
+    --bucket-name=openscapeshub-prod-homedirs-archive \
+    --object-prefix="archives/" \
+    --usernames-file=users-to-archive.txt \
+    --temp-path=/home/jovyan/archive-staging/</code></pre>
+<p>Omitted in the above example, but available to use, is the <code>--delete</code> flag, which will delete the users’ home directory once the archive is completed.</p>
+<p>If you don’t use the <code>--delete</code> flag, first verify that the archive was successfully completed and then remove the user’s home directory manually.</p>
+</section>
+<section id="archiving-the-shared-directory" class="level3">
+<h3 class="anchored" data-anchor-id="archiving-the-shared-directory">Archiving the shared directory</h3>
+<p>You can use the same script to archive directories in the <code>shared</code> directory, by modifying the inputs slightly:</p>
+<ul>
+<li>Set <code>--basedir=/home/jovyan/shared/</code>, (or <code>--basedir=/home/jovyan/shared-readwrite/</code> if you want to be able use the <code>--delete</code> flag).</li>
+<li>Create a file with a list of directories in the <code>shared</code> directory you want to archive, and pass it to the <code>--usernames-file</code> argument.</li>
+<li>Set <code>--object-prefix="archives/_shared/</code> to put the archives in the <code>_shared</code> subdirectory in the archive bucket.</li>
+</ul>
+<p>E.g.:</p>
+<pre><code>python3 archive-home-dirs.py \
+    --archive-name="archive-$(date +'%Y-%m-%d')" \
+    --basedir=/home/jovyan/shared/ \
+    --bucket-name=openscapeshub-prod-homedirs-archive \
+    --object-prefix="archives/_shared/" \
+    --usernames-file=/home/jovyan/shared-to-archive.txt \
+    --temp-path=/home/jovyan/archive-staging/</code></pre>
+<p>By default, archives (<code>.tar.gz</code>) are created in your <code>/tmp</code> directory before upload to the S3 bucket. The <code>/tmp</code> directory is cleared out when you shut down the Hub. However, <code>/tmp</code> has limited space (80GB shared by up to four users on a single node), so if you are archiving many large directories, you will likely need to specify a location in your <code>$HOME</code> directory by passing a path to the <code>--temp-path</code> argument. The script will endeavour to clean up after itself and remove the <code>tar.gz</code> file after uploading, but double check that directory when you are finished or you may have copies of all of the other user directories in your own <code>$HOME</code>!</p>
 
 
 </section>
@@ -1240,13 +1044,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../leading-workshops/index.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Leading Workshops</span>
+      <a href="../policies-admin/add-folks-to-2i2c-github-teams.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">2i2c Hub access</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../workshops/index.html" class="pagination-link">
-        <span class="nav-page-text">Workshops &amp; Hackathons</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../policies-admin/leading-workshops.html" class="pagination-link">
+        <span class="nav-page-text">Leading workshops</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
