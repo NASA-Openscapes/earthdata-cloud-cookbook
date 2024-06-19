@@ -44,9 +44,13 @@ We will do our best to alert users before they lose access to the NASA Openscape
 
 ## Data storage policies
 
-[Policies on data storage and use of the `HOME` directory can be found here](data-policies.qmd)
+Policies on data storage and use of the `HOME` directory can be found in the [data policies page](data-policies.qmd).
 
-## AWS Cost Explorer
+## Monitoring cloud usage costs
+
+### AWS Cost Explorer
+
+<!-- TODO: Integrate/add links to monthly cost/storage report being developed at  -->
 
 *This is a work in progress, currently with minimal steps and screenshots that we will augment.*
 
@@ -54,13 +58,13 @@ AWS Cost Explorer lets you examine how much your usage costs. When using Credits
 
 ![AWS Cost Explorer. Charge type == "Usage"](images/cost-explorer-usage.png){fig-align="center" width="437"}
 
-## AWS Budgeting Alerts
+### AWS Budgeting Alerts
 
 *This is a work in progress, currently with minimal steps and screenshots that we will augment.*
 
 There are two types of alerts we set up.
 
-### Budgeting alerts
+#### Budgeting alerts
 
 When adding new Cloud credits to our AWS account, we also create a budget and alerts (received via email) as we spend our credits. These are some beginning notes (credit and thank you to Joe Kennedy!).
 
@@ -72,7 +76,7 @@ Exclude Credits and Refunds, include Discounts. You can elect to receive emails 
 
 We set these up at 50, 75, 90, 95% of the total budget, and we will receive emails at those percentages. The thinking is that we will need to request more credits starting at 50-75%, and then make sure we have them in hand by 90-95%.
 
-### Threshold alerts
+#### Threshold alerts
 
 We can also set up email alerts at certain dollar amounts.
 
