@@ -40,7 +40,7 @@ access them using the environment variables:
 Please see the short tutorial in the Earthdata Cloud Cookbook on 
 [Using S3 Bucket Storage in NASA-Openscapes Hub](/how-tos/using-s3-storage.html).
 
-### Data retention and archiving policy
+## Data retention and archiving policy
 
 User `$HOME` directories will be retained for six months after their last use.
 After a home directory has been idle for six months, it will be [archived to our
@@ -58,7 +58,7 @@ will contact them and work with them to reduce the size of their home directory
 - by removing large unnecessary files, and moving the rest to the appropriate S3
 bucket (e.g., `$PERSISTENT_BUCKET`).
 
-## The `_shared` directory
+### The `_shared` directory
 
 [The `_shared` directory](https://infrastructure.2i2c.org/topic/infrastructure/storage-layer/#shared-directories) 
 is a place where instructors can put workshop materials
@@ -70,13 +70,13 @@ This directory will follow the same policies as users' home directories: after
 six months, contents will be archived to the "archive" S3 bucket (more below). 
 After an additional six months, the archive will be deleted.
 
-### How to archive old home directories (admin)
+## How to archive old home directories (admin)
 
 To start, you will need to be an admin of the Openscapes Jupyterhub so that
 the `allusers` directory is mounted in your home directory. This will contain
 all users' home directories, and you will have full read-write access.
 
-#### Finding large `$HOME` directories
+### Finding large `$HOME` directories
 
 Look at the [Home Directory Usage
 Dashboard](https://grafana.openscapes.2i2c.cloud/d/bd232539-52d0-4435-8a62-fe637dc822be/home-directory-usage-dashboard?orgId=1)
@@ -91,7 +91,7 @@ of files and directories. This will show the 30 largest home directories:
 du -h --max-depth=1 /home/jovyan/allusers/ | sort -hr | head -n 30
 ```
 
-#### Authenticate with S3 archive bucket
+### Authenticate with S3 archive bucket
 
 We have created an AWS IAM user called `archive-homedirs` with appropriate 
 permissions to write to the `openscapeshub-prod-homedirs-archive` bucket. 
@@ -126,7 +126,7 @@ awsv2 s3 mv test123.txt s3://openscapeshub-prod-homedirs-archive/archives/
 awsv2 s3 rm s3://openscapeshub-prod-homedirs-archive/archives/test123.txt
 ```
 
-#### Setting up and running the archive script
+### Setting up and running the archive script
 
 We use a [python script](https://github.com/NASA-Openscapes/2i2cAccessPolicies/blob/main/scripts/archive-home-dirs.py), [developed by
 @yuvipanda](https://github.com/2i2c-org/features/issues/32), that reproducibly
@@ -172,7 +172,7 @@ which will delete the users' home directory once the archive is completed.
 If you don't use the `--delete` flag, first verify that the archive was successfully
 completed and then remove the user's home directory manually.
 
-##### Archiving the shared directory
+### Archiving the shared directory
 
 You can use the same script to archive directories in the `shared` directory, by modifying 
 the inputs slightly:
