@@ -2,14 +2,6 @@
 title: "How to Add Folks to the 2i2c Hub"
 ---
 
-<!--
-Move out of leading-workshops - Create "Administration" chapter
-Three patterns: 
-- One-offs (Long-Term-Access in NASA-Openscapes)
-- Workshops
-- Cohorts
--->
-
 We use GitHub Teams to manage access to the 2i2c Hub. There are three different patterns
 of access:
 
@@ -90,9 +82,10 @@ Go back to the Google form response and grab their email address. Send the follo
 > 
 > Hi \[FIRST NAME\],
 >
-> I have added you to the NASA Openscapes 2i2c Jupyter Hub. Here is the link to the hub: <https://openscapes.2i2c.cloud/> 
+> I have added you to the NASA Openscapes 2i2c Jupyter Hub. Here is the link to the hub: <https://openscapes.2i2c.cloud/>
 >
-> There is a getting started guide in the NASA Earthdata Cloud Cookbook here: <https://nasa-openscapes.github.io/earthdata-cloud-cookbook/>
+> There is a getting started guide in the NASA Earthdata Cloud Cookbook here: <https://nasa-openscapes.github.io/earthdata-cloud-cookbook/>. 
+> You can see policies for hub use here: <https://nasa-openscapes.github.io/earthdata-cloud-cookbook/policies-admin/>, and policies and best practices for data storage here <https://nasa-openscapes.github.io/earthdata-cloud-cookbook/policies-admin/data-policies.qmd>
 >
 > We'd love to know about the kind of work you are doing on the hub. Please add a brief description of your progress as you go at <https://github.com/NASA-Openscapes/2i2cAccessPolicies/discussions/2>. We will follow up in the next few months. 
 >
@@ -118,21 +111,28 @@ email add a new row - in part so that we as admins knew if someone had already f
 
     3.  You can also check your email that you use for GitHub and look for an invitation from GitHub and NASA-Openscapes
 
-## Adding workshop participants or Champions cohorts as a batch
+## Adding Champions cohorts as a batch
 
-Participants in workshops run by NASA Openscapes Mentors are given Openscapes 
-2i2c JupyterHub access, as are participants in Champions Cohorts.
+Participants in the Champions program workshops are given Openscapes 
+2i2c JupyterHub access, as are participants in certain workshops run by NASA Openscapes Mentors.
 
-We use a dedicated GitHub Organization - [nasa-openscapes-workshops](https://github.com/nasa-openscapes-workshops) - to manage access, with [GitHub Teams](https://github.com/orgs/nasa-openscapes-workshops/teams) for workshops and Champions Cohorts.
+::: {.callout-note}
+We have a newly developed process for giving people short-term access to the hub for workshops, with low
+overhead for instructors and particpants. This process
+removes the need to add people to a GitHub team, and gives participants "just in time" access to a special workshop hub with a 
+username and shared workshop-specific password. Policies and instructions for this currently being developed.
+:::
+
+We use a dedicated GitHub Organization - [nasa-openscapes-workshops](https://github.com/nasa-openscapes-workshops) - to manage access, with [GitHub Teams](https://github.com/orgs/nasa-openscapes-workshops/teams) for Champions Cohorts and certain workshops.
 
 ### 1. Create a team in [nasa-openscapes-workshops](https://github.com/orgs/nasa-openscapes-workshops/teams)
 
 There are several teams in this organization; the `AdminTeam` team is for 
 members who have permission to create teams and add members to teams.
 
+- If this is for a new champions cohort, name the team `nasa-champions-yyyy`
 - If this is for a one-off workshop, name the team `[workshop-name]-[workshop-date]`, with 
 workshop date in the format `yyyy-mm-dd`
-- If this is for a new champions cohort, name the team `nasa-champions-yyyy`
 
 ### 2. Add team name to workshop registry
 
