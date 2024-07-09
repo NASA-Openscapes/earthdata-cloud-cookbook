@@ -7,14 +7,21 @@ of access:
 
 1. [Individually-managed long-term access for NASA-Openscapes mentors and others](#individual-long-term-access)
 2. Access for participants in a NASA-Openscapes champions cohort
-3. Access for participants in a workshop
+3. Access for participants in a workshop using GitHub teams
+4. [Access for participants in a workshop using a shared password](leading-workshops.qmd#workshop-hub-access-via-shared-password)
 
-Access for for cohorts and workshop participants currently uses the [same 
-workflow](#adding-workshop-participants-or-champions-cohorts-as-a-batch).
+### Workshop access with a shared password
 
-We are also working on a method to give just-in-time access for specific workshops
-without using GitHub Teams or other managed access. Details of this process will be
-added as we finalize it.
+If you are hosting a workshop that has a large number of particpants, especially
+if they are not all comfortable with GitHub and particpants do not require
+access to the Hub when the workshop is complete, use the ["shared password" 
+access method](leading-workshops.qmd#workshop-hub-access-via-shared-password). This 
+access method allows instructors to share a single password with learners 
+at the start of the workshop, which they can use to log on the the Hub, and 
+eliminates the need to invite users to join the GitHub organization.
+
+Access for for cohorts and workshop participants using GitHub teams currently 
+uses the [same workflow](#adding-workshop-participants-or-champions-cohorts-as-a-batch).
 
 ## Individual long-term access
 
@@ -117,10 +124,12 @@ Participants in the Champions program workshops are given Openscapes
 2i2c JupyterHub access, as are participants in certain workshops run by NASA Openscapes Mentors.
 
 ::: {.callout-note}
-We have a newly developed process for giving people short-term access to the hub for workshops, with low
-overhead for instructors and particpants. This process
-removes the need to add people to a GitHub team, and gives participants "just in time" access to a special workshop hub with a 
-username and shared workshop-specific password. Policies and instructions for this currently being developed.
+We have a newly developed process for giving people short-term access to the hub 
+for workshops, with low overhead for instructors and particpants. This process 
+removes the need to add people to a GitHub team, and gives participants "just 
+in time" access to a special workshop hub with a username and shared 
+workshop-specific password. Instructions for this simplified setup are 
+[here](leading-workshops.qmd#workshop-hub-access-via-shared-password).
 :::
 
 We use a dedicated GitHub Organization - [nasa-openscapes-workshops](https://github.com/nasa-openscapes-workshops) - to manage access, with [GitHub Teams](https://github.com/orgs/nasa-openscapes-workshops/teams) for Champions Cohorts and certain workshops.
