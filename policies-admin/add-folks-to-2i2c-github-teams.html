@@ -591,7 +591,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#individual-long-term-access" id="toc-individual-long-term-access" class="nav-link active" data-scroll-target="#individual-long-term-access">Individual long-term access</a>
+  <li><a href="#workshop-access-with-a-shared-password" id="toc-workshop-access-with-a-shared-password" class="nav-link active" data-scroll-target="#workshop-access-with-a-shared-password">Workshop access with a shared password</a></li>
+  <li><a href="#individual-long-term-access" id="toc-individual-long-term-access" class="nav-link" data-scroll-target="#individual-long-term-access">Individual long-term access</a>
   <ul class="collapse">
   <li><a href="#share-google-form-with-users-needing-long-term-access" id="toc-share-google-form-with-users-needing-long-term-access" class="nav-link" data-scroll-target="#share-google-form-with-users-needing-long-term-access">1. Share Google Form with users needing long-term access</a></li>
   <li><a href="#google-form-response-setup" id="toc-google-form-response-setup" class="nav-link" data-scroll-target="#google-form-response-setup">2. Google Form response setup</a></li>
@@ -644,10 +645,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol type="1">
 <li><a href="#individual-long-term-access">Individually-managed long-term access for NASA-Openscapes mentors and others</a></li>
 <li>Access for participants in a NASA-Openscapes champions cohort</li>
-<li>Access for participants in a workshop</li>
+<li>Access for participants in a workshop using GitHub teams</li>
+<li><a href="../policies-admin/leading-workshops.html#workshop-hub-access-via-shared-password">Access for participants in a workshop using a shared password</a></li>
 </ol>
-<p>Access for for cohorts and workshop participants currently uses the <a href="#adding-workshop-participants-or-champions-cohorts-as-a-batch">same workflow</a>.</p>
-<p>We are also working on a method to give just-in-time access for specific workshops without using GitHub Teams or other managed access. Details of this process will be added as we finalize it.</p>
+<section id="workshop-access-with-a-shared-password" class="level3">
+<h3 class="anchored" data-anchor-id="workshop-access-with-a-shared-password">Workshop access with a shared password</h3>
+<p>If you are hosting a workshop that has a large number of particpants, especially if they are not all comfortable with GitHub and particpants do not require access to the Hub when the workshop is complete, use the <a href="../policies-admin/leading-workshops.html#workshop-hub-access-via-shared-password">“shared password” access method</a>. This access method allows instructors to share a single password with learners at the start of the workshop, which they can use to log on the the Hub, and eliminates the need to invite users to join the GitHub organization.</p>
+<p>Access for for cohorts and workshop participants using GitHub teams currently uses the <a href="#adding-workshop-participants-or-champions-cohorts-as-a-batch">same workflow</a>.</p>
+</section>
 <section id="individual-long-term-access" class="level2">
 <h2 class="anchored" data-anchor-id="individual-long-term-access">Individual long-term access</h2>
 <p>Individuals are given long-term access by adding them as members of the <a href="https://github.com/orgs/NASA-Openscapes/teams/longtermaccess-2i2c">LongtermAccess-2i2c team in the NASA-Openscapes organization</a>.</p>
@@ -767,7 +772,7 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>We have a newly developed process for giving people short-term access to the hub for workshops, with low overhead for instructors and particpants. This process removes the need to add people to a GitHub team, and gives participants “just in time” access to a special workshop hub with a username and shared workshop-specific password. Policies and instructions for this currently being developed.</p>
+<p>We have a newly developed process for giving people short-term access to the hub for workshops, with low overhead for instructors and particpants. This process removes the need to add people to a GitHub team, and gives participants “just in time” access to a special workshop hub with a username and shared workshop-specific password. Instructions for this simplified setup are <a href="../policies-admin/leading-workshops.html#workshop-hub-access-via-shared-password">here</a>.</p>
 </div>
 </div>
 <p>We use a dedicated GitHub Organization - <a href="https://github.com/nasa-openscapes-workshops">nasa-openscapes-workshops</a> - to manage access, with <a href="https://github.com/orgs/nasa-openscapes-workshops/teams">GitHub Teams</a> for Champions Cohorts and certain workshops.</p>

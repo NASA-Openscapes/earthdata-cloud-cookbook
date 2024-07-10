@@ -559,7 +559,8 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#using-the-openscapes-2i2c-hub-in-a-workshop" id="toc-using-the-openscapes-2i2c-hub-in-a-workshop" class="nav-link active" data-scroll-target="#using-the-openscapes-2i2c-hub-in-a-workshop">Using the Openscapes 2i2c Hub in a workshop</a>
   <ul class="collapse">
-  <li><a href="#how-to-add-folks-to-the-2i2c-hub" id="toc-how-to-add-folks-to-the-2i2c-hub" class="nav-link" data-scroll-target="#how-to-add-folks-to-the-2i2c-hub">How to Add Folks to the 2i2c Hub</a></li>
+  <li><a href="#workshop-hub-access-via-github-teams" id="toc-workshop-hub-access-via-github-teams" class="nav-link" data-scroll-target="#workshop-hub-access-via-github-teams">Workshop Hub Access via GitHub Teams</a></li>
+  <li><a href="#workshop-hub-access-via-shared-password" id="toc-workshop-hub-access-via-shared-password" class="nav-link" data-scroll-target="#workshop-hub-access-via-shared-password">Workshop Hub Access via Shared Password</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/edit/main/policies-admin/leading-workshops.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/blob/main/policies-admin/leading-workshops.qmd" class="toc-action">View source</a></p><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
@@ -588,19 +589,22 @@ ul.task-list li input[type="checkbox"] {
 <hr>
 <section id="using-the-openscapes-2i2c-hub-in-a-workshop" class="level2">
 <h2 class="anchored" data-anchor-id="using-the-openscapes-2i2c-hub-in-a-workshop">Using the Openscapes 2i2c Hub in a workshop</h2>
-<!-- TODO: Add policies/instructions for setting up workshop with "just-in-time" access -->
 <ul>
 <li>Check with Luis that the Hub image has the packages you need</li>
-<li>Reach out to 2i2c a month in advance via email <code>support at 2i2c.freshdesk.com</code> (example below) to tell them about the workshop date, start and end times, # of participants, anticipated level of resources to be used.</li>
-<li><a href="../policies-admin/add-folks-to-2i2c-github-teams.html">Add participants to the 2i2c Hub</a> via a GitHub Team</li>
+<li>Reach out to 2i2c <em>a month in advance</em> via email <code>support at 2i2c.freshdesk.com</code> (examples below) to tell them about the workshop date, start and end times, # of participants, anticipated level of resources to be used, access method, and if appropriate, a desired password.</li>
 </ul>
+<p>We divide types of workshops into two different categories, with different access patterns:</p>
+<section id="workshop-hub-access-via-github-teams" class="level3">
+<h3 class="anchored" data-anchor-id="workshop-hub-access-via-github-teams">Workshop Hub Access via GitHub Teams</h3>
+<p>If you are hosting a smaller workshop with learners<br>
+with GitHub and who require longer-term access to the Hub after the workshop, follow the instructions to <a href="../policies-admin/add-folks-to-2i2c-github-teams.html">add participants to the 2i2c Hub</a> via a GitHub Team. Then send an email to <code>support at 2i2c.freshdesk.com</code>.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Example email to 2i2c for a workshop
+Example email to 2i2c for a workshop with GitHub authentication
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -611,14 +615,38 @@ Example email to 2i2c for a workshop
 <p>Title: Data Access Workshop for NASA’s SWOT Satellite<br>
 Date: February 13, 2024<br>
 Duration/Time: half day, 9:00 am-12:30 pm HST (Honolulu, HI).<br>
-Expected Usage: 3.7 GB per person (~50 people)</p>
+Expected Usage: 3.7 GB per person (~50 people) The URL of the hub that will be used for the event: https://openscapes.2i2c.cloud/ Access Method: GitHub Team</p>
 <p>Thank you!</p>
 <p>Cassie</p>
 </div>
 </div>
 </div>
-<section id="how-to-add-folks-to-the-2i2c-hub" class="level3">
-<h3 class="anchored" data-anchor-id="how-to-add-folks-to-the-2i2c-hub"><a href="../policies-admin/add-folks-to-2i2c-github-teams.html">How to Add Folks to the 2i2c Hub</a></h3>
+</section>
+<section id="workshop-hub-access-via-shared-password" class="level3">
+<h3 class="anchored" data-anchor-id="workshop-hub-access-via-shared-password">Workshop Hub Access via Shared Password</h3>
+<p>If you are hosting a workshop that has a large number of particpants, especially if they are not all comfortable with GitHub and particpants do not require access to the Hub when the workshop is complete, use the “shared password” access. This access method allows the instructors to share a single password with learners at the start of the workshop which they can use to log on the the Hub.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Example email to 2i2c for a workshop with shared password authentication
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Hello,</p>
+<p>The LP DAAC and Openscapes have an upcoming event where we are planning to use the Openscapes Hub. Here’s the main information:</p>
+<p>The GitHub handle or name of the community representative: [github username], email@somedomain.com The date when the event will start: July 7, 2024 The date when the event will end: July ​7, 2024 What hours of the day will participants be active? 1:00pm - 5pm EEST (Athens, Greece). Number of attendees: ~40 Resources per user: 14.8GB RAM / up to 3.7 CPU The URL of the hub that will be used for the event: https://workshop.openscapes.2i2c.cloud/ Access method: shared password Password choice: [YouChooseAPassword]</p>
+<p>Thank you!</p>
+<p>Erik</p>
+</div>
+</div>
+</div>
+<p>Tell your learners that they will be able to access the Hub using the shared password for one week following the workshop, after which the password will be changed and the their home directories inside the Hub will be removed.</p>
+<p>One week after the workshop, send another email to <code>support at 2i2c.freshdesk.com</code> and request that the password be reset and users’ home directories from the workshop be removed.</p>
 
 
 </section>
