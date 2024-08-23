@@ -12,8 +12,8 @@ of access:
 
 ### Workshop access with a shared password
 
-If you are hosting a workshop that has a large number of particpants, especially
-if they are not all comfortable with GitHub and particpants do not require
+If you are hosting a workshop that has a large number of participants, especially
+if they are not all comfortable with GitHub and participants do not require
 access to the Hub when the workshop is complete, use the ["shared password" 
 access method](leading-workshops.qmd#workshop-hub-access-via-shared-password). This 
 access method allows instructors to share a single password with learners 
@@ -49,6 +49,17 @@ Set the form responses in [Openscapes_JupyterHubAccess](https://docs.google.com/
 When you get an email click '**view response**' (not `view summary`)
 
 ![](images/google-form-view-response.png){fig-alt="alt text goes here" fig-align="center" width="436"}
+
+If you are not sure if the access request is valid (i.e., the requestor does not appear to be a NASA Openscapes mentor, DAAC member or close collaborator etc.), post a message in Slack in the `#nasa-mentors` channel asking if the person requesting access is affiliated with any mentors' work. If not, then send the requestor the following email, and do not
+add them to the GitHub team:
+
+> Dear XXX, 
+>
+> Thank you for your interest in our JupyterHub. Currently we provide access to people who participate in workshops taught by NASA Data Center (DAAC) staff through the NASA Openscapes community. We will be adding upcoming events you can sign up for here: https://nasa-openscapes.github.io/news.
+> 
+> Cheers,
+
+Note in the "Notes" column in the [Form Response Sheet](https://docs.google.com/spreadsheets/d/1TgokoQa-jYncYSOjeYoWYRuDAbyo4uUR-MSzUotvM00/edit?resourcekey#gid=1416760746) that this email was sent denying access, and the date.
 
 ### 4. Copy GitHub username
 
@@ -125,7 +136,7 @@ Participants in the Champions program workshops are given Openscapes
 
 ::: {.callout-note}
 We have a newly developed process for giving people short-term access to the hub 
-for workshops, with low overhead for instructors and particpants. This process 
+for workshops, with low overhead for instructors and participants. This process 
 removes the need to add people to a GitHub team, and gives participants "just 
 in time" access to a special workshop hub with a username and shared 
 workshop-specific password. Instructions for this simplified setup are 
@@ -178,7 +189,7 @@ for NASA Openscapes JupyterHub Access.
 
 ::: {.callout-tip}
 Do this fairly close to the day of the workshop to try to get the greatest 
-number particpants to have filled out the form, and reduce the number of manual 
+number participants to have filled out the form, and reduce the number of manual 
 additions on the day of the workshop.
 :::
 
