@@ -1,0 +1,42 @@
+on:
+  # workflow_dispatch allows deploy preview by pushing button on GitHub
+  workflow_dispatch:
+  pull_request:
+    branches: [main]
+
+name: Deploy Preview
+
+jobs:
+  build-deploy-preview:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+
+      - name: Render
+        uses: quarto-dev/quarto-actions/render@v2
+        with:
+          to: html
+
+      - name: Deploy Preview to Netlify as preview
+        id: netlify-deploy
+        uses: nwtgck/actions-netlify@v3
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: f5b7c499-8187-438d-949b-6e2db927f5c1
+        with:
+          publish-dir: './_site'
+          production-deploy: false
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          deploy-message:
+            'Deploy from GHA: ${{ github.event.pull_request.title || github.event.head_commit.message }} (${{ github.sha }})'
+          alias: deploy-preview-${{ github.event.number }}
+          # these all default to 'true'
+          enable-pull-request-comment: true
+          enable-commit-comment: false
+          enable-commit-status: true
+          overwrites-pull-request-comment: false
+        timeout-minutes: 1
