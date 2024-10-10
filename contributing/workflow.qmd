@@ -1,7 +1,7 @@
 ---
 title: Workflow
-editor: 
-  markdown: 
+editor:
+  markdown:
     wrap: 72
 ---
 
@@ -176,7 +176,7 @@ then reclone.
 
 ``` bash
 cd 2021-Cloud-Hackathon
-rm -rf 2021-Cloud-Hackathon 
+rm -rf 2021-Cloud-Hackathon
 ```
 
 **Undo changes you've maybe saved or committed, but not pushed**. This
@@ -545,7 +545,7 @@ The Quarto documentation is here:
 
 What this looks like:
 
-```         
+```
 ---
 title: How do I access data stored in Earthdata Cloud?
 execute:
@@ -560,7 +560,7 @@ As you work and render the Cookbook, notice the feedback Quarto gives
 you. When you see yellow text that says the following, this is a nice
 flag to you to include this as an alias.
 
-```         
+```
 WARNING: Unable to resolve link target: working-with-data-in-cloud/Direct-Cloud-Access.qmd
 ```
 
@@ -576,7 +576,7 @@ We use a 2-line style in our `_quarto.yml` file to define how a Cookbook
 page is named in the navbar (`text`) and to point to its source file
 (`href`) like this:
 
-```         
+```
     - text: "Cheatsheets & Slides"
       href: cheatsheets/index.qmd
 ```
@@ -587,7 +587,7 @@ how the title appears on the Cookbook page itself.
 
 The alternative style is 1 line:
 
-```         
+```
     - cheatsheets/index.qmd
 ```
 
@@ -803,6 +803,8 @@ TODO: complete the import of images, and the following bullets:
 -   quarto preview notebook
 -   commit and push to your branch
 -   create a PR and ask for a reviewer
+-   Preview PR using deploy preview - there will be a new bot comment in the PR
+    with a link
 
 ### Review a pull request
 
@@ -858,7 +860,7 @@ appear if the pull request was merged:
         your own)
     -   `quarto preview` - this will build the book with Andy's
         suggested edits.
-        <!-- -   At the end of the preview log, it says "Browse at 
+        <!-- -   At the end of the preview log, it says "Browse at
                                 <!--     https://openscapes.2i2c.cloud..." The Browse URL actually -->
         <!--     points to the production Hub!! We need it to point to -->
         <!--     staging since that's where we're working, so we use the URL -->
@@ -967,7 +969,7 @@ quarto convert tutorials/Data_Discovery__CMR-STAC_API.ipynb
     original `.ipynb` with your changes.
 
 ``` bash
-quarto convert tutorials/Data_Discovery__CMR-STAC_API.qmd 
+quarto convert tutorials/Data_Discovery__CMR-STAC_API.qmd
 ```
 
 6.  Quarto will consider the `.qmd` book chapter and try to render it.
