@@ -15,13 +15,13 @@ slow to read from and write to.
 To that end, the Hub provides every user access to two [AWS
 S3](https://aws.amazon.com/s3/) buckets - a "scratch" bucket for short-term
 storage, and a "persistent" bucket for longer-term storage. AWS S3 buckets are
-like online storage containers, accessible through the internet, where you can
+like online storage containers, available through the internet, where you can
 store and retrieve files. S3 buckets have fast read/write, and storage costs are
 relatively inexpensive compared to storing in your `$HOME` directory. All major
 cloud providers provide a similar storage service - S3 is Amazon's version, while 
 Google provides "Google Cloud Storage", and Microsoft provides "Azure Blob Storage".
 
-These buckets are accessible only when you are working inside the Hub; you can
+These buckets are available only when you are working inside the Hub; you can
 access them using the environment variables:
 
 - `$SCRATCH_BUCKET` pointing to `s3://openscapeshub-scratch/[your-username]`
