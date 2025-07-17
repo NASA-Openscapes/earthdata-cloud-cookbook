@@ -599,12 +599,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#prerequisites" id="toc-prerequisites" class="nav-link" data-scroll-target="#prerequisites">Prerequisites</a></li>
   <li><a href="#import-packages" id="toc-import-packages" class="nav-link" data-scroll-target="#import-packages">1. Import Packages</a></li>
   <li><a href="#create-edl-files-using-the-earthaccess-python-library" id="toc-create-edl-files-using-the-earthaccess-python-library" class="nav-link" data-scroll-target="#create-edl-files-using-the-earthaccess-python-library">2. Create EDL files using the <code>earthaccess</code> Python library</a></li>
-  <li><a href="#finding-data-files-in-nasas-earthdata-cloud-or-whats-a-conceptid" id="toc-finding-data-files-in-nasas-earthdata-cloud-or-whats-a-conceptid" class="nav-link" data-scroll-target="#finding-data-files-in-nasas-earthdata-cloud-or-whats-a-conceptid">3. Finding Data Files in NASA’s EarthData Cloud: or What’s a ConceptID?</a></li>
-  <li><a href="#obtaining-the-daymet-v4-daily-data-concept-id" id="toc-obtaining-the-daymet-v4-daily-data-concept-id" class="nav-link" data-scroll-target="#obtaining-the-daymet-v4-daily-data-concept-id">3.1 Obtaining the Daymet V4 Daily data <em>Concept ID</em></a></li>
-  <li><a href="#searching-for-daymet-files-using-the-cmr-search-api" id="toc-searching-for-daymet-files-using-the-cmr-search-api" class="nav-link" data-scroll-target="#searching-for-daymet-files-using-the-cmr-search-api">4. Searching for Daymet Files using the CMR Search API</a></li>
-  <li><a href="#open-and-subset-granules-using-netcdf4-python-and-the-dap4-protocol" id="toc-open-and-subset-granules-using-netcdf4-python-and-the-dap4-protocol" class="nav-link" data-scroll-target="#open-and-subset-granules-using-netcdf4-python-and-the-dap4-protocol">5. Open and Subset Granules Using netcdf4-python and the DAP4 Protocol</a></li>
-  <li><a href="#open-and-subset-granules-using-xarray" id="toc-open-and-subset-granules-using-xarray" class="nav-link" data-scroll-target="#open-and-subset-granules-using-xarray">6. Open and Subset Granules Using Xarray</a></li>
-  <li><a href="#resample-and-plot-tmax" id="toc-resample-and-plot-tmax" class="nav-link" data-scroll-target="#resample-and-plot-tmax">7. Resample and Plot tmax</a></li>
+  <li><a href="#searching-for-daymet-cloud-opendap-granules-using-the-cmr-and-earthaccess" id="toc-searching-for-daymet-cloud-opendap-granules-using-the-cmr-and-earthaccess" class="nav-link" data-scroll-target="#searching-for-daymet-cloud-opendap-granules-using-the-cmr-and-earthaccess">3. Searching for Daymet Cloud OPeNDAP Granules using the CMR and <code>earthaccess</code></a></li>
+  <li><a href="#open-and-subset-granules-using-xarray-and-the-dap4-protocol" id="toc-open-and-subset-granules-using-xarray-and-the-dap4-protocol" class="nav-link" data-scroll-target="#open-and-subset-granules-using-xarray-and-the-dap4-protocol">4. Open and Subset Granules Using Xarray and the DAP4 Protocol</a></li>
+  <li><a href="#open-and-subset-granules-using-xarray" id="toc-open-and-subset-granules-using-xarray" class="nav-link" data-scroll-target="#open-and-subset-granules-using-xarray">5. Open and Subset Granules Using Xarray</a></li>
+  <li><a href="#resample-and-plot-tmax" id="toc-resample-and-plot-tmax" class="nav-link" data-scroll-target="#resample-and-plot-tmax">6. Resample and Plot tmax</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.dev/nasa-openscapes/earthdata-cloud-cookbook/blob/main/tutorials/Earthdata_Cloud__Data_Access_OPeNDAP_Example.ipynb" class="toc-action">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/blob/main/tutorials/Earthdata_Cloud__Data_Access_OPeNDAP_Example.ipynb" class="toc-action">View source</a></p><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
@@ -628,13 +626,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
+<section id="updated-9-july-2025" class="level4">
+<h4 class="anchored" data-anchor-id="updated-9-july-2025">Updated 9 July 2025</h4>
+</section>
 <section id="overview" class="level3">
 <h3 class="anchored" data-anchor-id="overview">Overview</h3>
-<p>This notebook demonstrates how to access OPeNDAP granules hosted inside of the Earthdata Cloud Archives. It shows how to query a cloud OPeNDAP-hosted Daymet granule using the Common Metadata Repository (CMR) API, before remotely accessing and analyzing it using Xarray and ncdump.</p>
+<p>This notebook demonstrates how to access OPeNDAP granules hosted inside of the Earthdata Cloud Archives. It shows how to query a cloud OPeNDAP-hosted Daymet granule using the <code>earthaccess</code> library, before remotely accessing and analyzing it using Xarray and ncdump.</p>
 </section>
 <section id="review-what-is-opendap" class="level3">
 <h3 class="anchored" data-anchor-id="review-what-is-opendap">Review: What is OPeNDAP?</h3>
-<p>OPeNDAP, or the <a href="https://www.earthdata.nasa.gov/engage/open-data-services-and-software/api/opendap">Open-source Project for a Network Data Access Protocol</a>, is a data server that allows for accessing scientific datasets through the public internet. It uses Data Access Protocols (DAP) and the <a href="https://www.opendap.org/software/hyrax-data-server">Hyrax Data Server</a>, to distribute data and metadata to various clients and utilities, including Python. NASA and its <a href="https://www.earthdata.nasa.gov/eosdis/daacs">Distributed Active Archive Centers (DAACs)</a> are migrating their on-premise OPeNDAP Hyrax servers to the cloud, where granules are now organized by DAAC and collection <a href="https://cmr.earthdata.nasa.gov/search/site/docs/search/api.html#c-concept-id">Concept ID</a>. This notebook will show how to search for <a href="https://daymet.ornl.gov/">Daymet</a> Concept ID and OPeNDAP URLs using the <a href="https://cmr.earthdata.nasa.gov/search/site/docs/search/api.html">CMR API</a>, before viewing and plotting its data through several methods, including <a href="https://docs.xarray.dev/en/stable/">Xarray</a> and <a href="https://www.unidata.ucar.edu/software/netcdf/workshops/2011/utilities/Ncdump.html">ncdump</a>.</p>
+<p>OPeNDAP, or the <a href="https://www.earthdata.nasa.gov/engage/open-data-services-and-software/api/opendap">Open-source Project for a Network Data Access Protocol</a>, is a data server that allows for accessing scientific datasets through the public internet. It uses Data Access Protocols (DAP) and the <a href="https://www.opendap.org/software/hyrax-data-server">Hyrax Data Server</a>, to distribute data and metadata to various clients and utilities, including Python. NASA and its <a href="https://www.earthdata.nasa.gov/eosdis/daacs">Distributed Active Archive Centers (DAACs)</a> are migrating their on-premise OPeNDAP Hyrax servers to the cloud, where granules are now organized by DAAC and collection <a href="https://cmr.earthdata.nasa.gov/search/site/docs/search/api.html#c-concept-id">Concept ID</a>. This notebook will show how to search for <a href="https://daymet.ornl.gov/">Daymet</a> Cloud OPeNDAP granules by DOI, before viewing and plotting its data through several methods, including <a href="https://docs.xarray.dev/en/stable/">Xarray</a> and <a href="https://www.unidata.ucar.edu/software/netcdf/workshops/2011/utilities/Ncdump.html">ncdump</a>.</p>
 </section>
 <section id="prerequisites" class="level3">
 <h3 class="anchored" data-anchor-id="prerequisites">Prerequisites</h3>
@@ -643,173 +644,102 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Generation of the <code>.netrc</code> and <code>.dodsrc</code> files (both files will be generated in this notebook)</li>
 </ul></li>
-<li>Python 3.7 or higher</li>
+<li>Python 3.10 or higher</li>
 <li><a href="https://docs.xarray.dev/en/stable/">Xarray</a></li>
-<li><a href="https://unidata.github.io/netcdf4-python/">netcdf4-python</a></li>
-<li>netcdf-c version == 4.8.1, 4.9.0, or &gt;=4.9.3
+<li><a href="https://earthaccess.readthedocs.io/en/latest/">earthaccess</a></li>
+<li><a href="https://pydap.github.io/pydap/en/intro.html">pydap</a></li>
+<li>netcdf-c version == 4.9.0, or &gt;=4.9.3
 <ul>
-<li>To check the version of your library, call the following function: <code>nc4.getlibversion()</code></li>
+<li>To check the version of your library, call the following function after importing <code>netCDF4-python</code>: <code>netCDF4.getlibversion()</code></li>
 </ul></li>
 </ul>
-<hr>
+<p><strong><em>Optional Anaconda Environment YAML</em></strong>: This notebook can be run using the <a href="https://github.com/nasa/gesdisc-tutorials/tree/main/environments/nasa-gesdisc.yml">‘nasa-gesdisc’ YAML file</a> provided in the ‘environments’ subfolder. Please follow the instructions <a href="https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#creating-an-environment-from-an-environment-yml-file">here</a> to install and activate this environment.</p>
+<p><strong>If you are running this notebook in the 2i2c Jupyterhub,</strong> you will need to downgrade the NumPy and netCDF4-python libraries for DAP4 compatibility. Please uncomment the next cell and execute before running the following cells:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Uncomment the following commands and run only if you are using the 2i2c Jupyterhub to run this notebook:</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">'''</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">! pip install -U netcdf4==1.6.2</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">! pip install -U numpy==1.25.2</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Automatically restart the kernel after package installation</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">import IPython</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">app = IPython.get_ipython()</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">app.kernel.do_shutdown(restart=True)</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">'''</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="import-packages" class="level2">
 <h2 class="anchored" data-anchor-id="import-packages">1. Import Packages</h2>
 <div class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> xarray <span class="im">as</span> xr</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> earthaccess</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> datetime <span class="im">as</span> dt</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pprint</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> netCDF4 <span class="im">as</span> nc4</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> subprocess <span class="im">import</span> Popen</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> platform</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> shutil</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> xarray <span class="im">as</span> xr</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> earthaccess</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pydap.net <span class="im">import</span> create_session</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>matplotlib inline</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="create-edl-files-using-the-earthaccess-python-library" class="level2">
 <h2 class="anchored" data-anchor-id="create-edl-files-using-the-earthaccess-python-library">2. Create EDL files using the <code>earthaccess</code> Python library</h2>
-<p>First, pass your Earthdata credentials to the <code>earthaccess</code> library to create the <code>.netrc</code> file:</p>
+<p>First, pass your Earthdata credentials to the <code>earthaccess</code> library to create the <code>.netrc</code> and <code>.dodsrc</code> files:</p>
 <div class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>auth <span class="op">=</span> earthaccess.login(strategy<span class="op">=</span><span class="st">"interactive"</span>, persist<span class="op">=</span><span class="va">True</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>You're now authenticated with NASA Earthdata Login
-Using token with expiration date: 07/14/2023
-Using user provided credentials for EDL
-Persisting credentials to .netrc</code></pre>
-</div>
-</div>
-<p>Next, run the following code to generate the <code>.dodsrc</code> file, if it is not already present:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>homeDir <span class="op">=</span> os.path.expanduser(<span class="st">"~"</span>) <span class="op">+</span> os.sep</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(homeDir <span class="op">+</span> <span class="st">'.dodsrc'</span>, <span class="st">'w'</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">file</span>.write(<span class="st">'HTTP.COOKIEJAR=</span><span class="sc">{}</span><span class="st">.urs_cookies</span><span class="ch">\n</span><span class="st">'</span>.<span class="bu">format</span>(homeDir))</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">file</span>.write(<span class="st">'HTTP.NETRC=</span><span class="sc">{}</span><span class="st">.netrc'</span>.<span class="bu">format</span>(homeDir))</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">file</span>.close()</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Saved .dodsrc to:'</span>, homeDir)</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Set appropriate permissions for Linux/macOS</span></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> platform.system() <span class="op">!=</span> <span class="st">"Windows"</span>:</span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    Popen(<span class="st">'chmod og-rw ~/.netrc'</span>, shell<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Copy dodsrc to working directory in Windows  </span></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    shutil.copy2(homeDir <span class="op">+</span> <span class="st">'.dodsrc'</span>, os.getcwd())</span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'Copied .dodsrc to:'</span>, os.getcwd())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>auth <span class="op">=</span> earthaccess.login(strategy<span class="op">=</span><span class="st">"interactive"</span>, persist<span class="op">=</span><span class="va">True</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="finding-data-files-in-nasas-earthdata-cloud-or-whats-a-conceptid" class="level2">
-<h2 class="anchored" data-anchor-id="finding-data-files-in-nasas-earthdata-cloud-or-whats-a-conceptid">3. Finding Data Files in NASA’s EarthData Cloud: or What’s a ConceptID?</h2>
-<p>Cloud OPeNDAP-enabled granules are organized b a unique identifier called the <strong><code>Concept ID</code></strong>. Below, we’ll demonstrate how to use NASA’s <a href="https://cmr.earthdata.nasa.gov/search"><strong>CMR API</strong></a> and either the Daymet dataset <code>DOI</code> or the <code>shortname</code> to obtain the Concept ID for <strong>Daymet Daily</strong> data. With this information, we can search all of NASA’s Earthdata holdings for matching data files (granules) based on our spatial area and time period of interest.</p>
-<p>Search NASA Earthdata Holdings based on… * <em><code>DOI</code></em> - The Daymet daily data Digital Object Identifier * <em><code>ConceptID</code></em> - remember, this is NASA Earthdata’s unique ID for this dataset * Area of Interest * Time Range of Interest</p>
-</section>
-<section id="obtaining-the-daymet-v4-daily-data-concept-id" class="level2">
-<h2 class="anchored" data-anchor-id="obtaining-the-daymet-v4-daily-data-concept-id">3.1 Obtaining the Daymet V4 Daily data <em>Concept ID</em></h2>
-<p>Using Python’s <strong><code>requests</code></strong> library, we will build and provide the URL <code>doisearch</code> to search <strong>NASA’s Common Metadata Repository (CMR)</strong> to acquire the <strong><code>concept_id</code></strong> unique to the Daymet V4 Daily data in NASA’s Cloud holdings. We’ll use the <strong>concept_id</strong> in a next step when we search NASA Cloud Holdings for our spatial and temporal area of interest.</p>
-<div class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># CMR API base url</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>cmrurl<span class="op">=</span><span class="st">'https://cmr.earthdata.nasa.gov/search/'</span> <span class="co"># define the base url of NASA's CMR API as the variable `cmrurl`</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>doi <span class="op">=</span> <span class="st">'10.3334/ORNLDAAC/2129'</span>                   <span class="co"># Daymet V4R1 DOI - define the DOI as the variable `daymet_doi`</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>doisearch <span class="op">=</span> cmrurl <span class="op">+</span> <span class="st">'collections.json?doi='</span> <span class="op">+</span> doi</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(doisearch)</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>concept_id <span class="op">=</span> requests.get(doisearch).json()[<span class="st">'feed'</span>][<span class="st">'entry'</span>][<span class="dv">0</span>][<span class="st">'id'</span>]</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(concept_id)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>https://cmr.earthdata.nasa.gov/search/collections.json?doi=10.3334/ORNLDAAC/2129
-C2532426483-ORNL_CLOUD</code></pre>
-</div>
-</div>
-</section>
-<section id="searching-for-daymet-files-using-the-cmr-search-api" class="level2">
-<h2 class="anchored" data-anchor-id="searching-for-daymet-files-using-the-cmr-search-api">4. Searching for Daymet Files using the CMR Search API</h2>
+<section id="searching-for-daymet-cloud-opendap-granules-using-the-cmr-and-earthaccess" class="level2">
+<h2 class="anchored" data-anchor-id="searching-for-daymet-cloud-opendap-granules-using-the-cmr-and-earthaccess">3. Searching for Daymet Cloud OPeNDAP Granules using the CMR and <code>earthaccess</code></h2>
 <p>Daymet daily data files (or granules) are in netCDF4 format, and each file has one year’s worth of data. Data files are organized by variables (each for dayl, prcp, tmin, tmax, srad, swe, vp) and regions (each for us, pr, hi). Daymet filenames can be used to identify the files from continental North America (<code>*_na_*.nc</code>). The files from Puerto Rico and Hawaii are named as (<code>*_pr_*.nc</code>) and (<code>*_hi_*.nc</code>) respectively.</p>
-<p>Below, we create appropriately formatted strings for our temporal range:</p>
-<div class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>start_date <span class="op">=</span> dt.datetime(<span class="dv">2010</span>, <span class="dv">1</span>, <span class="dv">1</span>) <span class="co"># specify your own start date</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>end_date <span class="op">=</span> dt.datetime(<span class="dv">2011</span>, <span class="dv">12</span>, <span class="dv">31</span>)  <span class="co"># specify your end start date</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(start_date,end_date,sep<span class="op">=</span><span class="st">'</span><span class="ch">\n</span><span class="st">'</span>)</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>dt_format <span class="op">=</span> <span class="st">'%Y-%m-</span><span class="sc">%d</span><span class="st">T%H:%M:%SZ'</span> <span class="co"># format requirement for datetime search</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>temporal_str <span class="op">=</span> start_date.strftime(dt_format) <span class="op">+</span> <span class="st">','</span> <span class="op">+</span> end_date.strftime(dt_format)</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(temporal_str)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>2010-01-01 00:00:00
-2011-12-31 00:00:00
-2010-01-01T00:00:00Z,2011-12-31T00:00:00Z</code></pre>
-</div>
-</div>
-<p>We will first search all the granules for the full extent, and time period of interest (2010, 2011). For this tutorial, we set up the search parameters and download maximum temperature data (<code>tmax</code>).</p>
-<div class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>cmr_url <span class="op">=</span> <span class="st">'https://cmr.earthdata.nasa.gov/search/granules'</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>cmr_response <span class="op">=</span> requests.get(cmr_url, </span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>                            params<span class="op">=</span>{</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>                                <span class="st">'concept_id'</span>: concept_id,</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>                                <span class="st">'temporal'</span>: temporal_str,</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>                                <span class="st">'page_size'</span>: <span class="dv">200</span>,</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>                                },</span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>                            headers<span class="op">=</span>{</span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>                                <span class="st">'Accept'</span>: <span class="st">'application/json'</span></span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>                                }</span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>                            )</span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>daymet_granules <span class="op">=</span> cmr_response.json()[<span class="st">'feed'</span>][<span class="st">'entry'</span>]</span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>daymet_granules_urls <span class="op">=</span> []</span>
-<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> granule <span class="kw">in</span> daymet_granules:</span>
-<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>    item <span class="op">=</span> <span class="bu">next</span>((item[<span class="st">'href'</span>] <span class="cf">for</span> item <span class="kw">in</span> granule[<span class="st">'links'</span>] <span class="cf">if</span> <span class="st">"opendap"</span> <span class="kw">in</span> item[<span class="st">"href"</span>] <span class="kw">and</span> <span class="st">"tmax"</span> <span class="kw">in</span> item[<span class="st">"href"</span>]), <span class="va">None</span>)</span>
-<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> item <span class="op">!=</span> <span class="va">None</span>:</span>
-<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>        daymet_granules_urls.append(item)</span>
-<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>daymet_granules_urls</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="6">
-<pre><code>['https://opendap.earthdata.nasa.gov/collections/C2532426483-ORNL_CLOUD/granules/Daymet_Daily_V4R1.daymet_v4_daily_hi_tmax_2010.nc',
- 'https://opendap.earthdata.nasa.gov/collections/C2532426483-ORNL_CLOUD/granules/Daymet_Daily_V4R1.daymet_v4_daily_na_tmax_2010.nc',
- 'https://opendap.earthdata.nasa.gov/collections/C2532426483-ORNL_CLOUD/granules/Daymet_Daily_V4R1.daymet_v4_daily_pr_tmax_2010.nc',
- 'https://opendap.earthdata.nasa.gov/collections/C2532426483-ORNL_CLOUD/granules/Daymet_Daily_V4R1.daymet_v4_daily_hi_tmax_2011.nc',
- 'https://opendap.earthdata.nasa.gov/collections/C2532426483-ORNL_CLOUD/granules/Daymet_Daily_V4R1.daymet_v4_daily_pr_tmax_2011.nc',
- 'https://opendap.earthdata.nasa.gov/collections/C2532426483-ORNL_CLOUD/granules/Daymet_Daily_V4R1.daymet_v4_daily_na_tmax_2011.nc']</code></pre>
-</div>
+<p>We will first search all the granules for the full extent, and time period of interest (2001, 2011), using the <code>earthaccess</code> library. The <code>earthaccess</code> library will pass our search parameters to the CMR and return a JSON of metadata. For this tutorial, we set up the search parameters and download maximum temperature data (<code>tmax</code>).</p>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Query CMR for OPeNDAP links</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> earthaccess.search_data(</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    doi<span class="op">=</span><span class="st">"10.3334/ORNLDAAC/2129"</span>,</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    temporal<span class="op">=</span>(<span class="st">'2001-01-01'</span>, <span class="st">'2011-12-31'</span>),</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="open-and-subset-granules-using-netcdf4-python-and-the-dap4-protocol" class="level2">
-<h2 class="anchored" data-anchor-id="open-and-subset-granules-using-netcdf4-python-and-the-dap4-protocol">5. Open and Subset Granules Using netcdf4-python and the DAP4 Protocol</h2>
-<p>The “<a href="https://docs.opendap.org/index.php/DAP4:_Overview">DAP4</a>” protocol is included with Cloud OPeNDAP-enabled granules. This allows for certain granules to have their variables organized into group hierarchies, complex variable names retrieved, and to further distinguish dataset variables between each other. Because of this difference over on-premises OPeNDAP, which used DAP2, certain programming libraries may require updated methods for accessing Cloud OPeNDAP-enabled granules.</p>
-<p><em>It is required to use the <code>dap4://</code> protocol in the URL instead of <code>https://</code> for the netcdf4-python library.</em> Before the first granule in the list is accessed, we first replace the URL protocol in the string, then view its metadata using the netcdf4-python library.</p>
-<p><strong>NOTE:</strong> Occasionally, due to server load, “BES Connection” errors may appear while opening a Cloud OPeNDAP granule. These errors do not affect granule access.</p>
-<div class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">#dap4_url = daymet_granules_urls.replace("https://", "dap4://")</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>dap4_url <span class="op">=</span> [url.replace(<span class="st">"https://"</span>, <span class="st">"dap4://"</span>) <span class="cf">for</span> url <span class="kw">in</span> daymet_granules_urls]</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> nc4.Dataset(dap4_url[<span class="dv">0</span>], <span class="st">'r'</span>) <span class="co"># HI in 2010</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>f</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="7">
-<pre><code>&lt;class 'netCDF4._netCDF4.Dataset'&gt;
-root group (NETCDF4 data model, file format DAP4):
-    start_year: 2010
-    source: Daymet Software Version 4.0
-    Version_software: Daymet Software Version 4.0
-    Version_data: Daymet Data Version 4.0
-    Conventions: CF-1.6
-    citation: Please see http://daymet.ornl.gov/ for current Daymet data citation information
-    references: Please see http://daymet.ornl.gov/ for current information on Daymet references
-    dimensions(sizes): y(584), x(284), time(365), nv(2)
-    variables(dimensions): float32 y(y), float32 lon(y, x), float32 lat(y, x), float32 time(time), float32 x(x), float32 tmax(time, y, x), int16 lambert_conformal_conic(), float32 time_bnds(time, nv), int16 yearday(time)
-    groups: </code></pre>
-</div>
+<section id="open-and-subset-granules-using-xarray-and-the-dap4-protocol" class="level2">
+<h2 class="anchored" data-anchor-id="open-and-subset-granules-using-xarray-and-the-dap4-protocol">4. Open and Subset Granules Using Xarray and the DAP4 Protocol</h2>
+<p>The “<a href="https://opendap.github.io/dap4-specification/DAP4.html">DAP4</a>” protocol is used, rather than <code>https</code>, to access Cloud OPeNDAP-enabled granules. This allows for certain granules to have their variables organized into group hierarchies, complex variable names retrieved, and to further distinguish dataset variables between each other. Because of this difference over on-premises OPeNDAP, which used DAP2, certain programming libraries may require updated methods for accessing Cloud OPeNDAP-enabled granules.</p>
+<p>Before the first granule in the list is accessed, we first replace the URL protocol in the string, then we create an authentication session with <code>Pydap</code>.</p>
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the variable and region you want to extract</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>region <span class="op">=</span> <span class="st">"hi"</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>variable <span class="op">=</span> <span class="st">"tmax"</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize list of valid OPeNDAP URLs</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>opendap_urls <span class="op">=</span> []</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Parse each result for valid OPeNDAP URLs</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> item <span class="kw">in</span> results:</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> urls <span class="kw">in</span> item[<span class="st">'umm'</span>][<span class="st">'RelatedUrls'</span>]:</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="st">'OPENDAP'</span> <span class="kw">in</span> urls.get(<span class="st">'Description'</span>, <span class="st">''</span>).upper():</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Get base URL</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>            url <span class="op">=</span> urls[<span class="st">'URL'</span>].replace(<span class="st">'https'</span>, <span class="st">'dap4'</span>)</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Filter: only include URLs that contain the desired variable in the filename</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> region <span class="op">+</span> <span class="st">'_'</span> <span class="op">+</span> variable <span class="kw">in</span> url:</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>                <span class="co"># Subset only the desired variable, lat, lon, time</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>                ce <span class="op">=</span> <span class="st">"?dap4.ce=/</span><span class="sc">{}</span><span class="st">%3B/lat%3B/lon%3B/time"</span>.<span class="bu">format</span>(variable)</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>                url <span class="op">+=</span> ce</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>                <span class="co"># Add to list</span></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>                opendap_urls.append(url)</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Use netrc file to authenticate</span></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>my_session <span class="op">=</span> create_session()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="open-and-subset-granules-using-xarray" class="level2">
-<h2 class="anchored" data-anchor-id="open-and-subset-granules-using-xarray">6. Open and Subset Granules Using Xarray</h2>
-<p>Xarray is a commonly-used and widely supported Python library used for accessing and analyzing remotely-hosted datasets. Below, we use the <code>open_dataset()</code> function to access our first Cloud OPeNDAP Daymet granule, and to view its metadata. Both the <code>dap4://</code> and <code>https://</code> protocols may be passed into the Xarray library, and subsetting must be done using Xarray.</p>
-<div class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>ds <span class="op">=</span> xr.open_dataset(daymet_granules_urls[<span class="dv">0</span>]) <span class="co"># HI in 2010</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>ds</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="8">
+<h2 class="anchored" data-anchor-id="open-and-subset-granules-using-xarray">5. Open and Subset Granules Using Xarray</h2>
+<p>Xarray is a commonly-used and widely supported Python library used for accessing and analyzing remotely-hosted datasets. Below, we use the <code>open_dataset()</code> function to access our first Cloud OPeNDAP Daymet granule, and to view its metadata.</p>
+<p>This cell usually takes 1-3 minutes to run.</p>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Send DAP4 request, open as an xarray dataset</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>ds <span class="op">=</span> xr.open_mfdataset(opendap_urls, engine<span class="op">=</span><span class="st">"pydap"</span>, session<span class="op">=</span>my_session)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>ds</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
 
 <div><svg style="position: absolute; width: 0; height: 0; overflow: hidden">
 <defs>
@@ -831,30 +761,80 @@ root group (NETCDF4 data model, file format DAP4):
  */
 
 :root {
-  --xr-font-color0: var(--jp-content-font-color0, rgba(0, 0, 0, 1));
-  --xr-font-color2: var(--jp-content-font-color2, rgba(0, 0, 0, 0.54));
-  --xr-font-color3: var(--jp-content-font-color3, rgba(0, 0, 0, 0.38));
-  --xr-border-color: var(--jp-border-color2, #e0e0e0);
-  --xr-disabled-color: var(--jp-layout-color3, #bdbdbd);
-  --xr-background-color: var(--jp-layout-color0, white);
-  --xr-background-color-row-even: var(--jp-layout-color1, white);
-  --xr-background-color-row-odd: var(--jp-layout-color2, #eeeeee);
+  --xr-font-color0: var(
+    --jp-content-font-color0,
+    var(--pst-color-text-base rgba(0, 0, 0, 1))
+  );
+  --xr-font-color2: var(
+    --jp-content-font-color2,
+    var(--pst-color-text-base, rgba(0, 0, 0, 0.54))
+  );
+  --xr-font-color3: var(
+    --jp-content-font-color3,
+    var(--pst-color-text-base, rgba(0, 0, 0, 0.38))
+  );
+  --xr-border-color: var(
+    --jp-border-color2,
+    hsl(from var(--pst-color-on-background, white) h s calc(l - 10))
+  );
+  --xr-disabled-color: var(
+    --jp-layout-color3,
+    hsl(from var(--pst-color-on-background, white) h s calc(l - 40))
+  );
+  --xr-background-color: var(
+    --jp-layout-color0,
+    var(--pst-color-on-background, white)
+  );
+  --xr-background-color-row-even: var(
+    --jp-layout-color1,
+    hsl(from var(--pst-color-on-background, white) h s calc(l - 5))
+  );
+  --xr-background-color-row-odd: var(
+    --jp-layout-color2,
+    hsl(from var(--pst-color-on-background, white) h s calc(l - 15))
+  );
 }
 
-html[theme=dark],
+html[theme="dark"],
+html[data-theme="dark"],
+body[data-theme="dark"],
 body.vscode-dark {
-  --xr-font-color0: rgba(255, 255, 255, 1);
-  --xr-font-color2: rgba(255, 255, 255, 0.54);
-  --xr-font-color3: rgba(255, 255, 255, 0.38);
-  --xr-border-color: #1F1F1F;
-  --xr-disabled-color: #515151;
-  --xr-background-color: #111111;
-  --xr-background-color-row-even: #111111;
-  --xr-background-color-row-odd: #313131;
+  --xr-font-color0: var(
+    --jp-content-font-color0,
+    var(--pst-color-text-base, rgba(255, 255, 255, 1))
+  );
+  --xr-font-color2: var(
+    --jp-content-font-color2,
+    var(--pst-color-text-base, rgba(255, 255, 255, 0.54))
+  );
+  --xr-font-color3: var(
+    --jp-content-font-color3,
+    var(--pst-color-text-base, rgba(255, 255, 255, 0.38))
+  );
+  --xr-border-color: var(
+    --jp-border-color2,
+    hsl(from var(--pst-color-on-background, #111111) h s calc(l + 10))
+  );
+  --xr-disabled-color: var(
+    --jp-layout-color3,
+    hsl(from var(--pst-color-on-background, #111111) h s calc(l + 40))
+  );
+  --xr-background-color: var(
+    --jp-layout-color0,
+    var(--pst-color-on-background, #111111)
+  );
+  --xr-background-color-row-even: var(
+    --jp-layout-color1,
+    hsl(from var(--pst-color-on-background, #111111) h s calc(l + 5))
+  );
+  --xr-background-color-row-odd: var(
+    --jp-layout-color2,
+    hsl(from var(--pst-color-on-background, #111111) h s calc(l + 15))
+  );
 }
 
 .xr-wrap {
-  display: block;
+  display: block !important;
   min-width: 300px;
   max-width: 700px;
 }
@@ -891,7 +871,7 @@ body.vscode-dark {
 .xr-sections {
   padding-left: 0 !important;
   display: grid;
-  grid-template-columns: 150px auto auto 1fr 20px 20px;
+  grid-template-columns: 150px auto auto 1fr 0 20px 0 20px;
 }
 
 .xr-section-item {
@@ -899,16 +879,23 @@ body.vscode-dark {
 }
 
 .xr-section-item input {
-  display: none;
+  display: inline-block;
+  opacity: 0;
+  height: 0;
 }
 
 .xr-section-item input + label {
   color: var(--xr-disabled-color);
+  border: 2px solid transparent !important;
 }
 
 .xr-section-item input:enabled + label {
   cursor: pointer;
   color: var(--xr-font-color2);
+}
+
+.xr-section-item input:focus + label {
+  border: 2px solid var(--xr-font-color0) !important;
 }
 
 .xr-section-item input:enabled + label:hover {
@@ -932,7 +919,7 @@ body.vscode-dark {
 
 .xr-section-summary-in + label:before {
   display: inline-block;
-  content: '►';
+  content: "►";
   font-size: 11px;
   width: 15px;
   text-align: center;
@@ -943,7 +930,7 @@ body.vscode-dark {
 }
 
 .xr-section-summary-in:checked + label:before {
-  content: '▼';
+  content: "▼";
 }
 
 .xr-section-summary-in:checked + label > span {
@@ -1015,15 +1002,15 @@ body.vscode-dark {
 }
 
 .xr-dim-list:before {
-  content: '(';
+  content: "(";
 }
 
 .xr-dim-list:after {
-  content: ')';
+  content: ")";
 }
 
 .xr-dim-list li:not(:last-child):after {
-  content: ',';
+  content: ",";
   padding-right: 5px;
 }
 
@@ -1040,7 +1027,9 @@ body.vscode-dark {
 .xr-var-item label,
 .xr-var-item > .xr-var-name span {
   background-color: var(--xr-background-color-row-even);
+  border-color: var(--xr-background-color-row-odd);
   margin-bottom: 0;
+  padding-top: 2px;
 }
 
 .xr-var-item > .xr-var-name:hover span {
@@ -1051,6 +1040,7 @@ body.vscode-dark {
 .xr-var-list > li:nth-child(odd) > label,
 .xr-var-list > li:nth-child(odd) > .xr-var-name span {
   background-color: var(--xr-background-color-row-odd);
+  border-color: var(--xr-background-color-row-even);
 }
 
 .xr-var-name {
@@ -1069,6 +1059,11 @@ body.vscode-dark {
 
 .xr-var-preview {
   grid-column: 4;
+}
+
+.xr-index-preview {
+  grid-column: 2 / 5;
+  color: var(--xr-font-color2);
 }
 
 .xr-var-name,
@@ -1092,14 +1087,23 @@ body.vscode-dark {
 }
 
 .xr-var-attrs,
-.xr-var-data {
+.xr-var-data,
+.xr-index-data {
   display: none;
-  background-color: var(--xr-background-color) !important;
-  padding-bottom: 5px !important;
+  border-top: 2px dotted var(--xr-background-color);
+  padding-bottom: 20px !important;
+  padding-top: 10px !important;
+}
+
+.xr-var-attrs-in + label,
+.xr-var-data-in + label,
+.xr-index-data-in + label {
+  padding: 0 1px;
 }
 
 .xr-var-attrs-in:checked ~ .xr-var-attrs,
-.xr-var-data-in:checked ~ .xr-var-data {
+.xr-var-data-in:checked ~ .xr-var-data,
+.xr-index-data-in:checked ~ .xr-index-data {
   display: block;
 }
 
@@ -1107,15 +1111,24 @@ body.vscode-dark {
   float: right;
 }
 
+.xr-var-data > pre,
+.xr-index-data > pre,
+.xr-var-data > table > tbody > tr {
+  background-color: transparent !important;
+}
+
 .xr-var-name span,
 .xr-var-data,
+.xr-index-name div,
+.xr-index-data,
 .xr-attrs {
   padding-left: 25px !important;
 }
 
 .xr-attrs,
 .xr-var-attrs,
-.xr-var-data {
+.xr-var-data,
+.xr-index-data {
   grid-column: 1 / -1;
 }
 
@@ -1153,7 +1166,8 @@ dl.xr-attrs {
 }
 
 .xr-icon-database,
-.xr-icon-file-text2 {
+.xr-icon-file-text2,
+.xr-no-icon {
   display: inline-block;
   vertical-align: middle;
   width: 1em;
@@ -1162,537 +1176,320 @@ dl.xr-attrs {
   stroke: currentColor;
   fill: currentColor;
 }
-</style><pre class="xr-text-repr-fallback">&lt;xarray.Dataset&gt;
-Dimensions:                  (y: 584, x: 284, time: 365, nv: 2)
+
+.xr-var-attrs-in:checked + label > .xr-icon-file-text2,
+.xr-var-data-in:checked + label > .xr-icon-database,
+.xr-index-data-in:checked + label > .xr-icon-database {
+  color: var(--xr-font-color0);
+  filter: drop-shadow(1px 1px 5px var(--xr-font-color2));
+  stroke-width: 0.8px;
+}
+</style><pre class="xr-text-repr-fallback">&lt;xarray.Dataset&gt; Size: 3GB
+Dimensions:  (time: 4015, y: 584, x: 284)
 Coordinates:
-  * y                        (y) float32 -3.9e+04 -4e+04 ... -6.21e+05 -6.22e+05
-    lon                      (y, x) float32 ...
-    lat                      (y, x) float32 ...
-  * time                     (time) datetime64[ns] 2010-01-01T12:00:00 ... 20...
-  * x                        (x) float32 -5.802e+06 -5.801e+06 ... -5.519e+06
-Dimensions without coordinates: nv
+    lon      (y, x) float32 663kB dask.array&lt;chunksize=(584, 284), meta=np.ndarray&gt;
+    lat      (y, x) float32 663kB dask.array&lt;chunksize=(584, 284), meta=np.ndarray&gt;
+  * time     (time) datetime64[ns] 32kB 2001-01-01T12:00:00 ... 2011-12-31T12...
+Dimensions without coordinates: y, x
 Data variables:
-    tmax                     (time, y, x) float32 ...
-    lambert_conformal_conic  int16 -32767
-    time_bnds                (time, nv) datetime64[ns] 2010-01-01 ... 2011-01-01
-    yearday                  (time) int16 1 2 3 4 5 6 ... 361 362 363 364 365
+    tmax     (time, y, x) float32 3GB dask.array&lt;chunksize=(365, 584, 284), meta=np.ndarray&gt;
 Attributes:
-    start_year:                          2010
-    source:                              Daymet Software Version 4.0
-    Version_software:                    Daymet Software Version 4.0
-    Version_data:                        Daymet Data Version 4.0
-    Conventions:                         CF-1.6
-    citation:                            Please see http://daymet.ornl.gov/ f...
-    references:                          Please see http://daymet.ornl.gov/ f...
-    build_dmrpp_metadata.build_dmrpp:    3.20.13-563
-    build_dmrpp_metadata.bes:            3.20.13-563
-    build_dmrpp_metadata.libdap:         libdap-3.20.11-193
-    build_dmrpp_metadata.configuration:  \n# TheBESKeys::get_as_config()\nAll...
-    build_dmrpp_metadata.invocation:     build_dmrpp -c /tmp/bes_conf_p6Fo -f...</pre><div class="xr-wrap" hidden=""><div class="xr-header"><div class="xr-obj-type">xarray.Dataset</div></div><ul class="xr-sections"><li class="xr-section-item"><input id="section-c6d23f4d-5aaa-4b3e-88d8-8554c2203fb3" class="xr-section-summary-in" type="checkbox" disabled=""><label for="section-c6d23f4d-5aaa-4b3e-88d8-8554c2203fb3" class="xr-section-summary" title="Expand/collapse section">Dimensions:</label><div class="xr-section-inline-details"><ul class="xr-dim-list"><li><span class="xr-has-index">y</span>: 584</li><li><span class="xr-has-index">x</span>: 284</li><li><span class="xr-has-index">time</span>: 365</li><li><span>nv</span>: 2</li></ul></div><div class="xr-section-details"></div></li><li class="xr-section-item"><input id="section-318e8035-7f7f-4018-b9e6-f34fc92228fa" class="xr-section-summary-in" type="checkbox" checked=""><label for="section-318e8035-7f7f-4018-b9e6-f34fc92228fa" class="xr-section-summary">Coordinates: <span>(5)</span></label><div class="xr-section-inline-details"></div><div class="xr-section-details"><ul class="xr-var-list"><li class="xr-var-item"><div class="xr-var-name"><span class="xr-has-index">y</span></div><div class="xr-var-dims">(y)</div><div class="xr-var-dtype">float32</div><div class="xr-var-preview xr-preview">-3.9e+04 -4e+04 ... -6.22e+05</div><input id="attrs-00f35e0c-a077-43b1-86cf-899c28aa26c6" class="xr-var-attrs-in" type="checkbox"><label for="attrs-00f35e0c-a077-43b1-86cf-899c28aa26c6" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-29edfee9-0c1d-4e7b-82fd-342c394391cf" class="xr-var-data-in" type="checkbox"><label for="data-29edfee9-0c1d-4e7b-82fd-342c394391cf" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"><dt><span>units :</span></dt><dd>m</dd><dt><span>long_name :</span></dt><dd>y coordinate of projection</dd><dt><span>standard_name :</span></dt><dd>projection_y_coordinate</dd></dl></div><div class="xr-var-data"><pre>array([ -39000.,  -40000.,  -41000., ..., -620000., -621000., -622000.],
-      dtype=float32)</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>lon</span></div><div class="xr-var-dims">(y, x)</div><div class="xr-var-dtype">float32</div><div class="xr-var-preview xr-preview">...</div><input id="attrs-63bb638b-c0e1-40de-8689-aa3e1b7d6998" class="xr-var-attrs-in" type="checkbox"><label for="attrs-63bb638b-c0e1-40de-8689-aa3e1b7d6998" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-eae4f820-1530-4add-ba44-17e5f9a88d37" class="xr-var-data-in" type="checkbox"><label for="data-eae4f820-1530-4add-ba44-17e5f9a88d37" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"><dt><span>units :</span></dt><dd>degrees_east</dd><dt><span>long_name :</span></dt><dd>longitude coordinate</dd><dt><span>standard_name :</span></dt><dd>longitude</dd></dl></div><div class="xr-var-data"><pre>[165856 values with dtype=float32]</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>lat</span></div><div class="xr-var-dims">(y, x)</div><div class="xr-var-dtype">float32</div><div class="xr-var-preview xr-preview">...</div><input id="attrs-be63d69e-c34b-4642-a16f-882644f27545" class="xr-var-attrs-in" type="checkbox"><label for="attrs-be63d69e-c34b-4642-a16f-882644f27545" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-66a82940-c438-47ef-b0dc-e9248ce24a56" class="xr-var-data-in" type="checkbox"><label for="data-66a82940-c438-47ef-b0dc-e9248ce24a56" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"><dt><span>units :</span></dt><dd>degrees_north</dd><dt><span>long_name :</span></dt><dd>latitude coordinate</dd><dt><span>standard_name :</span></dt><dd>latitude</dd></dl></div><div class="xr-var-data"><pre>[165856 values with dtype=float32]</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span class="xr-has-index">time</span></div><div class="xr-var-dims">(time)</div><div class="xr-var-dtype">datetime64[ns]</div><div class="xr-var-preview xr-preview">2010-01-01T12:00:00 ... 2010-12-...</div><input id="attrs-626b81d3-b2e2-4393-a46b-6948daac302d" class="xr-var-attrs-in" type="checkbox"><label for="attrs-626b81d3-b2e2-4393-a46b-6948daac302d" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-20927b21-f800-46b0-9832-e2b975be4f6d" class="xr-var-data-in" type="checkbox"><label for="data-20927b21-f800-46b0-9832-e2b975be4f6d" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"><dt><span>standard_name :</span></dt><dd>time</dd><dt><span>bounds :</span></dt><dd>time_bnds</dd><dt><span>long_name :</span></dt><dd>24-hour day based on local time</dd></dl></div><div class="xr-var-data"><pre>array(['2010-01-01T12:00:00.000000000', '2010-01-02T12:00:00.000000000',
-       '2010-01-03T12:00:00.000000000', ..., '2010-12-29T12:00:00.000000000',
-       '2010-12-30T12:00:00.000000000', '2010-12-31T12:00:00.000000000'],
-      dtype='datetime64[ns]')</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span class="xr-has-index">x</span></div><div class="xr-var-dims">(x)</div><div class="xr-var-dtype">float32</div><div class="xr-var-preview xr-preview">-5.802e+06 ... -5.519e+06</div><input id="attrs-bc1a039c-9678-4486-a435-dd1ce2f46d81" class="xr-var-attrs-in" type="checkbox"><label for="attrs-bc1a039c-9678-4486-a435-dd1ce2f46d81" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-35ed3d75-0067-4712-8079-424e12e87c9b" class="xr-var-data-in" type="checkbox"><label for="data-35ed3d75-0067-4712-8079-424e12e87c9b" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"><dt><span>units :</span></dt><dd>m</dd><dt><span>long_name :</span></dt><dd>x coordinate of projection</dd><dt><span>standard_name :</span></dt><dd>projection_x_coordinate</dd></dl></div><div class="xr-var-data"><pre>array([-5802250., -5801250., -5800250., ..., -5521250., -5520250., -5519250.],
-      dtype=float32)</pre></div></li></ul></div></li><li class="xr-section-item"><input id="section-f45eba4a-2b44-4142-ad9b-d7bed0db0bb2" class="xr-section-summary-in" type="checkbox" checked=""><label for="section-f45eba4a-2b44-4142-ad9b-d7bed0db0bb2" class="xr-section-summary">Data variables: <span>(4)</span></label><div class="xr-section-inline-details"></div><div class="xr-section-details"><ul class="xr-var-list"><li class="xr-var-item"><div class="xr-var-name"><span>tmax</span></div><div class="xr-var-dims">(time, y, x)</div><div class="xr-var-dtype">float32</div><div class="xr-var-preview xr-preview">...</div><input id="attrs-0d957690-cec9-4f5d-99ac-716f1adb9d4c" class="xr-var-attrs-in" type="checkbox"><label for="attrs-0d957690-cec9-4f5d-99ac-716f1adb9d4c" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-2cb879df-5314-4a5b-ac95-7777b595aa52" class="xr-var-data-in" type="checkbox"><label for="data-2cb879df-5314-4a5b-ac95-7777b595aa52" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"><dt><span>long_name :</span></dt><dd>daily maximum temperature</dd><dt><span>units :</span></dt><dd>degrees C</dd><dt><span>grid_mapping :</span></dt><dd>lambert_conformal_conic</dd><dt><span>cell_methods :</span></dt><dd>area: mean time: maximum</dd></dl></div><div class="xr-var-data"><pre>[60537440 values with dtype=float32]</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>lambert_conformal_conic</span></div><div class="xr-var-dims">()</div><div class="xr-var-dtype">int16</div><div class="xr-var-preview xr-preview">...</div><input id="attrs-a04de155-2d82-46ac-9f89-d568393db42d" class="xr-var-attrs-in" type="checkbox"><label for="attrs-a04de155-2d82-46ac-9f89-d568393db42d" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-6d24e5cf-98fa-4d2b-bbce-ee3c30e832a9" class="xr-var-data-in" type="checkbox"><label for="data-6d24e5cf-98fa-4d2b-bbce-ee3c30e832a9" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"><dt><span>grid_mapping_name :</span></dt><dd>lambert_conformal_conic</dd><dt><span>longitude_of_central_meridian :</span></dt><dd>-100.0</dd><dt><span>latitude_of_projection_origin :</span></dt><dd>42.5</dd><dt><span>false_easting :</span></dt><dd>0.0</dd><dt><span>false_northing :</span></dt><dd>0.0</dd><dt><span>standard_parallel :</span></dt><dd>[25. 60.]</dd><dt><span>semi_major_axis :</span></dt><dd>6378137.0</dd><dt><span>inverse_flattening :</span></dt><dd>298.257223563</dd></dl></div><div class="xr-var-data"><pre>array(-32767, dtype=int16)</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>time_bnds</span></div><div class="xr-var-dims">(time, nv)</div><div class="xr-var-dtype">datetime64[ns]</div><div class="xr-var-preview xr-preview">...</div><input id="attrs-3e19f3d3-1eeb-4a31-8c30-bbb849f43258" class="xr-var-attrs-in" type="checkbox" disabled=""><label for="attrs-3e19f3d3-1eeb-4a31-8c30-bbb849f43258" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-5c0843c6-83a7-435a-8a62-013ca74eabf4" class="xr-var-data-in" type="checkbox"><label for="data-5c0843c6-83a7-435a-8a62-013ca74eabf4" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"></dl></div><div class="xr-var-data"><pre>array([['2010-01-01T00:00:00.000000000', '2010-01-02T00:00:00.000000000'],
-       ['2010-01-02T00:00:00.000000000', '2010-01-03T00:00:00.000000000'],
-       ['2010-01-03T00:00:00.000000000', '2010-01-04T00:00:00.000000000'],
-       ...,
-       ['2010-12-29T00:00:00.000000000', '2010-12-30T00:00:00.000000000'],
-       ['2010-12-30T00:00:00.000000000', '2010-12-31T00:00:00.000000000'],
-       ['2010-12-31T00:00:00.000000000', '2011-01-01T00:00:00.000000000']],
-      dtype='datetime64[ns]')</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>yearday</span></div><div class="xr-var-dims">(time)</div><div class="xr-var-dtype">int16</div><div class="xr-var-preview xr-preview">...</div><input id="attrs-c4db9494-7e7a-49be-9eeb-4cbfb763f630" class="xr-var-attrs-in" type="checkbox"><label for="attrs-c4db9494-7e7a-49be-9eeb-4cbfb763f630" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-b5d7e899-2a52-4e25-b1c1-d51c3cd6e845" class="xr-var-data-in" type="checkbox"><label for="data-b5d7e899-2a52-4e25-b1c1-d51c3cd6e845" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"><dt><span>long_name :</span></dt><dd>day of year (DOY) starting with day 1 on Januaray 1st</dd></dl></div><div class="xr-var-data"><pre>array([  1,   2,   3, ..., 363, 364, 365], dtype=int16)</pre></div></li></ul></div></li><li class="xr-section-item"><input id="section-481a595b-02c1-4c40-8833-c49b4b93baae" class="xr-section-summary-in" type="checkbox"><label for="section-481a595b-02c1-4c40-8833-c49b4b93baae" class="xr-section-summary">Attributes: <span>(12)</span></label><div class="xr-section-inline-details"></div><div class="xr-section-details"><dl class="xr-attrs"><dt><span>start_year :</span></dt><dd>2010</dd><dt><span>source :</span></dt><dd>Daymet Software Version 4.0</dd><dt><span>Version_software :</span></dt><dd>Daymet Software Version 4.0</dd><dt><span>Version_data :</span></dt><dd>Daymet Data Version 4.0</dd><dt><span>Conventions :</span></dt><dd>CF-1.6</dd><dt><span>citation :</span></dt><dd>Please see http://daymet.ornl.gov/ for current Daymet data citation information</dd><dt><span>references :</span></dt><dd>Please see http://daymet.ornl.gov/ for current information on Daymet references</dd><dt><span>build_dmrpp_metadata.build_dmrpp :</span></dt><dd>3.20.13-563</dd><dt><span>build_dmrpp_metadata.bes :</span></dt><dd>3.20.13-563</dd><dt><span>build_dmrpp_metadata.libdap :</span></dt><dd>libdap-3.20.11-193</dd><dt><span>build_dmrpp_metadata.configuration :</span></dt><dd>
-# TheBESKeys::get_as_config()
-AllowedHosts=^https?:\/\/
-BES.Catalog.catalog.FollowSymLinks=Yes
-BES.Catalog.catalog.RootDirectory=/tmp/tmp9fn76qqj/
-BES.Catalog.catalog.TypeMatch=dmrpp:.*\.(dmrpp)$;
-BES.Catalog.catalog.TypeMatch+=h5:.*(\.bz2|\.gz|\.Z)?$;
-BES.Data.RootDirectory=/dev/null
-BES.LogName=./bes.log
-BES.UncompressCache.dir=/tmp/hyrax_ux
-BES.UncompressCache.prefix=ux_
-BES.UncompressCache.size=500
-BES.module.cmd=/usr/lib64/bes/libdap_xml_module.so
-BES.module.dap=/usr/lib64/bes/libdap_module.so
-BES.module.dmrpp=/usr/lib64/bes/libdmrpp_module.so
-BES.module.fonc=/usr/lib64/bes/libfonc_module.so
-BES.module.h5=/usr/lib64/bes/libhdf5_module.so
-BES.module.nc=/usr/lib64/bes/libnc_module.so
-BES.modules=dap,cmd,h5,dmrpp,nc,fonc
-FONc.ClassicModel=false
-FONc.NoGlobalAttrs=true
-H5.EnableCF=false
-H5.EnableCheckNameClashing=true
-</dd><dt><span>build_dmrpp_metadata.invocation :</span></dt><dd>build_dmrpp -c /tmp/bes_conf_p6Fo -f /tmp/tmp9fn76qqj//daymet_v4_daily_hi_tmax_2010.nc -r /tmp/dmr__CDJLKz -u OPeNDAP_DMRpp_DATA_ACCESS_URL -M</dd></dl></div></li></ul></div></div>
+    start_year:        2001
+    source:            Daymet Software Version 4.0
+    Version_software:  Daymet Software Version 4.0
+    Version_data:      Daymet Data Version 4.0
+    Conventions:       CF-1.6
+    citation:          Please see http://daymet.ornl.gov/ for current Daymet ...
+    references:        Please see http://daymet.ornl.gov/ for current informa...
+    created:           2025-05-13T20:33:23Z</pre><div class="xr-wrap" style="display:none"><div class="xr-header"><div class="xr-obj-type">xarray.Dataset</div></div><ul class="xr-sections"><li class="xr-section-item"><input id="section-b453ed5b-21f1-4515-becb-f1dfc161b9e8" class="xr-section-summary-in" type="checkbox" disabled=""><label for="section-b453ed5b-21f1-4515-becb-f1dfc161b9e8" class="xr-section-summary" title="Expand/collapse section">Dimensions:</label><div class="xr-section-inline-details"><ul class="xr-dim-list"><li><span class="xr-has-index">time</span>: 4015</li><li><span>y</span>: 584</li><li><span>x</span>: 284</li></ul></div><div class="xr-section-details"></div></li><li class="xr-section-item"><input id="section-210e3f06-eec1-46bb-8d59-30a2e2a2ce7d" class="xr-section-summary-in" type="checkbox" checked=""><label for="section-210e3f06-eec1-46bb-8d59-30a2e2a2ce7d" class="xr-section-summary">Coordinates: <span>(3)</span></label><div class="xr-section-inline-details"></div><div class="xr-section-details"><ul class="xr-var-list"><li class="xr-var-item"><div class="xr-var-name"><span>lon</span></div><div class="xr-var-dims">(y, x)</div><div class="xr-var-dtype">float32</div><div class="xr-var-preview xr-preview">dask.array&lt;chunksize=(584, 284), meta=np.ndarray&gt;</div><input id="attrs-938c5c4a-6284-4efe-a0f1-aedf57ef1e66" class="xr-var-attrs-in" type="checkbox"><label for="attrs-938c5c4a-6284-4efe-a0f1-aedf57ef1e66" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-0a9a53f6-d611-4215-98aa-7428be72ec74" class="xr-var-data-in" type="checkbox"><label for="data-0a9a53f6-d611-4215-98aa-7428be72ec74" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"><dt><span>units :</span></dt><dd>degrees_east</dd><dt><span>long_name :</span></dt><dd>longitude coordinate</dd><dt><span>standard_name :</span></dt><dd>longitude</dd><dt><span>Maps :</span></dt><dd>()</dd></dl></div><div class="xr-var-data">
+<table data-quarto-postprocess="true" class="table table-sm table-striped small">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><table data-quarto-postprocess="true" class="table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th></th>
+<th data-quarto-table-cell-role="th">Array</th>
+<th data-quarto-table-cell-role="th">Chunk</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Bytes</td>
+<td>647.88 kiB</td>
+<td>647.88 kiB</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Shape</td>
+<td>(584, 284)</td>
+<td>(584, 284)</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Dask graph</td>
+<td colspan="2">1 chunks in 50 graph layers</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Data type</td>
+<td colspan="2">float32 numpy.ndarray</td>
+</tr>
+</tbody>
+</table></td>
+<td><img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTA4IiBoZWlnaHQ9IjE3MCIgc3R5bGU9InN0cm9rZTpyZ2IoMCwwLDApO3N0cm9rZS13aWR0aDoxIj4KCiAgPCEtLSBIb3Jpem9udGFsIGxpbmVzIC0tPgogIDxsaW5lIHgxPSIwIiB5MT0iMCIgeDI9IjU4IiB5Mj0iMCIgc3R5bGU9InN0cm9rZS13aWR0aDoyIj48L2xpbmU+CiAgPGxpbmUgeDE9IjAiIHkxPSIxMjAiIHgyPSI1OCIgeTI9IjEyMCIgc3R5bGU9InN0cm9rZS13aWR0aDoyIj48L2xpbmU+CgogIDwhLS0gVmVydGljYWwgbGluZXMgLS0+CiAgPGxpbmUgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEyMCIgc3R5bGU9InN0cm9rZS13aWR0aDoyIj48L2xpbmU+CiAgPGxpbmUgeDE9IjU4IiB5MT0iMCIgeDI9IjU4IiB5Mj0iMTIwIiBzdHlsZT0ic3Ryb2tlLXdpZHRoOjIiPjwvbGluZT4KCiAgPCEtLSBDb2xvcmVkIFJlY3RhbmdsZSAtLT4KICA8cG9seWdvbiBwb2ludHM9IjAuMCwwLjAgNTguMzU2MTY0MzgzNTYxNjUsMC4wIDU4LjM1NjE2NDM4MzU2MTY1LDEyMC4wIDAuMCwxMjAuMCIgc3R5bGU9ImZpbGw6I0VDQjE3MkEwO3N0cm9rZS13aWR0aDowIj48L3BvbHlnb24+CgogIDwhLS0gVGV4dCAtLT4KICA8dGV4dCB4PSIyOS4xNzgwODIiIHk9IjE0MC4wMDAwMDAiIGZvbnQtc2l6ZT0iMS4wcmVtIiBmb250LXdlaWdodD0iMTAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj4yODQ8L3RleHQ+CiAgPHRleHQgeD0iNzguMzU2MTY0IiB5PSI2MC4wMDAwMDAiIGZvbnQtc2l6ZT0iMS4wcmVtIiBmb250LXdlaWdodD0iMTAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiB0cmFuc2Zvcm09InJvdGF0ZSgtOTAsNzguMzU2MTY0LDYwLjAwMDAwMCkiPjU4NDwvdGV4dD4KPC9zdmc+" class="img-fluid"></td>
+</tr>
+</tbody>
+</table>
+<div class="xr-var-name">
+<span>lat</span>
+</div>
+<div class="xr-var-dims">
+(y, x)
+</div>
+<div class="xr-var-dtype">
+float32
+</div>
+<div class="xr-var-preview xr-preview">
+dask.array&lt;chunksize=(584, 284), meta=np.ndarray&gt;
+</div>
+<img src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iaWNvbiB4ci1pY29uLWZpbGUtdGV4dDIiPjx1c2UgeGxpbms6aHJlZj0iI2ljb24tZmlsZS10ZXh0MiI+PC91c2U+PC9zdmc+" class="icon xr-icon-file-text2 img-fluid"><img src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iaWNvbiB4ci1pY29uLWRhdGFiYXNlIj48dXNlIHhsaW5rOmhyZWY9IiNpY29uLWRhdGFiYXNlIj48L3VzZT48L3N2Zz4=" class="icon xr-icon-database img-fluid">
+<div class="xr-var-attrs">
+<dl>
+<dt><span>units :</span></dt>
+<dd>
+degrees_north
+</dd>
+<dt><span>long_name :</span></dt>
+<dd>
+latitude coordinate
+</dd>
+<dt><span>standard_name :</span></dt>
+<dd>
+latitude
+</dd>
+<dt><span>Maps :</span></dt>
+<dd>
+()
+</dd>
+</dl>
+</div>
+<div class="xr-var-data">
+<table data-quarto-postprocess="true" class="table table-sm table-striped small">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><table data-quarto-postprocess="true" class="table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th></th>
+<th data-quarto-table-cell-role="th">Array</th>
+<th data-quarto-table-cell-role="th">Chunk</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Bytes</td>
+<td>647.88 kiB</td>
+<td>647.88 kiB</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Shape</td>
+<td>(584, 284)</td>
+<td>(584, 284)</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Dask graph</td>
+<td colspan="2">1 chunks in 50 graph layers</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Data type</td>
+<td colspan="2">float32 numpy.ndarray</td>
+</tr>
+</tbody>
+</table></td>
+<td><img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTA4IiBoZWlnaHQ9IjE3MCIgc3R5bGU9InN0cm9rZTpyZ2IoMCwwLDApO3N0cm9rZS13aWR0aDoxIj4KCiAgPCEtLSBIb3Jpem9udGFsIGxpbmVzIC0tPgogIDxsaW5lIHgxPSIwIiB5MT0iMCIgeDI9IjU4IiB5Mj0iMCIgc3R5bGU9InN0cm9rZS13aWR0aDoyIj48L2xpbmU+CiAgPGxpbmUgeDE9IjAiIHkxPSIxMjAiIHgyPSI1OCIgeTI9IjEyMCIgc3R5bGU9InN0cm9rZS13aWR0aDoyIj48L2xpbmU+CgogIDwhLS0gVmVydGljYWwgbGluZXMgLS0+CiAgPGxpbmUgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEyMCIgc3R5bGU9InN0cm9rZS13aWR0aDoyIj48L2xpbmU+CiAgPGxpbmUgeDE9IjU4IiB5MT0iMCIgeDI9IjU4IiB5Mj0iMTIwIiBzdHlsZT0ic3Ryb2tlLXdpZHRoOjIiPjwvbGluZT4KCiAgPCEtLSBDb2xvcmVkIFJlY3RhbmdsZSAtLT4KICA8cG9seWdvbiBwb2ludHM9IjAuMCwwLjAgNTguMzU2MTY0MzgzNTYxNjUsMC4wIDU4LjM1NjE2NDM4MzU2MTY1LDEyMC4wIDAuMCwxMjAuMCIgc3R5bGU9ImZpbGw6I0VDQjE3MkEwO3N0cm9rZS13aWR0aDowIj48L3BvbHlnb24+CgogIDwhLS0gVGV4dCAtLT4KICA8dGV4dCB4PSIyOS4xNzgwODIiIHk9IjE0MC4wMDAwMDAiIGZvbnQtc2l6ZT0iMS4wcmVtIiBmb250LXdlaWdodD0iMTAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj4yODQ8L3RleHQ+CiAgPHRleHQgeD0iNzguMzU2MTY0IiB5PSI2MC4wMDAwMDAiIGZvbnQtc2l6ZT0iMS4wcmVtIiBmb250LXdlaWdodD0iMTAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiB0cmFuc2Zvcm09InJvdGF0ZSgtOTAsNzguMzU2MTY0LDYwLjAwMDAwMCkiPjU4NDwvdGV4dD4KPC9zdmc+" class="img-fluid"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="xr-var-name">
+<span class="xr-has-index">time</span>
+</div>
+<div class="xr-var-dims">
+(time)
+</div>
+<div class="xr-var-dtype">
+datetime64[ns]
+</div>
+<div class="xr-var-preview xr-preview">
+2001-01-01T12:00:00 ... 2011-12-...
+</div>
+<img src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iaWNvbiB4ci1pY29uLWZpbGUtdGV4dDIiPjx1c2UgeGxpbms6aHJlZj0iI2ljb24tZmlsZS10ZXh0MiI+PC91c2U+PC9zdmc+" class="icon xr-icon-file-text2 img-fluid"><img src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iaWNvbiB4ci1pY29uLWRhdGFiYXNlIj48dXNlIHhsaW5rOmhyZWY9IiNpY29uLWRhdGFiYXNlIj48L3VzZT48L3N2Zz4=" class="icon xr-icon-database img-fluid">
+<div class="xr-var-attrs">
+<dl>
+<dt><span>standard_name :</span></dt>
+<dd>
+time
+</dd>
+<dt><span>bounds :</span></dt>
+<dd>
+time_bnds
+</dd>
+<dt><span>long_name :</span></dt>
+<dd>
+24-hour day based on local time
+</dd>
+<dt><span>Maps :</span></dt>
+<dd>
+()
+</dd>
+</dl>
+</div>
+<div class="xr-var-data">
+<pre><code>array(['2001-01-01T12:00:00.000000000', '2001-01-02T12:00:00.000000000',
+       '2001-01-03T12:00:00.000000000', ..., '2011-12-29T12:00:00.000000000',
+       '2011-12-30T12:00:00.000000000', '2011-12-31T12:00:00.000000000'],
+      dtype='datetime64[ns]')</code></pre>
+</div>
+Data variables: <span>(1)</span>
+<div class="xr-section-inline-details">
+
+</div>
+<div class="xr-section-details">
+<div class="xr-var-name">
+<span>tmax</span>
+</div>
+<div class="xr-var-dims">
+(time, y, x)
+</div>
+<div class="xr-var-dtype">
+float32
+</div>
+<div class="xr-var-preview xr-preview">
+dask.array&lt;chunksize=(365, 584, 284), meta=np.ndarray&gt;
+</div>
+<img src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iaWNvbiB4ci1pY29uLWZpbGUtdGV4dDIiPjx1c2UgeGxpbms6aHJlZj0iI2ljb24tZmlsZS10ZXh0MiI+PC91c2U+PC9zdmc+" class="icon xr-icon-file-text2 img-fluid"><img src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iaWNvbiB4ci1pY29uLWRhdGFiYXNlIj48dXNlIHhsaW5rOmhyZWY9IiNpY29uLWRhdGFiYXNlIj48L3VzZT48L3N2Zz4=" class="icon xr-icon-database img-fluid">
+<div class="xr-var-attrs">
+<dl>
+<dt><span>long_name :</span></dt>
+<dd>
+daily maximum temperature
+</dd>
+<dt><span>units :</span></dt>
+<dd>
+degrees C
+</dd>
+<dt><span>grid_mapping :</span></dt>
+<dd>
+lambert_conformal_conic
+</dd>
+<dt><span>cell_methods :</span></dt>
+<dd>
+area: mean time: maximum
+</dd>
+<dt><span>Maps :</span></dt>
+<dd>
+('/lat', '/lon', '/time')
+</dd>
+</dl>
+</div>
+<div class="xr-var-data">
+<table data-quarto-postprocess="true" class="table table-sm table-striped small">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><table data-quarto-postprocess="true" class="table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th></th>
+<th data-quarto-table-cell-role="th">Array</th>
+<th data-quarto-table-cell-role="th">Chunk</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Bytes</td>
+<td>2.48 GiB</td>
+<td>230.93 MiB</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Shape</td>
+<td>(4015, 584, 284)</td>
+<td>(365, 584, 284)</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Dask graph</td>
+<td colspan="2">11 chunks in 23 graph layers</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Data type</td>
+<td colspan="2">float32 numpy.ndarray</td>
+</tr>
+</tbody>
+</table></td>
+<td><img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTY3IiBoZWlnaHQ9IjE2MSIgc3R5bGU9InN0cm9rZTpyZ2IoMCwwLDApO3N0cm9rZS13aWR0aDoxIj4KCiAgPCEtLSBIb3Jpem9udGFsIGxpbmVzIC0tPgogIDxsaW5lIHgxPSIxMCIgeTE9IjAiIHgyPSI4MCIgeTI9IjcwIiBzdHlsZT0ic3Ryb2tlLXdpZHRoOjIiPjwvbGluZT4KICA8bGluZSB4MT0iMTAiIHkxPSI0MCIgeDI9IjgwIiB5Mj0iMTExIiBzdHlsZT0ic3Ryb2tlLXdpZHRoOjIiPjwvbGluZT4KCiAgPCEtLSBWZXJ0aWNhbCBsaW5lcyAtLT4KICA8bGluZSB4MT0iMTAiIHkxPSIwIiB4Mj0iMTAiIHkyPSI0MCIgc3R5bGU9InN0cm9rZS13aWR0aDoyIj48L2xpbmU+CiAgPGxpbmUgeDE9IjE2IiB5MT0iNiIgeDI9IjE2IiB5Mj0iNDYiPjwvbGluZT4KICA8bGluZSB4MT0iMjIiIHkxPSIxMiIgeDI9IjIyIiB5Mj0iNTMiPjwvbGluZT4KICA8bGluZSB4MT0iMjkiIHkxPSIxOSIgeDI9IjI5IiB5Mj0iNTkiPjwvbGluZT4KICA8bGluZSB4MT0iMzUiIHkxPSIyNSIgeDI9IjM1IiB5Mj0iNjYiPjwvbGluZT4KICA8bGluZSB4MT0iNDIiIHkxPSIzMiIgeDI9IjQyIiB5Mj0iNzIiPjwvbGluZT4KICA8bGluZSB4MT0iNDgiIHkxPSIzOCIgeDI9IjQ4IiB5Mj0iNzkiPjwvbGluZT4KICA8bGluZSB4MT0iNTQiIHkxPSI0NCIgeDI9IjU0IiB5Mj0iODUiPjwvbGluZT4KICA8bGluZSB4MT0iNjEiIHkxPSI1MSIgeDI9IjYxIiB5Mj0iOTEiPjwvbGluZT4KICA8bGluZSB4MT0iNjciIHkxPSI1NyIgeDI9IjY3IiB5Mj0iOTgiPjwvbGluZT4KICA8bGluZSB4MT0iNzQiIHkxPSI2NCIgeDI9Ijc0IiB5Mj0iMTA0Ij48L2xpbmU+CiAgPGxpbmUgeDE9IjgwIiB5MT0iNzAiIHgyPSI4MCIgeTI9IjExMSIgc3R5bGU9InN0cm9rZS13aWR0aDoyIj48L2xpbmU+CgogIDwhLS0gQ29sb3JlZCBSZWN0YW5nbGUgLS0+CiAgPHBvbHlnb24gcG9pbnRzPSIxMC4wLDAuMCA4MC41ODgyMzUyOTQxMTc2NSw3MC41ODgyMzUyOTQxMTc2NSA4MC41ODgyMzUyOTQxMTc2NSwxMTEuMTQ1MDk1NTkzOTQ3NjYgMTAuMCw0MC41NTY4NjAyOTk4MzAwMSIgc3R5bGU9ImZpbGw6I0VDQjE3MkEwO3N0cm9rZS13aWR0aDowIj48L3BvbHlnb24+CgogIDwhLS0gSG9yaXpvbnRhbCBsaW5lcyAtLT4KICA8bGluZSB4MT0iMTAiIHkxPSIwIiB4Mj0iNDYiIHkyPSIwIiBzdHlsZT0ic3Ryb2tlLXdpZHRoOjIiPjwvbGluZT4KICA8bGluZSB4MT0iMTYiIHkxPSI2IiB4Mj0iNTMiIHkyPSI2Ij48L2xpbmU+CiAgPGxpbmUgeDE9IjIyIiB5MT0iMTIiIHgyPSI1OSIgeTI9IjEyIj48L2xpbmU+CiAgPGxpbmUgeDE9IjI5IiB5MT0iMTkiIHgyPSI2NSIgeTI9IjE5Ij48L2xpbmU+CiAgPGxpbmUgeDE9IjM1IiB5MT0iMjUiIHgyPSI3MiIgeTI9IjI1Ij48L2xpbmU+CiAgPGxpbmUgeDE9IjQyIiB5MT0iMzIiIHgyPSI3OCIgeTI9IjMyIj48L2xpbmU+CiAgPGxpbmUgeDE9IjQ4IiB5MT0iMzgiIHgyPSI4NSIgeTI9IjM4Ij48L2xpbmU+CiAgPGxpbmUgeDE9IjU0IiB5MT0iNDQiIHgyPSI5MSIgeTI9IjQ0Ij48L2xpbmU+CiAgPGxpbmUgeDE9IjYxIiB5MT0iNTEiIHgyPSI5NyIgeTI9IjUxIj48L2xpbmU+CiAgPGxpbmUgeDE9IjY3IiB5MT0iNTciIHgyPSIxMDQiIHkyPSI1NyI+PC9saW5lPgogIDxsaW5lIHgxPSI3NCIgeTE9IjY0IiB4Mj0iMTEwIiB5Mj0iNjQiPjwvbGluZT4KICA8bGluZSB4MT0iODAiIHkxPSI3MCIgeDI9IjExNyIgeTI9IjcwIiBzdHlsZT0ic3Ryb2tlLXdpZHRoOjIiPjwvbGluZT4KCiAgPCEtLSBWZXJ0aWNhbCBsaW5lcyAtLT4KICA8bGluZSB4MT0iMTAiIHkxPSIwIiB4Mj0iODAiIHkyPSI3MCIgc3R5bGU9InN0cm9rZS13aWR0aDoyIj48L2xpbmU+CiAgPGxpbmUgeDE9IjQ2IiB5MT0iMCIgeDI9IjExNyIgeTI9IjcwIiBzdHlsZT0ic3Ryb2tlLXdpZHRoOjIiPjwvbGluZT4KCiAgPCEtLSBDb2xvcmVkIFJlY3RhbmdsZSAtLT4KICA8cG9seWdvbiBwb2ludHM9IjEwLjAsMC4wIDQ2LjYwMTUyMTkzNTUwMzQwNiwwLjAgMTE3LjE4OTc1NzIyOTYyMTA1LDcwLjU4ODIzNTI5NDExNzY1IDgwLjU4ODIzNTI5NDExNzY1LDcwLjU4ODIzNTI5NDExNzY1IiBzdHlsZT0iZmlsbDojRUNCMTcyQTA7c3Ryb2tlLXdpZHRoOjAiPjwvcG9seWdvbj4KCiAgPCEtLSBIb3Jpem9udGFsIGxpbmVzIC0tPgogIDxsaW5lIHgxPSI4MCIgeTE9IjcwIiB4Mj0iMTE3IiB5Mj0iNzAiIHN0eWxlPSJzdHJva2Utd2lkdGg6MiI+PC9saW5lPgogIDxsaW5lIHgxPSI4MCIgeTE9IjExMSIgeDI9IjExNyIgeTI9IjExMSIgc3R5bGU9InN0cm9rZS13aWR0aDoyIj48L2xpbmU+CgogIDwhLS0gVmVydGljYWwgbGluZXMgLS0+CiAgPGxpbmUgeDE9IjgwIiB5MT0iNzAiIHgyPSI4MCIgeTI9IjExMSIgc3R5bGU9InN0cm9rZS13aWR0aDoyIj48L2xpbmU+CiAgPGxpbmUgeDE9IjExNyIgeTE9IjcwIiB4Mj0iMTE3IiB5Mj0iMTExIiBzdHlsZT0ic3Ryb2tlLXdpZHRoOjIiPjwvbGluZT4KCiAgPCEtLSBDb2xvcmVkIFJlY3RhbmdsZSAtLT4KICA8cG9seWdvbiBwb2ludHM9IjgwLjU4ODIzNTI5NDExNzY1LDcwLjU4ODIzNTI5NDExNzY1IDExNy4xODk3NTcyMjk2MjEwNSw3MC41ODgyMzUyOTQxMTc2NSAxMTcuMTg5NzU3MjI5NjIxMDUsMTExLjE0NTA5NTU5Mzk0NzY2IDgwLjU4ODIzNTI5NDExNzY1LDExMS4xNDUwOTU1OTM5NDc2NiIgc3R5bGU9ImZpbGw6I0VDQjE3MkEwO3N0cm9rZS13aWR0aDowIj48L3BvbHlnb24+CgogIDwhLS0gVGV4dCAtLT4KICA8dGV4dCB4PSI5OC44ODg5OTYiIHk9IjEzMS4xNDUwOTYiIGZvbnQtc2l6ZT0iMS4wcmVtIiBmb250LXdlaWdodD0iMTAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj4yODQ8L3RleHQ+CiAgPHRleHQgeD0iMTM3LjE4OTc1NyIgeT0iOTAuODY2NjY1IiBmb250LXNpemU9IjEuMHJlbSIgZm9udC13ZWlnaHQ9IjEwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgdHJhbnNmb3JtPSJyb3RhdGUoLTkwLDEzNy4xODk3NTcsOTAuODY2NjY1KSI+NTg0PC90ZXh0PgogIDx0ZXh0IHg9IjM1LjI5NDExOCIgeT0iOTUuODUwOTc4IiBmb250LXNpemU9IjEuMHJlbSIgZm9udC13ZWlnaHQ9IjEwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgdHJhbnNmb3JtPSJyb3RhdGUoNDUsMzUuMjk0MTE4LDk1Ljg1MDk3OCkiPjQwMTU8L3RleHQ+Cjwvc3ZnPg==" class="img-fluid"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div></li></ul></div></li><li class="xr-section-item"><input id="section-77b0cb89-0b1e-459d-9006-0fa7e6c7a58c" class="xr-section-summary-in" type="checkbox"><label for="section-77b0cb89-0b1e-459d-9006-0fa7e6c7a58c" class="xr-section-summary">Indexes: <span>(1)</span></label><div class="xr-section-inline-details"></div><div class="xr-section-details"><ul class="xr-var-list"><li class="xr-var-item"><div class="xr-index-name"><div>time</div></div><div class="xr-index-preview">PandasIndex</div><input type="checkbox" disabled=""><label></label><input id="index-f7713982-52f5-459a-9b16-0012157f61f2" class="xr-index-data-in" type="checkbox"><label for="index-f7713982-52f5-459a-9b16-0012157f61f2" title="Show/Hide index repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-index-data"><pre>PandasIndex(DatetimeIndex(['2001-01-01 12:00:00', '2001-01-02 12:00:00',
+               '2001-01-03 12:00:00', '2001-01-04 12:00:00',
+               '2001-01-05 12:00:00', '2001-01-06 12:00:00',
+               '2001-01-07 12:00:00', '2001-01-08 12:00:00',
+               '2001-01-09 12:00:00', '2001-01-10 12:00:00',
+               ...
+               '2011-12-22 12:00:00', '2011-12-23 12:00:00',
+               '2011-12-24 12:00:00', '2011-12-25 12:00:00',
+               '2011-12-26 12:00:00', '2011-12-27 12:00:00',
+               '2011-12-28 12:00:00', '2011-12-29 12:00:00',
+               '2011-12-30 12:00:00', '2011-12-31 12:00:00'],
+              dtype='datetime64[ns]', name='time', length=4015, freq=None))</pre></div></li></ul></div></li><li class="xr-section-item"><input id="section-1fe72305-2487-4f0b-a72c-0e543687ea97" class="xr-section-summary-in" type="checkbox" checked=""><label for="section-1fe72305-2487-4f0b-a72c-0e543687ea97" class="xr-section-summary">Attributes: <span>(8)</span></label><div class="xr-section-inline-details"></div><div class="xr-section-details"><dl class="xr-attrs"><dt><span>start_year :</span></dt><dd>2001</dd><dt><span>source :</span></dt><dd>Daymet Software Version 4.0</dd><dt><span>Version_software :</span></dt><dd>Daymet Software Version 4.0</dd><dt><span>Version_data :</span></dt><dd>Daymet Data Version 4.0</dd><dt><span>Conventions :</span></dt><dd>CF-1.6</dd><dt><span>citation :</span></dt><dd>Please see http://daymet.ornl.gov/ for current Daymet data citation information</dd><dt><span>references :</span></dt><dd>Please see http://daymet.ornl.gov/ for current information on Daymet references</dd><dt><span>created :</span></dt><dd>2025-05-13T20:33:23Z</dd></dl></div></li></ul></div></div>
 </div>
 </div>
 </section>
 <section id="resample-and-plot-tmax" class="level2">
-<h2 class="anchored" data-anchor-id="resample-and-plot-tmax">7. Resample and Plot tmax</h2>
-<p>Below, we will resample the tmax variable and calculate the monthly mean using Xarray’s built-in functions. Then, we will plot the monthly tmax mean for the month of July in Hawaii for 2010.</p>
-<div class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Monthly resample</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>monthly_tmax_mean <span class="op">=</span> ds[<span class="st">'tmax'</span>].resample(time<span class="op">=</span><span class="st">"M"</span>).mean()</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>monthly_tmax_mean</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="9">
-
-<div><svg style="position: absolute; width: 0; height: 0; overflow: hidden">
-<defs>
-<symbol id="icon-database" viewbox="0 0 32 32">
-<path d="M16 0c-8.837 0-16 2.239-16 5v4c0 2.761 7.163 5 16 5s16-2.239 16-5v-4c0-2.761-7.163-5-16-5z"></path>
-<path d="M16 17c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
-<path d="M16 26c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
-</symbol>
-<symbol id="icon-file-text2" viewbox="0 0 32 32">
-<path d="M28.681 7.159c-0.694-0.947-1.662-2.053-2.724-3.116s-2.169-2.030-3.116-2.724c-1.612-1.182-2.393-1.319-2.841-1.319h-15.5c-1.378 0-2.5 1.121-2.5 2.5v27c0 1.378 1.122 2.5 2.5 2.5h23c1.378 0 2.5-1.122 2.5-2.5v-19.5c0-0.448-0.137-1.23-1.319-2.841zM24.543 5.457c0.959 0.959 1.712 1.825 2.268 2.543h-4.811v-4.811c0.718 0.556 1.584 1.309 2.543 2.268zM28 29.5c0 0.271-0.229 0.5-0.5 0.5h-23c-0.271 0-0.5-0.229-0.5-0.5v-27c0-0.271 0.229-0.5 0.5-0.5 0 0 15.499-0 15.5 0v7c0 0.552 0.448 1 1 1h7v19.5z"></path>
-<path d="M23 26h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
-<path d="M23 22h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
-<path d="M23 18h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
-</symbol>
-</defs>
-</svg>
-<style>/* CSS stylesheet for displaying xarray objects in jupyterlab.
- *
- */
-
-:root {
-  --xr-font-color0: var(--jp-content-font-color0, rgba(0, 0, 0, 1));
-  --xr-font-color2: var(--jp-content-font-color2, rgba(0, 0, 0, 0.54));
-  --xr-font-color3: var(--jp-content-font-color3, rgba(0, 0, 0, 0.38));
-  --xr-border-color: var(--jp-border-color2, #e0e0e0);
-  --xr-disabled-color: var(--jp-layout-color3, #bdbdbd);
-  --xr-background-color: var(--jp-layout-color0, white);
-  --xr-background-color-row-even: var(--jp-layout-color1, white);
-  --xr-background-color-row-odd: var(--jp-layout-color2, #eeeeee);
-}
-
-html[theme=dark],
-body.vscode-dark {
-  --xr-font-color0: rgba(255, 255, 255, 1);
-  --xr-font-color2: rgba(255, 255, 255, 0.54);
-  --xr-font-color3: rgba(255, 255, 255, 0.38);
-  --xr-border-color: #1F1F1F;
-  --xr-disabled-color: #515151;
-  --xr-background-color: #111111;
-  --xr-background-color-row-even: #111111;
-  --xr-background-color-row-odd: #313131;
-}
-
-.xr-wrap {
-  display: block;
-  min-width: 300px;
-  max-width: 700px;
-}
-
-.xr-text-repr-fallback {
-  /* fallback to plain text repr when CSS is not injected (untrusted notebook) */
-  display: none;
-}
-
-.xr-header {
-  padding-top: 6px;
-  padding-bottom: 6px;
-  margin-bottom: 4px;
-  border-bottom: solid 1px var(--xr-border-color);
-}
-
-.xr-header > div,
-.xr-header > ul {
-  display: inline;
-  margin-top: 0;
-  margin-bottom: 0;
-}
-
-.xr-obj-type,
-.xr-array-name {
-  margin-left: 2px;
-  margin-right: 10px;
-}
-
-.xr-obj-type {
-  color: var(--xr-font-color2);
-}
-
-.xr-sections {
-  padding-left: 0 !important;
-  display: grid;
-  grid-template-columns: 150px auto auto 1fr 20px 20px;
-}
-
-.xr-section-item {
-  display: contents;
-}
-
-.xr-section-item input {
-  display: none;
-}
-
-.xr-section-item input + label {
-  color: var(--xr-disabled-color);
-}
-
-.xr-section-item input:enabled + label {
-  cursor: pointer;
-  color: var(--xr-font-color2);
-}
-
-.xr-section-item input:enabled + label:hover {
-  color: var(--xr-font-color0);
-}
-
-.xr-section-summary {
-  grid-column: 1;
-  color: var(--xr-font-color2);
-  font-weight: 500;
-}
-
-.xr-section-summary > span {
-  display: inline-block;
-  padding-left: 0.5em;
-}
-
-.xr-section-summary-in:disabled + label {
-  color: var(--xr-font-color2);
-}
-
-.xr-section-summary-in + label:before {
-  display: inline-block;
-  content: '►';
-  font-size: 11px;
-  width: 15px;
-  text-align: center;
-}
-
-.xr-section-summary-in:disabled + label:before {
-  color: var(--xr-disabled-color);
-}
-
-.xr-section-summary-in:checked + label:before {
-  content: '▼';
-}
-
-.xr-section-summary-in:checked + label > span {
-  display: none;
-}
-
-.xr-section-summary,
-.xr-section-inline-details {
-  padding-top: 4px;
-  padding-bottom: 4px;
-}
-
-.xr-section-inline-details {
-  grid-column: 2 / -1;
-}
-
-.xr-section-details {
-  display: none;
-  grid-column: 1 / -1;
-  margin-bottom: 5px;
-}
-
-.xr-section-summary-in:checked ~ .xr-section-details {
-  display: contents;
-}
-
-.xr-array-wrap {
-  grid-column: 1 / -1;
-  display: grid;
-  grid-template-columns: 20px auto;
-}
-
-.xr-array-wrap > label {
-  grid-column: 1;
-  vertical-align: top;
-}
-
-.xr-preview {
-  color: var(--xr-font-color3);
-}
-
-.xr-array-preview,
-.xr-array-data {
-  padding: 0 5px !important;
-  grid-column: 2;
-}
-
-.xr-array-data,
-.xr-array-in:checked ~ .xr-array-preview {
-  display: none;
-}
-
-.xr-array-in:checked ~ .xr-array-data,
-.xr-array-preview {
-  display: inline-block;
-}
-
-.xr-dim-list {
-  display: inline-block !important;
-  list-style: none;
-  padding: 0 !important;
-  margin: 0;
-}
-
-.xr-dim-list li {
-  display: inline-block;
-  padding: 0;
-  margin: 0;
-}
-
-.xr-dim-list:before {
-  content: '(';
-}
-
-.xr-dim-list:after {
-  content: ')';
-}
-
-.xr-dim-list li:not(:last-child):after {
-  content: ',';
-  padding-right: 5px;
-}
-
-.xr-has-index {
-  font-weight: bold;
-}
-
-.xr-var-list,
-.xr-var-item {
-  display: contents;
-}
-
-.xr-var-item > div,
-.xr-var-item label,
-.xr-var-item > .xr-var-name span {
-  background-color: var(--xr-background-color-row-even);
-  margin-bottom: 0;
-}
-
-.xr-var-item > .xr-var-name:hover span {
-  padding-right: 5px;
-}
-
-.xr-var-list > li:nth-child(odd) > div,
-.xr-var-list > li:nth-child(odd) > label,
-.xr-var-list > li:nth-child(odd) > .xr-var-name span {
-  background-color: var(--xr-background-color-row-odd);
-}
-
-.xr-var-name {
-  grid-column: 1;
-}
-
-.xr-var-dims {
-  grid-column: 2;
-}
-
-.xr-var-dtype {
-  grid-column: 3;
-  text-align: right;
-  color: var(--xr-font-color2);
-}
-
-.xr-var-preview {
-  grid-column: 4;
-}
-
-.xr-var-name,
-.xr-var-dims,
-.xr-var-dtype,
-.xr-preview,
-.xr-attrs dt {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  padding-right: 10px;
-}
-
-.xr-var-name:hover,
-.xr-var-dims:hover,
-.xr-var-dtype:hover,
-.xr-attrs dt:hover {
-  overflow: visible;
-  width: auto;
-  z-index: 1;
-}
-
-.xr-var-attrs,
-.xr-var-data {
-  display: none;
-  background-color: var(--xr-background-color) !important;
-  padding-bottom: 5px !important;
-}
-
-.xr-var-attrs-in:checked ~ .xr-var-attrs,
-.xr-var-data-in:checked ~ .xr-var-data {
-  display: block;
-}
-
-.xr-var-data > table {
-  float: right;
-}
-
-.xr-var-name span,
-.xr-var-data,
-.xr-attrs {
-  padding-left: 25px !important;
-}
-
-.xr-attrs,
-.xr-var-attrs,
-.xr-var-data {
-  grid-column: 1 / -1;
-}
-
-dl.xr-attrs {
-  padding: 0;
-  margin: 0;
-  display: grid;
-  grid-template-columns: 125px auto;
-}
-
-.xr-attrs dt,
-.xr-attrs dd {
-  padding: 0;
-  margin: 0;
-  float: left;
-  padding-right: 10px;
-  width: auto;
-}
-
-.xr-attrs dt {
-  font-weight: normal;
-  grid-column: 1;
-}
-
-.xr-attrs dt:hover span {
-  display: inline-block;
-  background: var(--xr-background-color);
-  padding-right: 10px;
-}
-
-.xr-attrs dd {
-  grid-column: 2;
-  white-space: pre-wrap;
-  word-break: break-all;
-}
-
-.xr-icon-database,
-.xr-icon-file-text2 {
-  display: inline-block;
-  vertical-align: middle;
-  width: 1em;
-  height: 1.5em !important;
-  stroke-width: 0;
-  stroke: currentColor;
-  fill: currentColor;
-}
-</style><pre class="xr-text-repr-fallback">&lt;xarray.DataArray 'tmax' (time: 12, y: 584, x: 284)&gt;
-array([[[nan, nan, nan, ..., nan, nan, nan],
-        [nan, nan, nan, ..., nan, nan, nan],
-        [nan, nan, nan, ..., nan, nan, nan],
-        ...,
-        [nan, nan, nan, ..., nan, nan, nan],
-        [nan, nan, nan, ..., nan, nan, nan],
-        [nan, nan, nan, ..., nan, nan, nan]],
-
-       [[nan, nan, nan, ..., nan, nan, nan],
-        [nan, nan, nan, ..., nan, nan, nan],
-        [nan, nan, nan, ..., nan, nan, nan],
-        ...,
-        [nan, nan, nan, ..., nan, nan, nan],
-        [nan, nan, nan, ..., nan, nan, nan],
-        [nan, nan, nan, ..., nan, nan, nan]],
-
-       [[nan, nan, nan, ..., nan, nan, nan],
-        [nan, nan, nan, ..., nan, nan, nan],
-        [nan, nan, nan, ..., nan, nan, nan],
-        ...,
-...
-        ...,
-        [nan, nan, nan, ..., nan, nan, nan],
-        [nan, nan, nan, ..., nan, nan, nan],
-        [nan, nan, nan, ..., nan, nan, nan]],
-
-       [[nan, nan, nan, ..., nan, nan, nan],
-        [nan, nan, nan, ..., nan, nan, nan],
-        [nan, nan, nan, ..., nan, nan, nan],
-        ...,
-        [nan, nan, nan, ..., nan, nan, nan],
-        [nan, nan, nan, ..., nan, nan, nan],
-        [nan, nan, nan, ..., nan, nan, nan]],
-
-       [[nan, nan, nan, ..., nan, nan, nan],
-        [nan, nan, nan, ..., nan, nan, nan],
-        [nan, nan, nan, ..., nan, nan, nan],
-        ...,
-        [nan, nan, nan, ..., nan, nan, nan],
-        [nan, nan, nan, ..., nan, nan, nan],
-        [nan, nan, nan, ..., nan, nan, nan]]], dtype=float32)
-Coordinates:
-  * time     (time) datetime64[ns] 2010-01-31 2010-02-28 ... 2010-12-31
-  * y        (y) float32 -3.9e+04 -4e+04 -4.1e+04 ... -6.21e+05 -6.22e+05
-    lon      (y, x) float32 ...
-    lat      (y, x) float32 ...
-  * x        (x) float32 -5.802e+06 -5.801e+06 -5.8e+06 ... -5.52e+06 -5.519e+06</pre><div class="xr-wrap" hidden=""><div class="xr-header"><div class="xr-obj-type">xarray.DataArray</div><div class="xr-array-name">'tmax'</div><ul class="xr-dim-list"><li><span class="xr-has-index">time</span>: 12</li><li><span class="xr-has-index">y</span>: 584</li><li><span class="xr-has-index">x</span>: 284</li></ul></div><ul class="xr-sections"><li class="xr-section-item"><div class="xr-array-wrap"><input id="section-05d58a24-774a-4bba-abb4-7a1daf3b74b9" class="xr-array-in" type="checkbox" checked=""><label for="section-05d58a24-774a-4bba-abb4-7a1daf3b74b9" title="Show/hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-array-preview xr-preview"><span>nan nan nan nan nan nan nan nan ... nan nan nan nan nan nan nan nan</span></div><div class="xr-array-data"><pre>array([[[nan, nan, nan, ..., nan, nan, nan],
-        [nan, nan, nan, ..., nan, nan, nan],
-        [nan, nan, nan, ..., nan, nan, nan],
-        ...,
-        [nan, nan, nan, ..., nan, nan, nan],
-        [nan, nan, nan, ..., nan, nan, nan],
-        [nan, nan, nan, ..., nan, nan, nan]],
-
-       [[nan, nan, nan, ..., nan, nan, nan],
-        [nan, nan, nan, ..., nan, nan, nan],
-        [nan, nan, nan, ..., nan, nan, nan],
-        ...,
-        [nan, nan, nan, ..., nan, nan, nan],
-        [nan, nan, nan, ..., nan, nan, nan],
-        [nan, nan, nan, ..., nan, nan, nan]],
-
-       [[nan, nan, nan, ..., nan, nan, nan],
-        [nan, nan, nan, ..., nan, nan, nan],
-        [nan, nan, nan, ..., nan, nan, nan],
-        ...,
-...
-        ...,
-        [nan, nan, nan, ..., nan, nan, nan],
-        [nan, nan, nan, ..., nan, nan, nan],
-        [nan, nan, nan, ..., nan, nan, nan]],
-
-       [[nan, nan, nan, ..., nan, nan, nan],
-        [nan, nan, nan, ..., nan, nan, nan],
-        [nan, nan, nan, ..., nan, nan, nan],
-        ...,
-        [nan, nan, nan, ..., nan, nan, nan],
-        [nan, nan, nan, ..., nan, nan, nan],
-        [nan, nan, nan, ..., nan, nan, nan]],
-
-       [[nan, nan, nan, ..., nan, nan, nan],
-        [nan, nan, nan, ..., nan, nan, nan],
-        [nan, nan, nan, ..., nan, nan, nan],
-        ...,
-        [nan, nan, nan, ..., nan, nan, nan],
-        [nan, nan, nan, ..., nan, nan, nan],
-        [nan, nan, nan, ..., nan, nan, nan]]], dtype=float32)</pre></div></div></li><li class="xr-section-item"><input id="section-59a45ba7-0735-4db5-ab38-20d4771ac346" class="xr-section-summary-in" type="checkbox" checked=""><label for="section-59a45ba7-0735-4db5-ab38-20d4771ac346" class="xr-section-summary">Coordinates: <span>(5)</span></label><div class="xr-section-inline-details"></div><div class="xr-section-details"><ul class="xr-var-list"><li class="xr-var-item"><div class="xr-var-name"><span class="xr-has-index">time</span></div><div class="xr-var-dims">(time)</div><div class="xr-var-dtype">datetime64[ns]</div><div class="xr-var-preview xr-preview">2010-01-31 ... 2010-12-31</div><input id="attrs-e2d13cbf-73e5-4e06-aace-1ab86f1fb99d" class="xr-var-attrs-in" type="checkbox" disabled=""><label for="attrs-e2d13cbf-73e5-4e06-aace-1ab86f1fb99d" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-eb6fbde4-888c-4787-acaf-b5c6817328f7" class="xr-var-data-in" type="checkbox"><label for="data-eb6fbde4-888c-4787-acaf-b5c6817328f7" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"></dl></div><div class="xr-var-data"><pre>array(['2010-01-31T00:00:00.000000000', '2010-02-28T00:00:00.000000000',
-       '2010-03-31T00:00:00.000000000', '2010-04-30T00:00:00.000000000',
-       '2010-05-31T00:00:00.000000000', '2010-06-30T00:00:00.000000000',
-       '2010-07-31T00:00:00.000000000', '2010-08-31T00:00:00.000000000',
-       '2010-09-30T00:00:00.000000000', '2010-10-31T00:00:00.000000000',
-       '2010-11-30T00:00:00.000000000', '2010-12-31T00:00:00.000000000'],
-      dtype='datetime64[ns]')</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span class="xr-has-index">y</span></div><div class="xr-var-dims">(y)</div><div class="xr-var-dtype">float32</div><div class="xr-var-preview xr-preview">-3.9e+04 -4e+04 ... -6.22e+05</div><input id="attrs-5073a99f-d4fb-4cbc-9d4b-4354740c6e77" class="xr-var-attrs-in" type="checkbox"><label for="attrs-5073a99f-d4fb-4cbc-9d4b-4354740c6e77" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-0eb45cf7-a4c6-4632-92c9-525950c3c8e8" class="xr-var-data-in" type="checkbox"><label for="data-0eb45cf7-a4c6-4632-92c9-525950c3c8e8" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"><dt><span>units :</span></dt><dd>m</dd><dt><span>long_name :</span></dt><dd>y coordinate of projection</dd><dt><span>standard_name :</span></dt><dd>projection_y_coordinate</dd></dl></div><div class="xr-var-data"><pre>array([ -39000.,  -40000.,  -41000., ..., -620000., -621000., -622000.],
-      dtype=float32)</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>lon</span></div><div class="xr-var-dims">(y, x)</div><div class="xr-var-dtype">float32</div><div class="xr-var-preview xr-preview">...</div><input id="attrs-f9c8bad2-2e5b-486a-bc04-942ecc50ee8b" class="xr-var-attrs-in" type="checkbox"><label for="attrs-f9c8bad2-2e5b-486a-bc04-942ecc50ee8b" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-3bdc5772-16ad-4773-a51a-c0ccfbc0028c" class="xr-var-data-in" type="checkbox"><label for="data-3bdc5772-16ad-4773-a51a-c0ccfbc0028c" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"><dt><span>units :</span></dt><dd>degrees_east</dd><dt><span>long_name :</span></dt><dd>longitude coordinate</dd><dt><span>standard_name :</span></dt><dd>longitude</dd></dl></div><div class="xr-var-data"><pre>[165856 values with dtype=float32]</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>lat</span></div><div class="xr-var-dims">(y, x)</div><div class="xr-var-dtype">float32</div><div class="xr-var-preview xr-preview">...</div><input id="attrs-625fbff9-9974-4ab1-ac0c-d34571b9e3bb" class="xr-var-attrs-in" type="checkbox"><label for="attrs-625fbff9-9974-4ab1-ac0c-d34571b9e3bb" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-b62bdacf-8268-4b01-8f32-dfaf8e05488e" class="xr-var-data-in" type="checkbox"><label for="data-b62bdacf-8268-4b01-8f32-dfaf8e05488e" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"><dt><span>units :</span></dt><dd>degrees_north</dd><dt><span>long_name :</span></dt><dd>latitude coordinate</dd><dt><span>standard_name :</span></dt><dd>latitude</dd></dl></div><div class="xr-var-data"><pre>[165856 values with dtype=float32]</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span class="xr-has-index">x</span></div><div class="xr-var-dims">(x)</div><div class="xr-var-dtype">float32</div><div class="xr-var-preview xr-preview">-5.802e+06 ... -5.519e+06</div><input id="attrs-ae95d5ed-791f-46f2-bf7a-2b4af720e6ac" class="xr-var-attrs-in" type="checkbox"><label for="attrs-ae95d5ed-791f-46f2-bf7a-2b4af720e6ac" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-64b7ed99-a0d8-4959-874b-52ad7929d9eb" class="xr-var-data-in" type="checkbox"><label for="data-64b7ed99-a0d8-4959-874b-52ad7929d9eb" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"><dt><span>units :</span></dt><dd>m</dd><dt><span>long_name :</span></dt><dd>x coordinate of projection</dd><dt><span>standard_name :</span></dt><dd>projection_x_coordinate</dd></dl></div><div class="xr-var-data"><pre>array([-5802250., -5801250., -5800250., ..., -5521250., -5520250., -5519250.],
-      dtype=float32)</pre></div></li></ul></div></li><li class="xr-section-item"><input id="section-eb5056a4-a013-41d3-8ad3-f0ae64bca88a" class="xr-section-summary-in" type="checkbox" disabled=""><label for="section-eb5056a4-a013-41d3-8ad3-f0ae64bca88a" class="xr-section-summary" title="Expand/collapse section">Attributes: <span>(0)</span></label><div class="xr-section-inline-details"></div><div class="xr-section-details"><dl class="xr-attrs"></dl></div></li></ul></div></div>
+<h2 class="anchored" data-anchor-id="resample-and-plot-tmax">6. Resample and Plot tmax</h2>
+<p>Below, we will resample the tmax variable and calculate the monthly mean using Xarray’s built-in functions. Then, we will plot the monthly tmax mean for the month of July in Hawaii between 2001-2011.</p>
+<div class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Spatial average and resample by month</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>tmax_spatial_mean <span class="op">=</span> ds[<span class="st">'tmax'</span>].mean(dim<span class="op">=</span>[<span class="st">'y'</span>, <span class="st">'x'</span>])</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert to pandas DataFrame for grouping</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> tmax_spatial_mean.to_series().reset_index()</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'year'</span>] <span class="op">=</span> df[<span class="st">'time'</span>].dt.year</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'month'</span>] <span class="op">=</span> df[<span class="st">'time'</span>].dt.month</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Add month labels</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>month_labels <span class="op">=</span> [<span class="st">'Jan'</span>, <span class="st">'Feb'</span>, <span class="st">'Mar'</span>, <span class="st">'Apr'</span>, <span class="st">'May'</span>, <span class="st">'Jun'</span>,</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>                <span class="st">'Jul'</span>, <span class="st">'Aug'</span>, <span class="st">'Sep'</span>, <span class="st">'Oct'</span>, <span class="st">'Nov'</span>, <span class="st">'Dec'</span>]</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'month_name'</span>] <span class="op">=</span> df[<span class="st">'month'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> m: month_labels[m<span class="op">-</span><span class="dv">1</span>])</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Group to get monthly means per year</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>monthly_means <span class="op">=</span> df.groupby([<span class="st">'year'</span>, <span class="st">'month_name'</span>], sort<span class="op">=</span><span class="va">False</span>)[<span class="st">'tmax'</span>].mean().reset_index()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
-<div class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Xarray plotting</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>monthly_tmax_mean[<span class="dv">6</span>,:,:].plot()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="10">
-<pre><code>&lt;matplotlib.collections.QuadMesh at 0x7fdaba88de50&gt;</code></pre>
-</div>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">7</span>))</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>sns.lineplot(data<span class="op">=</span>monthly_means, x<span class="op">=</span><span class="st">'month_name'</span>, y<span class="op">=</span><span class="st">'tmax'</span>, hue<span class="op">=</span><span class="st">'year'</span>, marker<span class="op">=</span><span class="st">'o'</span>, legend<span class="op">=</span><span class="st">'full'</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Hawaii Monthly Mean Tmax Between 2001-01-01 to 2011-01-01'</span>)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Month'</span>)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Tmax (C)'</span>)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>plt.legend(title<span class="op">=</span><span class="st">'Year'</span>, bbox_to_anchor<span class="op">=</span>(<span class="fl">1.05</span>, <span class="dv">1</span>), loc<span class="op">=</span><span class="st">'upper left'</span>)</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="Earthdata_Cloud__Data_Access_OPeNDAP_Example_files/figure-html/cell-11-output-2.png" class="img-fluid"></p>
+<p><img src="Earthdata_Cloud__Data_Access_OPeNDAP_Example_files/figure-html/cell-9-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 
