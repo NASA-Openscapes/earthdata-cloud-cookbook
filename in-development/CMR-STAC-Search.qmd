@@ -117,18 +117,13 @@ Let's begin using the `rstac` package. `rstac` is a library that allows users to
 lpcloud_collections <- stac(lpcloud_cat_link) |>
     collections() |>
     get_request()
-print(lpcloud_collections)
+lpcloud_collections
 
-for (i in lpcloud_collections) {
-  collection_info <- lapply(lpcloud_collections$collections, function(x) {
-      list(id = x$id, title = x$title)
-  }) |>
-  jsonlite::toJSON(auto_unbox = TRUE) |> 
-  jsonlite::fromJSON() |> 
-  as.data.frame()
-  }
-
-DT::datatable(collection_info)
+collection_info <- lapply(lpcloud_collections$collections, function(x) {
+  data.frame(id = x$id, title = x$title)
+}) |>
+  dplyr::bind_rows()
+collection_info
 ```
 
 In CMR, the Collection ID is used to query by a specific product, so be sure to save the ID for a collection you are interested in. For instance, the Collection ID for ASTER Global Digital Elevation Model V003 is `ASTGTM_003`. Note that the "id" shortname is in the format: productshortname_VVV (where VVV = product version).
