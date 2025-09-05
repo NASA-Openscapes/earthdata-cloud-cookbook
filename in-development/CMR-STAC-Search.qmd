@@ -23,6 +23,7 @@ This tutorial will teach you how to navigate and explore NASA's Common Metadata 
     2b. STAC Collection\
     2c. STAC Item\
     2d. Assets
+3. **Visualize a STAC Item**
 
 ------------------------------------------------------------------------
 
@@ -48,6 +49,7 @@ install.packages(c('dplyr','DT', 'rstac', 'devtools', 'terra'))
 library(dplyr)
 library(DT)
 library(rstac)
+library(terra)
 ```
 
 For listing the various STAC catalogs associated with NASA CMR, we'll install the development version of the `earthdatalogin` package in the following cell. The development version contains functions that will be utilized in section 2a.
@@ -183,12 +185,29 @@ for (asset_name in names(item_assets)) {
 
 ------------------------------------------------------------------------
 
+# 3. Visualize a STAC Item
+
+Now that we have successfully navigated the CMR-STAC catalog and found the asset URLs, we can download and visualize the ASTER DEM data using the `terra` package. The `vsi = TRUE` argument allows us to read the data directly from the cloud (i.e., stream it) without downloading it locally.
+We first need to authenticate using our Earthdata Login credentials using the [`edl_netrc()`](https://boettiger-lab.github.io/earthdatalogin/reference/edl_netrc.html) function. If you do not have an Earthdata Login, you can create one [here](https://urs.earthdata.nasa.gov/users/new).
+
+```{r}
+# Authenticate with Earthdata Login
+earthdatalogin::edl_netrc()
+
+dem_url <- item_assets$`003/ASTGTMV003_N39W123_dem`$href
+dem <- rast(dem_url, vsi = TRUE)
+
+plot(dem)
+```
+
+------------------------------------------------------------------------
+
 The CMR-STAC Search endpoint allows user to quickly search for STAC Items that meet their specific spatial, temporal, and data product requirements. Now that you learned how to navigate and explore the CMR-STAC catalog, check out the [`HLS_tutorial`](https://git.earthdata.nasa.gov/projects/LPDUR/repos/hls_tutorial_r/raw/HLS_Tutorial.html?at=refs%2Fheads%2Fmain) to learn how to interact with HLS data specifically.
 
 ------------------------------------------------------------------------
 
 ### Contact Information
-This tutorial was updated in July 2025 by the NASA IMPACT MAAP Team.
+This tutorial was updated in July 2025 by the NASA ODSI MAAP Team.
 
 **Original material written by Mahsa Jami^1^ and Aaron Friesz^1^**\
 Contact: [LPDAAC\@usgs.gov](mailto:LPDAAC@usgs.gov){.email}\
