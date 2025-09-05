@@ -46,6 +46,8 @@ install.packages(c('dplyr','DT', 'rstac', 'devtools', 'terra'))
 ```
 
 ```{r}
+#| eval: false
+
 library(dplyr)
 library(DT)
 library(rstac)
@@ -77,8 +79,6 @@ There are four specifications that work both independently and together:
 4)  [STAC API](https://github.com/radiantearth/stac-api-spec): a RESTful endpoint that enables search of STAC Items, specified in OpenAPI, following OGC's WFS 3. 
 
 Source: [stacspec.org](stacspec.org)
-
-All these specifications are intended to be used together, yet are designed in a way that each piece is small, self-contained, and reusable in other contexts.
 
 ------------------------------------------------------------------------
 
@@ -136,7 +136,7 @@ In CMR, the Collection ID is used to query by a specific product, so be sure to 
 
 Here, we use the short name `ASTGTM_003` to query the STAC Collection. If you are interested in querying a different LPCLOUD product, swap out the shortname to assign to the `collection` variable below.
 
-Users can also define other paramaters such as a temporal and spatial extent. Notice the `limit` parameter in the `body` object. This parameter allows us to adjust the number of records returned during a request (default = 10).
+Users can also define other parameters such as a temporal and spatial extent. Notice the `limit` parameter in the `body` object. This parameter allows us to adjust the number of records returned during a request (default = 10).
 
 ```{r}
 # define search parameters
@@ -205,7 +205,10 @@ plot(dem)
 
 ------------------------------------------------------------------------
 
-The CMR-STAC Search endpoint allows user to quickly search for STAC Items that meet their specific spatial, temporal, and data product requirements. Now that you learned how to navigate and explore the CMR-STAC catalog, check out the following resources:
+### Summary
+In this tutorial, you learned how to navigate and explore the CMR-STAC Catalog using the CMR-STAC Search endpoint, which allows user to quickly search for STAC Items that meet their specific spatial, temporal, and data product requirements.
+
+Additional Resources:
 
 -  [Getting Started with Cloud-Native Harmonized Landsat Sentinel-2 (HLS) Data in R](https://github.com/nasa/HLS-Data-Resources/blob/main/r/HLS_Tutorial.Rmd) 
 -  [Accessing the MAAP STAC with R](https://docs.maap-project.org/en/latest/technical_tutorials/working_with_r/maap_stac_r.html)
@@ -213,7 +216,7 @@ The CMR-STAC Search endpoint allows user to quickly search for STAC Items that m
 ------------------------------------------------------------------------
 
 ### Contact Information
-This tutorial was updated in July 2025 by the NASA ODSI MAAP Team.
+This tutorial was updated in September 2025 by the NASA ODSI MAAP Team.
 
 **Original material written by Mahsa Jami^1^ and Aaron Friesz^1^**\
 Contact: [LPDAAC\@usgs.gov](mailto:LPDAAC@usgs.gov){.email}\
