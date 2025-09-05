@@ -91,11 +91,8 @@ The CMR-STAC API contains endpoints that enable the querying of STAC items.
 Here, we will use the function `list_nasa_stacs`, which connects to the CMR-STAC landing page (https://cmr.earthdata.nasa.gov/cloudstac/) for cloud datasets. The landing page contains all the available cloud data providers and their STAC endpoint. 
 
 ```{r}
-cmr_cat_links <- earthdatalogin::list_nasa_stacs() |>
-  jsonlite::toJSON(auto_unbox = TRUE) |> 
-  jsonlite::fromJSON() |> 
-  as.data.frame()
-DT::datatable(cmr_cat_links)
+cmr_cat_links <- earthdatalogin::list_nasa_stacs()
+cmr_cat_links
 ```
 
 The data frame above shows all the data providers with their associated STAC catalog endpoints. You will notice above that the CMR-STAC API contains many different endpoints--not just from NASA LP DAAC, but also contains endpoints for other NASA ESDIS DAACs. Use the `title` field to identify the data provider you are interested in. The data product used in this tutorial is hosted in the LP DAAC Cumulus Cloud space (LPCLOUD).
