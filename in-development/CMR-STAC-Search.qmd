@@ -155,8 +155,7 @@ collection_search <- stac(
     datetime = datetime
   ) |>
   get_request()
-
-print(collection_search)
+collection_search
 ```
 
 We can see that the output includes the number of items that fall within the search criteria, the assets, and fields.
@@ -206,7 +205,7 @@ plot(dem)
 
 ------------------------------------------------------------------------
 
-The CMR-STAC Search endpoint allows user to quickly search for STAC Items that meet their specific spatial, temporal, and data product requirements. Now that you learned how to navigate and explore the CMR-STAC catalog, check out the following tutorials:
+The CMR-STAC Search endpoint allows user to quickly search for STAC Items that meet their specific spatial, temporal, and data product requirements. Now that you learned how to navigate and explore the CMR-STAC catalog, check out the following resources:
 
 -  [Getting Started with Cloud-Native Harmonized Landsat Sentinel-2 (HLS) Data in R](https://github.com/nasa/HLS-Data-Resources/blob/main/r/HLS_Tutorial.Rmd) 
 -  [Accessing the MAAP STAC with R](https://docs.maap-project.org/en/latest/technical_tutorials/working_with_r/maap_stac_r.html)
