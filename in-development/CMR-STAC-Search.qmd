@@ -71,10 +71,14 @@ STAC is short for [Spatiotemporal Asset Catalog](http://stacspec.org/), a series
 
 There are four specifications that work both independently and together:
 
-1)  [STAC Catalog](https://github.com/radiantearth/stac-spec/blob/master/catalog-spec/catalog-spec.md)
-2)  [STAC Collection](https://github.com/radiantearth/stac-spec/blob/master/collection-spec/collection-spec.md)
-3)  [STAC Item](https://github.com/radiantearth/stac-spec/blob/master/item-spec/item-spec.md)\
-4)  [STAC API](https://github.com/radiantearth/stac-api-spec) specification builds on top of the three core specifications mentioned above. All these specifications are intended to be used together, yet are designed in a way that each piece is small, self-contained, and reusable in other contexts.
+1)  [STAC Catalog](https://github.com/radiantearth/stac-spec/blob/master/catalog-spec/catalog-spec.md): a simple, flexible JSON file of links that provides a structure to organize and browse STAC Items.
+2)  [STAC Collection](https://github.com/radiantearth/stac-spec/blob/master/collection-spec/collection-spec.md): an extension of the STAC Catalog with additional information such as the extents, license, keywords, providers, etc that describe STAC Items that fall within the Collection.
+3)  [STAC Item](https://github.com/radiantearth/stac-spec/blob/master/item-spec/item-spec.md): the core atomic unit, representing a single spatiotemporal asset as a GeoJSON feature plus datetime and links.
+4)  [STAC API](https://github.com/radiantearth/stac-api-spec): a RESTful endpoint that enables search of STAC Items, specified in OpenAPI, following OGC's WFS 3. 
+
+Source: [stacspec.org](stacspec.org)
+
+All these specifications are intended to be used together, yet are designed in a way that each piece is small, self-contained, and reusable in other contexts.
 
 ------------------------------------------------------------------------
 
