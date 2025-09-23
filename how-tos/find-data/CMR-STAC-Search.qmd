@@ -1,5 +1,5 @@
 ---
-title: "Getting Started with NASA's CMR-STAC API in R"
+title: "How do I find data with NASA's CMR-STAC API in R"
 ---
 
 ```{r setup, include=FALSE}
@@ -9,7 +9,9 @@ knitr::opts_chunk$set(comment = NA)
 
 **This tutorial demonstrates how to interact with CMR-STAC in R.**
 
-This tutorial will teach you how to navigate and explore NASA's Common Metadata Repository (CMR) SpatioTemporal Asset Catalog (STAC) to find and learn about the datasets available through NASA's different cloud archives. We'll demonstrate by using it to search for [ASTER Global DEM data](https://www.earthdata.nasa.gov/data/catalog/lpcloud-astgtm-003) available in the LP DAAC's Cumulus cloud archive.
+Searching NASA Earthdata is powered the NASA [Common Metadata Repository (CMR)](https://cmr.earthdata.nasa.gov/search), which is a metadata system that catalogs NASA Earth Science data. The CMR allows users to search and discover data collections through various means, including [Earthdata Search](https://search.earthdata.nasa.gov/search), an [Application Programming Interface (API)](https://cmr.earthdata.nasa.gov/search/site/docs/search/api.html), and [SpatioTemporal Asset Catalog (STAC)](https://www.earthdata.nasa.gov/about/esdis/esco/standards-practices/stac).
+
+This tutorial will teach you how to navigate and explore NASA's [SpatioTemporal Asset Catalog (STAC)](https://www.earthdata.nasa.gov/about/esdis/esco/standards-practices/stac) using R, to find and learn about the datasets available through NASA's different cloud archives. We'll demonstrate by using it to search for [ASTER Global DEM data](https://www.earthdata.nasa.gov/data/catalog/lpcloud-astgtm-003) available in the LP DAAC's Cumulus cloud archive.
 
 ------------------------------------------------------------------------
 
@@ -17,7 +19,8 @@ This tutorial will teach you how to navigate and explore NASA's Common Metadata 
 
 1.  **Introduction to STAC and the CMR-STAC API**\
     1a. What is STAC?\
-    1b. What is the CMR-STAC API?\
+    1b. Why STAC?\
+    1c. What is the CMR-STAC API?\
 2.  **Get started & searching with CMR-STAC**\
     2a. CMR-STAC API\
     2b. STAC Collection\
@@ -42,7 +45,7 @@ Run the cells below to install (or update) the necessary packages, and then load
 ```{r}
 #| eval: false
 
-install.packages(c('dplyr','DT', 'rstac', 'devtools', 'terra'))
+install.packages(c('dplyr', 'DT', 'rstac', 'devtools', 'terra'))
 ```
 
 ```{r}
@@ -78,9 +81,13 @@ There are four specifications that work both independently and together:
 
 Source: [stacspec.org](stacspec.org)
 
+## 1b. Why STAC?
+
+STAC is commonly used in cloud environments to catalog and index large datasets, making them more accessible for analysis and visualization. Many other organizations, such as the[US Geological Survey (USGS)](https://www.usgs.gov/landsat-missions/spatiotemporal-asset-catalog-stac), [Microsoft](https://planetarycomputer.microsoft.com/), and [the European Space Agency](https://browser.apex.esa.int/), have adopted STAC as a standard for organizing and sharing geospatial data.
+
 ------------------------------------------------------------------------
 
-## 1b. What is the CMR-STAC API?
+## 1c. What is the CMR-STAC API?
 
 The Common Metadata Repository (CMR) is a metadata system that catalogs Earth Science data and associated metadata records. NASA's CMR-STAC Application Programming Interface (API) is a translation API for STAC users who want to access and search through CMR's vast metadata holdings using STAC keywords.
 
@@ -119,8 +126,8 @@ Let's begin using the `rstac` package. `rstac` is a library that allows users to
 
 ```{r}
 lpcloud_collections <- stac(lpcloud_cat_link) |>
-    collections() |>
-    get_request()
+  collections() |>
+  get_request()
 lpcloud_collections
 
 collection_info <- lapply(lpcloud_collections$collections, function(x) {
@@ -138,14 +145,19 @@ Users can also define other parameters such as a temporal and spatial extent. No
 
 ```{r}
 # define search parameters
-collection <- 'ASTGTM_003'    
-datetime <- '2000-01-01T00:00:00Z/2001-01-31T23:59:59Z'   #YYYY-MM-DDTHH:MM:SSZ/YYYY-MM-DDTHH:MM:SSZ
-bbox <- c(-122.0622682571411,39.897234301806,-122.04918980598451,39.91309383703065) # LL and UR Coordinates
+collection <- 'ASTGTM_003'
+datetime <- '2000-01-01T00:00:00Z/2001-01-31T23:59:59Z' #YYYY-MM-DDTHH:MM:SSZ/YYYY-MM-DDTHH:MM:SSZ
+bbox <- c(
+  -122.0622682571411,
+  39.897234301806,
+  -122.04918980598451,
+  39.91309383703065
+) # LL and UR Coordinates
 
 # search
 collection_search <- stac(
-    lpcloud_cat_link
-)|>
+  lpcloud_cat_link
+) |>
   stac_search(
     limit = 100,
     collections = collection,
@@ -179,8 +191,8 @@ The STAC Item ID (CMR Granule ID) is the unique identifier assigned to each gran
 item_assets <- first_item$assets
 
 for (asset_name in names(item_assets)) {
-    cat("Asset:", asset_name, "\n")
-    cat("URL:", item_assets[[asset_name]]$href, "\n\n")
+  cat("Asset:", asset_name, "\n")
+  cat("URL:", item_assets[[asset_name]]$href, "\n\n")
 }
 ```
 
