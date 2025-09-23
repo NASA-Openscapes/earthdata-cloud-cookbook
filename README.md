@@ -2,7 +2,7 @@
 
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/eeholmes/earthdata-cloud-cookbook?quickstart=1&editor=jupyter)
 
-# Hello!
+# Hello! 
 
 This Earthdata Cloud Cookbook is being developed by the [NASA Openscapes team](https://nasa-openscapes.github.io/).
 
