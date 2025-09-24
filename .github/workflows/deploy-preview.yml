@@ -3,11 +3,57 @@ on:
   workflow_dispatch:
   pull_request:
     branches: [main]
+  issue_comment:
+    types: [created]
 
 name: Deploy Preview
 
 jobs:
+
+  is-external-pr:
+    # Be helpful with reviewer and remind them to trigger a deploy preview if the PR is from a fork.
+    if: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.repo.fork == true }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Error with message for manual deploy
+        run: |
+          echo "::error title=Manual action required for preview::PR from fork can't be deployed as preview to Netlify automatically. Use '/deploy-preview' command in comments to trigger the preview manually."
+        shell: bash
+
+  role-of-commenter:
+    if: github.event.issue.pull_request
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check if commenter is a member, owner or collaborator
+        id: commenter-check
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          commenter_role=$(gh api repos/$GITHUB_REPOSITORY/collaborators/${{ github.event.comment.user.login }}/permission --jq '.permission')
+          echo "commenter_role=$commenter_role" >> "$GITHUB_OUTPUT"
+          echo "author_association=${{ github.event.comment.author_association }}" >> "$GITHUB_OUTPUT"
+        shell: bash
+
   build-deploy-preview:
+    # Deploy a preview only if 
+    # - the PR is not from a fork,
+    # - requested by PR comment /deploy-preview, from a repo user or github action bot (user id 41898282)
+    if: >
+      (
+        github.event_name == 'pull_request' && 
+        github.event.pull_request.head.repo.fork != true
+      ) || 
+      (
+        github.event.issue.pull_request && 
+        (
+          github.event.comment.user.id == '41898282' ||
+          github.event.comment.author_association == 'MEMBER' || 
+          github.event.comment.author_association == 'OWNER' || 
+          github.event.comment.author_association == 'COLLABORATOR'
+        ) && 
+        startsWith(github.event.comment.body, '/deploy-preview')
+      )
+
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
