@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>EarthData Cloud Cookbook – license</title>
+<title>EarthData Cloud Cookbook - Our Cookbooks</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -29,6 +29,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./tutorials/Earthdata-cloud-clinic.html" rel="next">
+<link href="./when-to-cloud.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -74,9 +76,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
-      NASA Earthdata Cloud Cookbook
-      </li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./our-cookbooks.html">Our Cookbooks</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -123,13 +123,13 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./our-cookbooks.html" class="sidebar-item-text sidebar-link">
+            <a href="./our-cookbooks.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Our Cookbooks</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./tutorials/Earthdata-cloud-clinic.html" class="sidebar-item-text sidebar-link">
@@ -562,54 +562,104 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#license" id="toc-license" class="nav-link active" data-scroll-target="#license">LICENSE</a>
+  <li><a href="#how-to-use-our-cookbooks" id="toc-how-to-use-our-cookbooks" class="nav-link active" data-scroll-target="#how-to-use-our-cookbooks">How to use our Cookbooks</a></li>
+  <li><a href="#cookbooks-structure" id="toc-cookbooks-structure" class="nav-link" data-scroll-target="#cookbooks-structure">Cookbooks structure</a></li>
+  <li><a href="#get-started" id="toc-get-started" class="nav-link" data-scroll-target="#get-started">Get Started</a>
   <ul class="collapse">
-  <li><a href="#process-documents-and-data" id="toc-process-documents-and-data" class="nav-link" data-scroll-target="#process-documents-and-data">Process documents and data</a></li>
-  <li><a href="#software" id="toc-software" class="nav-link" data-scroll-target="#software">Software</a></li>
+  <li><a href="#earthdata-login" id="toc-earthdata-login" class="nav-link" data-scroll-target="#earthdata-login">Earthdata Login</a></li>
+  <li><a href="#coding-essentials" id="toc-coding-essentials" class="nav-link" data-scroll-target="#coding-essentials">Coding Essentials</a></li>
+  <li><a href="#bash-git" id="toc-bash-git" class="nav-link" data-scroll-target="#bash-git">Bash &amp; Git</a></li>
+  <li><a href="#python" id="toc-python" class="nav-link" data-scroll-target="#python">Python</a></li>
+  <li><a href="#r" id="toc-r" class="nav-link" data-scroll-target="#r">R</a></li>
+  <li><a href="#jupyterhubs" id="toc-jupyterhubs" class="nav-link" data-scroll-target="#jupyterhubs">JupyterHubs</a></li>
+  <li><a href="#cloud-native-geospatial" id="toc-cloud-native-geospatial" class="nav-link" data-scroll-target="#cloud-native-geospatial">Cloud-Native Geospatial</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/edit/main/LICENSE.md" class="toc-action">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/blob/main/LICENSE.md" class="toc-action">View source</a></p><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/edit/main/our-cookbooks.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/blob/main/our-cookbooks.qmd" class="toc-action">View source</a></p><p><a href="https://github.com/nasa-openscapes/earthdata-cloud-cookbook/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Our Cookbooks</h1>
+</div>
 
 
-<section id="license" class="level1">
-<h1>LICENSE</h1>
-<p>Adapted from <a href="https://github.com/alan-turing-institute/the-turing-way/blob/master/LICENSE.md">The Turing Way</a></p>
-<p>Openscapes makes all of their materials publicly available under open source licenses.</p>
-<p>The process documents and data are made available under a CC-BY license. Software are made available under an MIT license.</p>
-<p>The license text listed below (describing both CC-BY and MIT licenses as well as their usage in Openscapes) is re-used under a CC-BY license from The Carpentries community materials. (Specifically from the <a href="https://github.com/Reproducible-Science-Curriculum/sharing-RR-Jupyter/blob/gh-pages/LICENSE.md">Reproducible Science Curriculum</a>).</p>
-<section id="process-documents-and-data" class="level2">
-<h2 class="anchored" data-anchor-id="process-documents-and-data">Process documents and data</h2>
-<p>All documentation and chapter materials in this repository are made available under the <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution license</a>. The following is a human-readable summary of (and not a substitute for) the <a href="https://creativecommons.org/licenses/by/4.0/legalcode">full legal text of the CC BY 4.0 license</a>.</p>
-<p>You are free:</p>
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="how-to-use-our-cookbooks" class="level2">
+<h2 class="anchored" data-anchor-id="how-to-use-our-cookbooks">How to use our Cookbooks</h2>
+<p>Our Cookbooks are places to learn, share, and experiment with NASA Earthdata on the Cloud. We know this has a lot of moving parts, and we are iterating as we go, and welcome feedback and contributions.</p>
+<p>You are currently reading the <strong>Earthdata Cloud Cookbook</strong>, which is a place for common approaches for NASA Earthdata in the Cloud. It also provides visibility and discovery for other Cookbooks by themes, whether that be by Distributed Active Archive Centers (DAACs), Missions, or scientific topic. Other Cookbooks in our “kitchen”:</p>
 <ul>
-<li>to <strong>Share</strong>—copy and redistribute the material in any medium or format</li>
-<li>to <strong>Adapt</strong>—remix, transform, and build upon the material</li>
-</ul>
-<p>for any purpose, even commercially.</p>
-<p>The licensor cannot revoke these freedoms as long as you follow the license terms.</p>
-<p>Under the following terms:</p>
-<ul>
-<li><strong>Attribution</strong>—You must give appropriate credit (mentioning that your work is derived from work that is Copyright © Openscapes and, where practical, linking to https://github.com/openscapes/approach-guide), provide a <a href="https://creativecommons.org/licenses/by/4.0/">link to the license</a>, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.</li>
-<li><strong>No additional restrictions</strong>—You may not apply legal terms or technological measures that legally restrict others from doing anything the license permits.</li>
-</ul>
-<p>With the understanding that:</p>
-<ul>
-<li>You do not have to comply with the license for elements of the material in the public domain or where your use is permitted by an applicable exception or limitation.</li>
-<li>No warranties are given. The license may not give you all of the permissions necessary for your intended use. For example, other rights such as publicity, privacy, or moral rights may limit how you use the material.</li>
+<li><a href="https://podaac.github.io/tutorials/"><strong>Ocean, climate, and surface water data tutorials from the Physical Oceanography Distributed Active Archive Center (PO.DAAC)</strong></a></li>
+<li><a href="https://nasa.github.io/ASDC_Data_and_User_Services/"><strong>Mission-specific tutorials from the Atmospheric Science Data Center (ASDC)</strong></a></li>
+<li><a href="https://github.com/nsidc/NSIDC-Data-Tutorials"><strong>Tutorials from the National Snow and Ice Data Center (NSIDC) </strong></a> <em>Cookbook format coming soon</em></li>
 </ul>
 </section>
-<section id="software" class="level2">
-<h2 class="anchored" data-anchor-id="software">Software</h2>
-<p>Except where otherwise noted, the software and infrastructure provided by the The Turing Way Community are made available under the <a href="https://opensource.org">OSI</a>-approved <a href="https://opensource.org/licenses/mit-license.html">MIT license</a>.</p>
-<blockquote class="blockquote">
-<p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
-<p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
-<p>THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
-</blockquote>
+<section id="cookbooks-structure" class="level2">
+<h2 class="anchored" data-anchor-id="cookbooks-structure">Cookbooks structure</h2>
+<p><em>This structure is shared across Cookbooks, although there is variation.</em></p>
+<p><strong>How To</strong> building blocks and <strong>Tutorials</strong> that connect these building blocks through an example research question and specific data. How To guides and Tutorials are stable approaches we’ve developed and used to teach; they have been iterated and improved through feedback from researchers during <a href="https://nasa-openscapes.github.io/earthdata-cloud-cookbook/tutorials/">events we’ve led</a>. We also share work <strong>In Development</strong>: primarily lessons and other works-in-progress that we’re developing.</p>
+<p>Working with NASA Earthdata in the Cloud means using a combination of software, tools, many of which require coding and are unfamiliar when we first get started. This is true for us all; we’re all coming with different skills and backgrounds and you’re not alone as we all learn these new technologies and workflows. We have found it helpful to have a <a href="https://www.youtube.com/watch?v=_X0mgOOSpLU&amp;t=11s&amp;ab_channel=TED">growth mindset</a> - these approaches are new and we don’t know how to do them <strong><em>yet</em></strong>. Please, don’t struggle alone - know that we’re all in this together as part of the open source community learning and co-creating together as we migrate our research to the Cloud.</p>
+<p>You’re able to reuse any code in this book, adapting it for your own purposes. All chapters in the book are a combination of narrative, links, code, and outputs — and underlying each chapter is a file type that you can access on <a href="https://github.com/NASA-Openscapes/earthdata-cloud-cookbook">NASA-Openscapes GitHub</a> (linked on the left navbar and right margin of each page): Markdown (<code>.md</code>), Jupyter (<code>.ipynb</code>), RMarkdown (<code>.rmd</code>) or Quarto (<code>.qmd</code>) files.</p>
+<p>We will also be adding citations throughout so that you can easily credit the NASA Openscapes Mentors who created them.</p>
+</section>
+<section id="get-started" class="level2">
+<h2 class="anchored" data-anchor-id="get-started">Get Started</h2>
+<p>So, you want to get started working with NASA Earthdata in the cloud? You’ve come to the right place. Here you’ll find resources that can be considered precursors to the how to’s, tutorials, and other guidance you will find across our Cookbook.</p>
+<section id="earthdata-login" class="level3">
+<h3 class="anchored" data-anchor-id="earthdata-login">Earthdata Login</h3>
+<p>To access NASA Earthdata, whether through your web browser or the cloud, you must first register for an Earthdata Login (EDL) user profile. Once registered, you can use your login credentials to get data through multiple access points. Read about EDL and get registered by following the directions on the <a href="https://urs.earthdata.nasa.gov/documentation/for_users/welcome">Welcome to Earthdata Login</a> page.</p>
+</section>
+<section id="coding-essentials" class="level3">
+<h3 class="anchored" data-anchor-id="coding-essentials">Coding Essentials</h3>
+<p>To access the cloud programmatically we must have a basic understanding of how to code using common, cloud-relevant languages. Most scientists who work with Earth data use either Python or R already, so we focus on those languages. Python and R are both open-source programming languages widely used in web applications, software development, data science, and machine learning. They are popular because they are free, efficient, have online resources to learn, and can run on most platforms. If you are new to coding, we recommend you participate in a <a href="https://carpentries.org/workshops/">Carpentries Workshop</a> or use open-source resources to teach yourself.</p>
+</section>
+<section id="bash-git" class="level3">
+<h3 class="anchored" data-anchor-id="bash-git">Bash &amp; Git</h3>
+<p>Cloud services often are connected to and operated through Bash, a command-line interface and language you’ll see called the terminal, the command line, or the shell. Git is a commonly used version control system that is available through Bash. Version control is important for data collaboration because it allows changes by multiple people to be tracked and merged into one source.</p>
+<ul>
+<li><p><a href="https://swcarpentry.github.io/shell-novice/"><strong>The Unix Shell</strong></a> These lessons will introduce you the shell, a fundamental tool for performing a wide range of computing tasks.</p></li>
+<li><p><a href="https://swcarpentry.github.io/git-novice/"><strong>Version Control with Git</strong></a> This tutorial will introduce you to Git, a popular open source distributed version control system.</p></li>
+</ul>
+</section>
+<section id="python" class="level3">
+<h3 class="anchored" data-anchor-id="python">Python</h3>
+<ul>
+<li><p><a href="https://docs.python.org/3/tutorial/"><strong>The Python Tutorial</strong></a> This tutorial introduces the reader informally to the basic concepts and features of the Python language and system.</p></li>
+<li><p><a href="https://foundations.projectpythia.org/landing-page.html"><strong>Pythia Foundations</strong></a> This book is intended to educate the reader on the essentials for using the Scientific Python Ecosystem (SPE): a collection of open source Python packages that support analysis, manipulation, and visualization of scientific data.</p></li>
+</ul>
+</section>
+<section id="r" class="level3">
+<h3 class="anchored" data-anchor-id="r">R</h3>
+<ul>
+<li><p><a href="https://rstudio-conf-2020.github.io/r-for-excel/"><strong>R for Excel Users</strong></a> This course is a friendly intro to becoming a modern R user, full of tidyverse, RMarkdown, GitHub, collaboration, and reproducibility.</p></li>
+<li><p><a href="https://r4ds.hadley.nz/"><strong>R for Data Science</strong></a> This book will teach you how to do data science with R, including how to get your data into R, get it into the most useful structure, transform it, and visualize.</p></li>
+</ul>
+</section>
+<section id="jupyterhubs" class="level3">
+<h3 class="anchored" data-anchor-id="jupyterhubs">JupyterHubs</h3>
+<ul>
+<li><a href="https://nmfs-opensci.github.io/NMFSHackDays-2025/topics-skills/">NOAA Fisheries Open Science - Hackdays Skills</a> This resource offers introduction, skills, and workflows for using JupyterHubs, as well as links to guest presentations at regular Hackhours on topics of JupyterHubs, computation, and machine learning.</li>
+</ul>
+</section>
+<section id="cloud-native-geospatial" class="level3">
+<h3 class="anchored" data-anchor-id="cloud-native-geospatial">Cloud-Native Geospatial</h3>
+<ul>
+<li><a href="https://guide.cloudnativegeo.org"><strong>Cloud-Optimized Geospatial Formats Guide</strong></a> This guide helps answer the question “why cloud?” and / or if you wish to learn more about cloud-native geospatial formats.</li>
+</ul>
+<p><em>For advanced coding guidance, see our How To’s, Tutorials, and Appendix.</em></p>
 
 
 </section>
@@ -964,6 +1014,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./when-to-cloud.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">When To Cloud</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./tutorials/Earthdata-cloud-clinic.html" class="pagination-link">
+        <span class="nav-page-text">Ocean, climate, and surface water data tutorials from PO.DAAC</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
