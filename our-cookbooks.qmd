@@ -1,12 +1,24 @@
 ---
-title: "Our Cookbook"
+title: "Our Cookbooks"
+aliases: 
+  - our-cookbook.html
 ---
 
-## How to use this Earthdata Cloud Cookbook
+## How to use our Cookbooks
 
-Our Cookbook is a place to learn, share, and experiment with NASA Earthdata on the Cloud. We know this has a lot of moving parts, and we are iterating as we go, and welcome feedback and contributions.
+Our Cookbooks are places to learn, share, and experiment with NASA Earthdata on the Cloud. We know this has a lot of moving parts, and we are iterating as we go, and welcome feedback and contributions.
 
-The Cookbook has **How To** building blocks and **Tutorials** that connect these building blocks through an example research question and specific data. How To guides and Tutorials are stable approaches we've developed and used to teach; they have been iterated and improved through feedback from researchers during [events we've led](https://nasa-openscapes.github.io/earthdata-cloud-cookbook/tutorials/). We also share work **In Development**: primarily lessons and other works-in-progress that we're developing.
+You are currently reading the **Earthdata Cloud Cookbook**, which is a place for common approaches for NASA Earthdata in the Cloud. It also provides visibility and discovery for other Cookbooks by themes, whether that be by Distributed Active Archive Centers (DAACs), Missions, or scientific topic. Other Cookbooks in our "kitchen": 
+
+- [**Ocean, climate, and surface water data tutorials from the Physical Oceanography Distributed Active Archive Center (PO.DAAC)**](https://podaac.github.io/tutorials/)
+- [**Mission-specific tutorials from the Atmospheric Science Data Center (ASDC)**](https://nasa.github.io/ASDC_Data_and_User_Services/)
+- [**Tutorials from the National Snow and Ice Data Center (NSIDC) **](https://github.com/nsidc/NSIDC-Data-Tutorials) *Cookbook format coming soon*
+
+## Cookbooks structure
+
+*This structure is shared across Cookbooks, although there is variation.*
+
+**How To** building blocks and **Tutorials** that connect these building blocks through an example research question and specific data. How To guides and Tutorials are stable approaches we've developed and used to teach; they have been iterated and improved through feedback from researchers during [events we've led](https://nasa-openscapes.github.io/earthdata-cloud-cookbook/tutorials/). We also share work **In Development**: primarily lessons and other works-in-progress that we're developing.
 
 Working with NASA Earthdata in the Cloud means using a combination of software, tools, many of which require coding and are unfamiliar when we first get started. This is true for us all; we're all coming with different skills and backgrounds and you're not alone as we all learn these new technologies and workflows. We have found it helpful to have a [growth mindset](https://www.youtube.com/watch?v=_X0mgOOSpLU&t=11s&ab_channel=TED) - these approaches are new and we don't know how to do them ***yet***. Please, don't struggle alone - know that we're all in this together as part of the open source community learning and co-creating together as we migrate our research to the Cloud.
 
@@ -46,8 +58,12 @@ Cloud services often are connected to and operated through Bash, a command-line 
 
 -   [**R for Data Science**](https://r4ds.hadley.nz/) This book will teach you how to do data science with R, including how to get your data into R, get it into the most useful structure, transform it, and visualize.
 
-### [Cloud-Native Geospatial Formats Guide](https://guide.cloudnativegeo.org/)
+### JupyterHubs
 
-If you are wondering "why cloud?" and / or wish to learn more about cloud-native geospatial formats, please visit https://guide.cloudnativegeo.org/.
+- [NOAA Fisheries Open Science - Hackdays Skills](https://nmfs-opensci.github.io/NMFSHackDays-2025/topics-skills/) This resource offers introduction, skills, and workflows for using JupyterHubs, as well as links to guest presentations at regular Hackhours on topics of JupyterHubs, computation, and machine learning.
+
+### Cloud-Native Geospatial
+
+- [**Cloud-Optimized Geospatial Formats Guide**](https://guide.cloudnativegeo.org) This guide helps answer the question "why cloud?" and / or if you wish to learn more about cloud-native geospatial formats.
 
 *For advanced coding guidance, see our How To's, Tutorials, and Appendix.*
