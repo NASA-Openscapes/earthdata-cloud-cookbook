@@ -1,16 +1,5 @@
 ---
 title: Tutorials
-jupyter:
-  jupytext:
-    text_representation:
-      extension: .qmd
-      format_name: quarto
-      format_version: '1.0'
-      jupytext_version: 1.16.1
-  kernelspec:
-    display_name: Python 3 (ipykernel)
-    language: python
-    name: python3
 ---
 
 The following tutorials are meant to present example workflows with NASA Earthdata in the cloud from a variety of use cases. The tutorials exemplify the advantages of working with NASA Earthdata in the cloud and aim to provide a starting point for exploring what your workflows could look like in the cloud. 
@@ -32,8 +21,7 @@ The following tutorials are meant to present example workflows with NASA Earthda
 ### **Observing Seasonality in Agricultural Areas** - [Tutorial](Observing_Seasonal_Ag_Changes.ipynb)
 *Working with HLS Landsat and Sentinel-2 data products in the cloud*
 
-### **Subsetting ICESat-2 Data Using NASA Harmony** - [Tutorial]
-(IS2_Harmony.ipynb)
+### **Subsetting NASA Earthdata Using Harmony** - [Tutorial](Harmony.ipynb)
 *Requesting spatial and temporal subsets of ICESat-2 L2A and L3A data*
 
 ### **Using OPeNDAP in the Cloud** - [Tutorial](Earthdata_Cloud__Data_Access_OPeNDAP_Example.ipynb)
