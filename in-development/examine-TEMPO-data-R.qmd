@@ -3,6 +3,11 @@ date: last-modified
 title: Demonstration for working with TEMPO data in R
 ---
 
+```{r}
+#| include: false
+library(DT)
+```
+
 ## Overview
 
 This notebook retrieves TEMPO data, inspects characteristics of the data such as array shapes and quality flags, and then creates a visualization of total column nitrogen dioxide concentrations.
@@ -22,7 +27,6 @@ This notebook was last tested using R Version 4.5.1 and uses these packages:
 - [earthadatalogin](https://boettiger-lab.github.io/earthadatalogin/)
 - [rstac](https://brazil-data-cube.github.io/rstac/)
 - [terra](https://rspatial.org/terra/)
-- [stars](https://r-spatial.github.io/stars/) 
 
 ### Notebook Author / Affiliation
 
@@ -32,11 +36,16 @@ Andy Teucher (Openscapes) - R adaptation
 # 1. Setup
 
 ```{r}
-library(earthdatalogin)
-library(rstac)
-library(terra)
-library(purrr)
-library(stars)
+# Core packages for data access and manipulation
+library(earthdatalogin) # Authentication with NASA Earthdata and data access
+library(rstac) # Search STAC catalogs
+library(terra) # Read, manipulate, and plot raster data
+
+# Helper packages
+library(purrr) # Functional programming tools / list manipulation
+library(mirai) # Parallel downloads
+library(stringr) # String manipulation
+library(tigris) # State boundaries for plotting
 ```
 
 # 2. Establish access to EarthData - Log in
@@ -134,27 +143,39 @@ mirai::daemons(0)
 
 # 5. Reading and inspecting the data
 
-We downloaded the data in the previous step, however we can avoid downloading the files manually and download them as-needed by specifying what we want with `terra::rast()`.
+We downloaded the data in the previous step, however we can avoid downloading the files manually and download them only as-needed by specifying what we want with `terra::rast()`.
 
-First, let's look at the metadata. We can use `terra::describe()` to see what subdatasets are available in the netCDF file. We prepend the URL with `/vsicurl/` to read the file remotely.
+First, let's look at the metadata. We can get the metadata in different ways, using `terra::describe()` to get file-level metadata and metadata about the subdatasets within. We prepend the URL with `/vsicurl/` to read the file remotely.
 
 ```{r}
-# unloadGDALdrivers("netCDF")
+# The netCDF driver does not work on non-Linux systems when reading via `/vis`,
+# So we unload it here to force GDAL to use the HDF5 driver instead.
+if (tolower(Sys.info()[["sysname"]]) != "linux") {
+  unloadGDALdrivers("netCDF")
+}
 ```
 
 ```{r}
 nc_file <- tempo_urls[9]
+nc_file
 
-meta <- sf::gdal_utils(
-  util = "mdiminfo",
-  source = paste0("/vsicurl/", nc_file),
-  quiet = TRUE
+terra_meta_file <- terra::describe(
+  paste0("/vsicurl/", nc_file),
+  sds = FALSE,
+  meta = TRUE
+)
+
+# The data comes as a character vector with name-value pairs separated by '='.
+# We can turn it into a data frame for easier viewing.
+data.frame(
+  Name = stringr::str_split_i(terra_meta_file, "=", 1),
+  Value = stringr::str_split_i(terra_meta_file, "=", 2)
 ) |>
-  jsonlite::fromJSON()
+  DT::datatable(caption = "File-level metadata")
 
-# meta <- terra::describe(files[1], sds = TRUE)
-# meta <- terra::describe(paste0("/vsicurl/", nc_file), sds = TRUE)
-meta$groups$product$arrays
+terra_meta_sds <- terra::describe(paste0("/vsicurl/", nc_file), sds = TRUE)
+
+DT::datatable(terra_meta_sds, caption = "Subdataset-level metadata")
 ```
 
 We will read in the variables we are interested in: stratospheric and tropospheric NO2 vertical column densities, and quality flag.
@@ -190,12 +211,15 @@ quality_flag
 ### Let's now examine the data in a granulue
 
 ```{r}
-no2_trop
+hist(values(no2_trop))
+hist(values(no2_strat))
 ```
 
 ### Finding 'good' pixels
 
 How many valid values are there?
+
+NetCDF files have metadata that specify fill values for missing data. `terra` automatically converts these fill values to `NA` when reading the data. We can count the number of non-`NA` values to find how many valid pixels there are.
 
 ```{r}
 sum(!is.na(values(no2_trop)))
@@ -205,15 +229,15 @@ sum(!is.na(values(no2_strat)))
 How many pixels with high quality flag, 0, are there?
 
 ```{r}
-sum(values(quality_flag) == 0, na.rm = TRUE)
+table(values(quality_flag), useNA = "ifany")
 ```
 
 Notice that the number of non-fill values and high-quality values are different.
 
-**So, we need to create arrays of equal length to combine them to get total column.**
+**So, we need to make a mask to remove pixels that are not high quality (`quality_flag == 0`).**
 
 ```{r}
-good_data_mask <- quality_flag == 0 & !is.na(no2_trop) & !is.na(no2_strat)
+good_data_mask <- quality_flag == 0
 good_data_mask
 ```
 
@@ -227,19 +251,26 @@ Unfortunate reality - "good" pixels may contain negative column.
 
 ```{r}
 min(no2_trop[good_data_mask], na.rm = TRUE)
+min(no2_strat[good_data_mask], na.rm = TRUE)
 ```
 
 **Getting physically meaningful pixels**
 
+We can "clamp" the negative values in `no2_trop` to zero.
+
 ```{r}
-best_data_mask <- good_data_mask & (no2_trop > 0) & (no2_strat > 0)
+no2_trop_clamped <- clamp(no2_trop, lower = 0)
 ```
 
-Mask the pixels (make them `NA`) where `best_data_mask` is `FALSE`.
+Mask the pixels (make them `NA`) where `good_data_mask` is `FALSE`.
 
 ```{r}
-good_trop_no2 <- terra::mask(no2_trop, best_data_mask, maskvalues = FALSE)
-good_strat_no2 <- terra::mask(no2_strat, best_data_mask, maskvalues = FALSE)
+good_trop_no2 <-
+  no2_trop_clamped |>
+  terra::mask(good_data_mask, maskvalues = FALSE)
+good_strat_no2 <-
+  no2_strat |>
+  terra::mask(good_data_mask, maskvalues = FALSE)
 ```
 
 # 6. Working with the data to subset and plot
@@ -266,13 +297,46 @@ no2_strat_cropped <- terra::crop(good_strat_no2, extent)
 
 ### Plotting spatial distribution
 
-```{r}
-# par(mfrow = c(1, 2))
-plot(no2_trop_cropped, main = "TEMPO Tropospheric NO2 col (molecules/cm²)")
-plot(no2_strat_cropped, main = "TEMPO Stratospheric NO2 col (molecules/cm²)")
+We can use basic plotting functionality from `terra` to visualize the data. Let's first plot tropospheric and stratospheric NO2 columns separately, then plot the total column (sum of the two).
 
-# plot(
-#   (no2_trop_cropped + no2_strat_cropped) / 1e16,
-#   main = "TEMPO Total NO2 col (molecules/cm²)"
-# )
+```{r}
+#| warning: false
+#| message: false
+
+# Get US state boundaries and convert to terra format
+states <- states(cb = TRUE, progress_bar = FALSE) |>
+  vect()
+
+plot(
+  no2_trop_cropped,
+  main = "TEMPO Tropospheric NO2 col (molecules/cm²)",
+  range = c(0, 5e16),
+  plg = list(
+    x = "bottom",
+    labels = format(seq(0, 5e16, by = 1e16), scientific = TRUE)
+  )
+)
+lines(states, col = "lightgrey", lwd = 1)
+
+plot(
+  no2_strat_cropped,
+  main = "TEMPO Stratospheric NO2 col (molecules/cm²)",
+  plg = list(
+    x = "bottom",
+    labels = format(seq(0, 5e16, by = 1e16), scientific = TRUE)
+  )
+)
+lines(states, col = "lightgrey", lwd = 1)
+
+# Plot with state boundaries
+plot(
+  (no2_trop_cropped + no2_strat_cropped),
+  range = c(0, 5e16),
+  main = "TEMPO Total NO2 col (molecules/cm²)",
+  plg = list(
+    x = "bottom",
+    labels = format(seq(0, 5e16, by = 1e16), scientific = TRUE)
+  )
+)
+lines(states, col = "lightgrey", lwd = 1)
 ```
