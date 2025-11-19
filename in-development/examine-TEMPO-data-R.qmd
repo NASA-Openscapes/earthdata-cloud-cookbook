@@ -145,7 +145,7 @@ mirai::daemons(0)
 
 We downloaded the data in the previous step, however we can avoid downloading the files manually and download them only as-needed by specifying what we want with `terra::rast()`.
 
-First, let's look at the metadata. We can get the metadata in different ways, using `terra::describe()` to get file-level metadata and metadata about the subdatasets within. We prepend the URL with `/vsicurl/` to read the file remotely.
+First, let's look at the metadata. We can get the metadata in different ways, using `terra::describe()` to get file-level metadata and metadata about the subdatasets within. Because `terra` uses GDAL to read data, we can prepend the URL with `"/vsicurl/"` to read the file remotely using GDAL's [virtual file system capabilities](https://gdal.org/en/stable/user/virtual_file_systems.html#virtual-file-systems).
 
 ```{r}
 # The netCDF driver does not work on non-Linux systems when reading via `/vis`,
@@ -166,12 +166,13 @@ terra_meta_file <- terra::describe(
 )
 
 # The data comes as a character vector with name-value pairs separated by '='.
-# We can turn it into a data frame for easier viewing.
-data.frame(
+# We can split it and turn it into a data frame for easier viewing.
+nc_file_meta <- data.frame(
   Name = stringr::str_split_i(terra_meta_file, "=", 1),
   Value = stringr::str_split_i(terra_meta_file, "=", 2)
-) |>
-  DT::datatable(caption = "File-level metadata")
+)
+
+DT::datatable(nc_file_meta, caption = "File-level metadata")
 
 terra_meta_sds <- terra::describe(paste0("/vsicurl/", nc_file), sds = TRUE)
 
