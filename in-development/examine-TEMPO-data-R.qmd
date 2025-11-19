@@ -148,7 +148,7 @@ We downloaded the data in the previous step, however we can avoid downloading th
 First, let's look at the metadata. We can get the metadata in different ways, using `terra::describe()` to get file-level metadata and metadata about the subdatasets within. Because `terra` uses GDAL to read data, we can prepend the URL with `"/vsicurl/"` to read the file remotely using GDAL's [virtual file system capabilities](https://gdal.org/en/stable/user/virtual_file_systems.html#virtual-file-systems).
 
 ```{r}
-# The netCDF driver does not work on non-Linux systems when reading via `/vis`,
+# The netCDF driver does not work on non-Linux systems when reading via `/vsi*`,
 # So we unload it here to force GDAL to use the HDF5 driver instead.
 if (tolower(Sys.info()[["sysname"]]) != "linux") {
   unloadGDALdrivers("netCDF")
