@@ -11,9 +11,11 @@ website:
   site-url: https://nasa-openscapes.github.io/earthdata-cloud-cookbook
   repo-url: https://github.com/nasa-openscapes/earthdata-cloud-cookbook
   repo-actions: [edit, source, issue]
-
-  page-footer: 
+ 
+  page-footer:
     left: "NASA Earthdata Cloud Cookbook, &copy; NASA Openscapes Team (2023)."
+    center: '<a href="#" id="open_preferences_center">Cookie Preferences</a>'
+    right: "[Privacy Policy](/privacy.qmd)"
   
   sidebar:
     title: "NASA Earthdata Cloud Cookbook"
@@ -189,6 +191,7 @@ website:
 
 format:
   html:
+    include-in-header: _ga-consent-defaults.html
     theme:
       light: cosmo
       dark: [cosmo, theme-dark.scss]
