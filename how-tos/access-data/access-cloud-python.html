@@ -701,47 +701,41 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="python" class="level2">
 <h2 class="anchored" data-anchor-id="python">Python</h2>
 <p>We can use the <a href="https://nsidc.github.io/earthaccess/"><code>earthaccess</code></a> python library to grab the file URLs and then access them with the <code>xarray</code> library.</p>
-<div class="cell" data-tags="[]" data-execution_count="2">
+<div class="cell" data-tags="[]" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Import packages</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> earthaccess</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> xarray <span class="im">as</span> xr</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-tags="[]" data-execution_count="3">
+<div class="cell" data-tags="[]" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Authentication with Earthdata Login</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>auth <span class="op">=</span> earthaccess.login(strategy<span class="op">=</span><span class="st">"netrc"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>auth <span class="op">=</span> earthaccess.login()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-tags="[]" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Access land ice height from ATLAS/ICESat-2 V005 (10.5067/ATLAS/ATL06.005), searching for data over western Greenland coast over two weeks in July 2022. The data are provided as HDF5 granules (files) that span about 1/14th of an orbit.</span></span>
+<div class="cell" data-tags="[]" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Access land ice height from ATLAS/ICESat-2 V007 (10.5067/ATLAS/ATL06.007), searching for data over western Greenland coast over two weeks in July 2022. The data are provided as HDF5 granules (files) that span about 1/14th of an orbit.</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> earthaccess.search_data(short_name<span class="op">=</span><span class="st">"ATL06"</span>,</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>                                  version<span class="op">=</span><span class="st">"006"</span>,</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>                                  version<span class="op">=</span><span class="st">"007"</span>,</span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>                                  cloud_hosted<span class="op">=</span><span class="va">True</span>,</span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>                                  temporal <span class="op">=</span> (<span class="st">"2022-07-17"</span>,<span class="st">"2022-07-31"</span>),</span>
 <span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>                                  bounding_box <span class="op">=</span> (<span class="op">-</span><span class="fl">51.96423</span>,<span class="fl">68.10554</span>,<span class="op">-</span><span class="fl">48.71969</span>,<span class="fl">70.70529</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Granules found: 5</code></pre>
-</div>
 </div>
 <div class="cell" data-tags="[]" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Use xarray to load the data as a multifile dataset for a single group in the HDF5 file, in this case land ice segments:</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>ds <span class="op">=</span> xr.open_mfdataset(earthaccess.<span class="bu">open</span>(results), group<span class="op">=</span><span class="st">'/gt1l/land_ice_segments'</span>)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>ds</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> Opening 5 granules, approx size: 0.0 GB</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Use xarray to load the data as a multifile dataset for a single group in the HDF5 file, in this case land ice segments:</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>ds <span class="op">=</span> xr.open_mfdataset(earthaccess.<span class="bu">open</span>(results), group<span class="op">=</span><span class="st">'/gt1l/land_ice_segments'</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>ds</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"cc8eca3fe2fd4849a5b5ab8a82494277","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+{"model_id":"42991d9fab004b229978d3f09b7ebc29","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
 </script>
 </div>
 <div class="cell-output cell-output-display">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"38ae9e7fbb7b4073b4ff406b8d12e3c6","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+{"model_id":"d28bb3d76a294900ae2181e9bf89674c","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
 </script>
 </div>
 <div class="cell-output cell-output-display">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"2d187c98afa045e4bec2f83970cf2ea3","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+{"model_id":"47a94c154f894ef8a36b8b51fb2063cf","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
 </script>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="4">
@@ -766,27 +760,76 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  */
 
 :root {
-  --xr-font-color0: var(--jp-content-font-color0, rgba(0, 0, 0, 1));
-  --xr-font-color2: var(--jp-content-font-color2, rgba(0, 0, 0, 0.54));
-  --xr-font-color3: var(--jp-content-font-color3, rgba(0, 0, 0, 0.38));
-  --xr-border-color: var(--jp-border-color2, #e0e0e0);
-  --xr-disabled-color: var(--jp-layout-color3, #bdbdbd);
-  --xr-background-color: var(--jp-layout-color0, white);
-  --xr-background-color-row-even: var(--jp-layout-color1, white);
-  --xr-background-color-row-odd: var(--jp-layout-color2, #eeeeee);
+  --xr-font-color0: var(
+    --jp-content-font-color0,
+    var(--pst-color-text-base rgba(0, 0, 0, 1))
+  );
+  --xr-font-color2: var(
+    --jp-content-font-color2,
+    var(--pst-color-text-base, rgba(0, 0, 0, 0.54))
+  );
+  --xr-font-color3: var(
+    --jp-content-font-color3,
+    var(--pst-color-text-base, rgba(0, 0, 0, 0.38))
+  );
+  --xr-border-color: var(
+    --jp-border-color2,
+    hsl(from var(--pst-color-on-background, white) h s calc(l - 10))
+  );
+  --xr-disabled-color: var(
+    --jp-layout-color3,
+    hsl(from var(--pst-color-on-background, white) h s calc(l - 40))
+  );
+  --xr-background-color: var(
+    --jp-layout-color0,
+    var(--pst-color-on-background, white)
+  );
+  --xr-background-color-row-even: var(
+    --jp-layout-color1,
+    hsl(from var(--pst-color-on-background, white) h s calc(l - 5))
+  );
+  --xr-background-color-row-odd: var(
+    --jp-layout-color2,
+    hsl(from var(--pst-color-on-background, white) h s calc(l - 15))
+  );
 }
 
-html[theme=dark],
-body[data-theme=dark],
+html[theme="dark"],
+html[data-theme="dark"],
+body[data-theme="dark"],
 body.vscode-dark {
-  --xr-font-color0: rgba(255, 255, 255, 1);
-  --xr-font-color2: rgba(255, 255, 255, 0.54);
-  --xr-font-color3: rgba(255, 255, 255, 0.38);
-  --xr-border-color: #1F1F1F;
-  --xr-disabled-color: #515151;
-  --xr-background-color: #111111;
-  --xr-background-color-row-even: #111111;
-  --xr-background-color-row-odd: #313131;
+  --xr-font-color0: var(
+    --jp-content-font-color0,
+    var(--pst-color-text-base, rgba(255, 255, 255, 1))
+  );
+  --xr-font-color2: var(
+    --jp-content-font-color2,
+    var(--pst-color-text-base, rgba(255, 255, 255, 0.54))
+  );
+  --xr-font-color3: var(
+    --jp-content-font-color3,
+    var(--pst-color-text-base, rgba(255, 255, 255, 0.38))
+  );
+  --xr-border-color: var(
+    --jp-border-color2,
+    hsl(from var(--pst-color-on-background, #111111) h s calc(l + 10))
+  );
+  --xr-disabled-color: var(
+    --jp-layout-color3,
+    hsl(from var(--pst-color-on-background, #111111) h s calc(l + 40))
+  );
+  --xr-background-color: var(
+    --jp-layout-color0,
+    var(--pst-color-on-background, #111111)
+  );
+  --xr-background-color-row-even: var(
+    --jp-layout-color1,
+    hsl(from var(--pst-color-on-background, #111111) h s calc(l + 5))
+  );
+  --xr-background-color-row-odd: var(
+    --jp-layout-color2,
+    hsl(from var(--pst-color-on-background, #111111) h s calc(l + 15))
+  );
 }
 
 .xr-wrap {
@@ -827,7 +870,7 @@ body.vscode-dark {
 .xr-sections {
   padding-left: 0 !important;
   display: grid;
-  grid-template-columns: 150px auto auto 1fr 20px 20px;
+  grid-template-columns: 150px auto auto 1fr 0 20px 0 20px;
 }
 
 .xr-section-item {
@@ -835,16 +878,23 @@ body.vscode-dark {
 }
 
 .xr-section-item input {
-  display: none;
+  display: inline-block;
+  opacity: 0;
+  height: 0;
 }
 
 .xr-section-item input + label {
   color: var(--xr-disabled-color);
+  border: 2px solid transparent !important;
 }
 
 .xr-section-item input:enabled + label {
   cursor: pointer;
   color: var(--xr-font-color2);
+}
+
+.xr-section-item input:focus + label {
+  border: 2px solid var(--xr-font-color0) !important;
 }
 
 .xr-section-item input:enabled + label:hover {
@@ -868,7 +918,7 @@ body.vscode-dark {
 
 .xr-section-summary-in + label:before {
   display: inline-block;
-  content: '►';
+  content: "►";
   font-size: 11px;
   width: 15px;
   text-align: center;
@@ -879,7 +929,7 @@ body.vscode-dark {
 }
 
 .xr-section-summary-in:checked + label:before {
-  content: '▼';
+  content: "▼";
 }
 
 .xr-section-summary-in:checked + label > span {
@@ -951,15 +1001,15 @@ body.vscode-dark {
 }
 
 .xr-dim-list:before {
-  content: '(';
+  content: "(";
 }
 
 .xr-dim-list:after {
-  content: ')';
+  content: ")";
 }
 
 .xr-dim-list li:not(:last-child):after {
-  content: ',';
+  content: ",";
   padding-right: 5px;
 }
 
@@ -976,7 +1026,9 @@ body.vscode-dark {
 .xr-var-item label,
 .xr-var-item > .xr-var-name span {
   background-color: var(--xr-background-color-row-even);
+  border-color: var(--xr-background-color-row-odd);
   margin-bottom: 0;
+  padding-top: 2px;
 }
 
 .xr-var-item > .xr-var-name:hover span {
@@ -987,6 +1039,7 @@ body.vscode-dark {
 .xr-var-list > li:nth-child(odd) > label,
 .xr-var-list > li:nth-child(odd) > .xr-var-name span {
   background-color: var(--xr-background-color-row-odd);
+  border-color: var(--xr-background-color-row-even);
 }
 
 .xr-var-name {
@@ -1036,8 +1089,15 @@ body.vscode-dark {
 .xr-var-data,
 .xr-index-data {
   display: none;
-  background-color: var(--xr-background-color) !important;
-  padding-bottom: 5px !important;
+  border-top: 2px dotted var(--xr-background-color);
+  padding-bottom: 20px !important;
+  padding-top: 10px !important;
+}
+
+.xr-var-attrs-in + label,
+.xr-var-data-in + label,
+.xr-index-data-in + label {
+  padding: 0 1px;
 }
 
 .xr-var-attrs-in:checked ~ .xr-var-attrs,
@@ -1048,6 +1108,12 @@ body.vscode-dark {
 
 .xr-var-data > table {
   float: right;
+}
+
+.xr-var-data > pre,
+.xr-index-data > pre,
+.xr-var-data > table > tbody > tr {
+  background-color: transparent !important;
 }
 
 .xr-var-name span,
@@ -1109,24 +1175,33 @@ dl.xr-attrs {
   stroke: currentColor;
   fill: currentColor;
 }
-</style><pre class="xr-text-repr-fallback">&lt;xarray.Dataset&gt;
-Dimensions:                (delta_time: 241711)
+
+.xr-var-attrs-in:checked + label > .xr-icon-file-text2,
+.xr-var-data-in:checked + label > .xr-icon-database,
+.xr-index-data-in:checked + label > .xr-icon-database {
+  color: var(--xr-font-color0);
+  filter: drop-shadow(1px 1px 5px var(--xr-font-color2));
+  stroke-width: 0.8px;
+}
+</style><pre class="xr-text-repr-fallback">&lt;xarray.Dataset&gt; Size: 11MB
+Dimensions:                (delta_time: 240873)
 Coordinates:
-  * delta_time             (delta_time) datetime64[ns] 2022-07-18T01:00:46.67...
-    latitude               (delta_time) float64 dask.array&lt;chunksize=(78325,), meta=np.ndarray&gt;
-    longitude              (delta_time) float64 dask.array&lt;chunksize=(78325,), meta=np.ndarray&gt;
+  * delta_time             (delta_time) datetime64[ns] 2MB 2022-07-18T01:00:4...
+    latitude               (delta_time) float64 2MB dask.array&lt;chunksize=(10000,), meta=np.ndarray&gt;
+    longitude              (delta_time) float64 2MB dask.array&lt;chunksize=(10000,), meta=np.ndarray&gt;
 Data variables:
-    atl06_quality_summary  (delta_time) int8 dask.array&lt;chunksize=(78325,), meta=np.ndarray&gt;
-    h_li                   (delta_time) float32 dask.array&lt;chunksize=(78325,), meta=np.ndarray&gt;
-    h_li_sigma             (delta_time) float32 dask.array&lt;chunksize=(78325,), meta=np.ndarray&gt;
-    segment_id             (delta_time) float64 dask.array&lt;chunksize=(78325,), meta=np.ndarray&gt;
-    sigma_geo_h            (delta_time) float32 dask.array&lt;chunksize=(78325,), meta=np.ndarray&gt;
+    atl06_quality_summary  (delta_time) int8 241kB dask.array&lt;chunksize=(10000,), meta=np.ndarray&gt;
+    fpb_warning_flag       (delta_time) int8 241kB dask.array&lt;chunksize=(10000,), meta=np.ndarray&gt;
+    h_li                   (delta_time) float32 963kB dask.array&lt;chunksize=(10000,), meta=np.ndarray&gt;
+    h_li_sigma             (delta_time) float32 963kB dask.array&lt;chunksize=(10000,), meta=np.ndarray&gt;
+    segment_id             (delta_time) float64 2MB dask.array&lt;chunksize=(10000,), meta=np.ndarray&gt;
+    sigma_geo_h            (delta_time) float32 963kB dask.array&lt;chunksize=(10000,), meta=np.ndarray&gt;
 Attributes:
-    Description:  The land_ice_height group contains the primary set of deriv...
-    data_rate:    Data within this group are sparse.  Data values are provide...</pre><div class="xr-wrap" style="display:none"><div class="xr-header"><div class="xr-obj-type">xarray.Dataset</div></div><ul class="xr-sections"><li class="xr-section-item"><input id="section-3961dd9c-16ec-4560-b950-414fed057a25" class="xr-section-summary-in" type="checkbox" disabled=""><label for="section-3961dd9c-16ec-4560-b950-414fed057a25" class="xr-section-summary" title="Expand/collapse section">Dimensions:</label><div class="xr-section-inline-details"><ul class="xr-dim-list"><li><span class="xr-has-index">delta_time</span>: 241711</li></ul></div><div class="xr-section-details"></div></li><li class="xr-section-item"><input id="section-9a2290da-c5b2-480b-b34c-961b6e7e3271" class="xr-section-summary-in" type="checkbox" checked=""><label for="section-9a2290da-c5b2-480b-b34c-961b6e7e3271" class="xr-section-summary">Coordinates: <span>(3)</span></label><div class="xr-section-inline-details"></div><div class="xr-section-details"><ul class="xr-var-list"><li class="xr-var-item"><div class="xr-var-name"><span class="xr-has-index">delta_time</span></div><div class="xr-var-dims">(delta_time)</div><div class="xr-var-dtype">datetime64[ns]</div><div class="xr-var-preview xr-preview">2022-07-18T01:00:46.678760592 .....</div><input id="attrs-380c4cd6-626f-42d5-ace9-93846e888e9a" class="xr-var-attrs-in" type="checkbox"><label for="attrs-380c4cd6-626f-42d5-ace9-93846e888e9a" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-a059c9f3-bca8-4c69-a41b-399fa22d2862" class="xr-var-data-in" type="checkbox"><label for="data-a059c9f3-bca8-4c69-a41b-399fa22d2862" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"><dt><span>contentType :</span></dt><dd>referenceInformation</dd><dt><span>description :</span></dt><dd>Number of GPS seconds since the ATLAS SDP epoch. The ATLAS Standard Data Products (SDP) epoch offset is defined within /ancillary_data/atlas_sdp_gps_epoch as the number of GPS seconds between the GPS epoch (1980-01-06T00:00:00.000000Z UTC) and the ATLAS SDP epoch. By adding the offset contained within atlas_sdp_gps_epoch to delta time parameters, the time in gps_seconds relative to the GPS epoch can be computed.</dd><dt><span>long_name :</span></dt><dd>Elapsed GPS seconds</dd><dt><span>source :</span></dt><dd>section 4.4</dd><dt><span>standard_name :</span></dt><dd>time</dd></dl></div><div class="xr-var-data"><pre>array(['2022-07-18T01:00:46.678760592', '2022-07-18T01:00:46.681322640',
-       '2022-07-18T01:00:46.684008720', ..., '2022-07-26T00:49:18.826637808',
-       '2022-07-26T00:49:18.829449568', '2022-07-26T00:49:18.832263232'],
-      dtype='datetime64[ns]')</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>latitude</span></div><div class="xr-var-dims">(delta_time)</div><div class="xr-var-dtype">float64</div><div class="xr-var-preview xr-preview">dask.array&lt;chunksize=(78325,), meta=np.ndarray&gt;</div><input id="attrs-57336b9a-2ba7-49ad-803b-e2ecf40bd95e" class="xr-var-attrs-in" type="checkbox"><label for="attrs-57336b9a-2ba7-49ad-803b-e2ecf40bd95e" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-99f21f7f-9cfa-48e2-a7ef-8f16cad42d95" class="xr-var-data-in" type="checkbox"><label for="data-99f21f7f-9cfa-48e2-a7ef-8f16cad42d95" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"><dt><span>contentType :</span></dt><dd>physicalMeasurement</dd><dt><span>description :</span></dt><dd>Latitude of segment center, WGS84, North=+,</dd><dt><span>long_name :</span></dt><dd>Latitude</dd><dt><span>source :</span></dt><dd>section 3.10</dd><dt><span>standard_name :</span></dt><dd>latitude</dd><dt><span>units :</span></dt><dd>degrees_north</dd><dt><span>valid_max :</span></dt><dd>90.0</dd><dt><span>valid_min :</span></dt><dd>-90.0</dd></dl></div><div class="xr-var-data">
+    data_rate:    Data within this group are sparse.  Data values are provide...
+    description:  The land_ice_height group contains the primary set of deriv...</pre><div class="xr-wrap" style="display:none"><div class="xr-header"><div class="xr-obj-type">xarray.Dataset</div></div><ul class="xr-sections"><li class="xr-section-item"><input id="section-df8af2fb-2f33-4b42-8132-a31152ef45f1" class="xr-section-summary-in" type="checkbox" disabled=""><label for="section-df8af2fb-2f33-4b42-8132-a31152ef45f1" class="xr-section-summary" title="Expand/collapse section">Dimensions:</label><div class="xr-section-inline-details"><ul class="xr-dim-list"><li><span class="xr-has-index">delta_time</span>: 240873</li></ul></div><div class="xr-section-details"></div></li><li class="xr-section-item"><input id="section-1129e1d5-a15b-4275-ac98-1a4f493a40ed" class="xr-section-summary-in" type="checkbox" checked=""><label for="section-1129e1d5-a15b-4275-ac98-1a4f493a40ed" class="xr-section-summary">Coordinates: <span>(3)</span></label><div class="xr-section-inline-details"></div><div class="xr-section-details"><ul class="xr-var-list"><li class="xr-var-item"><div class="xr-var-name"><span class="xr-has-index">delta_time</span></div><div class="xr-var-dims">(delta_time)</div><div class="xr-var-dtype">datetime64[ns]</div><div class="xr-var-preview xr-preview">2022-07-18T01:00:40.698453696 .....</div><input id="attrs-7bd7424f-f9bb-45b0-be94-366502618b88" class="xr-var-attrs-in" type="checkbox"><label for="attrs-7bd7424f-f9bb-45b0-be94-366502618b88" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-42cf0ccf-6280-4847-a6f8-f8fa11b762eb" class="xr-var-data-in" type="checkbox"><label for="data-42cf0ccf-6280-4847-a6f8-f8fa11b762eb" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"><dt><span>contentType :</span></dt><dd>referenceInformation</dd><dt><span>description :</span></dt><dd>Number of GPS seconds since the ATLAS SDP epoch. The ATLAS Standard Data Products (SDP) epoch offset is defined within /ancillary_data/atlas_sdp_gps_epoch as the number of GPS seconds between the GPS epoch (1980-01-06T00:00:00.000000Z UTC) and the ATLAS SDP epoch. By adding the offset contained within atlas_sdp_gps_epoch to delta time parameters, the time in gps_seconds relative to the GPS epoch can be computed.</dd><dt><span>long_name :</span></dt><dd>Elapsed GPS seconds</dd><dt><span>source :</span></dt><dd>ATL06 ATBD - Top Level Fitting Routine</dd><dt><span>standard_name :</span></dt><dd>time</dd></dl></div><div class="xr-var-data"><pre>array(['2022-07-18T01:00:40.698453696', '2022-07-18T01:00:40.704002080',
+       '2022-07-18T01:00:40.706800224', ..., '2022-07-26T00:49:18.826685936',
+       '2022-07-26T00:49:18.829497600', '2022-07-26T00:49:18.832311504'],
+      shape=(240873,), dtype='datetime64[ns]')</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>latitude</span></div><div class="xr-var-dims">(delta_time)</div><div class="xr-var-dtype">float64</div><div class="xr-var-preview xr-preview">dask.array&lt;chunksize=(10000,), meta=np.ndarray&gt;</div><input id="attrs-13b700e8-1414-4396-8724-6ca16ff071a4" class="xr-var-attrs-in" type="checkbox"><label for="attrs-13b700e8-1414-4396-8724-6ca16ff071a4" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-0c201889-688e-4455-8712-a477e63aa72c" class="xr-var-data-in" type="checkbox"><label for="data-0c201889-688e-4455-8712-a477e63aa72c" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"><dt><span>contentType :</span></dt><dd>physicalMeasurement</dd><dt><span>description :</span></dt><dd>Latitude of segment center, WGS84, North=+,</dd><dt><span>long_name :</span></dt><dd>Latitude</dd><dt><span>source :</span></dt><dd>ATL06 ATBD - Top Level Fitting Routine</dd><dt><span>standard_name :</span></dt><dd>latitude</dd><dt><span>units :</span></dt><dd>degrees_north</dd><dt><span>valid_max :</span></dt><dd>90.0</dd><dt><span>valid_min :</span></dt><dd>-90.0</dd></dl></div><div class="xr-var-data">
 <table data-quarto-postprocess="true" class="table table-sm table-striped small">
 <colgroup>
 <col style="width: 50%">
@@ -1146,16 +1221,16 @@ Attributes:
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Bytes</td>
 <td>1.84 MiB</td>
-<td>611.91 kiB</td>
+<td>78.12 kiB</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Shape</td>
-<td>(241711,)</td>
-<td>(78325,)</td>
+<td>(240873,)</td>
+<td>(10000,)</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Dask graph</td>
-<td colspan="2">5 chunks in 11 graph layers</td>
+<td colspan="2">26 chunks in 11 graph layers</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Data type</td>
@@ -1163,7 +1238,7 @@ Attributes:
 </tr>
 </tbody>
 </table></td>
-<td><img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTcwIiBoZWlnaHQ9Ijc1IiBzdHlsZT0ic3Ryb2tlOnJnYigwLDAsMCk7c3Ryb2tlLXdpZHRoOjEiPgoKICA8IS0tIEhvcml6b250YWwgbGluZXMgLS0+CiAgPGxpbmUgeDE9IjAiIHkxPSIwIiB4Mj0iMTIwIiB5Mj0iMCIgc3R5bGU9InN0cm9rZS13aWR0aDoyIj48L2xpbmU+CiAgPGxpbmUgeDE9IjAiIHkxPSIyNSIgeDI9IjEyMCIgeTI9IjI1IiBzdHlsZT0ic3Ryb2tlLXdpZHRoOjIiPjwvbGluZT4KCiAgPCEtLSBWZXJ0aWNhbCBsaW5lcyAtLT4KICA8bGluZSB4MT0iMCIgeTE9IjAiIHgyPSIwIiB5Mj0iMjUiIHN0eWxlPSJzdHJva2Utd2lkdGg6MiI+PC9saW5lPgogIDxsaW5lIHgxPSIzOCIgeTE9IjAiIHgyPSIzOCIgeTI9IjI1Ij48L2xpbmU+CiAgPGxpbmUgeDE9IjYxIiB5MT0iMCIgeDI9IjYxIiB5Mj0iMjUiPjwvbGluZT4KICA8bGluZSB4MT0iODQiIHkxPSIwIiB4Mj0iODQiIHkyPSIyNSI+PC9saW5lPgogIDxsaW5lIHgxPSI5MSIgeTE9IjAiIHgyPSI5MSIgeTI9IjI1Ij48L2xpbmU+CiAgPGxpbmUgeDE9IjEyMCIgeTE9IjAiIHgyPSIxMjAiIHkyPSIyNSIgc3R5bGU9InN0cm9rZS13aWR0aDoyIj48L2xpbmU+CgogIDwhLS0gQ29sb3JlZCBSZWN0YW5nbGUgLS0+CiAgPHBvbHlnb24gcG9pbnRzPSIwLjAsMC4wIDEyMC4wLDAuMCAxMjAuMCwyNS40MTI2MTY1MTQ1ODI0ODUgMC4wLDI1LjQxMjYxNjUxNDU4MjQ4NSIgc3R5bGU9ImZpbGw6I0VDQjE3MkEwO3N0cm9rZS13aWR0aDowIj48L3BvbHlnb24+CgogIDwhLS0gVGV4dCAtLT4KICA8dGV4dCB4PSI2MC4wMDAwMDAiIHk9IjQ1LjQxMjYxNyIgZm9udC1zaXplPSIxLjByZW0iIGZvbnQtd2VpZ2h0PSIxMDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjI0MTcxMTwvdGV4dD4KICA8dGV4dCB4PSIxNDAuMDAwMDAwIiB5PSIxMi43MDYzMDgiIGZvbnQtc2l6ZT0iMS4wcmVtIiBmb250LXdlaWdodD0iMTAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiB0cmFuc2Zvcm09InJvdGF0ZSgwLDE0MC4wMDAwMDAsMTIuNzA2MzA4KSI+MTwvdGV4dD4KPC9zdmc+" class="img-fluid"></td>
+<td><img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTcwIiBoZWlnaHQ9Ijc1IiBzdHlsZT0ic3Ryb2tlOnJnYigwLDAsMCk7c3Ryb2tlLXdpZHRoOjEiPgoKICA8IS0tIEhvcml6b250YWwgbGluZXMgLS0+CiAgPGxpbmUgeDE9IjAiIHkxPSIwIiB4Mj0iMTIwIiB5Mj0iMCIgc3R5bGU9InN0cm9rZS13aWR0aDoyIj48L2xpbmU+CiAgPGxpbmUgeDE9IjAiIHkxPSIyNSIgeDI9IjEyMCIgeTI9IjI1IiBzdHlsZT0ic3Ryb2tlLXdpZHRoOjIiPjwvbGluZT4KCiAgPCEtLSBWZXJ0aWNhbCBsaW5lcyAtLT4KICA8bGluZSB4MT0iMCIgeTE9IjAiIHgyPSIwIiB5Mj0iMjUiIHN0eWxlPSJzdHJva2Utd2lkdGg6MiI+PC9saW5lPgogIDxsaW5lIHgxPSI0IiB5MT0iMCIgeDI9IjQiIHkyPSIyNSI+PC9saW5lPgogIDxsaW5lIHgxPSI5IiB5MT0iMCIgeDI9IjkiIHkyPSIyNSI+PC9saW5lPgogIDxsaW5lIHgxPSIxOSIgeTE9IjAiIHgyPSIxOSIgeTI9IjI1Ij48L2xpbmU+CiAgPGxpbmUgeDE9IjI0IiB5MT0iMCIgeDI9IjI0IiB5Mj0iMjUiPjwvbGluZT4KICA8bGluZSB4MT0iMjkiIHkxPSIwIiB4Mj0iMjkiIHkyPSIyNSI+PC9saW5lPgogIDxsaW5lIHgxPSIzOSIgeTE9IjAiIHgyPSIzOSIgeTI9IjI1Ij48L2xpbmU+CiAgPGxpbmUgeDE9IjQ0IiB5MT0iMCIgeDI9IjQ0IiB5Mj0iMjUiPjwvbGluZT4KICA8bGluZSB4MT0iNDkiIHkxPSIwIiB4Mj0iNDkiIHkyPSIyNSI+PC9saW5lPgogIDxsaW5lIHgxPSI1OSIgeTE9IjAiIHgyPSI1OSIgeTI9IjI1Ij48L2xpbmU+CiAgPGxpbmUgeDE9IjYzIiB5MT0iMCIgeDI9IjYzIiB5Mj0iMjUiPjwvbGluZT4KICA8bGluZSB4MT0iNzMiIHkxPSIwIiB4Mj0iNzMiIHkyPSIyNSI+PC9saW5lPgogIDxsaW5lIHgxPSI3OCIgeTE9IjAiIHgyPSI3OCIgeTI9IjI1Ij48L2xpbmU+CiAgPGxpbmUgeDE9IjgzIiB5MT0iMCIgeDI9IjgzIiB5Mj0iMjUiPjwvbGluZT4KICA8bGluZSB4MT0iODkiIHkxPSIwIiB4Mj0iODkiIHkyPSIyNSI+PC9saW5lPgogIDxsaW5lIHgxPSI5MiIgeTE9IjAiIHgyPSI5MiIgeTI9IjI1Ij48L2xpbmU+CiAgPGxpbmUgeDE9Ijk3IiB5MT0iMCIgeDI9Ijk3IiB5Mj0iMjUiPjwvbGluZT4KICA8bGluZSB4MT0iMTA3IiB5MT0iMCIgeDI9IjEwNyIgeTI9IjI1Ij48L2xpbmU+CiAgPGxpbmUgeDE9IjExMiIgeTE9IjAiIHgyPSIxMTIiIHkyPSIyNSI+PC9saW5lPgogIDxsaW5lIHgxPSIxMjAiIHkxPSIwIiB4Mj0iMTIwIiB5Mj0iMjUiIHN0eWxlPSJzdHJva2Utd2lkdGg6MiI+PC9saW5lPgoKICA8IS0tIENvbG9yZWQgUmVjdGFuZ2xlIC0tPgogIDxwb2x5Z29uIHBvaW50cz0iMC4wLDAuMCAxMjAuMCwwLjAgMTIwLjAsMjUuNDEyNjE2NTE0NTgyNDg1IDAuMCwyNS40MTI2MTY1MTQ1ODI0ODUiIHN0eWxlPSJmaWxsOiM4QjQ5MDNBMDtzdHJva2Utd2lkdGg6MCI+PC9wb2x5Z29uPgoKICA8IS0tIFRleHQgLS0+CiAgPHRleHQgeD0iNjAuMDAwMDAwIiB5PSI0NS40MTI2MTciIGZvbnQtc2l6ZT0iMS4wcmVtIiBmb250LXdlaWdodD0iMTAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj4yNDA4NzM8L3RleHQ+CiAgPHRleHQgeD0iMTQwLjAwMDAwMCIgeT0iMTIuNzA2MzA4IiBmb250LXNpemU9IjEuMHJlbSIgZm9udC13ZWlnaHQ9IjEwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgdHJhbnNmb3JtPSJyb3RhdGUoMCwxNDAuMDAwMDAwLDEyLjcwNjMwOCkiPjE8L3RleHQ+Cjwvc3ZnPg==" class="img-fluid"></td>
 </tr>
 </tbody>
 </table>
@@ -1177,7 +1252,7 @@ Attributes:
 float64
 </div>
 <div class="xr-var-preview xr-preview">
-dask.array&lt;chunksize=(78325,), meta=np.ndarray&gt;
+dask.array&lt;chunksize=(10000,), meta=np.ndarray&gt;
 </div>
 <img src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iaWNvbiB4ci1pY29uLWZpbGUtdGV4dDIiPjx1c2UgeGxpbms6aHJlZj0iI2ljb24tZmlsZS10ZXh0MiI+PC91c2U+PC9zdmc+" class="icon xr-icon-file-text2 img-fluid"><img src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iaWNvbiB4ci1pY29uLWRhdGFiYXNlIj48dXNlIHhsaW5rOmhyZWY9IiNpY29uLWRhdGFiYXNlIj48L3VzZT48L3N2Zz4=" class="icon xr-icon-database img-fluid">
 <div class="xr-var-attrs">
@@ -1196,7 +1271,7 @@ Longitude
 </dd>
 <dt><span>source :</span></dt>
 <dd>
-section 3.10
+ATL06 ATBD - Top Level Fitting Routine
 </dd>
 <dt><span>standard_name :</span></dt>
 <dd>
@@ -1236,16 +1311,16 @@ degrees_east
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Bytes</td>
 <td>1.84 MiB</td>
-<td>611.91 kiB</td>
+<td>78.12 kiB</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Shape</td>
-<td>(241711,)</td>
-<td>(78325,)</td>
+<td>(240873,)</td>
+<td>(10000,)</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Dask graph</td>
-<td colspan="2">5 chunks in 11 graph layers</td>
+<td colspan="2">26 chunks in 11 graph layers</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Data type</td>
@@ -1253,12 +1328,12 @@ degrees_east
 </tr>
 </tbody>
 </table></td>
-<td><img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTcwIiBoZWlnaHQ9Ijc1IiBzdHlsZT0ic3Ryb2tlOnJnYigwLDAsMCk7c3Ryb2tlLXdpZHRoOjEiPgoKICA8IS0tIEhvcml6b250YWwgbGluZXMgLS0+CiAgPGxpbmUgeDE9IjAiIHkxPSIwIiB4Mj0iMTIwIiB5Mj0iMCIgc3R5bGU9InN0cm9rZS13aWR0aDoyIj48L2xpbmU+CiAgPGxpbmUgeDE9IjAiIHkxPSIyNSIgeDI9IjEyMCIgeTI9IjI1IiBzdHlsZT0ic3Ryb2tlLXdpZHRoOjIiPjwvbGluZT4KCiAgPCEtLSBWZXJ0aWNhbCBsaW5lcyAtLT4KICA8bGluZSB4MT0iMCIgeTE9IjAiIHgyPSIwIiB5Mj0iMjUiIHN0eWxlPSJzdHJva2Utd2lkdGg6MiI+PC9saW5lPgogIDxsaW5lIHgxPSIzOCIgeTE9IjAiIHgyPSIzOCIgeTI9IjI1Ij48L2xpbmU+CiAgPGxpbmUgeDE9IjYxIiB5MT0iMCIgeDI9IjYxIiB5Mj0iMjUiPjwvbGluZT4KICA8bGluZSB4MT0iODQiIHkxPSIwIiB4Mj0iODQiIHkyPSIyNSI+PC9saW5lPgogIDxsaW5lIHgxPSI5MSIgeTE9IjAiIHgyPSI5MSIgeTI9IjI1Ij48L2xpbmU+CiAgPGxpbmUgeDE9IjEyMCIgeTE9IjAiIHgyPSIxMjAiIHkyPSIyNSIgc3R5bGU9InN0cm9rZS13aWR0aDoyIj48L2xpbmU+CgogIDwhLS0gQ29sb3JlZCBSZWN0YW5nbGUgLS0+CiAgPHBvbHlnb24gcG9pbnRzPSIwLjAsMC4wIDEyMC4wLDAuMCAxMjAuMCwyNS40MTI2MTY1MTQ1ODI0ODUgMC4wLDI1LjQxMjYxNjUxNDU4MjQ4NSIgc3R5bGU9ImZpbGw6I0VDQjE3MkEwO3N0cm9rZS13aWR0aDowIj48L3BvbHlnb24+CgogIDwhLS0gVGV4dCAtLT4KICA8dGV4dCB4PSI2MC4wMDAwMDAiIHk9IjQ1LjQxMjYxNyIgZm9udC1zaXplPSIxLjByZW0iIGZvbnQtd2VpZ2h0PSIxMDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjI0MTcxMTwvdGV4dD4KICA8dGV4dCB4PSIxNDAuMDAwMDAwIiB5PSIxMi43MDYzMDgiIGZvbnQtc2l6ZT0iMS4wcmVtIiBmb250LXdlaWdodD0iMTAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiB0cmFuc2Zvcm09InJvdGF0ZSgwLDE0MC4wMDAwMDAsMTIuNzA2MzA4KSI+MTwvdGV4dD4KPC9zdmc+" class="img-fluid"></td>
+<td><img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTcwIiBoZWlnaHQ9Ijc1IiBzdHlsZT0ic3Ryb2tlOnJnYigwLDAsMCk7c3Ryb2tlLXdpZHRoOjEiPgoKICA8IS0tIEhvcml6b250YWwgbGluZXMgLS0+CiAgPGxpbmUgeDE9IjAiIHkxPSIwIiB4Mj0iMTIwIiB5Mj0iMCIgc3R5bGU9InN0cm9rZS13aWR0aDoyIj48L2xpbmU+CiAgPGxpbmUgeDE9IjAiIHkxPSIyNSIgeDI9IjEyMCIgeTI9IjI1IiBzdHlsZT0ic3Ryb2tlLXdpZHRoOjIiPjwvbGluZT4KCiAgPCEtLSBWZXJ0aWNhbCBsaW5lcyAtLT4KICA8bGluZSB4MT0iMCIgeTE9IjAiIHgyPSIwIiB5Mj0iMjUiIHN0eWxlPSJzdHJva2Utd2lkdGg6MiI+PC9saW5lPgogIDxsaW5lIHgxPSI0IiB5MT0iMCIgeDI9IjQiIHkyPSIyNSI+PC9saW5lPgogIDxsaW5lIHgxPSI5IiB5MT0iMCIgeDI9IjkiIHkyPSIyNSI+PC9saW5lPgogIDxsaW5lIHgxPSIxOSIgeTE9IjAiIHgyPSIxOSIgeTI9IjI1Ij48L2xpbmU+CiAgPGxpbmUgeDE9IjI0IiB5MT0iMCIgeDI9IjI0IiB5Mj0iMjUiPjwvbGluZT4KICA8bGluZSB4MT0iMjkiIHkxPSIwIiB4Mj0iMjkiIHkyPSIyNSI+PC9saW5lPgogIDxsaW5lIHgxPSIzOSIgeTE9IjAiIHgyPSIzOSIgeTI9IjI1Ij48L2xpbmU+CiAgPGxpbmUgeDE9IjQ0IiB5MT0iMCIgeDI9IjQ0IiB5Mj0iMjUiPjwvbGluZT4KICA8bGluZSB4MT0iNDkiIHkxPSIwIiB4Mj0iNDkiIHkyPSIyNSI+PC9saW5lPgogIDxsaW5lIHgxPSI1OSIgeTE9IjAiIHgyPSI1OSIgeTI9IjI1Ij48L2xpbmU+CiAgPGxpbmUgeDE9IjYzIiB5MT0iMCIgeDI9IjYzIiB5Mj0iMjUiPjwvbGluZT4KICA8bGluZSB4MT0iNzMiIHkxPSIwIiB4Mj0iNzMiIHkyPSIyNSI+PC9saW5lPgogIDxsaW5lIHgxPSI3OCIgeTE9IjAiIHgyPSI3OCIgeTI9IjI1Ij48L2xpbmU+CiAgPGxpbmUgeDE9IjgzIiB5MT0iMCIgeDI9IjgzIiB5Mj0iMjUiPjwvbGluZT4KICA8bGluZSB4MT0iODkiIHkxPSIwIiB4Mj0iODkiIHkyPSIyNSI+PC9saW5lPgogIDxsaW5lIHgxPSI5MiIgeTE9IjAiIHgyPSI5MiIgeTI9IjI1Ij48L2xpbmU+CiAgPGxpbmUgeDE9Ijk3IiB5MT0iMCIgeDI9Ijk3IiB5Mj0iMjUiPjwvbGluZT4KICA8bGluZSB4MT0iMTA3IiB5MT0iMCIgeDI9IjEwNyIgeTI9IjI1Ij48L2xpbmU+CiAgPGxpbmUgeDE9IjExMiIgeTE9IjAiIHgyPSIxMTIiIHkyPSIyNSI+PC9saW5lPgogIDxsaW5lIHgxPSIxMjAiIHkxPSIwIiB4Mj0iMTIwIiB5Mj0iMjUiIHN0eWxlPSJzdHJva2Utd2lkdGg6MiI+PC9saW5lPgoKICA8IS0tIENvbG9yZWQgUmVjdGFuZ2xlIC0tPgogIDxwb2x5Z29uIHBvaW50cz0iMC4wLDAuMCAxMjAuMCwwLjAgMTIwLjAsMjUuNDEyNjE2NTE0NTgyNDg1IDAuMCwyNS40MTI2MTY1MTQ1ODI0ODUiIHN0eWxlPSJmaWxsOiM4QjQ5MDNBMDtzdHJva2Utd2lkdGg6MCI+PC9wb2x5Z29uPgoKICA8IS0tIFRleHQgLS0+CiAgPHRleHQgeD0iNjAuMDAwMDAwIiB5PSI0NS40MTI2MTciIGZvbnQtc2l6ZT0iMS4wcmVtIiBmb250LXdlaWdodD0iMTAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj4yNDA4NzM8L3RleHQ+CiAgPHRleHQgeD0iMTQwLjAwMDAwMCIgeT0iMTIuNzA2MzA4IiBmb250LXNpemU9IjEuMHJlbSIgZm9udC13ZWlnaHQ9IjEwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgdHJhbnNmb3JtPSJyb3RhdGUoMCwxNDAuMDAwMDAwLDEyLjcwNjMwOCkiPjE8L3RleHQ+Cjwvc3ZnPg==" class="img-fluid"></td>
 </tr>
 </tbody>
 </table>
 </div>
-Data variables: <span>(5)</span>
+Data variables: <span>(6)</span>
 <div class="xr-section-inline-details">
 
 </div>
@@ -1273,7 +1348,7 @@ Data variables: <span>(5)</span>
 int8
 </div>
 <div class="xr-var-preview xr-preview">
-dask.array&lt;chunksize=(78325,), meta=np.ndarray&gt;
+dask.array&lt;chunksize=(10000,), meta=np.ndarray&gt;
 </div>
 <img src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iaWNvbiB4ci1pY29uLWZpbGUtdGV4dDIiPjx1c2UgeGxpbms6aHJlZj0iI2ljb24tZmlsZS10ZXh0MiI+PC91c2U+PC9zdmc+" class="icon xr-icon-file-text2 img-fluid"><img src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iaWNvbiB4ci1pY29uLWRhdGFiYXNlIj48dXNlIHhsaW5rOmhyZWY9IiNpY29uLWRhdGFiYXNlIj48L3VzZT48L3N2Zz4=" class="icon xr-icon-database img-fluid">
 <div class="xr-var-attrs">
@@ -1300,7 +1375,7 @@ ATL06_Quality_Summary
 </dd>
 <dt><span>source :</span></dt>
 <dd>
-section 4.3
+ATL06 ATBD - Top Level Fitting Routine
 </dd>
 <dt><span>units :</span></dt>
 <dd>
@@ -1335,17 +1410,17 @@ section 4.3
 <tbody>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Bytes</td>
-<td>236.05 kiB</td>
-<td>76.49 kiB</td>
+<td>235.23 kiB</td>
+<td>9.77 kiB</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Shape</td>
-<td>(241711,)</td>
-<td>(78325,)</td>
+<td>(240873,)</td>
+<td>(10000,)</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Dask graph</td>
-<td colspan="2">5 chunks in 11 graph layers</td>
+<td colspan="2">26 chunks in 11 graph layers</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Data type</td>
@@ -1353,7 +1428,102 @@ section 4.3
 </tr>
 </tbody>
 </table></td>
-<td><img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTcwIiBoZWlnaHQ9Ijc1IiBzdHlsZT0ic3Ryb2tlOnJnYigwLDAsMCk7c3Ryb2tlLXdpZHRoOjEiPgoKICA8IS0tIEhvcml6b250YWwgbGluZXMgLS0+CiAgPGxpbmUgeDE9IjAiIHkxPSIwIiB4Mj0iMTIwIiB5Mj0iMCIgc3R5bGU9InN0cm9rZS13aWR0aDoyIj48L2xpbmU+CiAgPGxpbmUgeDE9IjAiIHkxPSIyNSIgeDI9IjEyMCIgeTI9IjI1IiBzdHlsZT0ic3Ryb2tlLXdpZHRoOjIiPjwvbGluZT4KCiAgPCEtLSBWZXJ0aWNhbCBsaW5lcyAtLT4KICA8bGluZSB4MT0iMCIgeTE9IjAiIHgyPSIwIiB5Mj0iMjUiIHN0eWxlPSJzdHJva2Utd2lkdGg6MiI+PC9saW5lPgogIDxsaW5lIHgxPSIzOCIgeTE9IjAiIHgyPSIzOCIgeTI9IjI1Ij48L2xpbmU+CiAgPGxpbmUgeDE9IjYxIiB5MT0iMCIgeDI9IjYxIiB5Mj0iMjUiPjwvbGluZT4KICA8bGluZSB4MT0iODQiIHkxPSIwIiB4Mj0iODQiIHkyPSIyNSI+PC9saW5lPgogIDxsaW5lIHgxPSI5MSIgeTE9IjAiIHgyPSI5MSIgeTI9IjI1Ij48L2xpbmU+CiAgPGxpbmUgeDE9IjEyMCIgeTE9IjAiIHgyPSIxMjAiIHkyPSIyNSIgc3R5bGU9InN0cm9rZS13aWR0aDoyIj48L2xpbmU+CgogIDwhLS0gQ29sb3JlZCBSZWN0YW5nbGUgLS0+CiAgPHBvbHlnb24gcG9pbnRzPSIwLjAsMC4wIDEyMC4wLDAuMCAxMjAuMCwyNS40MTI2MTY1MTQ1ODI0ODUgMC4wLDI1LjQxMjYxNjUxNDU4MjQ4NSIgc3R5bGU9ImZpbGw6I0VDQjE3MkEwO3N0cm9rZS13aWR0aDowIj48L3BvbHlnb24+CgogIDwhLS0gVGV4dCAtLT4KICA8dGV4dCB4PSI2MC4wMDAwMDAiIHk9IjQ1LjQxMjYxNyIgZm9udC1zaXplPSIxLjByZW0iIGZvbnQtd2VpZ2h0PSIxMDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjI0MTcxMTwvdGV4dD4KICA8dGV4dCB4PSIxNDAuMDAwMDAwIiB5PSIxMi43MDYzMDgiIGZvbnQtc2l6ZT0iMS4wcmVtIiBmb250LXdlaWdodD0iMTAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiB0cmFuc2Zvcm09InJvdGF0ZSgwLDE0MC4wMDAwMDAsMTIuNzA2MzA4KSI+MTwvdGV4dD4KPC9zdmc+" class="img-fluid"></td>
+<td><img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTcwIiBoZWlnaHQ9Ijc1IiBzdHlsZT0ic3Ryb2tlOnJnYigwLDAsMCk7c3Ryb2tlLXdpZHRoOjEiPgoKICA8IS0tIEhvcml6b250YWwgbGluZXMgLS0+CiAgPGxpbmUgeDE9IjAiIHkxPSIwIiB4Mj0iMTIwIiB5Mj0iMCIgc3R5bGU9InN0cm9rZS13aWR0aDoyIj48L2xpbmU+CiAgPGxpbmUgeDE9IjAiIHkxPSIyNSIgeDI9IjEyMCIgeTI9IjI1IiBzdHlsZT0ic3Ryb2tlLXdpZHRoOjIiPjwvbGluZT4KCiAgPCEtLSBWZXJ0aWNhbCBsaW5lcyAtLT4KICA8bGluZSB4MT0iMCIgeTE9IjAiIHgyPSIwIiB5Mj0iMjUiIHN0eWxlPSJzdHJva2Utd2lkdGg6MiI+PC9saW5lPgogIDxsaW5lIHgxPSI0IiB5MT0iMCIgeDI9IjQiIHkyPSIyNSI+PC9saW5lPgogIDxsaW5lIHgxPSI5IiB5MT0iMCIgeDI9IjkiIHkyPSIyNSI+PC9saW5lPgogIDxsaW5lIHgxPSIxOSIgeTE9IjAiIHgyPSIxOSIgeTI9IjI1Ij48L2xpbmU+CiAgPGxpbmUgeDE9IjI0IiB5MT0iMCIgeDI9IjI0IiB5Mj0iMjUiPjwvbGluZT4KICA8bGluZSB4MT0iMjkiIHkxPSIwIiB4Mj0iMjkiIHkyPSIyNSI+PC9saW5lPgogIDxsaW5lIHgxPSIzOSIgeTE9IjAiIHgyPSIzOSIgeTI9IjI1Ij48L2xpbmU+CiAgPGxpbmUgeDE9IjQ0IiB5MT0iMCIgeDI9IjQ0IiB5Mj0iMjUiPjwvbGluZT4KICA8bGluZSB4MT0iNDkiIHkxPSIwIiB4Mj0iNDkiIHkyPSIyNSI+PC9saW5lPgogIDxsaW5lIHgxPSI1OSIgeTE9IjAiIHgyPSI1OSIgeTI9IjI1Ij48L2xpbmU+CiAgPGxpbmUgeDE9IjYzIiB5MT0iMCIgeDI9IjYzIiB5Mj0iMjUiPjwvbGluZT4KICA8bGluZSB4MT0iNzMiIHkxPSIwIiB4Mj0iNzMiIHkyPSIyNSI+PC9saW5lPgogIDxsaW5lIHgxPSI3OCIgeTE9IjAiIHgyPSI3OCIgeTI9IjI1Ij48L2xpbmU+CiAgPGxpbmUgeDE9IjgzIiB5MT0iMCIgeDI9IjgzIiB5Mj0iMjUiPjwvbGluZT4KICA8bGluZSB4MT0iODkiIHkxPSIwIiB4Mj0iODkiIHkyPSIyNSI+PC9saW5lPgogIDxsaW5lIHgxPSI5MiIgeTE9IjAiIHgyPSI5MiIgeTI9IjI1Ij48L2xpbmU+CiAgPGxpbmUgeDE9Ijk3IiB5MT0iMCIgeDI9Ijk3IiB5Mj0iMjUiPjwvbGluZT4KICA8bGluZSB4MT0iMTA3IiB5MT0iMCIgeDI9IjEwNyIgeTI9IjI1Ij48L2xpbmU+CiAgPGxpbmUgeDE9IjExMiIgeTE9IjAiIHgyPSIxMTIiIHkyPSIyNSI+PC9saW5lPgogIDxsaW5lIHgxPSIxMjAiIHkxPSIwIiB4Mj0iMTIwIiB5Mj0iMjUiIHN0eWxlPSJzdHJva2Utd2lkdGg6MiI+PC9saW5lPgoKICA8IS0tIENvbG9yZWQgUmVjdGFuZ2xlIC0tPgogIDxwb2x5Z29uIHBvaW50cz0iMC4wLDAuMCAxMjAuMCwwLjAgMTIwLjAsMjUuNDEyNjE2NTE0NTgyNDg1IDAuMCwyNS40MTI2MTY1MTQ1ODI0ODUiIHN0eWxlPSJmaWxsOiM4QjQ5MDNBMDtzdHJva2Utd2lkdGg6MCI+PC9wb2x5Z29uPgoKICA8IS0tIFRleHQgLS0+CiAgPHRleHQgeD0iNjAuMDAwMDAwIiB5PSI0NS40MTI2MTciIGZvbnQtc2l6ZT0iMS4wcmVtIiBmb250LXdlaWdodD0iMTAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj4yNDA4NzM8L3RleHQ+CiAgPHRleHQgeD0iMTQwLjAwMDAwMCIgeT0iMTIuNzA2MzA4IiBmb250LXNpemU9IjEuMHJlbSIgZm9udC13ZWlnaHQ9IjEwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgdHJhbnNmb3JtPSJyb3RhdGUoMCwxNDAuMDAwMDAwLDEyLjcwNjMwOCkiPjE8L3RleHQ+Cjwvc3ZnPg==" class="img-fluid"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="xr-var-name">
+<span>fpb_warning_flag</span>
+</div>
+<div class="xr-var-dims">
+(delta_time)
+</div>
+<div class="xr-var-dtype">
+int8
+</div>
+<div class="xr-var-preview xr-preview">
+dask.array&lt;chunksize=(10000,), meta=np.ndarray&gt;
+</div>
+<img src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iaWNvbiB4ci1pY29uLWZpbGUtdGV4dDIiPjx1c2UgeGxpbms6aHJlZj0iI2ljb24tZmlsZS10ZXh0MiI+PC91c2U+PC9zdmc+" class="icon xr-icon-file-text2 img-fluid"><img src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iaWNvbiB4ci1pY29uLWRhdGFiYXNlIj48dXNlIHhsaW5rOmhyZWY9IiNpY29uLWRhdGFiYXNlIj48L3VzZT48L3N2Zz4=" class="icon xr-icon-database img-fluid">
+<div class="xr-var-attrs">
+<dl>
+<dt><span>contentType :</span></dt>
+<dd>
+qualityInformation
+</dd>
+<dt><span>description :</span></dt>
+<dd>
+To flag that segments have potentially erroneous FPB corrections, the ATL06 algorithm sets fpb_warning_flag to 1 if full_sat_fract is greater than 0.90 (strong beams) or greater than 0.40 (weak beams) for either of the two ATL03 20 m segments that are used as inputs to each ATL06 40 m segment. Otherwise, fpb_warning_flag is set to 0.
+</dd>
+<dt><span>flag_meanings :</span></dt>
+<dd>
+best_quality potential_problem
+</dd>
+<dt><span>flag_values :</span></dt>
+<dd>
+[0 1]
+</dd>
+<dt><span>long_name :</span></dt>
+<dd>
+fpb_warning_flag
+</dd>
+<dt><span>source :</span></dt>
+<dd>
+ATL06 ATBD - FPB Corrections
+</dd>
+<dt><span>units :</span></dt>
+<dd>
+1
+</dd>
+<dt><span>valid_max :</span></dt>
+<dd>
+1
+</dd>
+<dt><span>valid_min :</span></dt>
+<dd>
+0
+</dd>
+</dl>
+</div>
+<div class="xr-var-data">
+<table data-quarto-postprocess="true" class="table table-sm table-striped small">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><table data-quarto-postprocess="true" class="table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th></th>
+<th data-quarto-table-cell-role="th">Array</th>
+<th data-quarto-table-cell-role="th">Chunk</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Bytes</td>
+<td>235.23 kiB</td>
+<td>9.77 kiB</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Shape</td>
+<td>(240873,)</td>
+<td>(10000,)</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Dask graph</td>
+<td colspan="2">26 chunks in 11 graph layers</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Data type</td>
+<td colspan="2">int8 numpy.ndarray</td>
+</tr>
+</tbody>
+</table></td>
+<td><img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTcwIiBoZWlnaHQ9Ijc1IiBzdHlsZT0ic3Ryb2tlOnJnYigwLDAsMCk7c3Ryb2tlLXdpZHRoOjEiPgoKICA8IS0tIEhvcml6b250YWwgbGluZXMgLS0+CiAgPGxpbmUgeDE9IjAiIHkxPSIwIiB4Mj0iMTIwIiB5Mj0iMCIgc3R5bGU9InN0cm9rZS13aWR0aDoyIj48L2xpbmU+CiAgPGxpbmUgeDE9IjAiIHkxPSIyNSIgeDI9IjEyMCIgeTI9IjI1IiBzdHlsZT0ic3Ryb2tlLXdpZHRoOjIiPjwvbGluZT4KCiAgPCEtLSBWZXJ0aWNhbCBsaW5lcyAtLT4KICA8bGluZSB4MT0iMCIgeTE9IjAiIHgyPSIwIiB5Mj0iMjUiIHN0eWxlPSJzdHJva2Utd2lkdGg6MiI+PC9saW5lPgogIDxsaW5lIHgxPSI0IiB5MT0iMCIgeDI9IjQiIHkyPSIyNSI+PC9saW5lPgogIDxsaW5lIHgxPSI5IiB5MT0iMCIgeDI9IjkiIHkyPSIyNSI+PC9saW5lPgogIDxsaW5lIHgxPSIxOSIgeTE9IjAiIHgyPSIxOSIgeTI9IjI1Ij48L2xpbmU+CiAgPGxpbmUgeDE9IjI0IiB5MT0iMCIgeDI9IjI0IiB5Mj0iMjUiPjwvbGluZT4KICA8bGluZSB4MT0iMjkiIHkxPSIwIiB4Mj0iMjkiIHkyPSIyNSI+PC9saW5lPgogIDxsaW5lIHgxPSIzOSIgeTE9IjAiIHgyPSIzOSIgeTI9IjI1Ij48L2xpbmU+CiAgPGxpbmUgeDE9IjQ0IiB5MT0iMCIgeDI9IjQ0IiB5Mj0iMjUiPjwvbGluZT4KICA8bGluZSB4MT0iNDkiIHkxPSIwIiB4Mj0iNDkiIHkyPSIyNSI+PC9saW5lPgogIDxsaW5lIHgxPSI1OSIgeTE9IjAiIHgyPSI1OSIgeTI9IjI1Ij48L2xpbmU+CiAgPGxpbmUgeDE9IjYzIiB5MT0iMCIgeDI9IjYzIiB5Mj0iMjUiPjwvbGluZT4KICA8bGluZSB4MT0iNzMiIHkxPSIwIiB4Mj0iNzMiIHkyPSIyNSI+PC9saW5lPgogIDxsaW5lIHgxPSI3OCIgeTE9IjAiIHgyPSI3OCIgeTI9IjI1Ij48L2xpbmU+CiAgPGxpbmUgeDE9IjgzIiB5MT0iMCIgeDI9IjgzIiB5Mj0iMjUiPjwvbGluZT4KICA8bGluZSB4MT0iODkiIHkxPSIwIiB4Mj0iODkiIHkyPSIyNSI+PC9saW5lPgogIDxsaW5lIHgxPSI5MiIgeTE9IjAiIHgyPSI5MiIgeTI9IjI1Ij48L2xpbmU+CiAgPGxpbmUgeDE9Ijk3IiB5MT0iMCIgeDI9Ijk3IiB5Mj0iMjUiPjwvbGluZT4KICA8bGluZSB4MT0iMTA3IiB5MT0iMCIgeDI9IjEwNyIgeTI9IjI1Ij48L2xpbmU+CiAgPGxpbmUgeDE9IjExMiIgeTE9IjAiIHgyPSIxMTIiIHkyPSIyNSI+PC9saW5lPgogIDxsaW5lIHgxPSIxMjAiIHkxPSIwIiB4Mj0iMTIwIiB5Mj0iMjUiIHN0eWxlPSJzdHJva2Utd2lkdGg6MiI+PC9saW5lPgoKICA8IS0tIENvbG9yZWQgUmVjdGFuZ2xlIC0tPgogIDxwb2x5Z29uIHBvaW50cz0iMC4wLDAuMCAxMjAuMCwwLjAgMTIwLjAsMjUuNDEyNjE2NTE0NTgyNDg1IDAuMCwyNS40MTI2MTY1MTQ1ODI0ODUiIHN0eWxlPSJmaWxsOiM4QjQ5MDNBMDtzdHJva2Utd2lkdGg6MCI+PC9wb2x5Z29uPgoKICA8IS0tIFRleHQgLS0+CiAgPHRleHQgeD0iNjAuMDAwMDAwIiB5PSI0NS40MTI2MTciIGZvbnQtc2l6ZT0iMS4wcmVtIiBmb250LXdlaWdodD0iMTAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj4yNDA4NzM8L3RleHQ+CiAgPHRleHQgeD0iMTQwLjAwMDAwMCIgeT0iMTIuNzA2MzA4IiBmb250LXNpemU9IjEuMHJlbSIgZm9udC13ZWlnaHQ9IjEwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgdHJhbnNmb3JtPSJyb3RhdGUoMCwxNDAuMDAwMDAwLDEyLjcwNjMwOCkiPjE8L3RleHQ+Cjwvc3ZnPg==" class="img-fluid"></td>
 </tr>
 </tbody>
 </table>
@@ -1368,7 +1538,7 @@ section 4.3
 float32
 </div>
 <div class="xr-var-preview xr-preview">
-dask.array&lt;chunksize=(78325,), meta=np.ndarray&gt;
+dask.array&lt;chunksize=(10000,), meta=np.ndarray&gt;
 </div>
 <img src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iaWNvbiB4ci1pY29uLWZpbGUtdGV4dDIiPjx1c2UgeGxpbms6aHJlZj0iI2ljb24tZmlsZS10ZXh0MiI+PC91c2U+PC9zdmc+" class="icon xr-icon-file-text2 img-fluid"><img src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iaWNvbiB4ci1pY29uLWRhdGFiYXNlIj48dXNlIHhsaW5rOmhyZWY9IiNpY29uLWRhdGFiYXNlIj48L3VzZT48L3N2Zz4=" class="icon xr-icon-database img-fluid">
 <div class="xr-var-attrs">
@@ -1387,7 +1557,7 @@ Land Ice height
 </dd>
 <dt><span>source :</span></dt>
 <dd>
-section 4.4
+ATL06 ATBD - Top Level Fitting Routine
 </dd>
 <dt><span>units :</span></dt>
 <dd>
@@ -1415,16 +1585,16 @@ meters
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Bytes</td>
 <td>0.92 MiB</td>
-<td>305.96 kiB</td>
+<td>39.06 kiB</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Shape</td>
-<td>(241711,)</td>
-<td>(78325,)</td>
+<td>(240873,)</td>
+<td>(10000,)</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Dask graph</td>
-<td colspan="2">5 chunks in 11 graph layers</td>
+<td colspan="2">26 chunks in 11 graph layers</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Data type</td>
@@ -1432,7 +1602,7 @@ meters
 </tr>
 </tbody>
 </table></td>
-<td><img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTcwIiBoZWlnaHQ9Ijc1IiBzdHlsZT0ic3Ryb2tlOnJnYigwLDAsMCk7c3Ryb2tlLXdpZHRoOjEiPgoKICA8IS0tIEhvcml6b250YWwgbGluZXMgLS0+CiAgPGxpbmUgeDE9IjAiIHkxPSIwIiB4Mj0iMTIwIiB5Mj0iMCIgc3R5bGU9InN0cm9rZS13aWR0aDoyIj48L2xpbmU+CiAgPGxpbmUgeDE9IjAiIHkxPSIyNSIgeDI9IjEyMCIgeTI9IjI1IiBzdHlsZT0ic3Ryb2tlLXdpZHRoOjIiPjwvbGluZT4KCiAgPCEtLSBWZXJ0aWNhbCBsaW5lcyAtLT4KICA8bGluZSB4MT0iMCIgeTE9IjAiIHgyPSIwIiB5Mj0iMjUiIHN0eWxlPSJzdHJva2Utd2lkdGg6MiI+PC9saW5lPgogIDxsaW5lIHgxPSIzOCIgeTE9IjAiIHgyPSIzOCIgeTI9IjI1Ij48L2xpbmU+CiAgPGxpbmUgeDE9IjYxIiB5MT0iMCIgeDI9IjYxIiB5Mj0iMjUiPjwvbGluZT4KICA8bGluZSB4MT0iODQiIHkxPSIwIiB4Mj0iODQiIHkyPSIyNSI+PC9saW5lPgogIDxsaW5lIHgxPSI5MSIgeTE9IjAiIHgyPSI5MSIgeTI9IjI1Ij48L2xpbmU+CiAgPGxpbmUgeDE9IjEyMCIgeTE9IjAiIHgyPSIxMjAiIHkyPSIyNSIgc3R5bGU9InN0cm9rZS13aWR0aDoyIj48L2xpbmU+CgogIDwhLS0gQ29sb3JlZCBSZWN0YW5nbGUgLS0+CiAgPHBvbHlnb24gcG9pbnRzPSIwLjAsMC4wIDEyMC4wLDAuMCAxMjAuMCwyNS40MTI2MTY1MTQ1ODI0ODUgMC4wLDI1LjQxMjYxNjUxNDU4MjQ4NSIgc3R5bGU9ImZpbGw6I0VDQjE3MkEwO3N0cm9rZS13aWR0aDowIj48L3BvbHlnb24+CgogIDwhLS0gVGV4dCAtLT4KICA8dGV4dCB4PSI2MC4wMDAwMDAiIHk9IjQ1LjQxMjYxNyIgZm9udC1zaXplPSIxLjByZW0iIGZvbnQtd2VpZ2h0PSIxMDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjI0MTcxMTwvdGV4dD4KICA8dGV4dCB4PSIxNDAuMDAwMDAwIiB5PSIxMi43MDYzMDgiIGZvbnQtc2l6ZT0iMS4wcmVtIiBmb250LXdlaWdodD0iMTAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiB0cmFuc2Zvcm09InJvdGF0ZSgwLDE0MC4wMDAwMDAsMTIuNzA2MzA4KSI+MTwvdGV4dD4KPC9zdmc+" class="img-fluid"></td>
+<td><img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTcwIiBoZWlnaHQ9Ijc1IiBzdHlsZT0ic3Ryb2tlOnJnYigwLDAsMCk7c3Ryb2tlLXdpZHRoOjEiPgoKICA8IS0tIEhvcml6b250YWwgbGluZXMgLS0+CiAgPGxpbmUgeDE9IjAiIHkxPSIwIiB4Mj0iMTIwIiB5Mj0iMCIgc3R5bGU9InN0cm9rZS13aWR0aDoyIj48L2xpbmU+CiAgPGxpbmUgeDE9IjAiIHkxPSIyNSIgeDI9IjEyMCIgeTI9IjI1IiBzdHlsZT0ic3Ryb2tlLXdpZHRoOjIiPjwvbGluZT4KCiAgPCEtLSBWZXJ0aWNhbCBsaW5lcyAtLT4KICA8bGluZSB4MT0iMCIgeTE9IjAiIHgyPSIwIiB5Mj0iMjUiIHN0eWxlPSJzdHJva2Utd2lkdGg6MiI+PC9saW5lPgogIDxsaW5lIHgxPSI0IiB5MT0iMCIgeDI9IjQiIHkyPSIyNSI+PC9saW5lPgogIDxsaW5lIHgxPSI5IiB5MT0iMCIgeDI9IjkiIHkyPSIyNSI+PC9saW5lPgogIDxsaW5lIHgxPSIxOSIgeTE9IjAiIHgyPSIxOSIgeTI9IjI1Ij48L2xpbmU+CiAgPGxpbmUgeDE9IjI0IiB5MT0iMCIgeDI9IjI0IiB5Mj0iMjUiPjwvbGluZT4KICA8bGluZSB4MT0iMjkiIHkxPSIwIiB4Mj0iMjkiIHkyPSIyNSI+PC9saW5lPgogIDxsaW5lIHgxPSIzOSIgeTE9IjAiIHgyPSIzOSIgeTI9IjI1Ij48L2xpbmU+CiAgPGxpbmUgeDE9IjQ0IiB5MT0iMCIgeDI9IjQ0IiB5Mj0iMjUiPjwvbGluZT4KICA8bGluZSB4MT0iNDkiIHkxPSIwIiB4Mj0iNDkiIHkyPSIyNSI+PC9saW5lPgogIDxsaW5lIHgxPSI1OSIgeTE9IjAiIHgyPSI1OSIgeTI9IjI1Ij48L2xpbmU+CiAgPGxpbmUgeDE9IjYzIiB5MT0iMCIgeDI9IjYzIiB5Mj0iMjUiPjwvbGluZT4KICA8bGluZSB4MT0iNzMiIHkxPSIwIiB4Mj0iNzMiIHkyPSIyNSI+PC9saW5lPgogIDxsaW5lIHgxPSI3OCIgeTE9IjAiIHgyPSI3OCIgeTI9IjI1Ij48L2xpbmU+CiAgPGxpbmUgeDE9IjgzIiB5MT0iMCIgeDI9IjgzIiB5Mj0iMjUiPjwvbGluZT4KICA8bGluZSB4MT0iODkiIHkxPSIwIiB4Mj0iODkiIHkyPSIyNSI+PC9saW5lPgogIDxsaW5lIHgxPSI5MiIgeTE9IjAiIHgyPSI5MiIgeTI9IjI1Ij48L2xpbmU+CiAgPGxpbmUgeDE9Ijk3IiB5MT0iMCIgeDI9Ijk3IiB5Mj0iMjUiPjwvbGluZT4KICA8bGluZSB4MT0iMTA3IiB5MT0iMCIgeDI9IjEwNyIgeTI9IjI1Ij48L2xpbmU+CiAgPGxpbmUgeDE9IjExMiIgeTE9IjAiIHgyPSIxMTIiIHkyPSIyNSI+PC9saW5lPgogIDxsaW5lIHgxPSIxMjAiIHkxPSIwIiB4Mj0iMTIwIiB5Mj0iMjUiIHN0eWxlPSJzdHJva2Utd2lkdGg6MiI+PC9saW5lPgoKICA8IS0tIENvbG9yZWQgUmVjdGFuZ2xlIC0tPgogIDxwb2x5Z29uIHBvaW50cz0iMC4wLDAuMCAxMjAuMCwwLjAgMTIwLjAsMjUuNDEyNjE2NTE0NTgyNDg1IDAuMCwyNS40MTI2MTY1MTQ1ODI0ODUiIHN0eWxlPSJmaWxsOiM4QjQ5MDNBMDtzdHJva2Utd2lkdGg6MCI+PC9wb2x5Z29uPgoKICA8IS0tIFRleHQgLS0+CiAgPHRleHQgeD0iNjAuMDAwMDAwIiB5PSI0NS40MTI2MTciIGZvbnQtc2l6ZT0iMS4wcmVtIiBmb250LXdlaWdodD0iMTAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj4yNDA4NzM8L3RleHQ+CiAgPHRleHQgeD0iMTQwLjAwMDAwMCIgeT0iMTIuNzA2MzA4IiBmb250LXNpemU9IjEuMHJlbSIgZm9udC13ZWlnaHQ9IjEwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgdHJhbnNmb3JtPSJyb3RhdGUoMCwxNDAuMDAwMDAwLDEyLjcwNjMwOCkiPjE8L3RleHQ+Cjwvc3ZnPg==" class="img-fluid"></td>
 </tr>
 </tbody>
 </table>
@@ -1447,7 +1617,7 @@ meters
 float32
 </div>
 <div class="xr-var-preview xr-preview">
-dask.array&lt;chunksize=(78325,), meta=np.ndarray&gt;
+dask.array&lt;chunksize=(10000,), meta=np.ndarray&gt;
 </div>
 <img src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iaWNvbiB4ci1pY29uLWZpbGUtdGV4dDIiPjx1c2UgeGxpbms6aHJlZj0iI2ljb24tZmlsZS10ZXh0MiI+PC91c2U+PC9zdmc+" class="icon xr-icon-file-text2 img-fluid"><img src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iaWNvbiB4ci1pY29uLWRhdGFiYXNlIj48dXNlIHhsaW5rOmhyZWY9IiNpY29uLWRhdGFiYXNlIj48L3VzZT48L3N2Zz4=" class="icon xr-icon-database img-fluid">
 <div class="xr-var-attrs">
@@ -1466,7 +1636,7 @@ Expected RMS segment misfit
 </dd>
 <dt><span>source :</span></dt>
 <dd>
-section 4.4
+ATL06 ATBD - Top Level Fitting Routine
 </dd>
 <dt><span>units :</span></dt>
 <dd>
@@ -1494,16 +1664,16 @@ meters
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Bytes</td>
 <td>0.92 MiB</td>
-<td>305.96 kiB</td>
+<td>39.06 kiB</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Shape</td>
-<td>(241711,)</td>
-<td>(78325,)</td>
+<td>(240873,)</td>
+<td>(10000,)</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Dask graph</td>
-<td colspan="2">5 chunks in 11 graph layers</td>
+<td colspan="2">26 chunks in 11 graph layers</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Data type</td>
@@ -1511,7 +1681,7 @@ meters
 </tr>
 </tbody>
 </table></td>
-<td><img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTcwIiBoZWlnaHQ9Ijc1IiBzdHlsZT0ic3Ryb2tlOnJnYigwLDAsMCk7c3Ryb2tlLXdpZHRoOjEiPgoKICA8IS0tIEhvcml6b250YWwgbGluZXMgLS0+CiAgPGxpbmUgeDE9IjAiIHkxPSIwIiB4Mj0iMTIwIiB5Mj0iMCIgc3R5bGU9InN0cm9rZS13aWR0aDoyIj48L2xpbmU+CiAgPGxpbmUgeDE9IjAiIHkxPSIyNSIgeDI9IjEyMCIgeTI9IjI1IiBzdHlsZT0ic3Ryb2tlLXdpZHRoOjIiPjwvbGluZT4KCiAgPCEtLSBWZXJ0aWNhbCBsaW5lcyAtLT4KICA8bGluZSB4MT0iMCIgeTE9IjAiIHgyPSIwIiB5Mj0iMjUiIHN0eWxlPSJzdHJva2Utd2lkdGg6MiI+PC9saW5lPgogIDxsaW5lIHgxPSIzOCIgeTE9IjAiIHgyPSIzOCIgeTI9IjI1Ij48L2xpbmU+CiAgPGxpbmUgeDE9IjYxIiB5MT0iMCIgeDI9IjYxIiB5Mj0iMjUiPjwvbGluZT4KICA8bGluZSB4MT0iODQiIHkxPSIwIiB4Mj0iODQiIHkyPSIyNSI+PC9saW5lPgogIDxsaW5lIHgxPSI5MSIgeTE9IjAiIHgyPSI5MSIgeTI9IjI1Ij48L2xpbmU+CiAgPGxpbmUgeDE9IjEyMCIgeTE9IjAiIHgyPSIxMjAiIHkyPSIyNSIgc3R5bGU9InN0cm9rZS13aWR0aDoyIj48L2xpbmU+CgogIDwhLS0gQ29sb3JlZCBSZWN0YW5nbGUgLS0+CiAgPHBvbHlnb24gcG9pbnRzPSIwLjAsMC4wIDEyMC4wLDAuMCAxMjAuMCwyNS40MTI2MTY1MTQ1ODI0ODUgMC4wLDI1LjQxMjYxNjUxNDU4MjQ4NSIgc3R5bGU9ImZpbGw6I0VDQjE3MkEwO3N0cm9rZS13aWR0aDowIj48L3BvbHlnb24+CgogIDwhLS0gVGV4dCAtLT4KICA8dGV4dCB4PSI2MC4wMDAwMDAiIHk9IjQ1LjQxMjYxNyIgZm9udC1zaXplPSIxLjByZW0iIGZvbnQtd2VpZ2h0PSIxMDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjI0MTcxMTwvdGV4dD4KICA8dGV4dCB4PSIxNDAuMDAwMDAwIiB5PSIxMi43MDYzMDgiIGZvbnQtc2l6ZT0iMS4wcmVtIiBmb250LXdlaWdodD0iMTAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiB0cmFuc2Zvcm09InJvdGF0ZSgwLDE0MC4wMDAwMDAsMTIuNzA2MzA4KSI+MTwvdGV4dD4KPC9zdmc+" class="img-fluid"></td>
+<td><img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTcwIiBoZWlnaHQ9Ijc1IiBzdHlsZT0ic3Ryb2tlOnJnYigwLDAsMCk7c3Ryb2tlLXdpZHRoOjEiPgoKICA8IS0tIEhvcml6b250YWwgbGluZXMgLS0+CiAgPGxpbmUgeDE9IjAiIHkxPSIwIiB4Mj0iMTIwIiB5Mj0iMCIgc3R5bGU9InN0cm9rZS13aWR0aDoyIj48L2xpbmU+CiAgPGxpbmUgeDE9IjAiIHkxPSIyNSIgeDI9IjEyMCIgeTI9IjI1IiBzdHlsZT0ic3Ryb2tlLXdpZHRoOjIiPjwvbGluZT4KCiAgPCEtLSBWZXJ0aWNhbCBsaW5lcyAtLT4KICA8bGluZSB4MT0iMCIgeTE9IjAiIHgyPSIwIiB5Mj0iMjUiIHN0eWxlPSJzdHJva2Utd2lkdGg6MiI+PC9saW5lPgogIDxsaW5lIHgxPSI0IiB5MT0iMCIgeDI9IjQiIHkyPSIyNSI+PC9saW5lPgogIDxsaW5lIHgxPSI5IiB5MT0iMCIgeDI9IjkiIHkyPSIyNSI+PC9saW5lPgogIDxsaW5lIHgxPSIxOSIgeTE9IjAiIHgyPSIxOSIgeTI9IjI1Ij48L2xpbmU+CiAgPGxpbmUgeDE9IjI0IiB5MT0iMCIgeDI9IjI0IiB5Mj0iMjUiPjwvbGluZT4KICA8bGluZSB4MT0iMjkiIHkxPSIwIiB4Mj0iMjkiIHkyPSIyNSI+PC9saW5lPgogIDxsaW5lIHgxPSIzOSIgeTE9IjAiIHgyPSIzOSIgeTI9IjI1Ij48L2xpbmU+CiAgPGxpbmUgeDE9IjQ0IiB5MT0iMCIgeDI9IjQ0IiB5Mj0iMjUiPjwvbGluZT4KICA8bGluZSB4MT0iNDkiIHkxPSIwIiB4Mj0iNDkiIHkyPSIyNSI+PC9saW5lPgogIDxsaW5lIHgxPSI1OSIgeTE9IjAiIHgyPSI1OSIgeTI9IjI1Ij48L2xpbmU+CiAgPGxpbmUgeDE9IjYzIiB5MT0iMCIgeDI9IjYzIiB5Mj0iMjUiPjwvbGluZT4KICA8bGluZSB4MT0iNzMiIHkxPSIwIiB4Mj0iNzMiIHkyPSIyNSI+PC9saW5lPgogIDxsaW5lIHgxPSI3OCIgeTE9IjAiIHgyPSI3OCIgeTI9IjI1Ij48L2xpbmU+CiAgPGxpbmUgeDE9IjgzIiB5MT0iMCIgeDI9IjgzIiB5Mj0iMjUiPjwvbGluZT4KICA8bGluZSB4MT0iODkiIHkxPSIwIiB4Mj0iODkiIHkyPSIyNSI+PC9saW5lPgogIDxsaW5lIHgxPSI5MiIgeTE9IjAiIHgyPSI5MiIgeTI9IjI1Ij48L2xpbmU+CiAgPGxpbmUgeDE9Ijk3IiB5MT0iMCIgeDI9Ijk3IiB5Mj0iMjUiPjwvbGluZT4KICA8bGluZSB4MT0iMTA3IiB5MT0iMCIgeDI9IjEwNyIgeTI9IjI1Ij48L2xpbmU+CiAgPGxpbmUgeDE9IjExMiIgeTE9IjAiIHgyPSIxMTIiIHkyPSIyNSI+PC9saW5lPgogIDxsaW5lIHgxPSIxMjAiIHkxPSIwIiB4Mj0iMTIwIiB5Mj0iMjUiIHN0eWxlPSJzdHJva2Utd2lkdGg6MiI+PC9saW5lPgoKICA8IS0tIENvbG9yZWQgUmVjdGFuZ2xlIC0tPgogIDxwb2x5Z29uIHBvaW50cz0iMC4wLDAuMCAxMjAuMCwwLjAgMTIwLjAsMjUuNDEyNjE2NTE0NTgyNDg1IDAuMCwyNS40MTI2MTY1MTQ1ODI0ODUiIHN0eWxlPSJmaWxsOiM4QjQ5MDNBMDtzdHJva2Utd2lkdGg6MCI+PC9wb2x5Z29uPgoKICA8IS0tIFRleHQgLS0+CiAgPHRleHQgeD0iNjAuMDAwMDAwIiB5PSI0NS40MTI2MTciIGZvbnQtc2l6ZT0iMS4wcmVtIiBmb250LXdlaWdodD0iMTAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj4yNDA4NzM8L3RleHQ+CiAgPHRleHQgeD0iMTQwLjAwMDAwMCIgeT0iMTIuNzA2MzA4IiBmb250LXNpemU9IjEuMHJlbSIgZm9udC13ZWlnaHQ9IjEwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgdHJhbnNmb3JtPSJyb3RhdGUoMCwxNDAuMDAwMDAwLDEyLjcwNjMwOCkiPjE8L3RleHQ+Cjwvc3ZnPg==" class="img-fluid"></td>
 </tr>
 </tbody>
 </table>
@@ -1526,7 +1696,7 @@ meters
 float64
 </div>
 <div class="xr-var-preview xr-preview">
-dask.array&lt;chunksize=(78325,), meta=np.ndarray&gt;
+dask.array&lt;chunksize=(10000,), meta=np.ndarray&gt;
 </div>
 <img src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iaWNvbiB4ci1pY29uLWZpbGUtdGV4dDIiPjx1c2UgeGxpbms6aHJlZj0iI2ljb24tZmlsZS10ZXh0MiI+PC91c2U+PC9zdmc+" class="icon xr-icon-file-text2 img-fluid"><img src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iaWNvbiB4ci1pY29uLWRhdGFiYXNlIj48dXNlIHhsaW5rOmhyZWY9IiNpY29uLWRhdGFiYXNlIj48L3VzZT48L3N2Zz4=" class="icon xr-icon-database img-fluid">
 <div class="xr-var-attrs">
@@ -1545,7 +1715,7 @@ Reference Point, m
 </dd>
 <dt><span>source :</span></dt>
 <dd>
-section 3.1.2.1
+ATL06 ATBD - Top Level Fitting Routine
 </dd>
 <dt><span>units :</span></dt>
 <dd>
@@ -1573,16 +1743,16 @@ section 3.1.2.1
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Bytes</td>
 <td>1.84 MiB</td>
-<td>611.91 kiB</td>
+<td>78.12 kiB</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Shape</td>
-<td>(241711,)</td>
-<td>(78325,)</td>
+<td>(240873,)</td>
+<td>(10000,)</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Dask graph</td>
-<td colspan="2">5 chunks in 11 graph layers</td>
+<td colspan="2">26 chunks in 11 graph layers</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Data type</td>
@@ -1590,7 +1760,7 @@ section 3.1.2.1
 </tr>
 </tbody>
 </table></td>
-<td><img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTcwIiBoZWlnaHQ9Ijc1IiBzdHlsZT0ic3Ryb2tlOnJnYigwLDAsMCk7c3Ryb2tlLXdpZHRoOjEiPgoKICA8IS0tIEhvcml6b250YWwgbGluZXMgLS0+CiAgPGxpbmUgeDE9IjAiIHkxPSIwIiB4Mj0iMTIwIiB5Mj0iMCIgc3R5bGU9InN0cm9rZS13aWR0aDoyIj48L2xpbmU+CiAgPGxpbmUgeDE9IjAiIHkxPSIyNSIgeDI9IjEyMCIgeTI9IjI1IiBzdHlsZT0ic3Ryb2tlLXdpZHRoOjIiPjwvbGluZT4KCiAgPCEtLSBWZXJ0aWNhbCBsaW5lcyAtLT4KICA8bGluZSB4MT0iMCIgeTE9IjAiIHgyPSIwIiB5Mj0iMjUiIHN0eWxlPSJzdHJva2Utd2lkdGg6MiI+PC9saW5lPgogIDxsaW5lIHgxPSIzOCIgeTE9IjAiIHgyPSIzOCIgeTI9IjI1Ij48L2xpbmU+CiAgPGxpbmUgeDE9IjYxIiB5MT0iMCIgeDI9IjYxIiB5Mj0iMjUiPjwvbGluZT4KICA8bGluZSB4MT0iODQiIHkxPSIwIiB4Mj0iODQiIHkyPSIyNSI+PC9saW5lPgogIDxsaW5lIHgxPSI5MSIgeTE9IjAiIHgyPSI5MSIgeTI9IjI1Ij48L2xpbmU+CiAgPGxpbmUgeDE9IjEyMCIgeTE9IjAiIHgyPSIxMjAiIHkyPSIyNSIgc3R5bGU9InN0cm9rZS13aWR0aDoyIj48L2xpbmU+CgogIDwhLS0gQ29sb3JlZCBSZWN0YW5nbGUgLS0+CiAgPHBvbHlnb24gcG9pbnRzPSIwLjAsMC4wIDEyMC4wLDAuMCAxMjAuMCwyNS40MTI2MTY1MTQ1ODI0ODUgMC4wLDI1LjQxMjYxNjUxNDU4MjQ4NSIgc3R5bGU9ImZpbGw6I0VDQjE3MkEwO3N0cm9rZS13aWR0aDowIj48L3BvbHlnb24+CgogIDwhLS0gVGV4dCAtLT4KICA8dGV4dCB4PSI2MC4wMDAwMDAiIHk9IjQ1LjQxMjYxNyIgZm9udC1zaXplPSIxLjByZW0iIGZvbnQtd2VpZ2h0PSIxMDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjI0MTcxMTwvdGV4dD4KICA8dGV4dCB4PSIxNDAuMDAwMDAwIiB5PSIxMi43MDYzMDgiIGZvbnQtc2l6ZT0iMS4wcmVtIiBmb250LXdlaWdodD0iMTAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiB0cmFuc2Zvcm09InJvdGF0ZSgwLDE0MC4wMDAwMDAsMTIuNzA2MzA4KSI+MTwvdGV4dD4KPC9zdmc+" class="img-fluid"></td>
+<td><img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTcwIiBoZWlnaHQ9Ijc1IiBzdHlsZT0ic3Ryb2tlOnJnYigwLDAsMCk7c3Ryb2tlLXdpZHRoOjEiPgoKICA8IS0tIEhvcml6b250YWwgbGluZXMgLS0+CiAgPGxpbmUgeDE9IjAiIHkxPSIwIiB4Mj0iMTIwIiB5Mj0iMCIgc3R5bGU9InN0cm9rZS13aWR0aDoyIj48L2xpbmU+CiAgPGxpbmUgeDE9IjAiIHkxPSIyNSIgeDI9IjEyMCIgeTI9IjI1IiBzdHlsZT0ic3Ryb2tlLXdpZHRoOjIiPjwvbGluZT4KCiAgPCEtLSBWZXJ0aWNhbCBsaW5lcyAtLT4KICA8bGluZSB4MT0iMCIgeTE9IjAiIHgyPSIwIiB5Mj0iMjUiIHN0eWxlPSJzdHJva2Utd2lkdGg6MiI+PC9saW5lPgogIDxsaW5lIHgxPSI0IiB5MT0iMCIgeDI9IjQiIHkyPSIyNSI+PC9saW5lPgogIDxsaW5lIHgxPSI5IiB5MT0iMCIgeDI9IjkiIHkyPSIyNSI+PC9saW5lPgogIDxsaW5lIHgxPSIxOSIgeTE9IjAiIHgyPSIxOSIgeTI9IjI1Ij48L2xpbmU+CiAgPGxpbmUgeDE9IjI0IiB5MT0iMCIgeDI9IjI0IiB5Mj0iMjUiPjwvbGluZT4KICA8bGluZSB4MT0iMjkiIHkxPSIwIiB4Mj0iMjkiIHkyPSIyNSI+PC9saW5lPgogIDxsaW5lIHgxPSIzOSIgeTE9IjAiIHgyPSIzOSIgeTI9IjI1Ij48L2xpbmU+CiAgPGxpbmUgeDE9IjQ0IiB5MT0iMCIgeDI9IjQ0IiB5Mj0iMjUiPjwvbGluZT4KICA8bGluZSB4MT0iNDkiIHkxPSIwIiB4Mj0iNDkiIHkyPSIyNSI+PC9saW5lPgogIDxsaW5lIHgxPSI1OSIgeTE9IjAiIHgyPSI1OSIgeTI9IjI1Ij48L2xpbmU+CiAgPGxpbmUgeDE9IjYzIiB5MT0iMCIgeDI9IjYzIiB5Mj0iMjUiPjwvbGluZT4KICA8bGluZSB4MT0iNzMiIHkxPSIwIiB4Mj0iNzMiIHkyPSIyNSI+PC9saW5lPgogIDxsaW5lIHgxPSI3OCIgeTE9IjAiIHgyPSI3OCIgeTI9IjI1Ij48L2xpbmU+CiAgPGxpbmUgeDE9IjgzIiB5MT0iMCIgeDI9IjgzIiB5Mj0iMjUiPjwvbGluZT4KICA8bGluZSB4MT0iODkiIHkxPSIwIiB4Mj0iODkiIHkyPSIyNSI+PC9saW5lPgogIDxsaW5lIHgxPSI5MiIgeTE9IjAiIHgyPSI5MiIgeTI9IjI1Ij48L2xpbmU+CiAgPGxpbmUgeDE9Ijk3IiB5MT0iMCIgeDI9Ijk3IiB5Mj0iMjUiPjwvbGluZT4KICA8bGluZSB4MT0iMTA3IiB5MT0iMCIgeDI9IjEwNyIgeTI9IjI1Ij48L2xpbmU+CiAgPGxpbmUgeDE9IjExMiIgeTE9IjAiIHgyPSIxMTIiIHkyPSIyNSI+PC9saW5lPgogIDxsaW5lIHgxPSIxMjAiIHkxPSIwIiB4Mj0iMTIwIiB5Mj0iMjUiIHN0eWxlPSJzdHJva2Utd2lkdGg6MiI+PC9saW5lPgoKICA8IS0tIENvbG9yZWQgUmVjdGFuZ2xlIC0tPgogIDxwb2x5Z29uIHBvaW50cz0iMC4wLDAuMCAxMjAuMCwwLjAgMTIwLjAsMjUuNDEyNjE2NTE0NTgyNDg1IDAuMCwyNS40MTI2MTY1MTQ1ODI0ODUiIHN0eWxlPSJmaWxsOiM4QjQ5MDNBMDtzdHJva2Utd2lkdGg6MCI+PC9wb2x5Z29uPgoKICA8IS0tIFRleHQgLS0+CiAgPHRleHQgeD0iNjAuMDAwMDAwIiB5PSI0NS40MTI2MTciIGZvbnQtc2l6ZT0iMS4wcmVtIiBmb250LXdlaWdodD0iMTAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj4yNDA4NzM8L3RleHQ+CiAgPHRleHQgeD0iMTQwLjAwMDAwMCIgeT0iMTIuNzA2MzA4IiBmb250LXNpemU9IjEuMHJlbSIgZm9udC13ZWlnaHQ9IjEwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgdHJhbnNmb3JtPSJyb3RhdGUoMCwxNDAuMDAwMDAwLDEyLjcwNjMwOCkiPjE8L3RleHQ+Cjwvc3ZnPg==" class="img-fluid"></td>
 </tr>
 </tbody>
 </table>
@@ -1605,7 +1775,7 @@ section 3.1.2.1
 float32
 </div>
 <div class="xr-var-preview xr-preview">
-dask.array&lt;chunksize=(78325,), meta=np.ndarray&gt;
+dask.array&lt;chunksize=(10000,), meta=np.ndarray&gt;
 </div>
 <img src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iaWNvbiB4ci1pY29uLWZpbGUtdGV4dDIiPjx1c2UgeGxpbms6aHJlZj0iI2ljb24tZmlsZS10ZXh0MiI+PC91c2U+PC9zdmc+" class="icon xr-icon-file-text2 img-fluid"><img src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iaWNvbiB4ci1pY29uLWRhdGFiYXNlIj48dXNlIHhsaW5rOmhyZWY9IiNpY29uLWRhdGFiYXNlIj48L3VzZT48L3N2Zz4=" class="icon xr-icon-database img-fluid">
 <div class="xr-var-attrs">
@@ -1624,7 +1794,7 @@ Vertical Geolocation Error
 </dd>
 <dt><span>source :</span></dt>
 <dd>
-ATBD Section 3.10
+ATL06 ATBD - Segment Geolocation
 </dd>
 <dt><span>units :</span></dt>
 <dd>
@@ -1652,16 +1822,16 @@ meters
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Bytes</td>
 <td>0.92 MiB</td>
-<td>305.96 kiB</td>
+<td>39.06 kiB</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Shape</td>
-<td>(241711,)</td>
-<td>(78325,)</td>
+<td>(240873,)</td>
+<td>(10000,)</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Dask graph</td>
-<td colspan="2">5 chunks in 11 graph layers</td>
+<td colspan="2">26 chunks in 11 graph layers</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Data type</td>
@@ -1669,34 +1839,34 @@ meters
 </tr>
 </tbody>
 </table></td>
-<td><img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTcwIiBoZWlnaHQ9Ijc1IiBzdHlsZT0ic3Ryb2tlOnJnYigwLDAsMCk7c3Ryb2tlLXdpZHRoOjEiPgoKICA8IS0tIEhvcml6b250YWwgbGluZXMgLS0+CiAgPGxpbmUgeDE9IjAiIHkxPSIwIiB4Mj0iMTIwIiB5Mj0iMCIgc3R5bGU9InN0cm9rZS13aWR0aDoyIj48L2xpbmU+CiAgPGxpbmUgeDE9IjAiIHkxPSIyNSIgeDI9IjEyMCIgeTI9IjI1IiBzdHlsZT0ic3Ryb2tlLXdpZHRoOjIiPjwvbGluZT4KCiAgPCEtLSBWZXJ0aWNhbCBsaW5lcyAtLT4KICA8bGluZSB4MT0iMCIgeTE9IjAiIHgyPSIwIiB5Mj0iMjUiIHN0eWxlPSJzdHJva2Utd2lkdGg6MiI+PC9saW5lPgogIDxsaW5lIHgxPSIzOCIgeTE9IjAiIHgyPSIzOCIgeTI9IjI1Ij48L2xpbmU+CiAgPGxpbmUgeDE9IjYxIiB5MT0iMCIgeDI9IjYxIiB5Mj0iMjUiPjwvbGluZT4KICA8bGluZSB4MT0iODQiIHkxPSIwIiB4Mj0iODQiIHkyPSIyNSI+PC9saW5lPgogIDxsaW5lIHgxPSI5MSIgeTE9IjAiIHgyPSI5MSIgeTI9IjI1Ij48L2xpbmU+CiAgPGxpbmUgeDE9IjEyMCIgeTE9IjAiIHgyPSIxMjAiIHkyPSIyNSIgc3R5bGU9InN0cm9rZS13aWR0aDoyIj48L2xpbmU+CgogIDwhLS0gQ29sb3JlZCBSZWN0YW5nbGUgLS0+CiAgPHBvbHlnb24gcG9pbnRzPSIwLjAsMC4wIDEyMC4wLDAuMCAxMjAuMCwyNS40MTI2MTY1MTQ1ODI0ODUgMC4wLDI1LjQxMjYxNjUxNDU4MjQ4NSIgc3R5bGU9ImZpbGw6I0VDQjE3MkEwO3N0cm9rZS13aWR0aDowIj48L3BvbHlnb24+CgogIDwhLS0gVGV4dCAtLT4KICA8dGV4dCB4PSI2MC4wMDAwMDAiIHk9IjQ1LjQxMjYxNyIgZm9udC1zaXplPSIxLjByZW0iIGZvbnQtd2VpZ2h0PSIxMDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjI0MTcxMTwvdGV4dD4KICA8dGV4dCB4PSIxNDAuMDAwMDAwIiB5PSIxMi43MDYzMDgiIGZvbnQtc2l6ZT0iMS4wcmVtIiBmb250LXdlaWdodD0iMTAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiB0cmFuc2Zvcm09InJvdGF0ZSgwLDE0MC4wMDAwMDAsMTIuNzA2MzA4KSI+MTwvdGV4dD4KPC9zdmc+" class="img-fluid"></td>
+<td><img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTcwIiBoZWlnaHQ9Ijc1IiBzdHlsZT0ic3Ryb2tlOnJnYigwLDAsMCk7c3Ryb2tlLXdpZHRoOjEiPgoKICA8IS0tIEhvcml6b250YWwgbGluZXMgLS0+CiAgPGxpbmUgeDE9IjAiIHkxPSIwIiB4Mj0iMTIwIiB5Mj0iMCIgc3R5bGU9InN0cm9rZS13aWR0aDoyIj48L2xpbmU+CiAgPGxpbmUgeDE9IjAiIHkxPSIyNSIgeDI9IjEyMCIgeTI9IjI1IiBzdHlsZT0ic3Ryb2tlLXdpZHRoOjIiPjwvbGluZT4KCiAgPCEtLSBWZXJ0aWNhbCBsaW5lcyAtLT4KICA8bGluZSB4MT0iMCIgeTE9IjAiIHgyPSIwIiB5Mj0iMjUiIHN0eWxlPSJzdHJva2Utd2lkdGg6MiI+PC9saW5lPgogIDxsaW5lIHgxPSI0IiB5MT0iMCIgeDI9IjQiIHkyPSIyNSI+PC9saW5lPgogIDxsaW5lIHgxPSI5IiB5MT0iMCIgeDI9IjkiIHkyPSIyNSI+PC9saW5lPgogIDxsaW5lIHgxPSIxOSIgeTE9IjAiIHgyPSIxOSIgeTI9IjI1Ij48L2xpbmU+CiAgPGxpbmUgeDE9IjI0IiB5MT0iMCIgeDI9IjI0IiB5Mj0iMjUiPjwvbGluZT4KICA8bGluZSB4MT0iMjkiIHkxPSIwIiB4Mj0iMjkiIHkyPSIyNSI+PC9saW5lPgogIDxsaW5lIHgxPSIzOSIgeTE9IjAiIHgyPSIzOSIgeTI9IjI1Ij48L2xpbmU+CiAgPGxpbmUgeDE9IjQ0IiB5MT0iMCIgeDI9IjQ0IiB5Mj0iMjUiPjwvbGluZT4KICA8bGluZSB4MT0iNDkiIHkxPSIwIiB4Mj0iNDkiIHkyPSIyNSI+PC9saW5lPgogIDxsaW5lIHgxPSI1OSIgeTE9IjAiIHgyPSI1OSIgeTI9IjI1Ij48L2xpbmU+CiAgPGxpbmUgeDE9IjYzIiB5MT0iMCIgeDI9IjYzIiB5Mj0iMjUiPjwvbGluZT4KICA8bGluZSB4MT0iNzMiIHkxPSIwIiB4Mj0iNzMiIHkyPSIyNSI+PC9saW5lPgogIDxsaW5lIHgxPSI3OCIgeTE9IjAiIHgyPSI3OCIgeTI9IjI1Ij48L2xpbmU+CiAgPGxpbmUgeDE9IjgzIiB5MT0iMCIgeDI9IjgzIiB5Mj0iMjUiPjwvbGluZT4KICA8bGluZSB4MT0iODkiIHkxPSIwIiB4Mj0iODkiIHkyPSIyNSI+PC9saW5lPgogIDxsaW5lIHgxPSI5MiIgeTE9IjAiIHgyPSI5MiIgeTI9IjI1Ij48L2xpbmU+CiAgPGxpbmUgeDE9Ijk3IiB5MT0iMCIgeDI9Ijk3IiB5Mj0iMjUiPjwvbGluZT4KICA8bGluZSB4MT0iMTA3IiB5MT0iMCIgeDI9IjEwNyIgeTI9IjI1Ij48L2xpbmU+CiAgPGxpbmUgeDE9IjExMiIgeTE9IjAiIHgyPSIxMTIiIHkyPSIyNSI+PC9saW5lPgogIDxsaW5lIHgxPSIxMjAiIHkxPSIwIiB4Mj0iMTIwIiB5Mj0iMjUiIHN0eWxlPSJzdHJva2Utd2lkdGg6MiI+PC9saW5lPgoKICA8IS0tIENvbG9yZWQgUmVjdGFuZ2xlIC0tPgogIDxwb2x5Z29uIHBvaW50cz0iMC4wLDAuMCAxMjAuMCwwLjAgMTIwLjAsMjUuNDEyNjE2NTE0NTgyNDg1IDAuMCwyNS40MTI2MTY1MTQ1ODI0ODUiIHN0eWxlPSJmaWxsOiM4QjQ5MDNBMDtzdHJva2Utd2lkdGg6MCI+PC9wb2x5Z29uPgoKICA8IS0tIFRleHQgLS0+CiAgPHRleHQgeD0iNjAuMDAwMDAwIiB5PSI0NS40MTI2MTciIGZvbnQtc2l6ZT0iMS4wcmVtIiBmb250LXdlaWdodD0iMTAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj4yNDA4NzM8L3RleHQ+CiAgPHRleHQgeD0iMTQwLjAwMDAwMCIgeT0iMTIuNzA2MzA4IiBmb250LXNpemU9IjEuMHJlbSIgZm9udC13ZWlnaHQ9IjEwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgdHJhbnNmb3JtPSJyb3RhdGUoMCwxNDAuMDAwMDAwLDEyLjcwNjMwOCkiPjE8L3RleHQ+Cjwvc3ZnPg==" class="img-fluid"></td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
-</div></li></ul></div></li><li class="xr-section-item"><input id="section-338562c8-c0c9-4fe5-a6ad-77b2c810f25b" class="xr-section-summary-in" type="checkbox"><label for="section-338562c8-c0c9-4fe5-a6ad-77b2c810f25b" class="xr-section-summary">Indexes: <span>(1)</span></label><div class="xr-section-inline-details"></div><div class="xr-section-details"><ul class="xr-var-list"><li class="xr-var-item"><div class="xr-index-name"><div>delta_time</div></div><div class="xr-index-preview">PandasIndex</div><div></div><input id="index-3c3f06a3-7a90-47e6-aeff-ce236d8500c7" class="xr-index-data-in" type="checkbox"><label for="index-3c3f06a3-7a90-47e6-aeff-ce236d8500c7" title="Show/Hide index repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-index-data"><pre>PandasIndex(DatetimeIndex(['2022-07-18 01:00:46.678760592',
-               '2022-07-18 01:00:46.681322640',
-               '2022-07-18 01:00:46.684008720',
-               '2022-07-18 01:00:46.686753504',
-               '2022-07-18 01:00:46.689526560',
-               '2022-07-18 01:00:46.692315280',
-               '2022-07-18 01:00:46.695049040',
-               '2022-07-18 01:00:46.700724096',
-               '2022-07-18 01:00:46.703545872',
-               '2022-07-18 01:00:46.706366832',
+</div></li></ul></div></li><li class="xr-section-item"><input id="section-56bc833f-bab7-486d-a751-41f4800340c8" class="xr-section-summary-in" type="checkbox"><label for="section-56bc833f-bab7-486d-a751-41f4800340c8" class="xr-section-summary">Indexes: <span>(1)</span></label><div class="xr-section-inline-details"></div><div class="xr-section-details"><ul class="xr-var-list"><li class="xr-var-item"><div class="xr-index-name"><div>delta_time</div></div><div class="xr-index-preview">PandasIndex</div><input type="checkbox" disabled=""><label></label><input id="index-c4976c0b-384d-4026-aaba-1f54badbad70" class="xr-index-data-in" type="checkbox"><label for="index-c4976c0b-384d-4026-aaba-1f54badbad70" title="Show/Hide index repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-index-data"><pre>PandasIndex(DatetimeIndex(['2022-07-18 01:00:40.698453696',
+               '2022-07-18 01:00:40.704002080',
+               '2022-07-18 01:00:40.706800224',
+               '2022-07-18 01:00:40.708376224',
+               '2022-07-18 01:00:41.070171808',
+               '2022-07-18 01:00:41.072562016',
+               '2022-07-18 01:00:41.078919344',
+               '2022-07-18 01:00:41.081860336',
+               '2022-07-18 01:00:41.084743024',
+               '2022-07-18 01:00:41.087598144',
                ...
-               '2022-07-26 00:49:18.806914512',
-               '2022-07-26 00:49:18.809737328',
-               '2022-07-26 00:49:18.812559600',
-               '2022-07-26 00:49:18.815380608',
-               '2022-07-26 00:49:18.818200224',
-               '2022-07-26 00:49:18.821015744',
-               '2022-07-26 00:49:18.823827088',
-               '2022-07-26 00:49:18.826637808',
-               '2022-07-26 00:49:18.829449568',
-               '2022-07-26 00:49:18.832263232'],
-              dtype='datetime64[ns]', name='delta_time', length=241711, freq=None))</pre></div></li></ul></div></li><li class="xr-section-item"><input id="section-e7c907d9-2aed-4e5f-9321-fc9098ef0e97" class="xr-section-summary-in" type="checkbox" checked=""><label for="section-e7c907d9-2aed-4e5f-9321-fc9098ef0e97" class="xr-section-summary">Attributes: <span>(2)</span></label><div class="xr-section-inline-details"></div><div class="xr-section-details"><dl class="xr-attrs"><dt><span>Description :</span></dt><dd>The land_ice_height group contains the primary set of derived ATL06 products. This includes geolocation, height, and standard error and quality measures for each segment. This group is sparse, meaning that parameters are provided only for pairs of segments for which at least one beam has a valid surface-height measurement.</dd><dt><span>data_rate :</span></dt><dd>Data within this group are sparse.  Data values are provided only for those ICESat-2 20m segments where at least one beam has a valid land ice height measurement.</dd></dl></div></li></ul></div></div>
+               '2022-07-26 00:49:18.806962816',
+               '2022-07-26 00:49:18.809785632',
+               '2022-07-26 00:49:18.812607856',
+               '2022-07-26 00:49:18.815428816',
+               '2022-07-26 00:49:18.818248416',
+               '2022-07-26 00:49:18.821063936',
+               '2022-07-26 00:49:18.823875152',
+               '2022-07-26 00:49:18.826685936',
+               '2022-07-26 00:49:18.829497600',
+               '2022-07-26 00:49:18.832311504'],
+              dtype='datetime64[ns]', name='delta_time', length=240873, freq=None))</pre></div></li></ul></div></li><li class="xr-section-item"><input id="section-021a03d7-396f-4452-a910-8a37665fd658" class="xr-section-summary-in" type="checkbox" checked=""><label for="section-021a03d7-396f-4452-a910-8a37665fd658" class="xr-section-summary">Attributes: <span>(2)</span></label><div class="xr-section-inline-details"></div><div class="xr-section-details"><dl class="xr-attrs"><dt><span>data_rate :</span></dt><dd>Data within this group are sparse.  Data values are provided only for those ICESat-2 20m segments where at least one beam has a valid land ice height measurement.</dd><dt><span>description :</span></dt><dd>The land_ice_height group contains the primary set of derived ATL06 products. This includes geolocation, height, and standard error and quality measures for each segment. This group is sparse, meaning that parameters are provided only for pairs of segments for which at least one beam has a valid surface-height measurement.</dd></dl></div></li></ul></div></div>
 </div>
 </div>
 </section>
@@ -1706,7 +1876,7 @@ meters
 </section>
 <section id="alternative-access-method-without-earthaccess" class="level2">
 <h2 class="anchored" data-anchor-id="alternative-access-method-without-earthaccess">Alternative Access Method without <code>earthaccess</code></h2>
-<p>An alternative approach to accessing data is outlined in some notebooks in the <a href="https://nasa-openscapes.github.io/earthdata-cloud-cookbook/appendix/authentication.html">Earthdata Cloud Cookbook Appendix</a>! The <code>earthaccess</code> package uses these methods for it’s back end. See <a href="https://github.com/NASA-Openscapes/earthdata-cloud-cookbook/tree/main/appendix/appendix-alternate-in-cloud-access">this GitHub folder</a>.</p>
+<p>An alternative approach to accessing data is outlined in some notebooks in the <a href="https://nasa-openscapes.github.io/earthdata-cloud-cookbook/appendix/authentication.html">Earthdata Cloud Cookbook Appendix</a>! The <code>earthaccess</code> package uses these methods for its back end. See <a href="https://github.com/NASA-Openscapes/earthdata-cloud-cookbook/tree/main/appendix/appendix-alternate-in-cloud-access">this GitHub folder</a>.</p>
 
 
 </section>
