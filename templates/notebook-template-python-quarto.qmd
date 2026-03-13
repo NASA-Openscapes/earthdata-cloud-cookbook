@@ -1,0 +1,147 @@
+---
+title: Earthdata Cloud Cookbook Notebook Template
+authors:
+    - name: "Albert Einstein"
+      orcid: XXXX....
+      email: albert@science.org
+      affiliation: University of Relativity
+    - name: "Marie Curie"
+      orcid: XXXX....
+      email: marie@science.org
+      affiliation: University of Radioactivity
+date: last-modified # automatically generates the date when the doc gets rendered. Can be overridden with a specific date if desired.
+keywords: [sea-ice, netcdf, xarray]
+format: 
+  html: default
+  ipynb: default # Adds a Jupyter Notebook download button in the right menu
+
+# nasa-metadata is a custom field for providing NASA-specific metadata.
+# Everything above here is standard Quarto metadata.
+nasa-metadata:
+    - data-collections:
+        - collection1 # (conceptid, shortname, TBD which is the best to use)
+        - collection2
+    - spheres: [atmosphere, biosphere, cryosphere, geosphere, hydrosphere]
+    - session-info: # Python: pip freeze or !pip list. Would want just the versions of imported packages (not the whole dependency tree).
+    - notebook-type: [tutorial, how-to, data-recipe]
+    - tools: [earthaccess, harmony, OpenDAP, STAC] # nasa-specific tools - for tagging
+---
+
+## Overview
+
+If you have an introductory paragraph, lead with it here! Keep it short and tied to your material. 
+This is also a great place to add a relevant image.
+
+If it works for your material, a great way to frame things is to use the [**POP**](https://rockwoodleadership.org/pop-everything-strategic-planning-in-30-seconds-or-less/) (Purpose, Outcomes, Process) framework:
+
+- **Purpose:** What is the motivation for this tutorial? What problem does it solve?
+- **Outcomes:** quick notes on what you'll learn and where the tutorial ends
+- **Process:** maybe a time estimate, and/or where it was first taught?
+
+## Learning objectives
+
+List the main learning objectives here.
+
+## Prerequisites
+
+Following your overview, tell your reader what concepts, packages, or other background information they'll **need** before learning your material. Tie this explicitly with links to other pages here in Foundations or to relevant external resources. Remove this body text, then populate the Markdown table, denoted in this cell with `|` vertical brackets, below, and fill out the information following. In this table, lay out prerequisite concepts by explicitly linking to other Foundations material or external resources, or describe generally helpful concepts.
+
+Label the importance of each concept explicitly as **helpful/necessary**.
+
+| Concepts | Importance | Notes |
+| --- | --- | --- |
+| [Intro to Cartopy](https://foundations.projectpythia.org/core/cartopy/cartopy) | Necessary | |
+| [Understanding of NetCDF](https://foundations.projectpythia.org/core/data-formats/netcdf-cf) | Helpful | Familiarity with metadata structure |
+| Project management | Helpful | |
+
+- **Time to learn**: estimate in minutes. For a rough idea, use 5 mins per subsection, 10 if longer; add these up for a total. Safer to round up and overestimate.
+- **System requirements**:
+    - Populate with any system, version, or non-Python software requirements if necessary
+    - Otherwise use the concepts table above and the Imports section below to describe required packages as necessary
+    - If no extra requirements, remove the **System requirements** point altogether
+
+---
+
+## Imports
+Begin your body of content with another `---` divider before continuing into this section, then remove this body text and populate the following code cell with all necessary Python imports **up-front**:
+
+```{python}
+import sys
+```
+
+## Your first content section
+
+This is where you begin your first section of material, loosely tied to your objectives stated up front. Tie together your notebook as a narrative, with interspersed Markdown text, images, and more as necessary,
+
+```{python}
+# as well as any and all of your code cells
+print("Hello world!")
+```
+
+### A content subsection
+Divide and conquer your objectives with Markdown subsections, which will populate the helpful navbar in Jupyter Lab and here in the Cookbook!
+
+```{python}
+# some subsection code
+a = [1, 2, 3, 4, 5]
+[i + 2 for i in a]
+```
+
+### Another content subsection
+Keep up the good work! A note, *try to avoid using code comments as narrative*, and instead let them only exist as brief clarifications where necessary.
+
+## Your second content section
+Here we can move on to our second objective, and we can demonstrate...
+
+### A subsection to the second section
+
+#### a quick demonstration
+
+##### of further and further
+
+###### header levels
+
+Check out [**the Quarto Guide**](https://quarto.org/docs/guide/) for syntax and guidance on customizing your notebooks. Don't hesitate to ask questions if you have problems getting it to look *just right*.
+
+## Last Section
+
+You can add [callouts using quarto callout syntax](https://quarto.org/docs/authoring/callouts/) to highlight important information, provide helpful hints, or even just to add some fun and personality to your notebook. Here's an example of a note callout:
+
+:::{.callout-note}
+Your relevant information here!
+:::
+
+
+:::{.callout-tip}
+A helpful hint.
+:::
+
+:::{.callout-warning}
+Be careful!
+:::
+
+---
+
+## Summary
+Add one final `---` marking the end of your body of content, and then conclude with a brief single paragraph summarizing at a high level the key pieces that were learned and how they tied to your objectives. Look to reiterate what the most important takeaways were.
+
+## Additional resources
+
+Link to relevant external material, further reading, documentation, etc.
+
+## References
+Be rigorous in your citations and references as necessary. Give credit where credit is due.
+
+You're done! Give yourself a quick review, a high five, and send us a pull request. A few final notes:
+
+ - `Kernel > Restart Kernel and Run All Cells...` to confirm that your notebook will cleanly run from start to finish
+ - `Kernel > Restart Kernel and Clear All Outputs...` before committing your notebook, our machines will do the heavy lifting
+ - Take credit! Provide author information in the metadata.
+ - Give credit! Attribute appropriate authorship for referenced code, information, images, etc.
+ - Only include what you're legally allowed: **no copyright infringement or plagiarism**
+ 
+Thank you for your contribution!
+
+## Acknowledgements
+
+This template builds from the [Project Pythia Notebook Template](https://github.com/ProjectPythia/cookbook-template/blob/main/notebooks/notebook-template.ipynb), which was in turn inspired by [this template](https://github.com/alan-turing-institute/the-turing-way/blob/master/book/templates/chapter-template/chapter-landing-page.md) of the wonderful [The Turing Way](https://the-turing-way.netlify.app) Jupyter Book.
