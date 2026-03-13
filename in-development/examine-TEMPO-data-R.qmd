@@ -1,0 +1,343 @@
+---
+date: last-modified
+title: Demonstration for working with TEMPO data in R
+---
+
+```{r}
+#| include: false
+library(DT)
+```
+
+## Overview
+
+This notebook retrieves TEMPO data, inspects characteristics of the data such as array shapes and quality flags, and then creates a visualization of total column nitrogen dioxide concentrations.
+
+This notebook is a fork of the [original Python notebook](https://nasa.github.io/ASDC_Data_and_User_Services/TEMPO/how_to_examine_TEMPO_data_using_earthaccess.html) from the [ASDC Data and User Services Tutorials Cookbook](https://nasa.github.io/ASDC_Data_and_User_Services/). 
+
+## Dataset Information
+
+This notebook uses data from the [Tropospheric Emissions: Monitoring of Pollution (TEMPO)](https://asdc.larc.nasa.gov/project/TEMPO) instrument.
+
+## Prerequisites
+
+A free(!) account at https://www.earthdata.nasa.gov/ is needed to login and download the appropriate files.
+
+This notebook was last tested using R Version 4.5.1 and uses these packages:
+
+- [earthadatalogin](https://boettiger-lab.github.io/earthadatalogin/)
+- [rstac](https://brazil-data-cube.github.io/rstac/)
+- [terra](https://rspatial.org/terra/)
+
+### Notebook Author / Affiliation
+
+Alexander Radkevich / Atmospheric Science Data Center (ASDC) - original Python notebook
+Andy Teucher (Openscapes) - R adaptation
+
+# 1. Setup
+
+```{r}
+# Core packages for data access and manipulation
+library(earthdatalogin) # Authentication with NASA Earthdata and data access
+library(rstac) # Search STAC catalogs
+library(terra) # Read, manipulate, and plot raster data
+
+# Helper packages
+library(purrr) # Functional programming tools / list manipulation
+library(mirai) # Parallel downloads
+library(stringr) # String manipulation
+library(tigris) # State boundaries for plotting
+```
+
+# 2. Establish access to EarthData - Log in
+
+It is best practice to store your EarthData credentials in environment variables `EARTHDATA_USER` and `EARTHDATA_PASSWORD` prior to running `earthdatalogin::edl_netrc()`. You can open your `.Renviron` file for editing using `usethis::edit_r_environ()`. Then add the following lines, replacing `your_username` and `your_password` with your actual EarthData credentials:    
+
+```
+EARTHDATA_USER=your_username
+EARTHDATA_PASSWORD=your_password
+```
+
+If credentials are not already stored, `earthdatalogin::edl_netrc()` will use a default username and password.
+
+```{r}
+edl_netrc()
+```
+
+# 3. Search for TEMPO granules
+
+First, we specify the data collection by name, a Point of Interest (POI), and a temporal range.
+
+```{r}
+short_name <- "TEMPO_NO2_L3" # collection name to search for in the EarthData
+version <- "V03"
+
+# Point of interest: NASA Langley Research Center, HamptonVA, USA
+# latitude 37.1036 deg, longitude -76.3868 deg
+# POI_lat <- 37.1036
+# POI_lon <- -76.3868
+
+# generic location, somewhere in the middle of the USA
+POI_lat <- 38.0
+POI_lon <- -96.0
+date_start <- "2024-09-01T00:00:00Z"
+date_end <- "2024-09-01T23:59:59Z"
+```
+
+Now we search for nitrogen dioxide ($NO_2$) data granules from TEMPO.
+
+```{r}
+dlat <- 5.0 # deg
+dlon <- 6.0 # deg
+
+bbox_results <- earthdatalogin::edl_search(
+  short_name = short_name,
+  version = version,
+  temporal = c(date_start, date_end),
+  bounding_box = c(
+    POI_lon - dlon,
+    POI_lat - dlat,
+    POI_lon + dlon,
+    POI_lat + dlat
+  ), # search by bounding box
+  parse_results = FALSE
+)
+
+length(bbox_results)
+```
+
+# 4. Examine and download file results
+
+## What does a result look like?
+
+There is a lot of metadata associated with each result. We will use `purrr::discard_at()` to remove the `polygons` and `links` elements from the first result for easier viewing.
+
+```{r}
+purrr::discard_at(bbox_results[[1]], c("polygons", "links"))
+```
+
+## Examining file names
+
+Let's examine the file names present in the results object.
+
+```{r}
+tempo_urls <- edl_extract_urls(bbox_results)
+tempo_urls
+```
+
+## Downloading granules
+
+Here we'll download two of the files. We can use purrr's `in_parallel()` function to download multiple files in parallel. We use `mirai::daemons()` to set the number of parallel workers.
+
+```{r}
+#| eval: false
+mirai::daemons(3)
+
+files <- purrr::map_chr(
+  tempo_urls[9:11],
+  in_parallel(\(x) earthdatalogin::edl_download(x))
+)
+
+# Reset the number of parallel workers to 0
+mirai::daemons(0)
+```
+
+# 5. Reading and inspecting the data
+
+We downloaded the data in the previous step, however we can avoid downloading the files manually and download them only as-needed by specifying what we want with `terra::rast()`.
+
+First, let's look at the metadata. We can get the metadata in different ways, using `terra::describe()` to get file-level metadata and metadata about the subdatasets within. Because `terra` uses GDAL to read data, we can prepend the URL with `"/vsicurl/"` to read the file remotely using GDAL's [virtual file system capabilities](https://gdal.org/en/stable/user/virtual_file_systems.html#virtual-file-systems).
+
+```{r}
+# The netCDF driver does not work on non-Linux systems when reading via `/vsi*`,
+# So we unload it here to force GDAL to use the HDF5 driver instead.
+if (tolower(Sys.info()[["sysname"]]) != "linux") {
+  unloadGDALdrivers("netCDF")
+}
+```
+
+```{r}
+nc_file <- tempo_urls[9]
+nc_file
+
+terra_meta_file <- terra::describe(
+  paste0("/vsicurl/", nc_file),
+  sds = FALSE,
+  meta = TRUE
+)
+
+# The data comes as a character vector with name-value pairs separated by '='.
+# We can split it and turn it into a data frame for easier viewing.
+nc_file_meta <- data.frame(
+  Name = stringr::str_split_i(terra_meta_file, "=", 1),
+  Value = stringr::str_split_i(terra_meta_file, "=", 2)
+)
+
+DT::datatable(nc_file_meta, caption = "File-level metadata")
+
+terra_meta_sds <- terra::describe(paste0("/vsicurl/", nc_file), sds = TRUE)
+
+DT::datatable(terra_meta_sds, caption = "Subdataset-level metadata")
+```
+
+We will read in the variables we are interested in: stratospheric and tropospheric NO2 vertical column densities, and quality flag.
+
+```{r}
+no2_trop <- terra::rast(
+  nc_file,
+  subds = "//product/vertical_column_troposphere",
+  vsi = TRUE,
+  md = TRUE
+)
+
+no2_strat <- terra::rast(
+  nc_file,
+  subds = "//product/vertical_column_stratosphere",
+  vsi = TRUE,
+  md = TRUE
+)
+
+no2_trop
+no2_strat
+
+quality_flag <- terra::rast(
+  nc_file,
+  subds = "//product/main_data_quality_flag",
+  vsi = TRUE,
+  md = TRUE
+)
+
+quality_flag
+```
+
+### Let's now examine the data in a granulue
+
+```{r}
+hist(values(no2_trop))
+hist(values(no2_strat))
+```
+
+### Finding 'good' pixels
+
+How many valid values are there?
+
+NetCDF files have metadata that specify fill values for missing data. `terra` automatically converts these fill values to `NA` when reading the data. We can count the number of non-`NA` values to find how many valid pixels there are.
+
+```{r}
+sum(!is.na(values(no2_trop)))
+sum(!is.na(values(no2_strat)))
+```
+
+How many pixels with high quality flag, 0, are there?
+
+```{r}
+table(values(quality_flag), useNA = "ifany")
+```
+
+Notice that the number of non-fill values and high-quality values are different.
+
+**So, we need to make a mask to remove pixels that are not high quality (`quality_flag == 0`).**
+
+```{r}
+good_data_mask <- quality_flag == 0
+good_data_mask
+```
+
+How many good pixels are there?
+
+```{r}
+sum(values(good_data_mask), na.rm = TRUE)
+```
+
+Unfortunate reality - "good" pixels may contain negative column.
+
+```{r}
+min(no2_trop[good_data_mask], na.rm = TRUE)
+min(no2_strat[good_data_mask], na.rm = TRUE)
+```
+
+**Getting physically meaningful pixels**
+
+We can "clamp" the negative values in `no2_trop` to zero.
+
+```{r}
+no2_trop_clamped <- clamp(no2_trop, lower = 0)
+```
+
+Mask the pixels (make them `NA`) where `good_data_mask` is `FALSE`.
+
+```{r}
+good_trop_no2 <-
+  no2_trop_clamped |>
+  terra::mask(good_data_mask, maskvalues = FALSE)
+good_strat_no2 <-
+  no2_strat |>
+  terra::mask(good_data_mask, maskvalues = FALSE)
+```
+
+# 6. Working with the data to subset and plot
+
+### Spatial subsetting
+
+```{r}
+POI_lat <- 38.0
+POI_lon <- -96.0
+
+dlat <- 5
+dlon <- 6
+
+extent <- terra::ext(
+  POI_lon - dlon,
+  POI_lon + dlon,
+  POI_lat - dlat,
+  POI_lat + dlat
+)
+
+no2_trop_cropped <- terra::crop(good_trop_no2, extent)
+no2_strat_cropped <- terra::crop(good_strat_no2, extent)
+```
+
+### Plotting spatial distribution
+
+We can use basic plotting functionality from `terra` to visualize the data. Let's first plot tropospheric and stratospheric NO2 columns separately, then plot the total column (sum of the two).
+
+```{r}
+#| warning: false
+#| message: false
+
+# Get US state boundaries and convert to terra format
+states <- states(cb = TRUE, progress_bar = FALSE) |>
+  vect()
+
+plot(
+  no2_trop_cropped,
+  main = "TEMPO Tropospheric NO2 col (molecules/cm²)",
+  range = c(0, 5e16),
+  plg = list(
+    x = "bottom",
+    labels = format(seq(0, 5e16, by = 1e16), scientific = TRUE)
+  )
+)
+lines(states, col = "lightgrey", lwd = 1)
+
+plot(
+  no2_strat_cropped,
+  main = "TEMPO Stratospheric NO2 col (molecules/cm²)",
+  plg = list(
+    x = "bottom",
+    labels = format(seq(0, 5e16, by = 1e16), scientific = TRUE)
+  )
+)
+lines(states, col = "lightgrey", lwd = 1)
+
+# Plot with state boundaries
+plot(
+  (no2_trop_cropped + no2_strat_cropped),
+  range = c(0, 5e16),
+  main = "TEMPO Total NO2 col (molecules/cm²)",
+  plg = list(
+    x = "bottom",
+    labels = format(seq(0, 5e16, by = 1e16), scientific = TRUE)
+  )
+)
+lines(states, col = "lightgrey", lwd = 1)
+```
