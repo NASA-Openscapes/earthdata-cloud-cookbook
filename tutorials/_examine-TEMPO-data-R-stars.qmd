@@ -10,7 +10,7 @@ library(DT)
 
 ## Overview
 
-This notebook retrieves TEMPO data, inspects characteristics of the data such as array shapes and quality flags, and then creates a visualization of total column nitrogen dioxide concentrations.
+This notebook retrieves TEMPO data, inspects characteristics of the data such as array shapes and quality flags, and then creates a visualization of total column nitrogen dioxide (NO2) concentrations.
 
 This notebook is a fork of the [original Python notebook](https://nasa.github.io/ASDC_Data_and_User_Services/TEMPO/how_to_examine_TEMPO_data_using_earthaccess.html) from the [ASDC Data and User Services Tutorials Cookbook](https://nasa.github.io/ASDC_Data_and_User_Services/). 
 
@@ -73,7 +73,7 @@ First, we specify the data collection by name, a Point of Interest (POI), and a 
 short_name <- "TEMPO_NO2_L3" # collection name to search for in the EarthData
 version <- "V03"
 
-# Point of interest: NASA Langley Research Center, HamptonVA, USA
+# Point of interest: NASA Langley Research Center, Hampton, Virginia (USA)
 # latitude 37.1036 deg, longitude -76.3868 deg
 # POI_lat <- 37.1036
 # POI_lon <- -76.3868
@@ -233,7 +233,7 @@ How many good pixels are there?
 sum(good_data_mask[[1]], na.rm = TRUE)
 ```
 
-Unfortunate reality - "good" pixels may contain negative column.
+"good" pixels may contain negative column values. For further information about negative values, see the [TEMPO Level 2-3 Trace Gas user guide](https://asdc.larc.nasa.gov/documents/tempo/guide/TEMPO_Level-2-3_trace_gas_clouds_user_guide_V2.1.pdf)
 
 ```{r}
 min(no2_trop[[1]][good_data_mask[[1]]], na.rm = TRUE)
