@@ -69,9 +69,9 @@ First, we specify the data collection by name, a Point of Interest (POI), and a 
 
 ```{r}
 short_name <- "TEMPO_NO2_L3" # collection name to search for in the EarthData
-version <- "V03"
+version <- "V04"
 
-# Point of interest: NASA Langley Research Center, HamptonVA, USA
+# Point of interest: NASA Langley Research Center, Hampton, Virginia (USA)
 # latitude 37.1036 deg, longitude -76.3868 deg
 # POI_lat <- 37.1036
 # POI_lon <- -76.3868
@@ -79,8 +79,8 @@ version <- "V03"
 # generic location, somewhere in the middle of the USA
 POI_lat <- 38.0
 POI_lon <- -96.0
-date_start <- "2024-09-01T00:00:00Z"
-date_end <- "2024-09-01T23:59:59Z"
+date_start <- "2026-03-01T00:00:00Z"
+date_end <- "2026-03-01T23:59:59Z"
 ```
 
 Now we search for nitrogen dioxide ($NO_2$) data granules from TEMPO.
