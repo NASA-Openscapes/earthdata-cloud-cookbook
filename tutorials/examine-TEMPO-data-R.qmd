@@ -10,7 +10,7 @@ library(DT)
 
 ## Overview
 
-This notebook retrieves TEMPO data, inspects characteristics of the data such as array shapes and quality flags, and then creates a visualization of total column nitrogen dioxide concentrations.
+This notebook retrieves TEMPO data, inspects characteristics of the data such as array shapes and quality flags, and then creates a visualization of total column nitrogen dioxide (NO2) concentrations.
 
 This notebook is a fork of the [original Python notebook](https://nasa.github.io/ASDC_Data_and_User_Services/TEMPO/how_to_examine_TEMPO_data_using_earthaccess.html) from the [ASDC Data and User Services Tutorials Cookbook](https://nasa.github.io/ASDC_Data_and_User_Services/). 
 
@@ -248,7 +248,7 @@ How many good pixels are there?
 sum(values(good_data_mask), na.rm = TRUE)
 ```
 
-Unfortunate reality - "good" pixels may contain negative column.
+"good" pixels may contain negative column values. For further information about negative values, see the [TEMPO Level 2-3 Trace Gas user guide](https://asdc.larc.nasa.gov/documents/tempo/guide/TEMPO_Level-2-3_trace_gas_clouds_user_guide_V2.1.pdf)
 
 ```{r}
 min(no2_trop[good_data_mask], na.rm = TRUE)
@@ -303,7 +303,6 @@ We can use basic plotting functionality from `terra` to visualize the data. Let'
 ```{r}
 #| warning: false
 #| message: false
-
 # Get US state boundaries and convert to terra format
 states <- states(cb = TRUE, progress_bar = FALSE) |>
   vect()
