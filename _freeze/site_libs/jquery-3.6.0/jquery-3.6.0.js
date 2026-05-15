@@ -8615,7 +8615,7 @@ jQuery.each( [ "radio", "checkbox" ], function() {
 
 
 
-// Return jQuery for attributes-only
+// Return jQuery for attributes-only inclusion
 
 
 support.focusin = "onfocusin" in window;
