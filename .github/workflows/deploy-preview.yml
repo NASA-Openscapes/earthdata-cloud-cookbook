@@ -1,7 +1,7 @@
 on:
   # workflow_dispatch allows deploy preview by pushing button on GitHub
   workflow_dispatch:
-  pull_request:
+  pull_request_target:
     branches: [main]
   issue_comment:
     types: [created]
@@ -12,7 +12,7 @@ jobs:
 
   is-external-pr:
     # Post a one-time comment on fork PRs reminding maintainers to trigger the deploy preview manually.
-    if: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.repo.fork == true && github.event.action == 'opened' }}
+    if: ${{ github.event_name == 'pull_request_target' && github.event.pull_request.head.repo.fork == true && github.event.action == 'opened' }}
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
@@ -46,7 +46,7 @@ jobs:
     # - requested by PR comment /deploy-preview, from a repo user or github action bot (user id 41898282)
     if: >
       (
-        github.event_name == 'pull_request' &&
+        github.event_name == 'pull_request_target' &&
         github.event.pull_request.head.repo.fork != true
       ) ||
       (
