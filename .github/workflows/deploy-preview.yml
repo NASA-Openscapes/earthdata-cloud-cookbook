@@ -11,13 +11,19 @@ name: Deploy Preview
 jobs:
 
   is-external-pr:
-    # Be helpful with reviewer and remind them to trigger a deploy preview if the PR is from a fork.
-    if: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.repo.fork == true }}
+    # Post a one-time comment on fork PRs reminding maintainers to trigger the deploy preview manually.
+    if: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.repo.fork == true && github.event.action == 'opened' }}
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
     steps:
-      - name: Error with message for manual deploy
+      - name: Comment with instructions for manual deploy
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          echo "::error title=Manual action required for preview::PR from fork can't be deployed as preview to Netlify automatically. Use '/deploy-preview' command in comments to trigger the preview manually."
+          gh api repos/$GITHUB_REPOSITORY/issues/${{ github.event.pull_request.number }}/comments \
+            --method POST \
+            --field body='This PR is from a fork and cannot be automatically deployed as a preview. A maintainer can trigger the preview by commenting `/deploy-preview`.'
         shell: bash
 
   role-of-commenter:
@@ -35,22 +41,22 @@ jobs:
         shell: bash
 
   build-deploy-preview:
-    # Deploy a preview only if 
+    # Deploy a preview only if
     # - the PR is not from a fork,
     # - requested by PR comment /deploy-preview, from a repo user or github action bot (user id 41898282)
     if: >
       (
-        github.event_name == 'pull_request' && 
+        github.event_name == 'pull_request' &&
         github.event.pull_request.head.repo.fork != true
-      ) || 
+      ) ||
       (
-        github.event.issue.pull_request && 
+        github.event.issue.pull_request &&
         (
           github.event.comment.user.id == '41898282' ||
-          github.event.comment.author_association == 'MEMBER' || 
-          github.event.comment.author_association == 'OWNER' || 
+          github.event.comment.author_association == 'MEMBER' ||
+          github.event.comment.author_association == 'OWNER' ||
           github.event.comment.author_association == 'COLLABORATOR'
-        ) && 
+        ) &&
         startsWith(github.event.comment.body, '/deploy-preview')
       )
 
