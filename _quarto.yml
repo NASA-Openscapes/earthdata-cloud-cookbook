@@ -267,6 +267,7 @@ format:
     toc: true
     link-external-icon: true
     link-external-newwindow: true
+    link-external-filter: '^(?:http:|https:)(\/\/)((nasa-openscapes\.github\.io/earthdata-cloud-cookbook)|(localhost)|(0\.0\.0\.0)|(127\.0\.0\.1)|(deploy-preview-.+openscapes-org-preview.netlify.app)).+'
 
 filters:
   - include-files.lua
