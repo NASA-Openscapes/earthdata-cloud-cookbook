@@ -1,5 +1,5 @@
-#quarto-sidebar a.sidebar-link[href^="https://"]:not(
-  [href*="nasa-openscapes.github.io"]
+#quarto-sidebar a.sidebar-link[href*="://"]:not(
+  [href*="nasa-openscapes.github.io/earthdata-cloud-cookbook"]
 ):not(
   [href*="localhost"]
 ):not(
