@@ -1,98 +1,83 @@
-[![DOI](https://zenodo.org/badge/doi/10.5281/zenodo.7786710.svg)](https://zenodo.org/record/7786710) 
+[![DOI](https://zenodo.org/badge/doi/10.5281/zenodo.7786710.svg)](https://zenodo.org/record/7786710)
 
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/eeholmes/earthdata-cloud-cookbook?quickstart=1&editor=jupyter)
+# NASA Earthdata Cloud Cookbook <a href="https://nasa-openscapes.github.io/earthdata-cloud-cookbook/"><img src="./images/earthdata-cookbook-hex-v7-no-url.png" align="right" height="138" /></a>
 
-# Hello! 
+**Supporting NASA Earth Science Research Teams' Migration to the Cloud**
 
-This Earthdata Cloud Cookbook is being developed by the [NASA Openscapes team](https://nasa-openscapes.github.io/).
+The NASA Openscapes Earthdata Cloud Cookbook is a learning resource for
+scientific researchers who use NASA Earthdata as NASA migrates data and
+workflows to the cloud. It is built as a cross-DAAC collaboration by the
+[NASA-Openscapes](https://nasa-openscapes.github.io) team and is under active,
+open development.
 
-## How to contribute to our book
+**Live site:** [nasa-openscapes.github.io/earthdata-cloud-cookbook](https://nasa-openscapes.github.io/earthdata-cloud-cookbook)
 
-Information for our team [to contribute to the Cookbook](https://nasa-openscapes.github.io/earthdata-cloud-cookbook/contributing/). This includes setup and workflow instructions.
+---
 
-## Hackdays
+## What's in the Cookbook
 
-In 2023 we are iterating and improving on our original cookbook structure, incorporating current technical approaches and what we've learned teaching NASA colleagues and Earth science researchers. We will increasingly track our tasks and progress using [issues](https://github.com/nasa-openscapes/earthdata-cloud-cookbook) in this repository. We are having ongoing virtual Hackdays ([ongoing notes](https://docs.google.com/document/d/1fzT-iSFlWZLS38eoPmFseljyMKDQIAc-24qH6QpnRCc/edit) and [spreadsheet](https://docs.google.com/spreadsheets/d/10WC19Rrkq7YM1P3cc6qjI8rm8yi7yiYo/edit#gid=877539921)) to focus progress together.
+| Section | Description |
+|---|---|
+| [Our Cookbooks](https://nasa-openscapes.github.io/earthdata-cloud-cookbook/our-cookbooks.html) | Links to DAAC-specific cookbooks (PO.DAAC, NSIDC, ORNL, OB.DAAC, and more) |
+| [Core Concepts](https://nasa-openscapes.github.io/earthdata-cloud-cookbook/cloud_paradigm.html) | Conceptual background on cloud computing for Earth science |
+| [Tutorials](https://nasa-openscapes.github.io/earthdata-cloud-cookbook/tutorials/) | End-to-end, learn-by-doing workflows (hurricanes, sea level rise, carbon stocks, and more) |
+| [How-To Guides](https://nasa-openscapes.github.io/earthdata-cloud-cookbook/how-tos/) | Goal-oriented recipes for finding, accessing, and working with data |
+| [Reference](https://nasa-openscapes.github.io/earthdata-cloud-cookbook/appendix/) | Glossary, cheatsheets |
 
-Hackdays:
+## Quick Start
 
--   February 2, 2023
--   March 2, 2023
--   March 30, 2023
--   May 10, 2023
+You can follow along the examples provided on the cookbook or run them locally
+download the [corn environment.yml](https://github.com/NASA-Openscapes/corn/blob/main/ci/environment.yml)
+from the NASA-Openscapes JupyterHub base image and create a conda environment:
 
-### Hackday 4 Summary
+```bash
+conda env create -f environment.yml
+conda activate nasaopenscapes_env
+```
 
-This was our first Hackday "opening up" to folks beyond the NASA Mentors. Thanks Owen Littlejohns for joining and contributing! 
+## Key Tools
 
-- OPeNDAP: Cassie & Chris added OPeNDAP access to how-do-i > access data > if I’m local
-Merged branch into cookbook main! https://github.com/NASA-Openscapes/earthdata-cloud-cookbook/pull/202#pullrequestreview-1421457010 
+### Python: earthaccess
 
-- harmony-py: Amy and Owen added Harmony to how-do-i > subset data https://github.com/NASA-Openscapes/earthdata-cloud-cookbook/pull/187/commit s . Nearly ready to merge but zoom screensharing stopped
+The [**earthaccess**](https://earthaccess.readthedocs.io/en/latest/) Python
+library streamlines access to NASA Earthdata locally or in the cloud and is
+used throughout this Cookbook.
 
+```python
+import earthaccess
+earthaccess.login()
+```
 
-### **Hackday 3 Summary**
+### R: earthdatalogin
 
-Brief planning check-in and then mostly worked in breakouts the whole time - 
+The [**earthdatalogin**](https://boettiger-lab.github.io/earthdatalogin/) R package streamlines access to NASA Earthdata from R. While it is not as fully featured as earthaccess, it is the easiest way to authenticate and search for NASA Earthdata from R. As we continue to develop more tutorials in R, they will use this package throughout.
 
--   OPeNDAP tutorial (Chris) - goal to not use pyDAP, instead earthaccess/Xarray and Zarr.
+```r
+library(earthdatalogin)
+edl_netrc()
+```
 
-    -   Progress: Added auth steps and CMR query. [Notebook](https://github.com/NASA-Openscapes/earthdata-cloud-cookbook/blob/177-opendap-tutorials/how-tos/working-with-data-in-cloud/Earthdata_Cloud__Data_Access_OPeNDAP_Example.ipynb); [issue #177](https://github.com/NASA-Openscapes/earthdata-cloud-cookbook/issues/177)
+## Contributing
 
--   How-Tos: Harmony-py subset example with PO.DAAC data (Amy) 
+We welcome contributions from the community. See the [Contributing
+Guide](https://nasa-openscapes.github.io/earthdata-cloud-cookbook/contributing/)
+for setup instructions, workflows, and notebook templates. 
 
-    -   Progress: Pushed work-in-progress to branch, [draft PR](https://github.com/NASA-Openscapes/earthdata-cloud-cookbook/pull/187) 
+## Citation
 
--   How-Tos: Populated \"access data\"; created \"read data\" for python. (Cassie & Andy) 
+Please cite this resource using the Zenodo DOI:
+[10.5281/zenodo.7786710](https://doi.org/10.5281/zenodo.7786710). This DOI
+always resolves to the latest version.
 
-    -   Progress: [merged PR](https://github.com/NASA-Openscapes/earthdata-cloud-cookbook/pull/190)
+> Andy Barrett, Chris Battisto, Brandon Bottomley, Aaron Friesz, Alexis
+> Hunzinger, Mahsa Jami, Alex Lewandowski, Bri Lind, Luis López, Jack McNelis,
+> Cassie Nickles, Catalina Oaida Taglialatela, Celia Ou, Brianna Pagán, Sargent
+> Shriver, Amy Steiker, Michele Thornton, Makhan Virdi, Jessica Nicole Welch,
+> Jess Welch, Erin Robinson, Julia Stewart Lowndes. (2023).
+> NASA-Openscapes/earthdata-cloud-cookbook: NASA EarthData Cloud Cookbook
+> v2023.03.0. Zenodo. https://doi.org/10.5281/zenodo.7786711
 
-    -   Next steps: Tagging R people fill in their wisdom - please go through and populate some of the R parts
+## License
 
--   Tutorials: Import AppEEARS tutorial (Mahsa & Julie)
-
-    -   Progress: successful import and [draft PR](https://github.com/NASA-Openscapes/earthdata-cloud-cookbook/pull/189)
-
-    -   Question: not re-import all notebooks each time (see draft PR)	
-
--   Tutorials: earthaccess walk-through (Jess). Shared workflow with Luis (conversation below). Focus: how to use earthaccess outside the JupyterHub
-
--   Get-Started section (Jess) -  reviewed [old chapters commented out in quarto_yml](https://github.com/NASA-Openscapes/earthdata-cloud-cookbook/blob/188cfd30dfff6573c65af371cda171a46adb5841/_quarto.yml#L87-L91) to see how to incorporate/delete. 
-
-    -   Progress: notes/suggestions below
-
-    -   Next steps: review & do!
-
--   Environments chapter (Erin) started, notes here: [#186](https://github.com/NASA-Openscapes/earthdata-cloud-cookbook/pull/186) 
-
--   DOI, Zenodo, Citation, Documentation (Stef) - Deposit in Zenodo & get DOI for cookbook [#178](https://github.com/NASA-Openscapes/earthdata-cloud-cookbook/issues/178). Added DOI badge to README: [commit](https://github.com/NASA-Openscapes/earthdata-cloud-cookbook/commit/4a825bf8b7fe1dd476019704f107449cc3e76177)
-
-    -   woohoo <https://zenodo.org/record/7786711>
-
-    -   Next steps: review pull request for citation text:[ #191](https://github.com/NASA-Openscapes/earthdata-cloud-cookbook/pull/191) 
-
-    - Next steps: create Openscapes Zenodo Community (a là [NASA TOPS](https://zenodo.org/communities/tops/) & add Cookbook et al there)
-
-
-### **Hackday 2 Summary**
-
-At our 2nd hackday we had a brief overview of cookbook progress since we'd last met before working in breakout groups together. In this session: 
-
--   Updated the importer function by adding .md capability and rethinking storing copies of notebooks bc will get out of sync ([commit](https://github.com/NASA-Openscapes/earthdata-cloud-cookbook/commit/540e30545062dc6528f57aa9e1a83a9b66a46fe2)) (Cassie+Luis)
-
--   added CC-BY [license](https://github.com/NASA-Openscapes/earthdata-cloud-cookbook/blob/main/LICENSE.md) and added [license text to page footer](https://github.com/NASA-Openscapes/earthdata-cloud-cookbook/commit/6841a703346eeb3e93d798a6f7e244df792cfac5) (Erin+Stef)
-
--   Planned How-Tos restructure through organization & level of granularity on left and right nav ([draft PR](https://github.com/NASA-Openscapes/earthdata-cloud-cookbook/pull/182)) (Andy, Catalina, Mahsa, Alexis, Julie)
-
--   Update and add Cloud OPeNDAP tutorials ([issue](https://github.com/NASA-Openscapes/earthdata-cloud-cookbook/issues/177)) (Chris, Michele)
-
--   Reviewing earthaccess tutorial in cookbook to parse and point to the docs; also [how to sync a forked repo](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/syncing-a-fork#syncing-a-fork-branch-from-the-command-line) via cmd line (Jess)
-
-### **Progress following Hackday 1**
-
--   [\_CookbookTutorialsInventory_Feb_2023.xlsx](https://docs.google.com/spreadsheets/d/10WC19Rrkq7YM1P3cc6qjI8rm8yi7yiYo/edit#gid=877539921) that Catalina made to identify Tutorials in the Cookbook and track decisions and progress for updating; and [Imported Cloud Hackathon Tutorials](https://github.com/NASA-Openscapes/earthdata-cloud-cookbook/pull/176) so this content is available to modernize in the cookbook
-
--   [Reorg How-Tos structure as "How Do I..."](https://nasa-openscapes.github.io/earthdata-cloud-cookbook/how-tos/) - the work that Andy led to restructure the How-Tos structure to be more goal-oriented
-
--   [Cookbook GitHub Issues](https://github.com/NASA-Openscapes/earthdata-cloud-cookbook/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc) - began organizing ideas in Issues
-
+All materials are publicly available under a [CC-BY license](LICENSE.md),
+adapted from [The Turing Way](https://github.com/alan-turing-institute/the-turing-way/blob/master/LICENSE.md).
