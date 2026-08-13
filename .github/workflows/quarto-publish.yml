@@ -20,6 +20,10 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v3
 
+        # Update quarto as the version in the image is old
+      - name: Install Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+
       - name: Render and Publish
         if: github.repository == 'NASA-Openscapes/earthdata-cloud-cookbook'
         uses: quarto-dev/quarto-actions/publish@v2

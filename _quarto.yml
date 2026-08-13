@@ -37,23 +37,25 @@ website:
       - text: "Welcome"
         href: index.qmd
       # ============================================================
-      # SECTION 1: OUR COOKBOOKS (Explanation)
+      # SECTION 1: OUR COOKBOOKS
       # ============================================================
       - section: "Our Cookbooks"
         href: our-cookbooks.qmd
         contents:
           - text: "PO.DAAC Tutorials"
             href: https://podaac.github.io/tutorials/
-          - text: "ASDC Mission Tutorials"
+          - text: "ASDC Data and User Services"
             href: https://nasa.github.io/ASDC_Data_and_User_Services/
           - text: "NSIDC Data Cookbook"
             href: https://nsidc.github.io/NSIDC-Data-Cookbook/
-          - text: "OBDAAC Ocean Data Cookbook"
+          - text: "OB.DAAC Help Hub"
             href: https://nasa.github.io/oceandata-notebooks/
           - text: "ORNL DAAC Airborne Tutorials"
             href: https://ornldaac.github.io/airborne/
           - text: "ORNL DAAC GEDI Tutorials"
             href: https://ornldaac.github.io/gedi_tutorials/
+          - text: "NISAR Data User Guide"
+            href: https://nisar-docs.asf.alaska.edu/
 
       # ============================================================
       # SECTION 2: CORE CONCEPTS (conceptual, the "why")
@@ -115,46 +117,33 @@ website:
             href: external/xarray.ipynb
           - text: "Sentinel-6 OPeNDAP & Gridding"
             href: external/sentinel-6_opendap_access_gridding.ipynb
-     # - section: "Examples by Data Provider"
-     #   href: examples/index.qmd
-     #   contents:
-          - section: "GES DISC"
-            contents:
-              - text: "MERRA2 with Kerchunk"
-                href: examples/GESDISC/GESDISC_MERRA2_tavg1_2d_flx_Nx__Kerchunk.ipynb
-          - section: "LP DAAC"
-            contents:
-              - text: "HLS Point Buffer Search & Access"
-                href: examples/LPDAAC/Find_and_Access_HLS_PointBuffer.ipynb
-              - text: "ECOSTRESS with Kerchunk"
-                href: examples/LPDAAC/LPDAAC_ECOSTRESS_LSTE__Kerchunk.ipynb
+          - text: "Direct Access & Harmony Workflow"
+            href: tutorials/Transform-workflow.ipynb
+          - text: "MERRA2 with Kerchunk"
+            href: tutorials/GESDISC_MERRA2_tavg1_2d_flx_Nx__Kerchunk.ipynb
+          - text: "HLS Point Buffer Search & Access"
+            href: tutorials/Find_and_Access_HLS_PointBuffer.ipynb
+          - text: "ECOSTRESS with Kerchunk"
+            href: tutorials/LPDAAC_ECOSTRESS_LSTE__Kerchunk.ipynb
           - section: "NSIDC"
             contents:
               - text: "ICESat-2 OnPrem vs Cloud"
                 href: examples/NSIDC/ICESat2-CMR-OnPrem-vs-Cloud.ipynb
               - text: "ICESat-2 CMR & AWS S3"
                 href: examples/NSIDC/ICESat2-CMR-AWS-S3.ipynb
-          - section: "ORNL DAAC"
-            contents:
               - text: "DAYMET Direct S3 Access"
-                href: examples/ORNL/Data_Access__Direct_S3_Access__ORNL_DAYMET.ipynb
-              - text: "DAYMET with Kerchunk"
-                href: examples/ORNL/ORNL_DAYMET__Kerchunk.ipynb
-          - section: "PO.DAAC"
-            contents:
-              - text: "ECCO SSH with Kerchunk"
-                href: examples/PODAAC/PODAAC_ECCO_SSH__Kerchunk.ipynb
-          - section: "USGS"
-            contents:
-              - text: "Landsat C2 Search & Access"
-                href: examples/USGS_Landsat/Landsat_C2_Search_Access.ipynb
-          - text: "Direct Access & Harmony Workflow"
-            href: examples/Transform-workflow.ipynb
+            href: tutorials/Data_Access__Direct_S3_Access__ORNL_DAYMET.ipynb
+          - text: "DAYMET with Kerchunk"
+            href: tutorials/ORNL_DAYMET__Kerchunk.ipynb
+          - text: "ECCO SSH with Kerchunk"
+            href: tutorials/PODAAC_ECCO_SSH__Kerchunk.ipynb
+          - text: "Landsat C2 Search & Access"
+            href: tutorials/Landsat_C2_Search_Access.ipynb
 
       # ============================================================
-      # SECTION 4: HOW-TO GUIDES (goal-oriented, assumes contex)
+      # SECTION 4: HOW-TO GUIDES (goal-oriented, assumes context)
       # ============================================================
-      - section: "How-To Guides (goal-oriented, assumes context)"
+      - section: "How-To Guides (Do a Task)"
         contents:
           - section: "Find Data"
             contents:
@@ -188,14 +177,6 @@ website:
                 href: how-tos/subset.qmd
               - text: "Store Data in S3"
                 href: how-tos/using-s3-storage.ipynb
-              # - text: "Reformat Data Files"
-              #   href: how-tos/reformat.qmd
-              # - text: "Reproject and Regrid"
-              #   href: how-tos/reproject_regrid.qmd
-              # - text: "Aggregate Data"
-              #   href: how-tos/aggregate.qmd
-              # - text: "Plot Data"
-              #   href: how-tos/plot.qmd
           - section: "Use APIs"
             href: how-tos/use_apis.qmd
             contents:
@@ -203,8 +184,6 @@ website:
                 href: external/appeears_csv_cloud_access.ipynb
           - text: "Open Science Tutorial"
             href: how-tos/Earthdata_Cloud__Open-Science-Tutorial.ipynb
-          - text: "Parking Lot"
-            href: how-tos/how_to_guide_parking_lot.qmd
 
       # ============================================================
       # SECTION 5: REFERENCE
@@ -239,7 +218,7 @@ website:
                 href: contributing/troubleshooting.md
               - text: "Community Guidelines"
                 href: contributing/community.md
-              - text: "Environment"
+              - text: "Computing Environment"
                 href: contributing/environment.qmd
           - section: "Workshops & Hackathons"
             href: workshops/index.qmd
@@ -248,16 +227,6 @@ website:
                 href: workshops/setup.md
           - text: "Cloud Environment Setup"
             href: environment-setup/index.qmd
-          - section: "Alternate Access Methods"
-            contents:
-              - text: "Access COG"
-                href: appendix/appendix-alternate-in-cloud-access/Access_COG.qmd
-              - text: "Single File HTTPS COG"
-                href: appendix/appendix-alternate-in-cloud-access/Earthdata_Cloud__Single_File__HTTPS_Access_COG_Example.qmd
-              - text: "Single File Direct S3 NetCDF"
-                href: appendix/appendix-alternate-in-cloud-access/Earthdata_Cloud__Single_File__Direct_S3_Access_NetCDF4_Example.ipynb
-              - text: "Multi-File Direct S3 NetCDF"
-                href: appendix/appendix-alternate-in-cloud-access/Multi-File_Direct_S3_Access_NetCDF_Example.ipynb
           - text: "Privacy Policy"
             href: privacy.qmd
 
