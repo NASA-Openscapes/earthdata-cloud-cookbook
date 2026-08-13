@@ -35,7 +35,9 @@ conda env create -f environment.yml
 conda activate nasaopenscapes_env
 ```
 
-## Key Tool: earthaccess
+## Key Tools
+
+### Python: earthaccess
 
 The [**earthaccess**](https://earthaccess.readthedocs.io/en/latest/) Python
 library streamlines access to NASA Earthdata locally or in the cloud and is
