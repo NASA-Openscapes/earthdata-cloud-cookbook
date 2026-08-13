@@ -48,6 +48,15 @@ import earthaccess
 earthaccess.login()
 ```
 
+### R: earthdatalogin
+
+The [**earthdatalogin**](https://boettiger-lab.github.io/earthdatalogin/) R package streamlines access to NASA Earthdata from R. While it is not as fully featured as earthaccess, it is the easiest way to authenticate and search for NASA Earthdata from R. As we continue to develop more tutorials in R, they will use this package throughout.
+
+```r
+library(earthdatalogin)
+edl_netrc()
+```
+
 ## Contributing
 
 We welcome contributions from the community. See the [Contributing
