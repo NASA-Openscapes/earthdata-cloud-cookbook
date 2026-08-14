@@ -348,43 +348,43 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="https://podaac.github.io/tutorials/" class="sidebar-item-text sidebar-link">
+  <a href="https://podaac.github.io/tutorials/" class="sidebar-item-text sidebar-link" target="_blank">
  <span class="menu-text">PO.DAAC Tutorials</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="https://nasa.github.io/ASDC_Data_and_User_Services/" class="sidebar-item-text sidebar-link">
+  <a href="https://nasa.github.io/ASDC_Data_and_User_Services/" class="sidebar-item-text sidebar-link" target="_blank">
  <span class="menu-text">ASDC Data and User Services</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="https://nsidc.github.io/NSIDC-Data-Cookbook/" class="sidebar-item-text sidebar-link">
+  <a href="https://nsidc.github.io/NSIDC-Data-Cookbook/" class="sidebar-item-text sidebar-link" target="_blank">
  <span class="menu-text">NSIDC Data Cookbook</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="https://nasa.github.io/oceandata-notebooks/" class="sidebar-item-text sidebar-link">
+  <a href="https://nasa.github.io/oceandata-notebooks/" class="sidebar-item-text sidebar-link" target="_blank">
  <span class="menu-text">OB.DAAC Help Hub</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="https://ornldaac.github.io/airborne/" class="sidebar-item-text sidebar-link">
+  <a href="https://ornldaac.github.io/airborne/" class="sidebar-item-text sidebar-link" target="_blank">
  <span class="menu-text">ORNL DAAC Airborne Tutorials</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="https://ornldaac.github.io/gedi_tutorials/" class="sidebar-item-text sidebar-link">
+  <a href="https://ornldaac.github.io/gedi_tutorials/" class="sidebar-item-text sidebar-link" target="_blank">
  <span class="menu-text">ORNL DAAC GEDI Tutorials</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="https://nisar-docs.asf.alaska.edu/" class="sidebar-item-text sidebar-link">
+  <a href="https://nisar-docs.asf.alaska.edu/" class="sidebar-item-text sidebar-link" target="_blank">
  <span class="menu-text">NISAR Data User Guide</span></a>
   </div>
 </li>
@@ -1049,7 +1049,7 @@ ul.task-list li input[type="checkbox"] {
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/nasa-openscapes\.github\.io\/earthdata-cloud-cookbook");
+        var filterRegex = new RegExp("^(?:http:|https:)(\/\/)((nasa-openscapes\.github\.io/earthdata-cloud-cookbook)|(0\.0\.0\.0)|(127\.0\.0\.1)|(deploy-preview))");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
