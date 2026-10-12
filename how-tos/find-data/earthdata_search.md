@@ -56,7 +56,7 @@ Searching for highest available resolution level 4 data within known spatial bou
 Earthdata Search immediately filters the collection list to only those with data intersecting the drawn area, updating live as you adjust the shape
 
 2. **Keywords** (Science Keywords) filter: *Oceans > Ocean Circulation > Ocean Currents*
-3. **Processing Levels** filter: check `4 - Gridded Model Output` for an analysis-ready gridded product rather than raw along-track satellite passes
+3. **Processing Levels** filter: check `4 - Gridded Model Output` for an analysis-ready gridded product
 4. **Horizontal Data Resolution** filter: check `4 - 10 to 50km` to browse the gridded products rather than data on un-gridded satellite passes
 
 Combining multiple search filters narrows down ~11,000 collections to a short, specific list of 4.
