@@ -1,0 +1,282 @@
+---
+title: Examining TEMPO NO₂ data with R
+authors:
+  - name: Andy Teucher
+    email: andy@andyteucher.ca
+date: '2026-10-13'
+keywords:
+  - TEMPO
+  - NO2
+  - air-quality
+  - netcdf
+  - terra
+  - earthdatalogin
+format:
+  html: default
+execute:
+  eval: false
+jupyter:
+  jupytext:
+    text_representation:
+      extension: .qmd
+      format_name: quarto
+      format_version: '1.0'
+      jupytext_version: 1.19.1
+  kernelspec:
+    display_name: Python 3 (ipykernel)
+    language: python
+    name: python3
+---
+
+## Overview
+
+This tutorial is an R adaptation of the ASDC tutorial
+[*Examine data details and download TEMPO files using earthaccess*](https://nasa.github.io/ASDC_Data_and_User_Services/TEMPO/how_to_examine_TEMPO_data_using_earthaccess.html)
+by Alexander Radkevich (NASA Atmospheric Science Data Center), which uses Python.
+Here we use R, with the [earthdatalogin](https://boettiger-lab.github.io/earthdatalogin/)
+package for authentication and search.
+
+[TEMPO](https://tempo.si.edu/) (Tropospheric Emissions: Monitoring of Pollution) measures
+air pollutants, including nitrogen dioxide (NO₂), over North America. We will search for
+Level 3 NO₂ data, read the tropospheric and stratospheric NO₂ columns and the quality flag,
+work out which pixels are usable, and map total column NO₂ over the central United States.
+
+- **Purpose:** Show how to find, read, quality-filter and map TEMPO NO₂ data in R.
+- **Outcomes:** You will be able to search for TEMPO granules, read variables from a
+  grouped netCDF file in the cloud, build quality masks, and plot the result.
+- **Process:** Authenticate, search, read, mask, crop, plot.
+
+## Learning objectives
+
+- Authenticate with NASA Earthdata Login using `earthdatalogin`
+- Search for granules by collection, time and bounding box
+- Read variables from a grouped netCDF-4 file with `terra`, without downloading the whole file
+- Apply fill-value and quality-flag masks, and understand why they differ
+- Subset to a region and make a map
+
+## Prerequisites
+
+| Concepts | Importance | Notes |
+| --- | --- | --- |
+| [earthdatalogin](https://boettiger-lab.github.io/earthdatalogin/) | Necessary | Authentication and search |
+| [Earthdata Login account](https://urs.earthdata.nasa.gov) | Necessary | Free; needed to access TEMPO data |
+| Understanding of NetCDF | Helpful | TEMPO files use groups |
+| Basic `terra` | Helpful | Raster data in R |
+
+- **Time to learn**: about 30 minutes
+- **System requirements**: R with GDAL built with netCDF/HDF5 support (GDAL ≥ 3.4 recommended)
+
+---
+
+## Imports
+
+```{r}
+library(earthdatalogin)
+library(terra)
+library(ggplot2)
+library(tidyterra)
+library(sf)
+library(rnaturalearth)
+```
+
+## Authenticate
+
+`edl_netrc()` configures GDAL and curl so that remote files can be read directly. It uses the
+`EARTHDATA_USER` and `EARTHDATA_PASSWORD` environment variables. If those aren't set it falls
+back to a shared default login (`rpackage`) rather than reading `~/.netrc`, which quickly gets
+rate-limited, so we supply our own credentials.
+
+```{r}
+edl_netrc(
+  username = Sys.getenv("EARTHDATA_USER"),
+  password = Sys.getenv("EARTHDATA_PASSWORD")
+)
+```
+
+## Search for TEMPO granules
+
+We want the TEMPO Level 3 NO₂ product, version 3 (`TEMPO_NO2_L3`, `V03`), for
+1 September 2024 over a region around the centre of the contiguous United States
+(38°N, 96°W, plus or minus 5° of latitude and 6° of longitude).
+
+```{r}
+lat <- 38.0
+lon <- -96.0
+
+# bounding_box is a single string: "west,south,east,north"
+bbox <- paste(lon - 6, lat - 5, lon + 6, lat + 5, sep = ",")
+
+results <- edl_search(
+  short_name = "TEMPO_NO2_L3",
+  version = "V03",
+  temporal = c("2024-09-01T00:00:00Z", "2024-09-01T23:59:59Z"),
+  bounding_box = bbox,
+  parse_results = FALSE
+)
+
+length(results)
+```
+
+The search returns 18 granules, the same as the Python tutorial. Note that times are UTC, so the
+first granule (scan 16) was acquired at 23:58 UTC on 31 August.
+
+### Look at the results
+
+`edl_extract_urls()` pulls the data links out of the search results. File names follow the
+pattern `TEMPO_NO2_L3_V03_<timestamp>_S0xx.nc`, where `S0xx` is the scan number.
+
+```{r}
+urls <- edl_extract_urls(results)
+
+granules <- data.frame(
+  file = basename(urls),
+  scan = sub(".*_(S[0-9]+)\\.nc$", "\\1", basename(urls)),
+  time = as.POSIXct(
+    sub(".*_V03_([0-9]{8}T[0-9]{6})Z_.*", "\\1", basename(urls)),
+    format = "%Y%m%dT%H%M%S", tz = "UTC"
+  ),
+  url = urls
+)
+
+granules[, c("file", "scan", "time")]
+```
+
+## Open a granule
+
+Each TEMPO L3 file is large (about 890 MB for this one). Rather than downloading it, we open it remotely with
+GDAL's `/vsicurl/` handler, which reads only the parts of the file we ask for.
+
+We will use the granule from 15:38 UTC (scan 7), the same one as the original tutorial.
+
+```{r}
+url <- granules$url[grepl("20240901T153815Z_S007", granules$url)]
+nc <- paste0("/vsicurl/", url)
+```
+
+TEMPO files are organized in netCDF *groups*. The data variables are in the `product`
+group, while latitude and longitude are at the root. Let's list what GDAL sees:
+
+```{r}
+describe(nc, sds = TRUE)
+```
+
+::: {.callout-note}
+TODO: Verify how GDAL names the group variables on the Hub (e.g.
+`NETCDF:"...":/product/vertical_column_troposphere`). If `terra` cannot open the group
+variables or georeference them, switch to the hybrid approach: read with
+`stars::read_mdim()` and convert with `terra::rast()` (see PLAN.md, section 4).
+:::
+
+## Read the variables
+
+We need three variables from the `product` group:
+
+- `vertical_column_troposphere`: tropospheric NO₂ column
+- `vertical_column_stratosphere`: stratospheric NO₂ column
+- `main_data_quality_flag`: quality flag (0 is good)
+
+```{r}
+read_tempo <- function(nc, var) {
+  rast(sprintf('NETCDF:"%s":/product/%s', nc, var))
+}
+
+trop  <- read_tempo(nc, "vertical_column_troposphere")
+strat <- read_tempo(nc, "vertical_column_stratosphere")
+qf    <- read_tempo(nc, "main_data_quality_flag")
+
+trop
+```
+
+```{r}
+units(trop)       # expect molecules/cm^2
+dim(trop)         # expect 2950 rows x 7750 columns x 1 layer
+```
+
+## Find the good pixels
+
+Not every pixel has a usable value. There are two things to check:
+
+1. **Fill values.** Missing pixels hold a fill value (-1e30) rather than `NA`.
+2. **The quality flag.** `main_data_quality_flag == 0` marks good retrievals.
+
+These do not select the same pixels, so they need to be combined.
+
+```{r}
+fv_trop  <- -1e30
+fv_strat <- -1e30
+
+# terra normally converts the netCDF _FillValue to NA for us; check that this happened
+global(trop, "min", na.rm = TRUE)
+```
+
+```{r}
+# TODO: confirm the fill value is read as NA by terra; if it is, the `!= fv`
+# comparisons in the original tutorial become `!is.na()`.
+not_fill <- !is.na(trop) & !is.na(strat)
+good <- (qf == 0) & not_fill
+best <- good & (trop > 0) & (strat > 0)
+
+counts <- data.frame(
+  criterion = c("Not fill value", "Quality flag = 0", "Good (QF = 0 and not fill)",
+                "Best (good and both columns > 0)"),
+  pixels = c(
+    global(not_fill, "sum", na.rm = TRUE)[[1]],
+    global(qf == 0, "sum", na.rm = TRUE)[[1]],
+    global(good, "sum", na.rm = TRUE)[[1]],
+    global(best, "sum", na.rm = TRUE)[[1]]
+  )
+)
+counts
+```
+
+::: {.callout-note}
+For this granule the Python tutorial reports 22,862,500 non-fill pixels, 7,363,629 with
+a quality flag of 0 and 6,262,529 "best" pixels. These are a useful check that the R
+version is doing the same thing. TODO: compare.
+:::
+
+Some "good" pixels still have negative NO₂ columns, which are not physically meaningful.
+These arise from noise in the retrieval, so the "best" mask additionally drops them. This
+is a simple heuristic, not an official quality criterion.
+
+## Subset to the region of interest
+
+```{r}
+roi <- ext(lon - 6, lon + 6, lat - 5, lat + 5)
+
+trop_roi  <- crop(trop, roi)
+strat_roi <- crop(strat, roi)
+best_roi  <- crop(best, roi)
+
+total_roi <- (trop_roi + strat_roi) |> mask(best_roi, maskvalues = 0)
+```
+
+## Map total column NO₂
+
+```{r}
+states <- ne_states(country = "United States of America", returnclass = "sf")
+
+ggplot() +
+  geom_spatraster(data = total_roi) +
+  geom_sf(data = states, fill = NA, colour = "grey40", linewidth = 0.2, linetype = "dotted") +
+  scale_fill_viridis_c(
+    na.value = "transparent",
+    limits = c(0, 5e16),
+    oob = scales::squish,
+    name = "Total NO₂ column\n(molecules/cm²)"
+  ) +
+  coord_sf(xlim = c(lon - 6, lon + 6), ylim = c(lat - 5, lat + 5), expand = FALSE) +
+  theme_minimal() +
+  theme(legend.position = "bottom")
+```
+
+## Summary
+
+TODO once the code has run.
+
+## Resources
+
+- [Original Python tutorial (ASDC)](https://nasa.github.io/ASDC_Data_and_User_Services/TEMPO/how_to_examine_TEMPO_data_using_earthaccess.html)
+- [earthdatalogin](https://boettiger-lab.github.io/earthdatalogin/)
+- [terra](https://rspatial.github.io/terra/)
+- [TEMPO at ASDC](https://asdc.larc.nasa.gov/project/TEMPO)
