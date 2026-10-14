@@ -37,9 +37,9 @@ When searching for ocean current data, using a single keyword search for `ocean 
 3. **Organizations** filter: select `PO.DAAC` to restrict to data archived at this DAAC
 4. **Processing Levels** filter: check `4 - Gridded Model Output` to browse the gridded products rather than data on un-gridded satellite passes
 
-![](../images/EarthDataSearch/ed_search_2a_1.png)
+![](../how-tos/images/ed_search_2a_1.png)
 
-![](../images/EarthDataSearch/ed_search_2a_2.png)
+![](../how-tos/images/ed_search_2a_2.png)
 *Figure caption: Combining keyword, Science Keywords, Organization, and Processing Level filters to find ocean current data*
 
 Combining multiple search filters narrows down ~500 collections to a short, specific list of ~30.
@@ -61,9 +61,9 @@ Earthdata Search immediately filters the collection list to only those with data
 
 Combining multiple search filters narrows down ~11,000 collections to a short, specific list of 4.
 
-![](../images/EarthDataSearch/ed_search_2b_1.png)
+![](../how-tos/images/ed_search_2b_1.png)
 
-![](../images/EarthDataSearch/ed_search_2b_2.png)
+![](../how-tos/images/ed_search_2b_2.png)
 *Figure caption: Drawing a spatial polygon to restrict search results to a specific region and combining Science Keywords, Processing Level, and Horizontal Data Resolution filters to find ocean current data*
 
 ### Step 3. Explore the dataset details, including Cloud Access information
