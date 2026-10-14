@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.18">
+<meta name="generator" content="quarto-1.10.19">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -43,14 +43,14 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b626d73c4c936ccc3cb08be7d45d1df6.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-4f7f7d6252b8876e6afd49b956933c27.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-332a225148286553d630c8123ebf31e7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-4f7f7d6252b8876e6afd49b956933c27.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-8551819c2e6c08e08602c2a943d57d71.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-19474185eeea64769cc3c390febcd8b3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-8551819c2e6c08e08602c2a943d57d71.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -956,6 +956,41 @@ ul.task-list li input[type="checkbox"] {
 <figcaption><em>Figure caption: Refine search, set temporal bounds, get more information</em></figcaption>
 </figure>
 </div>
+<section id="a.-example-1-search-using-keywords" class="level4">
+<h4 class="anchored" data-anchor-id="a.-example-1-search-using-keywords">2.a. Example 1: Search Using Keywords</h4>
+<p>Searching for level 4 ocean current data archived at PO.DAAC</p>
+<p>When searching for ocean current data, using a single keyword search for <code>ocean currents</code> returns a broad mix of collections — model output, altimetry-derived products, in-situ drifter data, and more. The <strong>Filters</strong> panel on the left lets us combine several search filters to narrow this down:</p>
+<ol type="1">
+<li><strong>Keyword search</strong>: start broad with <code>ocean current</code> in the search bar</li>
+<li><strong>Keywords</strong> (Science Keywords) filter: <em>Oceans &gt; Ocean Circulation &gt; Ocean Currents</em></li>
+<li><strong>Organizations</strong> filter: select <code>PO.DAAC</code> to restrict to data archived at this DAAC</li>
+<li><strong>Processing Levels</strong> filter: check <code>4 - Gridded Model Output</code> to browse the gridded products rather than data on un-gridded satellite passes</li>
+</ol>
+<p><img src="../images/ed_search_2a_1.png" class="img-fluid"></p>
+<p><img src="../images/ed_search_2a_2.png" class="img-fluid"> <em>Figure caption: Combining keyword, Science Keywords, Organization, and Processing Level filters to find ocean current data</em></p>
+<p>Combining multiple search filters narrows down ~500 collections to a short, specific list of ~30.</p>
+</section>
+<section id="b.-example-2-search-using-spatial-bounds-with-keywords" class="level4">
+<h4 class="anchored" data-anchor-id="b.-example-2-search-using-spatial-bounds-with-keywords">2.b. Example 2: Search Using Spatial Bounds with Keywords</h4>
+<p>Searching for highest available resolution level 4 data within known spatial bounds</p>
+<ol type="1">
+<li>Use the <strong>Spatial</strong> search tool above the map (the icons at the top of the search panel) to define the area. You can:
+<ul>
+<li>Draw a <strong>rectangle</strong>, <strong>polygon</strong>, or <strong>circle</strong> directly on the map</li>
+<li>Enter a single <strong>point</strong> (lat/lon) with a search radius</li>
+<li>Or upload a <strong>Shapefile, KML, GeoJSON, or GeoRSS</strong> file</li>
+</ul></li>
+</ol>
+<p>Earthdata Search immediately filters the collection list to only those with data intersecting the drawn area, updating live as you adjust the shape</p>
+<ol start="2" type="1">
+<li><strong>Keywords</strong> (Science Keywords) filter: <em>Oceans &gt; Ocean Circulation &gt; Ocean Currents</em></li>
+<li><strong>Processing Levels</strong> filter: check <code>4 - Gridded Model Output</code> for an analysis-ready gridded product</li>
+<li><strong>Horizontal Data Resolution</strong> filter: check <code>4 - 10 to 50km</code> to browse the gridded products rather than data on un-gridded satellite passes</li>
+</ol>
+<p>Combining multiple search filters narrows down ~11,000 collections to a short, specific list of 4.</p>
+<p><img src="../images/ed_search_2b_1.png" class="img-fluid"></p>
+<p><img src="../images/ed_search_2b_2.png" class="img-fluid"> <em>Figure caption: Drawing a spatial polygon to restrict search results to a specific region and combining Science Keywords, Processing Level, and Horizontal Data Resolution filters to find ocean current data</em></p>
+</section>
 </section>
 <section id="step-3.-explore-the-dataset-details-including-cloud-access-information" class="level3">
 <h3 class="anchored" data-anchor-id="step-3.-explore-the-dataset-details-including-cloud-access-information">Step 3. Explore the dataset details, including Cloud Access information</h3>
