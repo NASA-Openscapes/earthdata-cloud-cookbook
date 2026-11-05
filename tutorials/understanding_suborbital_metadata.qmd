@@ -19,7 +19,7 @@ format:
   html: default
   ipynb: default # Adds a Jupyter Notebook download button in the right menu
 execute:
-  eval: false # Code requires live Earthdata Login credentials; not executed during project render
+  eval: true # Code requires live Earthdata Login credentials; not executed during project render
 
 # TODO: Add nasa-metadata as a custom field for providing NASA-specific metadata
 # #441
@@ -75,6 +75,7 @@ Champions](https://github.com/NASA-Openscapes/2026-nasa-champions)
 | [Understanding of NetCDF](https://foundations.projectpythia.org/core/data-formats/netcdf-cf) | Helpful | |
 | Basic familiarity with `xarray` | Helpful | Used to open and inspect the sample granule. |
 
+
 - **Time to learn**: ~45–60 minutes.
 
 ---
@@ -83,6 +84,7 @@ Champions](https://github.com/NASA-Openscapes/2026-nasa-champions)
 
 ```{python}
 import earthaccess
+from pprint import pprint
 ```
 
 ## What makes suborbital data different
@@ -140,9 +142,7 @@ appendix](https://nasa-openscapes.github.io/earthdata-cloud-cookbook/appendix/au
 for more detail on setting up `.netrc`.
 
 ```{python}
-auth = earthaccess.login(strategy="netrc")
-if not auth.authenticated:
-    auth = earthaccess.login(strategy="interactive", persist=True)
+auth = earthaccess.login(persist=True)
 ```
 
 ### Define the study area and time period
@@ -250,13 +250,73 @@ datasets = earthaccess.search_datasets(
     bounding_box=(-114.7, 36.2, -111.8, 37.5),
     temporal=("2025-09-10", "2025-09-20"),
 )
+
+for dataset in datasets:
+    print(dataset["umm"]["EntryTitle"])
 ```
+
+```{python}
+collections = earthaccess.search_datasets(
+    project="BIOSCAPE",
+    instrument="AVIRIS-NG",
+    cloud_hosted=True,
+)
+
+for collection in collections:
+    print(collection["umm"]["EntryTitle"])
+```
+
+These titles help us identify the different products available. The project
+and instrument information supplied by data producers makes this search
+possible.
 
 ### Inspect candidate collections and select a worked example
 
-```{python}
+For this notebook, we will use
+[*BioSCape: AVIRIS-NG L3 Resampled Reflectance Mosaics, V2*](https://doi.org/10.3334/ORNLDAAC/2427).
+We can retrieve its collection record using the DOI.
 
+```{python}
+collection = earthaccess.search_datasets(
+    doi="10.3334/ORNLDAAC/2427",
+    version="2",
+)[0]
 ```
+
+::: {.callout-note collapse="true" title="Show collection metadata"}
+```{python}
+pprint(collection.summary)
+```
+::: 
+
+The summary provides identifiers and basic information about the collection.
+We can check the its abstract to learn what the dataset contains.
+
+```{python}
+print(collection["umm"]["Abstract"])
+```
+
+The abstract tells us that this collection contains mosaic tiles combining
+observations from multiple flight lines and days. It also identifies the
+available file types: NetCDF data, TIFF quicklook images, and a GeoJSON tile
+index. We should follow the [DOI](https://doi.org/10.3334/ORNLDAAC/2427) to
+review the user guide and recommended citation. The guide provides additional
+details about how the mosaics were produced and their limitations, helping you
+decide whether the data meet your needs.
+
+### Check available access methods and cloud availability
+
+The collection summary includes cloud-hosting information. Its distribution
+metadata can provide additional details about where the files are stored.
+
+```{python}
+pprint(collection["umm"].get("DirectDistributionInformation", {}))
+```
+
+We can also check the documentation for access requirements. Cloud storage
+information describes the archive location; the granule records provide links
+to individual files.
+
 
 ## Find granules for your study
 
