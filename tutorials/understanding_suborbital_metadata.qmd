@@ -31,11 +31,11 @@ execute:
 
 Suborbital observations are collected under highly variable conditions, making
 metadata essential for understanding the data. The same instrument can be
-mounted on different platforms, at different altitudes, swath widths, and
-spatial coverage Calibration parameters may vary across campaigns, and factors
-such as aircraft movement, weather, and lighting conditions can affect the
-observations. Enriched metadata captures these details, supporting data
-interpretation, discoverability, and reuse.
+mounted on different platforms, at different altitude or depth, swath widths,
+and spatial coverage. Instruments, calibration procedures, sampling methods,
+and environmental conditions may also vary across campaigns Enriched metadata
+captures these details, supporting data interpretation, discoverability, and
+reuse.
 
 Here is our [**POP**](https://rockwoodleadership.org/pop-everything-strategic-planning-in-30-seconds-or-less/)(Purpose, Outcomes, Process):
 
@@ -58,73 +58,95 @@ Champions](https://github.com/NASA-Openscapes/2026-nasa-champions)
 
 ## Learning objectives
 
-List the main learning objectives here.
+- Explain what distinguishes suborbital (airborne/field campaign) data from satellite data, and why that affects how its metadata is structured.
+- Distinguish collection-level metadata (UMM-C) from granule-level metadata (UMM-G) in CMR, and know what GCMD science keywords are for.
+- Search CMR with `earthaccess` for a suborbital collection by campaign, platform, instrument, or science keyword.
+- Locate and interpret platform, instrument, campaign, spatial/temporal extent, and processing information for a collection and its granules.
+- Access and open a suborbital granule from the cloud, and inspect its variables, units, and structure.
+- Know what to do when a collection's metadata is incomplete.
 
 ## Prerequisites
 
-Following your overview, tell your reader what concepts, packages, or other background information they'll **need** before learning your material. Tie this explicitly with links to other pages here in Foundations or to relevant external resources. Remove this body text, then populate the Markdown table, denoted in this cell with `|` vertical brackets, below, and fill out the information following. In this table, lay out prerequisite concepts by explicitly linking to other Foundations material or external resources, or describe generally helpful concepts.
-
-Label the importance of each concept explicitly as **helpful/necessary**.
-
 | Concepts | Importance | Notes |
 | --- | --- | --- |
-| [Intro to earthaccess](https://earthaccess.readthedocs.io/en/stable/quick-start/) | Necessary | Required for accessing NASA Earthdata Cloud resources |
-| [Understanding of NetCDF](https://foundations.projectpythia.org/core/data-formats/netcdf-cf) | Helpful | Familiarity with metadata structure |
-| Project management | Helpful | |
+| [Earthdata Login account](https://urs.earthdata.nasa.gov/users/new) | Necessary | Needed to search and access NASA Earthdata, even for "public" collections. See the [Authentication appendix](https://nasa-openscapes.github.io/earthdata-cloud-cookbook/appendix/authentication.html) for setup help. |
+| [Intro to earthaccess](https://earthaccess.readthedocs.io/en/stable/quick-start/) | Necessary | Used throughout this notebook to search CMR and open cloud data. |
+| [How do I find data using code?](https://nasa-openscapes.github.io/earthdata-cloud-cookbook/how-tos/find-data/programmatic.html) | Helpful | Covers the general `earthaccess`/CMR search pattern this notebook builds on. |
+| [Understanding of NetCDF](https://foundations.projectpythia.org/core/data-formats/netcdf-cf) | Helpful | |
+| Basic familiarity with `xarray` | Helpful | Used to open and inspect the sample granule. |
 
-- **Time to learn**: estimate in minutes. For a rough idea, use 5 mins per subsection, 10 if longer; add these up for a total. Safer to round up and overestimate.
-- **System requirements**:
-    - Populate with any system, version, or non-Python software requirements if necessary
-    - Otherwise use the concepts table above and the Imports section below to describe required packages as necessary
-    - If no extra requirements, remove the **System requirements** point altogether
+- **Time to learn**: ~45–60 minutes.
 
 ---
 
 ## Imports
-Populate the following code cell with all necessary Python imports **up-front**:
 
 ```{python}
 import sys
 # import earthaccess
 ```
 
-## Your first content section
+## What makes suborbital data different
 
-This is where you begin your first section of material, loosely tied to your objectives stated up front. Tie together your notebook as a narrative, with interspersed Markdown text, images, and more as necessary,
+Suborbital campaigns can bring together observations from aircraft, ships,
+towers, and field sampling sites. Within a single campaign, researchers may use
+several instruments across different platforms, locations, and periods.
+Understanding these observations requires metadata that identifies how each
+measurement fits into the broader effort.
+
+Three concepts help describe these relationships:
+
+- [Platform](https://www.earthdata.nasa.gov/data/platforms): The vehicle or
+structure from which observations are collected, such as an aircraft, ship, or
+tower.
+- [Instrument](https://www.earthdata.nasa.gov/data/instruments): The sensor or
+equipment used to collect measurements.
+- [Project](https://www.earthdata.nasa.gov/data/projects): The scientific
+effort associated with the data. In CMR, this can include a field campaign,
+mission, investigation, or broader research program.
+
+A single project may involve several platforms, each carrying multiple
+instruments. The same instrument may also be used on different platforms or in
+different campaigns. Recording these relationships helps users understand which
+observations belong together and how they were collected.
+
+Two real ORNL DAAC collections illustrate this well:
+
+| Metadata | [CARVE L1 FTS spectral radiances](https://doi.org/10.3334/ORNLDAAC/1426) | [AVIRIS-Classic L2 reflectance, V1](https://doi.org/10.3334/ORNLDAAC/2154) |
+|---|---|---|
+| Platforms listed | C-23 Sherpa | NOAA Twin Otter; NASA ER-2; NASA WB-57F |
+| Instrument listed | Fourier Transform Spectrometers (FTS) | AVIRIS |
+| Collection scope | FTS observations from CARVE flights, 2012–2015 | Facility instrument archive combining observations across aircraft and years |
+
+These collections illustrate different ways observations can be grouped. The
+CARVE FTS collection contains measurements from one instrument on one aircraft,
+while the AVIRIS-Classic collection includes observations from an instrument
+deployed on multiple aircraft. The collection-level platform list describes the
+collection as a whole; it does not identify which aircraft produced each
+individual file. To understand a particular observation, users may need to
+consult its granule metadata, information within the data file, and supporting
+documentation.
+
+## Set up your environment
+
+### Authenticate with Earthdata Login
+
+Even "public" NASA Earthdata collections require an Earthdata Login account to
+search and access data programmatically. If you haven't already, create a free
+account at [urs.earthdata.nasa.gov](https://urs.earthdata.nasa.gov/users/new).
+The cell below tries to authenticate using a `.netrc` file first, and falls
+back to an interactive login (which can optionally save your credentials to
+`.netrc` for next time). See the [Authentication
+appendix](https://nasa-openscapes.github.io/earthdata-cloud-cookbook/appendix/authentication.html)
+for more detail on setting up `.netrc`.
 
 ```{python}
-# as well as any and all of your code cells
-print("Hello world!")
+auth = earthaccess.login(strategy="netrc")
+if not auth.authenticated:
+    auth = earthaccess.login(strategy="interactive", persist=True)
 ```
 
-### A content subsection
-Divide and conquer your objectives with Markdown subsections, which will populate the helpful navbar in Jupyter Lab and here in the Cookbook!
 
-```{python}
-# some subsection code
-a = [1, 2, 3, 4, 5]
-[i + 2 for i in a]
-```
-
-### Another content subsection
-Keep up the good work! A note, *try to avoid using code comments as narrative*, and instead let them only exist as brief clarifications where necessary.
-
-## Your second content section
-Here we can move on to our second objective, and we can demonstrate...
-
-### A subsection to the second section
-
-#### a quick demonstration
-
-##### of further and further
-
-###### header levels
-
-Check out [**the Quarto Guide**](https://quarto.org/docs/guide/) for syntax and guidance on customizing your notebooks. Don't hesitate to ask questions if you have problems getting it to look *just right*.
-
-## Last Section
-
-You can add [callouts using quarto callout syntax](https://quarto.org/docs/authoring/callouts/) to highlight important information, provide helpful hints, or even just to add some fun and personality to your notebook. Here's an example of a note callout:
 
 :::{.callout-note}
 Your relevant information here!
@@ -138,7 +160,6 @@ A helpful hint.
 Be careful!
 :::
 
-We also suggest checking out Quarto's [documentation](https://quarto.org/docs/computations/execution-options.html#output-options) on specifying code cell output options.
 
 ---
 
@@ -150,6 +171,13 @@ Add one final `---` marking the end of your body of content, and then conclude w
 Link to relevant external material, further reading, documentation, etc.
 
 ## References
+
+- https://wiki.earthdata.nasa.gov/spaces/CMR/pages/118132538/Project
+- https://wiki.earthdata.nasa.gov/spaces/CMR/pages/107390980/Platform
+- https://www.earthdata.nasa.gov/data/projects/carve
+- https://data.ornldaac.earthdata.nasa.gov/public/carve/campaign/CARVE_L1_FTS_Spectra/comp/CARVE_L1_FTS_Spectra.pdf
+
+
 Be rigorous in your citations and references as necessary. Give credit where credit is due.
 
 You're done! Give yourself a quick review, a high five, and send us a pull request. A few final notes:
