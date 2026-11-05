@@ -82,8 +82,7 @@ Champions](https://github.com/NASA-Openscapes/2026-nasa-champions)
 ## Imports
 
 ```{python}
-import sys
-# import earthaccess
+import earthaccess
 ```
 
 ## What makes suborbital data different
@@ -231,11 +230,41 @@ about calibration, processing methods, known issues, and limitations
 that is important for interpreting and using the data.
 :::
 
+## Discover a suborbital collection
+
+The metadata fields introduced above become the search criteria we use to find
+data. With `earthaccess`, we can discover suborbital collections by instrument,
+project, geographic area, and time period.
+
+The following examples use different instruments and projects to illustrate
+these search options.
+
+### Search by project, platform, instrument, or keyword
+
+`earthaccess.search_datasets()` lets you search collections by free-text
+keyword, and filter to cloud-hosted collections only:
+
+```{python}
+datasets = earthaccess.search_datasets(
+    instrument="AVIRIS-5",
+    bounding_box=(-114.7, 36.2, -111.8, 37.5),
+    temporal=("2025-09-10", "2025-09-20"),
+)
+```
+
+### Inspect candidate collections and select a worked example
+
+```{python}
+
+```
+
+## Find granules for your study
 
 
+### Filter by location and time
 
-
-
+With a collection identified, we can search for the individual granules
+(flights) that fall within our study area and time period:
 
 
 
