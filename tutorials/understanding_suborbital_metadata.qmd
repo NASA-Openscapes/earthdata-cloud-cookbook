@@ -173,11 +173,71 @@ collection — for example, the netCDF file from a single CARVE flight. Granule
 metadata gives you the specific extent, timestamp, and access links for that
 one file.
 
+![](./images/collection_granule.png)
+
 `earthaccess` has a separate search function for each level:
 `earthaccess.search_datasets()` searches collections, and 
 `earthaccess.search_data()` searches granules.
 
 #TODO: compare one collection record with one granule record
+
+```{python}
+
+```
+
+### CMR, UMM-C, UMM-G, and GCMD keywords
+
+A few acronyms come up constantly when working with this metadata:
+
+- **CMR** (Common Metadata Repository) is the system that stores and provides
+access to metadata. Tools such as `earthaccess` and [Earthdata
+Search](https://search.earthdata.nasa.gov) query CMR to help users find data. 
+- **UMM** (Unified Metadata Model) defines metadata fields and how they are organized.
+  - **UMM-C** (Unified Metadata Model – Collection) is the schema 
+  collection-level metadata follows: platforms, instruments, science keywords, 
+  spatial/temporal coverage, citation information, and more.
+  - **UMM-G** (Unified Metadata Model – Granule) is the schema granule-level 
+  metadata follows: a specific granule's spatial/temporal extent and data access 
+  links.
+- **GCMD keywords** (Global Change Master Directory) provide standardized terms
+for describing science topics, platforms, instruments, projects, and more.
+These controlled vocabularies help producers describe data consistently and
+help users find related datasets.
+
+#TODO: add the links to the landing pages/ intro pages of each. I have some of
+the definitions of the wiki in the references.
+
+### Where to find user guides, versions, and citations
+
+A collection’s metadata record can help you locate its DOI, citation
+information, and supporting documentation. Follow the DOI to the dataset’s
+landing page, where you can find the recommended citation, dataset version, and
+links to user guides. For example, [BioSCape: AVIRIS-NG L3 Resampled
+Reflectance Mosaics, V2] contains mosaics of surface reflectance observations
+collected for the BioSCape project. Its [user
+guide](https://data.ornldaac.earthdata.nasa.gov/public/bioscape/BioSCape_ANG_V02_L3_RFL_Mosaic/comp/BioSCape_ANG_V02_L3_RFL_Mosaic.pdf)
+provides information about the data files and how the mosaics were produced.
+Here, L3 identifies the processing level, while V2 identifies the dataset
+version. Check that the documentation applies to the version you are using, and
+use the recommended dataset citation. For data producers, metadata and
+documentation work together: the metadata helps people discover and evaluate
+the dataset, while the user guide explains how to interpret and use it. Keep
+both consistent when releasing updates.
+
+::: {.callout-tip}
+Always check a dataset's user guide and DOI landing page alongside
+its structured metadata. User guides often provide additional detail
+about calibration, processing methods, known issues, and limitations
+that is important for interpreting and using the data.
+:::
+
+
+
+
+
+
+
+
 
 
 
@@ -210,7 +270,8 @@ Link to relevant external material, further reading, documentation, etc.
 - https://wiki.earthdata.nasa.gov/spaces/CMR/pages/107390980/Platform
 - https://www.earthdata.nasa.gov/data/projects/carve
 - https://data.ornldaac.earthdata.nasa.gov/public/carve/campaign/CARVE_L1_FTS_Spectra/comp/CARVE_L1_FTS_Spectra.pdf
-
+- https://wiki.earthdata.nasa.gov/spaces/CMR/pages/148735360/CMR%2BMetadata%2BBest%2BPractices%2BLanding%2BPage
+- https://www.earthdata.nasa.gov/data/tools/gcmd-keyword-viewer
 
 Be rigorous in your citations and references as necessary. Give credit where credit is due.
 
