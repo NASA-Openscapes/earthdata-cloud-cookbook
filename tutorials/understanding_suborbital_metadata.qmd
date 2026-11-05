@@ -29,31 +29,27 @@ execute:
 
 # TODO add a relevant image.
 
-Because suborbital observations are collected under highly variable conditions,
-enriched metadata plays an important role to describe the context of the data.
-For example, the same instrument can fly on different platforms, at different
-altitudes, swath widths, and pixel sizes. Calibration parameters may vary
-across campaigns, and factors such as aircraft movement, weather, and lighting
-conditions can affect the observations. Enriched metadata captures these
-details, supporting data interpretation, discoverability, and reuse.
+Suborbital observations are collected under highly variable conditions, making
+metadata essential for understanding the data. The same instrument can be
+mounted on different platforms, at different altitudes, swath widths, and
+spatial coverage Calibration parameters may vary across campaigns, and factors
+such as aircraft movement, weather, and lighting conditions can affect the
+observations. Enriched metadata captures these details, supporting data
+interpretation, discoverability, and reuse.
 
 Here is our [**POP**](https://rockwoodleadership.org/pop-everything-strategic-planning-in-30-seconds-or-less/)(Purpose, Outcomes, Process):
 
-- **Purpose:** What is the motivation for this tutorial? What problem does it solve?
-- **Outcomes:** quick notes on what you'll learn and where the tutorial ends
-- **Process:** maybe a time estimate, and/or where it was first taught?
+- **Purpose:** Provide a foundation for understanding metadata for suborbital
+missions: why it matters, what it should describe, and how it supports
+discoverability, reuse and reproducibility. This notebook is a starting point
+for data producers learning how metadata is structured, why it matters
+for suborbital observations, and how it supports data discovery and reuse. It
+provides a foundation for further resources on collecting and registering
+metadata.
 
-- **Purpose:** Suborbital (airborne and field-campaign) data from NASA
-Earthdata don't come with the same orbit-defined, mission-wide metadata that
-satellite data does. Every campaign, flight, platform, and instrument
-combination can be different, so the metadata has to work harder to describe
-what was actually measured and under what conditions. This notebook walks
-through how that metadata is structured in NASA's Common Metadata Repository
-(CMR), #TODO 
-
-- **Outcomes:** By the end of this notebook you'll be able to find, inspect,
-access, and visualize a suborbital dataset, and more importantly, understand
-the process of .... #TODO
+- **Outcomes:** By the end of this notebook, you’ll be able to recognize key
+elements of suborbital metadata, explain their importance, and describe how
+incomplete or unclear metadata can limit the use of a dataset. 
 
 - **Process:** Plan for about 45–60 minutes. This notebook is based on the 
 presentation [Metadata for Suborbital Data Publication](https://docs.google.com/presentation/d/1-flozA_ph9tBzqatoOs69lD8NpcfiIZ6VFeP2MDINmk/edit?usp=sharing)
