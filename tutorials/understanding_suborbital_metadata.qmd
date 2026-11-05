@@ -131,7 +131,7 @@ documentation.
 
 ### Authenticate with Earthdata Login
 
-Even "public" NASA Earthdata collections require an Earthdata Login account to
+The public NASA Earthdata collections require an Earthdata Login account to
 search and access data programmatically. If you haven't already, create a free
 account at [urs.earthdata.nasa.gov](https://urs.earthdata.nasa.gov/users/new).
 The cell below tries to authenticate using a `.netrc` file first, and falls
@@ -145,6 +145,40 @@ auth = earthaccess.login(strategy="netrc")
 if not auth.authenticated:
     auth = earthaccess.login(strategy="interactive", persist=True)
 ```
+
+### Define the study area and time period
+
+Before explaining more details about suborbital metadata, we are going to
+define first a study area and a time period we are going to explore to learn
+about. 
+
+```{python}
+
+```
+
+## Understanding the metadata
+
+### Collections and granules
+
+To understand how data are described in NASA’s Common Metadata Repository
+(CMR), we’ll focus on two levels: collections and granules. 
+
+- A **collection** describes a dataset as a whole — for example, "CARVE: L2
+Column Gas and Uncertainty from Airborne FTS, Alaska, 2012-2015." It tells you
+what the dataset is, who produced it, what instrument and platform were
+involved, and the overall spatial/temporal coverage.
+
+- A **granule** describes one individual file (or data unit) within that
+collection — for example, the netCDF file from a single CARVE flight. Granule
+metadata gives you the specific extent, timestamp, and access links for that
+one file.
+
+`earthaccess` has a separate search function for each level:
+`earthaccess.search_datasets()` searches collections, and 
+`earthaccess.search_data()` searches granules.
+
+#TODO: compare one collection record with one granule record
+
 
 
 
