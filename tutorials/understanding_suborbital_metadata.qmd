@@ -162,6 +162,7 @@ about.
 To understand how data are described in NASA’s Common Metadata Repository
 (CMR), we’ll focus on two levels: collections and granules. 
 
+#TODO: Change the following with examples from AVIRIS
 - A **collection** describes a dataset as a whole — for example, "CARVE: L2
 Column Gas and Uncertainty from Airborne FTS, Alaska, 2012-2015." It tells you
 what the dataset is, who produced it, what instrument and platform were
@@ -178,11 +179,8 @@ one file.
 `earthaccess.search_datasets()` searches collections, and 
 `earthaccess.search_data()` searches granules.
 
-#TODO: compare one collection record with one granule record
-
-```{python}
-
-```
+We will explore how the metadata from a collection and from a granule looks
+like in the next sections.
 
 ### CMR, UMM-C, UMM-G, and GCMD keywords
 
@@ -241,40 +239,39 @@ these search options.
 
 ### Search by project, platform, instrument, or keyword
 
-`earthaccess.search_datasets()` lets you search collections by free-text
-keyword, and filter to cloud-hosted collections only:
+Collection metadata allows us to search by project or campaign, platform,
+instrument, and science keywords. Here, we search for cloud-hosted
+collections associated with **BioSCape** and the **AVIRIS-NG** instrument.
 
-```{python}
-datasets = earthaccess.search_datasets(
-    instrument="AVIRIS-5",
-    bounding_box=(-114.7, 36.2, -111.8, 37.5),
-    temporal=("2025-09-10", "2025-09-20"),
-)
-
-for dataset in datasets:
-    print(dataset["umm"]["EntryTitle"])
-```
+We will use the `earthaccess.search_datasets()` function to get collections
+related to those two terms and return the title of the elements found:
 
 ```{python}
 collections = earthaccess.search_datasets(
     project="BIOSCAPE",
-    instrument="AVIRIS-NG",
-    cloud_hosted=True,
+    instrument="AVIRIS-NG"
 )
 
-for collection in collections:
-    print(collection["umm"]["EntryTitle"])
+print(f"Found {len(collections)} collections:")
+print()
+for candidate in collections:
+    print(candidate["umm"]["EntryTitle"])
+    print("DOI:", candidate["umm"].get("DOI", {}))
+    print()
 ```
 
 These titles help us identify the different products available. The project
 and instrument information supplied by data producers makes this search
 possible.
 
-### Inspect candidate collections and select a worked example
+### Inspect candidate collection metadata
 
-For this notebook, we will use
+For this example, we will use
 [*BioSCape: AVIRIS-NG L3 Resampled Reflectance Mosaics, V2*](https://doi.org/10.3334/ORNLDAAC/2427).
-We can retrieve its collection record using the DOI.
+
+We can retrieve its collection metadata record using the DOI printed above.
+This would print a long output, which you can display by clicking on
+_show collection metadata_. 
 
 ```{python}
 collection = earthaccess.search_datasets(
@@ -289,8 +286,34 @@ pprint(collection.summary)
 ```
 ::: 
 
-The summary provides identifiers and basic information about the collection.
-We can check the its abstract to learn what the dataset contains.
+We can check the main records of the collection with:
+
+```{python}
+list(collection.keys())
+```
+
+As you can see in the print collection metadata above, there are two main
+keys with **meta** and **umm**. We can check them out:
+
+A metadata record is organized into named fields called keys. Each key has a
+value, which may be text, a number, a list, or another group of fields. This
+record has two main sections:
+
+- meta contains information about the record in CMR, such as its identifier and
+revision date.
+- umm contains the scientific and descriptive metadata about the 
+dataset, such as its title, instruments, coverage, and processing level.
+
+```{python}
+list(collection["meta"].keys())
+```
+
+```{python}
+list(collection["umm"].keys())
+```
+
+Based on those keys we can get information about the collection we have. For
+example we can check the its abstract to learn what the dataset contains.
 
 ```{python}
 print(collection["umm"]["Abstract"])
