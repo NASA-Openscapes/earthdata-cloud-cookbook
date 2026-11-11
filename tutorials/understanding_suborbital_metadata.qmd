@@ -327,6 +327,51 @@ review the user guide and recommended citation. The guide provides additional
 details about how the mosaics were produced and their limitations, helping you
 decide whether the data meet your needs.
 
+We can answer other questions such as:
+
+ - What does it measure?
+
+```{python}
+collection["umm"]["ScienceKeywords"]
+```
+
+ -  When were the observations collected?
+
+```{python}
+collection["umm"]["TemporalExtents"]
+```
+
+ - What geographic area does the collection cover?
+
+```{python}
+collection["umm"]["SpatialExtent"]
+```
+
+:::{.callout-note}
+The bounding rectangle describes the collection’s overall geographic extent.
+It does not mean that observations cover every location inside that rectangle.
+:::
+
+```{python}
+bounds = collection["umm"]["SpatialExtent"]["HorizontalSpatialDomain"]["Geometry"]["BoundingRectangles"]
+bounds[0]
+```
+ - How were the data processed?
+
+```{python}
+collection["umm"]["ProcessingLevel"]
+```
+
+```{python}
+collection["umm"]["Version"]
+```
+
+:::{.callout-note}
+Processing level describes the kind of processing applied to
+the observations. Version identifies the dataset release. For this collection,
+those are Level 3 and Version 2.
+:::
+
 ### Check available access methods and cloud availability
 
 The collection summary includes cloud-hosting information. Its distribution
@@ -342,6 +387,9 @@ to individual files.
 
 
 ## Find granules for your study
+
+So now that we have our collection identified and have a better sense of 
+what is about and what it contains, we can check the granules it contains.
 
 
 ### Filter by location and time
