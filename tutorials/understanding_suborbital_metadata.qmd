@@ -16,7 +16,8 @@ authors:
 date: "2026-11-05" # Last modified date. `last-modified` automatically generates the date when the doc gets rendered, but when rendering on GitHub Actions it will show the render date. (#336)
 keywords: [suborbital, netcdf, CMR]
 format:
-  html: default
+  html:
+    code-line-numbers: true
   ipynb: default # Adds a Jupyter Notebook download button in the right menu
 execute:
   eval: true # Code requires live Earthdata Login credentials; not executed during project render
@@ -65,7 +66,6 @@ Champions](https://github.com/NASA-Openscapes/2026-nasa-champions)
 - Search CMR with `earthaccess` for a suborbital collection by campaign, platform, instrument, or science keyword.
 - Locate and interpret platform, instrument, campaign, spatial/temporal extent, and processing information for a collection and its granules.
 - Access and open a suborbital granule from the cloud, and inspect its variables, units, and structure.
-- Know what to do when a collection's metadata is incomplete.
 
 ## Prerequisites
 
@@ -223,8 +223,10 @@ The metadata fields introduced above become the search criteria we use to find
 data. With `earthaccess`, we can discover suborbital collections by instrument,
 project, geographic area, and time period.
 
-The following examples use different instruments and projects to illustrate
-these search options.
+The CARVE and AVIRIS-Classic examples illustrated how platform and instrument
+relationships can differ between collections. For the following walkthrough, we
+will use a BioSCape AVIRIS-NG collection to explore how those concepts appear in
+collection and granule metadata.
 
 ### Search by project, platform, instrument, or keyword
 
@@ -529,11 +531,9 @@ Add one final `---` marking the end of your body of content, and then conclude w
 
 ## Additional resources
 
-Link to relevant external material, further reading, documentation, etc.
+- [Data Management Plan for Suborbital Data](https://www.earthdata.nasa.gov/s3fs-public/2026-03/OSDMP%20Guide%20v2.1.pdf)
 
 ## References
-
-- [Data Management Plan for Suborbital Data](https://www.earthdata.nasa.gov/s3fs-public/2026-03/OSDMP%20Guide%20v2.1.pdf)
 
 - https://wiki.earthdata.nasa.gov/spaces/CMR/pages/118132538/Project
 - https://wiki.earthdata.nasa.gov/spaces/CMR/pages/107390980/Platform
@@ -541,18 +541,6 @@ Link to relevant external material, further reading, documentation, etc.
 - https://data.ornldaac.earthdata.nasa.gov/public/carve/campaign/CARVE_L1_FTS_Spectra/comp/CARVE_L1_FTS_Spectra.pdf
 - https://wiki.earthdata.nasa.gov/spaces/CMR/pages/148735360/CMR%2BMetadata%2BBest%2BPractices%2BLanding%2BPage
 - https://www.earthdata.nasa.gov/data/tools/gcmd-keyword-viewer
-
-Be rigorous in your citations and references as necessary. Give credit where credit is due.
-
-You're done! Give yourself a quick review, a high five, and send us a pull request. A few final notes:
-
- - `Kernel > Restart Kernel and Run All Cells...` to confirm that your notebook will cleanly run from start to finish
- - `Kernel > Restart Kernel and Clear All Outputs...` before committing your notebook, our machines will do the heavy lifting
- - Take credit! Provide author information in the metadata.
- - Give credit! Attribute appropriate authorship for referenced code, information, images, etc.
- - Only include what you're legally allowed: **no copyright infringement or plagiarism**
- 
-Thank you for your contribution!
 
 ## Acknowledgements
 
