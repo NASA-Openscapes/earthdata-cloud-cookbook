@@ -145,16 +145,6 @@ for more detail on setting up `.netrc`.
 auth = earthaccess.login(persist=True)
 ```
 
-### Define the study area and time period
-
-Before explaining more details about suborbital metadata, we are going to
-define first a study area and a time period we are going to explore to learn
-about. 
-
-```{python}
-
-```
-
 ## Understanding the metadata
 
 ### Collections and granules
@@ -282,7 +272,7 @@ collection = earthaccess.search_datasets(
 
 ::: {.callout-note collapse="true" title="Show collection metadata"}
 ```{python}
-pprint(collection.summary)
+pprint(dict(collection))
 ```
 ::: 
 
@@ -299,9 +289,9 @@ A metadata record is organized into named fields called keys. Each key has a
 value, which may be text, a number, a list, or another group of fields. This
 record has two main sections:
 
-- meta contains information about the record in CMR, such as its identifier and
+- **meta** contains information about the record in CMR, such as its identifier and
 revision date.
-- umm contains the scientific and descriptive metadata about the 
+- **umm** contains the scientific and descriptive metadata about the 
 dataset, such as its title, instruments, coverage, and processing level.
 
 ```{python}
@@ -352,15 +342,13 @@ The bounding rectangle describes the collection’s overall geographic extent.
 It does not mean that observations cover every location inside that rectangle.
 :::
 
-```{python}
-bounds = collection["umm"]["SpatialExtent"]["HorizontalSpatialDomain"]["Geometry"]["BoundingRectangles"]
-bounds[0]
-```
  - How were the data processed?
 
 ```{python}
 collection["umm"]["ProcessingLevel"]
 ```
+
+ - What is the version of this collection?
 
 ```{python}
 collection["umm"]["Version"]
@@ -386,33 +374,153 @@ information describes the archive location; the granule records provide links
 to individual files.
 
 
-## Find granules for your study
+## Find and explore granules metadata
 
-So now that we have our collection identified and have a better sense of 
-what is about and what it contains, we can check the granules it contains.
+Once we have identified a collection, we can explore its granules. A granule is
+an individual data unit within a collection and may contain one or several
+files. Depending on how the dataset is organized, a granule might represent a
+flight segment, an observation period, or a spatial tile.
+
+Collection metadata describes the dataset as a whole. Granule metadata provides
+more specific information about each data unit, including its spatial and
+temporal coverage, file formats, and access links.
+
+For example, in the BioSCape AVIRIS-NG L3 Resampled Reflectance Mosaics, V2
+collection, a mosaic tile combines observations from multiple flight lines and
+days. Its granule includes reflectance and uncertainty files in NetCDF format,
+along with a quicklook image. This means that a granule in this collection
+should not be interpreted as a single flight.
+
+### Search within the selected collection
+
+To find the collection granules, we first retrieve its identifier from the
+collection metadata.
+
+Earlier, we saw that the record contains two main sections: meta, which
+describes the record in CMR, and umm, which describes the dataset. Within meta,
+the concept-id identifies this collection in CMR. Using that identifier in our
+search keeps the results within the collection we selected.
+
+```{python}
+collection_id = collection["meta"]["concept-id"]
+print(collection_id)
+```
+
+Within that data collection we already explored, we are going to use the
+function `search_data()` which helps with the granules:
+
+```{python}
+granules = earthaccess.search_data(
+    concept_id=collection_id,
+    count=5,
+)
+
+print(f"Retrieved {len(granules)} example granules")
+```
+
+Here, count=5 limits the results for inspection as up to five results; these 
+are a sample, not necessarily all the granules in the collection. We will use these 5 granules to explore and understand the metadata.
+
+### Granules metadata
+
+So, now we can check what are the keys in a specific
+granule:
+
+```{python}
+selected_granule = granules[1]
+
+list(selected_granule.keys())
+```
+
+Like the collection record, the granule record contains meta
+and umm sections. We can inspect its keys to see what
+information is available before exploring individual fields.
+
+The granule’s umm section follows UMM-G rather than UMM-C, so
+its fields differ from those we explored for the collection.
+For example, GranuleUR identifies the granule, TemporalExtent
+describes its temporal coverage, and DataGranule contains
+information about its files.
+
+The available keys can vary between granules. Inspecting them
+helps us avoid assuming that every record contains the same
+information.
 
 
-### Filter by location and time
-
-With a collection identified, we can search for the individual granules
-(flights) that fall within our study area and time period:
-
-
-
-
-
-
-:::{.callout-note}
-Your relevant information here!
+::: {.callout-note collapse="true" title="Show collection metadata"}
+```{python}
+pprint(dict(selected_granule))
+```
 :::
+
+
+What we obtained from the second granule of our list is 
+the following:
+
+```
+Granule: AVIRIS-NG_BIOSCAPE_V02_L3_20_16
+├── meta                         CMR identifiers and record revision
+├── size                         Size summary
+└── umm                          Granule metadata
+    ├── CollectionReference      Parent collection and version
+    ├── GranuleUR                Granule identifier
+    ├── SpatialExtent            Tile footprint polygon
+    ├── TemporalExtent           Reported observation interval
+    ├── DataGranule
+    │   └── ArchiveAndDistributionInformation
+    │       ├── ..._RFL.nc       Reflectance
+    │       ├── ..._UNC.nc       Uncertainty
+    │       ├── ..._QL.tif       Quicklook
+    │       └── ..._BROWSE.png   Browse image
+    ├── RelatedUrls              Data, visualization, and other links
+    ├── Platforms                G-III carrying AVIRIS-NG
+    ├── PGEVersionClass          Processing software and version
+    └── AdditionalAttributes     Software build, campaign, DOI authority
+```
+
+
+GranuleUR identifies the granule whose metadata we are inspecting. Within
+SpatialExtent, the geometry may describe a bounding rectangle or a polygon
+defined by longitude and latitude coordinates. These describe the granule’s
+geographic footprint, but do not guarantee valid measurements everywhere inside
+it.
+
+TemporalExtent describes when the observations represented by the granule were
+acquired. It may contain a single date and time or an interval with beginning
+and ending times. A trailing Z indicates UTC.
+
+Notice that the collection uses TemporalExtents (plural), while each granule
+uses TemporalExtent (singular).
+
+For the BioSCape mosaic tiles, the reported interval covers the campaign
+period. It should not be interpreted as one flight’s duration or the precise
+acquisition time of every pixel. ### Filter by location and time
 
 :::{.callout-tip}
-A helpful hint.
+Not all the granules within a collection are going to
+have the same structure. This can change and we can
+validate it with the metadata.
 :::
 
-:::{.callout-warning}
-Be careful!
-:::
+
+```{python}
+for index, granule in enumerate(granules):
+    metadata = granule["umm"]
+    inventory = metadata.get("DataGranule", {}).get(
+        "ArchiveAndDistributionInformation", []
+    )
+
+    print(f"\n[{index}] {metadata['GranuleUR']}")
+    print(f"Files listed: {len(inventory)}")
+
+    for file_info in inventory:
+        print(
+            "  ",
+            file_info.get("Name", "Name not supplied"),
+            "—",
+            file_info.get("Format", "Format not supplied"),
+        )
+```
 
 
 ---
