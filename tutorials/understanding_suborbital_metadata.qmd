@@ -100,12 +100,12 @@ measurement fits into the broader effort.
 
 Three concepts help describe these relationships:
 
-- [Platform](https://www.earthdata.nasa.gov/data/platforms): The vehicle or
+- [Platform](https://wiki.earthdata.nasa.gov/spaces/CMR/pages/107390980/Platform): The vehicle or
 structure from which observations are collected, such as an aircraft, ship, or
 tower.
 - [Instrument](https://www.earthdata.nasa.gov/data/instruments): The sensor or
 equipment used to collect measurements.
-- [Project](https://www.earthdata.nasa.gov/data/projects): The scientific
+- [Project](https://wiki.earthdata.nasa.gov/spaces/CMR/pages/118132538/Project): The scientific
 effort associated with the data. In CMR, this can include a field campaign,
 mission, investigation, or broader research program.
 
@@ -123,7 +123,7 @@ Two ORNL DAAC collections illustrate this well:
 | Collection scope | FTS observations from CARVE flights, 2012–2015 | Facility instrument archive combining observations across aircraft and years |
 
 These collections illustrate different ways observations can be grouped. The
-CARVE FTS collection contains measurements from one instrument on one aircraft,
+[CARVE](https://www.earthdata.nasa.gov/data/projects/carve) FTS collection contains measurements from one instrument on one aircraft,
 while the AVIRIS-Classic collection includes observations from an instrument
 deployed on multiple aircraft. The collection-level platform list describes the
 collection as a whole; it does not identify which aircraft produced each
@@ -192,7 +192,7 @@ Search](https://search.earthdata.nasa.gov) query CMR to help users find data.
   - **UMM-G** (Unified Metadata Model – Granule) is the schema granule-level 
   metadata follows: a specific granule's spatial/temporal extent and data access 
   links.
-- **GCMD keywords** (Global Change Master Directory) provide standardized terms
+- [**GCMD keywords**](https://www.earthdata.nasa.gov/data/tools/gcmd-keyword-viewer) (Global Change Master Directory) provide standardized terms
 for describing science topics, platforms, instruments, projects, and more.
 These controlled vocabularies help producers describe data consistently and
 help users find related datasets.
@@ -650,13 +650,8 @@ data.
 ## References
 
 - [BioSCape AVIRIS-NG L3 Reflectance Mosaics, V2 — User Guide](https://data.ornldaac.earthdata.nasa.gov/public/bioscape/BioSCape_ANG_V02_L3_RFL_Mosaic/comp/BioSCape_ANG_V02_L3_RFL_Mosaic.pdf)
-
-- https://wiki.earthdata.nasa.gov/spaces/CMR/pages/118132538/Project
-- https://wiki.earthdata.nasa.gov/spaces/CMR/pages/107390980/Platform
-- https://www.earthdata.nasa.gov/data/projects/carve
-- https://data.ornldaac.earthdata.nasa.gov/public/carve/campaign/CARVE_L1_FTS_Spectra/comp/CARVE_L1_FTS_Spectra.pdf
-- https://wiki.earthdata.nasa.gov/spaces/CMR/pages/148735360/CMR%2BMetadata%2BBest%2BPractices%2BLanding%2BPage
-- https://www.earthdata.nasa.gov/data/tools/gcmd-keyword-viewer
+- [CARVE L1 FTS Spectral Radiances — User Guide](https://data.ornldaac.earthdata.nasa.gov/public/carve/campaign/CARVE_L1_FTS_Spectra/comp/CARVE_L1_FTS_Spectra.pdf)
+- [CMR Metadata Best Practices](https://wiki.earthdata.nasa.gov/spaces/CMR/pages/148735360/CMR%2BMetadata%2BBest%2BPractices%2BLanding%2BPage)
 
 ## Acknowledgements
 
