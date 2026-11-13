@@ -464,8 +464,10 @@ are a sample, not necessarily all the granules in the collection. We will use th
 
 ### Granules metadata
 
-So, now we can check what are the keys in a specific
-granule:
+The first result in this sample represents a different type of data unit.
+We select the second result to explore a granule containing reflectance and
+uncertainty files, then inspect its keys. Python indexing starts at zero,
+so `granules[1]` selects the second result.
 
 ```{python}
 selected_granule = granules[1]
@@ -488,15 +490,17 @@ helps us avoid assuming that every record contains the same
 information.
 
 
-::: {.callout-note collapse="true" title="Show collection metadata"}
+::: {.callout-note collapse="true" title="Show granule metadata"}
 ```{python}
 pprint(dict(selected_granule))
 ```
 :::
 
 
-What we obtained from the second granule of our list is 
-the following:
+The tree below highlights selected fields from the example granule
+`AVIRIS-NG_BIOSCAPE_V02_L3_20_16`; it is not a complete metadata record.
+Search result ordering can vary, so your second result may be a different
+granule. Compare its identifier and fields with the output above.
 
 ```
 Granule: AVIRIS-NG_BIOSCAPE_V02_L3_20_16
@@ -564,16 +568,37 @@ for index, granule in enumerate(granules):
 ```
 
 
+Compare the file inventories above. The first granule contains a single GeoJSON
+tile index. The other four granules each group reflectance (`RFL`) and
+uncertainty (`UNC`) files with quicklook (`QL`) and browse images. This
+illustrates how granules within the same collection can serve different
+purposes and contain different numbers and types of files.
+
+The inventory lists file names and formats; the user guide explains their roles
+and naming conventions. As a data producer, document these roles and explain
+how related files are grouped into granules so users can identify the files
+they need.
+
 ---
 
 ## Summary
-Add one final `---` marking the end of your body of content, and then conclude with a brief single paragraph summarizing at a high level the key pieces that were learned and how they tied to your objectives. Look to reiterate what the most important takeaways were.
+
+Exploring existing suborbital datasets from a user's perspective shows why
+metadata deserves attention before data collection begins. Collection metadata
+supports discovery and describes the dataset's overall context, while granule
+metadata describes individual data units, their coverage, and associated files.
+User guides and information within the files provide further details needed for
+interpretation. As a data producer is important to identify what and how you
+will capture the metadata so future users can find, understand, and reuse your
+data.
 
 ## Additional resources
 
 - [Data Management Plan for Suborbital Data](https://www.earthdata.nasa.gov/s3fs-public/2026-03/OSDMP%20Guide%20v2.1.pdf)
 
 ## References
+
+- [BioSCape AVIRIS-NG L3 Reflectance Mosaics, V2 — User Guide](https://data.ornldaac.earthdata.nasa.gov/public/bioscape/BioSCape_ANG_V02_L3_RFL_Mosaic/comp/BioSCape_ANG_V02_L3_RFL_Mosaic.pdf)
 
 - https://wiki.earthdata.nasa.gov/spaces/CMR/pages/118132538/Project
 - https://wiki.earthdata.nasa.gov/spaces/CMR/pages/107390980/Platform
