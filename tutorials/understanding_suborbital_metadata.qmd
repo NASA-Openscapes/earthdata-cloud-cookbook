@@ -71,7 +71,7 @@ Champions](https://github.com/NASA-Openscapes/2026-nasa-champions)
 
 | Concepts | Importance | Notes |
 | --- | --- | --- |
-| [Earthdata Login account](https://urs.earthdata.nasa.gov/users/new) | Necessary | Needed to search and access NASA Earthdata, even for "public" collections. See the [Authentication appendix](https://nasa-openscapes.github.io/earthdata-cloud-cookbook/appendix/authentication.html) for setup help. |
+| [Earthdata Login account](https://urs.earthdata.nasa.gov/users/new) | Optional for this notebook | Searching public collection and granule metadata does not require login. An account is needed when downloading or streaming data through `earthaccess`. See the [Authentication appendix](https://nasa-openscapes.github.io/earthdata-cloud-cookbook/appendix/authentication.html) for setup help. |
 | [Intro to earthaccess](https://earthaccess.readthedocs.io/en/stable/quick-start/) | Necessary | Used throughout this notebook to search CMR and open cloud data. |
 | [How do I find data using code?](https://nasa-openscapes.github.io/earthdata-cloud-cookbook/how-tos/find-data/programmatic.html) | Helpful | Covers the general `earthaccess`/CMR search pattern this notebook builds on. |
 | [Understanding of NetCDF](https://foundations.projectpythia.org/core/data-formats/netcdf-cf) | Helpful | |
@@ -113,7 +113,7 @@ instruments. The same instrument may also be used on different platforms or in
 different campaigns. Recording these relationships helps users understand which
 observations belong together and how they were collected.
 
-Two real ORNL DAAC collections illustrate this well:
+Two ORNL DAAC collections illustrate this well:
 
 | Metadata | [CARVE L1 FTS spectral radiances](https://doi.org/10.3334/ORNLDAAC/1426) | [AVIRIS-Classic L2 reflectance, V1](https://doi.org/10.3334/ORNLDAAC/2154) |
 |---|---|---|
@@ -132,18 +132,21 @@ documentation.
 
 ## Set up your environment
 
-### Authenticate with Earthdata Login
+### Earthdata Login: when is it needed?
 
-The public NASA Earthdata collections require an Earthdata Login account to
-search and access data programmatically. If you haven't already, create a free
-account at [urs.earthdata.nasa.gov](https://urs.earthdata.nasa.gov/users/new).
-The cell below tries to authenticate using a `.netrc` file first, and falls
-back to an interactive login (which can optionally save your credentials to
-`.netrc` for next time). See the [Authentication
-appendix](https://nasa-openscapes.github.io/earthdata-cloud-cookbook/appendix/authentication.html)
-for more detail on setting up `.netrc`.
+You can search public collection and granule metadata with
+`earthaccess.search_datasets()` and `earthaccess.search_data()` without signing
+in. The metadata inspection steps in this notebook do not require authentication.
+
+If you continue to downloading or streaming data files with `earthaccess`,
+you will need an [Earthdata Login account](https://urs.earthdata.nasa.gov/users/new)
+and can authenticate with the optional step below. See the
+[earthaccess authentication documentation](https://earthaccess.readthedocs.io/en/stable/user/explanation/authenticate/)
+for details.
 
 ```{python}
+#| eval: false
+# Optional: run before downloading or streaming data files.
 auth = earthaccess.login(persist=True)
 ```
 
@@ -154,15 +157,17 @@ auth = earthaccess.login(persist=True)
 To understand how data are described in NASA’s Common Metadata Repository
 (CMR), we’ll focus on two levels: collections and granules. 
 
-- A **collection** describes a dataset as a whole — for example, "CARVE: L2
-Column Gas and Uncertainty from Airborne FTS, Alaska, 2012-2015." It tells you
-what the dataset is, who produced it, what instrument and platform were
-involved, and the overall spatial/temporal coverage.
+- A **collection** describes a dataset as a whole — for example, "BioSCape:
+AVIRIS-NG L3 Resampled Reflectance Mosaics, V2." It tells you what the dataset
+is, who produced it, what instrument and platform were involved, and the
+overall spatial/temporal coverage.
 
-- A **granule** describes one individual file (or data unit) within that
-collection — for example, the netCDF file from a single CARVE flight. Granule
-metadata gives you the specific extent, timestamp, and access links for that
-one file.
+- A **granule** is an individual data unit within a collection and may contain
+one or several files. In this BioSCape collection, a granule represents a
+mosaic tile that combines observations from multiple flight lines and days.
+It groups reflectance, uncertainty, and associated files. Granule metadata
+describes that tile's spatial and temporal coverage and provides access links
+to its files.
 
 ![](./images/collection_granule.png)
 
