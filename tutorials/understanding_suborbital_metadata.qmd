@@ -86,6 +86,7 @@ Champions](https://github.com/NASA-Openscapes/2026-nasa-champions)
 
 ```{python}
 import earthaccess
+import xarray as xr
 from pprint import pprint
 ```
 
@@ -145,7 +146,6 @@ and can authenticate with the optional step below. See the
 for details.
 
 ```{python}
-#| eval: false
 # Optional: run before downloading or streaming data files.
 auth = earthaccess.login(persist=True)
 ```
@@ -578,6 +578,57 @@ The inventory lists file names and formats; the user guide explains their roles
 and naming conventions. As a data producer, document these roles and explain
 how related files are grouped into granules so users can identify the files
 they need.
+
+
+### Inspect metadata inside a data file
+
+The granule record describes the files associated with a data unit. Metadata
+inside those files provides another level of detail, including variable names,
+dimensions, and units.
+
+We will open the reflectance NetCDF file from the mosaic tile we already
+selected. We identify it by the `_RFL.nc` suffix documented in the user guide,
+rather than assuming that the first access link points to the reflectance file.
+
+
+```{python}
+reflectance_links = [
+    url
+    for url in selected_granule.data_links(access="external")
+    if url.endswith("_RFL.nc")
+]
+
+if len(reflectance_links) != 1:
+    raise ValueError("Select a mosaic tile with one reflectance file.")
+
+print(reflectance_links[0])
+```
+
+
+```{python}
+remote_file = earthaccess.open(reflectance_links)[0]
+```
+
+```{python}
+ds = xr.open_dataset(remote_file, engine="h5netcdf")
+ds
+```
+
+The dataset display shows the file’s dimensions, coordinates, data
+variables, and attributes. We can inspect the variables and their
+units without explicitly loading the full reflectance array.
+
+The following loop includes coordinate variables because their units
+also matter when interpreting the observations.
+
+```{python}
+for name, variable in ds.variables.items():
+    print(f"\nVariable: {name}")
+    print("  Dimensions:", variable.dims)
+    print("  Shape:", variable.shape)
+    print("  Description:", variable.attrs.get("long_name", "Not supplied"))
+    print("  Units:", variable.attrs.get("units", "Not supplied"))
+```
 
 ---
 
