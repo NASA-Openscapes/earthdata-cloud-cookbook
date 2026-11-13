@@ -376,19 +376,44 @@ As a data producer, record the processing level and document how the product
 was generated. Users need both to judge whether the data suit their analysis.
 :::
 
-### Check available access methods and cloud availability
+### Connect platforms, instruments, and projects
 
-The collection summary includes cloud-hosting information. Its distribution
-metadata can provide additional details about where the files are stored.
+Which platforms and instruments are associated with this collection?
 
 ```{python}
-pprint(collection["umm"].get("DirectDistributionInformation", {}))
+pprint(collection["umm"].get("Platforms", []))
 ```
 
-We can also check the documentation for access requirements. Cloud storage
-information describes the archive location; the granule records provide links
-to individual files.
+Each platform entry can include an `Instruments` list describing the
+instruments associated with that platform. Find the aircraft name in the
+output, then inspect its nested instruments to identify the sensor it carried.
+This structure preserves the platform–instrument relationship introduced
+earlier.
 
+Which project is the collection associated with?
+
+```{python}
+pprint(collection["umm"].get("Projects", []))
+```
+
+Compare the project's `ShortName` with `project="BIOSCAPE"` in our earlier
+search. Project metadata connects the collection to the broader scientific
+effort and enables users to search for its datasets.
+
+Both examples use `.get(..., [])` to return an empty list if the field is
+absent. An empty result means no entries were returned; it does not establish
+that the observations had no platform, instrument, or project.
+
+For data producers, consistent platform, instrument, and project names help
+users discover the collection and understand how observations were collected.
+Missing entries can prevent a collection from appearing in searches that
+filter on those fields. Ambiguous relationships can leave users unsure which
+platform carried an instrument.
+
+Collection-level metadata describes the collection as a whole. When platforms
+or instruments vary between observations, preserve those details in granule
+metadata, data files, or supporting documentation so users can identify how a
+particular observation was collected.
 
 ## Find and explore granule metadata
 
