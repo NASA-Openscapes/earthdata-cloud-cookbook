@@ -308,8 +308,8 @@ list(collection["meta"].keys())
 list(collection["umm"].keys())
 ```
 
-Based on those keys we can get information about the collection we have. For
-example we can check the its abstract to learn what the dataset contains.
+We can select fields within umm to answer questions about the dataset. First,
+what does this collection contain? Its abstract provides an overview:
 
 ```{python}
 print(collection["umm"]["Abstract"])
@@ -325,11 +325,17 @@ decide whether the data meet your needs.
 
 We can answer other questions such as:
 
- - What does it measure?
+ - What science topics is this collection indexed under?
 
 ```{python}
 collection["umm"]["ScienceKeywords"]
 ```
+
+Science keywords are standardized terms that help users discover related
+datasets. They do not provide a complete inventory of measured variables;
+consult the data files and user guide for variables, units, and measurement
+details. As a data producer, choose keywords that accurately describe your
+dataset's science topics so users can find it.
 
  -  When were the observations collected?
 
@@ -348,7 +354,7 @@ The bounding rectangle describes the collection’s overall geographic extent.
 It does not mean that observations cover every location inside that rectangle.
 :::
 
- - How were the data processed?
+ - What processing level is reported for this collection?
 
 ```{python}
 collection["umm"]["ProcessingLevel"]
@@ -361,9 +367,13 @@ collection["umm"]["Version"]
 ```
 
 :::{.callout-note}
-Processing level describes the kind of processing applied to
-the observations. Version identifies the dataset release. For this collection,
-those are Level 3 and Version 2.
+Processing level indicates a broad category of processing, while version
+identifies the dataset release. For this collection, those are Level 3 and
+Version 2. The user guide describes the methods, algorithms, and processing
+steps used to generate the product.
+
+As a data producer, record the processing level and document how the product
+was generated. Users need both to judge whether the data suit their analysis.
 :::
 
 ### Check available access methods and cloud availability
